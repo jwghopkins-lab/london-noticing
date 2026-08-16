@@ -13,7 +13,18 @@ The numbers this file is opinionated about:
                    grid, but 1.3 is close enough to catch a bad leg and it
                    never flatters one.
   LEG_WARN_MIN     8 minutes. Longer than this between two insights and the
-                   walk stops being a walk.
+                   walk starts to sag. Worth a human looking at.
+  LEG_FAIL_MIN     12 minutes. Nobody walks that far between two sentences
+                   about a wall. This one stops a release.
+
+The split matters. The brief says to flag any leg over about eight minutes, and
+flagging is not the same as forbidding: central London genuinely has dull
+stretches, and the walk from the Tower up to Leadenhall is one of them. Making
+eight minutes fatal would push an author into moving coordinates to please the
+tool, which is worse than an honest nine minute leg.
+
+Reversals are the same kind of judgement, so they are a note rather than a
+failure. A spur up a river valley has to come back down.
 
 The check does not know what a good route feels like. It knows when one is
 obviously wrong, which is the job.
@@ -24,8 +35,9 @@ EARTH_M = 6371008.8
 WALK_M_PER_MIN = 80.0
 DETOUR = 1.3
 LEG_WARN_MIN = 8.0
-LEG_WARN_M = LEG_WARN_MIN * WALK_M_PER_MIN / DETOUR   # ~492 m straight line
+LEG_FAIL_MIN = 12.0
 REVERSAL_DEG = 135.0
+MIN_LEG_M = 15.0
 
 
 def haversine_m(lat1, lon1, lat2, lon2):
@@ -75,38 +87,41 @@ def legs(points):
     return out
 
 
-def check(points, leg_warn_min=LEG_WARN_MIN):
+def check(points, leg_warn_min=LEG_WARN_MIN, leg_fail_min=LEG_FAIL_MIN):
     """Measure a route and complain about it.
 
     Returns {legs, total_straight_m, total_walk_m, total_minutes, reversals,
-    problems}. `problems` is a list of plain-English strings, empty when the
-    route is fine. Nothing here raises: the caller decides whether a problem
-    is fatal, because a draft route is allowed to be bad and a shipped one is
-    not.
+    problems, notes}. `problems` are things that should stop a release.
+    `notes` are things a human should look at and may reasonably accept.
+    Nothing here raises: the caller decides what to do about either.
     """
-    problems = []
+    problems, notes = [], []
     if len(points) < 2:
         return {"legs": [], "total_straight_m": 0.0, "total_walk_m": 0.0,
                 "total_minutes": 0.0, "reversals": 0,
-                "problems": [] if points else ["route has no stops"]}
+                "problems": [] if points else ["route has no stops"], "notes": []}
 
     ls = legs(points)
 
-    seen = {}
+    seen = set()
     for pid, lat, lon in points:
         if pid in seen:
             problems.append(f"{pid} appears more than once in the order")
-        seen[pid] = True
+        seen.add(pid)
         if not (-90.0 <= lat <= 90.0) or not (-180.0 <= lon <= 180.0):
             problems.append(f"{pid} has an impossible coordinate")
 
     for leg in ls:
-        if leg["minutes"] > leg_warn_min:
+        if leg["minutes"] > leg_fail_min:
             problems.append(
                 f"{leg['from']} to {leg['to']} is about {leg['minutes']:.0f} "
+                f"minutes ({leg['walk_m']:.0f} m), too far to walk between two stops")
+        elif leg["minutes"] > leg_warn_min:
+            notes.append(
+                f"{leg['from']} to {leg['to']} is about {leg['minutes']:.0f} "
                 f"minutes ({leg['walk_m']:.0f} m), over the {leg_warn_min:.0f} "
-                f"minute limit")
-        if leg["straight_m"] < 15.0:
+                f"minute mark")
+        if leg["straight_m"] < MIN_LEG_M:
             problems.append(
                 f"{leg['from']} and {leg['to']} are {leg['straight_m']:.0f} m "
                 f"apart, which is the same place")
@@ -118,9 +133,8 @@ def check(points, leg_warn_min=LEG_WARN_MIN):
         # is how walking works and must not be flagged.
         if t >= REVERSAL_DEG:
             reversals += 1
-            problems.append(
-                f"the walk doubles back at {ls[i]['to']} "
-                f"(turns {t:.0f} degrees)")
+            notes.append(f"the walk doubles back at {ls[i]['to']} "
+                         f"(turns {t:.0f} degrees)")
 
     total_straight = sum(l["straight_m"] for l in ls)
     return {
@@ -130,6 +144,7 @@ def check(points, leg_warn_min=LEG_WARN_MIN):
         "total_minutes": round(walk_minutes(total_straight), 1),
         "reversals": reversals,
         "problems": problems,
+        "notes": notes,
     }
 
 

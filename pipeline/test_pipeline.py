@@ -132,9 +132,20 @@ class TestVerifier(unittest.TestCase):
         self.assertTrue(any("order" in p for p in self.verify(bad)))
 
     def test_edited_prose_is_caught(self):
+        # Append rather than search and replace. An earlier version of this test
+        # swapped a specific word, and when the route order changed that word was
+        # no longer in stop zero, so the edit did nothing and the test passed by
+        # tampering with nothing at all.
         bad = copy.deepcopy(self.good)
-        bad["stops"][0]["after"] = bad["stops"][0]["after"].replace("wedding", "birthday")
+        bad["stops"][0]["after"] += " And another thing."
         self.assertTrue(any("does not match the content" in p for p in self.verify(bad)))
+
+    def test_edited_prose_is_caught_on_every_stop(self):
+        for i in range(len(self.good["stops"])):
+            bad = copy.deepcopy(self.good)
+            bad["stops"][i]["look"] += " Extra."
+            self.assertTrue(self.verify(bad),
+                            f"tampering with stop {i} went unnoticed")
 
     def test_moved_coordinate_is_caught(self):
         bad = copy.deepcopy(self.good)

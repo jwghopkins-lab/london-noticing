@@ -78,7 +78,286 @@ insert into topics (id, name, blurb, blurb_spoken, sort) values ('fleet', 'Fleet
 
 -- stops
 insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
-  'st-brides-spire', 'fire', 'St Bride''s, Fleet Street', 'Fleet Street, at the top of Bride Lane',
+  'roman-tower-hill-wall', 'roman', 'The wall at Tower Hill', 'Tower Hill, in the sunken garden by the station',
+  51.5098, -0.0766,
+  70, 'This one wants you standing at the foot of the wall.',
+  null, null,
+  'Start at the bottom and work up.
+
+The lower courses are small squared blocks with thin red tile running through them in level bands.
+
+About halfway up that stops. The stone above is bigger, rougher, less careful.
+
+Find the line where one becomes the other.', null,
+  'You have just found the join between Roman and medieval London.
+
+Everything below that line was built around the year 200. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.
+
+The red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.
+
+The wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.', 'You have just found the join between Roman and medieval London.
+
+Everything below that line was built around the year two hundred. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.
+
+The red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.
+
+The wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'roman-leadenhall-forum', 'roman', 'Leadenhall Market', 'Under the painted iron roof, at the crossing in the middle',
+  51.5128, -0.0835,
+  null, null,
+  null, null,
+  'Stand where the two arcades cross and look up at the roof.
+
+Then look at the floor, and at the people going past with coffee.
+
+Hold that, because you need to picture something much bigger.', null,
+  'You are standing in the middle of the Roman forum.
+
+This was the market square and the civic heart of Londinium. On the north side of it stood the basilica, which was the town hall and the law court in one, and it was over a hundred and fifty metres long. The largest building north of the Alps.
+
+A pier of it survives in the basement of a barber''s shop on Gracechurch Street. You can ask to see it. The rest is under the market, under the road and under the offices.
+
+So this has been the place Londoners come to buy things and argue about prices for nearly two thousand years without a break. The roof changed. The habit did not.
+
+Most of the people here are queuing to photograph the arcade because it was used in a Harry Potter film, and almost none of them know they are standing in a Roman town square.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'roman-noble-street', 'roman', 'The fort corner on Noble Street', 'Noble Street, below the pavement on the west side',
+  51.5165, -0.0975,
+  null, null,
+  null, null,
+  'Look over the railing at the sunken ground beside the street.
+
+There is a long stretch of stone wall down there, and at one end it turns a corner and thickens into a rounded stub.
+
+No ticket, no glass, no guard. Just a wall in a hole next to the pavement.', null,
+  'That corner is the south west turret of the Roman fort, built about the year 120, and it is one of the best pieces of Roman London you can walk up to for nothing.
+
+The fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.
+
+The fort held the garrison and the governor''s guard, and it is why the street plan up here still has a suspiciously square corner in it.
+
+This was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.
+
+Stand here for a minute and count how many people stop. It is usually none.', 'That corner is the south west turret of the Roman fort, built about the year one twenty, and it is one of the best pieces of Roman London you can walk up to for nothing.
+
+The fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.
+
+The fort held the garrison and the governor''s guard, and it is why the street plan up here still has a suspiciously square corner in it.
+
+This was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.
+
+Stand here for a minute and count how many people stop. It is usually none.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'roman-london-stone', 'roman', 'London Stone', '111 Cannon Street, set into the wall at pavement level',
+  51.5117, -0.0909,
+  null, null,
+  'There is a lump of limestone behind a grille in the wall, low down, easy to walk straight past. Have you found it?', 'Found it',
+  'Kneel down if you can. It is lower than you expect.
+
+A block of pale limestone, worn round at the top, behind a metal grille in the front of an office building.
+
+That is it. That is the whole thing.', null,
+  'Nobody knows what it is.
+
+It has been written about since the year 1100, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.
+
+In 1450 Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.
+
+What we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.
+
+There is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.', 'Nobody knows what it is.
+
+It has been written about since the year eleven hundred, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.
+
+In fourteen fifty Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.
+
+What we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.
+
+There is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'roman-mithraeum', 'roman', 'The Temple of Mithras', 'London Mithraeum, Walbrook. Free, but book a slot',
+  51.5127, -0.09,
+  null, null,
+  null, null,
+  'Take the stairs down. Keep going. You end up seven metres below the street.
+
+Wait in the dark for the lights and the sound to start.
+
+When you can see, look at the low stone walls and find the curved end.', null,
+  'This temple has been moved twice, and you are standing in the second attempt to put it back.
+
+It was found in 1954 in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.
+
+Then it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.
+
+In 2017 it was dismantled again and brought back here, to the right spot and the right depth.
+
+Mithras was a soldiers'' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.', 'This temple has been moved twice, and you are standing in the second attempt to put it back.
+
+It was found in nineteen fifty-four in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.
+
+Then it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.
+
+In twenty seventeen it was dismantled again and brought back here, to the right spot and the right depth.
+
+Mithras was a soldiers'' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'roman-amphitheatre', 'roman', 'The circle in Guildhall Yard', 'Guildhall Yard. The gallery below is free',
+  51.5157, -0.0922,
+  null, null,
+  'There is a dark curved line laid into the paving of the yard. Have you found where it runs?', 'Found it',
+  'Look down at the stones under your feet.
+
+A band of dark slate curves across the yard. Follow it with your eyes and you will see it bends round into a great ellipse, far wider than the yard itself.
+
+People are walking across it right now without seeing it.', null,
+  'That line marks the wall of the Roman amphitheatre, which is directly beneath you.
+
+It held about seven thousand people, roughly a quarter of the population, which tells you how central it was.
+
+And it was completely lost. Nobody knew London had an amphitheatre at all. In 1988 they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.
+
+Go down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.
+
+One more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.', 'That line marks the wall of the Roman amphitheatre, which is directly beneath you.
+
+It held about seven thousand people, roughly a quarter of the population, which tells you how central it was.
+
+And it was completely lost. Nobody knew London had an amphitheatre at all. In nineteen eighty-eight they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.
+
+Go down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.
+
+One more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fire-st-magnus', 'fire', 'St Magnus the Martyr', 'Lower Thames Street. Walk through the porch',
+  51.509, -0.0864,
+  null, null,
+  'Somewhere in the churchyard there is a piece of dark timber, propped up and looking like a bit of old fence. Have you found it?', 'Found it',
+  'Walk in under the tower, through the covered passage, and out the other side.
+
+You have just used a public footpath.
+
+Inside the church, find the enormous model of a bridge covered in houses.', null,
+  'The passage you walked through was the pavement of London Bridge.
+
+For six hundred years this was the only bridge over the Thames in London, and everybody crossing it walked under this tower. Wren cut the archway through on purpose so the road could pass beneath the church.
+
+The bridge had houses on it, seven storeys high in places, leaning over the water. It had shops, a chapel, and heads on spikes at the southern end. The model inside shows all of it, and it took a man named David Aggett four years to build.
+
+The dark timber in the churchyard is a piece of a Roman wharf, pulled out of the mud nearby.
+
+The bridge came down in 1831. The church stayed exactly where it was, and the road moved.', 'The passage you walked through was the pavement of London Bridge.
+
+For six hundred years this was the only bridge over the Thames in London, and everybody crossing it walked under this tower. Wren cut the archway through on purpose so the road could pass beneath the church.
+
+The bridge had houses on it, seven storeys high in places, leaning over the water. It had shops, a chapel, and heads on spikes at the southern end. The model inside shows all of it, and it took a man named David Aggett four years to build.
+
+The dark timber in the churchyard is a piece of a Roman wharf, pulled out of the mud nearby.
+
+The bridge came down in eighteen thirty-one. The church stayed exactly where it was, and the road moved.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fire-monument', 'fire', 'The Monument', 'Monument Street, at the base of the column',
+  51.5102, -0.086,
+  60, 'Stand at the foot of the column for this one.',
+  null, null,
+  'Look up the whole height of it.
+
+Now turn and look east, up the little street beside you, and keep going with your eyes for about the same distance again along the ground.
+
+That is where you are heading in your head.', null,
+  'The column is 61.5 metres tall, and the bakery where the fire started stood exactly 61.5 metres from this spot.
+
+So the Monument is not just a memorial. Lay it flat and the golden urn on the top lands on the oven.
+
+It gets better. Robert Hooke helped design it, and he built it as a scientific instrument. The shaft is hollow, there is a hinged lid in the urn and a laboratory in the basement, so it could be used as a fixed telescope pointing straight up, to try to measure whether the earth moves. The staircase steps are exactly six inches high, so they could be used for experiments on air pressure.
+
+The experiments failed. Traffic on Fish Street made the column tremble too much to take a reading.
+
+The fire burned four days, destroyed thirteen thousand houses and eighty-seven churches, and the official death toll was six.', 'The column is sixty-one and a half metres tall, and the bakery where the fire started stood exactly sixty-one and a half metres from this spot.
+
+So the Monument is not just a memorial. Lay it flat and the golden urn on the top lands on the oven.
+
+It gets better. Robert Hooke helped design it, and he built it as a scientific instrument. The shaft is hollow, there is a hinged lid in the urn and a laboratory in the basement, so it could be used as a fixed telescope pointing straight up, to try to measure whether the earth moves. The staircase steps are exactly six inches high, so they could be used for experiments on air pressure.
+
+The experiments failed. Traffic on Fish Street made the column tremble too much to take a reading.
+
+The fire burned four days, destroyed thirteen thousand houses and eighty-seven churches, and the official death toll was six.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fire-st-mary-le-bow', 'fire', 'St Mary-le-Bow', 'Cheapside, by the steeple',
+  51.5136, -0.094,
+  null, null,
+  'High on the steeple there is a weathervane, and it is not a cockerel. Have you worked out what it is?', 'Worked it out',
+  'Get back across the street so you can see the top.
+
+The steeple goes up in stages, columns then a little round temple then a spike.
+
+At the very top there is a weathervane. Look at its shape.', null,
+  'It is a dragon, nearly three metres long, and it has been up there since 1679.
+
+This is the church of Bow Bells. To be a Cockney you have to be born within earshot of them, and that definition is why the phrase means anything at all.
+
+The sound carries about six miles at night, which in Wren''s day covered most of London and today covers a few streets, because the city is too loud and too built up.
+
+The bells you would hear now are not the ones that made the rule. The originals were destroyed in 1941 when the church was gutted. When it was rebuilt the new bells were cast partly from the broken metal of the old ones, so they are the same bronze, recast.
+
+The crypt underneath is Norman, from about 1080, and survived both the fire and the bombing.', 'It is a dragon, nearly three metres long, and it has been up there since sixteen seventy-nine.
+
+This is the church of Bow Bells. To be a Cockney you have to be born within earshot of them, and that definition is why the phrase means anything at all.
+
+The sound carries about six miles at night, which in Wren''s day covered most of London and today covers a few streets, because the city is too loud and too built up.
+
+The bells you would hear now are not the ones that made the rule. The originals were destroyed in nineteen forty-one when the church was gutted. When it was rebuilt the new bells were cast partly from the broken metal of the old ones, so they are the same bronze, recast.
+
+The crypt underneath is Norman, from about ten eighty, and survived both the fire and the bombing.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fire-st-pauls', 'fire', 'St Paul''s from the churchyard', 'St Paul''s Churchyard, on the north side. Stay outside',
+  51.5138, -0.0985,
+  null, null,
+  null, null,
+  'You do not need to go in. Stand back and look at the dome.
+
+Now look at the row of columns running round the outside, above the main walls, screening the upper part of the building.
+
+Ask yourself what is behind that screen.', null,
+  'Nothing. There is nothing behind it.
+
+The upper storey is a false wall, a screen with no building attached. Wren put it there because the aisles behind are low, and a cathedral that showed its real profile from the street would have looked squat and mean.
+
+The screen also does real work. It weighs down the buttresses that hold the roof, hiding the structure that would otherwise have to show. It is a stage set and a counterweight at once.
+
+The dome is three domes. There is an inner one you see from inside, an outer one you see from Fleet Street, and a brick cone hidden between them doing the actual carrying.
+
+Wren was 43 when he started and 79 when it was finished. He was carried up in a basket to inspect the work when he was too old to climb.', 'Nothing. There is nothing behind it.
+
+The upper storey is a false wall, a screen with no building attached. Wren put it there because the aisles behind are low, and a cathedral that showed its real profile from the street would have looked squat and mean.
+
+The screen also does real work. It weighs down the buttresses that hold the roof, hiding the structure that would otherwise have to show. It is a stage set and a counterweight at once.
+
+The dome is three domes. There is an inner one you see from inside, an outer one you see from Fleet Street, and a brick cone hidden between them doing the actual carrying.
+
+Wren was forty-three when he started and seventy-nine when it was finished. He was carried up in a basket to inspect the work when he was too old to climb.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fire-golden-boy', 'fire', 'The Golden Boy of Pye Corner', 'The corner of Cock Lane and Giltspur Street, up on the wall',
+  51.5178, -0.1016,
+  null, null,
+  'There is a small gilded figure of a fat boy set into the wall above head height. Have you found him?', 'Found him',
+  'Look up at the corner of the building, above the first floor.
+
+A small gold statue of a naked boy, arms folded, and he is noticeably plump.
+
+Read the words under him if you can get the angle.', null,
+  'This is where the Great Fire stopped.
+
+It started in Pudding Lane and it ended at Pye Corner, and seventeenth century London decided that could not possibly be a coincidence. The inscription says the fire was punishment for the sin of gluttony, and the boy is fat to make the point.
+
+He used to have a plaque underneath saying he was made prodigiously fat as a warning.
+
+So one of the two great markers of the fire is a serious column built by a scientist, and the other is a chubby gold child blaming the whole thing on overeating. Both are official. Both are still here.
+
+The fire did not stop here because of gluttony. It stopped because the wind dropped and because the Duke of York finally got permission to pull down houses to make a firebreak.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fire-st-brides-spire', 'fire', 'St Bride''s, Fleet Street', 'Fleet Street, at the top of Bride Lane',
   51.5139, -0.1053,
   null, null,
   null, null,
@@ -95,7 +374,391 @@ Wren gave every one of his churches a different spire, and he did it on purpose.
 
 This one is the tallest he ever built.', null);
 insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
-  'st-dunstan-west-clock', 'fleet', 'The clock at St Dunstan-in-the-West', '186a Fleet Street, on the north side',
+  'rivers-aldgate-pump', 'rivers', 'The Aldgate Pump', 'Where Fenchurch Street meets Aldgate High Street, on the traffic island',
+  51.5138, -0.0772,
+  null, null,
+  'The spout of the pump is a small brass animal''s head. Have you worked out what animal?', 'Worked it out',
+  'Go up to the stone pump on the island and look at the spout.
+
+It is a brass head with ears and a long muzzle. Not a lion. Not a dog.
+
+Put your hand on the push button underneath. Nothing comes out now.', null,
+  'It is a wolf, and the story is that it marks the last wolf shot in the City of London.
+
+This pump was known as the Pump of Death. Its water tasted unusually good, slightly sweet, and people came from streets away to fill jugs from it.
+
+In 1876 the City''s medical officer worked out why. The spring feeding it ran underground from Hampstead, and on the way it passed through new cemeteries in north London. The sweetness was calcium leaching out of the bodies, and the water was carrying disease with it. Hundreds of deaths were traced back to this spout.
+
+It was connected to the mains and the killing stopped.
+
+Stand here and remember that this was a place people queued at because the water was nicer.', 'It is a wolf, and the story is that it marks the last wolf shot in the City of London.
+
+This pump was known as the Pump of Death. Its water tasted unusually good, slightly sweet, and people came from streets away to fill jugs from it.
+
+In eighteen seventy-six the City''s medical officer worked out why. The spring feeding it ran underground from Hampstead, and on the way it passed through new cemeteries in north London. The sweetness was calcium leaching out of the bodies, and the water was carrying disease with it. Hundreds of deaths were traced back to this spout.
+
+It was connected to the mains and the killing stopped.
+
+Stand here and remember that this was a place people queued at because the water was nicer.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'rivers-walbrook-bank', 'rivers', 'The Walbrook at Bank', 'Where Walbrook meets Cannon Street, looking north towards Bank',
+  51.5134, -0.0888,
+  null, null,
+  null, null,
+  'Read the street sign. The street is called Walbrook.
+
+Now stand still and feel the ground. Walk a few steps north, then a few steps back.
+
+You are going up and down. Slightly, but you are.', null,
+  'The street is called Walbrook because it is a brook. It ran from Moorfields down to the Thames and it cut Roman London in half.
+
+Everything important sat on it. The forum was on the high ground to the east, the fort to the west, and the temple of Mithras was built right on the bank, because that is what you did with a temple.
+
+The Romans were dropping things in it the whole time. Thousands of objects have come out of this valley, including a great many human skulls, which nobody has entirely explained.
+
+By the fifteenth century it was covered over and built on, and the name is all that is left above ground.
+
+So the dip you can feel with your feet is a valley cut by water that has not been visible here for six hundred years.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'rivers-fleet-mouth', 'rivers', 'Where the Fleet meets the Thames', 'Blackfriars Bridge, on the upstream side, looking down at the water',
+  51.5106, -0.1035,
+  null, null,
+  'Under the bridge on the north bank there is a dark arch at water level, half hidden. Have you found it?', 'Found it',
+  'Go onto the bridge and look over the upstream side, back at the north bank.
+
+At the bottom of the embankment wall, close to the water, there is an arched opening.
+
+At low tide you can see it properly. At high tide it is under.', null,
+  'That is the mouth of the River Fleet, still running out into the Thames.
+
+This was once a proper river harbour, wide enough for seagoing ships to tie up. There was a dock here. There were wharves. Ships brought coal up it and took wool away.
+
+Then it silted, then it filled with waste, and by the sixteen hundreds it was notorious. Jonathan Swift wrote a poem about what came down it in a storm, and the list includes drowned puppies, dead cats and the guts of a slaughterhouse.
+
+It was arched over in stages, and the last open stretch went in 1769.
+
+It is a sewer now, and after heavy rain it still discharges here. The river never stopped. It just got a lid.', 'That is the mouth of the River Fleet, still running out into the Thames.
+
+This was once a proper river harbour, wide enough for seagoing ships to tie up. There was a dock here. There were wharves. Ships brought coal up it and took wool away.
+
+Then it silted, then it filled with waste, and by the sixteen hundreds it was notorious. Jonathan Swift wrote a poem about what came down it in a storm, and the list includes drowned puppies, dead cats and the guts of a slaughterhouse.
+
+It was arched over in stages, and the last open stretch went in seventeen sixty-nine.
+
+It is a sewer now, and after heavy rain it still discharges here. The river never stopped. It just got a lid.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'rivers-holborn-viaduct', 'rivers', 'Holborn Viaduct', 'On the bridge, above Farringdon Street',
+  51.5176, -0.1046,
+  70, 'This one only opens when you are standing on the bridge itself.',
+  null, null,
+  'You are standing on a bridge.
+
+Go to the parapet and look over. That is Farringdon Street below you, a long way down.
+
+Now lift your eyes and follow the low ground. It runs away north, and south towards Ludgate. You are looking along a valley in the middle of London.', null,
+  'That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.
+
+It was London''s second river. Boats came up it as far as Holborn. By the 1700s it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.
+
+The bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.
+
+Once you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.', 'That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.
+
+It was London''s second river. Boats came up it as far as Holborn. By the seventeen hundreds it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.
+
+The bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.
+
+Once you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'rivers-charterhouse-grate', 'rivers', 'The grate on Charterhouse Street', 'Charterhouse Street, right where it meets Farringdon Road',
+  51.5203, -0.1053,
+  70, 'This one you have to be standing on. Get to where Charterhouse Street meets Farringdon Road.',
+  'There is a metal grid set into the road surface here. Have you found one you can safely get near?', 'Found it',
+  'Look for a metal grid set into the road where the two streets meet.
+
+Mind the traffic and do not stand in the road. Get as close as is safe.
+
+Now stop looking and listen instead. Wait for a gap in the cars.', null,
+  'Water. Running water, under the road, and after rain it is loud.
+
+That is the Fleet. It is about twelve feet below you and it has never stopped.
+
+You are standing in the bottom of the valley. Farringdon Road runs along the riverbed, which is why it is so flat and straight while every street off it climbs. Look either side and you can see the ground rising. Smithfield is up on the east bank. Clerkenwell is up on the west.
+
+The river rises on Hampstead Heath, comes down through Kentish Town and Camden, past King''s Cross, along this road, and out into the Thames at Blackfriars. All of it underground from here.
+
+A few million people live on top of it and almost none of them have ever heard it. You just did.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'rivers-ludgate-dip', 'rivers', 'The dip at Ludgate Circus', 'Ludgate Circus, standing at the crossing in the middle',
+  51.514, -0.1046,
+  null, null,
+  null, null,
+  'Stand at the crossing and turn slowly all the way round.
+
+Look along each of the four roads in turn and watch what the ground does.
+
+Every one of them goes up. You are at the bottom of something.', null,
+  'You are standing in the river.
+
+Ludgate Hill climbs east to St Paul''s. Fleet Street climbs west. New Bridge Street runs south to the Thames and Farringdon Street runs north, and both of those are flat, because both of those are the riverbed.
+
+The Fleet crossed here, and there was a bridge on this spot from the Roman period onwards. Fleet Bridge. Everybody coming into the city from the west had to use it, which is why the road bends the way it does.
+
+So the shape of this junction, one of the busiest in London, was decided by a stream that has not been visible for two hundred and fifty years.
+
+When the railway ran overhead here there was a bridge above your head as well. That came down in 1990 and people complained, because Londoners will eventually miss anything.', 'You are standing in the river.
+
+Ludgate Hill climbs east to St Paul''s. Fleet Street climbs west. New Bridge Street runs south to the Thames and Farringdon Street runs north, and both of those are flat, because both of those are the riverbed.
+
+The Fleet crossed here, and there was a bridge on this spot from the Roman period onwards. Fleet Bridge. Everybody coming into the city from the west had to use it, which is why the road bends the way it does.
+
+So the shape of this junction, one of the busiest in London, was decided by a stream that has not been visible for two hundred and fifty years.
+
+When the railway ran overhead here there was a bridge above your head as well. That came down in nineteen ninety and people complained, because Londoners will eventually miss anything.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'marks-cannon-bollards', 'marks', 'The bollards at Trinity Square', 'Trinity Square Gardens, at the edge of the pavement',
+  51.5104, -0.0782,
+  null, null,
+  'Find a black iron bollard at the kerb, the fat kind with a rounded top and a band round it. Have you got one?', 'Got one',
+  'Put your hand on a black iron bollard.
+
+Look at the shape. A rounded cap, a swelling below it, then a band, then it narrows to the ground.
+
+Somebody has probably told you what these used to be.', null,
+  'You have almost certainly been told these are French cannon captured at Trafalgar, stuck muzzle down in the pavement with a cannonball welded in the top.
+
+They are not. They never were.
+
+The story is everywhere. Guides tell it. Books repeat it. And when you actually look, the shape is wrong. A cannon is a long tapering tube, and these are short and swollen in the middle. There is no bore. They were cast as bollards, in bollard moulds, at British foundries, mostly in the nineteenth century.
+
+The design copies the look of a cannon on purpose, because it suggested strength and the Navy and everyone liked it.
+
+So this is a genuine thing worth noticing. Not a hidden secret, but a story so good that London has believed it for two hundred years about an object anyone could pick up and check.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'marks-parish-boundary', 'marks', 'Boundary marks on Cornhill', 'Cornhill, in the narrow alleys around St Michael''s',
+  51.5133, -0.0868,
+  null, null,
+  'On a wall about head height there is a small metal or stone plaque with initials and a date, no bigger than a postcard. Have you found one?', 'Found one',
+  'Go into one of the alleys off Cornhill and slow right down.
+
+Look at the walls at head height, not at the shopfronts.
+
+You are hunting for something small with letters and a number on it.', null,
+  'That is a parish boundary marker, and once you have seen one you will start seeing them everywhere.
+
+The letters are the initials of the parish. The date is when the mark was fixed. They come in pairs, one either side of an invisible line, and the line is a border.
+
+They mattered enormously. Your parish decided who buried you, who fed you if you were destitute and which authority could tax you. A wall on the wrong side of a mark was a different world.
+
+The City has over a hundred parishes packed into a square mile, so the marks are dense here. Almost every street has one.
+
+Nobody put them up to be found. They were plumbing, in effect, the mundane fixings of an administrative system. Now they are the oldest thing on most of these walls.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'marks-police-box', 'marks', 'The police box in Guildhall Yard', 'Guildhall Yard, against the wall of St Lawrence Jewry',
+  51.516, -0.0919,
+  60, 'Get into Guildhall Yard for this one.',
+  'Somewhere in this yard there is a blue police box. Have you found it yet?', 'Found it',
+  'Have a proper look round the yard.
+
+Against the church wall there is a blue box, about the height of a door, with a lamp on top.
+
+Go and read the writing on it.', null,
+  'It says Police Public Call Box, and it is real. It is not a prop and it has nothing to do with television, except that television borrowed it.
+
+These were the mobile phone network of their day. There were hundreds across London. A constable on a beat unlocked the door with his own key and called the station. The public could open a small hatch in the front and get through to police in an emergency, which was the whole point.
+
+The light on top flashed when the station wanted the officer to make contact. That is what the lamp is for.
+
+They went out of use in the sixties when personal radios arrived, and nearly all of them were scrapped.
+
+The City of London kept its own. There are a dozen or so still standing in the square mile, at Aldgate, at Liverpool Street, on Walbrook, on the Embankment. Now you know the shape, you will find them.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'marks-panyer-boy', 'marks', 'The Panyer Boy', 'Panyer Alley, by the exit from St Paul''s underground station',
+  51.5148, -0.0977,
+  60, 'This is a small carving in an alley, so you need to be in the alley.',
+  'There is a carved stone panel set into the wall, about knee to waist height, with a boy on it. Have you found him?', 'Found him',
+  'Look low on the wall, below the shop signs.
+
+A square stone panel. A naked boy sitting on a basket, reaching up for a bunch of grapes with his foot planted on the rim.
+
+There is an inscription cut underneath.', null,
+  'It reads that when you have sought the city round, yet still this is the highest ground, and it is dated 1688.
+
+It is wrong. Cornhill is higher, by a couple of metres, and so is the ground at Ludgate. The stone has been standing here making a false claim for over three hundred years and nobody has taken it down.
+
+A panyer is a bread basket, and this alley was where bakers sold from baskets. The boy is the sign of the trade, or possibly the sign of a pub called the Panyer that stood here.
+
+What makes it worth stopping for is what it survived. The Great Fire went through here. The Blitz flattened everything around it. The whole area was demolished and rebuilt twice in the twentieth century.
+
+And this small boy with his grapes and his incorrect boast was put back each time.', 'It reads that when you have sought the city round, yet still this is the highest ground, and it is dated sixteen eighty-eight.
+
+It is wrong. Cornhill is higher, by a couple of metres, and so is the ground at Ludgate. The stone has been standing here making a false claim for over three hundred years and nobody has taken it down.
+
+A panyer is a bread basket, and this alley was where bakers sold from baskets. The boy is the sign of the trade, or possibly the sign of a pub called the Panyer that stood here.
+
+What makes it worth stopping for is what it survived. The Great Fire went through here. The Blitz flattened everything around it. The whole area was demolished and rebuilt twice in the twentieth century.
+
+And this small boy with his grapes and his incorrect boast was put back each time.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'marks-snuffers-ely-place', 'marks', 'The railings at Ely Place', 'Ely Place, Holborn. Go through the gates and up the street',
+  51.5185, -0.1078,
+  null, null,
+  'On the old iron railings there are cone shaped fittings, wide at the top and narrowing down. Have you found one?', 'Found one',
+  'Walk up the street and put your hand on the railings.
+
+Look for iron cones fixed to the uprights, like little upside down funnels, and for plain rings lower down.
+
+Both were for something specific.', null,
+  'The cones are link snuffers. Before street lighting you hired a boy with a burning torch, a link boy, to walk you home. At the door he pushed the torch into the cone to put it out.
+
+So every one of those is the end of somebody''s walk home in the dark, two hundred and fifty years ago.
+
+The rings are for tying a horse.
+
+While you are here, look at where you are standing. Ely Place is a private street with its own gates and its own beadles, and it was the London palace of the Bishops of Ely. For centuries the law of the City did not run here. The police could not simply walk in.
+
+The pub in the alley, the Mitre, is part of the same peculiarity. People still argue about which authority it really belongs to.', null);
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'marks-dragon-embankment', 'marks', 'The dragons on the Embankment', 'Victoria Embankment, by Temple Gardens',
+  51.5108, -0.1106,
+  null, null,
+  null, null,
+  'Find the silver dragon on the stone plinth by the road.
+
+Look at how big it is, and at the shield it is holding.
+
+Then remember it, because you will meet its smaller relatives all over London.', null,
+  'This dragon marks the edge of the City of London. Cross the line beside it and you leave the square mile.
+
+There are about a dozen of them, at every main road into the City, and they are not all the same size. These two by Temple Gardens are the originals and they are twice the size of the rest.
+
+They started life somewhere else entirely. They were made in 1849 for the roof of the Coal Exchange on Lower Thames Street. When that building was demolished in the sixties somebody saved the dragons, stuck them on plinths here, and then had half size copies cast for all the other entrances.
+
+So the boundary markers of the City of London are salvage from a demolished coal market, and the small ones are copies of the big ones rather than the other way round.
+
+The shield is the City arms. The red cross is St George. The small sword in the corner is not a dagger.', 'This dragon marks the edge of the City of London. Cross the line beside it and you leave the square mile.
+
+There are about a dozen of them, at every main road into the City, and they are not all the same size. These two by Temple Gardens are the originals and they are twice the size of the rest.
+
+They started life somewhere else entirely. They were made in eighteen forty-nine for the roof of the Coal Exchange on Lower Thames Street. When that building was demolished in the sixties somebody saved the dragons, stuck them on plinths here, and then had half size copies cast for all the other entrances.
+
+So the boundary markers of the City of London are salvage from a demolished coal market, and the small ones are copies of the big ones rather than the other way round.
+
+The shield is the City arms. The red cross is St George. The small sword in the corner is not a dagger.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fleet-ludgate-end', 'fleet', 'The bottom of Fleet Street', 'Ludgate Circus, on the corner looking west',
+  51.5141, -0.104,
+  null, null,
+  null, null,
+  'Stand on the corner and look west, up the street.
+
+You can see the whole length of it, rising slightly, with St Dunstan''s clock sticking out on the right about halfway along.
+
+Count the newspaper offices you can see. It will not take long.', null,
+  'There are none. Not one national newspaper is made on Fleet Street, and none has been for a long time.
+
+For two hundred and fifty years every paper in the country came off this street or the alleys behind it. The presses ran at night and the ground shook. Lorries queued to take the bundles out. The pubs kept their own hours because the shifts were wrong.
+
+It ended fast. Rupert Murdoch moved his titles to Wapping in 1986, the print unions lost a year long fight, and everyone else followed within a decade. The last of the big agencies left in 2005.
+
+The buildings are all still here, and they are banks and law firms now.
+
+The name outlived the industry. People still say Fleet Street when they mean the press, in a country where the press has not been here since most of them were at school.', 'There are none. Not one national newspaper is made on Fleet Street, and none has been for a long time.
+
+For two hundred and fifty years every paper in the country came off this street or the alleys behind it. The presses ran at night and the ground shook. Lorries queued to take the bundles out. The pubs kept their own hours because the shifts were wrong.
+
+It ended fast. Rupert Murdoch moved his titles to Wapping in nineteen eighty-six, the print unions lost a year long fight, and everyone else followed within a decade. The last of the big agencies left in two thousand and five.
+
+The buildings are all still here, and they are banks and law firms now.
+
+The name outlived the industry. People still say Fleet Street when they mean the press, in a country where the press has not been here since most of them were at school.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fleet-wynkyn-crypt', 'fleet', 'The crypt at St Bride''s', 'St Bride''s, off Fleet Street. Free, and go down the stairs',
+  51.5138, -0.105,
+  null, null,
+  'Down in the crypt there are cases of metal type and a memorial wall of names. Have you found the names?', 'Found them',
+  'Go in and down.
+
+The crypt is a museum of printing, and it is free.
+
+Find the wall of names, and read a few of them properly rather than skimming.', null,
+  'Those are journalists killed doing the job. The church keeps the list and adds to it.
+
+Printing came to this street because of this church. Wynkyn de Worde, who had been Caxton''s assistant, moved the press here around 1500 and set up beside St Bride''s.
+
+He did it for a practical reason. The clergy around St Paul''s and the lawyers up at the Temple were the only large group of people nearby who could read. He moved the machine to the customers.
+
+Everything followed from that. The presses drew the printers, the printers drew the publishers, the publishers drew the newspapers, and the newspapers stayed for four hundred and fifty years.
+
+The crypt also holds Roman pavement, a Saxon church floor and a medieval one, stacked underneath each other. This ground has been built on seven times.', 'Those are journalists killed doing the job. The church keeps the list and adds to it.
+
+Printing came to this street because of this church. Wynkyn de Worde, who had been Caxton''s assistant, moved the press here around fifteen hundred and set up beside St Bride''s.
+
+He did it for a practical reason. The clergy around St Paul''s and the lawyers up at the Temple were the only large group of people nearby who could read. He moved the machine to the customers.
+
+Everything followed from that. The presses drew the printers, the printers drew the publishers, the publishers drew the newspapers, and the newspapers stayed for four hundred and fifty years.
+
+The crypt also holds Roman pavement, a Saxon church floor and a medieval one, stacked underneath each other. This ground has been built on seven times.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fleet-daily-express', 'fleet', 'The Daily Express building', '120 Fleet Street, on the north side. Look through the doors',
+  51.5142, -0.1063,
+  null, null,
+  'One building on this street is black glass and chrome and looks about eighty years too modern. Have you found it?', 'Found it',
+  'Look for the black one. You cannot really miss it once you are looking.
+
+Curved black glass, rounded at the corner, chrome strips running between the floors.
+
+Now go up to the doors and look through into the lobby.', null,
+  'That lobby is one of the best art deco interiors in the country, and you are looking at it through a door on a public street.
+
+Silver and gilt reliefs, an oval staircase, a starburst ceiling, all of it from 1932. It was meant to say that the Daily Express was the future, and it worked.
+
+The building was nicknamed the Black Lubyanka by journalists at a rival paper, after the KGB headquarters in Moscow. The nickname stuck for fifty years.
+
+It is one of the earliest buildings in Britain with a proper glass curtain wall, hung on the frame rather than holding anything up.
+
+The paper left in 1989. The building is offices now, and the lobby is still there, and most people walking past have their heads down.', 'That lobby is one of the best art deco interiors in the country, and you are looking at it through a door on a public street.
+
+Silver and gilt reliefs, an oval staircase, a starburst ceiling, all of it from nineteen thirty-two. It was meant to say that the Daily Express was the future, and it worked.
+
+The building was nicknamed the Black Lubyanka by journalists at a rival paper, after the K G B headquarters in Moscow. The nickname stuck for fifty years.
+
+It is one of the earliest buildings in Britain with a proper glass curtain wall, hung on the frame rather than holding anything up.
+
+The paper left in nineteen eighty-nine. The building is offices now, and the lobby is still there, and most people walking past have their heads down.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fleet-cheshire-cheese', 'fleet', 'Ye Olde Cheshire Cheese', 'Wine Office Court, an alley off the north side of Fleet Street',
+  51.5145, -0.1078,
+  null, null,
+  null, null,
+  'Go up the alley and in through the low door.
+
+Stop just inside and notice two things. How dark it is, and how many separate little rooms there seem to be.
+
+There are no windows to speak of.', null,
+  'This building went up in 1667, the year after the fire, and the layout is deliberate.
+
+A warren of small rooms with no view out is not bad design. It is what people wanted. You came here to talk to your own group and not be overheard, and every trade on the street had its own corner.
+
+The printers drank in one room and the reporters in another, and they did not mix much.
+
+There has been a pub on this spot since at least 1538. It burned with everything else and was straight back up within a year, which tells you how badly the street needed it.
+
+The cellars underneath are older than the pub and are thought to belong to a Carmelite monastery that stood here before the Reformation. You can go down.
+
+Sawdust on the floor is not a theme. They just never stopped.', 'This building went up in sixteen sixty-seven, the year after the fire, and the layout is deliberate.
+
+A warren of small rooms with no view out is not bad design. It is what people wanted. You came here to talk to your own group and not be overheard, and every trade on the street had its own corner.
+
+The printers drank in one room and the reporters in another, and they did not mix much.
+
+There has been a pub on this spot since at least fifteen thirty-eight. It burned with everything else and was straight back up within a year, which tells you how badly the street needed it.
+
+The cellars underneath are older than the pub and are thought to belong to a Carmelite monastery that stood here before the Reformation. You can go down.
+
+Sawdust on the floor is not a theme. They just never stopped.');
+insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
+  'fleet-st-dunstan-clock', 'fleet', 'The clock at St Dunstan-in-the-West', '186a Fleet Street, on the north side',
   51.5142, -0.1092,
   null, null,
   'There is a clock sticking out over the pavement, and two men standing next to it. Have you found them?', 'Found them',
@@ -122,42 +785,223 @@ One more thing before you walk on. Look at the porch, to your left. The statue o
 
 It is the oldest outdoor statue of an English monarch in London, and it is on a wall on Fleet Street, and almost nobody stops.');
 insert into stops (id, topic_id, title, where_text, lat, lon, gate_radius_m, gate_prompt, nudge_prompt, nudge_confirm, look, look_spoken, after_text, after_spoken) values (
-  'holborn-viaduct-fleet', 'rivers', 'Holborn Viaduct', 'On the bridge, above Farringdon Street',
-  51.5176, -0.1046,
-  70, 'This one only opens when you are standing on the bridge itself.',
+  'fleet-inner-temple-gate', 'fleet', 'The gatehouse at 17 Fleet Street', '17 Fleet Street, the timbered building over the archway to Inner Temple Lane',
+  51.514, -0.1106,
+  60, 'Get to the archway on the south side of Fleet Street, near Temple Bar.',
   null, null,
-  'You are standing on a bridge.
+  'Find the archway on the south side and step back to see what is above it.
 
-Go to the parapet and look over. That is Farringdon Street below you, a long way down.
+Black timber framing, white plaster, small leaded windows, jettied out over the pavement.
 
-Now lift your eyes and follow the low ground. It runs away north, and south towards Ludgate. You are looking along a valley in the middle of London.', null,
-  'That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.
+Compare it with everything either side.', null,
+  'This is one of the very few buildings in central London that the Great Fire did not reach, and it went up in 1610.
 
-It was London''s second river. Boats came up it as far as Holborn. By the 1700s it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.
+The fire stopped a few hundred metres east of here. So while almost everything you have looked at today is a replacement, this is the real thing, and it is the front of a house that people were living in when Shakespeare was still writing.
 
-The bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.
+The room on the first floor is called Prince Henry''s Room. It has a Jacobean plaster ceiling with the Prince of Wales feathers in the middle, which is where the name comes from, though there is no evidence Henry ever used it.
 
-Once you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.', 'That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.
+It has been a tavern, a waxworks and a coffee house.
 
-It was London''s second river. Boats came up it as far as Holborn. By the seventeen hundreds it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.
+Walk through the archway and you are in the Temple, which is a different world again. Lawyers have been there since the Knights Templar sold up in the fourteenth century.', 'This is one of the very few buildings in central London that the Great Fire did not reach, and it went up in sixteen ten.
 
-The bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.
+The fire stopped a few hundred metres east of here. So while almost everything you have looked at today is a replacement, this is the real thing, and it is the front of a house that people were living in when Shakespeare was still writing.
 
-Once you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.');
+The room on the first floor is called Prince Henry''s Room. It has a Jacobean plaster ceiling with the Prince of Wales feathers in the middle, which is where the name comes from, though there is no evidence Henry ever used it.
+
+It has been a tavern, a waxworks and a coffee house.
+
+Walk through the archway and you are in the Temple, which is a different world again. Lawyers have been there since the Knights Templar sold up in the fourteenth century.');
 
 -- routes, and the authoritative stop order
-insert into routes (combo_key, draft, note) values ('fire-fleet-marks', true, null);
-insert into routes (combo_key, draft, note) values ('fire-fleet-rivers', true, 'Vertical slice. Three stops of an eventual eighteen, chosen to cover the three stop types rather than three of a kind: a plain stop, a soft-prompt stop, and a location-gated stop.');
-insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 1, 'st-brides-spire');
-insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 2, 'st-dunstan-west-clock');
-insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 3, 'holborn-viaduct-fleet');
-insert into routes (combo_key, draft, note) values ('fire-fleet-roman', true, null);
-insert into routes (combo_key, draft, note) values ('fire-marks-rivers', true, null);
-insert into routes (combo_key, draft, note) values ('fire-marks-roman', true, null);
-insert into routes (combo_key, draft, note) values ('fire-rivers-roman', true, null);
-insert into routes (combo_key, draft, note) values ('fleet-marks-rivers', true, null);
-insert into routes (combo_key, draft, note) values ('fleet-marks-roman', true, null);
-insert into routes (combo_key, draft, note) values ('fleet-rivers-roman', true, null);
-insert into routes (combo_key, draft, note) values ('marks-rivers-roman', true, null);
+insert into routes (combo_key, draft, note) values ('fire-fleet-marks', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 1, 'marks-cannon-bollards');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 2, 'marks-parish-boundary');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 3, 'fire-monument');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 4, 'fire-st-magnus');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 5, 'fire-st-mary-le-bow');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 6, 'marks-police-box');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 7, 'marks-panyer-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 8, 'fire-st-pauls');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 9, 'fleet-ludgate-end');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 10, 'fire-golden-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 11, 'marks-snuffers-ely-place');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 12, 'fleet-wynkyn-crypt');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 13, 'fire-st-brides-spire');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 14, 'fleet-daily-express');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 15, 'fleet-cheshire-cheese');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 16, 'fleet-st-dunstan-clock');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 17, 'fleet-inner-temple-gate');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-marks', 18, 'marks-dragon-embankment');
+insert into routes (combo_key, draft, note) values ('fire-fleet-rivers', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 1, 'rivers-aldgate-pump');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 2, 'fire-monument');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 3, 'fire-st-magnus');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 4, 'rivers-walbrook-bank');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 5, 'fire-st-mary-le-bow');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 6, 'fire-st-pauls');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 7, 'fleet-ludgate-end');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 8, 'fire-golden-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 9, 'rivers-holborn-viaduct');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 10, 'rivers-charterhouse-grate');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 11, 'rivers-ludgate-dip');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 12, 'rivers-fleet-mouth');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 13, 'fleet-wynkyn-crypt');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 14, 'fire-st-brides-spire');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 15, 'fleet-daily-express');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 16, 'fleet-cheshire-cheese');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 17, 'fleet-st-dunstan-clock');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-rivers', 18, 'fleet-inner-temple-gate');
+insert into routes (combo_key, draft, note) values ('fire-fleet-roman', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 1, 'roman-tower-hill-wall');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 2, 'roman-leadenhall-forum');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 3, 'fire-monument');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 4, 'fire-st-magnus');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 5, 'roman-london-stone');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 6, 'roman-mithraeum');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 7, 'fire-st-mary-le-bow');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 8, 'roman-amphitheatre');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 9, 'roman-noble-street');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 10, 'fire-st-pauls');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 11, 'fleet-ludgate-end');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 12, 'fire-golden-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 13, 'fleet-wynkyn-crypt');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 14, 'fire-st-brides-spire');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 15, 'fleet-daily-express');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 16, 'fleet-cheshire-cheese');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 17, 'fleet-st-dunstan-clock');
+insert into route_stops (combo_key, position, stop_id) values ('fire-fleet-roman', 18, 'fleet-inner-temple-gate');
+insert into routes (combo_key, draft, note) values ('fire-marks-rivers', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 1, 'marks-cannon-bollards');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 2, 'rivers-aldgate-pump');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 3, 'marks-parish-boundary');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 4, 'fire-monument');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 5, 'fire-st-magnus');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 6, 'rivers-walbrook-bank');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 7, 'fire-st-mary-le-bow');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 8, 'marks-police-box');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 9, 'marks-panyer-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 10, 'fire-st-pauls');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 11, 'fire-golden-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 12, 'rivers-holborn-viaduct');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 13, 'marks-snuffers-ely-place');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 14, 'rivers-charterhouse-grate');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 15, 'rivers-ludgate-dip');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 16, 'rivers-fleet-mouth');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 17, 'fire-st-brides-spire');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-rivers', 18, 'marks-dragon-embankment');
+insert into routes (combo_key, draft, note) values ('fire-marks-roman', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 1, 'marks-cannon-bollards');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 2, 'roman-tower-hill-wall');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 3, 'roman-leadenhall-forum');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 4, 'marks-parish-boundary');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 5, 'fire-monument');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 6, 'fire-st-magnus');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 7, 'roman-london-stone');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 8, 'roman-mithraeum');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 9, 'fire-st-mary-le-bow');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 10, 'marks-police-box');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 11, 'roman-amphitheatre');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 12, 'roman-noble-street');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 13, 'marks-panyer-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 14, 'fire-st-pauls');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 15, 'fire-golden-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 16, 'marks-snuffers-ely-place');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 17, 'fire-st-brides-spire');
+insert into route_stops (combo_key, position, stop_id) values ('fire-marks-roman', 18, 'marks-dragon-embankment');
+insert into routes (combo_key, draft, note) values ('fire-rivers-roman', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 1, 'roman-tower-hill-wall');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 2, 'rivers-aldgate-pump');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 3, 'roman-leadenhall-forum');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 4, 'fire-monument');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 5, 'fire-st-magnus');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 6, 'roman-london-stone');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 7, 'roman-mithraeum');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 8, 'rivers-walbrook-bank');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 9, 'fire-st-mary-le-bow');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 10, 'roman-amphitheatre');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 11, 'roman-noble-street');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 12, 'fire-st-pauls');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 13, 'fire-golden-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 14, 'rivers-holborn-viaduct');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 15, 'rivers-charterhouse-grate');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 16, 'rivers-ludgate-dip');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 17, 'rivers-fleet-mouth');
+insert into route_stops (combo_key, position, stop_id) values ('fire-rivers-roman', 18, 'fire-st-brides-spire');
+insert into routes (combo_key, draft, note) values ('fleet-marks-rivers', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 1, 'marks-cannon-bollards');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 2, 'rivers-aldgate-pump');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 3, 'marks-parish-boundary');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 4, 'rivers-walbrook-bank');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 5, 'marks-police-box');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 6, 'marks-panyer-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 7, 'fleet-ludgate-end');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 8, 'rivers-holborn-viaduct');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 9, 'marks-snuffers-ely-place');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 10, 'rivers-charterhouse-grate');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 11, 'rivers-ludgate-dip');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 12, 'rivers-fleet-mouth');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 13, 'fleet-wynkyn-crypt');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 14, 'fleet-daily-express');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 15, 'fleet-cheshire-cheese');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 16, 'fleet-st-dunstan-clock');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 17, 'fleet-inner-temple-gate');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-rivers', 18, 'marks-dragon-embankment');
+insert into routes (combo_key, draft, note) values ('fleet-marks-roman', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 1, 'marks-cannon-bollards');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 2, 'roman-tower-hill-wall');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 3, 'roman-leadenhall-forum');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 4, 'marks-parish-boundary');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 5, 'roman-london-stone');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 6, 'roman-mithraeum');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 7, 'marks-police-box');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 8, 'roman-amphitheatre');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 9, 'roman-noble-street');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 10, 'marks-panyer-boy');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 11, 'fleet-ludgate-end');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 12, 'marks-snuffers-ely-place');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 13, 'fleet-wynkyn-crypt');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 14, 'fleet-daily-express');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 15, 'fleet-cheshire-cheese');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 16, 'fleet-st-dunstan-clock');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 17, 'fleet-inner-temple-gate');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-marks-roman', 18, 'marks-dragon-embankment');
+insert into routes (combo_key, draft, note) values ('fleet-rivers-roman', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 1, 'roman-tower-hill-wall');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 2, 'rivers-aldgate-pump');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 3, 'roman-leadenhall-forum');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 4, 'roman-london-stone');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 5, 'roman-mithraeum');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 6, 'rivers-walbrook-bank');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 7, 'roman-amphitheatre');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 8, 'roman-noble-street');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 9, 'fleet-ludgate-end');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 10, 'rivers-holborn-viaduct');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 11, 'rivers-charterhouse-grate');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 12, 'rivers-ludgate-dip');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 13, 'rivers-fleet-mouth');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 14, 'fleet-wynkyn-crypt');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 15, 'fleet-daily-express');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 16, 'fleet-cheshire-cheese');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 17, 'fleet-st-dunstan-clock');
+insert into route_stops (combo_key, position, stop_id) values ('fleet-rivers-roman', 18, 'fleet-inner-temple-gate');
+insert into routes (combo_key, draft, note) values ('marks-rivers-roman', false, null);
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 1, 'marks-cannon-bollards');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 2, 'roman-tower-hill-wall');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 3, 'rivers-aldgate-pump');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 4, 'roman-leadenhall-forum');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 5, 'marks-parish-boundary');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 6, 'roman-london-stone');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 7, 'roman-mithraeum');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 8, 'rivers-walbrook-bank');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 9, 'marks-police-box');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 10, 'roman-amphitheatre');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 11, 'roman-noble-street');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 12, 'marks-panyer-boy');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 13, 'rivers-holborn-viaduct');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 14, 'marks-snuffers-ely-place');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 15, 'rivers-charterhouse-grate');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 16, 'rivers-ludgate-dip');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 17, 'rivers-fleet-mouth');
+insert into route_stops (combo_key, position, stop_id) values ('marks-rivers-roman', 18, 'marks-dragon-embankment');
 
 commit;

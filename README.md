@@ -13,34 +13,38 @@ one-to-one onto the possible picks. Route lookup is a table, not an algorithm.
 
 ## Status
 
-Vertical slice. Three stops of one route, covering all three stop types: a
-plain stop, a soft-prompt stop, and a location-gated stop. The picker is wired
-to all ten combinations; nine of them have no stops written yet.
-
-Screenshots in `docs/shots/`.
+Complete. Thirty stops, six per topic, and all ten routes written and checked.
+Every route runs 18 stops, 6.0 to 8.4 km on foot, with 3 to 5 location-gated
+stops. Screenshots in `docs/shots/`.
 
 ## Running it
 
+    python3 pipeline/author_routes.py         # master order -> the route lookup
     python3 pipeline/validate_content.py      # content contracts
-    python3 pipeline/bake.py --include-drafts # content -> route artefacts
+    python3 pipeline/bake.py                  # content -> route artefacts
     python3 pipeline/verify_bakes.py          # independent re-check of the artefacts
+    python3 pipeline/emit_seed_sql.py         # the backend path, unused by the POC
+    python3 pipeline/build_standalone.py      # everything folded into one file
     python3 -m unittest discover -s pipeline -p 'test_*.py'
 
     npx http-server app -p 8080               # then open http://127.0.0.1:8080
-    NODE_PATH=$(npm root -g) node pipeline/walk_smoke.cjs
+    NODE_PATH=$(npm root -g) node pipeline/walk_smoke.cjs --combo fire-fleet-rivers
 
 The page must be served over http. Opened straight off the disk it cannot fetch
 its own route files, and it will say so rather than looking broken.
 
 ## Layout
 
-    content/topics.json   the five topics
-    content/stops.json    the stop library: text, coordinates, gates, prompts
-    content/routes.json   THE ROUTE LOOKUP. Authoritative.
+    content/topics.json       the five topics
+    content/stops.json        the stop library: text, coordinates, gates, prompts
+    content/master_order.json the authored walking sequence, done by hand
+    content/routes.json       THE ROUTE LOOKUP. Authoritative. Generated from
+                              the master order; this is what the baker reads.
     pipeline/             combos, geography, the bake harness, the checker, tests
     app/                  the page, plus baked artefacts, deployed as static files
     sql/seed.sql          generated; the backend path, not used by the POC
-    docs/decisions.md     what was decided and why
+    dist/                     the single-file build, for handing to a phone
+    docs/decisions.md         what was decided and why
 
 ## Rules of the build
 

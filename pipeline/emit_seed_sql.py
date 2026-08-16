@@ -112,7 +112,10 @@ def main():
     args = sys.argv[1:]
     out = Path(args[args.index("--out") + 1]) if "--out" in args else BASE / "sql" / "seed.sql"
     topics = json.loads((CONTENT / "topics.json").read_text(encoding="utf-8"))["topics"]
-    stops = json.loads((CONTENT / "stops.json").read_text(encoding="utf-8"))["stops"]
+    # Bench content is kept in the library but is in no route, so it has no
+    # place in a database whose only job is to serve routes.
+    stops = [s for s in json.loads((CONTENT / "stops.json").read_text(encoding="utf-8"))["stops"]
+             if not s.get("_unused")]
     routes_doc = json.loads((CONTENT / "routes.json").read_text(encoding="utf-8"))
 
     lines = [SCHEMA, "\n-- topics\n"]

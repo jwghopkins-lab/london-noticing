@@ -113,7 +113,8 @@ def validate_topics(rep, doc):
 
 
 def validate_stops(rep, doc, topic_ids):
-    stops = doc.get("stops", [])
+    # Bench content: written and kept, but deliberately not in any route.
+    stops = [s for s in doc.get("stops", []) if not s.get("_unused")]
     seen = {}
     for s in stops:
         sid = s.get("id", "")
@@ -216,10 +217,11 @@ def validate_routes(rep, doc, topics, stops):
             for p in result["problems"]:
                 # A draft is allowed to be a bad walk. A shipped route is not.
                 (rep.warn if draft else rep.error)(where, p)
-            if ids:
-                rep.warn(where, f"{len(ids)} stops, {result['total_walk_m']:.0f} m "
-                                f"on foot, about {result['total_minutes']:.0f} "
-                                f"minutes of walking")
+            for n in result["notes"]:
+                rep.warn(where, n)
+            rep.warn(where, f"{len(ids)} stops, {result['total_walk_m']:.0f} m "
+                            f"on foot, about {result['total_minutes']:.0f} "
+                            f"minutes of walking, {result['reversals']} doubling back")
         elif not draft:
             rep.error(where, "a shipped route needs stops")
 
@@ -240,7 +242,7 @@ def main():
     for r in load("routes.json").get("routes", {}).values():
         used.update(r.get("stops", []))
     for sid in sorted(set(stops) - used):
-        rep.warn(f"stop {sid}", "is not used by any route")
+        rep.error(f"stop {sid}", "is not used by any route")
 
     for w in rep.warnings:
         print(f"  warn   {w}")

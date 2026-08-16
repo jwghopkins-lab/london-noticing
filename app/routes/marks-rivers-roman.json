@@ -1,7 +1,7 @@
 {
   "format": 1,
   "combo_key": "marks-rivers-roman",
-  "draft": true,
+  "draft": false,
   "topics": [
     {
       "id": "marks",
@@ -22,14 +22,467 @@
       "blurb_spoken": null
     }
   ],
-  "stops": [],
+  "stops": [
+    {
+      "id": "marks-cannon-bollards",
+      "topic": "marks",
+      "title": "The bollards at Trinity Square",
+      "where": "Trinity Square Gardens, at the edge of the pavement",
+      "lat": 51.5104,
+      "lon": -0.0782,
+      "gate": null,
+      "nudge": {
+        "prompt": "Find a black iron bollard at the kerb, the fat kind with a rounded top and a band round it. Have you got one?",
+        "confirm": "Got one"
+      },
+      "look": "Put your hand on a black iron bollard.\n\nLook at the shape. A rounded cap, a swelling below it, then a band, then it narrows to the ground.\n\nSomebody has probably told you what these used to be.",
+      "look_spoken": null,
+      "after": "You have almost certainly been told these are French cannon captured at Trafalgar, stuck muzzle down in the pavement with a cannonball welded in the top.\n\nThey are not. They never were.\n\nThe story is everywhere. Guides tell it. Books repeat it. And when you actually look, the shape is wrong. A cannon is a long tapering tube, and these are short and swollen in the middle. There is no bore. They were cast as bollards, in bollard moulds, at British foundries, mostly in the nineteenth century.\n\nThe design copies the look of a cannon on purpose, because it suggested strength and the Navy and everyone liked it.\n\nSo this is a genuine thing worth noticing. Not a hidden secret, but a story so good that London has believed it for two hundred years about an object anyone could pick up and check.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "roman-tower-hill-wall",
+      "topic": "roman",
+      "title": "The wall at Tower Hill",
+      "where": "Tower Hill, in the sunken garden by the station",
+      "lat": 51.5098,
+      "lon": -0.0766,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one wants you standing at the foot of the wall."
+      },
+      "nudge": null,
+      "look": "Start at the bottom and work up.\n\nThe lower courses are small squared blocks with thin red tile running through them in level bands.\n\nAbout halfway up that stops. The stone above is bigger, rougher, less careful.\n\nFind the line where one becomes the other.",
+      "look_spoken": null,
+      "after": "You have just found the join between Roman and medieval London.\n\nEverything below that line was built around the year 200. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.\n\nThe red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.\n\nThe wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.",
+      "after_spoken": "You have just found the join between Roman and medieval London.\n\nEverything below that line was built around the year two hundred. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.\n\nThe red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.\n\nThe wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.",
+      "audio": null
+    },
+    {
+      "id": "rivers-aldgate-pump",
+      "topic": "rivers",
+      "title": "The Aldgate Pump",
+      "where": "Where Fenchurch Street meets Aldgate High Street, on the traffic island",
+      "lat": 51.5138,
+      "lon": -0.0772,
+      "gate": null,
+      "nudge": {
+        "prompt": "The spout of the pump is a small brass animal's head. Have you worked out what animal?",
+        "confirm": "Worked it out"
+      },
+      "look": "Go up to the stone pump on the island and look at the spout.\n\nIt is a brass head with ears and a long muzzle. Not a lion. Not a dog.\n\nPut your hand on the push button underneath. Nothing comes out now.",
+      "look_spoken": null,
+      "after": "It is a wolf, and the story is that it marks the last wolf shot in the City of London.\n\nThis pump was known as the Pump of Death. Its water tasted unusually good, slightly sweet, and people came from streets away to fill jugs from it.\n\nIn 1876 the City's medical officer worked out why. The spring feeding it ran underground from Hampstead, and on the way it passed through new cemeteries in north London. The sweetness was calcium leaching out of the bodies, and the water was carrying disease with it. Hundreds of deaths were traced back to this spout.\n\nIt was connected to the mains and the killing stopped.\n\nStand here and remember that this was a place people queued at because the water was nicer.",
+      "after_spoken": "It is a wolf, and the story is that it marks the last wolf shot in the City of London.\n\nThis pump was known as the Pump of Death. Its water tasted unusually good, slightly sweet, and people came from streets away to fill jugs from it.\n\nIn eighteen seventy-six the City's medical officer worked out why. The spring feeding it ran underground from Hampstead, and on the way it passed through new cemeteries in north London. The sweetness was calcium leaching out of the bodies, and the water was carrying disease with it. Hundreds of deaths were traced back to this spout.\n\nIt was connected to the mains and the killing stopped.\n\nStand here and remember that this was a place people queued at because the water was nicer.",
+      "audio": null
+    },
+    {
+      "id": "roman-leadenhall-forum",
+      "topic": "roman",
+      "title": "Leadenhall Market",
+      "where": "Under the painted iron roof, at the crossing in the middle",
+      "lat": 51.5128,
+      "lon": -0.0835,
+      "gate": null,
+      "nudge": null,
+      "look": "Stand where the two arcades cross and look up at the roof.\n\nThen look at the floor, and at the people going past with coffee.\n\nHold that, because you need to picture something much bigger.",
+      "look_spoken": null,
+      "after": "You are standing in the middle of the Roman forum.\n\nThis was the market square and the civic heart of Londinium. On the north side of it stood the basilica, which was the town hall and the law court in one, and it was over a hundred and fifty metres long. The largest building north of the Alps.\n\nA pier of it survives in the basement of a barber's shop on Gracechurch Street. You can ask to see it. The rest is under the market, under the road and under the offices.\n\nSo this has been the place Londoners come to buy things and argue about prices for nearly two thousand years without a break. The roof changed. The habit did not.\n\nMost of the people here are queuing to photograph the arcade because it was used in a Harry Potter film, and almost none of them know they are standing in a Roman town square.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "marks-parish-boundary",
+      "topic": "marks",
+      "title": "Boundary marks on Cornhill",
+      "where": "Cornhill, in the narrow alleys around St Michael's",
+      "lat": 51.5133,
+      "lon": -0.0868,
+      "gate": null,
+      "nudge": {
+        "prompt": "On a wall about head height there is a small metal or stone plaque with initials and a date, no bigger than a postcard. Have you found one?",
+        "confirm": "Found one"
+      },
+      "look": "Go into one of the alleys off Cornhill and slow right down.\n\nLook at the walls at head height, not at the shopfronts.\n\nYou are hunting for something small with letters and a number on it.",
+      "look_spoken": null,
+      "after": "That is a parish boundary marker, and once you have seen one you will start seeing them everywhere.\n\nThe letters are the initials of the parish. The date is when the mark was fixed. They come in pairs, one either side of an invisible line, and the line is a border.\n\nThey mattered enormously. Your parish decided who buried you, who fed you if you were destitute and which authority could tax you. A wall on the wrong side of a mark was a different world.\n\nThe City has over a hundred parishes packed into a square mile, so the marks are dense here. Almost every street has one.\n\nNobody put them up to be found. They were plumbing, in effect, the mundane fixings of an administrative system. Now they are the oldest thing on most of these walls.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "roman-london-stone",
+      "topic": "roman",
+      "title": "London Stone",
+      "where": "111 Cannon Street, set into the wall at pavement level",
+      "lat": 51.5117,
+      "lon": -0.0909,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a lump of limestone behind a grille in the wall, low down, easy to walk straight past. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Kneel down if you can. It is lower than you expect.\n\nA block of pale limestone, worn round at the top, behind a metal grille in the front of an office building.\n\nThat is it. That is the whole thing.",
+      "look_spoken": null,
+      "after": "Nobody knows what it is.\n\nIt has been written about since the year 1100, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.\n\nIn 1450 Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.\n\nWhat we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.\n\nThere is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.",
+      "after_spoken": "Nobody knows what it is.\n\nIt has been written about since the year eleven hundred, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.\n\nIn fourteen fifty Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.\n\nWhat we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.\n\nThere is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.",
+      "audio": null
+    },
+    {
+      "id": "roman-mithraeum",
+      "topic": "roman",
+      "title": "The Temple of Mithras",
+      "where": "London Mithraeum, Walbrook. Free, but book a slot",
+      "lat": 51.5127,
+      "lon": -0.09,
+      "gate": null,
+      "nudge": null,
+      "look": "Take the stairs down. Keep going. You end up seven metres below the street.\n\nWait in the dark for the lights and the sound to start.\n\nWhen you can see, look at the low stone walls and find the curved end.",
+      "look_spoken": null,
+      "after": "This temple has been moved twice, and you are standing in the second attempt to put it back.\n\nIt was found in 1954 in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.\n\nThen it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.\n\nIn 2017 it was dismantled again and brought back here, to the right spot and the right depth.\n\nMithras was a soldiers' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.",
+      "after_spoken": "This temple has been moved twice, and you are standing in the second attempt to put it back.\n\nIt was found in nineteen fifty-four in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.\n\nThen it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.\n\nIn twenty seventeen it was dismantled again and brought back here, to the right spot and the right depth.\n\nMithras was a soldiers' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.",
+      "audio": null
+    },
+    {
+      "id": "rivers-walbrook-bank",
+      "topic": "rivers",
+      "title": "The Walbrook at Bank",
+      "where": "Where Walbrook meets Cannon Street, looking north towards Bank",
+      "lat": 51.5134,
+      "lon": -0.0888,
+      "gate": null,
+      "nudge": null,
+      "look": "Read the street sign. The street is called Walbrook.\n\nNow stand still and feel the ground. Walk a few steps north, then a few steps back.\n\nYou are going up and down. Slightly, but you are.",
+      "look_spoken": null,
+      "after": "The street is called Walbrook because it is a brook. It ran from Moorfields down to the Thames and it cut Roman London in half.\n\nEverything important sat on it. The forum was on the high ground to the east, the fort to the west, and the temple of Mithras was built right on the bank, because that is what you did with a temple.\n\nThe Romans were dropping things in it the whole time. Thousands of objects have come out of this valley, including a great many human skulls, which nobody has entirely explained.\n\nBy the fifteenth century it was covered over and built on, and the name is all that is left above ground.\n\nSo the dip you can feel with your feet is a valley cut by water that has not been visible here for six hundred years.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "marks-police-box",
+      "topic": "marks",
+      "title": "The police box in Guildhall Yard",
+      "where": "Guildhall Yard, against the wall of St Lawrence Jewry",
+      "lat": 51.516,
+      "lon": -0.0919,
+      "gate": {
+        "radius_m": 60,
+        "prompt": "Get into Guildhall Yard for this one."
+      },
+      "nudge": {
+        "prompt": "Somewhere in this yard there is a blue police box. Have you found it yet?",
+        "confirm": "Found it"
+      },
+      "look": "Have a proper look round the yard.\n\nAgainst the church wall there is a blue box, about the height of a door, with a lamp on top.\n\nGo and read the writing on it.",
+      "look_spoken": null,
+      "after": "It says Police Public Call Box, and it is real. It is not a prop and it has nothing to do with television, except that television borrowed it.\n\nThese were the mobile phone network of their day. There were hundreds across London. A constable on a beat unlocked the door with his own key and called the station. The public could open a small hatch in the front and get through to police in an emergency, which was the whole point.\n\nThe light on top flashed when the station wanted the officer to make contact. That is what the lamp is for.\n\nThey went out of use in the sixties when personal radios arrived, and nearly all of them were scrapped.\n\nThe City of London kept its own. There are a dozen or so still standing in the square mile, at Aldgate, at Liverpool Street, on Walbrook, on the Embankment. Now you know the shape, you will find them.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "roman-amphitheatre",
+      "topic": "roman",
+      "title": "The circle in Guildhall Yard",
+      "where": "Guildhall Yard. The gallery below is free",
+      "lat": 51.5157,
+      "lon": -0.0922,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a dark curved line laid into the paving of the yard. Have you found where it runs?",
+        "confirm": "Found it"
+      },
+      "look": "Look down at the stones under your feet.\n\nA band of dark slate curves across the yard. Follow it with your eyes and you will see it bends round into a great ellipse, far wider than the yard itself.\n\nPeople are walking across it right now without seeing it.",
+      "look_spoken": null,
+      "after": "That line marks the wall of the Roman amphitheatre, which is directly beneath you.\n\nIt held about seven thousand people, roughly a quarter of the population, which tells you how central it was.\n\nAnd it was completely lost. Nobody knew London had an amphitheatre at all. In 1988 they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.\n\nGo down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.\n\nOne more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.",
+      "after_spoken": "That line marks the wall of the Roman amphitheatre, which is directly beneath you.\n\nIt held about seven thousand people, roughly a quarter of the population, which tells you how central it was.\n\nAnd it was completely lost. Nobody knew London had an amphitheatre at all. In nineteen eighty-eight they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.\n\nGo down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.\n\nOne more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.",
+      "audio": null
+    },
+    {
+      "id": "roman-noble-street",
+      "topic": "roman",
+      "title": "The fort corner on Noble Street",
+      "where": "Noble Street, below the pavement on the west side",
+      "lat": 51.5165,
+      "lon": -0.0975,
+      "gate": null,
+      "nudge": null,
+      "look": "Look over the railing at the sunken ground beside the street.\n\nThere is a long stretch of stone wall down there, and at one end it turns a corner and thickens into a rounded stub.\n\nNo ticket, no glass, no guard. Just a wall in a hole next to the pavement.",
+      "look_spoken": null,
+      "after": "That corner is the south west turret of the Roman fort, built about the year 120, and it is one of the best pieces of Roman London you can walk up to for nothing.\n\nThe fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.\n\nThe fort held the garrison and the governor's guard, and it is why the street plan up here still has a suspiciously square corner in it.\n\nThis was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.\n\nStand here for a minute and count how many people stop. It is usually none.",
+      "after_spoken": "That corner is the south west turret of the Roman fort, built about the year one twenty, and it is one of the best pieces of Roman London you can walk up to for nothing.\n\nThe fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.\n\nThe fort held the garrison and the governor's guard, and it is why the street plan up here still has a suspiciously square corner in it.\n\nThis was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.\n\nStand here for a minute and count how many people stop. It is usually none.",
+      "audio": null
+    },
+    {
+      "id": "marks-panyer-boy",
+      "topic": "marks",
+      "title": "The Panyer Boy",
+      "where": "Panyer Alley, by the exit from St Paul's underground station",
+      "lat": 51.5148,
+      "lon": -0.0977,
+      "gate": {
+        "radius_m": 60,
+        "prompt": "This is a small carving in an alley, so you need to be in the alley."
+      },
+      "nudge": {
+        "prompt": "There is a carved stone panel set into the wall, about knee to waist height, with a boy on it. Have you found him?",
+        "confirm": "Found him"
+      },
+      "look": "Look low on the wall, below the shop signs.\n\nA square stone panel. A naked boy sitting on a basket, reaching up for a bunch of grapes with his foot planted on the rim.\n\nThere is an inscription cut underneath.",
+      "look_spoken": null,
+      "after": "It reads that when you have sought the city round, yet still this is the highest ground, and it is dated 1688.\n\nIt is wrong. Cornhill is higher, by a couple of metres, and so is the ground at Ludgate. The stone has been standing here making a false claim for over three hundred years and nobody has taken it down.\n\nA panyer is a bread basket, and this alley was where bakers sold from baskets. The boy is the sign of the trade, or possibly the sign of a pub called the Panyer that stood here.\n\nWhat makes it worth stopping for is what it survived. The Great Fire went through here. The Blitz flattened everything around it. The whole area was demolished and rebuilt twice in the twentieth century.\n\nAnd this small boy with his grapes and his incorrect boast was put back each time.",
+      "after_spoken": "It reads that when you have sought the city round, yet still this is the highest ground, and it is dated sixteen eighty-eight.\n\nIt is wrong. Cornhill is higher, by a couple of metres, and so is the ground at Ludgate. The stone has been standing here making a false claim for over three hundred years and nobody has taken it down.\n\nA panyer is a bread basket, and this alley was where bakers sold from baskets. The boy is the sign of the trade, or possibly the sign of a pub called the Panyer that stood here.\n\nWhat makes it worth stopping for is what it survived. The Great Fire went through here. The Blitz flattened everything around it. The whole area was demolished and rebuilt twice in the twentieth century.\n\nAnd this small boy with his grapes and his incorrect boast was put back each time.",
+      "audio": null
+    },
+    {
+      "id": "rivers-holborn-viaduct",
+      "topic": "rivers",
+      "title": "Holborn Viaduct",
+      "where": "On the bridge, above Farringdon Street",
+      "lat": 51.5176,
+      "lon": -0.1046,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one only opens when you are standing on the bridge itself."
+      },
+      "nudge": null,
+      "look": "You are standing on a bridge.\n\nGo to the parapet and look over. That is Farringdon Street below you, a long way down.\n\nNow lift your eyes and follow the low ground. It runs away north, and south towards Ludgate. You are looking along a valley in the middle of London.",
+      "look_spoken": null,
+      "after": "That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.\n\nIt was London's second river. Boats came up it as far as Holborn. By the 1700s it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.\n\nThe bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.\n\nOnce you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.",
+      "after_spoken": "That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.\n\nIt was London's second river. Boats came up it as far as Holborn. By the seventeen hundreds it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.\n\nThe bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.\n\nOnce you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.",
+      "audio": null
+    },
+    {
+      "id": "marks-snuffers-ely-place",
+      "topic": "marks",
+      "title": "The railings at Ely Place",
+      "where": "Ely Place, Holborn. Go through the gates and up the street",
+      "lat": 51.5185,
+      "lon": -0.1078,
+      "gate": null,
+      "nudge": {
+        "prompt": "On the old iron railings there are cone shaped fittings, wide at the top and narrowing down. Have you found one?",
+        "confirm": "Found one"
+      },
+      "look": "Walk up the street and put your hand on the railings.\n\nLook for iron cones fixed to the uprights, like little upside down funnels, and for plain rings lower down.\n\nBoth were for something specific.",
+      "look_spoken": null,
+      "after": "The cones are link snuffers. Before street lighting you hired a boy with a burning torch, a link boy, to walk you home. At the door he pushed the torch into the cone to put it out.\n\nSo every one of those is the end of somebody's walk home in the dark, two hundred and fifty years ago.\n\nThe rings are for tying a horse.\n\nWhile you are here, look at where you are standing. Ely Place is a private street with its own gates and its own beadles, and it was the London palace of the Bishops of Ely. For centuries the law of the City did not run here. The police could not simply walk in.\n\nThe pub in the alley, the Mitre, is part of the same peculiarity. People still argue about which authority it really belongs to.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "rivers-charterhouse-grate",
+      "topic": "rivers",
+      "title": "The grate on Charterhouse Street",
+      "where": "Charterhouse Street, right where it meets Farringdon Road",
+      "lat": 51.5203,
+      "lon": -0.1053,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one you have to be standing on. Get to where Charterhouse Street meets Farringdon Road."
+      },
+      "nudge": {
+        "prompt": "There is a metal grid set into the road surface here. Have you found one you can safely get near?",
+        "confirm": "Found it"
+      },
+      "look": "Look for a metal grid set into the road where the two streets meet.\n\nMind the traffic and do not stand in the road. Get as close as is safe.\n\nNow stop looking and listen instead. Wait for a gap in the cars.",
+      "look_spoken": null,
+      "after": "Water. Running water, under the road, and after rain it is loud.\n\nThat is the Fleet. It is about twelve feet below you and it has never stopped.\n\nYou are standing in the bottom of the valley. Farringdon Road runs along the riverbed, which is why it is so flat and straight while every street off it climbs. Look either side and you can see the ground rising. Smithfield is up on the east bank. Clerkenwell is up on the west.\n\nThe river rises on Hampstead Heath, comes down through Kentish Town and Camden, past King's Cross, along this road, and out into the Thames at Blackfriars. All of it underground from here.\n\nA few million people live on top of it and almost none of them have ever heard it. You just did.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "rivers-ludgate-dip",
+      "topic": "rivers",
+      "title": "The dip at Ludgate Circus",
+      "where": "Ludgate Circus, standing at the crossing in the middle",
+      "lat": 51.514,
+      "lon": -0.1046,
+      "gate": null,
+      "nudge": null,
+      "look": "Stand at the crossing and turn slowly all the way round.\n\nLook along each of the four roads in turn and watch what the ground does.\n\nEvery one of them goes up. You are at the bottom of something.",
+      "look_spoken": null,
+      "after": "You are standing in the river.\n\nLudgate Hill climbs east to St Paul's. Fleet Street climbs west. New Bridge Street runs south to the Thames and Farringdon Street runs north, and both of those are flat, because both of those are the riverbed.\n\nThe Fleet crossed here, and there was a bridge on this spot from the Roman period onwards. Fleet Bridge. Everybody coming into the city from the west had to use it, which is why the road bends the way it does.\n\nSo the shape of this junction, one of the busiest in London, was decided by a stream that has not been visible for two hundred and fifty years.\n\nWhen the railway ran overhead here there was a bridge above your head as well. That came down in 1990 and people complained, because Londoners will eventually miss anything.",
+      "after_spoken": "You are standing in the river.\n\nLudgate Hill climbs east to St Paul's. Fleet Street climbs west. New Bridge Street runs south to the Thames and Farringdon Street runs north, and both of those are flat, because both of those are the riverbed.\n\nThe Fleet crossed here, and there was a bridge on this spot from the Roman period onwards. Fleet Bridge. Everybody coming into the city from the west had to use it, which is why the road bends the way it does.\n\nSo the shape of this junction, one of the busiest in London, was decided by a stream that has not been visible for two hundred and fifty years.\n\nWhen the railway ran overhead here there was a bridge above your head as well. That came down in nineteen ninety and people complained, because Londoners will eventually miss anything.",
+      "audio": null
+    },
+    {
+      "id": "rivers-fleet-mouth",
+      "topic": "rivers",
+      "title": "Where the Fleet meets the Thames",
+      "where": "Blackfriars Bridge, on the upstream side, looking down at the water",
+      "lat": 51.5106,
+      "lon": -0.1035,
+      "gate": null,
+      "nudge": {
+        "prompt": "Under the bridge on the north bank there is a dark arch at water level, half hidden. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Go onto the bridge and look over the upstream side, back at the north bank.\n\nAt the bottom of the embankment wall, close to the water, there is an arched opening.\n\nAt low tide you can see it properly. At high tide it is under.",
+      "look_spoken": null,
+      "after": "That is the mouth of the River Fleet, still running out into the Thames.\n\nThis was once a proper river harbour, wide enough for seagoing ships to tie up. There was a dock here. There were wharves. Ships brought coal up it and took wool away.\n\nThen it silted, then it filled with waste, and by the sixteen hundreds it was notorious. Jonathan Swift wrote a poem about what came down it in a storm, and the list includes drowned puppies, dead cats and the guts of a slaughterhouse.\n\nIt was arched over in stages, and the last open stretch went in 1769.\n\nIt is a sewer now, and after heavy rain it still discharges here. The river never stopped. It just got a lid.",
+      "after_spoken": "That is the mouth of the River Fleet, still running out into the Thames.\n\nThis was once a proper river harbour, wide enough for seagoing ships to tie up. There was a dock here. There were wharves. Ships brought coal up it and took wool away.\n\nThen it silted, then it filled with waste, and by the sixteen hundreds it was notorious. Jonathan Swift wrote a poem about what came down it in a storm, and the list includes drowned puppies, dead cats and the guts of a slaughterhouse.\n\nIt was arched over in stages, and the last open stretch went in seventeen sixty-nine.\n\nIt is a sewer now, and after heavy rain it still discharges here. The river never stopped. It just got a lid.",
+      "audio": null
+    },
+    {
+      "id": "marks-dragon-embankment",
+      "topic": "marks",
+      "title": "The dragons on the Embankment",
+      "where": "Victoria Embankment, by Temple Gardens",
+      "lat": 51.5108,
+      "lon": -0.1106,
+      "gate": null,
+      "nudge": null,
+      "look": "Find the silver dragon on the stone plinth by the road.\n\nLook at how big it is, and at the shield it is holding.\n\nThen remember it, because you will meet its smaller relatives all over London.",
+      "look_spoken": null,
+      "after": "This dragon marks the edge of the City of London. Cross the line beside it and you leave the square mile.\n\nThere are about a dozen of them, at every main road into the City, and they are not all the same size. These two by Temple Gardens are the originals and they are twice the size of the rest.\n\nThey started life somewhere else entirely. They were made in 1849 for the roof of the Coal Exchange on Lower Thames Street. When that building was demolished in the sixties somebody saved the dragons, stuck them on plinths here, and then had half size copies cast for all the other entrances.\n\nSo the boundary markers of the City of London are salvage from a demolished coal market, and the small ones are copies of the big ones rather than the other way round.\n\nThe shield is the City arms. The red cross is St George. The small sword in the corner is not a dagger.",
+      "after_spoken": "This dragon marks the edge of the City of London. Cross the line beside it and you leave the square mile.\n\nThere are about a dozen of them, at every main road into the City, and they are not all the same size. These two by Temple Gardens are the originals and they are twice the size of the rest.\n\nThey started life somewhere else entirely. They were made in eighteen forty-nine for the roof of the Coal Exchange on Lower Thames Street. When that building was demolished in the sixties somebody saved the dragons, stuck them on plinths here, and then had half size copies cast for all the other entrances.\n\nSo the boundary markers of the City of London are salvage from a demolished coal market, and the small ones are copies of the big ones rather than the other way round.\n\nThe shield is the City arms. The red cross is St George. The small sword in the corner is not a dagger.",
+      "audio": null
+    }
+  ],
   "walk": {
-    "n_stops": 0,
-    "total_walk_m": 0.0,
-    "total_minutes": 0.0,
-    "reversals": 0,
-    "legs": []
+    "n_stops": 18,
+    "total_walk_m": 7098.7,
+    "total_minutes": 88.7,
+    "reversals": 2,
+    "legs": [
+      {
+        "from": "marks-cannon-bollards",
+        "to": "roman-tower-hill-wall",
+        "straight_m": 129.3,
+        "walk_m": 168.1,
+        "minutes": 2.1,
+        "bearing": 121.1
+      },
+      {
+        "from": "roman-tower-hill-wall",
+        "to": "rivers-aldgate-pump",
+        "straight_m": 446.7,
+        "walk_m": 580.7,
+        "minutes": 7.3,
+        "bearing": 354.7
+      },
+      {
+        "from": "rivers-aldgate-pump",
+        "to": "roman-leadenhall-forum",
+        "straight_m": 449.9,
+        "walk_m": 584.9,
+        "minutes": 7.3,
+        "bearing": 255.7
+      },
+      {
+        "from": "roman-leadenhall-forum",
+        "to": "marks-parish-boundary",
+        "straight_m": 235.0,
+        "walk_m": 305.5,
+        "minutes": 3.8,
+        "bearing": 283.7
+      },
+      {
+        "from": "marks-parish-boundary",
+        "to": "roman-london-stone",
+        "straight_m": 334.9,
+        "walk_m": 435.4,
+        "minutes": 5.4,
+        "bearing": 237.9
+      },
+      {
+        "from": "roman-london-stone",
+        "to": "roman-mithraeum",
+        "straight_m": 127.4,
+        "walk_m": 165.7,
+        "minutes": 2.1,
+        "bearing": 29.3
+      },
+      {
+        "from": "roman-mithraeum",
+        "to": "rivers-walbrook-bank",
+        "straight_m": 113.8,
+        "walk_m": 148.0,
+        "minutes": 1.8,
+        "bearing": 46.9
+      },
+      {
+        "from": "rivers-walbrook-bank",
+        "to": "marks-police-box",
+        "straight_m": 360.0,
+        "walk_m": 468.0,
+        "minutes": 5.8,
+        "bearing": 323.4
+      },
+      {
+        "from": "marks-police-box",
+        "to": "roman-amphitheatre",
+        "straight_m": 39.3,
+        "walk_m": 51.1,
+        "minutes": 0.6,
+        "bearing": 211.9
+      },
+      {
+        "from": "roman-amphitheatre",
+        "to": "roman-noble-street",
+        "straight_m": 377.4,
+        "walk_m": 490.6,
+        "minutes": 6.1,
+        "bearing": 283.6
+      },
+      {
+        "from": "roman-noble-street",
+        "to": "marks-panyer-boy",
+        "straight_m": 189.5,
+        "walk_m": 246.4,
+        "minutes": 3.1,
+        "bearing": 184.2
+      },
+      {
+        "from": "marks-panyer-boy",
+        "to": "rivers-holborn-viaduct",
+        "straight_m": 570.0,
+        "walk_m": 741.0,
+        "minutes": 9.3,
+        "bearing": 303.1
+      },
+      {
+        "from": "rivers-holborn-viaduct",
+        "to": "marks-snuffers-ely-place",
+        "straight_m": 243.0,
+        "walk_m": 315.9,
+        "minutes": 3.9,
+        "bearing": 294.3
+      },
+      {
+        "from": "marks-snuffers-ely-place",
+        "to": "rivers-charterhouse-grate",
+        "straight_m": 264.5,
+        "walk_m": 343.9,
+        "minutes": 4.3,
+        "bearing": 40.8
+      },
+      {
+        "from": "rivers-charterhouse-grate",
+        "to": "rivers-ludgate-dip",
+        "straight_m": 702.2,
+        "walk_m": 912.9,
+        "minutes": 11.4,
+        "bearing": 176.0
+      },
+      {
+        "from": "rivers-ludgate-dip",
+        "to": "rivers-fleet-mouth",
+        "straight_m": 385.7,
+        "walk_m": 501.3,
+        "minutes": 6.3,
+        "bearing": 168.6
+      },
+      {
+        "from": "rivers-fleet-mouth",
+        "to": "marks-dragon-embankment",
+        "straight_m": 491.9,
+        "walk_m": 639.4,
+        "minutes": 8.0,
+        "bearing": 272.6
+      }
+    ]
   },
-  "gated_stops": 0,
+  "gated_stops": 5,
   "note": null
 }

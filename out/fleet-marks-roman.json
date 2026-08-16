@@ -1,7 +1,7 @@
 {
   "format": 1,
   "combo_key": "fleet-marks-roman",
-  "draft": true,
+  "draft": false,
   "topics": [
     {
       "id": "fleet",
@@ -22,14 +22,464 @@
       "blurb_spoken": null
     }
   ],
-  "stops": [],
+  "stops": [
+    {
+      "id": "marks-cannon-bollards",
+      "topic": "marks",
+      "title": "The bollards at Trinity Square",
+      "where": "Trinity Square Gardens, at the edge of the pavement",
+      "lat": 51.5104,
+      "lon": -0.0782,
+      "gate": null,
+      "nudge": {
+        "prompt": "Find a black iron bollard at the kerb, the fat kind with a rounded top and a band round it. Have you got one?",
+        "confirm": "Got one"
+      },
+      "look": "Put your hand on a black iron bollard.\n\nLook at the shape. A rounded cap, a swelling below it, then a band, then it narrows to the ground.\n\nSomebody has probably told you what these used to be.",
+      "look_spoken": null,
+      "after": "You have almost certainly been told these are French cannon captured at Trafalgar, stuck muzzle down in the pavement with a cannonball welded in the top.\n\nThey are not. They never were.\n\nThe story is everywhere. Guides tell it. Books repeat it. And when you actually look, the shape is wrong. A cannon is a long tapering tube, and these are short and swollen in the middle. There is no bore. They were cast as bollards, in bollard moulds, at British foundries, mostly in the nineteenth century.\n\nThe design copies the look of a cannon on purpose, because it suggested strength and the Navy and everyone liked it.\n\nSo this is a genuine thing worth noticing. Not a hidden secret, but a story so good that London has believed it for two hundred years about an object anyone could pick up and check.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "roman-tower-hill-wall",
+      "topic": "roman",
+      "title": "The wall at Tower Hill",
+      "where": "Tower Hill, in the sunken garden by the station",
+      "lat": 51.5098,
+      "lon": -0.0766,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one wants you standing at the foot of the wall."
+      },
+      "nudge": null,
+      "look": "Start at the bottom and work up.\n\nThe lower courses are small squared blocks with thin red tile running through them in level bands.\n\nAbout halfway up that stops. The stone above is bigger, rougher, less careful.\n\nFind the line where one becomes the other.",
+      "look_spoken": null,
+      "after": "You have just found the join between Roman and medieval London.\n\nEverything below that line was built around the year 200. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.\n\nThe red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.\n\nThe wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.",
+      "after_spoken": "You have just found the join between Roman and medieval London.\n\nEverything below that line was built around the year two hundred. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.\n\nThe red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.\n\nThe wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.",
+      "audio": null
+    },
+    {
+      "id": "roman-leadenhall-forum",
+      "topic": "roman",
+      "title": "Leadenhall Market",
+      "where": "Under the painted iron roof, at the crossing in the middle",
+      "lat": 51.5128,
+      "lon": -0.0835,
+      "gate": null,
+      "nudge": null,
+      "look": "Stand where the two arcades cross and look up at the roof.\n\nThen look at the floor, and at the people going past with coffee.\n\nHold that, because you need to picture something much bigger.",
+      "look_spoken": null,
+      "after": "You are standing in the middle of the Roman forum.\n\nThis was the market square and the civic heart of Londinium. On the north side of it stood the basilica, which was the town hall and the law court in one, and it was over a hundred and fifty metres long. The largest building north of the Alps.\n\nA pier of it survives in the basement of a barber's shop on Gracechurch Street. You can ask to see it. The rest is under the market, under the road and under the offices.\n\nSo this has been the place Londoners come to buy things and argue about prices for nearly two thousand years without a break. The roof changed. The habit did not.\n\nMost of the people here are queuing to photograph the arcade because it was used in a Harry Potter film, and almost none of them know they are standing in a Roman town square.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "marks-parish-boundary",
+      "topic": "marks",
+      "title": "Boundary marks on Cornhill",
+      "where": "Cornhill, in the narrow alleys around St Michael's",
+      "lat": 51.5133,
+      "lon": -0.0868,
+      "gate": null,
+      "nudge": {
+        "prompt": "On a wall about head height there is a small metal or stone plaque with initials and a date, no bigger than a postcard. Have you found one?",
+        "confirm": "Found one"
+      },
+      "look": "Go into one of the alleys off Cornhill and slow right down.\n\nLook at the walls at head height, not at the shopfronts.\n\nYou are hunting for something small with letters and a number on it.",
+      "look_spoken": null,
+      "after": "That is a parish boundary marker, and once you have seen one you will start seeing them everywhere.\n\nThe letters are the initials of the parish. The date is when the mark was fixed. They come in pairs, one either side of an invisible line, and the line is a border.\n\nThey mattered enormously. Your parish decided who buried you, who fed you if you were destitute and which authority could tax you. A wall on the wrong side of a mark was a different world.\n\nThe City has over a hundred parishes packed into a square mile, so the marks are dense here. Almost every street has one.\n\nNobody put them up to be found. They were plumbing, in effect, the mundane fixings of an administrative system. Now they are the oldest thing on most of these walls.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "roman-london-stone",
+      "topic": "roman",
+      "title": "London Stone",
+      "where": "111 Cannon Street, set into the wall at pavement level",
+      "lat": 51.5117,
+      "lon": -0.0909,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a lump of limestone behind a grille in the wall, low down, easy to walk straight past. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Kneel down if you can. It is lower than you expect.\n\nA block of pale limestone, worn round at the top, behind a metal grille in the front of an office building.\n\nThat is it. That is the whole thing.",
+      "look_spoken": null,
+      "after": "Nobody knows what it is.\n\nIt has been written about since the year 1100, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.\n\nIn 1450 Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.\n\nWhat we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.\n\nThere is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.",
+      "after_spoken": "Nobody knows what it is.\n\nIt has been written about since the year eleven hundred, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.\n\nIn fourteen fifty Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.\n\nWhat we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.\n\nThere is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.",
+      "audio": null
+    },
+    {
+      "id": "roman-mithraeum",
+      "topic": "roman",
+      "title": "The Temple of Mithras",
+      "where": "London Mithraeum, Walbrook. Free, but book a slot",
+      "lat": 51.5127,
+      "lon": -0.09,
+      "gate": null,
+      "nudge": null,
+      "look": "Take the stairs down. Keep going. You end up seven metres below the street.\n\nWait in the dark for the lights and the sound to start.\n\nWhen you can see, look at the low stone walls and find the curved end.",
+      "look_spoken": null,
+      "after": "This temple has been moved twice, and you are standing in the second attempt to put it back.\n\nIt was found in 1954 in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.\n\nThen it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.\n\nIn 2017 it was dismantled again and brought back here, to the right spot and the right depth.\n\nMithras was a soldiers' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.",
+      "after_spoken": "This temple has been moved twice, and you are standing in the second attempt to put it back.\n\nIt was found in nineteen fifty-four in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.\n\nThen it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.\n\nIn twenty seventeen it was dismantled again and brought back here, to the right spot and the right depth.\n\nMithras was a soldiers' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.",
+      "audio": null
+    },
+    {
+      "id": "marks-police-box",
+      "topic": "marks",
+      "title": "The police box in Guildhall Yard",
+      "where": "Guildhall Yard, against the wall of St Lawrence Jewry",
+      "lat": 51.516,
+      "lon": -0.0919,
+      "gate": {
+        "radius_m": 60,
+        "prompt": "Get into Guildhall Yard for this one."
+      },
+      "nudge": {
+        "prompt": "Somewhere in this yard there is a blue police box. Have you found it yet?",
+        "confirm": "Found it"
+      },
+      "look": "Have a proper look round the yard.\n\nAgainst the church wall there is a blue box, about the height of a door, with a lamp on top.\n\nGo and read the writing on it.",
+      "look_spoken": null,
+      "after": "It says Police Public Call Box, and it is real. It is not a prop and it has nothing to do with television, except that television borrowed it.\n\nThese were the mobile phone network of their day. There were hundreds across London. A constable on a beat unlocked the door with his own key and called the station. The public could open a small hatch in the front and get through to police in an emergency, which was the whole point.\n\nThe light on top flashed when the station wanted the officer to make contact. That is what the lamp is for.\n\nThey went out of use in the sixties when personal radios arrived, and nearly all of them were scrapped.\n\nThe City of London kept its own. There are a dozen or so still standing in the square mile, at Aldgate, at Liverpool Street, on Walbrook, on the Embankment. Now you know the shape, you will find them.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "roman-amphitheatre",
+      "topic": "roman",
+      "title": "The circle in Guildhall Yard",
+      "where": "Guildhall Yard. The gallery below is free",
+      "lat": 51.5157,
+      "lon": -0.0922,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a dark curved line laid into the paving of the yard. Have you found where it runs?",
+        "confirm": "Found it"
+      },
+      "look": "Look down at the stones under your feet.\n\nA band of dark slate curves across the yard. Follow it with your eyes and you will see it bends round into a great ellipse, far wider than the yard itself.\n\nPeople are walking across it right now without seeing it.",
+      "look_spoken": null,
+      "after": "That line marks the wall of the Roman amphitheatre, which is directly beneath you.\n\nIt held about seven thousand people, roughly a quarter of the population, which tells you how central it was.\n\nAnd it was completely lost. Nobody knew London had an amphitheatre at all. In 1988 they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.\n\nGo down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.\n\nOne more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.",
+      "after_spoken": "That line marks the wall of the Roman amphitheatre, which is directly beneath you.\n\nIt held about seven thousand people, roughly a quarter of the population, which tells you how central it was.\n\nAnd it was completely lost. Nobody knew London had an amphitheatre at all. In nineteen eighty-eight they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.\n\nGo down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.\n\nOne more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.",
+      "audio": null
+    },
+    {
+      "id": "roman-noble-street",
+      "topic": "roman",
+      "title": "The fort corner on Noble Street",
+      "where": "Noble Street, below the pavement on the west side",
+      "lat": 51.5165,
+      "lon": -0.0975,
+      "gate": null,
+      "nudge": null,
+      "look": "Look over the railing at the sunken ground beside the street.\n\nThere is a long stretch of stone wall down there, and at one end it turns a corner and thickens into a rounded stub.\n\nNo ticket, no glass, no guard. Just a wall in a hole next to the pavement.",
+      "look_spoken": null,
+      "after": "That corner is the south west turret of the Roman fort, built about the year 120, and it is one of the best pieces of Roman London you can walk up to for nothing.\n\nThe fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.\n\nThe fort held the garrison and the governor's guard, and it is why the street plan up here still has a suspiciously square corner in it.\n\nThis was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.\n\nStand here for a minute and count how many people stop. It is usually none.",
+      "after_spoken": "That corner is the south west turret of the Roman fort, built about the year one twenty, and it is one of the best pieces of Roman London you can walk up to for nothing.\n\nThe fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.\n\nThe fort held the garrison and the governor's guard, and it is why the street plan up here still has a suspiciously square corner in it.\n\nThis was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.\n\nStand here for a minute and count how many people stop. It is usually none.",
+      "audio": null
+    },
+    {
+      "id": "marks-panyer-boy",
+      "topic": "marks",
+      "title": "The Panyer Boy",
+      "where": "Panyer Alley, by the exit from St Paul's underground station",
+      "lat": 51.5148,
+      "lon": -0.0977,
+      "gate": {
+        "radius_m": 60,
+        "prompt": "This is a small carving in an alley, so you need to be in the alley."
+      },
+      "nudge": {
+        "prompt": "There is a carved stone panel set into the wall, about knee to waist height, with a boy on it. Have you found him?",
+        "confirm": "Found him"
+      },
+      "look": "Look low on the wall, below the shop signs.\n\nA square stone panel. A naked boy sitting on a basket, reaching up for a bunch of grapes with his foot planted on the rim.\n\nThere is an inscription cut underneath.",
+      "look_spoken": null,
+      "after": "It reads that when you have sought the city round, yet still this is the highest ground, and it is dated 1688.\n\nIt is wrong. Cornhill is higher, by a couple of metres, and so is the ground at Ludgate. The stone has been standing here making a false claim for over three hundred years and nobody has taken it down.\n\nA panyer is a bread basket, and this alley was where bakers sold from baskets. The boy is the sign of the trade, or possibly the sign of a pub called the Panyer that stood here.\n\nWhat makes it worth stopping for is what it survived. The Great Fire went through here. The Blitz flattened everything around it. The whole area was demolished and rebuilt twice in the twentieth century.\n\nAnd this small boy with his grapes and his incorrect boast was put back each time.",
+      "after_spoken": "It reads that when you have sought the city round, yet still this is the highest ground, and it is dated sixteen eighty-eight.\n\nIt is wrong. Cornhill is higher, by a couple of metres, and so is the ground at Ludgate. The stone has been standing here making a false claim for over three hundred years and nobody has taken it down.\n\nA panyer is a bread basket, and this alley was where bakers sold from baskets. The boy is the sign of the trade, or possibly the sign of a pub called the Panyer that stood here.\n\nWhat makes it worth stopping for is what it survived. The Great Fire went through here. The Blitz flattened everything around it. The whole area was demolished and rebuilt twice in the twentieth century.\n\nAnd this small boy with his grapes and his incorrect boast was put back each time.",
+      "audio": null
+    },
+    {
+      "id": "fleet-ludgate-end",
+      "topic": "fleet",
+      "title": "The bottom of Fleet Street",
+      "where": "Ludgate Circus, on the corner looking west",
+      "lat": 51.5141,
+      "lon": -0.104,
+      "gate": null,
+      "nudge": null,
+      "look": "Stand on the corner and look west, up the street.\n\nYou can see the whole length of it, rising slightly, with St Dunstan's clock sticking out on the right about halfway along.\n\nCount the newspaper offices you can see. It will not take long.",
+      "look_spoken": null,
+      "after": "There are none. Not one national newspaper is made on Fleet Street, and none has been for a long time.\n\nFor two hundred and fifty years every paper in the country came off this street or the alleys behind it. The presses ran at night and the ground shook. Lorries queued to take the bundles out. The pubs kept their own hours because the shifts were wrong.\n\nIt ended fast. Rupert Murdoch moved his titles to Wapping in 1986, the print unions lost a year long fight, and everyone else followed within a decade. The last of the big agencies left in 2005.\n\nThe buildings are all still here, and they are banks and law firms now.\n\nThe name outlived the industry. People still say Fleet Street when they mean the press, in a country where the press has not been here since most of them were at school.",
+      "after_spoken": "There are none. Not one national newspaper is made on Fleet Street, and none has been for a long time.\n\nFor two hundred and fifty years every paper in the country came off this street or the alleys behind it. The presses ran at night and the ground shook. Lorries queued to take the bundles out. The pubs kept their own hours because the shifts were wrong.\n\nIt ended fast. Rupert Murdoch moved his titles to Wapping in nineteen eighty-six, the print unions lost a year long fight, and everyone else followed within a decade. The last of the big agencies left in two thousand and five.\n\nThe buildings are all still here, and they are banks and law firms now.\n\nThe name outlived the industry. People still say Fleet Street when they mean the press, in a country where the press has not been here since most of them were at school.",
+      "audio": null
+    },
+    {
+      "id": "marks-snuffers-ely-place",
+      "topic": "marks",
+      "title": "The railings at Ely Place",
+      "where": "Ely Place, Holborn. Go through the gates and up the street",
+      "lat": 51.5185,
+      "lon": -0.1078,
+      "gate": null,
+      "nudge": {
+        "prompt": "On the old iron railings there are cone shaped fittings, wide at the top and narrowing down. Have you found one?",
+        "confirm": "Found one"
+      },
+      "look": "Walk up the street and put your hand on the railings.\n\nLook for iron cones fixed to the uprights, like little upside down funnels, and for plain rings lower down.\n\nBoth were for something specific.",
+      "look_spoken": null,
+      "after": "The cones are link snuffers. Before street lighting you hired a boy with a burning torch, a link boy, to walk you home. At the door he pushed the torch into the cone to put it out.\n\nSo every one of those is the end of somebody's walk home in the dark, two hundred and fifty years ago.\n\nThe rings are for tying a horse.\n\nWhile you are here, look at where you are standing. Ely Place is a private street with its own gates and its own beadles, and it was the London palace of the Bishops of Ely. For centuries the law of the City did not run here. The police could not simply walk in.\n\nThe pub in the alley, the Mitre, is part of the same peculiarity. People still argue about which authority it really belongs to.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "fleet-wynkyn-crypt",
+      "topic": "fleet",
+      "title": "The crypt at St Bride's",
+      "where": "St Bride's, off Fleet Street. Free, and go down the stairs",
+      "lat": 51.5138,
+      "lon": -0.105,
+      "gate": null,
+      "nudge": {
+        "prompt": "Down in the crypt there are cases of metal type and a memorial wall of names. Have you found the names?",
+        "confirm": "Found them"
+      },
+      "look": "Go in and down.\n\nThe crypt is a museum of printing, and it is free.\n\nFind the wall of names, and read a few of them properly rather than skimming.",
+      "look_spoken": null,
+      "after": "Those are journalists killed doing the job. The church keeps the list and adds to it.\n\nPrinting came to this street because of this church. Wynkyn de Worde, who had been Caxton's assistant, moved the press here around 1500 and set up beside St Bride's.\n\nHe did it for a practical reason. The clergy around St Paul's and the lawyers up at the Temple were the only large group of people nearby who could read. He moved the machine to the customers.\n\nEverything followed from that. The presses drew the printers, the printers drew the publishers, the publishers drew the newspapers, and the newspapers stayed for four hundred and fifty years.\n\nThe crypt also holds Roman pavement, a Saxon church floor and a medieval one, stacked underneath each other. This ground has been built on seven times.",
+      "after_spoken": "Those are journalists killed doing the job. The church keeps the list and adds to it.\n\nPrinting came to this street because of this church. Wynkyn de Worde, who had been Caxton's assistant, moved the press here around fifteen hundred and set up beside St Bride's.\n\nHe did it for a practical reason. The clergy around St Paul's and the lawyers up at the Temple were the only large group of people nearby who could read. He moved the machine to the customers.\n\nEverything followed from that. The presses drew the printers, the printers drew the publishers, the publishers drew the newspapers, and the newspapers stayed for four hundred and fifty years.\n\nThe crypt also holds Roman pavement, a Saxon church floor and a medieval one, stacked underneath each other. This ground has been built on seven times.",
+      "audio": null
+    },
+    {
+      "id": "fleet-daily-express",
+      "topic": "fleet",
+      "title": "The Daily Express building",
+      "where": "120 Fleet Street, on the north side. Look through the doors",
+      "lat": 51.5142,
+      "lon": -0.1063,
+      "gate": null,
+      "nudge": {
+        "prompt": "One building on this street is black glass and chrome and looks about eighty years too modern. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Look for the black one. You cannot really miss it once you are looking.\n\nCurved black glass, rounded at the corner, chrome strips running between the floors.\n\nNow go up to the doors and look through into the lobby.",
+      "look_spoken": null,
+      "after": "That lobby is one of the best art deco interiors in the country, and you are looking at it through a door on a public street.\n\nSilver and gilt reliefs, an oval staircase, a starburst ceiling, all of it from 1932. It was meant to say that the Daily Express was the future, and it worked.\n\nThe building was nicknamed the Black Lubyanka by journalists at a rival paper, after the KGB headquarters in Moscow. The nickname stuck for fifty years.\n\nIt is one of the earliest buildings in Britain with a proper glass curtain wall, hung on the frame rather than holding anything up.\n\nThe paper left in 1989. The building is offices now, and the lobby is still there, and most people walking past have their heads down.",
+      "after_spoken": "That lobby is one of the best art deco interiors in the country, and you are looking at it through a door on a public street.\n\nSilver and gilt reliefs, an oval staircase, a starburst ceiling, all of it from nineteen thirty-two. It was meant to say that the Daily Express was the future, and it worked.\n\nThe building was nicknamed the Black Lubyanka by journalists at a rival paper, after the K G B headquarters in Moscow. The nickname stuck for fifty years.\n\nIt is one of the earliest buildings in Britain with a proper glass curtain wall, hung on the frame rather than holding anything up.\n\nThe paper left in nineteen eighty-nine. The building is offices now, and the lobby is still there, and most people walking past have their heads down.",
+      "audio": null
+    },
+    {
+      "id": "fleet-cheshire-cheese",
+      "topic": "fleet",
+      "title": "Ye Olde Cheshire Cheese",
+      "where": "Wine Office Court, an alley off the north side of Fleet Street",
+      "lat": 51.5145,
+      "lon": -0.1078,
+      "gate": null,
+      "nudge": null,
+      "look": "Go up the alley and in through the low door.\n\nStop just inside and notice two things. How dark it is, and how many separate little rooms there seem to be.\n\nThere are no windows to speak of.",
+      "look_spoken": null,
+      "after": "This building went up in 1667, the year after the fire, and the layout is deliberate.\n\nA warren of small rooms with no view out is not bad design. It is what people wanted. You came here to talk to your own group and not be overheard, and every trade on the street had its own corner.\n\nThe printers drank in one room and the reporters in another, and they did not mix much.\n\nThere has been a pub on this spot since at least 1538. It burned with everything else and was straight back up within a year, which tells you how badly the street needed it.\n\nThe cellars underneath are older than the pub and are thought to belong to a Carmelite monastery that stood here before the Reformation. You can go down.\n\nSawdust on the floor is not a theme. They just never stopped.",
+      "after_spoken": "This building went up in sixteen sixty-seven, the year after the fire, and the layout is deliberate.\n\nA warren of small rooms with no view out is not bad design. It is what people wanted. You came here to talk to your own group and not be overheard, and every trade on the street had its own corner.\n\nThe printers drank in one room and the reporters in another, and they did not mix much.\n\nThere has been a pub on this spot since at least fifteen thirty-eight. It burned with everything else and was straight back up within a year, which tells you how badly the street needed it.\n\nThe cellars underneath are older than the pub and are thought to belong to a Carmelite monastery that stood here before the Reformation. You can go down.\n\nSawdust on the floor is not a theme. They just never stopped.",
+      "audio": null
+    },
+    {
+      "id": "fleet-st-dunstan-clock",
+      "topic": "fleet",
+      "title": "The clock at St Dunstan-in-the-West",
+      "where": "186a Fleet Street, on the north side",
+      "lat": 51.5142,
+      "lon": -0.1092,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a clock sticking out over the pavement, and two men standing next to it. Have you found them?",
+        "confirm": "Found them"
+      },
+      "look": "Look up at the clock hanging out over the street.\n\nTwo figures stand either side of a bell. They are holding clubs.\n\nWait for the quarter hour if you have time. They turn, and they strike it.",
+      "look_spoken": null,
+      "after": "That clock was made in 1671, and it was the first public clock in London with a minute hand.\n\nThink about what that means. Before this, London told the time to the nearest quarter of an hour and considered that plenty.\n\nThe two giants are Gog and Magog, the old guardians of the city. They struck the hours here for two hundred years. Then in 1830 the church was rebuilt, the clock was sold to a marquess and carted off to a villa in Regent's Park. It only came back in 1935.\n\nOne more thing before you walk on. Look at the porch, to your left. The statue of Elizabeth the First standing there was carved in 1586, while she was alive and on the throne. It stood on Ludgate until the gate came down.\n\nIt is the oldest outdoor statue of an English monarch in London, and it is on a wall on Fleet Street, and almost nobody stops.",
+      "after_spoken": "That clock was made in sixteen seventy-one, and it was the first public clock in London with a minute hand.\n\nThink about what that means. Before this, London told the time to the nearest quarter of an hour and considered that plenty.\n\nThe two giants are Gog and Magog, the old guardians of the city. They struck the hours here for two hundred years. Then in eighteen thirty the church was rebuilt, the clock was sold to a marquess and carted off to a villa in Regent's Park. It only came back in nineteen thirty-five.\n\nOne more thing before you walk on. Look at the porch, to your left. The statue of Elizabeth the First standing there was carved in fifteen eighty-six, while she was alive and on the throne. It stood on Ludgate until the gate came down.\n\nIt is the oldest outdoor statue of an English monarch in London, and it is on a wall on Fleet Street, and almost nobody stops.",
+      "audio": null
+    },
+    {
+      "id": "fleet-inner-temple-gate",
+      "topic": "fleet",
+      "title": "The gatehouse at 17 Fleet Street",
+      "where": "17 Fleet Street, the timbered building over the archway to Inner Temple Lane",
+      "lat": 51.514,
+      "lon": -0.1106,
+      "gate": {
+        "radius_m": 60,
+        "prompt": "Get to the archway on the south side of Fleet Street, near Temple Bar."
+      },
+      "nudge": null,
+      "look": "Find the archway on the south side and step back to see what is above it.\n\nBlack timber framing, white plaster, small leaded windows, jettied out over the pavement.\n\nCompare it with everything either side.",
+      "look_spoken": null,
+      "after": "This is one of the very few buildings in central London that the Great Fire did not reach, and it went up in 1610.\n\nThe fire stopped a few hundred metres east of here. So while almost everything you have looked at today is a replacement, this is the real thing, and it is the front of a house that people were living in when Shakespeare was still writing.\n\nThe room on the first floor is called Prince Henry's Room. It has a Jacobean plaster ceiling with the Prince of Wales feathers in the middle, which is where the name comes from, though there is no evidence Henry ever used it.\n\nIt has been a tavern, a waxworks and a coffee house.\n\nWalk through the archway and you are in the Temple, which is a different world again. Lawyers have been there since the Knights Templar sold up in the fourteenth century.",
+      "after_spoken": "This is one of the very few buildings in central London that the Great Fire did not reach, and it went up in sixteen ten.\n\nThe fire stopped a few hundred metres east of here. So while almost everything you have looked at today is a replacement, this is the real thing, and it is the front of a house that people were living in when Shakespeare was still writing.\n\nThe room on the first floor is called Prince Henry's Room. It has a Jacobean plaster ceiling with the Prince of Wales feathers in the middle, which is where the name comes from, though there is no evidence Henry ever used it.\n\nIt has been a tavern, a waxworks and a coffee house.\n\nWalk through the archway and you are in the Temple, which is a different world again. Lawyers have been there since the Knights Templar sold up in the fourteenth century.",
+      "audio": null
+    },
+    {
+      "id": "marks-dragon-embankment",
+      "topic": "marks",
+      "title": "The dragons on the Embankment",
+      "where": "Victoria Embankment, by Temple Gardens",
+      "lat": 51.5108,
+      "lon": -0.1106,
+      "gate": null,
+      "nudge": null,
+      "look": "Find the silver dragon on the stone plinth by the road.\n\nLook at how big it is, and at the shield it is holding.\n\nThen remember it, because you will meet its smaller relatives all over London.",
+      "look_spoken": null,
+      "after": "This dragon marks the edge of the City of London. Cross the line beside it and you leave the square mile.\n\nThere are about a dozen of them, at every main road into the City, and they are not all the same size. These two by Temple Gardens are the originals and they are twice the size of the rest.\n\nThey started life somewhere else entirely. They were made in 1849 for the roof of the Coal Exchange on Lower Thames Street. When that building was demolished in the sixties somebody saved the dragons, stuck them on plinths here, and then had half size copies cast for all the other entrances.\n\nSo the boundary markers of the City of London are salvage from a demolished coal market, and the small ones are copies of the big ones rather than the other way round.\n\nThe shield is the City arms. The red cross is St George. The small sword in the corner is not a dagger.",
+      "after_spoken": "This dragon marks the edge of the City of London. Cross the line beside it and you leave the square mile.\n\nThere are about a dozen of them, at every main road into the City, and they are not all the same size. These two by Temple Gardens are the originals and they are twice the size of the rest.\n\nThey started life somewhere else entirely. They were made in eighteen forty-nine for the roof of the Coal Exchange on Lower Thames Street. When that building was demolished in the sixties somebody saved the dragons, stuck them on plinths here, and then had half size copies cast for all the other entrances.\n\nSo the boundary markers of the City of London are salvage from a demolished coal market, and the small ones are copies of the big ones rather than the other way round.\n\nThe shield is the City arms. The red cross is St George. The small sword in the corner is not a dagger.",
+      "audio": null
+    }
+  ],
   "walk": {
-    "n_stops": 0,
-    "total_walk_m": 0.0,
-    "total_minutes": 0.0,
-    "reversals": 0,
-    "legs": []
+    "n_stops": 18,
+    "total_walk_m": 6146.1,
+    "total_minutes": 76.8,
+    "reversals": 4,
+    "legs": [
+      {
+        "from": "marks-cannon-bollards",
+        "to": "roman-tower-hill-wall",
+        "straight_m": 129.3,
+        "walk_m": 168.1,
+        "minutes": 2.1,
+        "bearing": 121.1
+      },
+      {
+        "from": "roman-tower-hill-wall",
+        "to": "roman-leadenhall-forum",
+        "straight_m": 582.5,
+        "walk_m": 757.2,
+        "minutes": 9.5,
+        "bearing": 304.9
+      },
+      {
+        "from": "roman-leadenhall-forum",
+        "to": "marks-parish-boundary",
+        "straight_m": 235.0,
+        "walk_m": 305.5,
+        "minutes": 3.8,
+        "bearing": 283.7
+      },
+      {
+        "from": "marks-parish-boundary",
+        "to": "roman-london-stone",
+        "straight_m": 334.9,
+        "walk_m": 435.4,
+        "minutes": 5.4,
+        "bearing": 237.9
+      },
+      {
+        "from": "roman-london-stone",
+        "to": "roman-mithraeum",
+        "straight_m": 127.4,
+        "walk_m": 165.7,
+        "minutes": 2.1,
+        "bearing": 29.3
+      },
+      {
+        "from": "roman-mithraeum",
+        "to": "marks-police-box",
+        "straight_m": 389.8,
+        "walk_m": 506.7,
+        "minutes": 6.3,
+        "bearing": 340.3
+      },
+      {
+        "from": "marks-police-box",
+        "to": "roman-amphitheatre",
+        "straight_m": 39.3,
+        "walk_m": 51.1,
+        "minutes": 0.6,
+        "bearing": 211.9
+      },
+      {
+        "from": "roman-amphitheatre",
+        "to": "roman-noble-street",
+        "straight_m": 377.4,
+        "walk_m": 490.6,
+        "minutes": 6.1,
+        "bearing": 283.6
+      },
+      {
+        "from": "roman-noble-street",
+        "to": "marks-panyer-boy",
+        "straight_m": 189.5,
+        "walk_m": 246.4,
+        "minutes": 3.1,
+        "bearing": 184.2
+      },
+      {
+        "from": "marks-panyer-boy",
+        "to": "fleet-ludgate-end",
+        "straight_m": 442.8,
+        "walk_m": 575.7,
+        "minutes": 7.2,
+        "bearing": 259.9
+      },
+      {
+        "from": "fleet-ludgate-end",
+        "to": "marks-snuffers-ely-place",
+        "straight_m": 555.4,
+        "walk_m": 722.1,
+        "minutes": 9.0,
+        "bearing": 331.7
+      },
+      {
+        "from": "marks-snuffers-ely-place",
+        "to": "fleet-wynkyn-crypt",
+        "straight_m": 557.4,
+        "walk_m": 724.6,
+        "minutes": 9.1,
+        "bearing": 159.7
+      },
+      {
+        "from": "fleet-wynkyn-crypt",
+        "to": "fleet-daily-express",
+        "straight_m": 100.4,
+        "walk_m": 130.5,
+        "minutes": 1.6,
+        "bearing": 296.3
+      },
+      {
+        "from": "fleet-daily-express",
+        "to": "fleet-cheshire-cheese",
+        "straight_m": 109.0,
+        "walk_m": 141.7,
+        "minutes": 1.8,
+        "bearing": 287.8
+      },
+      {
+        "from": "fleet-cheshire-cheese",
+        "to": "fleet-st-dunstan-clock",
+        "straight_m": 102.5,
+        "walk_m": 133.2,
+        "minutes": 1.7,
+        "bearing": 251.0
+      },
+      {
+        "from": "fleet-st-dunstan-clock",
+        "to": "fleet-inner-temple-gate",
+        "straight_m": 99.4,
+        "walk_m": 129.2,
+        "minutes": 1.6,
+        "bearing": 257.1
+      },
+      {
+        "from": "fleet-inner-temple-gate",
+        "to": "marks-dragon-embankment",
+        "straight_m": 355.8,
+        "walk_m": 462.6,
+        "minutes": 5.8,
+        "bearing": 180.0
+      }
+    ]
   },
-  "gated_stops": 0,
+  "gated_stops": 4,
   "note": null
 }

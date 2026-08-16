@@ -1,7 +1,7 @@
 {
   "format": 1,
   "combo_key": "fire-rivers-roman",
-  "draft": true,
+  "draft": false,
   "topics": [
     {
       "id": "fire",
@@ -22,14 +22,458 @@
       "blurb_spoken": null
     }
   ],
-  "stops": [],
+  "stops": [
+    {
+      "id": "roman-tower-hill-wall",
+      "topic": "roman",
+      "title": "The wall at Tower Hill",
+      "where": "Tower Hill, in the sunken garden by the station",
+      "lat": 51.5098,
+      "lon": -0.0766,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one wants you standing at the foot of the wall."
+      },
+      "nudge": null,
+      "look": "Start at the bottom and work up.\n\nThe lower courses are small squared blocks with thin red tile running through them in level bands.\n\nAbout halfway up that stops. The stone above is bigger, rougher, less careful.\n\nFind the line where one becomes the other.",
+      "look_spoken": null,
+      "after": "You have just found the join between Roman and medieval London.\n\nEverything below that line was built around the year 200. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.\n\nThe red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.\n\nThe wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.",
+      "after_spoken": "You have just found the join between Roman and medieval London.\n\nEverything below that line was built around the year two hundred. Everything above it was piled on top a thousand years later, by people who found a good wall already standing and could not be bothered to start again.\n\nThe red bands are courses of tile, laid every few feet to keep the whole thing level while it went up. They are the signature of Roman work and you can use them to spot it anywhere in the city.\n\nThe wall ran for two miles and enclosed everything London was. It decided the shape of the streets for the next fifteen hundred years.",
+      "audio": null
+    },
+    {
+      "id": "rivers-aldgate-pump",
+      "topic": "rivers",
+      "title": "The Aldgate Pump",
+      "where": "Where Fenchurch Street meets Aldgate High Street, on the traffic island",
+      "lat": 51.5138,
+      "lon": -0.0772,
+      "gate": null,
+      "nudge": {
+        "prompt": "The spout of the pump is a small brass animal's head. Have you worked out what animal?",
+        "confirm": "Worked it out"
+      },
+      "look": "Go up to the stone pump on the island and look at the spout.\n\nIt is a brass head with ears and a long muzzle. Not a lion. Not a dog.\n\nPut your hand on the push button underneath. Nothing comes out now.",
+      "look_spoken": null,
+      "after": "It is a wolf, and the story is that it marks the last wolf shot in the City of London.\n\nThis pump was known as the Pump of Death. Its water tasted unusually good, slightly sweet, and people came from streets away to fill jugs from it.\n\nIn 1876 the City's medical officer worked out why. The spring feeding it ran underground from Hampstead, and on the way it passed through new cemeteries in north London. The sweetness was calcium leaching out of the bodies, and the water was carrying disease with it. Hundreds of deaths were traced back to this spout.\n\nIt was connected to the mains and the killing stopped.\n\nStand here and remember that this was a place people queued at because the water was nicer.",
+      "after_spoken": "It is a wolf, and the story is that it marks the last wolf shot in the City of London.\n\nThis pump was known as the Pump of Death. Its water tasted unusually good, slightly sweet, and people came from streets away to fill jugs from it.\n\nIn eighteen seventy-six the City's medical officer worked out why. The spring feeding it ran underground from Hampstead, and on the way it passed through new cemeteries in north London. The sweetness was calcium leaching out of the bodies, and the water was carrying disease with it. Hundreds of deaths were traced back to this spout.\n\nIt was connected to the mains and the killing stopped.\n\nStand here and remember that this was a place people queued at because the water was nicer.",
+      "audio": null
+    },
+    {
+      "id": "roman-leadenhall-forum",
+      "topic": "roman",
+      "title": "Leadenhall Market",
+      "where": "Under the painted iron roof, at the crossing in the middle",
+      "lat": 51.5128,
+      "lon": -0.0835,
+      "gate": null,
+      "nudge": null,
+      "look": "Stand where the two arcades cross and look up at the roof.\n\nThen look at the floor, and at the people going past with coffee.\n\nHold that, because you need to picture something much bigger.",
+      "look_spoken": null,
+      "after": "You are standing in the middle of the Roman forum.\n\nThis was the market square and the civic heart of Londinium. On the north side of it stood the basilica, which was the town hall and the law court in one, and it was over a hundred and fifty metres long. The largest building north of the Alps.\n\nA pier of it survives in the basement of a barber's shop on Gracechurch Street. You can ask to see it. The rest is under the market, under the road and under the offices.\n\nSo this has been the place Londoners come to buy things and argue about prices for nearly two thousand years without a break. The roof changed. The habit did not.\n\nMost of the people here are queuing to photograph the arcade because it was used in a Harry Potter film, and almost none of them know they are standing in a Roman town square.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "fire-monument",
+      "topic": "fire",
+      "title": "The Monument",
+      "where": "Monument Street, at the base of the column",
+      "lat": 51.5102,
+      "lon": -0.086,
+      "gate": {
+        "radius_m": 60,
+        "prompt": "Stand at the foot of the column for this one."
+      },
+      "nudge": null,
+      "look": "Look up the whole height of it.\n\nNow turn and look east, up the little street beside you, and keep going with your eyes for about the same distance again along the ground.\n\nThat is where you are heading in your head.",
+      "look_spoken": null,
+      "after": "The column is 61.5 metres tall, and the bakery where the fire started stood exactly 61.5 metres from this spot.\n\nSo the Monument is not just a memorial. Lay it flat and the golden urn on the top lands on the oven.\n\nIt gets better. Robert Hooke helped design it, and he built it as a scientific instrument. The shaft is hollow, there is a hinged lid in the urn and a laboratory in the basement, so it could be used as a fixed telescope pointing straight up, to try to measure whether the earth moves. The staircase steps are exactly six inches high, so they could be used for experiments on air pressure.\n\nThe experiments failed. Traffic on Fish Street made the column tremble too much to take a reading.\n\nThe fire burned four days, destroyed thirteen thousand houses and eighty-seven churches, and the official death toll was six.",
+      "after_spoken": "The column is sixty-one and a half metres tall, and the bakery where the fire started stood exactly sixty-one and a half metres from this spot.\n\nSo the Monument is not just a memorial. Lay it flat and the golden urn on the top lands on the oven.\n\nIt gets better. Robert Hooke helped design it, and he built it as a scientific instrument. The shaft is hollow, there is a hinged lid in the urn and a laboratory in the basement, so it could be used as a fixed telescope pointing straight up, to try to measure whether the earth moves. The staircase steps are exactly six inches high, so they could be used for experiments on air pressure.\n\nThe experiments failed. Traffic on Fish Street made the column tremble too much to take a reading.\n\nThe fire burned four days, destroyed thirteen thousand houses and eighty-seven churches, and the official death toll was six.",
+      "audio": null
+    },
+    {
+      "id": "fire-st-magnus",
+      "topic": "fire",
+      "title": "St Magnus the Martyr",
+      "where": "Lower Thames Street. Walk through the porch",
+      "lat": 51.509,
+      "lon": -0.0864,
+      "gate": null,
+      "nudge": {
+        "prompt": "Somewhere in the churchyard there is a piece of dark timber, propped up and looking like a bit of old fence. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Walk in under the tower, through the covered passage, and out the other side.\n\nYou have just used a public footpath.\n\nInside the church, find the enormous model of a bridge covered in houses.",
+      "look_spoken": null,
+      "after": "The passage you walked through was the pavement of London Bridge.\n\nFor six hundred years this was the only bridge over the Thames in London, and everybody crossing it walked under this tower. Wren cut the archway through on purpose so the road could pass beneath the church.\n\nThe bridge had houses on it, seven storeys high in places, leaning over the water. It had shops, a chapel, and heads on spikes at the southern end. The model inside shows all of it, and it took a man named David Aggett four years to build.\n\nThe dark timber in the churchyard is a piece of a Roman wharf, pulled out of the mud nearby.\n\nThe bridge came down in 1831. The church stayed exactly where it was, and the road moved.",
+      "after_spoken": "The passage you walked through was the pavement of London Bridge.\n\nFor six hundred years this was the only bridge over the Thames in London, and everybody crossing it walked under this tower. Wren cut the archway through on purpose so the road could pass beneath the church.\n\nThe bridge had houses on it, seven storeys high in places, leaning over the water. It had shops, a chapel, and heads on spikes at the southern end. The model inside shows all of it, and it took a man named David Aggett four years to build.\n\nThe dark timber in the churchyard is a piece of a Roman wharf, pulled out of the mud nearby.\n\nThe bridge came down in eighteen thirty-one. The church stayed exactly where it was, and the road moved.",
+      "audio": null
+    },
+    {
+      "id": "roman-london-stone",
+      "topic": "roman",
+      "title": "London Stone",
+      "where": "111 Cannon Street, set into the wall at pavement level",
+      "lat": 51.5117,
+      "lon": -0.0909,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a lump of limestone behind a grille in the wall, low down, easy to walk straight past. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Kneel down if you can. It is lower than you expect.\n\nA block of pale limestone, worn round at the top, behind a metal grille in the front of an office building.\n\nThat is it. That is the whole thing.",
+      "look_spoken": null,
+      "after": "Nobody knows what it is.\n\nIt has been written about since the year 1100, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.\n\nIn 1450 Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.\n\nWhat we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.\n\nThere is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.",
+      "after_spoken": "Nobody knows what it is.\n\nIt has been written about since the year eleven hundred, when it was already old and already just called London Stone. It has been a milestone, an altar, a place to swear oaths on and a place where debts were settled.\n\nIn fourteen fifty Jack Cade led a rebel army into the city, struck it with his sword and declared himself lord of London. Shakespeare put that in a play.\n\nWhat we can say is that it is Clipsham limestone, quarried in Rutland, and that it stood far bigger and taller in the middle of Cannon Street before it was cut down and moved to the side.\n\nThere is a story that London falls if the stone is lost. There is no evidence for it at all, which has never stopped anyone repeating it, including the people who kept moving the stone.",
+      "audio": null
+    },
+    {
+      "id": "roman-mithraeum",
+      "topic": "roman",
+      "title": "The Temple of Mithras",
+      "where": "London Mithraeum, Walbrook. Free, but book a slot",
+      "lat": 51.5127,
+      "lon": -0.09,
+      "gate": null,
+      "nudge": null,
+      "look": "Take the stairs down. Keep going. You end up seven metres below the street.\n\nWait in the dark for the lights and the sound to start.\n\nWhen you can see, look at the low stone walls and find the curved end.",
+      "look_spoken": null,
+      "after": "This temple has been moved twice, and you are standing in the second attempt to put it back.\n\nIt was found in 1954 in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.\n\nThen it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.\n\nIn 2017 it was dismantled again and brought back here, to the right spot and the right depth.\n\nMithras was a soldiers' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.",
+      "after_spoken": "This temple has been moved twice, and you are standing in the second attempt to put it back.\n\nIt was found in nineteen fifty-four in a bomb site. Thirty thousand people queued to see it, some of them for hours, which is not a thing that usually happens to archaeology.\n\nThen it was in the way of an office block, so it was taken apart and rebuilt a hundred metres away on a raised terrace, badly, with the wrong materials and the wrong orientation. It sat there being wrong for over fifty years.\n\nIn twenty seventeen it was dismantled again and brought back here, to the right spot and the right depth.\n\nMithras was a soldiers' god, worshipped in the dark by men only, and nobody wrote down what they believed. The cult vanished so completely that we are guessing from the pictures.",
+      "audio": null
+    },
+    {
+      "id": "rivers-walbrook-bank",
+      "topic": "rivers",
+      "title": "The Walbrook at Bank",
+      "where": "Where Walbrook meets Cannon Street, looking north towards Bank",
+      "lat": 51.5134,
+      "lon": -0.0888,
+      "gate": null,
+      "nudge": null,
+      "look": "Read the street sign. The street is called Walbrook.\n\nNow stand still and feel the ground. Walk a few steps north, then a few steps back.\n\nYou are going up and down. Slightly, but you are.",
+      "look_spoken": null,
+      "after": "The street is called Walbrook because it is a brook. It ran from Moorfields down to the Thames and it cut Roman London in half.\n\nEverything important sat on it. The forum was on the high ground to the east, the fort to the west, and the temple of Mithras was built right on the bank, because that is what you did with a temple.\n\nThe Romans were dropping things in it the whole time. Thousands of objects have come out of this valley, including a great many human skulls, which nobody has entirely explained.\n\nBy the fifteenth century it was covered over and built on, and the name is all that is left above ground.\n\nSo the dip you can feel with your feet is a valley cut by water that has not been visible here for six hundred years.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "fire-st-mary-le-bow",
+      "topic": "fire",
+      "title": "St Mary-le-Bow",
+      "where": "Cheapside, by the steeple",
+      "lat": 51.5136,
+      "lon": -0.094,
+      "gate": null,
+      "nudge": {
+        "prompt": "High on the steeple there is a weathervane, and it is not a cockerel. Have you worked out what it is?",
+        "confirm": "Worked it out"
+      },
+      "look": "Get back across the street so you can see the top.\n\nThe steeple goes up in stages, columns then a little round temple then a spike.\n\nAt the very top there is a weathervane. Look at its shape.",
+      "look_spoken": null,
+      "after": "It is a dragon, nearly three metres long, and it has been up there since 1679.\n\nThis is the church of Bow Bells. To be a Cockney you have to be born within earshot of them, and that definition is why the phrase means anything at all.\n\nThe sound carries about six miles at night, which in Wren's day covered most of London and today covers a few streets, because the city is too loud and too built up.\n\nThe bells you would hear now are not the ones that made the rule. The originals were destroyed in 1941 when the church was gutted. When it was rebuilt the new bells were cast partly from the broken metal of the old ones, so they are the same bronze, recast.\n\nThe crypt underneath is Norman, from about 1080, and survived both the fire and the bombing.",
+      "after_spoken": "It is a dragon, nearly three metres long, and it has been up there since sixteen seventy-nine.\n\nThis is the church of Bow Bells. To be a Cockney you have to be born within earshot of them, and that definition is why the phrase means anything at all.\n\nThe sound carries about six miles at night, which in Wren's day covered most of London and today covers a few streets, because the city is too loud and too built up.\n\nThe bells you would hear now are not the ones that made the rule. The originals were destroyed in nineteen forty-one when the church was gutted. When it was rebuilt the new bells were cast partly from the broken metal of the old ones, so they are the same bronze, recast.\n\nThe crypt underneath is Norman, from about ten eighty, and survived both the fire and the bombing.",
+      "audio": null
+    },
+    {
+      "id": "roman-amphitheatre",
+      "topic": "roman",
+      "title": "The circle in Guildhall Yard",
+      "where": "Guildhall Yard. The gallery below is free",
+      "lat": 51.5157,
+      "lon": -0.0922,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a dark curved line laid into the paving of the yard. Have you found where it runs?",
+        "confirm": "Found it"
+      },
+      "look": "Look down at the stones under your feet.\n\nA band of dark slate curves across the yard. Follow it with your eyes and you will see it bends round into a great ellipse, far wider than the yard itself.\n\nPeople are walking across it right now without seeing it.",
+      "look_spoken": null,
+      "after": "That line marks the wall of the Roman amphitheatre, which is directly beneath you.\n\nIt held about seven thousand people, roughly a quarter of the population, which tells you how central it was.\n\nAnd it was completely lost. Nobody knew London had an amphitheatre at all. In 1988 they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.\n\nGo down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.\n\nOne more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.",
+      "after_spoken": "That line marks the wall of the Roman amphitheatre, which is directly beneath you.\n\nIt held about seven thousand people, roughly a quarter of the population, which tells you how central it was.\n\nAnd it was completely lost. Nobody knew London had an amphitheatre at all. In nineteen eighty-eight they dug foundations for a new art gallery here and found the east entrance, and the plans had to be redrawn around it.\n\nGo down into the gallery basement and you can stand in that entrance, on the original stone, in the gateway the fighters came through. It is free.\n\nOne more thing worth knowing. Guildhall was built on this spot in the fifteenth century, and medieval Londoners had no idea why the ground here was already flat and open. They just used it.",
+      "audio": null
+    },
+    {
+      "id": "roman-noble-street",
+      "topic": "roman",
+      "title": "The fort corner on Noble Street",
+      "where": "Noble Street, below the pavement on the west side",
+      "lat": 51.5165,
+      "lon": -0.0975,
+      "gate": null,
+      "nudge": null,
+      "look": "Look over the railing at the sunken ground beside the street.\n\nThere is a long stretch of stone wall down there, and at one end it turns a corner and thickens into a rounded stub.\n\nNo ticket, no glass, no guard. Just a wall in a hole next to the pavement.",
+      "look_spoken": null,
+      "after": "That corner is the south west turret of the Roman fort, built about the year 120, and it is one of the best pieces of Roman London you can walk up to for nothing.\n\nThe fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.\n\nThe fort held the garrison and the governor's guard, and it is why the street plan up here still has a suspiciously square corner in it.\n\nThis was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.\n\nStand here for a minute and count how many people stop. It is usually none.",
+      "after_spoken": "That corner is the south west turret of the Roman fort, built about the year one twenty, and it is one of the best pieces of Roman London you can walk up to for nothing.\n\nThe fort came first and the city wall came later. When the wall was built the Romans did not go round the fort, they ran the wall into two of its sides and thickened them. You can see the thickening. The wall changes width where the two jobs meet.\n\nThe fort held the garrison and the governor's guard, and it is why the street plan up here still has a suspiciously square corner in it.\n\nThis was found because the Blitz flattened the buildings on top. Half of what we know about Roman London we owe to bombing, which is an uncomfortable thing to be grateful for.\n\nStand here for a minute and count how many people stop. It is usually none.",
+      "audio": null
+    },
+    {
+      "id": "fire-st-pauls",
+      "topic": "fire",
+      "title": "St Paul's from the churchyard",
+      "where": "St Paul's Churchyard, on the north side. Stay outside",
+      "lat": 51.5138,
+      "lon": -0.0985,
+      "gate": null,
+      "nudge": null,
+      "look": "You do not need to go in. Stand back and look at the dome.\n\nNow look at the row of columns running round the outside, above the main walls, screening the upper part of the building.\n\nAsk yourself what is behind that screen.",
+      "look_spoken": null,
+      "after": "Nothing. There is nothing behind it.\n\nThe upper storey is a false wall, a screen with no building attached. Wren put it there because the aisles behind are low, and a cathedral that showed its real profile from the street would have looked squat and mean.\n\nThe screen also does real work. It weighs down the buttresses that hold the roof, hiding the structure that would otherwise have to show. It is a stage set and a counterweight at once.\n\nThe dome is three domes. There is an inner one you see from inside, an outer one you see from Fleet Street, and a brick cone hidden between them doing the actual carrying.\n\nWren was 43 when he started and 79 when it was finished. He was carried up in a basket to inspect the work when he was too old to climb.",
+      "after_spoken": "Nothing. There is nothing behind it.\n\nThe upper storey is a false wall, a screen with no building attached. Wren put it there because the aisles behind are low, and a cathedral that showed its real profile from the street would have looked squat and mean.\n\nThe screen also does real work. It weighs down the buttresses that hold the roof, hiding the structure that would otherwise have to show. It is a stage set and a counterweight at once.\n\nThe dome is three domes. There is an inner one you see from inside, an outer one you see from Fleet Street, and a brick cone hidden between them doing the actual carrying.\n\nWren was forty-three when he started and seventy-nine when it was finished. He was carried up in a basket to inspect the work when he was too old to climb.",
+      "audio": null
+    },
+    {
+      "id": "fire-golden-boy",
+      "topic": "fire",
+      "title": "The Golden Boy of Pye Corner",
+      "where": "The corner of Cock Lane and Giltspur Street, up on the wall",
+      "lat": 51.5178,
+      "lon": -0.1016,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a small gilded figure of a fat boy set into the wall above head height. Have you found him?",
+        "confirm": "Found him"
+      },
+      "look": "Look up at the corner of the building, above the first floor.\n\nA small gold statue of a naked boy, arms folded, and he is noticeably plump.\n\nRead the words under him if you can get the angle.",
+      "look_spoken": null,
+      "after": "This is where the Great Fire stopped.\n\nIt started in Pudding Lane and it ended at Pye Corner, and seventeenth century London decided that could not possibly be a coincidence. The inscription says the fire was punishment for the sin of gluttony, and the boy is fat to make the point.\n\nHe used to have a plaque underneath saying he was made prodigiously fat as a warning.\n\nSo one of the two great markers of the fire is a serious column built by a scientist, and the other is a chubby gold child blaming the whole thing on overeating. Both are official. Both are still here.\n\nThe fire did not stop here because of gluttony. It stopped because the wind dropped and because the Duke of York finally got permission to pull down houses to make a firebreak.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "rivers-holborn-viaduct",
+      "topic": "rivers",
+      "title": "Holborn Viaduct",
+      "where": "On the bridge, above Farringdon Street",
+      "lat": 51.5176,
+      "lon": -0.1046,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one only opens when you are standing on the bridge itself."
+      },
+      "nudge": null,
+      "look": "You are standing on a bridge.\n\nGo to the parapet and look over. That is Farringdon Street below you, a long way down.\n\nNow lift your eyes and follow the low ground. It runs away north, and south towards Ludgate. You are looking along a valley in the middle of London.",
+      "look_spoken": null,
+      "after": "That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.\n\nIt was London's second river. Boats came up it as far as Holborn. By the 1700s it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.\n\nThe bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.\n\nOnce you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.",
+      "after_spoken": "That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.\n\nIt was London's second river. Boats came up it as far as Holborn. By the seventeen hundreds it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.\n\nThe bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.\n\nOnce you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.",
+      "audio": null
+    },
+    {
+      "id": "rivers-charterhouse-grate",
+      "topic": "rivers",
+      "title": "The grate on Charterhouse Street",
+      "where": "Charterhouse Street, right where it meets Farringdon Road",
+      "lat": 51.5203,
+      "lon": -0.1053,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one you have to be standing on. Get to where Charterhouse Street meets Farringdon Road."
+      },
+      "nudge": {
+        "prompt": "There is a metal grid set into the road surface here. Have you found one you can safely get near?",
+        "confirm": "Found it"
+      },
+      "look": "Look for a metal grid set into the road where the two streets meet.\n\nMind the traffic and do not stand in the road. Get as close as is safe.\n\nNow stop looking and listen instead. Wait for a gap in the cars.",
+      "look_spoken": null,
+      "after": "Water. Running water, under the road, and after rain it is loud.\n\nThat is the Fleet. It is about twelve feet below you and it has never stopped.\n\nYou are standing in the bottom of the valley. Farringdon Road runs along the riverbed, which is why it is so flat and straight while every street off it climbs. Look either side and you can see the ground rising. Smithfield is up on the east bank. Clerkenwell is up on the west.\n\nThe river rises on Hampstead Heath, comes down through Kentish Town and Camden, past King's Cross, along this road, and out into the Thames at Blackfriars. All of it underground from here.\n\nA few million people live on top of it and almost none of them have ever heard it. You just did.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "rivers-ludgate-dip",
+      "topic": "rivers",
+      "title": "The dip at Ludgate Circus",
+      "where": "Ludgate Circus, standing at the crossing in the middle",
+      "lat": 51.514,
+      "lon": -0.1046,
+      "gate": null,
+      "nudge": null,
+      "look": "Stand at the crossing and turn slowly all the way round.\n\nLook along each of the four roads in turn and watch what the ground does.\n\nEvery one of them goes up. You are at the bottom of something.",
+      "look_spoken": null,
+      "after": "You are standing in the river.\n\nLudgate Hill climbs east to St Paul's. Fleet Street climbs west. New Bridge Street runs south to the Thames and Farringdon Street runs north, and both of those are flat, because both of those are the riverbed.\n\nThe Fleet crossed here, and there was a bridge on this spot from the Roman period onwards. Fleet Bridge. Everybody coming into the city from the west had to use it, which is why the road bends the way it does.\n\nSo the shape of this junction, one of the busiest in London, was decided by a stream that has not been visible for two hundred and fifty years.\n\nWhen the railway ran overhead here there was a bridge above your head as well. That came down in 1990 and people complained, because Londoners will eventually miss anything.",
+      "after_spoken": "You are standing in the river.\n\nLudgate Hill climbs east to St Paul's. Fleet Street climbs west. New Bridge Street runs south to the Thames and Farringdon Street runs north, and both of those are flat, because both of those are the riverbed.\n\nThe Fleet crossed here, and there was a bridge on this spot from the Roman period onwards. Fleet Bridge. Everybody coming into the city from the west had to use it, which is why the road bends the way it does.\n\nSo the shape of this junction, one of the busiest in London, was decided by a stream that has not been visible for two hundred and fifty years.\n\nWhen the railway ran overhead here there was a bridge above your head as well. That came down in nineteen ninety and people complained, because Londoners will eventually miss anything.",
+      "audio": null
+    },
+    {
+      "id": "rivers-fleet-mouth",
+      "topic": "rivers",
+      "title": "Where the Fleet meets the Thames",
+      "where": "Blackfriars Bridge, on the upstream side, looking down at the water",
+      "lat": 51.5106,
+      "lon": -0.1035,
+      "gate": null,
+      "nudge": {
+        "prompt": "Under the bridge on the north bank there is a dark arch at water level, half hidden. Have you found it?",
+        "confirm": "Found it"
+      },
+      "look": "Go onto the bridge and look over the upstream side, back at the north bank.\n\nAt the bottom of the embankment wall, close to the water, there is an arched opening.\n\nAt low tide you can see it properly. At high tide it is under.",
+      "look_spoken": null,
+      "after": "That is the mouth of the River Fleet, still running out into the Thames.\n\nThis was once a proper river harbour, wide enough for seagoing ships to tie up. There was a dock here. There were wharves. Ships brought coal up it and took wool away.\n\nThen it silted, then it filled with waste, and by the sixteen hundreds it was notorious. Jonathan Swift wrote a poem about what came down it in a storm, and the list includes drowned puppies, dead cats and the guts of a slaughterhouse.\n\nIt was arched over in stages, and the last open stretch went in 1769.\n\nIt is a sewer now, and after heavy rain it still discharges here. The river never stopped. It just got a lid.",
+      "after_spoken": "That is the mouth of the River Fleet, still running out into the Thames.\n\nThis was once a proper river harbour, wide enough for seagoing ships to tie up. There was a dock here. There were wharves. Ships brought coal up it and took wool away.\n\nThen it silted, then it filled with waste, and by the sixteen hundreds it was notorious. Jonathan Swift wrote a poem about what came down it in a storm, and the list includes drowned puppies, dead cats and the guts of a slaughterhouse.\n\nIt was arched over in stages, and the last open stretch went in seventeen sixty-nine.\n\nIt is a sewer now, and after heavy rain it still discharges here. The river never stopped. It just got a lid.",
+      "audio": null
+    },
+    {
+      "id": "fire-st-brides-spire",
+      "topic": "fire",
+      "title": "St Bride's, Fleet Street",
+      "where": "Fleet Street, at the top of Bride Lane",
+      "lat": 51.5139,
+      "lon": -0.1053,
+      "gate": null,
+      "nudge": null,
+      "look": "Step back until you can see the whole spire.\n\nCount the tiers. Each one is smaller than the one below it. Four of them, and then a point.\n\nNow think of a wedding cake.",
+      "look_spoken": null,
+      "after": "The story goes that a baker on Ludgate Hill called William Rich could see this spire from his shop, and built a cake in its shape for his own wedding.\n\nNobody has ever proved it. But the shape is the shape, and every tiered wedding cake since is a copy of a church steeple you have walked past a hundred times without looking up.\n\nWren gave every one of his churches a different spire, and he did it on purpose. From street level you hardly saw the building at all. What you saw was the spire, over the rooftops, from three streets away. So that is where he put the work.\n\nThis one is the tallest he ever built.",
+      "after_spoken": null,
+      "audio": null
+    }
+  ],
   "walk": {
-    "n_stops": 0,
-    "total_walk_m": 0.0,
-    "total_minutes": 0.0,
-    "reversals": 0,
-    "legs": []
+    "n_stops": 18,
+    "total_walk_m": 7587.3,
+    "total_minutes": 94.8,
+    "reversals": 3,
+    "legs": [
+      {
+        "from": "roman-tower-hill-wall",
+        "to": "rivers-aldgate-pump",
+        "straight_m": 446.7,
+        "walk_m": 580.7,
+        "minutes": 7.3,
+        "bearing": 354.7
+      },
+      {
+        "from": "rivers-aldgate-pump",
+        "to": "roman-leadenhall-forum",
+        "straight_m": 449.9,
+        "walk_m": 584.9,
+        "minutes": 7.3,
+        "bearing": 255.7
+      },
+      {
+        "from": "roman-leadenhall-forum",
+        "to": "fire-monument",
+        "straight_m": 336.9,
+        "walk_m": 438.0,
+        "minutes": 5.5,
+        "bearing": 210.9
+      },
+      {
+        "from": "fire-monument",
+        "to": "fire-st-magnus",
+        "straight_m": 136.3,
+        "walk_m": 177.2,
+        "minutes": 2.2,
+        "bearing": 191.7
+      },
+      {
+        "from": "fire-st-magnus",
+        "to": "roman-london-stone",
+        "straight_m": 432.6,
+        "walk_m": 562.3,
+        "minutes": 7.0,
+        "bearing": 314.0
+      },
+      {
+        "from": "roman-london-stone",
+        "to": "roman-mithraeum",
+        "straight_m": 127.4,
+        "walk_m": 165.7,
+        "minutes": 2.1,
+        "bearing": 29.3
+      },
+      {
+        "from": "roman-mithraeum",
+        "to": "rivers-walbrook-bank",
+        "straight_m": 113.8,
+        "walk_m": 148.0,
+        "minutes": 1.8,
+        "bearing": 46.9
+      },
+      {
+        "from": "rivers-walbrook-bank",
+        "to": "fire-st-mary-le-bow",
+        "straight_m": 360.5,
+        "walk_m": 468.7,
+        "minutes": 5.9,
+        "bearing": 273.5
+      },
+      {
+        "from": "fire-st-mary-le-bow",
+        "to": "roman-amphitheatre",
+        "straight_m": 264.7,
+        "walk_m": 344.0,
+        "minutes": 4.3,
+        "bearing": 28.1
+      },
+      {
+        "from": "roman-amphitheatre",
+        "to": "roman-noble-street",
+        "straight_m": 377.4,
+        "walk_m": 490.6,
+        "minutes": 6.1,
+        "bearing": 283.6
+      },
+      {
+        "from": "roman-noble-street",
+        "to": "fire-st-pauls",
+        "straight_m": 308.1,
+        "walk_m": 400.5,
+        "minutes": 5.0,
+        "bearing": 193.0
+      },
+      {
+        "from": "fire-st-pauls",
+        "to": "fire-golden-boy",
+        "straight_m": 493.8,
+        "walk_m": 641.9,
+        "minutes": 8.0,
+        "bearing": 334.3
+      },
+      {
+        "from": "fire-golden-boy",
+        "to": "rivers-holborn-viaduct",
+        "straight_m": 208.8,
+        "walk_m": 271.4,
+        "minutes": 3.4,
+        "bearing": 263.9
+      },
+      {
+        "from": "rivers-holborn-viaduct",
+        "to": "rivers-charterhouse-grate",
+        "straight_m": 304.1,
+        "walk_m": 395.3,
+        "minutes": 4.9,
+        "bearing": 350.8
+      },
+      {
+        "from": "rivers-charterhouse-grate",
+        "to": "rivers-ludgate-dip",
+        "straight_m": 702.2,
+        "walk_m": 912.9,
+        "minutes": 11.4,
+        "bearing": 176.0
+      },
+      {
+        "from": "rivers-ludgate-dip",
+        "to": "rivers-fleet-mouth",
+        "straight_m": 385.7,
+        "walk_m": 501.3,
+        "minutes": 6.3,
+        "bearing": 168.6
+      },
+      {
+        "from": "rivers-fleet-mouth",
+        "to": "fire-st-brides-spire",
+        "straight_m": 387.5,
+        "walk_m": 503.8,
+        "minutes": 6.3,
+        "bearing": 341.3
+      }
+    ]
   },
-  "gated_stops": 0,
+  "gated_stops": 4,
   "note": null
 }

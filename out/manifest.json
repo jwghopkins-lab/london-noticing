@@ -9,11 +9,11 @@
         "marks"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 6933.3,
+      "total_minutes": 86.7,
+      "gated_stops": 4,
+      "draft": false,
       "problems": []
     },
     {
@@ -24,11 +24,11 @@
         "rivers"
       ],
       "status": "ok",
-      "n_stops": 3,
-      "total_walk_m": 995.9,
-      "total_minutes": 12.4,
-      "gated_stops": 1,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 6842.0,
+      "total_minutes": 85.5,
+      "gated_stops": 4,
+      "draft": false,
       "problems": []
     },
     {
@@ -39,11 +39,11 @@
         "roman"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 5980.7,
+      "total_minutes": 74.8,
+      "gated_stops": 3,
+      "draft": false,
       "problems": []
     },
     {
@@ -54,11 +54,11 @@
         "rivers"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 8389.3,
+      "total_minutes": 104.9,
+      "gated_stops": 5,
+      "draft": false,
       "problems": []
     },
     {
@@ -69,11 +69,11 @@
         "roman"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 6882.1,
+      "total_minutes": 86.0,
+      "gated_stops": 4,
+      "draft": false,
       "problems": []
     },
     {
@@ -84,11 +84,11 @@
         "roman"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 7587.3,
+      "total_minutes": 94.8,
+      "gated_stops": 4,
+      "draft": false,
       "problems": []
     },
     {
@@ -99,11 +99,11 @@
         "rivers"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 7202.0,
+      "total_minutes": 90.0,
+      "gated_stops": 5,
+      "draft": false,
       "problems": []
     },
     {
@@ -114,11 +114,11 @@
         "roman"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 6146.1,
+      "total_minutes": 76.8,
+      "gated_stops": 4,
+      "draft": false,
       "problems": []
     },
     {
@@ -129,11 +129,11 @@
         "roman"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 7120.9,
+      "total_minutes": 89.0,
+      "gated_stops": 4,
+      "draft": false,
       "problems": []
     },
     {
@@ -144,11 +144,11 @@
         "roman"
       ],
       "status": "ok",
-      "n_stops": 0,
-      "total_walk_m": 0.0,
-      "total_minutes": 0.0,
-      "gated_stops": 0,
-      "draft": true,
+      "n_stops": 18,
+      "total_walk_m": 7098.7,
+      "total_minutes": 88.7,
+      "gated_stops": 5,
+      "draft": false,
       "problems": []
     }
   ]
