@@ -1,0 +1,54 @@
+name: Build and publish the walk
+
+on:
+  push:
+    branches: ["claude/tour-directions-poc-ngqx8h", "main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The content contracts run before anything is built. A route that fails
+      # them should never reach a phone.
+      - name: Check the content
+        run: python3 pipeline/validate_content.py
+
+      - name: Bake the route artefacts
+        run: python3 pipeline/bake.py --include-drafts
+
+      # A generator should not be its own judge, so the artefacts on disk are
+      # re-checked by a separate program before they are published.
+      - name: Re-check the artefacts independently
+        run: python3 pipeline/verify_bakes.py
+
+      - name: Unit tests
+        run: python3 -m unittest discover -s pipeline -p 'test_*.py'
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

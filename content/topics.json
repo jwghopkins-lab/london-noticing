@@ -1,0 +1,35 @@
+{
+  "_comment": "The five topics. A walker picks three. Five choose three is ten, so the ten routes map one-to-one onto the possible picks. Ids are stable and are used to build combo keys, so never rename one.",
+  "topics": [
+    {
+      "id": "roman",
+      "name": "Roman London",
+      "blurb": "Londinium is still here. Most of it is below you, some of it is at eye level.",
+      "blurb_spoken": null
+    },
+    {
+      "id": "fire",
+      "name": "The Great Fire",
+      "blurb": "Four days in 1666, and the fifty years of building that followed.",
+      "blurb_spoken": "Four days in sixteen sixty-six, and the fifty years of building that followed."
+    },
+    {
+      "id": "rivers",
+      "name": "Lost Rivers",
+      "blurb": "The water is still running. It is just under the road.",
+      "blurb_spoken": null
+    },
+    {
+      "id": "marks",
+      "name": "Small Marks",
+      "blurb": "Boundary stones, ghost signs and iron. Nothing here is famous.",
+      "blurb_spoken": null
+    },
+    {
+      "id": "fleet",
+      "name": "Fleet Street",
+      "blurb": "Five hundred years of printing on one street, and none of it left.",
+      "blurb_spoken": null
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "_comment": "The stop library. One entry per place. Stop ids are STABLE FOREVER: audio files get attached to them later. A stop belongs to exactly one topic. `look` is what to do when you arrive and is revealed word by word. `after` is the payoff and is revealed when the walker taps the reveal button. `gate` makes the stop location-gated. `nudge` turns the reveal button into a soft question. Every *_spoken field is the read-aloud form and is null when the written form already reads correctly.",
+
+  "stops": [
+    {
+      "id": "st-brides-spire",
+      "topic": "fire",
+      "title": "St Bride's, Fleet Street",
+      "where": "Fleet Street, at the top of Bride Lane",
+      "lat": 51.5139,
+      "lon": -0.1053,
+      "gate": null,
+      "nudge": null,
+      "look": "Step back until you can see the whole spire.\n\nCount the tiers. Each one is smaller than the one below it. Four of them, and then a point.\n\nNow think of a wedding cake.",
+      "look_spoken": null,
+      "after": "The story goes that a baker on Ludgate Hill called William Rich could see this spire from his shop, and built a cake in its shape for his own wedding.\n\nNobody has ever proved it. But the shape is the shape, and every tiered wedding cake since is a copy of a church steeple you have walked past a hundred times without looking up.\n\nWren gave every one of his churches a different spire, and he did it on purpose. From street level you hardly saw the building at all. What you saw was the spire, over the rooftops, from three streets away. So that is where he put the work.\n\nThis one is the tallest he ever built.",
+      "after_spoken": null
+    },
+
+    {
+      "id": "st-dunstan-west-clock",
+      "topic": "fleet",
+      "title": "The clock at St Dunstan-in-the-West",
+      "where": "186a Fleet Street, on the north side",
+      "lat": 51.5142,
+      "lon": -0.1092,
+      "gate": null,
+      "nudge": {
+        "prompt": "There is a clock sticking out over the pavement, and two men standing next to it. Have you found them?",
+        "confirm": "Found them"
+      },
+      "look": "Look up at the clock hanging out over the street.\n\nTwo figures stand either side of a bell. They are holding clubs.\n\nWait for the quarter hour if you have time. They turn, and they strike it.",
+      "look_spoken": null,
+      "after": "That clock was made in 1671, and it was the first public clock in London with a minute hand.\n\nThink about what that means. Before this, London told the time to the nearest quarter of an hour and considered that plenty.\n\nThe two giants are Gog and Magog, the old guardians of the city. They struck the hours here for two hundred years. Then in 1830 the church was rebuilt, the clock was sold to a marquess and carted off to a villa in Regent's Park. It only came back in 1935.\n\nOne more thing before you walk on. Look at the porch, to your left. The statue of Elizabeth the First standing there was carved in 1586, while she was alive and on the throne. It stood on Ludgate until the gate came down.\n\nIt is the oldest outdoor statue of an English monarch in London, and it is on a wall on Fleet Street, and almost nobody stops.",
+      "after_spoken": "That clock was made in sixteen seventy-one, and it was the first public clock in London with a minute hand.\n\nThink about what that means. Before this, London told the time to the nearest quarter of an hour and considered that plenty.\n\nThe two giants are Gog and Magog, the old guardians of the city. They struck the hours here for two hundred years. Then in eighteen thirty the church was rebuilt, the clock was sold to a marquess and carted off to a villa in Regent's Park. It only came back in nineteen thirty-five.\n\nOne more thing before you walk on. Look at the porch, to your left. The statue of Elizabeth the First standing there was carved in fifteen eighty-six, while she was alive and on the throne. It stood on Ludgate until the gate came down.\n\nIt is the oldest outdoor statue of an English monarch in London, and it is on a wall on Fleet Street, and almost nobody stops."
+    },
+
+    {
+      "id": "holborn-viaduct-fleet",
+      "topic": "rivers",
+      "title": "Holborn Viaduct",
+      "where": "On the bridge, above Farringdon Street",
+      "lat": 51.5176,
+      "lon": -0.1046,
+      "gate": {
+        "radius_m": 70,
+        "prompt": "This one only opens when you are standing on the bridge itself."
+      },
+      "nudge": null,
+      "look": "You are standing on a bridge.\n\nGo to the parapet and look over. That is Farringdon Street below you, a long way down.\n\nNow lift your eyes and follow the low ground. It runs away north, and south towards Ludgate. You are looking along a valley in the middle of London.",
+      "look_spoken": null,
+      "after": "That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.\n\nIt was London's second river. Boats came up it as far as Holborn. By the 1700s it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.\n\nThe bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.\n\nOnce you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see.",
+      "after_spoken": "That valley is a river. The Fleet is still running down it, in a pipe, under the road you are looking at.\n\nIt was London's second river. Boats came up it as far as Holborn. By the seventeen hundreds it was an open sewer and people were dumping dead dogs in it, so the city covered it over, a stretch at a time. Farringdon Street is the lid.\n\nThe bridge is here because of the river too. The valley was so steep that carts had to be unloaded at the bottom and hauled up empty. It took six years and more than two million pounds to solve a problem the water had made.\n\nOnce you know the Fleet is there, you cannot stop seeing it. The dip at Ludgate Circus. The way Fleet Street runs downhill to it. Every road here bends around a river nobody can see."
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+#!/usr/bin/env python3
+"""Unit tests for the parts that fail quietly.
+
+The smoke test drives the page and proves the walk works. These tests cover the
+two things a browser cannot show you: whether the geometry is right, and
+whether the independent checker would actually catch a bad artefact. A checker
+that never fails is not a checker.
+
+    python3 -m unittest discover -s pipeline -p 'test_*.py' -v
+"""
+import copy
+import json
+import sys
+import unittest
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import combos                                      # noqa: E402
+import geo                                         # noqa: E402
+import verify_bakes                                # noqa: E402
+
+BASE = Path(__file__).resolve().parent.parent
+CONTENT = BASE / "content"
+
+
+def content():
+    return (json.loads((CONTENT / "topics.json").read_text(encoding="utf-8")),
+            json.loads((CONTENT / "stops.json").read_text(encoding="utf-8")),
+            json.loads((CONTENT / "routes.json").read_text(encoding="utf-8")))
+
+
+class TestCombos(unittest.TestCase):
+    IDS = ["roman", "fire", "rivers", "marks", "fleet"]
+
+    def test_key_is_order_independent(self):
+        self.assertEqual(combos.combo_key(["fire", "rivers", "fleet"]),
+                         combos.combo_key(["rivers", "fleet", "fire"]))
+
+    def test_five_choose_three_is_ten(self):
+        rows = combos.all_combos(self.IDS, 3)
+        self.assertEqual(len(rows), 10)
+        self.assertEqual(len({k for k, _ in rows}), 10)
+
+    def test_every_pick_lands_on_a_route(self):
+        """The point of the whole design: no algorithm, just a lookup."""
+        keys = {k for k, _ in combos.all_combos(self.IDS, 3)}
+        _, _, routes = content()
+        self.assertEqual(keys, set(routes["routes"]))
+
+
+class TestGeo(unittest.TestCase):
+    # St Paul's to the Monument, a distance easy to check against a map.
+    STPAULS = (51.5138, -0.0984)
+    MONUMENT = (51.5102, -0.0860)
+
+    def test_haversine_is_about_right(self):
+        d = geo.haversine_m(*self.STPAULS, *self.MONUMENT)
+        self.assertTrue(900 < d < 1100, f"got {d:.0f} m")
+
+    def test_zero_distance(self):
+        self.assertAlmostEqual(geo.haversine_m(51.5, -0.1, 51.5, -0.1), 0.0, places=6)
+
+    def test_gate_subtracts_accuracy(self):
+        # 90 m away, 60 m of claimed accuracy, 50 m radius: 90 - 60 <= 50, so in.
+        self.assertTrue(geo.gate_passes(90, 60, 50))
+        # Same distance with a confident phone stays out.
+        self.assertFalse(geo.gate_passes(90, 5, 50))
+
+    def test_gate_accuracy_is_capped(self):
+        """A phone claiming 5 km of error must not open a gate from Croydon."""
+        self.assertFalse(geo.gate_passes(400, 5000, 60))
+        self.assertTrue(geo.gate_passes(200, 5000, 60))     # 200 - 150 <= 60
+
+    def test_gate_opens_when_standing_there(self):
+        self.assertTrue(geo.gate_passes(10, 20, 70))
+
+    def test_long_leg_is_flagged(self):
+        points = [("a", 51.5138, -0.0984), ("b", 51.5300, -0.0984)]   # ~1.8 km
+        result = geo.check(points)
+        self.assertTrue(any("minutes" in p for p in result["problems"]),
+                        result["problems"])
+
+    def test_short_walk_is_not_flagged(self):
+        points = [("a", 51.5138, -0.0984), ("b", 51.5150, -0.0950)]   # ~280 m
+        self.assertEqual(geo.check(points)["problems"], [])
+
+    def test_doubling_back_is_flagged(self):
+        # Out east, then straight back west past the start.
+        points = [("a", 51.515, -0.100), ("b", 51.515, -0.095), ("c", 51.515, -0.101)]
+        result = geo.check(points)
+        self.assertEqual(result["reversals"], 1)
+
+    def test_turning_a_corner_is_not_a_reversal(self):
+        """An L-shaped turn round a block is how walking works."""
+        points = [("a", 51.515, -0.100), ("b", 51.515, -0.096), ("c", 51.518, -0.096)]
+        self.assertEqual(geo.check(points)["reversals"], 0)
+
+    def test_two_stops_at_the_same_place(self):
+        points = [("a", 51.515, -0.100), ("b", 51.51501, -0.100)]
+        self.assertTrue(any("same place" in p for p in geo.check(points)["problems"]))
+
+    def test_a_stop_twice_in_one_route(self):
+        points = [("a", 51.515, -0.100), ("b", 51.516, -0.097), ("a", 51.515, -0.100)]
+        self.assertTrue(any("more than once" in p for p in geo.check(points)["problems"]))
+
+
+class TestVerifier(unittest.TestCase):
+    """Tamper with a good artefact and check the verifier notices.
+
+    These are the tests that matter. bake.py calls verify() on every artefact
+    before writing it, so if the verifier is blind then nothing is being checked
+    at all and we would not know.
+    """
+
+    def setUp(self):
+        self.topics, self.stops, self.routes = content()
+        path = BASE / "out" / "fire-fleet-rivers.json"
+        if not path.exists():
+            self.skipTest("run bake.py first")
+        self.good = json.loads(path.read_text(encoding="utf-8"))
+
+    def verify(self, artefact):
+        return verify_bakes.verify(artefact, self.topics, self.stops, self.routes)
+
+    def test_the_good_one_passes(self):
+        self.assertEqual(self.verify(self.good), [])
+
+    def test_reordered_stops_are_caught(self):
+        """The route lookup is authoritative. Reordering must not slip through."""
+        bad = copy.deepcopy(self.good)
+        bad["stops"].reverse()
+        self.assertTrue(any("order" in p for p in self.verify(bad)))
+
+    def test_edited_prose_is_caught(self):
+        bad = copy.deepcopy(self.good)
+        bad["stops"][0]["after"] = bad["stops"][0]["after"].replace("wedding", "birthday")
+        self.assertTrue(any("does not match the content" in p for p in self.verify(bad)))
+
+    def test_moved_coordinate_is_caught(self):
+        bad = copy.deepcopy(self.good)
+        bad["stops"][0]["lat"] = 51.9
+        self.assertTrue(self.verify(bad))
+
+    def test_stale_distance_is_caught(self):
+        """The walk summary must be derived from the coordinates, not asserted."""
+        bad = copy.deepcopy(self.good)
+        bad["walk"]["total_walk_m"] = 42.0
+        self.assertTrue(any("walk distance" in p for p in self.verify(bad)))
+
+    def test_wrong_gate_count_is_caught(self):
+        bad = copy.deepcopy(self.good)
+        bad["gated_stops"] = 99
+        self.assertTrue(any("gated" in p for p in self.verify(bad)))
+
+    def test_missing_text_is_caught(self):
+        """A stop with no prose is not self-contained, whatever else is right."""
+        bad = copy.deepcopy(self.good)
+        bad["stops"][1]["look"] = ""
+        self.assertTrue(any("self-contained" in p for p in self.verify(bad)))
+
+    def test_mismatched_combo_key_is_caught(self):
+        bad = copy.deepcopy(self.good)
+        bad["combo_key"] = "fleet-rivers-fire"        # unsorted
+        self.assertTrue(any("does not match" in p for p in self.verify(bad)))
+
+    def test_a_smuggled_in_stop_is_caught(self):
+        """A stop from a topic this combination did not choose."""
+        bad = copy.deepcopy(self.good)
+        bad["stops"][0]["topic"] = "roman"
+        self.assertTrue(self.verify(bad))
+
+
+class TestBakedArtefacts(unittest.TestCase):
+    def setUp(self):
+        self.out = BASE / "out"
+        if not (self.out / "manifest.json").exists():
+            self.skipTest("run bake.py first")
+
+    def test_every_combination_has_an_artefact(self):
+        manifest = json.loads((self.out / "manifest.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(manifest["combos"]), 10)
+        for c in manifest["combos"]:
+            self.assertIn(c["status"], ("ok", "draft"), c)
+
+    def test_artefacts_are_self_contained(self):
+        """Nothing on the walk may need a second request to be readable."""
+        for path in self.out.glob("*.json"):
+            if path.name == "manifest.json":
+                continue
+            doc = json.loads(path.read_text(encoding="utf-8"))
+            for stop in doc["stops"]:
+                for field in ("id", "title", "where", "look", "after", "lat", "lon"):
+                    self.assertTrue(stop.get(field) not in (None, ""),
+                                    f"{path.name}: {stop.get('id')} missing {field}")
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

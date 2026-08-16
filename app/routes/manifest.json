@@ -1,0 +1,155 @@
+{
+  "format": 1,
+  "combos": [
+    {
+      "combo_key": "fire-fleet-marks",
+      "topics": [
+        "fire",
+        "fleet",
+        "marks"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fire-fleet-rivers",
+      "topics": [
+        "fire",
+        "fleet",
+        "rivers"
+      ],
+      "status": "ok",
+      "n_stops": 3,
+      "total_walk_m": 995.9,
+      "total_minutes": 12.4,
+      "gated_stops": 1,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fire-fleet-roman",
+      "topics": [
+        "fire",
+        "fleet",
+        "roman"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fire-marks-rivers",
+      "topics": [
+        "fire",
+        "marks",
+        "rivers"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fire-marks-roman",
+      "topics": [
+        "fire",
+        "marks",
+        "roman"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fire-rivers-roman",
+      "topics": [
+        "fire",
+        "rivers",
+        "roman"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fleet-marks-rivers",
+      "topics": [
+        "fleet",
+        "marks",
+        "rivers"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fleet-marks-roman",
+      "topics": [
+        "fleet",
+        "marks",
+        "roman"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "fleet-rivers-roman",
+      "topics": [
+        "fleet",
+        "rivers",
+        "roman"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    },
+    {
+      "combo_key": "marks-rivers-roman",
+      "topics": [
+        "marks",
+        "rivers",
+        "roman"
+      ],
+      "status": "ok",
+      "n_stops": 0,
+      "total_walk_m": 0.0,
+      "total_minutes": 0.0,
+      "gated_stops": 0,
+      "draft": true,
+      "problems": []
+    }
+  ]
+}

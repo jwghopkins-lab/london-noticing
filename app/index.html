@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>London Noticing</title>
+<!-- user-scalable is deliberately left alone: people will want to pinch-zoom a
+     carving on a wall, and every input is 16px so iOS never auto-zooms. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --paper: #F5F3EE; --panel: #FFFFFF; --ink: #241F19; --ink-soft: #6B6155;
+    --line: #D3CCC0; --accent: #8A5518; --accent-soft: #F0E2CC;
+    --accent-ink: #FFFFFF;
+    --good: #1E7B4F; --good-soft: #DDEEE4;
+    --warn: #B4291B; --warn-soft: #F7DAD5;
+    --key: #E8E4DB; --key-ink: #241F19; --shadow: 0 1px 3px rgba(30,25,20,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #171412; --panel: #211D19; --ink: #EDE7DE; --ink-soft: #A29786;
+      --line: #443D34; --accent: #E0A65E; --accent-soft: #3D2F1C;
+      --accent-ink: #1A1512;
+      --good: #63CD97; --good-soft: #1E3A2C;
+      --warn: #F08877; --warn-soft: #4A2622;
+      --key: #322C25; --key-ink: #EDE7DE; --shadow: 0 1px 3px rgba(0,0,0,.4);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--paper); color: var(--ink);
+         font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+         display: flex; flex-direction: column; align-items: center; }
+  .screen { width: 100%; max-width: 560px; display: none; flex-direction: column;
+            min-height: 100dvh; padding: 8px 12px calc(20px + env(safe-area-inset-bottom)); }
+  .screen.on { display: flex; }
+  header { display: flex; align-items: baseline; gap: 10px; padding: 6px 2px; }
+  .wordmark { font-family: Georgia, "Times New Roman", serif; font-weight: 700;
+              font-size: 1.2rem; letter-spacing: .08em; white-space: nowrap; }
+  .wordmark span { color: var(--accent); margin-left: .3em; }
+  .tagline { font-size: .68rem; color: var(--ink-soft); letter-spacing: .08em;
+             text-transform: uppercase; }
+  .spacer { flex: 1; }
+  .banner { background: var(--warn-soft); color: var(--warn); border-radius: 8px;
+            font-size: .74rem; padding: 7px 10px; margin: 6px 0; line-height: 1.4; }
+  .banner.sim { background: var(--accent-soft); color: var(--ink); }
+
+  .intro { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
+           padding: 10px 2px 4px; }
+  .intro .lead { font-size: 1.15rem; margin-bottom: 10px; }
+  .intro p { margin-bottom: 10px; color: var(--ink-soft); font-size: .92rem; }
+
+  /* The choosing is the part that makes this feel like yours, so the cards are
+     big, the tap target is the whole card, and the count is always visible. */
+  .picker { display: flex; flex-direction: column; gap: 9px; margin: 6px 0 4px; }
+  .topic { display: flex; align-items: flex-start; gap: 12px; text-align: left;
+           background: var(--panel); border: 1.5px solid var(--line);
+           border-radius: 14px; padding: 14px; box-shadow: var(--shadow);
+           cursor: pointer; color: var(--ink); font: inherit; width: 100%;
+           transition: border-color .18s ease, background .18s ease, transform .12s ease; }
+  .topic:active { transform: scale(.99); }
+  .topic .tick { flex: 0 0 24px; height: 24px; border-radius: 50%;
+                 border: 1.5px solid var(--line); display: grid; place-items: center;
+                 font-size: .9rem; color: transparent; margin-top: 1px;
+                 transition: background .18s ease, border-color .18s ease, color .18s ease; }
+  .topic .tname { display: block; font-family: Georgia, serif; font-weight: 700;
+                  font-size: 1.05rem; margin-bottom: 4px; }
+  .topic .tblurb { display: block; font-size: .84rem; color: var(--ink-soft);
+                   line-height: 1.45; }
+  .topic.on { border-color: var(--accent); background: var(--accent-soft); }
+  .topic.on .tick { background: var(--accent); border-color: var(--accent);
+                    color: var(--accent-ink); }
+  .topic.full:not(.on) { opacity: .48; }
+  .topic:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .pickbar { position: sticky; bottom: 0; background: var(--paper);
+             padding: 10px 0 calc(6px + env(safe-area-inset-bottom));
+             border-top: 1px solid var(--line); margin-top: 6px; }
+  .pickcount { font-size: .78rem; color: var(--ink-soft); text-align: center;
+               margin-bottom: 8px; min-height: 1.2em; }
+
+  .btn { border: none; border-radius: 10px; padding: 14px 0; font-size: .98rem;
+         font-weight: 600; cursor: pointer; width: 100%; min-height: 46px; }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.primary:disabled { opacity: .45; cursor: default; }
+  .btn.ghost { background: var(--key); color: var(--key-ink); }
+
+  /* The progress bar rides at the top while the walk scrolls under it. */
+  #topbar { position: sticky; top: 0; z-index: 6; background: var(--paper);
+            padding: 6px 2px 8px; border-bottom: 1px solid var(--line);
+            display: flex; flex-direction: column; gap: 5px; }
+  .meter { display: flex; align-items: center; gap: 9px; }
+  .mlabel { font-size: .72rem; color: var(--ink-soft); white-space: nowrap;
+            flex: 0 0 62px; }
+  .mbar { flex: 1; height: 8px; border-radius: 999px; background: var(--key);
+          overflow: hidden; }
+  .mfill { height: 100%; width: 0; border-radius: 999px; background: var(--good);
+           transition: width .4s ease; }
+  .mnum { font-size: .78rem; color: var(--ink-soft); font-variant-numeric: tabular-nums;
+          min-width: 3.2em; text-align: right; }
+
+  #walk { flex: 1; }
+  .stop { background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+          padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow); }
+  .stop.done { border-color: var(--good); }
+  .shead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+           font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+           text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+  .shead .no { color: var(--accent); }
+  .shead .state { margin-left: auto; }
+  .stitle { font-family: Georgia, serif; font-size: 1.15rem; line-height: 1.3;
+            margin-bottom: 3px; }
+  .swhere { font-size: .78rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .stext { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
+           white-space: pre-line; }
+  /* Words, not characters. The whole text is laid out invisibly from the first
+     frame, so the card never grows and lines never re-wrap mid-reveal, and each
+     word then darkens into place. It reads like a voice rather than a machine. */
+  .stext .w { opacity: 0; }
+  .stext .w.on { opacity: 1; transition: opacity .45s ease; }
+  @media (prefers-reduced-motion: reduce) { .stext .w { opacity: 1; } }
+  .after { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
+           font-family: Georgia, serif; font-size: .98rem; line-height: 1.6;
+           white-space: pre-line; }
+  .srow { margin-top: 14px; }
+  .nudge { font-family: Georgia, serif; font-size: 1rem; line-height: 1.5;
+           background: var(--accent-soft); color: var(--ink); border-radius: 10px;
+           padding: 12px; margin-top: 14px; }
+  .lateprompt { margin-top: 10px; font-size: .82rem; color: var(--ink-soft);
+                line-height: 1.45; }
+
+  /* The gate: a question of presence, before anything is said. */
+  .gatewrap { text-align: center; padding: 4px 2px 2px; }
+  .gateq { font-family: Georgia, serif; font-size: 1.02rem; margin-bottom: 12px;
+           line-height: 1.5; }
+  .gatestat { font-size: .8rem; color: var(--ink-soft); min-height: 1.2em;
+              margin: 10px 0 2px; font-variant-numeric: tabular-nums; }
+  .gatenote { font-size: .68rem; color: var(--ink-soft); margin-top: 6px; }
+
+  /* A newly opened stop does not simply appear. A hairline draws across the top
+     of the card and the card resolves out of blur behind it, before the words
+     start. Two seconds, once, never on a card already seen. */
+  .stop.arriving { position: relative; overflow: hidden;
+                   animation: resolve 2000ms cubic-bezier(.2,.7,.25,1) forwards; }
+  .stop.arriving::after {
+    content: ""; position: absolute; top: 0; left: 0; height: 2px; width: 0;
+    background: var(--accent); animation: scanline 1240ms ease-out forwards; }
+  @keyframes scanline { 0% { width: 0; opacity: 1 } 78% { width: 100%; opacity: 1 }
+                        100% { width: 100%; opacity: 0 } }
+  @keyframes resolve {
+    0%   { opacity: 0; filter: blur(7px); transform: translateY(7px) scale(.985); }
+    38%  { opacity: .35; filter: blur(7px); transform: translateY(7px) scale(.985); }
+    100% { opacity: 1; filter: blur(0);    transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  .toolrow { display: flex; gap: 6px; justify-content: center; padding: 12px 0 2px;
+             flex-wrap: wrap; }
+  .tool { border: 1px solid var(--line); background: var(--panel); color: var(--ink-soft);
+          font-size: .76rem; padding: 11px 16px; border-radius: 999px; cursor: pointer;
+          min-height: 44px; }
+  .tool:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  #modal { position: fixed; inset: 0; background: rgba(14,12,10,.55); display: none;
+           align-items: center; justify-content: center; padding: 18px; z-index: 20; }
+  #modal.show { display: flex; }
+  .card { background: var(--panel); color: var(--ink); border-radius: 16px;
+          padding: 22px 20px; max-width: 400px; width: 100%;
+          box-shadow: 0 12px 40px rgba(0,0,0,.35); max-height: 86dvh; overflow-y: auto; }
+  .card h2 { font-family: Georgia, serif; font-size: 1.3rem; margin-bottom: 8px; }
+  .card .sub { color: var(--ink-soft); font-size: .84rem; margin-bottom: 10px; line-height: 1.5; }
+  .card .sub ol { margin: 6px 0 0 18px; }
+  .card .sub li { margin-bottom: 5px; }
+  .card .sub b { color: var(--ink); }
+  .btnrow { display: flex; gap: 8px; margin-top: 14px; }
+  .btnrow .btn { flex: 1; padding: 12px 0; font-size: .9rem; }
+  .simlist { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
+  .simlist button { text-align: left; border: 1px solid var(--line); background: var(--paper);
+                    color: var(--ink); font: inherit; font-size: .84rem; padding: 11px 12px;
+                    border-radius: 10px; cursor: pointer; min-height: 44px; }
+  .simlist button.on { border-color: var(--accent); background: var(--accent-soft); }
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+           background: var(--ink); color: var(--paper); font-size: .82rem; padding: 10px 16px;
+           border-radius: 14px; opacity: 0; transition: opacity .25s; pointer-events: none;
+           z-index: 30; width: calc(100% - 32px); max-width: 420px; text-align: center;
+           line-height: 1.35; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="screen on" id="s-pick">
+  <header>
+    <div>
+      <div class="wordmark">LONDON<span>NOTICING</span></div>
+      <div class="tagline">oh, look at that</div>
+    </div>
+  </header>
+
+  <div class="intro">
+    <div class="lead">Pick three things you like the sound of.</div>
+    <p>You will get an eighteen stop walk through central London, six stops for
+       each thing you chose, in an order that makes sense on foot.</p>
+    <p>There is nothing to solve and nothing to win. The point is to make you
+       look at something you have walked past a hundred times.</p>
+  </div>
+
+  <div class="picker" id="picker"></div>
+
+  <div class="pickbar">
+    <div class="pickcount" id="pickcount"></div>
+    <button class="btn primary" id="startbtn" disabled>Choose three to start</button>
+  </div>
+</div>
+
+<div class="screen" id="s-walk">
+  <header>
+    <div>
+      <div class="wordmark">LONDON<span>NOTICING</span></div>
+      <div class="tagline" id="walktitle"></div>
+    </div>
+  </header>
+  <div id="simbanner" class="banner sim" style="display:none"></div>
+  <div id="topbar">
+    <div class="meter">
+      <span class="mlabel">Progress</span>
+      <div class="mbar"><div id="progressfill" class="mfill"></div></div>
+      <span class="mnum" id="progresstext"></span>
+    </div>
+  </div>
+  <div id="walk"></div>
+  <div class="toolrow">
+    <button class="tool" id="simbtn">Testing tools</button>
+    <button class="tool" id="restartbtn">Start over</button>
+  </div>
+</div>
+
+<div id="modal"><div class="card" id="modalcard"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PICK = 3;
+const ROUTES = "routes/";
+const LATE_NUDGE_MS = 45000;   // how long before we quietly offer a hand
+
+const LS = {
+  get: (k, d) => { try { return JSON.parse(localStorage.getItem("noticing." + k)) ?? d; }
+                   catch { return d; } },
+  set: (k, v) => { try { localStorage.setItem("noticing." + k, JSON.stringify(v)); } catch {} },
+  del: (k) => { try { localStorage.removeItem("noticing." + k); } catch {} },
+};
+
+let TOPICS = [];
+let picked = [];
+let ROUTE = null;              // the baked artefact, self-contained
+let STATE = null;              // { combo, current, gate: {}, revealed: {} }
+let SIM = null;                // { lat, lon, acc, label } while testing
+const typing = new Map();
+let lateTimer = null;
+
+function toast(msg) {
+  $("toast").textContent = msg;
+  $("toast").classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => $("toast").classList.remove("show"), 3400);
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function closeModal() { $("modal").classList.remove("show"); }
+
+/* ---- the word-by-word reveal, kept from the earlier build ---- */
+const TYPE_SLOWDOWN = 2.6;
+const SENTENCE_PAUSE_MS = 700;
+const ARRIVE_MS = 2000;
+function typeInto(el, text, key, delay) {
+  el.textContent = "";
+  const words = [];
+  for (const tok of text.split(/(\s+)/)) {
+    if (!tok) continue;
+    if (/^\s+$/.test(tok)) { el.appendChild(document.createTextNode(tok)); continue; }
+    const w = document.createElement("span");
+    w.className = "w"; w.textContent = tok;
+    el.appendChild(w); words.push(w);
+  }
+  const step = Math.max(8, Math.min(22, Math.floor(3200 / Math.max(1, text.length))))
+               * TYPE_SLOWDOWN;
+  const bounds = [];
+  let s0 = 0;
+  words.forEach((w, k) => {
+    if (/[.?!]["')\]]?$/.test(w.textContent) || k === words.length - 1) {
+      bounds.push([s0, k]); s0 = k + 1;
+    }
+  });
+  const posIn = (k) => {
+    for (const [a, b] of bounds) if (k >= a && k <= b) return b === a ? 0.5 : (k - a) / (b - a);
+    return 0.5;
+  };
+  let k = 0, t = null;
+  const finish = () => {
+    clearTimeout(t); typing.delete(key);
+    for (const w of words) w.classList.remove("w", "on");
+    markSeen(key);
+  };
+  const tick = () => {
+    if (k >= words.length) { finish(); return; }
+    const w = words[k];
+    w.classList.add("on");
+    const curve = 1.35 - 0.7 * Math.sin(Math.PI * posIn(k));
+    let wait = step * (w.textContent.length + 1) * curve;
+    if (/[.?!]["')\]]?$/.test(w.textContent)) wait += SENTENCE_PAUSE_MS;
+    k += 1;
+    t = setTimeout(tick, wait);
+  };
+  t = setTimeout(tick, delay || 0);
+  typing.set(key, { finish });
+  return finish;
+}
+function seenSet() { return new Set(LS.get("seen." + (ROUTE ? ROUTE.combo_key : "-"), [])); }
+function markSeen(key) {
+  if (!ROUTE) return;
+  const s = seenSet(); s.add(key);
+  LS.set("seen." + ROUTE.combo_key, [...s]);
+}
+
+/* ---- geography. The same haversine and the same pass rule as the pipeline. ---- */
+function haversineM(lat1, lon1, lat2, lon2) {
+  const R = 6371008.8, r = Math.PI / 180;
+  const p1 = lat1 * r, p2 = lat2 * r;
+  const a = Math.sin((lat2 - lat1) * r / 2) ** 2
+          + Math.cos(p1) * Math.cos(p2) * Math.sin((lon2 - lon1) * r / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+// The phone's own accuracy estimate is subtracted, capped at 150 m. A gate that
+// can say no to somebody who IS standing there is worse than no gate at all.
+function gatePasses(distanceM, accuracyM, radiusM) {
+  return distanceM - Math.min(accuracyM || 0, 150) <= radiusM;
+}
+
+/* ---- the topic picker ---- */
+function renderPicker() {
+  const box = $("picker");
+  box.innerHTML = "";
+  TOPICS.forEach((t) => {
+    const on = picked.includes(t.id);
+    const b = document.createElement("button");
+    b.className = "topic" + (on ? " on" : "") + (picked.length >= PICK ? " full" : "");
+    b.type = "button";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    b.innerHTML = `<span class="tick" aria-hidden="true">✓</span>
+      <span><span class="tname">${escapeHtml(t.name)}</span>
+      <span class="tblurb">${escapeHtml(t.blurb)}</span></span>`;
+    b.onclick = () => togglePick(t.id);
+    box.appendChild(b);
+  });
+  const left = PICK - picked.length;
+  $("pickcount").textContent = left > 0
+    ? `${picked.length} of ${PICK} chosen. Pick ${left} more.`
+    : "That is your three. Change one any time before you set off.";
+  const btn = $("startbtn");
+  btn.disabled = picked.length !== PICK;
+  btn.textContent = picked.length === PICK ? "Start walking" : "Choose three to start";
+}
+function togglePick(id) {
+  const at = picked.indexOf(id);
+  if (at >= 0) picked.splice(at, 1);
+  else if (picked.length < PICK) picked.push(id);
+  else { toast("Three is the limit. Tap one to swap it out."); return; }
+  LS.set("picked", picked);
+  renderPicker();
+}
+// Sorted, so that Fire then Rivers and Rivers then Fire are one route and one
+// cache entry. The pipeline builds its filenames the same way.
+function comboKey(ids) { return [...ids].sort().join("-"); }
+
+/* ---- loading a route ---- */
+async function loadRoute(key) {
+  // A route already walked is kept locally, because the phone on the walk may
+  // have no signal and the artefact is self-contained by design.
+  const cached = LS.get("route." + key, null);
+  try {
+    const res = await fetch(ROUTES + key + ".json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const doc = await res.json();
+    LS.set("route." + key, doc);
+    return doc;
+  } catch (err) {
+    if (cached) { toast("No signal. Using the copy on this phone."); return cached; }
+    throw err;
+  }
+}
+
+function freshState(key) { return { combo: key, current: 0, gate: {}, revealed: {} }; }
+function saveState() { if (STATE) LS.set("state." + STATE.combo, STATE); }
+
+async function start(key) {
+  try {
+    ROUTE = await loadRoute(key);
+  } catch (err) {
+    toast(location.protocol === "file:"
+      ? "Open this over http, not as a file. The route cannot be fetched from disk."
+      : "Could not load that route. Check your connection.");
+    return;
+  }
+  if (!ROUTE.stops || !ROUTE.stops.length) {
+    toast("That combination has no stops written yet.");
+    return;
+  }
+  STATE = LS.get("state." + key, null);
+  if (!STATE || STATE.combo !== key) STATE = freshState(key);
+  LS.set("last", key);
+  $("walktitle").textContent = ROUTE.topics.map((t) => t.name).join(" · ");
+  $("s-pick").classList.remove("on");
+  $("s-walk").classList.add("on");
+  renderWalk();
+  if (ROUTE.gated_stops > 0) locationPreflight(false);
+}
+
+/* ---- the walk ---- */
+function renderWalk() {
+  const n = ROUTE.stops.length;
+  const done = Math.min(STATE.current, n);
+  $("progressfill").style.width = (100 * done / n) + "%";
+  $("progresstext").textContent = `${done}/${n}`;
+  paintSimBanner();
+
+  const box = $("walk");
+  box.innerHTML = "";
+  clearTimeout(lateTimer);
+
+  for (let i = 0; i <= Math.min(STATE.current, n - 1); i++) {
+    box.appendChild(STATE.current > i ? doneCard(i) : activeCard(i));
+  }
+  if (STATE.current >= n) box.appendChild(endCard());
+  focusCurrent();
+}
+
+function cardShell(i, cls) {
+  const s = ROUTE.stops[i];
+  const div = document.createElement("div");
+  div.className = "stop " + cls;
+  div.dataset.idx = i;
+  const topic = ROUTE.topics.find((t) => t.id === s.topic);
+  div.innerHTML =
+    `<div class="shead"><span class="no">Stop ${i + 1}</span>
+       <span>${escapeHtml(topic ? topic.name : s.topic)}</span>
+       <span class="state"></span></div>
+     <div class="stitle">${escapeHtml(s.title)}</div>
+     <div class="swhere">${escapeHtml(s.where)}</div>`;
+  return div;
+}
+
+// A finished stop keeps its explainer. It is there to re-read on the way home,
+// and it is there again after a reload.
+function doneCard(i) {
+  const s = ROUTE.stops[i];
+  const div = cardShell(i, "done");
+  div.querySelector(".state").textContent = "✓";
+  const a = document.createElement("div");
+  a.className = "after";
+  a.textContent = s.after;
+  div.appendChild(a);
+  return div;
+}
+
+function endCard() {
+  const div = document.createElement("div");
+  div.className = "stop done";
+  const km = (ROUTE.walk.total_walk_m / 1000).toFixed(1);
+  div.innerHTML =
+    `<div class="stitle">That is the walk.</div>
+     <div class="after">You covered about ${km} km and ${ROUTE.stops.length}
+     stops. Have a look back up the page on the way home. The explainers are all
+     still there.</div>`;
+  return div;
+}
+
+function activeCard(i) {
+  const s = ROUTE.stops[i];
+  const div = cardShell(i, "open");
+  const gated = !!s.gate && !STATE.gate[s.id];
+
+  if (gated) {
+    div.innerHTML += `
+      <div class="gatewrap">
+        <div class="gateq">${escapeHtml(s.gate.prompt)}</div>
+        <button class="btn primary gatebtn">I'm here, check my location</button>
+        <div class="gatestat" role="status" aria-live="polite"></div>
+        <div class="gatenote">Your location is read once when you tap it,
+        never tracked, and never while this page is closed.</div>
+      </div>`;
+    const btn = div.querySelector(".gatebtn");
+    const stat = div.querySelector(".gatestat");
+    btn.onclick = () => checkin(i, btn, stat);
+    return div;
+  }
+
+  const body = document.createElement("div");
+  body.className = "stext";
+  div.appendChild(body);
+
+  const revealed = !!STATE.revealed[s.id];
+  const lookKey = "look:" + s.id;
+  if (REDUCED || seenSet().has(lookKey)) {
+    body.textContent = s.look;
+  } else {
+    div.classList.add("arriving");
+    div.addEventListener("animationend", (ev) => {
+      if (ev.animationName === "resolve") div.classList.remove("arriving");
+    });
+    const finish = typeInto(body, s.look, lookKey, ARRIVE_MS);
+    div.addEventListener("click", (ev) => {
+      if (typing.has(lookKey) && !ev.target.closest("button")) finish();
+    });
+  }
+
+  if (!revealed) {
+    // A soft prompt on many stops, not all. Confirm, then the reveal. There is
+    // no way to get this wrong and nothing is counted.
+    if (s.nudge) {
+      const n = document.createElement("div");
+      n.className = "nudge";
+      n.textContent = s.nudge.prompt;
+      div.appendChild(n);
+    }
+    const row = document.createElement("div");
+    row.className = "srow";
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = s.nudge ? s.nudge.confirm : "Tell me why it matters";
+    btn.onclick = () => reveal(i, div);
+    row.appendChild(btn);
+    div.appendChild(row);
+
+    // The old build handed out hints on a timer. Same idea, no penalty: if
+    // somebody has been standing here a while, quietly say where to look.
+    clearTimeout(lateTimer);
+    lateTimer = setTimeout(() => {
+      if (!div.isConnected || STATE.revealed[s.id]) return;
+      const late = document.createElement("div");
+      late.className = "lateprompt";
+      late.textContent = "Still looking? It is " + s.where.charAt(0).toLowerCase()
+                       + s.where.slice(1) + ".";
+      row.parentNode.insertBefore(late, row);
+    }, LATE_NUDGE_MS);
+  } else {
+    const a = document.createElement("div");
+    a.className = "after stext";
+    div.appendChild(a);
+    const afterKey = "after:" + s.id;
+    if (REDUCED || seenSet().has(afterKey)) a.textContent = s.after;
+    else {
+      const finish = typeInto(a, s.after, afterKey, 240);
+      div.addEventListener("click", (ev) => {
+        if (typing.has(afterKey) && !ev.target.closest("button")) finish();
+      });
+    }
+    const row = document.createElement("div");
+    row.className = "srow";
+    const last = i === ROUTE.stops.length - 1;
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = last ? "Finish the walk" : "On to the next stop";
+    btn.onclick = () => {
+      STATE.current = i + 1;
+      saveState();
+      renderWalk();
+    };
+    row.appendChild(btn);
+    div.appendChild(row);
+  }
+  return div;
+}
+
+function reveal(i, div) {
+  const s = ROUTE.stops[i];
+  STATE.revealed[s.id] = true;
+  saveState();
+  const t = typing.get("look:" + s.id);
+  if (t) t.finish();
+  renderWalk();
+}
+
+let lastFocused = null;
+function focusCurrent() {
+  const card = document.querySelector(".stop.open");
+  if (!card) return;
+  const key = card.dataset.idx;
+  if (key === lastFocused) return;          // never fight somebody's own scroll
+  lastFocused = key;
+  requestAnimationFrame(() => {
+    const top = card.getBoundingClientRect().top + window.scrollY
+              - ($("topbar").offsetHeight + 10);
+    window.scrollTo({ top: Math.max(0, top), behavior: REDUCED ? "auto" : "smooth" });
+  });
+}
+
+/* ---- location ---- */
+function getFix() {
+  if (SIM) {
+    return Promise.resolve({ latitude: SIM.lat, longitude: SIM.lon, accuracy: SIM.acc });
+  }
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) { reject(new Error("nogeo")); return; }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve(pos.coords), (err) => reject(err),
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 20000 });
+  });
+}
+
+async function checkin(i, btn, stat) {
+  const s = ROUTE.stops[i];
+  btn.disabled = true;
+  stat.textContent = "Finding you…";
+  let c;
+  try {
+    c = await getFix();
+  } catch (err) {
+    stat.textContent = err && err.code === 1
+      ? "Location is blocked for this site. Allow it in your browser settings."
+      : "No fix here. That is usually walls, not settings. Try again in the open.";
+    btn.disabled = false;
+    return;
+  }
+  const d = haversineM(c.latitude, c.longitude, s.lat, s.lon);
+  if (gatePasses(d, c.accuracy, s.gate.radius_m)) {
+    STATE.gate[s.id] = true;
+    saveState();
+    renderWalk();
+    toast(SIM ? "Simulated position accepted." : "You're there.");
+    return;
+  }
+  // Warm and cold, never a flat no. A phone in a courtyard can be 100 m out.
+  stat.textContent =
+    d >= 1000 ? `About ${(d / 1000).toFixed(1)} km away.`
+    : d > 250 ? `About ${Math.round(d / 50) * 50} m away.`
+    : `Warm. About ${Math.round(d / 10) * 10} m. Keep going.`;
+  btn.disabled = false;
+}
+
+// Checked once, at the start, while there is still wifi and patience. A phone
+// that has quietly denied the site will not prompt on a street corner. It just
+// refuses, with the stop withheld, and that is a miserable way to find out.
+function platform() {
+  const ua = navigator.userAgent;
+  if (/iPad|iPhone|iPod/.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+  if (/Android/.test(ua)) return "android";
+  return "desktop";
+}
+const HOWTO = {
+  ios: `<b>iPhone or iPad</b>
+    <ol>
+      <li><b>Settings → Safari → Location</b>. If it says <b>Deny</b>, change it
+          to <b>Ask</b>. On Deny you will never even see a prompt.</li>
+      <li>Back here, tap <b>aA</b> (or ⋯) in the address bar →
+          <b>Website Settings</b> → <b>Location</b> → <b>Allow</b>.</li>
+      <li><b>Settings → Privacy &amp; Security → Location Services</b> on, and
+          <b>Safari Websites</b> set to <b>While Using the App</b>.</li>
+    </ol>
+    If you saved this to your Home Screen, that counts as a separate app and
+    needs its own permission.`,
+  android: `<b>Android</b>
+    <ol>
+      <li>Tap the icon just left of the address bar (a lock or two sliders) →
+          <b>Permissions</b> → <b>Location</b> → <b>Allow</b>.</li>
+      <li>Then <b>Settings → Location</b> on the phone itself, and make sure
+          your browser is allowed to use it.</li>
+    </ol>`,
+  desktop: `<b>On a computer</b>
+    <ol>
+      <li>Click the icon at the left of the address bar → <b>Site settings</b>
+          → <b>Location</b> → <b>Allow</b>, then reload.</li>
+    </ol>
+    A laptop's location is far rougher than a phone's. Walk with the phone.`,
+};
+function locationPreflight(force) {
+  if (SIM) return;
+  if (!force && LS.get("locok." + ROUTE.combo_key, false)) return;
+  const n = ROUTE.gated_stops;
+  const show = (body, buttons) => {
+    $("modalcard").innerHTML = `<h2>Before you set off</h2>${body}
+      <div class="btnrow">${buttons}</div>`;
+    $("modal").classList.add("show");
+  };
+  show(`<div class="sub">${n} stop${n === 1 ? "" : "s"} on this walk only
+    open${n === 1 ? "s" : ""} when you are standing in the right place, so the
+    page needs permission to check where you are. It is read once each time you
+    tap the button, never tracked, and never while this page is
+    closed.<br><br>Let us make sure it works now, rather than find out on a
+    street corner.</div>`,
+    `<button class="btn ghost" id="lclater">Later</button>
+     <button class="btn primary" id="lcgo">Check location</button>`);
+  $("lclater").onclick = closeModal;
+  $("lcgo").onclick = async () => {
+    $("lcgo").disabled = true; $("lcgo").textContent = "Checking…";
+    try {
+      await getFix();
+      LS.set("locok." + ROUTE.combo_key, true);
+      show(`<div class="sub"><b>That works.</b> Nothing else to do. The page
+        will ask again at each place.</div>`,
+        `<button class="btn primary" id="lcdone">Good</button>`);
+      $("lcdone").onclick = closeModal;
+    } catch (err) {
+      const blocked = err && err.code === 1;
+      show(`<div class="sub">${blocked
+          ? "Location is switched off for this site. Here is how to turn it on."
+          : "No fix here. That is usually walls, not settings. Try again outside. "
+            + "If it keeps failing, check the settings below."}</div>
+        <div class="sub">${HOWTO[platform()]}</div>`,
+        `<button class="btn ghost" id="lcskip">I'll sort it later</button>
+         <button class="btn primary" id="lcretry">Try again</button>`);
+      $("lcskip").onclick = closeModal;
+      $("lcretry").onclick = () => locationPreflight(true);
+    }
+  };
+}
+
+/* ---- testing tools ----
+   A simulated position, so the gates can be exercised from anywhere. It is
+   deliberately loud: a banner stays on screen for as long as it is on, because
+   a silent override would eventually be mistaken for a working gate. Note that
+   it feeds a position INTO the ordinary gate check. The pass rule itself is
+   never bypassed, so what you are testing is the real thing. */
+function paintSimBanner() {
+  const b = $("simbanner");
+  if (!SIM) { b.style.display = "none"; return; }
+  b.style.display = "block";
+  b.textContent = "Testing: pretending to be at " + SIM.label
+                + ". The gate rule is still the real one.";
+}
+function setSim(sim) {
+  SIM = sim;
+  LS.set("sim", sim);
+  paintSimBanner();
+  renderWalk();
+}
+function showSimTools() {
+  const rows = ROUTE.stops.map((s, i) =>
+    `<button data-lat="${s.lat}" data-lon="${s.lon}" data-acc="20"
+       data-label="stop ${i + 1}, ${escapeHtml(s.title)}"
+       class="${SIM && SIM.label.startsWith("stop " + (i + 1) + ",") ? "on" : ""}">
+       Stand at stop ${i + 1} — ${escapeHtml(s.title)}${s.gate ? " (gated)" : ""}</button>`
+  ).join("");
+  const near = ROUTE.stops.find((s) => s.gate) || ROUTE.stops[0];
+  $("modalcard").innerHTML = `<h2>Testing tools</h2>
+    <div class="sub">You are not in London, so here is a way to stand
+    somewhere. This feeds a made-up position into the ordinary location check.
+    The pass rule is not touched, so a gate that opens here would open on the
+    street.</div>
+    <div class="simlist" id="simlist">${rows}
+      <button data-lat="${(near.lat + 0.0045).toFixed(6)}" data-lon="${near.lon}"
+        data-acc="20" data-label="500 m north of ${escapeHtml(near.title)}">
+        Stand 500 m away, to see a gate refuse</button>
+    </div>
+    <div class="btnrow">
+      <button class="btn ghost" id="simoff">Use the real GPS</button>
+      <button class="btn primary" id="simclose">Done</button>
+    </div>`;
+  $("modal").classList.add("show");
+  $("simlist").querySelectorAll("button").forEach((b) => {
+    b.onclick = () => {
+      setSim({ lat: +b.dataset.lat, lon: +b.dataset.lon, acc: +b.dataset.acc,
+               label: b.dataset.label });
+      closeModal();
+      toast("Now pretending to be at " + b.dataset.label + ".");
+    };
+  });
+  $("simoff").onclick = () => {
+    setSim(null); LS.del("sim"); closeModal(); toast("Back to the real GPS.");
+  };
+  $("simclose").onclick = closeModal;
+}
+
+/* ---- wiring ---- */
+$("startbtn").onclick = () => start(comboKey(picked));
+$("simbtn").onclick = showSimTools;
+$("restartbtn").onclick = () => {
+  $("modalcard").innerHTML = `<h2>Start over?</h2>
+    <div class="sub">This forgets how far you have walked and takes you back to
+    the topics. Nothing else is kept.</div>
+    <div class="btnrow">
+      <button class="btn ghost" id="sono">Keep walking</button>
+      <button class="btn primary" id="soyes">Start over</button>
+    </div>`;
+  $("modal").classList.add("show");
+  $("sono").onclick = closeModal;
+  $("soyes").onclick = () => {
+    LS.del("state." + STATE.combo);
+    LS.del("seen." + STATE.combo);
+    LS.del("last");
+    STATE = null; ROUTE = null; lastFocused = null;
+    closeModal();
+    $("s-walk").classList.remove("on");
+    $("s-pick").classList.add("on");
+    renderPicker();
+  };
+};
+$("modal").onclick = (ev) => { if (ev.target === $("modal")) closeModal(); };
+
+(async () => {
+  try {
+    const res = await fetch("topics.json", { cache: "no-cache" });
+    TOPICS = (await res.json()).topics;
+  } catch (err) {
+    document.body.insertAdjacentHTML("afterbegin",
+      `<div class="banner" style="max-width:560px">Could not load the topics.
+       ${location.protocol === "file:"
+         ? "Open this over http rather than straight off the disk."
+         : "Check your connection and reload."}</div>`);
+    return;
+  }
+  SIM = LS.get("sim", null);
+  picked = (LS.get("picked", []) || []).filter((id) => TOPICS.some((t) => t.id === id));
+  renderPicker();
+  const last = LS.get("last", null);
+  if (last) await start(last);        // a returning walker resumes where they were
+})();
+</script>
+</body>
+</html>
