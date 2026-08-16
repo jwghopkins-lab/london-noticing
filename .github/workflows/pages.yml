@@ -46,6 +46,8 @@ jobs:
       - name: Build and check the Gdansk walk
         run: python3 pipeline/build_gdansk.py
 
+      # build_gdansk.py has already written app/gdansk/index.html, which is
+      # what gives the Gdansk walk its own address on the site.
       - name: Publish the single file builds alongside the site
         run: |
           python3 pipeline/build_standalone.py

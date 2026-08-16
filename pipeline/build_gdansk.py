@@ -250,6 +250,14 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
 
+    # Its own address on the served site. Gdansk is a different walk in a
+    # different country, and sharing a page with London would be confusing, so
+    # it gets its own directory and its own index rather than a link off the
+    # front page.
+    served = BASE / "app" / "gdansk" / "index.html"
+    served.parent.mkdir(parents=True, exist_ok=True)
+    served.write_text(page, encoding="utf-8")
+
     print(f"\n  {artefact['walk']['n_stops']} stops, "
           f"{artefact['walk']['total_walk_m'] / 1000:.2f} km on foot, "
           f"{artefact['walk']['total_minutes']:.0f} min walking, "
@@ -260,7 +268,8 @@ def main():
               f"{leg['walk_m']:>5.0f} m  {leg['minutes']:>4.1f} min")
     for n in metrics["notes"]:
         print(f"  note   {n}")
-    print(f"\n{baked} and {out} written ({out.stat().st_size / 1024:.0f} KB)")
+    print(f"\n{baked}\n{out}\n{served}\nwritten "
+          f"({out.stat().st_size / 1024:.0f} KB each)")
     return 0
 
 

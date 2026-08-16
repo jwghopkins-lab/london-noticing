@@ -316,11 +316,18 @@ let TESTING = /(?:^|[?&])testing=1(?:&|$)/.test(location.search)
 const SIM_START_M = 500;       // where a simulated approach begins
 const SIM_STEP_M = 120;        // and how far one press of the button walks
 
+// Two walks are served from the same origin, so they share one local storage.
+// Without a namespace the second one to be opened reads the first one's saved
+// position, and London cheerfully tries to resume a route called amber-mile
+// that it has never heard of. Namespace by which walk this build is.
+const NS = "noticing."
+         + ((window.NOTICING_BUNDLE && window.NOTICING_BUNDLE.tour
+             && window.NOTICING_BUNDLE.tour.combo_key) || "london") + ".";
 const LS = {
-  get: (k, d) => { try { return JSON.parse(localStorage.getItem("noticing." + k)) ?? d; }
+  get: (k, d) => { try { return JSON.parse(localStorage.getItem(NS + k)) ?? d; }
                    catch { return d; } },
-  set: (k, v) => { try { localStorage.setItem("noticing." + k, JSON.stringify(v)); } catch {} },
-  del: (k) => { try { localStorage.removeItem("noticing." + k); } catch {} },
+  set: (k, v) => { try { localStorage.setItem(NS + k, JSON.stringify(v)); } catch {} },
+  del: (k) => { try { localStorage.removeItem(NS + k); } catch {} },
 };
 
 let TOPICS = [];
@@ -1102,8 +1109,12 @@ function setUpFixedTour() {
   else { SIM = null; LS.del("sim"); }
   picked = (LS.get("picked", []) || []).filter((id) => TOPICS.some((t) => t.id === id));
   renderPicker();
+  // A returning walker resumes where they were, but only if this build actually
+  // has that route. A stale key from another walk should be dropped, not fetched.
   const last = LS.get("last", null);
-  if (last) await start(last);        // a returning walker resumes where they were
+  const known = !BUNDLE || !BUNDLE.routes || Boolean(BUNDLE.routes[last]);
+  if (last && known) await start(last);
+  else if (last) LS.del("last");
 })();
 </script>
 </body>
