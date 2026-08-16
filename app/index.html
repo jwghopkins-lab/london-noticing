@@ -490,6 +490,10 @@ const TOUR = (BUNDLE && BUNDLE.tour) || null;
 // while standing in a square in the rain.
 function normalise(text) {
   return String(text).toLowerCase()
+    // Polish crossed L is its own letter, not l plus a mark, so NFD leaves it
+    // alone and the strip below then deletes it. "cegla" survived and "cegla"
+    // with the stroke came out as "ceg a". Map it by hand before decomposing.
+    .replace(/\u0142/g, "l")
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9 ]/g, " ")
     // Filler only. NEVER strip a word that could itself be an answer: "two" and
@@ -501,12 +505,43 @@ function normalise(text) {
     .replace(/s\b/g, "")
     .replace(/\s+/g, " ").trim();
 }
+// One typo should not stand between somebody and the rest of the walk. Only for
+// answers of five characters or more, where a single edit is almost certainly a
+// slip on a phone keyboard rather than a different word: at four characters or
+// fewer, "four" and "your" are one edit apart and so are far too many numbers.
+function withinOneEdit(a, b) {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (a.length > b.length) i++;
+    else if (a.length < b.length) j++;
+    else { i++; j++; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
+}
+// Two letters swapped round is the commonest phone typo of the lot, and it
+// costs two edits under the rule above, so it needs its own case. "brickwrok"
+// should not be the thing that ends somebody's walk.
+function oneSwapApart(a, b) {
+  if (a.length !== b.length) return false;
+  const at = [];
+  for (let k = 0; k < a.length; k++) if (a[k] !== b[k]) at.push(k);
+  return at.length === 2 && at[1] === at[0] + 1
+      && a[at[0]] === b[at[1]] && a[at[1]] === b[at[0]];
+}
 function answerAccepted(given, accepted) {
   const g = normalise(given);
   if (!g) return false;
+  const words = g.split(" ");
   return accepted.some((a) => {
     const want = normalise(a);
-    return want && (g === want || g.split(" ").includes(want));
+    if (!want) return false;
+    if (g === want || words.includes(want)) return true;
+    if (want.length < 5) return false;
+    return withinOneEdit(g, want) || oneSwapApart(g, want)
+        || words.some((w) => withinOneEdit(w, want) || oneSwapApart(w, want));
   });
 }
 

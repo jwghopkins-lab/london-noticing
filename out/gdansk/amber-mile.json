@@ -47,10 +47,15 @@
           "unicorn",
           "a unicorn",
           "two unicorns",
+          "the unicorns",
+          "jednorożec",
+          "jednorożce",
           "jednorozec",
-          "jednorozce"
+          "jednorozce",
+          "unicorns on the left",
+          "horned horses"
         ],
-        "_answers_note": "The first answer with letters in it is the one shown when somebody asks to be told, so put the best-reading form first.",
+        "_answers_note": "Be generous. The first answer with letters in it is the one shown when somebody asks to be told, so put the best-reading form first. Singulars, plurals, Polish forms and one-character typos are handled by the matcher, so these lists only need the genuinely different things a person might type.",
         "hint": "Look at the shield on the left as you face the gate. The two beasts holding it are not horses."
       },
       "look": "Stand back far enough to see the whole front of the gate.\n\nThere are three shields in a row. Each one is held up by a pair of creatures.\n\nLook at all three pairs before you answer. They are not the same animal.",
@@ -74,7 +79,10 @@
         "answers": [
           "4",
           "four",
-          "cztery"
+          "cztery",
+          "four statues",
+          "four figures",
+          "four of them"
         ],
         "hint": "They are spaced along the parapet, one above each column."
       },
@@ -100,8 +108,15 @@
           "king",
           "a king",
           "the king",
+          "król",
           "krol",
-          "monarch"
+          "monarch",
+          "sigismund",
+          "zygmunt",
+          "zygmunt august",
+          "sigismund augustus",
+          "king sigismund",
+          "a monarch"
         ],
         "hint": "He is holding something in each hand, and one of them is not a tool."
       },
@@ -126,7 +141,10 @@
         "answers": [
           "3",
           "three",
-          "trzy"
+          "trzy",
+          "three prongs",
+          "three points",
+          "trzy zeby"
         ],
         "hint": "It is the standard sea god issue. Count the prongs."
       },
@@ -173,10 +191,16 @@
           "gold",
           "golden",
           "gilded",
+          "gilt",
           "gold leaf",
+          "goldleaf",
+          "złoty",
           "zloty",
+          "złota",
           "zlota",
-          "yellow"
+          "yellow",
+          "gold colour",
+          "gold coloured"
         ],
         "hint": "It is in the name of the building."
       },
@@ -223,7 +247,10 @@
           "2",
           "two",
           "dwa",
-          "a pair"
+          "a pair",
+          "both",
+          "two towers",
+          "two brick towers"
         ],
         "hint": "One either side of the timber."
       },
@@ -270,9 +297,15 @@
           "brick",
           "bricks",
           "red brick",
+          "red bricks",
+          "brickwork",
+          "cegła",
           "cegla",
+          "cegły",
           "cegly",
-          "brickwork"
+          "clay",
+          "clay brick",
+          "baked clay"
         ],
         "hint": "Get close and look at the wall. It is not stone."
       },

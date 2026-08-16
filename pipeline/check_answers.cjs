@@ -69,6 +69,32 @@ for (const [name, file] of tours) {
       }
     }
 
+    // Diacritics must not matter. Polish crossed L does not decompose under
+    // NFD, so it has to be mapped by hand; without that "cegla" with the stroke
+    // came out as "ceg a" and was rejected while the plain form worked.
+    for (const a of accepted) {
+      const stripped = a.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\u0142/g, "l");
+      if (stripped !== a && !answerAccepted(stripped, accepted)) {
+        fail(`${stop.id}: "${a}" is accepted but "${stripped}" without accents is not`);
+      }
+    }
+
+    // One slip on a phone keyboard should not stop the walk. Only checked on
+    // answers long enough for a single edit to be unambiguous.
+    for (const a of accepted) {
+      const w = normalise(a);
+      if (w.length < 6 || w.includes(" ")) continue;
+      const typos = [w.slice(0, -1), w + w.slice(-1), w.slice(0, 2) + w.slice(3),
+                     w.slice(0, 2) + "x" + w.slice(3),
+                     // two letters swapped, which is the commonest of all
+                     w.slice(0, 2) + w[3] + w[2] + w.slice(4)];
+      for (const t of typos) {
+        if (!answerAccepted(t, accepted)) {
+          fail(`${stop.id}: one-character typo "${t}" of "${a}" is rejected`);
+        }
+      }
+    }
+
     // A number written as a word must work wherever a digit does, and the
     // other way round. This is the exact shape of the bug.
     const WORDS = { "1": "one", "2": "two", "3": "three", "4": "four", "5": "five",
@@ -87,7 +113,21 @@ for (const [name, file] of tours) {
       }
     }
   }
-  console.log(`  ${name}: ${questions} questions, ${variants} listed answers checked`);
+  // Being generous must not tip over into saying yes to anything. Every other
+  // question's own answer has to be rejected here.
+  const qs = tour.stops.filter((s) => s.question);
+  for (const stop of qs) {
+    for (const other of qs) {
+      if (other.id === stop.id) continue;
+      const theirs = other.question.answers.find((a) => /[a-z]/i.test(a));
+      if (theirs && answerAccepted(theirs, stop.question.answers)) {
+        fail(`${stop.id}: accepts "${theirs}", which is ${other.id}'s answer`);
+      }
+    }
+  }
+
+  console.log(`  ${name}: ${questions} questions, ${variants} listed answers checked, `
+            + `${qs.length * (qs.length - 1)} cross-stop rejections checked`);
 }
 
 console.log(`\n${failures === 0 ? "every answer round-trips" : failures + " FAILED"}`);
