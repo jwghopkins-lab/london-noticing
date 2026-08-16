@@ -221,6 +221,8 @@
   .qrow input:focus-visible { outline: 2px solid var(--accent); }
   .qrow .btn { width: 96px; flex: none; padding: 11px 0; }
   .qhint { margin-top: 9px; font-size: .82rem; color: var(--ink-soft); line-height: 1.45; }
+  .qtold { margin-top: 14px; font-size: .84rem; color: var(--ink-soft);
+           border-left: 3px solid var(--line); padding-left: 10px; }
   .qgiveup { display: block; margin-top: 10px; border: none; background: none;
              color: var(--ink-soft); font: inherit; font-size: .78rem; cursor: pointer;
              text-decoration: underline dotted; text-underline-offset: 3px; padding: 6px 0; }
@@ -303,7 +305,6 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const PICK = 3;
 const ROUTES = "routes/";
 const LATE_NUDGE_MS = 45000;   // how long before we quietly offer a hand
-const GIVE_UP_AFTER = 4;       // wrong answers before a question can be waived
 
 // Testing scaffolding is off unless it is asked for by hand. On a real walk
 // there is no button to press, and there is no way to reach one, because a
@@ -528,7 +529,7 @@ async function loadRoute(key) {
 }
 
 function freshState(key) {
-  return { combo: key, current: 0, gate: {}, revealed: {}, wrong: {} };
+  return { combo: key, current: 0, gate: {}, revealed: {}, wrong: {}, told: {} };
 }
 function saveState() { if (STATE) LS.set("state." + STATE.combo, STATE); }
 
@@ -547,7 +548,8 @@ async function start(key) {
   }
   STATE = LS.get("state." + key, null);
   if (!STATE || STATE.combo !== key) STATE = freshState(key);
-  if (!STATE.wrong) STATE.wrong = {};        // older saved walks predate it
+  if (!STATE.wrong) STATE.wrong = {};        // older saved walks predate these
+  if (!STATE.told) STATE.told = {};
   LS.set("last", key);
   $("walktitle").textContent = TOUR
     ? `${ROUTE.stops.length} stops · about an hour`
@@ -733,8 +735,7 @@ function activeCard(i) {
        </div>
        ${wrong >= 2 && s.question.hint
           ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}
-       ${wrong >= GIVE_UP_AFTER
-          ? `<button class="qgiveup">I genuinely cannot see it. Move on.</button>` : ""}`;
+       <button class="qgiveup">Not sure? Tell me the answer.</button>`;
     div.appendChild(q);
     const inp = q.querySelector("input");
     const go = q.querySelector(".btn");
@@ -753,26 +754,28 @@ function activeCard(i) {
       div.classList.add("wrong");
       toast(STATE.wrong[s.id] >= 2 ? "Still not it. Have a hint."
                                    : "Not quite. Look again.");
-      // Re-draw on the counts that change what the card offers: the hint at two,
-      // the last resort at GIVE_UP_AFTER. Only re-drawing at two meant the way
-      // out was written into the template but never actually appeared.
-      if (STATE.wrong[s.id] === 2 || STATE.wrong[s.id] === GIVE_UP_AFTER) renderWalk();
+      if (STATE.wrong[s.id] === 2) renderWalk();     // the hint appears
     };
     go.onclick = submit;
     inp.addEventListener("keydown", (ev) => {
       if (ev.key === "Enter") { ev.preventDefault(); submit(); }
     });
-    // A last resort, and deliberately grudging. It only appears after several
-    // real attempts, and it is a line of text rather than a button, because it
-    // exists for the scaffolding-and-a-tarpaulin case rather than for the
-    // could-not-be-bothered case. Without it a single obscured carving ends the
-    // walk, and the only other way out is to start the whole thing again.
+    // Always available, from the first look at the card. It was briefly hidden
+    // until four wrong answers, on the theory that it should be earned, and that
+    // is the wrong theory: the case it exists for is a clue that is inaccurate,
+    // or a carving under a tarpaulin, and in both of those you know within five
+    // seconds that no amount of guessing will help. Making somebody type four
+    // wrong answers first is a toll, not a safeguard.
+    //
+    // It is a quiet line of text rather than a button so it does not compete
+    // with answering, which is still the good way to do it.
     const giveup = q.querySelector(".qgiveup");
-    if (giveup) giveup.onclick = () => {
+    giveup.onclick = () => {
       STATE.revealed[s.id] = true;
+      STATE.told[s.id] = true;      // so the card can say what the answer was
       saveState();
       renderWalk();
-      toast("Fair enough. Here it is anyway.");
+      toast("No problem. Here it is.");
     };
   } else if (!revealed) {
     // A soft prompt on many stops, not all. Confirm, then the reveal. There is
@@ -804,6 +807,15 @@ function activeCard(i) {
       row.parentNode.insertBefore(late, row);
     }, LATE_NUDGE_MS);
   } else {
+    if (s.question && STATE.told[s.id]) {
+      // Only when they asked to be told. Somebody who answered it knows.
+      const said = document.createElement("div");
+      said.className = "qtold";
+      const shown = s.question.answers.find((x) => /[a-z]/i.test(x))
+                    || s.question.answers[0];
+      said.textContent = `The answer was ${shown}.`;
+      div.appendChild(said);
+    }
     const a = document.createElement("div");
     a.className = "after stext";
     div.appendChild(a);

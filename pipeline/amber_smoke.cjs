@@ -61,7 +61,7 @@ const settle = (p) => p.waitForTimeout(120);
   check("progress starts at zero",
         (await page.locator("#progresstext").textContent()) === `0/${n}`);
 
-  let asked = 0, gated = 0, passUsed = 0, hintSeen = false;
+  let asked = 0, gated = 0, passUsed = 0, hintSeen = false, toldOnce = false;
   for (let i = 0; i < n; i++) {
     const stop = TOUR.stops[i];
     const card = page.locator(".stop.open");
@@ -84,6 +84,11 @@ const settle = (p) => p.waitForTimeout(120);
       asked++;
       check(`stop ${i + 1} asks a question`, (await card.locator(".qask").count()) === 1);
       check(`stop ${i + 1} has no pass button`, (await card.locator(".gateskip").count()) === 0);
+      // The way out has to be there before anything has gone wrong. A clue that
+      // is simply inaccurate is obvious within seconds, and making somebody
+      // guess wrong several times first would be a toll rather than a safeguard.
+      check(`stop ${i + 1} offers a tell-me from the start`,
+            (await card.locator(".qgiveup").count()) === 1);
 
       // One deliberate wrong answer per walk, twice, to bring the hint out.
       if (!hintSeen) {
@@ -96,18 +101,6 @@ const settle = (p) => p.waitForTimeout(120);
               (await page.locator(".stop.open .after").count()) === 0);
         check("the hint arrives after two wrong answers",
               (await page.locator(".stop.open .qhint").count()) === 1);
-        check("no way out of a question after only two wrong answers",
-              (await page.locator(".stop.open .qgiveup").count()) === 0);
-        // Two more, to bring out the last resort, then check it works. A stop
-        // that cannot be answered because the thing is under a tarpaulin must
-        // not end the walk.
-        for (let t = 0; t < 2; t++) {
-          await page.locator(".stop.open .qrow input").fill("banana");
-          await page.locator(".stop.open .qrow .btn").click();
-          await page.waitForTimeout(200);
-        }
-        check("a way out appears after four wrong answers",
-              (await page.locator(".stop.open .qgiveup").count()) === 1);
         hintSeen = true;
       }
 
@@ -116,11 +109,24 @@ const settle = (p) => p.waitForTimeout(120);
       // fact that "two" was rejected went unnoticed. Nobody types a digit.
       const use = stop.question.answers.find((a) => /[a-z]/i.test(a))
                   || stop.question.answers[0];
-      await page.locator(".stop.open .qrow input").fill(use);
-      await page.locator(".stop.open .qrow .btn").click();
-      await page.waitForTimeout(250);
-      check(`stop ${i + 1} opens on "${use}"`,
-            (await page.locator(".stop.open .after").count()) === 1);
+      if (!toldOnce) {
+        // Once per walk, refuse to answer at all and just ask to be told.
+        toldOnce = true;
+        await page.locator(".stop.open .qgiveup").click();
+        await page.waitForTimeout(250);
+        check("asking to be told opens the stop",
+              (await page.locator(".stop.open .after").count()) === 1);
+        const told = await page.locator(".stop.open .qtold").textContent();
+        check("and it says what the answer was", told.includes(use), told);
+      } else {
+        await page.locator(".stop.open .qrow input").fill(use);
+        await page.locator(".stop.open .qrow .btn").click();
+        await page.waitForTimeout(250);
+        check(`stop ${i + 1} opens on "${use}"`,
+              (await page.locator(".stop.open .after").count()) === 1);
+        check(`stop ${i + 1} does not say the answer to somebody who got it`,
+              (await page.locator(".stop.open .qtold").count()) === 0);
+      }
     } else if (stop.gate) {
       gated++;
       check(`stop ${i + 1} withholds its text until you are there`,

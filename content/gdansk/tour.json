@@ -31,7 +31,8 @@
       "gate": null,
       "question": {
         "ask": "Three carved shields run across the front of the gate, and each one is held up by a pair of animals. One of those pairs has a single horn in the middle of its forehead. What are they?",
-        "answers": ["unicorn", "unicorns", "a unicorn", "two unicorns", "jednorozec", "jednorozce"],
+        "answers": ["unicorns", "unicorn", "a unicorn", "two unicorns", "jednorozec", "jednorozce"],
+        "_answers_note": "The first answer with letters in it is the one shown when somebody asks to be told, so put the best-reading form first.",
         "hint": "Look at the shield on the left as you face the gate. The two beasts holding it are not horses."
       },
       "look": "Stand back far enough to see the whole front of the gate.\n\nThere are three shields in a row. Each one is held up by a pair of creatures.\n\nLook at all three pairs before you answer. They are not the same animal.",
