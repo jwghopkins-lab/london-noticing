@@ -39,6 +39,20 @@ jobs:
       - name: Unit tests
         run: python3 -m unittest discover -s pipeline -p 'test_*.py'
 
+      # The Gdansk walk shares the player, so it is built and checked here too.
+      # Its own contract check covers the things London has no equivalent of:
+      # every stop after the first must carry directions that name a turn, and
+      # every stop must have exactly one kind of gate.
+      - name: Build and check the Gdansk walk
+        run: python3 pipeline/build_gdansk.py
+
+      - name: Publish the single file builds alongside the site
+        run: |
+          python3 pipeline/build_standalone.py
+          mkdir -p app/download
+          cp dist/london-noticing.html app/download/
+          cp dist/amber-mile.html app/download/
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app

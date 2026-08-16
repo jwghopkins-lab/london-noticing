@@ -30,6 +30,7 @@
       "where": "Trinity Square Gardens, at the edge of the pavement",
       "lat": 51.5104,
       "lon": -0.0782,
+      "directions": "Make for Tower Hill. Trinity Square Gardens is the raised lawn on the north side of the road, opposite the Tower. The bollards run along the kerb all the way round it.",
       "gate": null,
       "nudge": {
         "prompt": "Find a black iron bollard at the kerb, the fat kind with a rounded top and a band round it. Have you got one?",
@@ -48,6 +49,7 @@
       "where": "Where Fenchurch Street meets Aldgate High Street, on the traffic island",
       "lat": 51.5138,
       "lon": -0.0772,
+      "directions": "Head up Fenchurch Street or the Minories to Aldgate. The pump is on the traffic island where Fenchurch Street runs into Aldgate High Street, on the western side.",
       "gate": null,
       "nudge": {
         "prompt": "The spout of the pump is a small brass animal's head. Have you worked out what animal?",
@@ -66,6 +68,7 @@
       "where": "Cornhill, in the narrow alleys around St Michael's",
       "lat": 51.5133,
       "lon": -0.0868,
+      "directions": "Cornhill, between the Royal Exchange and Bishopsgate. Turn off it into St Michael's Alley or Ball Court and then slow right down.",
       "gate": null,
       "nudge": {
         "prompt": "On a wall about head height there is a small metal or stone plaque with initials and a date, no bigger than a postcard. Have you found one?",
@@ -84,6 +87,7 @@
       "where": "Monument Street, at the base of the column",
       "lat": 51.5102,
       "lon": -0.086,
+      "directions": "Monument Street, at the bottom of Fish Street Hill. Come out of Monument station and the column is directly above you.",
       "gate": {
         "radius_m": 60,
         "prompt": "Stand at the foot of the column for this one."
@@ -102,6 +106,7 @@
       "where": "Lower Thames Street. Walk through the porch",
       "lat": 51.509,
       "lon": -0.0864,
+      "directions": "Lower Thames Street, at the foot of Fish Street Hill, right beside London Bridge. The church sits below the level of the road, so look down.",
       "gate": null,
       "nudge": {
         "prompt": "Somewhere in the churchyard there is a piece of dark timber, propped up and looking like a bit of old fence. Have you found it?",
@@ -120,6 +125,7 @@
       "where": "Where Walbrook meets Cannon Street, looking north towards Bank",
       "lat": 51.5134,
       "lon": -0.0888,
+      "directions": "The street called Walbrook runs north from Cannon Street up towards Bank. Stand at the Cannon Street end and look up it.",
       "gate": null,
       "nudge": null,
       "look": "Read the street sign. The street is called Walbrook.\n\nNow stand still and feel the ground. Walk a few steps north, then a few steps back.\n\nYou are going up and down. Slightly, but you are.",
@@ -135,6 +141,7 @@
       "where": "Cheapside, by the steeple",
       "lat": 51.5136,
       "lon": -0.094,
+      "directions": "Cheapside, south side, about halfway between St Paul's and Bank. Cross to the north pavement so you can see the whole steeple.",
       "gate": null,
       "nudge": {
         "prompt": "High on the steeple there is a weathervane, and it is not a cockerel. Have you worked out what it is?",
@@ -153,6 +160,7 @@
       "where": "Guildhall Yard, against the wall of St Lawrence Jewry",
       "lat": 51.516,
       "lon": -0.0919,
+      "directions": "Guildhall Yard, off Gresham Street. Go in under the arch. The box stands against the church wall on the right.",
       "gate": {
         "radius_m": 60,
         "prompt": "Get into Guildhall Yard for this one."
@@ -174,6 +182,7 @@
       "where": "Panyer Alley, by the exit from St Paul's underground station",
       "lat": 51.5148,
       "lon": -0.0977,
+      "directions": "Panyer Alley, the short passage between St Paul's underground station and Cheapside. The carving is low down on the wall, below the shop signs.",
       "gate": {
         "radius_m": 60,
         "prompt": "This is a small carving in an alley, so you need to be in the alley."
@@ -195,6 +204,7 @@
       "where": "St Paul's Churchyard, on the north side. Stay outside",
       "lat": 51.5138,
       "lon": -0.0985,
+      "directions": "St Paul's Churchyard, on the north side of the cathedral. Stand well back, by the garden, so you can see the dome and the wall below it.",
       "gate": null,
       "nudge": null,
       "look": "You do not need to go in. Stand back and look at the dome.\n\nNow look at the row of columns running round the outside, above the main walls, screening the upper part of the building.\n\nAsk yourself what is behind that screen.",
@@ -210,6 +220,7 @@
       "where": "The corner of Cock Lane and Giltspur Street, up on the wall",
       "lat": 51.5178,
       "lon": -0.1016,
+      "directions": "The corner of Cock Lane and Giltspur Street, just west of Smithfield market. Look up at the corner of the building above the first floor.",
       "gate": null,
       "nudge": {
         "prompt": "There is a small gilded figure of a fat boy set into the wall above head height. Have you found him?",
@@ -228,6 +239,7 @@
       "where": "On the bridge, above Farringdon Street",
       "lat": 51.5176,
       "lon": -0.1046,
+      "directions": "Holborn Viaduct, the ornate iron bridge carrying Holborn over Farringdon Street. Get onto the bridge itself and go to the parapet.",
       "gate": {
         "radius_m": 70,
         "prompt": "This one only opens when you are standing on the bridge itself."
@@ -246,6 +258,7 @@
       "where": "Ely Place, Holborn. Go through the gates and up the street",
       "lat": 51.5185,
       "lon": -0.1078,
+      "directions": "Ely Place, a gated dead end off Charterhouse Street near Holborn Circus. Walk in past the gateposts and up the right-hand side.",
       "gate": null,
       "nudge": {
         "prompt": "On the old iron railings there are cone shaped fittings, wide at the top and narrowing down. Have you found one?",
@@ -264,6 +277,7 @@
       "where": "Charterhouse Street, right where it meets Farringdon Road",
       "lat": 51.5203,
       "lon": -0.1053,
+      "directions": "Where Charterhouse Street meets Farringdon Road, immediately south-west of Smithfield market.",
       "gate": {
         "radius_m": 70,
         "prompt": "This one you have to be standing on. Get to where Charterhouse Street meets Farringdon Road."
@@ -285,6 +299,7 @@
       "where": "Ludgate Circus, standing at the crossing in the middle",
       "lat": 51.514,
       "lon": -0.1046,
+      "directions": "Ludgate Circus. Stand at the crossing in the middle of the junction, where you can see up all four roads.",
       "gate": null,
       "nudge": null,
       "look": "Stand at the crossing and turn slowly all the way round.\n\nLook along each of the four roads in turn and watch what the ground does.\n\nEvery one of them goes up. You are at the bottom of something.",
@@ -300,6 +315,7 @@
       "where": "Blackfriars Bridge, on the upstream side, looking down at the water",
       "lat": 51.5106,
       "lon": -0.1035,
+      "directions": "Blackfriars Bridge. Walk out onto the bridge and use the upstream side, which is the eastern pavement, looking back at the north bank.",
       "gate": null,
       "nudge": {
         "prompt": "Under the bridge on the north bank there is a dark arch at water level, half hidden. Have you found it?",
@@ -318,6 +334,7 @@
       "where": "Fleet Street, at the top of Bride Lane",
       "lat": 51.5139,
       "lon": -0.1053,
+      "directions": "Fleet Street, at the top of Bride Lane. Cross to the north pavement so you can see the whole spire at once.",
       "gate": null,
       "nudge": null,
       "look": "Step back until you can see the whole spire.\n\nCount the tiers. Each one is smaller than the one below it. Four of them, and then a point.\n\nNow think of a wedding cake.",
@@ -333,6 +350,7 @@
       "where": "Victoria Embankment, by Temple Gardens",
       "lat": 51.5108,
       "lon": -0.1106,
+      "directions": "Victoria Embankment at Temple Gardens. Come down Middle Temple Lane or Temple Place until you reach the road along the river.",
       "gate": null,
       "nudge": null,
       "look": "Find the silver dragon on the stone plinth by the road.\n\nLook at how big it is, and at the shield it is holding.\n\nThen remember it, because you will meet its smaller relatives all over London.",

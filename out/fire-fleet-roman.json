@@ -30,6 +30,7 @@
       "where": "Tower Hill, in the sunken garden by the station",
       "lat": 51.5098,
       "lon": -0.0766,
+      "directions": "Tower Hill, in the sunken garden beside the station. Go down the steps by the ticket hall and the wall is straight in front of you.",
       "gate": {
         "radius_m": 70,
         "prompt": "This one wants you standing at the foot of the wall."
@@ -48,6 +49,7 @@
       "where": "Under the painted iron roof, at the crossing in the middle",
       "lat": 51.5128,
       "lon": -0.0835,
+      "directions": "Leadenhall Market. The main way in is off Gracechurch Street. Go through and walk to the crossing in the middle, under the painted roof.",
       "gate": null,
       "nudge": null,
       "look": "Stand where the two arcades cross and look up at the roof.\n\nThen look at the floor, and at the people going past with coffee.\n\nHold that, because you need to picture something much bigger.",
@@ -63,6 +65,7 @@
       "where": "Monument Street, at the base of the column",
       "lat": 51.5102,
       "lon": -0.086,
+      "directions": "Monument Street, at the bottom of Fish Street Hill. Come out of Monument station and the column is directly above you.",
       "gate": {
         "radius_m": 60,
         "prompt": "Stand at the foot of the column for this one."
@@ -81,6 +84,7 @@
       "where": "Lower Thames Street. Walk through the porch",
       "lat": 51.509,
       "lon": -0.0864,
+      "directions": "Lower Thames Street, at the foot of Fish Street Hill, right beside London Bridge. The church sits below the level of the road, so look down.",
       "gate": null,
       "nudge": {
         "prompt": "Somewhere in the churchyard there is a piece of dark timber, propped up and looking like a bit of old fence. Have you found it?",
@@ -99,6 +103,7 @@
       "where": "111 Cannon Street, set into the wall at pavement level",
       "lat": 51.5117,
       "lon": -0.0909,
+      "directions": "111 Cannon Street, north side, opposite Cannon Street station. The stone is set into the wall at shin height behind a grille.",
       "gate": null,
       "nudge": {
         "prompt": "There is a lump of limestone behind a grille in the wall, low down, easy to walk straight past. Have you found it?",
@@ -117,6 +122,7 @@
       "where": "London Mithraeum, Walbrook. Free, but book a slot",
       "lat": 51.5127,
       "lon": -0.09,
+      "directions": "12 Walbrook, inside the Bloomberg building. Go in at the entrance on Walbrook. Entry is free but a timed ticket helps.",
       "gate": null,
       "nudge": null,
       "look": "Take the stairs down. Keep going. You end up seven metres below the street.\n\nWait in the dark for the lights and the sound to start.\n\nWhen you can see, look at the low stone walls and find the curved end.",
@@ -132,6 +138,7 @@
       "where": "Cheapside, by the steeple",
       "lat": 51.5136,
       "lon": -0.094,
+      "directions": "Cheapside, south side, about halfway between St Paul's and Bank. Cross to the north pavement so you can see the whole steeple.",
       "gate": null,
       "nudge": {
         "prompt": "High on the steeple there is a weathervane, and it is not a cockerel. Have you worked out what it is?",
@@ -150,6 +157,7 @@
       "where": "Guildhall Yard. The gallery below is free",
       "lat": 51.5157,
       "lon": -0.0922,
+      "directions": "Guildhall Yard, off Gresham Street. Stand in the middle of the yard and look down at the paving under your feet.",
       "gate": null,
       "nudge": {
         "prompt": "There is a dark curved line laid into the paving of the yard. Have you found where it runs?",
@@ -168,6 +176,7 @@
       "where": "Noble Street, below the pavement on the west side",
       "lat": 51.5165,
       "lon": -0.0975,
+      "directions": "Noble Street runs north off Gresham Street towards the Barbican. The ruins are below the pavement behind railings on the west side.",
       "gate": null,
       "nudge": null,
       "look": "Look over the railing at the sunken ground beside the street.\n\nThere is a long stretch of stone wall down there, and at one end it turns a corner and thickens into a rounded stub.\n\nNo ticket, no glass, no guard. Just a wall in a hole next to the pavement.",
@@ -183,6 +192,7 @@
       "where": "St Paul's Churchyard, on the north side. Stay outside",
       "lat": 51.5138,
       "lon": -0.0985,
+      "directions": "St Paul's Churchyard, on the north side of the cathedral. Stand well back, by the garden, so you can see the dome and the wall below it.",
       "gate": null,
       "nudge": null,
       "look": "You do not need to go in. Stand back and look at the dome.\n\nNow look at the row of columns running round the outside, above the main walls, screening the upper part of the building.\n\nAsk yourself what is behind that screen.",
@@ -198,6 +208,7 @@
       "where": "Ludgate Circus, on the corner looking west",
       "lat": 51.5141,
       "lon": -0.104,
+      "directions": "Ludgate Circus, the crossroads at the bottom of Ludgate Hill. Stand on the north-west corner and look west.",
       "gate": null,
       "nudge": null,
       "look": "Stand on the corner and look west, up the street.\n\nYou can see the whole length of it, rising slightly, with St Dunstan's clock sticking out on the right about halfway along.\n\nCount the newspaper offices you can see. It will not take long.",
@@ -213,6 +224,7 @@
       "where": "The corner of Cock Lane and Giltspur Street, up on the wall",
       "lat": 51.5178,
       "lon": -0.1016,
+      "directions": "The corner of Cock Lane and Giltspur Street, just west of Smithfield market. Look up at the corner of the building above the first floor.",
       "gate": null,
       "nudge": {
         "prompt": "There is a small gilded figure of a fat boy set into the wall above head height. Have you found him?",
@@ -231,6 +243,7 @@
       "where": "St Bride's, off Fleet Street. Free, and go down the stairs",
       "lat": 51.5138,
       "lon": -0.105,
+      "directions": "St Bride's, down St Bride's Avenue off the south side of Fleet Street. Go in and take the stairs down to the crypt. It is free.",
       "gate": null,
       "nudge": {
         "prompt": "Down in the crypt there are cases of metal type and a memorial wall of names. Have you found the names?",
@@ -249,6 +262,7 @@
       "where": "Fleet Street, at the top of Bride Lane",
       "lat": 51.5139,
       "lon": -0.1053,
+      "directions": "Fleet Street, at the top of Bride Lane. Cross to the north pavement so you can see the whole spire at once.",
       "gate": null,
       "nudge": null,
       "look": "Step back until you can see the whole spire.\n\nCount the tiers. Each one is smaller than the one below it. Four of them, and then a point.\n\nNow think of a wedding cake.",
@@ -264,6 +278,7 @@
       "where": "120 Fleet Street, on the north side. Look through the doors",
       "lat": 51.5142,
       "lon": -0.1063,
+      "directions": "120 Fleet Street, north side, a little west of Shoe Lane. It is the black glass building, so you will spot it before you read the number.",
       "gate": null,
       "nudge": {
         "prompt": "One building on this street is black glass and chrome and looks about eighty years too modern. Have you found it?",
@@ -282,6 +297,7 @@
       "where": "Wine Office Court, an alley off the north side of Fleet Street",
       "lat": 51.5145,
       "lon": -0.1078,
+      "directions": "Wine Office Court, a narrow alley off the north side of Fleet Street. The entrance is easy to walk past.",
       "gate": null,
       "nudge": null,
       "look": "Go up the alley and in through the low door.\n\nStop just inside and notice two things. How dark it is, and how many separate little rooms there seem to be.\n\nThere are no windows to speak of.",
@@ -297,6 +313,7 @@
       "where": "186a Fleet Street, on the north side",
       "lat": 51.5142,
       "lon": -0.1092,
+      "directions": "186a Fleet Street, north side, close to Fetter Lane. The clock projects out over the pavement.",
       "gate": null,
       "nudge": {
         "prompt": "There is a clock sticking out over the pavement, and two men standing next to it. Have you found them?",
@@ -315,6 +332,7 @@
       "where": "17 Fleet Street, the timbered building over the archway to Inner Temple Lane",
       "lat": 51.514,
       "lon": -0.1106,
+      "directions": "17 Fleet Street, south side, near Temple Bar. Look above the archway into Inner Temple Lane.",
       "gate": {
         "radius_m": 60,
         "prompt": "Get to the archway on the south side of Fleet Street, near Temple Bar."

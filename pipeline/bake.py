@@ -57,6 +57,7 @@ def stop_artefact(stop):
         "where": stop["where"],
         "lat": stop["lat"],
         "lon": stop["lon"],
+        "directions": stop.get("directions"),
         "gate": stop.get("gate"),
         "nudge": stop.get("nudge"),
         "look": stop["look"],

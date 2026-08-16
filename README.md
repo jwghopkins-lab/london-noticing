@@ -98,3 +98,38 @@ picker and its scoring were not reused, because with five fixed topics and a
 user who picks three there is no rotation problem and nothing to rank.
 
 No shared code, no shared database, no imports from either at runtime.
+
+## A second walk: Gdansk
+
+`content/gdansk/tour.json` is a ten-stop walk round the Main Town of Gdansk,
+built with `pipeline/build_gdansk.py` and sharing the same player. It is about
+1.6 km and an hour, and it works differently in three ways.
+
+**One fixed route.** No topics to choose. Everybody walks the same ten stops, so
+any number of people can be part way through at the same time without knowing
+about each other. Nothing is dated and nothing is shared.
+
+**Seven stops are gated on an answer rather than on GPS.** You are asked
+something you can only answer by looking at the thing in front of you: how many
+prongs are on the trident, which animals hold the shield, what the church is
+made of. In a city of tall narrow streets that is a better proof of presence
+than a satellite fix, and it is more fun. Answers are matched forgivingly, there
+is no score and no limit, and a hint appears on its own after two wrong tries.
+
+**The three that are gated on position carry a pass button**, which the London
+walk deliberately does not. A walk that dead ends because a phone could not get
+a fix is worse than one somebody skipped a check on. The stops that ask a
+question have no pass button, because there the answer is the proof.
+
+## Directions
+
+Every stop after the first carries written directions to it, and they appear as
+their own step between one stop and the next, with the compass heading and the
+distance worked out from the coordinates.
+
+The two walks author that differently. Gdansk has one fixed order, so its
+directions are full turn by turn with street names and turnings. London's ten
+routes each reach a stop from a different predecessor, so a fixed turn-by-turn
+would be wrong nine times out of ten; there the written part is arrival detail
+that holds whichever way you came, and the heading and distance in front of it
+are computed per leg.

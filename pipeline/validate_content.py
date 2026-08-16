@@ -127,7 +127,7 @@ def validate_stops(rep, doc, topic_ids):
 
         if s.get("topic") not in topic_ids:
             rep.error(where, f"topic {s.get('topic')!r} is not one of the five")
-        for field in ("title", "where", "look", "after"):
+        for field in ("title", "where", "look", "after", "directions"):
             if not (s.get(field) or "").strip():
                 rep.error(where, f"missing {field}")
 

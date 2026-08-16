@@ -22,7 +22,7 @@ CONTENT = BASE / "content"
 FORMAT_VERSION = 1
 
 REQUIRED_STOP_FIELDS = ("id", "topic", "title", "where", "lat", "lon",
-                        "look", "after")
+                        "look", "after", "directions")
 
 
 def _haversine_m(lat1, lon1, lat2, lon2):
@@ -95,7 +95,7 @@ def verify(artefact, topics_doc, stops_doc, routes_doc):
         # Text must be byte-identical to the content. A baker that reflows,
         # trims or re-wraps prose changes what a guide will read aloud.
         for field in ("title", "where", "look", "after", "look_spoken",
-                      "after_spoken"):
+                      "after_spoken", "directions"):
             if stop.get(field) != source.get(field):
                 problems.append(f"stop {sid}: {field} does not match the content file")
         for field in ("lat", "lon", "gate", "nudge", "topic"):
