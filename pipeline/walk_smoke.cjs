@@ -46,7 +46,50 @@ const settle = (page) => page.waitForTimeout(120);
   console.log(`  walking ${COMBO}: ${topicNames.join(" + ")}, `
             + `${route.stops.length} stops, ${route.gated_stops} gated\n`);
 
-  await page.goto(BASE, { waitUntil: "networkidle" });
+  /* ---- first, prove the gates cannot be walked past without testing mode ---- */
+  {
+    const plain = await ctx.newPage();
+    await plain.goto(BASE, { waitUntil: "networkidle" });
+    await plain.evaluate(() => localStorage.clear());
+    await plain.reload({ waitUntil: "networkidle" });
+    for (const name of topicNames) {
+      await plain.locator(".topic", { hasText: name }).first().click();
+      await plain.waitForTimeout(120);
+    }
+    await plain.locator("#startbtn").click();
+    await plain.waitForSelector("#s-walk.on");
+    if (await plain.locator("#modal.show").isVisible()) await plain.locator("#lclater").click();
+    await plain.waitForTimeout(150);
+
+    check("no testing scaffolding on the first card without the flag",
+          (await plain.locator(".devrow").count()) === 0
+          && !(await plain.locator("#simoffbtn").isVisible()));
+
+    // Walk to the first gated stop the ordinary way, then try to get past it.
+    const firstGate = route.stops.findIndex((s) => s.gate);
+    for (let i = 0; i < firstGate; i++) {
+      await plain.locator(".stop.open .srow .btn").click();
+      await plain.waitForTimeout(120);
+      await plain.locator(".stop.open .srow .btn").click();
+      await plain.waitForTimeout(120);
+    }
+    const gateCard = plain.locator(".stop.open");
+    check("the gated stop offers exactly one button, and it is the check",
+          (await gateCard.locator("button").count()) === 1
+          && (await gateCard.locator(".gatebtn").count()) === 1);
+    check("no button on the page claims to skip or continue past the gate",
+          !/skip|continue anyway|open it|unlock/i.test(await plain.locator("#s-walk").textContent()));
+    // Headless has no geolocation, so this is a real refusal, not a simulated one.
+    await gateCard.locator(".gatebtn").click();
+    await plain.waitForTimeout(1500);
+    check("the gate stays shut with no position",
+          (await plain.locator(".stop.open .stext").count()) === 0);
+    check("progress cannot advance past a gate",
+          (await plain.locator("#progresstext").textContent()) === `${firstGate}/${route.stops.length}`);
+    await plain.close();
+  }
+
+  await page.goto(BASE + "?testing=1", { waitUntil: "networkidle" });
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: "networkidle" });
 
@@ -106,12 +149,13 @@ const settle = (page) => page.waitForTimeout(120);
       check(`stop ${i + 1} withholds its text until you are there`,
             (await card.locator(".stext").count()) === 0);
 
-      // Once per walk, prove a distant gate refuses and says how far, not no.
+      // Start the approach half a kilometre out and walk in. Nothing here
+      // opens the stop: each press moves a made-up position and the ordinary
+      // check decides, so getting in takes several strides.
+      await page.locator('.stop.open .devrow [data-act="start"]').click();
+      await settle(page);
       if (!refusalChecked) {
         refusalChecked = true;
-        await page.locator("#simbtn").click();
-        await page.locator("#simlist button", { hasText: "500 m away" }).click();
-        await settle(page);
         check("the testing banner shows while a position is simulated",
               await page.locator("#simbanner").isVisible());
         await page.locator(".stop.open .gatebtn").click();
@@ -124,13 +168,16 @@ const settle = (page) => page.waitForTimeout(120);
         check("the gate never says the word no", !/\bno\b/i.test(refusal), refusal);
       }
 
-      await page.locator("#simbtn").click();
-      // By position, not by text. The list is built in route order with one
-      // extra at the end, and matching on "stop 1 " is ambiguous next to
-      // "stop 12", "stop 18" and so on.
-      await page.locator("#simlist button").nth(i).click();
-      await settle(page);
-      await page.locator(".stop.open .gatebtn").click();
+      let strides = 0;
+      while ((await page.locator(".stop.open .stext").count()) === 0) {
+        if (++strides > 12) break;
+        await page.locator('.stop.open .devrow [data-act="step"]').click();
+        await settle(page);
+        await page.locator(".stop.open .gatebtn").click();
+        await page.waitForTimeout(250);
+      }
+      check(`stop ${i + 1} took a real approach to open`,
+            strides >= 3 && strides <= 12, `${strides} strides`);
       await page.waitForSelector(".stop.open .stext");
     }
 

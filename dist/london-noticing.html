@@ -195,11 +195,19 @@
   .card .sub b { color: var(--ink); }
   .btnrow { display: flex; gap: 8px; margin-top: 14px; }
   .btnrow .btn { flex: 1; padding: 12px 0; font-size: .9rem; }
-  .simlist { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
-  .simlist button { text-align: left; border: 1px solid var(--line); background: var(--paper);
-                    color: var(--ink); font: inherit; font-size: .84rem; padding: 11px 12px;
-                    border-radius: 10px; cursor: pointer; min-height: 44px; }
-  .simlist button.on { border-color: var(--accent); background: var(--accent-soft); }
+  /* The approach simulator. Deliberately styled as scaffolding rather than as
+     part of the walk, so nobody mistakes it for a feature. */
+  .devrow { margin-top: 14px; padding: 10px; border: 1px dashed var(--line);
+            border-radius: 10px; display: flex; flex-wrap: wrap; gap: 6px;
+            align-items: center; }
+  .devrow .devlabel { font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+                      color: var(--ink-soft); width: 100%; }
+  .devrow button { border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+                   font: inherit; font-size: .78rem; padding: 9px 12px; border-radius: 999px;
+                   cursor: pointer; min-height: 40px; }
+  .devrow .devdist { font-size: .74rem; color: var(--ink-soft); margin-left: auto;
+                     font-variant-numeric: tabular-nums; }
+  .devnote { width: 100%; font-size: .68rem; color: var(--ink-soft); line-height: 1.45; }
   #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
            background: var(--ink); color: var(--paper); font-size: .82rem; padding: 10px 16px;
            border-radius: 14px; opacity: 0; transition: opacity .25s; pointer-events: none;
@@ -251,7 +259,7 @@
   </div>
   <div id="walk"></div>
   <div class="toolrow">
-    <button class="tool" id="simbtn">Testing tools</button>
+    <button class="tool" id="simoffbtn" hidden>Back to the real GPS</button>
     <button class="tool" id="restartbtn">Start over</button>
   </div>
 </div>
@@ -267,6 +275,20 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const PICK = 3;
 const ROUTES = "routes/";
 const LATE_NUDGE_MS = 45000;   // how long before we quietly offer a hand
+
+// Testing scaffolding is off unless it is asked for by hand. On a real walk
+// there is no button to press, and there is no way to reach one, because a
+// visible control that opens a gated stop is a skip button whatever it is
+// called. Add ?testing=1 or #testing to the address to bring it back.
+// Deliberately NOT enabled by hostname. An earlier version switched itself on
+// for localhost, which meant the local build quietly had scaffolding the real
+// one did not, and the test that was supposed to prove a gate cannot be walked
+// past was running against a page that still had the walk-closer buttons on it.
+// Implicit is how you end up testing the wrong build. Ask for it every time.
+let TESTING = /(?:^|[?&])testing=1(?:&|$)/.test(location.search)
+           || location.hash === "#testing";
+const SIM_START_M = 500;       // where a simulated approach begins
+const SIM_STEP_M = 120;        // and how far one press of the button walks
 
 const LS = {
   get: (k, d) => { try { return JSON.parse(localStorage.getItem("noticing." + k)) ?? d; }
@@ -361,6 +383,22 @@ function haversineM(lat1, lon1, lat2, lon2) {
 // can say no to somebody who IS standing there is worse than no gate at all.
 function gatePasses(distanceM, accuracyM, radiusM) {
   return distanceM - Math.min(accuracyM || 0, 150) <= radiusM;
+}
+function bearingDeg(lat1, lon1, lat2, lon2) {
+  const r = Math.PI / 180;
+  const p1 = lat1 * r, p2 = lat2 * r, dl = (lon2 - lon1) * r;
+  return (Math.atan2(Math.sin(dl) * Math.cos(p2),
+                     Math.cos(p1) * Math.sin(p2)
+                     - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / r + 360) % 360;
+}
+function destPoint(lat, lon, bearing, metres) {
+  const R = 6371008.8, r = Math.PI / 180;
+  const d = metres / R, b = bearing * r, p1 = lat * r, l1 = lon * r;
+  const p2 = Math.asin(Math.sin(p1) * Math.cos(d)
+                       + Math.cos(p1) * Math.sin(d) * Math.cos(b));
+  const l2 = l1 + Math.atan2(Math.sin(b) * Math.sin(d) * Math.cos(p1),
+                             Math.cos(d) - Math.sin(p1) * Math.sin(p2));
+  return { lat: p2 / r, lon: ((l2 / r + 540) % 360) - 180 };
 }
 
 /* ---- the topic picker ---- */
@@ -525,6 +563,28 @@ function activeCard(i) {
     const btn = div.querySelector(".gatebtn");
     const stat = div.querySelector(".gatestat");
     btn.onclick = () => checkin(i, btn, stat);
+
+    // Scaffolding, and only when it has been asked for by hand. Note what is
+    // NOT here: anything that opens the stop. These move a made-up position and
+    // that is all, so the gate below is still the thing that decides.
+    if (TESTING) {
+      const dev = document.createElement("div");
+      dev.className = "devrow";
+      const away = SIM ? `${Math.round(haversineM(SIM.lat, SIM.lon, s.lat, s.lon))} m away`
+                       : "not simulating";
+      dev.innerHTML =
+        `<span class="devlabel">Testing</span>
+         <button data-act="start">Start ${SIM_START_M} m away</button>
+         <button data-act="step"${SIM ? "" : " disabled"}>Walk ${SIM_STEP_M} m closer</button>
+         <span class="devdist">${away}</span>
+         <div class="devnote">These move a made-up position. Nothing here opens
+         the stop, so you still have to get inside the radius and press the
+         button above.</div>`;
+      dev.querySelector('[data-act="start"]').onclick =
+        () => simStart(s, i > 0 ? ROUTE.stops[i - 1] : null);
+      dev.querySelector('[data-act="step"]').onclick = () => simStep(s);
+      div.appendChild(dev);
+    }
     return div;
   }
 
@@ -660,7 +720,8 @@ async function checkin(i, btn, stat) {
     STATE.gate[s.id] = true;
     saveState();
     renderWalk();
-    toast(SIM ? "Simulated position accepted." : "You're there.");
+    toast(SIM ? "Close enough. The gate opened on the real check."
+                : "You're there.");
     return;
   }
   // Warm and cold, never a flat no. A phone in a courtyard can be 100 m out.
@@ -749,65 +810,90 @@ function locationPreflight(force) {
   };
 }
 
-/* ---- testing tools ----
-   A simulated position, so the gates can be exercised from anywhere. It is
-   deliberately loud: a banner stays on screen for as long as it is on, because
-   a silent override would eventually be mistaken for a working gate. Note that
-   it feeds a position INTO the ordinary gate check. The pass rule itself is
-   never bypassed, so what you are testing is the real thing. */
+/* ---- the approach simulator ----
+   A way to exercise the gates without being in London. It simulates WALKING,
+   not arriving. There is no control that places you at a stop and no control
+   that opens one. You start half a kilometre out and press a button that moves
+   you a hundred and twenty metres closer, and the stop opens when the ordinary
+   check says you are inside the radius. Reaching a gated stop takes four
+   presses, and the warm and cold readings change on the way in, which is the
+   behaviour worth testing anyway.
+
+   The earlier version had a "stand at stop 7" list. It fed a real position into
+   a real check, so the pass rule stayed honest, but one tap opened any gated
+   stop, and a control that opens a gated stop is a skip button whatever the
+   label says. It is gone.
+
+   It is also deliberately loud. A banner stays up the whole time a made-up
+   position is in use, because a quiet override eventually gets mistaken for a
+   working gate. */
 function paintSimBanner() {
-  const b = $("simbanner");
-  if (!SIM) { b.style.display = "none"; return; }
+  const b = $("simbanner"), off = $("simoffbtn");
+  if (!SIM) {
+    b.style.display = "none";
+    if (off) off.hidden = true;
+    return;
+  }
   b.style.display = "block";
-  b.textContent = "Testing: pretending to be at " + SIM.label
-                + ". The gate rule is still the real one.";
+  b.textContent = "Testing. Standing at a made-up position, about "
+                + `${Math.round(SIM.dist)} m from this stop. `
+                + "The gate rule is the real one and is not being bypassed.";
+  if (off) off.hidden = false;
 }
 function setSim(sim) {
   SIM = sim;
-  LS.set("sim", sim);
+  if (sim) LS.set("sim", sim); else LS.del("sim");
   paintSimBanner();
   renderWalk();
 }
-function showSimTools() {
-  const rows = ROUTE.stops.map((s, i) =>
-    `<button data-lat="${s.lat}" data-lon="${s.lon}" data-acc="20"
-       data-label="stop ${i + 1}, ${escapeHtml(s.title)}"
-       class="${SIM && SIM.label.startsWith("stop " + (i + 1) + ",") ? "on" : ""}">
-       Stand at stop ${i + 1} — ${escapeHtml(s.title)}${s.gate ? " (gated)" : ""}</button>`
-  ).join("");
-  const near = ROUTE.stops.find((s) => s.gate) || ROUTE.stops[0];
-  $("modalcard").innerHTML = `<h2>Testing tools</h2>
-    <div class="sub">You are not in London, so here is a way to stand
-    somewhere. This feeds a made-up position into the ordinary location check.
-    The pass rule is not touched, so a gate that opens here would open on the
-    street.</div>
-    <div class="simlist" id="simlist">${rows}
-      <button data-lat="${(near.lat + 0.0045).toFixed(6)}" data-lon="${near.lon}"
-        data-acc="20" data-label="500 m north of ${escapeHtml(near.title)}">
-        Stand 500 m away, to see a gate refuse</button>
-    </div>
-    <div class="btnrow">
-      <button class="btn ghost" id="simoff">Use the real GPS</button>
-      <button class="btn primary" id="simclose">Done</button>
-    </div>`;
-  $("modal").classList.add("show");
-  $("simlist").querySelectorAll("button").forEach((b) => {
-    b.onclick = () => {
-      setSim({ lat: +b.dataset.lat, lon: +b.dataset.lon, acc: +b.dataset.acc,
-               label: b.dataset.label });
-      closeModal();
-      toast("Now pretending to be at " + b.dataset.label + ".");
-    };
-  });
-  $("simoff").onclick = () => {
-    setSim(null); LS.del("sim"); closeModal(); toast("Back to the real GPS.");
-  };
-  $("simclose").onclick = closeModal;
+// Start the approach: drop the walker SIM_START_M short of the stop, on the
+// bearing the real walk comes in from where that is known, due south otherwise.
+function simStart(stop, from) {
+  const back = from ? bearingDeg(stop.lat, stop.lon, from.lat, from.lon) : 180;
+  const p = destPoint(stop.lat, stop.lon, back, SIM_START_M);
+  setSim({ lat: p.lat, lon: p.lon, acc: 20, dist: SIM_START_M });
+}
+// One press, one step closer. It cannot overshoot onto the stop itself: the
+// last stride stops short, so the gate is always what lets you in.
+function simStep(stop) {
+  if (!SIM) return;
+  const d = haversineM(SIM.lat, SIM.lon, stop.lat, stop.lon);
+  const step = Math.min(SIM_STEP_M, Math.max(0, d - 5));
+  if (step <= 0) { toast("That is as close as this will take you."); return; }
+  const b = bearingDeg(SIM.lat, SIM.lon, stop.lat, stop.lon);
+  const p = destPoint(SIM.lat, SIM.lon, b, step);
+  setSim({ lat: p.lat, lon: p.lon, acc: 20,
+           dist: haversineM(p.lat, p.lon, stop.lat, stop.lon) });
 }
 
 /* ---- wiring ---- */
 $("startbtn").onclick = () => start(comboKey(picked));
-$("simbtn").onclick = showSimTools;
+$("simoffbtn").onclick = () => { setSim(null); toast("Back to the real GPS."); };
+
+// A way in that does not depend on the address bar. The page may be embedded
+// somewhere that never passes a query string or a hash through, and five taps
+// on the wordmark is not something anybody does by accident on a walk. It lives
+// in memory only and is never written down, so it cannot follow you to London.
+let taps = 0, tapTimer = null;
+for (const mark of document.querySelectorAll(".wordmark")) {
+  mark.addEventListener("click", () => {
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => { taps = 0; }, 2500);
+    if (++taps < 5) return;
+    taps = 0;
+    TESTING = !TESTING;
+    if (!TESTING) setSim(null);
+    else if (ROUTE) renderWalk();
+    toast(TESTING
+      ? "Testing on. You can simulate walking towards a gated stop."
+      : "Testing off.");
+  });
+}
+// Changing only the hash does not re-run this script, so the flag would appear
+// to do nothing. Reload so it is read again.
+window.addEventListener("hashchange", () => {
+  if ((location.hash === "#testing") !== TESTING) location.reload();
+});
 $("restartbtn").onclick = () => {
   $("modalcard").innerHTML = `<h2>Start over?</h2>
     <div class="sub">This forgets how far you have walked and takes you back to
@@ -843,7 +929,11 @@ $("modal").onclick = (ev) => { if (ev.target === $("modal")) closeModal(); };
          : "Check your connection and reload."}</div>`);
     return;
   }
-  SIM = LS.get("sim", null);
+  // A made-up position must never outlive testing mode. Without this, somebody
+  // who once opened the page with ?testing=1 would carry a working bypass in
+  // local storage into a real walk, and the gates would be quietly off.
+  if (TESTING) SIM = LS.get("sim", null);
+  else { SIM = null; LS.del("sim"); }
   picked = (LS.get("picked", []) || []).filter((id) => TOPICS.some((t) => t.id === id));
   renderPicker();
   const last = LS.get("last", null);

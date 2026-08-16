@@ -63,10 +63,22 @@ from `bake.py` and re-derives everything from the content files, including a
 second implementation of the distance formula. A generator that grades itself
 grades itself generously.
 
-**Roughly four stops per route are gated.** A walk that is nothing but check-ins
-is a chore. The gate never says no: it reports warm or cold, because a phone in
-a courtyard can be a hundred metres out, and refusing somebody who is standing
+**Roughly four stops per route are gated, and a gate cannot be talked out of
+it.** A walk that is nothing but check-ins is a chore, so most stops are not
+gated. The ones that are have no bypass: there is no skip button, no override,
+and no control anywhere in the shipped page that opens a gated stop. The only
+way in is a position inside the radius.
+
+The gate never says no, though. It reports warm or cold, because a phone in a
+courtyard can be a hundred metres out, and refusing somebody who is standing
 right there is worse than having no gate at all.
+
+**Testing a gate from outside London** is done with an approach simulator that
+simulates walking rather than arriving. It is off unless asked for, by
+`?testing=1` in the address or five taps on the wordmark, and it is never
+written to storage, so it cannot follow you onto the street. It puts you 500 m
+out and moves you 120 m per press. Getting in takes about four presses and the
+ordinary check decides every time.
 
 **Everything is written to be spoken.** Short sentences, one idea each, nothing
 that only works on a screen, and a separate `*_spoken` field wherever dates and
