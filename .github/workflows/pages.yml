@@ -46,6 +46,12 @@ jobs:
       - name: Build and check the Gdansk walk
         run: python3 pipeline/build_gdansk.py
 
+      # Every listed answer must actually be accepted by the matcher in the
+      # shipped page. A published build once rejected the word "two" at a stop
+      # whose answer was two, because the normaliser stripped it as filler.
+      - name: Check every answer round-trips
+        run: node pipeline/check_answers.cjs
+
       # build_gdansk.py has already written app/gdansk/index.html, which is
       # what gives the Gdansk walk its own address on the site.
       - name: Publish the single file builds alongside the site

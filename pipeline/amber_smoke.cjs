@@ -96,13 +96,30 @@ const settle = (p) => p.waitForTimeout(120);
               (await page.locator(".stop.open .after").count()) === 0);
         check("the hint arrives after two wrong answers",
               (await page.locator(".stop.open .qhint").count()) === 1);
+        check("no way out of a question after only two wrong answers",
+              (await page.locator(".stop.open .qgiveup").count()) === 0);
+        // Two more, to bring out the last resort, then check it works. A stop
+        // that cannot be answered because the thing is under a tarpaulin must
+        // not end the walk.
+        for (let t = 0; t < 2; t++) {
+          await page.locator(".stop.open .qrow input").fill("banana");
+          await page.locator(".stop.open .qrow .btn").click();
+          await page.waitForTimeout(200);
+        }
+        check("a way out appears after four wrong answers",
+              (await page.locator(".stop.open .qgiveup").count()) === 1);
         hintSeen = true;
       }
 
-      await page.locator(".stop.open .qrow input").fill(stop.question.answers[0]);
+      // Prefer a word over a digit. The bug that reached a published build was
+      // exactly here: this used answers[0], which for the Crane was "2", so the
+      // fact that "two" was rejected went unnoticed. Nobody types a digit.
+      const use = stop.question.answers.find((a) => /[a-z]/i.test(a))
+                  || stop.question.answers[0];
+      await page.locator(".stop.open .qrow input").fill(use);
       await page.locator(".stop.open .qrow .btn").click();
       await page.waitForTimeout(250);
-      check(`stop ${i + 1} opens on the right answer`,
+      check(`stop ${i + 1} opens on "${use}"`,
             (await page.locator(".stop.open .after").count()) === 1);
     } else if (stop.gate) {
       gated++;

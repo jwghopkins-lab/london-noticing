@@ -221,6 +221,9 @@
   .qrow input:focus-visible { outline: 2px solid var(--accent); }
   .qrow .btn { width: 96px; flex: none; padding: 11px 0; }
   .qhint { margin-top: 9px; font-size: .82rem; color: var(--ink-soft); line-height: 1.45; }
+  .qgiveup { display: block; margin-top: 10px; border: none; background: none;
+             color: var(--ink-soft); font: inherit; font-size: .78rem; cursor: pointer;
+             text-decoration: underline dotted; text-underline-offset: 3px; padding: 6px 0; }
   .stop.wrong { animation: shake .35s; }
   @keyframes shake { 25% { transform: translateX(-6px) } 75% { transform: translateX(6px) } }
 
@@ -301,6 +304,7 @@ const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const PICK = 3;
 const ROUTES = "routes/";
 const LATE_NUDGE_MS = 45000;   // how long before we quietly offer a hand
+const GIVE_UP_AFTER = 4;       // wrong answers before a question can be waived
 
 // Testing scaffolding is off unless it is asked for by hand. On a real walk
 // there is no button to press, and there is no way to reach one, because a
@@ -488,7 +492,12 @@ function normalise(text) {
   return String(text).toLowerCase()
     .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9 ]/g, " ")
-    .replace(/\b(a|an|the|is|it|its|they|are|of|two|pair)\b/g, " ")
+    // Filler only. NEVER strip a word that could itself be an answer: "two" and
+    // "pair" were in this list to make "a pair of unicorns" match "unicorns",
+    // and the result was that typing "two" at a stop whose answer IS two
+    // normalised to nothing and was marked wrong. The split-on-words check
+    // below already handles an answer buried in a phrase.
+    .replace(/\b(a|an|the|is|it|its|they|are|of)\b/g, " ")
     .replace(/s\b/g, "")
     .replace(/\s+/g, " ").trim();
 }
@@ -724,7 +733,9 @@ function activeCard(i) {
          <button class="btn primary">Check</button>
        </div>
        ${wrong >= 2 && s.question.hint
-          ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}`;
+          ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}
+       ${wrong >= GIVE_UP_AFTER
+          ? `<button class="qgiveup">I genuinely cannot see it. Move on.</button>` : ""}`;
     div.appendChild(q);
     const inp = q.querySelector("input");
     const go = q.querySelector(".btn");
@@ -743,12 +754,27 @@ function activeCard(i) {
       div.classList.add("wrong");
       toast(STATE.wrong[s.id] >= 2 ? "Still not it. Have a hint."
                                    : "Not quite. Look again.");
-      if (STATE.wrong[s.id] === 2) renderWalk();
+      // Re-draw on the counts that change what the card offers: the hint at two,
+      // the last resort at GIVE_UP_AFTER. Only re-drawing at two meant the way
+      // out was written into the template but never actually appeared.
+      if (STATE.wrong[s.id] === 2 || STATE.wrong[s.id] === GIVE_UP_AFTER) renderWalk();
     };
     go.onclick = submit;
     inp.addEventListener("keydown", (ev) => {
       if (ev.key === "Enter") { ev.preventDefault(); submit(); }
     });
+    // A last resort, and deliberately grudging. It only appears after several
+    // real attempts, and it is a line of text rather than a button, because it
+    // exists for the scaffolding-and-a-tarpaulin case rather than for the
+    // could-not-be-bothered case. Without it a single obscured carving ends the
+    // walk, and the only other way out is to start the whole thing again.
+    const giveup = q.querySelector(".qgiveup");
+    if (giveup) giveup.onclick = () => {
+      STATE.revealed[s.id] = true;
+      saveState();
+      renderWalk();
+      toast("Fair enough. Here it is anyway.");
+    };
   } else if (!revealed) {
     // A soft prompt on many stops, not all. Confirm, then the reveal. There is
     // no way to get this wrong and nothing is counted.
