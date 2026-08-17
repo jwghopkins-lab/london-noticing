@@ -135,6 +135,11 @@
   /* Tap to finish the reveal was there from the start and nothing said so. */
   .skiptip { margin-top: 10px; font-size: .7rem; color: var(--ink-soft);
              letter-spacing: .04em; }
+  .payrule { border-top: 1px solid var(--line); margin: 16px 0 14px; }
+  .stext + .stext { margin-top: 0; }
+  /* .picker sets display:flex, which beats the browser default for [hidden].
+     Anything hidden must actually be hidden. */
+  [hidden] { display: none !important; }
   .swhere { font-size: .78rem; color: var(--ink-soft); margin-bottom: 10px; }
   .stext { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
            white-space: pre-line; }
@@ -612,32 +617,22 @@ async function start(key) {
 }
 
 /* ---- the walk ----
-   One stage per stop, and a stage is one block of text followed by one thing to
-   do. The text carries, in order: what the last answer meant, how to walk here,
-   what to look at now, and the question. Then an answer box.
+   One stage per stop, and a stage is two blocks of text with something to do
+   between them.
 
-   It used to be four separate pieces of furniture per stop: a directions card,
-   a look-at-this card, a question in its own tinted box, and an explainer that
-   appeared after answering. The question and the look text said much the same
-   thing twice, and the reader had to work out which box mattered. One block
-   reads like somebody talking, which is what it is. */
+     The way there. How to walk here, what to look at, and the question.
+     Then an answer box, or a location check.
+     The pay-off. What the answer meant.
+     Then a button to the next stop.
 
-// The parts of a stage, in the order they are said.
-function stageParts(i) {
+   Both blocks are written out a word at a time, so the directions can be
+   followed as they arrive rather than appearing all at once. Everything for one
+   stop lives on one card and nothing is said twice. */
+
+// Block one: how to get here, what to look at, what is being asked.
+function waysThere(i) {
   const s = ROUTE.stops[i];
-  const prev = i > 0 ? ROUTE.stops[i - 1] : null;
   const parts = [];
-
-  if (prev) {
-    // Somebody who asked to be told gets told, before the explanation.
-    if (prev.question && STATE.told[prev.id]) {
-      const shown = prev.question.answers.find((x) => /[a-z]/i.test(x))
-                    || prev.question.answers[0];
-      parts.push(`The answer was ${shown}.`);
-    }
-    parts.push(prev.after);
-  }
-
   if (i > 0 && s.directions) {
     const leg = (ROUTE.walk.legs || [])[i - 1];
     const COMPASS = ["north", "north east", "east", "south east",
@@ -649,24 +644,29 @@ function stageParts(i) {
       : null;
     parts.push((head ? head + "\n\n" : "") + s.directions);
   }
-
   parts.push(s.look);
   if (s.nudge) parts.push(s.nudge.prompt);
   if (s.question) parts.push(s.question.ask);
   return parts.join("\n\n");
 }
 
-function endText() {
-  const last = ROUTE.stops[ROUTE.stops.length - 1];
+// Block two: what it meant.
+function payOff(i) {
+  const s = ROUTE.stops[i];
   const parts = [];
-  if (last.question && STATE.told[last.id]) {
-    const shown = last.question.answers.find((x) => /[a-z]/i.test(x))
-                  || last.question.answers[0];
+  if (s.question && STATE.told[s.id]) {
+    const shown = s.question.answers.find((x) => /[a-z]/i.test(x))
+                  || s.question.answers[0];
     parts.push(`The answer was ${shown}.`);
   }
-  parts.push(last.after);
-  if (ROUTE.outro) parts.push(ROUTE.outro);
+  parts.push(s.after);
+  return parts.join("\n\n");
+}
+
+function endText() {
   const km = (ROUTE.walk.total_walk_m / 1000).toFixed(1);
+  const parts = [];
+  if (ROUTE.outro) parts.push(ROUTE.outro);
   parts.push(`That is the walk. About ${km} km and ${ROUTE.stops.length} stops. `
            + `Everything is still up the page if you want to read it again.`);
   return parts.join("\n\n");
@@ -681,15 +681,31 @@ function renderWalk() {
 
   const box = $("walk");
   box.innerHTML = "";
-  clearTimeout(lateTimer);
-
   for (let i = 0; i <= Math.min(STATE.current, n); i++) {
     box.appendChild(i === n ? endStage() : stageCard(i, i < STATE.current));
   }
   focusCurrent();
 }
 
-// Head, text, action. Nothing else.
+// Write a block out a word at a time, unless it has been seen before.
+function writeBlock(card, text, key, delay) {
+  const el = document.createElement("div");
+  el.className = "stext";
+  card.appendChild(el);
+  if (REDUCED || seenSet().has(key)) { el.textContent = text; return; }
+  const finish = typeInto(el, text, key, delay);
+  const tip = document.createElement("div");
+  tip.className = "skiptip";
+  tip.textContent = "Tap anywhere to see it all at once.";
+  card.appendChild(tip);
+  card.addEventListener("click", (ev) => {
+    if (typing.has(key) && !ev.target.closest("button, input")) {
+      finish();
+      tip.remove();
+    }
+  });
+}
+
 function stageCard(i, past) {
   const s = ROUTE.stops[i];
   const div = document.createElement("div");
@@ -702,35 +718,44 @@ function stageCard(i, past) {
        <span class="state">${past ? "✓" : ""}</span></div>
      <div class="stitle">${escapeHtml(s.title)}</div>`;
 
+  const answered = !!STATE.revealed[s.id];
   const gated = !!s.gate && !STATE.gate[s.id];
-  const body = document.createElement("div");
-  body.className = "stext";
-  div.appendChild(body);
 
-  const text = stageParts(i);
-  const key = "stage:" + s.id;
-  if (past || REDUCED || seenSet().has(key)) {
-    body.textContent = text;
-  } else {
+  if (!past && !answered && !REDUCED && !seenSet().has("a:" + s.id)) {
     div.classList.add("arriving");
     div.addEventListener("animationend", (ev) => {
       if (ev.animationName === "resolve") div.classList.remove("arriving");
     });
-    const finish = typeInto(body, text, key, ARRIVE_MS);
-    const tip = document.createElement("div");
-    tip.className = "skiptip";
-    tip.textContent = "Tap anywhere to see it all at once.";
-    div.appendChild(tip);
-    div.addEventListener("click", (ev) => {
-      if (typing.has(key) && !ev.target.closest("button, input")) {
-        finish();
-        tip.remove();
-      }
-    });
   }
-  if (past) return div;
+  writeBlock(div, waysThere(i), "a:" + s.id, ARRIVE_MS);
 
-  div.appendChild(gated ? gateAction(i, s) : answerAction(i, s));
+  if (!answered) {
+    if (!past) div.appendChild(gated ? gateAction(i, s) : answerAction(i, s));
+    return div;
+  }
+
+  const rule = document.createElement("div");
+  rule.className = "payrule";
+  div.appendChild(rule);
+  writeBlock(div, payOff(i), "b:" + s.id, 240);
+
+  if (!past) {
+    const row = document.createElement("div");
+    row.className = "srow";
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = i === ROUTE.stops.length - 1
+      ? "Finish the walk" : `On to stop ${i + 2}`;
+    btn.onclick = () => {
+      const t = typing.get("b:" + s.id);
+      if (t) t.finish();
+      STATE.current = Math.max(STATE.current, i + 1);
+      saveState();
+      renderWalk();
+    };
+    row.appendChild(btn);
+    div.appendChild(row);
+  }
   return div;
 }
 
@@ -738,15 +763,7 @@ function endStage() {
   const div = document.createElement("div");
   div.className = "stop done";
   div.dataset.idx = "end";
-  const body = document.createElement("div");
-  body.className = "stext";
-  div.appendChild(body);
-  const key = "stage:end";
-  if (REDUCED || seenSet().has(key)) body.textContent = endText();
-  else {
-    const finish = typeInto(body, endText(), key, 240);
-    div.addEventListener("click", () => { if (typing.has(key)) finish(); });
-  }
+  writeBlock(div, endText(), "b:end", 240);
   return div;
 }
 
@@ -767,7 +784,7 @@ function gateAction(i, s) {
   const pass = wrap.querySelector(".gateskip");
   if (pass) pass.onclick = () => {
     STATE.gate[s.id] = true;
-    advance(i);
+    openPayOff(i);
     toast("Carrying on without the check.");
   };
 
@@ -795,14 +812,12 @@ function answerAction(i, s) {
   const row = document.createElement("div");
   row.className = "srow";
 
-  // No question: the stop just needs acknowledging, and the payoff opens the
-  // next stage. This is how every London stop works.
+  // No question: the stop just needs acknowledging. Every London stop is this.
   if (!s.question) {
     const btn = document.createElement("button");
     btn.className = "btn primary";
-    btn.textContent = s.nudge ? s.nudge.confirm
-                      : (i === ROUTE.stops.length - 1 ? "Finish the walk" : "Done, what next?");
-    btn.onclick = () => advance(i);
+    btn.textContent = s.nudge ? s.nudge.confirm : "Tell me why it matters";
+    btn.onclick = () => openPayOff(i);
     row.appendChild(btn);
     return row;
   }
@@ -823,11 +838,10 @@ function answerAction(i, s) {
   const submit = () => {
     const said = inp.value.trim();
     if (!said) { toast("Type something first."); return; }
-    if (answerAccepted(said, s.question.answers)) { advance(i); return; }
-    // Read the count back out of the state rather than off the closure. The
-    // closure captures it at render time, and the card is not re-rendered on a
-    // wrong answer, so a second wrong answer kept writing 1 and the hint never
-    // arrived however long somebody stood there guessing.
+    if (answerAccepted(said, s.question.answers)) { openPayOff(i); return; }
+    // Read the count back out of the state, not off the closure. The card is
+    // not re-rendered on a wrong answer, so a closure copy stayed at zero and
+    // the second wrong answer kept writing one. The hint never arrived.
     const w = (STATE.wrong[s.id] || 0) + 1;
     STATE.wrong[s.id] = w;
     saveState();
@@ -843,19 +857,19 @@ function answerAction(i, s) {
   });
   row.querySelector(".qgiveup").onclick = () => {
     STATE.told[s.id] = true;
-    advance(i);
-    toast("No problem. It is explained next.");
+    openPayOff(i);
+    toast("No problem. Here it is.");
   };
   return row;
 }
 
-// One way forward, used by every action.
-function advance(i) {
+// Answering opens the pay-off on the same card. It does NOT move you on: the
+// button under it does that, so the explanation is read where it was earned.
+function openPayOff(i) {
   const s = ROUTE.stops[i];
-  const t = typing.get("stage:" + s.id);
+  const t = typing.get("a:" + s.id);
   if (t) t.finish();
   STATE.revealed[s.id] = true;
-  STATE.current = Math.max(STATE.current, i + 1);
   saveState();
   renderWalk();
 }
@@ -905,7 +919,7 @@ async function checkin(i, btn, stat) {
   const d = haversineM(c.latitude, c.longitude, s.lat, s.lon);
   if (gatePasses(d, c.accuracy, s.gate.radius_m)) {
     STATE.gate[s.id] = true;
-    advance(i);
+    openPayOff(i);
     toast(SIM ? "Close enough. The gate opened on the real check."
                 : "You're there.");
     return;
@@ -1115,8 +1129,11 @@ function setUpFixedTour() {
   for (const t of document.querySelectorAll(".tagline")) {
     if (t.id !== "walktitle") t.textContent = TOUR.tagline || "";
   }
-  $("picker").hidden = true;
-  $("pickcount").hidden = true;
+  // Taken out of the document, not merely hidden. A choose-your-topics control
+  // on a walk that has no topics to choose is confusing even when it is empty,
+  // and hiding relies on a CSS rule that .picker was already overriding.
+  $("picker").remove();
+  $("pickcount").remove();
   const intro = document.querySelector(".intro");
   intro.innerHTML =
     `<div class="lead">${escapeHtml(TOUR.intro.lead)}</div>` +

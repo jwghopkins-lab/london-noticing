@@ -71,28 +71,22 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
       break;
     }
 
-    check(`stage ${i + 1} is a single block of text`,
+    // Before answering there is exactly one block: the way there.
+    check(`stage ${i + 1} shows one block before you answer`,
           (await card.locator(".stext").count()) === 1);
     const text = squash(await card.locator(".stext").textContent());
+    check(`stage ${i + 1} does not give the pay-off away early`,
+          !text.includes(squash(stop.after).slice(0, 40)));
 
     if (prev) {
-      check(`stage ${i + 1} opens with what the last stop meant`,
-            text.startsWith(squash(prev.after).slice(0, 40))
-            || text.startsWith("The answer was"), text.slice(0, 50));
       const dirAt = text.indexOf(squash(stop.directions).slice(0, 40));
       const lookAt = text.indexOf(squash(stop.look).slice(0, 40));
-      check(`stage ${i + 1} then says how to walk here`, dirAt > 0);
+      check(`stage ${i + 1} starts by saying how to walk here`, dirAt === 0 || dirAt > 0);
       check(`stage ${i + 1} puts the directions before what to look at`,
             lookAt > dirAt, `${dirAt} then ${lookAt}`);
     }
     check(`stage ${i + 1} says what to look at`,
           text.includes(squash(stop.look).slice(0, 40)));
-
-    if (toldAt >= 0 && toldAt === i - 1) {   // -1 also equals i-1 at stage one
-      const said = TOUR.stops[toldAt].question.answers.find((a) => /[a-z]/i.test(a));
-      check("the stage after a tell-me states the answer",
-            text.startsWith(`The answer was ${said}`), text.slice(0, 40));
-    }
 
     if (stop.question) {
       asked++;
@@ -123,12 +117,24 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
       // hid a rejected "two" in a published build.
       const use = stop.question.answers.find((a) => /[a-z]/i.test(a))
                   || stop.question.answers[0];
-      if (toldAt < 0 && asked === 2) {
+      const told = (toldAt < 0 && asked === 2);
+      if (told) {
         toldAt = i;                                 // once per walk, ask to be told
         await page.locator(".stop.open .qgiveup").click();
       } else {
         await page.locator(".stop.open .qrow input").fill(use);
         await page.locator(".stop.open .qrow .btn").click();
+      }
+      await page.waitForTimeout(300);
+      check(`stage ${i + 1} stays put until you press on`,
+            (await page.locator("#progresstext").textContent()) === `${i}/${n}`);
+      const both = await page.locator(".stop.open .stext").allTextContents();
+      check(`stage ${i + 1} then adds the pay-off as a second block`,
+            both.length === 2 && squash(both[1]).includes(squash(stop.after).slice(0, 40)),
+            `${both.length} blocks`);
+      if (told) {
+        check("being told says what the answer was",
+              squash(both[1]).startsWith(`The answer was ${use}`), squash(both[1]).slice(0, 40));
       }
     } else if (stop.gate) {
       gated++;
@@ -141,25 +147,40 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
       if (passUsed === 0) {
         passUsed++;
         await card.locator(".gateskip").click();    // what the pass button is for
+        await page.waitForTimeout(300);
+        check("the pass button opens the pay-off without moving you on",
+              (await page.locator("#progresstext").textContent()) === `${i}/${n}`
+              && (await page.locator(".stop.open .stext").count()) === 2);
       } else {
         await card.locator('.devrow [data-act="start"]').click();
         await settle(page);
         await page.locator(".stop.open .gatebtn").click();
         await page.waitForTimeout(280);
         check(`stage ${i + 1} stays shut from 500 m away`,
-              (await page.locator("#progresstext").textContent()) === `${i}/${n}`);
+              (await page.locator(".stop.open .stext").count()) === 1);
+        // Check between every action rather than only at the top. The gate opens
+        // the moment a stride lands inside the radius, and the controls vanish
+        // with it, so a blind click on the next line times out.
         let strides = 0;
-        while ((await page.locator("#progresstext").textContent()) === `${i}/${n}`
-               && strides < 12) {
+        while (strides < 12) {
+          if ((await page.locator(".stop.open .stext").count()) === 2) break;
+          if (!(await page.locator('.stop.open .devrow [data-act="step"]').count())) break;
           strides++;
           await page.locator('.stop.open .devrow [data-act="step"]').click();
           await settle(page);
+          if (!(await page.locator(".stop.open .gatebtn").count())) break;
           await page.locator(".stop.open .gatebtn").click();
-          await page.waitForTimeout(240);
+          await page.waitForTimeout(260);
         }
         check(`stage ${i + 1} took a real approach to open`, strides >= 3, `${strides} strides`);
       }
     }
+
+    // The pay-off is read where it was earned, and a button moves you on.
+    const nextLabel = (await page.locator(".stop.open .srow .btn").textContent()).trim();
+    const wantLabel = i === n - 1 ? "Finish the walk" : `On to stop ${i + 2}`;
+    check(`stage ${i + 1} offers "${wantLabel}"`, nextLabel === wantLabel, nextLabel);
+    await page.locator(".stop.open .srow .btn").click();
     await page.waitForFunction(
       (want) => document.querySelector("#progresstext").textContent === want,
       `${i + 1}/${n}`);
@@ -171,9 +192,7 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
         (await page.locator("#walk .stop").count()) === n + 1,
         `${await page.locator("#walk .stop").count()}`);
   const ending = squash(await page.locator("#walk .stop").last().textContent());
-  check("the last stop's payoff is in the ending",
-        ending.includes(squash(TOUR.stops[n - 1].after).slice(0, 40)));
-  check("and the walk signs off", ending.includes("That is the walk"));
+  check("the walk signs off", ending.includes("That is the walk"));
 
   await page.reload();
   await page.waitForSelector("#s-walk.on");
@@ -209,7 +228,7 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
                tip: !!card.querySelector(".skiptip"),
                top: card.getBoundingClientRect().top };
     });
-    check("the stage reveals a word at a time", r.words > 20, `${r.words} words`);
+    check("the first block reveals a word at a time", r.words > 20, `${r.words} words`);
     check("and is still going after a moment",
           r.shown > 0 && r.shown < r.words, `${r.shown}/${r.words}`);
     check("and says you can tap to see it all", r.tip);

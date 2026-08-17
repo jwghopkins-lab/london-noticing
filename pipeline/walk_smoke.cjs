@@ -68,7 +68,9 @@ const settle = (page) => page.waitForTimeout(120);
     // Walk to the first gated stop the ordinary way, then try to get past it.
     const firstGate = route.stops.findIndex((s) => s.gate);
     for (let i = 0; i < firstGate; i++) {
-      await plain.locator(".stop.open .srow .btn").click();
+      await plain.locator(".stop.open .srow .btn").click();   // reveal the pay-off
+      await plain.waitForTimeout(160);
+      await plain.locator(".stop.open .srow .btn").click();   // on to the next stop
       await plain.waitForTimeout(160);
     }
     const gateCard = plain.locator(".stop.open");
@@ -81,8 +83,7 @@ const settle = (page) => page.waitForTimeout(120);
     await gateCard.locator(".gatebtn").click();
     await plain.waitForTimeout(1500);
     check("the gate stays shut with no position",
-          (await plain.locator("#progresstext").textContent())
-            === `${firstGate}/${route.stops.length}`);
+          (await plain.locator(".stop.open .stext").count()) === 1);
     check("progress cannot advance past a gate",
           (await plain.locator("#progresstext").textContent()) === `${firstGate}/${route.stops.length}`);
     await plain.close();
@@ -149,12 +150,12 @@ const settle = (page) => page.waitForTimeout(120);
     const text = (await page.locator(".stop.open .stext").textContent())
                    .replace(/\s+/g, " ").trim();
     if (i > 0) {
-      const prevAfter = route.stops[i - 1].after.replace(/\s+/g, " ").trim().slice(0, 40);
-      if (!text.startsWith(prevAfter)) {
-        check(`stop ${i + 1} opens with the last stop's payoff`, false, text.slice(0, 50));
-      }
       const dirs = stop.directions.replace(/\s+/g, " ").trim().slice(0, 40);
       if (!text.includes(dirs)) check(`stop ${i + 1} carries its directions`, false, "missing");
+      const own = stop.after.replace(/\s+/g, " ").trim().slice(0, 40);
+      if (text.includes(own)) {
+        check(`stop ${i + 1} does not give its pay-off away early`, false, "leaked");
+      }
     }
     if (stop.nudge) {
       nudgesSeen++;
@@ -191,18 +192,21 @@ const settle = (page) => page.waitForTimeout(120);
           /away|Warm/.test(document.querySelector(".stop.open .gatestat")?.textContent || ""));
         const refusal = await page.locator(".stop.open .gatestat").textContent();
         check("a distant gate stays shut",
-              (await page.locator("#progresstext").textContent()) === `${i}/${n}`);
+              (await page.locator(".stop.open .stext").count()) === 1);
         check("the refusal gives a distance, not a no", /away|Warm/.test(refusal), refusal);
         check("the gate never says the word no", !/\bno\b/i.test(refusal), refusal);
       }
 
       let strides = 0;
-      while ((await page.locator("#progresstext").textContent()) === `${i}/${n}`) {
-        if (++strides > 12) break;
+      while (strides < 12) {
+        if ((await page.locator(".stop.open .stext").count()) === 2) break;
+        if (!(await page.locator('.stop.open .devrow [data-act="step"]').count())) break;
+        strides++;
         await page.locator('.stop.open .devrow [data-act="step"]').click();
         await settle(page);
+        if (!(await page.locator(".stop.open .gatebtn").count())) break;
         await page.locator(".stop.open .gatebtn").click();
-        await page.waitForTimeout(250);
+        await page.waitForTimeout(260);
       }
       check(`stop ${i + 1} took a real approach to open`,
             strides >= 3 && strides <= 12, `${strides} strides`);
@@ -210,9 +214,21 @@ const settle = (page) => page.waitForTimeout(120);
 
     if (!stop.gate) {
       await page.locator(".stop.open .srow .btn").click();
+      await page.waitForTimeout(200);
     }
+    // Acting opens the pay-off on the same card without moving on.
+    const blocks = await page.locator(".stop.open .stext").allTextContents();
+    if (blocks.length !== 2) {
+      check(`stop ${i + 1} shows the pay-off as a second block`, false, `${blocks.length} blocks`);
+    } else if (!blocks[1].replace(/\s+/g, " ").includes(stop.after.replace(/\s+/g, " ").slice(0, 40))) {
+      check(`stop ${i + 1} pay-off is its own explainer`, false, blocks[1].slice(0, 40));
+    }
+    const label = (await page.locator(".stop.open .srow .btn").textContent()).trim();
+    const want = i === n - 1 ? "Finish the walk" : `On to stop ${i + 2}`;
+    if (label !== want) check(`stop ${i + 1} offers "${want}"`, false, label);
+    await page.locator(".stop.open .srow .btn").click();
     await page.waitForFunction(
-      (want) => document.querySelector("#progresstext").textContent === want,
+      (w) => document.querySelector("#progresstext").textContent === w,
       `${i + 1}/${n}`);
   }
 
