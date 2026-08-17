@@ -79,6 +79,17 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
           !text.includes(squash(stop.after).slice(0, 40)));
 
     if (prev) {
+      // Twenty paces is not "a minute or two". Anything under a hundred metres
+      // gives the distance and stops.
+      const leg = TOUR.walk.legs[i - 1];
+      const heading = text.slice(0, text.indexOf(squash(stop.directions).slice(0, 20)));
+      if (leg.walk_m < 100) {
+        check(`stage ${i + 1} gives no time for a ${Math.round(leg.walk_m)} m leg`,
+              !/minute/.test(heading), heading.trim());
+      } else {
+        check(`stage ${i + 1} gives a time for a ${Math.round(leg.walk_m)} m leg`,
+              /minute/.test(heading), heading.trim());
+      }
       const dirAt = text.indexOf(squash(stop.directions).slice(0, 40));
       const lookAt = text.indexOf(squash(stop.look).slice(0, 40));
       check(`stage ${i + 1} starts by saying how to walk here`, dirAt === 0 || dirAt > 0);

@@ -637,10 +637,19 @@ function waysThere(i) {
     const leg = (ROUTE.walk.legs || [])[i - 1];
     const COMPASS = ["north", "north east", "east", "south east",
                      "south", "south west", "west", "north west"];
+    // Under a hundred metres, say the distance and stop. "About 23 metres, a
+    // minute or two" is nonsense: it is twenty paces. And "about" does not sit
+    // with a number worked out to the metre, so round to something a person
+    // would actually say.
+    const round = (m) => m < 100 ? Math.round(m / 5) * 5
+                       : m < 500 ? Math.round(m / 10) * 10
+                       : Math.round(m / 50) * 50;
     const head = leg
       ? `Head ${COMPASS[Math.round(leg.bearing / 45) % 8]}, about `
-        + `${Math.round(leg.walk_m)} metres, `
-        + `${leg.minutes < 2 ? "a minute or two" : Math.round(leg.minutes) + " minutes"}.`
+        + `${round(leg.walk_m)} metres`
+        + (leg.walk_m < 100 ? "."
+           : `, ${leg.minutes < 2 ? "a minute or two"
+                                  : Math.round(leg.minutes) + " minutes"}.`)
       : null;
     parts.push((head ? head + "\n\n" : "") + s.directions);
   }
