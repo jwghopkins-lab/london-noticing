@@ -676,13 +676,10 @@ function payOff(i) {
   return parts.join("\n\n");
 }
 
+// A tour that wrote its own ending gets to use it. The fallback is only there
+// so a tour with no outro does not finish on a blank card.
 function endText() {
-  const km = (ROUTE.walk.total_walk_m / 1000).toFixed(1);
-  const parts = [];
-  if (ROUTE.outro) parts.push(ROUTE.outro);
-  parts.push(`That is the walk. About ${km} km and ${ROUTE.stops.length} stops. `
-           + `Everything is still up the page if you want to read it again.`);
-  return parts.join("\n\n");
+  return ROUTE.outro || "That is the walk.";
 }
 
 function renderWalk() {

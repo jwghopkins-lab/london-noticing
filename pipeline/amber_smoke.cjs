@@ -199,8 +199,11 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
   check("every stage is one card",
         (await page.locator("#walk .stop").count()) === n + 1,
         `${await page.locator("#walk .stop").count()}`);
+  // The last card is the tour's own outro and nothing else. It used to be
+  // followed by a line restating the distance and the stop count, which is the
+  // one moment nobody needs the numbers back.
   const ending = squash(await page.locator("#walk .stop").last().textContent());
-  check("the walk signs off", ending.includes("That is the walk"));
+  check("the walk ends on its own last line", ending === squash(TOUR.outro), ending.slice(-60));
 
   await page.reload();
   await page.waitForSelector("#s-walk.on");
