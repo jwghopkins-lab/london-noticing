@@ -632,7 +632,11 @@ async function start(key) {
 function waysThere(i) {
   const s = ROUTE.stops[i];
   const parts = [];
-  if (i > 0 && s.directions) {
+  // Turn-by-turn directions already say which way and how far, along the real
+  // streets. Adding a computed heading on top repeats it and disagrees with it.
+  if (i > 0 && s.directions && ROUTE.directions_style === "turn_by_turn") {
+    parts.push(s.directions);
+  } else if (i > 0 && s.directions) {
     const leg = (ROUTE.walk.legs || [])[i - 1];
     const COMPASS = ["north", "north east", "east", "south east",
                      "south", "south west", "west", "north west"];

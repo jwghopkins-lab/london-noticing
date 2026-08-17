@@ -78,6 +78,9 @@ def build(key, topic_ids, topics_by_id, stops_by_id, route):
     return {
         "format": FORMAT_VERSION,
         "combo_key": key,
+        # Arrival detail only: which stop you come from varies by route, so
+        # the heading and distance are computed per leg instead.
+        "directions_style": "arrival",
         "draft": bool(route.get("draft")),
         "topics": [
             {"id": t, "name": topics_by_id[t]["name"],

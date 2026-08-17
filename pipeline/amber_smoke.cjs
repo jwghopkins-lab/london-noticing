@@ -79,17 +79,14 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
           !text.includes(squash(stop.after).slice(0, 40)));
 
     if (prev) {
-      // Twenty paces is not "a minute or two". Anything under a hundred metres
-      // gives the distance and stops.
-      const leg = TOUR.walk.legs[i - 1];
-      const heading = text.slice(0, text.indexOf(squash(stop.directions).slice(0, 20)));
-      if (leg.walk_m < 100) {
-        check(`stage ${i + 1} gives no time for a ${Math.round(leg.walk_m)} m leg`,
-              !/minute/.test(heading), heading.trim());
-      } else {
-        check(`stage ${i + 1} gives a time for a ${Math.round(leg.walk_m)} m leg`,
-              /minute/.test(heading), heading.trim());
-      }
+      // Turn-by-turn directions already say which way and how far. A computed
+      // heading on top of them repeated the distance and disagreed with it:
+      // 152 metres straight-line-times-detour above a hand-measured 120.
+      check(`stage ${i + 1} states its distance once`,
+            text.startsWith(squash(stop.directions).slice(0, 30)), text.slice(0, 50));
+      const metres = (text.match(/\b\d+\s*metres\b/g) || []);
+      check(`stage ${i + 1} has no computed distance bolted on`,
+            metres.length === 0, metres.join(", "));
       const dirAt = text.indexOf(squash(stop.directions).slice(0, 40));
       const lookAt = text.indexOf(squash(stop.look).slice(0, 40));
       check(`stage ${i + 1} starts by saying how to walk here`, dirAt === 0 || dirAt > 0);

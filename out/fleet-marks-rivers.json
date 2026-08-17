@@ -1,6 +1,7 @@
 {
   "format": 1,
   "combo_key": "fleet-marks-rivers",
+  "directions_style": "arrival",
   "draft": false,
   "topics": [
     {

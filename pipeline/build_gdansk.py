@@ -154,6 +154,11 @@ def bake(tour):
         "format": FORMAT_VERSION,
         "combo_key": tour["id"],
         "mode": "fixed",
+        # Turn by turn, written by hand along the actual streets. The player
+        # must not bolt a computed heading on top: that distance is a straight
+        # line times a detour factor, and across an open square it overstates.
+        # On this walk it said 152 metres directly above a hand-measured 120.
+        "directions_style": "turn_by_turn",
         "name": tour["name"],
         "tagline": tour.get("tagline"),
         "city": tour.get("city"),

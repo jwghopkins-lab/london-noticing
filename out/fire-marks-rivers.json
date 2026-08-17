@@ -1,6 +1,7 @@
 {
   "format": 1,
   "combo_key": "fire-marks-rivers",
+  "directions_style": "arrival",
   "draft": false,
   "topics": [
     {
