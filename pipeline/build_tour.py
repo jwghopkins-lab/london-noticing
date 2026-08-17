@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check, bake and package the Gdansk tour as one self-contained file.
+"""Check, bake and package each fixed walk as one self-contained file.
 
 Same posture as the London pipeline and for the same reasons. The content is
 hand written, so it gets contract-checked before anything is built; the artefact
@@ -7,14 +7,21 @@ is self-contained, because a phone in a foreign city may well have no data; and
 the checking is done by re-deriving from the source rather than by trusting what
 the baker just produced.
 
-The differences from London are all in the content, not the machinery. There is
-one fixed route rather than ten, so there are no combinations to enumerate. Most
-stops are gated on ANSWERING something you can only see by being there, which
-is a better gate than GPS in a city of tall narrow streets. The three that are
-gated on position carry an explicit pass button, because a walk that dead ends
-because a phone could not get a fix is worse than one somebody skipped a check on.
+The differences from London are all in the content, not the machinery. Each walk
+is one fixed route rather than ten combinations, so there is nothing to
+enumerate. Most stops are gated on ANSWERING something you can only see by being
+there, which is a better gate than GPS in a city of tall narrow streets. The
+ones gated on position carry an explicit pass button, because a walk that dead
+ends because a phone could not get a fix is worse than one somebody skipped a
+check on.
 
-    python3 pipeline/build_gdansk.py [--out dist/amber-mile.html]
+Most of check() is house style made mechanical. Every rule in docs/house-style.md
+marked [checked] is in here, and every one of them is a thing that went wrong
+once: a title that gave away its own answer, a distance stated to the metre, a
+walking time on a twenty metre stroll, a sentence explaining what you were
+supposed to have got out of the last paragraph.
+
+    python3 pipeline/build_tour.py [--only <tour-id>]
 """
 import json
 import re
@@ -26,10 +33,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
-SRC = BASE / "content" / "gdansk" / "tour.json"
+SRC_DIR = BASE / "content" / "gdansk"
 APP = BASE / "app" / "index.html"
 MARKER = "<script>\n\"use strict\";"
 FORMAT_VERSION = 1
+
+# amber-mile was published at /gdansk/ before there was a second walk and people
+# have that link. Anything newer is served at its own id.
+LEGACY_PATHS = {"amber-mile": ("gdansk", "amber-mile.html")}
 
 N_STOPS = 10
 TOPIC_SPLIT = [4, 3, 3]
@@ -40,6 +51,53 @@ LAT_RANGE = (54.340, 54.360)
 LON_RANGE = (18.635, 18.670)
 SCREEN_ONLY = ["see below", "see above", "as shown", "click", "scroll", "this page"]
 LONG_SENTENCE_WORDS = 34
+
+# Sentences whose only job is to tell you what you were supposed to have got out
+# of the last paragraph. Say the thing once and stop.
+SUMMING_UP = [
+    "worth taking away", "and that is the point", "that is the point",
+    "the point is", "what this tells us", "the lesson", "in other words",
+    "worth knowing", "the thing that eventually", "needless to say",
+    "it is worth remembering", "which is to say",
+]
+
+WORD_NUMBERS = {
+    "ten": 10, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+    "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
+    "a hundred": 100, "one hundred": 100, "two hundred": 200,
+    "three hundred": 300, "four hundred": 400, "five hundred": 500,
+}
+
+
+def authored_metres(text):
+    """The distance the writer put in the directions, digits or words.
+
+    Returns None when there is nothing to read, which is not an error here.
+    Whether a distance is required at all is checked separately.
+    """
+    m = re.search(r"\b(\d+)\s*metres\b", text)
+    if m:
+        return int(m.group(1))
+    # "a hundred and fifty metres", "two hundred metres", "sixty metres"
+    m = re.search(r"\b((?:a|one|two|three|four|five)\s+hundred(?:\s+and\s+\w+)?"
+                  r"|ten|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)"
+                  r"\s+metres\b", text)
+    if not m:
+        return None
+    phrase = m.group(1)
+    if " and " in phrase:
+        head, tail = phrase.split(" and ", 1)
+        return WORD_NUMBERS.get(head.strip(), 0) + WORD_NUMBERS.get(tail.strip(), 0)
+    return WORD_NUMBERS.get(phrase.strip())
+
+
+def is_rounded(n):
+    """Nearest 5 below 100, nearest 10 below 500, nearest 50 above that."""
+    if n < 100:
+        return n % 5 == 0
+    if n < 500:
+        return n % 10 == 0
+    return n % 50 == 0
 
 
 def check(tour):
@@ -82,8 +140,17 @@ def check(tour):
                                  f"words, probably not detailed enough")
                 if not re.search(r"(left|right|straight|north|south|east|west)", d, re.I):
                     errors.append(f"{where}: directions never say which way to turn")
-                if not re.search(r"\d|metre", d, re.I):
+                metres = authored_metres(d)
+                if metres is None:
                     notes.append(f"{where}: directions give no distance")
+                else:
+                    if not is_rounded(metres):
+                        errors.append(f"{where}: {metres} metres is weirdly exact; "
+                                      f"round it")
+                    # "about 23 metres, a minute or two" was the complaint.
+                    if metres < 100 and re.search(r"minute", d, re.I):
+                        errors.append(f"{where}: a walking time on a {metres} metre "
+                                      f"leg; drop it")
         elif s.get("directions"):
             errors.append(f"{where}: the first stop cannot have directions to it")
 
@@ -102,6 +169,20 @@ def check(tour):
                     errors.append(f"{where}: blank accepted answer")
             if not (q.get("hint") or "").strip():
                 notes.append(f"{where}: no hint, so a stuck walker stays stuck")
+            # "The Golden House" told you the answer was gold before you looked.
+            title = (s.get("title") or "").lower()
+            for a in q.get("answers", []):
+                word = str(a).strip().lower()
+                if len(word) > 2 and re.search(rf"\b{re.escape(word)}\b", title):
+                    errors.append(f"{where}: the title gives away the answer "
+                                  f"{word!r}; rename it")
+            ask = (q.get("ask") or "").lower()
+            if " or " not in ask:                   # a multiple choice may list it
+                for a in q.get("answers", []):
+                    word = str(a).strip().lower()
+                    if len(word) > 2 and re.search(rf"\b{re.escape(word)}\b", ask):
+                        notes.append(f"{where}: the question contains its own "
+                                     f"answer {word!r}")
         if g:
             r = g.get("radius_m")
             if not isinstance(r, (int, float)) or not (20 <= r <= 150):
@@ -114,6 +195,9 @@ def check(tour):
             for phrase in SCREEN_ONLY:
                 if phrase in text.lower():
                     notes.append(f"{where} {field}: contains {phrase!r}, screen only")
+            for phrase in SUMMING_UP:
+                if phrase in text.lower():
+                    errors.append(f"{where} {field}: {phrase!r} is summing up; cut it")
             for sentence in re.split(r"(?<=[.?!])\s+", text):
                 if len(sentence.split()) > LONG_SENTENCE_WORDS:
                     notes.append(f"{where} {field}: a sentence runs to "
@@ -122,6 +206,12 @@ def check(tour):
                 notes.append(f"{where} {field}: contains a long dash")
         if re.search(r"\d", s.get("after", "")) and not s.get("after_spoken"):
             notes.append(f"{where}: digits in the explainer but no spoken form")
+
+    for field in ("outro",):
+        text = tour.get(field) or ""
+        for phrase in SUMMING_UP:
+            if phrase in text.lower():
+                errors.append(f"{field}: {phrase!r} is summing up; cut it")
 
     split = sorted(counts.values(), reverse=True)
     if split != TOPIC_SPLIT:
@@ -157,7 +247,7 @@ def bake(tour):
         # Turn by turn, written by hand along the actual streets. The player
         # must not bolt a computed heading on top: that distance is a straight
         # line times a detour factor, and across an open square it overstates.
-        # On this walk it said 152 metres directly above a hand-measured 120.
+        # On the first walk it said 152 metres directly above a hand-measured 120.
         "directions_style": "turn_by_turn",
         "name": tour["name"],
         "tagline": tour.get("tagline"),
@@ -215,67 +305,90 @@ def verify(artefact, source):
     return problems
 
 
-def main():
-    args = sys.argv[1:]
-    out = (Path(args[args.index("--out") + 1]) if "--out" in args
-           else BASE / "dist" / "amber-mile.html")
+def build_one(path, page_src):
+    tour = json.loads(path.read_text(encoding="utf-8"))
+    tid = tour["id"]
+    print(f"\n{tour['name']} ({tid}) from {path.name}")
 
-    tour = json.loads(SRC.read_text(encoding="utf-8"))
     errors, notes = check(tour)
     for n in notes:
         print(f"  note   {n}")
     for e in errors:
         print(f"  ERROR  {e}")
     if errors:
-        print(f"\n{len(errors)} errors. Nothing built.")
-        return 1
+        print(f"  {len(errors)} errors. Nothing built.")
+        return False
 
     artefact, metrics = bake(tour)
     problems = verify(artefact, tour)
     for pr in problems:
         print(f"  FAILED {pr}")
     if problems:
-        return 1
+        return False
+
+    served_dir, dist_name = LEGACY_PATHS.get(tid, (tid, f"{tid}.html"))
 
     # A subdirectory, not out/ itself. The London tools glob out/*.json and
     # will happily treat anything they find there as one of their own routes,
     # which is exactly what happened the first time.
-    baked = BASE / "out" / "gdansk" / "amber-mile.json"
+    baked = BASE / "out" / "gdansk" / f"{tid}.json"
     baked.parent.mkdir(parents=True, exist_ok=True)
     baked.write_text(json.dumps(artefact, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    page = APP.read_text(encoding="utf-8")
     # The player retitles itself at runtime, but the tag has to be right in the
     # file itself: anything reading the page without running it (a browser tab
     # before load, a link preview, a gallery listing) only sees the markup.
-    page = re.sub(r"<title>[^<]*</title>", f"<title>{tour['name']}</title>", page, count=1)
+    page = re.sub(r"<title>[^<]*</title>", f"<title>{tour['name']}</title>",
+                  page_src, count=1)
     payload = json.dumps({"tour": artefact}, ensure_ascii=False).replace("</", "<\\/")
     page = page.replace(MARKER, f'<script>window.NOTICING_BUNDLE = {payload};</script>\n'
                                 + MARKER, 1)
+    out = BASE / "dist" / dist_name
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
 
-    # Its own address on the served site. Gdansk is a different walk in a
-    # different country, and sharing a page with London would be confusing, so
-    # it gets its own directory and its own index rather than a link off the
-    # front page.
-    served = BASE / "app" / "gdansk" / "index.html"
+    # Its own address on the served site. Each walk is a separate thing handed
+    # to a separate group of people, so they get separate URLs and separate
+    # saved progress rather than a picker.
+    served = BASE / "app" / served_dir / "index.html"
     served.parent.mkdir(parents=True, exist_ok=True)
     served.write_text(page, encoding="utf-8")
 
-    print(f"\n  {artefact['walk']['n_stops']} stops, "
+    print(f"  {artefact['walk']['n_stops']} stops, "
           f"{artefact['walk']['total_walk_m'] / 1000:.2f} km on foot, "
           f"{artefact['walk']['total_minutes']:.0f} min walking, "
           f"{artefact['question_stops']} questions, "
           f"{artefact['gated_stops']} location gates")
     for leg in metrics["legs"]:
-        print(f"    {leg['from']:<14} -> {leg['to']:<14} "
+        print(f"    {leg['from']:<20} -> {leg['to']:<20} "
               f"{leg['walk_m']:>5.0f} m  {leg['minutes']:>4.1f} min")
     for n in metrics["notes"]:
         print(f"  note   {n}")
-    print(f"\n{baked}\n{out}\n{served}\nwritten "
-          f"({out.stat().st_size / 1024:.0f} KB each)")
-    return 0
+    print(f"  wrote /{served_dir}/  ({out.stat().st_size / 1024:.0f} KB)")
+    return True
+
+
+def main():
+    args = sys.argv[1:]
+    only = args[args.index("--only") + 1] if "--only" in args else None
+
+    page_src = APP.read_text(encoding="utf-8")
+    files = sorted(SRC_DIR.glob("*.json"))
+    if not files:
+        print(f"no tours in {SRC_DIR}")
+        return 1
+
+    built = failed = 0
+    for path in files:
+        if only and json.loads(path.read_text(encoding="utf-8"))["id"] != only:
+            continue
+        if build_one(path, page_src):
+            built += 1
+        else:
+            failed += 1
+
+    print(f"\n{built} built, {failed} failed")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

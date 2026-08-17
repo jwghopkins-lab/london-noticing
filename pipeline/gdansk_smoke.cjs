@@ -1,6 +1,10 @@
-/* End-to-end test for the Gdansk walk, against the single file build.
+/* End-to-end test for the Gdansk walks, against the single file builds.
  *
- *   NODE_PATH=$(npm root -g) node pipeline/amber_smoke.cjs [--headed]
+ *   NODE_PATH=$(npm root -g) node pipeline/gdansk_smoke.cjs [tour-id] [--headed]
+ *
+ * With no tour id it walks every built Gdansk tour end to end, one after the
+ * other. There are two of them now, handed to two different groups, and a walk
+ * that nobody remembered to add to a hardcoded list is a walk nobody tested.
  *
  * The walk is one stage per stop. A stage is a single block of text carrying,
  * in order: what the last answer meant, how to walk here, what to look at, and
@@ -11,9 +15,16 @@ const { chromium } = require("playwright");
 const fs = require("fs");
 const path = require("path");
 
-const FILE = "file://" + path.resolve(__dirname, "..", "dist", "amber-mile.html");
-const TOUR = JSON.parse(fs.readFileSync(
-  path.resolve(__dirname, "..", "out", "gdansk", "amber-mile.json"), "utf8"));
+const ROOT = path.resolve(__dirname, "..");
+// The served page and the artefact are found the same way the builder writes
+// them, so a tour added to content/gdansk/ is picked up with no edit here.
+const LEGACY = { "amber-mile": "amber-mile.html" };
+const only = process.argv.slice(2).find((a) => !a.startsWith("--"));
+const TOURS = fs.readdirSync(path.join(ROOT, "out", "gdansk"))
+  .filter((f) => f.endsWith(".json")).sort()
+  .map((f) => f.replace(/\.json$/, ""))
+  .filter((id) => !only || id === only);
+if (!TOURS.length) { console.error("no built tours to walk"); process.exit(2); }
 
 let failures = 0;
 function check(name, ok, detail) {
@@ -25,7 +36,11 @@ function check(name, ok, detail) {
 const settle = (p) => p.waitForTimeout(140);
 const squash = (t) => t.replace(/\s+/g, " ").trim();
 
-(async () => {
+async function walk(id) {
+  const FILE = "file://" + path.resolve(ROOT, "dist", LEGACY[id] || `${id}.html`);
+  const TOUR = JSON.parse(fs.readFileSync(
+    path.resolve(ROOT, "out", "gdansk", `${id}.json`), "utf8"));
+
   const browser = await chromium.launch({ headless: !process.argv.includes("--headed") });
   const ctx = await browser.newContext({
     viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
@@ -39,7 +54,8 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
     ? r.continue() : r.abort());
 
   const n = TOUR.stops.length;
-  console.log(`  ${TOUR.name}: ${n} stops, ${TOUR.question_stops} questions, `
+  console.log(`\n${TOUR.name} (/${LEGACY[id] ? "gdansk" : id}/)`);
+  console.log(`  ${n} stops, ${TOUR.question_stops} questions, `
             + `${TOUR.gated_stops} location gates, `
             + `${(TOUR.walk.total_walk_m / 1000).toFixed(2)} km\n`);
 
@@ -51,7 +67,8 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
 
   check("no topic picker on a fixed tour", !(await page.locator("#picker").isVisible()));
   check("the intro says where to start",
-        (await page.locator(".intro").textContent()).includes("Upland Gate"));
+        squash(await page.locator(".intro").textContent())
+          .includes(squash(TOUR.intro.start).slice(0, 40)));
 
   await page.locator("#startbtn").click();
   await page.waitForSelector("#s-walk.on");
@@ -194,8 +211,10 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
       `${i + 1}/${n}`);
   }
 
-  check("seven stops asked a question", asked === 7, `${asked}`);
-  check("three stops were location gated", gated === 3, `${gated}`);
+  check(`${TOUR.question_stops} stops asked a question`,
+        asked === TOUR.question_stops, `${asked}`);
+  check(`${TOUR.gated_stops} stops were location gated`,
+        gated === TOUR.gated_stops, `${gated}`);
   check("every stage is one card",
         (await page.locator("#walk .stop").count()) === n + 1,
         `${await page.locator("#walk .stop").count()}`);
@@ -259,6 +278,10 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
   }
 
   await browser.close();
+}
+
+(async () => {
+  for (const id of TOURS) await walk(id);
   console.log(`\n${failures === 0 ? "all checks passed" : failures + " FAILED"}`);
   process.exit(failures ? 1 : 0);
 })().catch((err) => { console.error("smoke test crashed:", err); process.exit(2); });
