@@ -131,16 +131,21 @@
   .shead .no { color: var(--accent); }
   .shead .state { margin-left: auto; }
   .stitle { font-family: Georgia, serif; font-size: 1.15rem; line-height: 1.3;
-            margin-bottom: 3px; }
+            margin-bottom: 12px; }
+  /* Tap to finish the reveal was there from the start and nothing said so. */
+  .skiptip { margin-top: 10px; font-size: .7rem; color: var(--ink-soft);
+             letter-spacing: .04em; }
   .swhere { font-size: .78rem; color: var(--ink-soft); margin-bottom: 10px; }
   .stext { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
            white-space: pre-line; }
   /* Words, not characters. The whole text is laid out invisibly from the first
      frame, so the card never grows and lines never re-wrap mid-reveal, and each
      word then darkens into place. It reads like a voice rather than a machine. */
-  .stext .w { opacity: 0; }
-  .stext .w.on { opacity: 1; transition: opacity .45s ease; }
-  @media (prefers-reduced-motion: reduce) { .stext .w { opacity: 1; } }
+  .stext .w, .legtext .w { opacity: 0; }
+  .stext .w.on, .legtext .w.on { opacity: 1; transition: opacity .45s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .stext .w, .legtext .w { opacity: 1; }
+  }
   .after { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
            font-family: Georgia, serif; font-size: .98rem; line-height: 1.6;
            white-space: pre-line; }
@@ -298,7 +303,7 @@
 <div id="modal"><div class="card" id="modalcard"></div></div>
 <div id="toast" role="status" aria-live="polite"></div>
 
-<script>window.NOTICING_BUNDLE = {"tour": {"format": 1, "combo_key": "amber-mile", "mode": "fixed", "name": "The Amber Mile", "tagline": "ten things worth stopping for", "city": "Gdansk", "intro": {"lead": "Ten stops round the old centre of Gdansk.", "body": "About a mile of walking and an hour if you do not stop for beer. Seven stops ask you a question you can only answer by looking at the thing in front of you. Three just need you to be standing in the right place.\n\nEverything is outdoors and free. You never have to go into a museum.", "start": "Start at the Upland Gate, the Brama Wyzynna, at the western end of the old town on Waly Jagiellonskie. It is the low stone gate with three carved shields on it, a few minutes from the main station."}, "outro": "That is the ten.\n\nIf you have any walking left, the shipyard is twenty minutes north of here. That is where the strikes of 1980 started, and where the thing that eventually pulled down the Berlin Wall got going. It is a different walk and it deserves its own hour.", "draft": false, "topics": [{"id": "trade", "name": "Merchants and Kings", "blurb": "A port that got rich on other people's grain, and the foreigners who came for a cut."}, {"id": "gold", "name": "Gold, Amber and Water", "blurb": "Why this city is the colour it is."}, {"id": "rebuilt", "name": "Burnt and Rebuilt", "blurb": "Almost none of this is old. All of it is real."}], "stops": [{"id": "upland-gate", "topic": "trade", "title": "The Upland Gate", "where": "Brama Wyzynna, Waly Jagiellonskie, at the western end of the old town", "lat": 54.34862, "lon": 18.64457, "directions": null, "gate": null, "nudge": null, "question": {"ask": "Three carved shields run across the front of the gate, and each one is held up by a pair of animals. One of those pairs has a single horn in the middle of its forehead. What are they?", "answers": ["unicorns", "unicorn", "a unicorn", "two unicorns", "the unicorns", "jednorożec", "jednorożce", "jednorozec", "jednorozce", "unicorns on the left", "horned horses"], "_answers_note": "Be generous. The first answer with letters in it is the one shown when somebody asks to be told, so put the best-reading form first. Singulars, plurals, Polish forms and one-character typos are handled by the matcher, so these lists only need the genuinely different things a person might type.", "hint": "Look at the shield on the left as you face the gate. The two beasts holding it are not horses."}, "look": "Stand back far enough to see the whole front of the gate.\n\nThere are three shields in a row. Each one is held up by a pair of creatures.\n\nLook at all three pairs before you answer. They are not the same animal.", "look_spoken": null, "after": "Left to right, those are the arms of Royal Prussia held by unicorns, Poland held by angels, and Gdansk held by lions. Three rulers on one wall, in the order that mattered to whoever paid for the carving.\n\nThis is the start of the Royal Route. When a Polish king came to Gdansk he came in through this gate and walked the way you are about to walk, straight down to the river. The city put on a show along it, and the show is still standing.\n\nThe gate went up between 1574 and 1588, and the shields were added in 1586.\n\nThe two crosses on the Gdansk shield turn up everywhere once you have seen them. Manhole covers, lamp posts, bins. Start counting.", "after_spoken": "Left to right, those are the arms of Royal Prussia held by unicorns, Poland held by angels, and Gdansk held by lions. Three rulers on one wall, in the order that mattered to whoever paid for the carving.\n\nThis is the start of the Royal Route. When a Polish king came to Gdansk he came in through this gate and walked the way you are about to walk, straight down to the river. The city put on a show along it, and the show is still standing.\n\nThe gate went up between fifteen seventy-four and fifteen eighty-eight, and the shields were added in fifteen eighty-six.\n\nThe two crosses on the Gdansk shield turn up everywhere once you have seen them. Manhole covers, lamp posts, bins. Start counting.", "audio": null}, {"id": "golden-gate", "topic": "trade", "title": "The Golden Gate", "where": "Zlota Brama, at the top of ulica Dluga", "lat": 54.34889, "lon": 18.64805, "directions": "Face the old town with the Upland Gate behind you and walk straight ahead, east, about two hundred metres.\n\nYou pass a squat round brick tower on your left. That is the old Prison Tower.\n\nKeep going through the short passage. The next gate, pale stone with statues standing on the roofline, is the Golden Gate.", "gate": null, "nudge": null, "question": {"ask": "Stand on the far side and look up at the roofline. How many figures are standing along the top?", "answers": ["4", "four", "cztery", "four statues", "four figures", "four of them"], "hint": "They are spaced along the parapet, one above each column."}, "look": "Walk through and turn round so the gate is in front of you and the long street is at your back.\n\nLook at the very top, along the roofline.\n\nThere are figures up there. Count them.", "look_spoken": null, "after": "Four, and they are virtues. On this side, Peace, Liberty, Wealth and Fame. Walk round to the other side and there are four more: Concord, Justice, Piety and Prudence.\n\nThe split is the point. Facing out at the world, the city advertised what it had. Facing in at its own citizens, it listed what it expected of them.\n\nThe gate was built in 1612 by Abraham van den Blocke, a Flemish architect, which tells you where Gdansk was looking. Not east and not south. Across the sea, at Amsterdam and Antwerp.\n\nAlmost every good building on this walk was designed by a Dutchman or a Fleming.", "after_spoken": "Four, and they are virtues. On this side, Peace, Liberty, Wealth and Fame. Walk round to the other side and there are four more: Concord, Justice, Piety and Prudence.\n\nThe split is the point. Facing out at the world, the city advertised what it had. Facing in at its own citizens, it listed what it expected of them.\n\nThe gate was built in sixteen twelve by Abraham van den Blocke, a Flemish architect, which tells you where Gdansk was looking. Not east and not south. Across the sea, at Amsterdam and Antwerp.\n\nAlmost every good building on this walk was designed by a Dutchman or a Fleming.", "audio": null}, {"id": "town-hall", "topic": "rebuilt", "title": "The Main Town Hall", "where": "Ratusz Glownego Miasta, on the right hand side where ulica Dluga opens out", "lat": 54.34887, "lon": 18.65198, "directions": "Go through the Golden Gate and keep walking east along ulica Dluga, the wide street with the tall painted houses down both sides.\n\nStay on it for about two hundred and fifty metres.\n\nThe Town Hall is the tall building on your right with the one very high spire. Stand back on the left hand side of the street so you can see the top of it.", "gate": null, "nudge": null, "question": {"ask": "There is a small gilded figure on the very top of the spire, above everything else. Is he a king, a saint, or a sailor?", "answers": ["king", "a king", "the king", "król", "krol", "monarch", "sigismund", "zygmunt", "zygmunt august", "sigismund augustus", "king sigismund", "a monarch"], "hint": "He is holding something in each hand, and one of them is not a tool."}, "look": "Look up. Keep going up, past the clock, past the gallery, to the very tip.\n\nThere is a small gold figure standing on the top.\n\nHe is about eighty metres above your head, so squint.", "look_spoken": null, "after": "A king. Sigismund II Augustus, put up there in 1561, and gilded so that he would be the brightest thing in the city.\n\nNow the part worth knowing. In March 1945 the Soviet army shelled and burned this city centre for days, and about ninety per cent of the Main Town was destroyed. Over a thousand buildings. This tower burned and the spire came down.\n\nSo the king above you is a copy, on a rebuilt tower, on a street that was rubble to the height of a person.\n\nLook down the street at the houses. Almost every one of them is younger than the Beatles. They were rebuilt from photographs, paintings and the memories of people who had lived in them, and the work went on into the nineteen sixties.\n\nIt is not a fake. It is a city that was killed and then copied back out by hand.", "after_spoken": "A king. Sigismund the Second Augustus, put up there in fifteen sixty-one, and gilded so that he would be the brightest thing in the city.\n\nNow the part worth knowing. In March nineteen forty-five the Soviet army shelled and burned this city centre for days, and about ninety per cent of the Main Town was destroyed. Over a thousand buildings. This tower burned and the spire came down.\n\nSo the king above you is a copy, on a rebuilt tower, on a street that was rubble to the height of a person.\n\nLook down the street at the houses. Almost every one of them is younger than the Beatles. They were rebuilt from photographs, paintings and the memories of people who had lived in them, and the work went on into the nineteen sixties.\n\nIt is not a fake. It is a city that was killed and then copied back out by hand.", "audio": null}, {"id": "neptune", "topic": "gold", "title": "Neptune's Fountain", "where": "Fontanna Neptuna, in Dlugi Targ just past the Town Hall", "lat": 54.34884, "lon": 18.65293, "directions": "Carry on east for another sixty metres.\n\nThe street opens out into a wide square. This is Dlugi Targ, the Long Market.\n\nThe fountain is straight ahead of you behind an iron railing, with a dark green figure standing on top.", "gate": null, "nudge": null, "question": {"ask": "Neptune is holding a long fork. How many points are on the end of it?", "answers": ["3", "three", "trzy", "three prongs", "three points", "trzy zeby"], "hint": "It is the standard sea god issue. Count the prongs."}, "look": "Get close to the railing and look up at him.\n\nHe is bronze, gone green, and he is looking down at the water with his fork lowered.\n\nCount the points on the end of it.", "look_spoken": null, "after": "Three. It is a trident, and there is a story attached to it.\n\nGdansk merchants used to throw coins into this fountain. Neptune got sick of it, struck the water with the trident, and shattered the gold into thousands of tiny flakes.\n\nThat is the city's own explanation for Goldwasser, the herbal liqueur that has been made here since the sixteenth century with real gold leaf floating in it. Twenty-two carat. You can buy a bottle two minutes from where you are standing and the flakes are still in there.\n\nThe fountain went up between 1606 and 1633 and it was the first monumental fountain in Poland.\n\nAnd he is facing the right way. He is turned towards the Artus Court behind him, not out at the square, because the merchants in that building were the ones who paid for him.", "after_spoken": "Three. It is a trident, and there is a story attached to it.\n\nGdansk merchants used to throw coins into this fountain. Neptune got sick of it, struck the water with the trident, and shattered the gold into thousands of tiny flakes.\n\nThat is the city's own explanation for Goldwasser, the herbal liqueur that has been made here since the sixteenth century with real gold leaf floating in it. Twenty-two carat. You can buy a bottle two minutes from where you are standing and the flakes are still in there.\n\nThe fountain went up between sixteen oh six and sixteen thirty-three and it was the first monumental fountain in Poland.\n\nAnd he is facing the right way. He is turned towards the Artus Court behind him, not out at the square, because the merchants in that building were the ones who paid for him.", "audio": null}, {"id": "artus-court", "topic": "trade", "title": "Artus Court", "where": "Dwor Artusa, the tall building directly behind Neptune", "lat": 54.34893, "lon": 18.65316, "directions": "Turn away from the middle of the square and face north.\n\nThe building immediately behind the fountain, with the four tall arched windows and the stepped gable above them, is Artus Court.\n\nIt is about twenty metres. Go and stand at the foot of its steps.", "gate": {"radius_m": 45, "allow_pass": true, "prompt": "Stand at the front of Artus Court, right behind the fountain."}, "nudge": null, "question": null, "look": "Stand facing the front of it and look at the four big arched windows.\n\nThis was not a church, a palace or a town hall.\n\nIt was a club.", "look_spoken": null, "after": "It is named after King Arthur. Yours.\n\nThe merchants who met here wanted to think of themselves as knights round a round table, dealing fairly and behaving well. The fashion for naming a merchants' hall after Arthur started in England, spread across the North Sea, and washed up here. The building is recorded as curia regis Artus, the court of King Arthur, in 1357.\n\nAnd there is a better British connection than the name.\n\nBy the seventeenth century somewhere near eighteen hundred Scots were living in Gdansk, about one person in forty. There were so many that two districts of this city are still called Stare Szkoty and Nowe Szkoty. Old Scotland and New Scotland.\n\nOne of them, a merchant called William Forbes, made a fortune here and went home to Aberdeenshire with it. He built Craigievar Castle, the pink tower house on the Scottish shortbread tins. His nickname was Danzig Willie.\n\nSo a castle in Aberdeenshire was paid for out of this square.", "after_spoken": "It is named after King Arthur. Yours.\n\nThe merchants who met here wanted to think of themselves as knights round a round table, dealing fairly and behaving well. The fashion for naming a merchants' hall after Arthur started in England, spread across the North Sea, and washed up here. The building is recorded as curia regis Artus, the court of King Arthur, in thirteen fifty-seven.\n\nAnd there is a better British connection than the name.\n\nBy the seventeenth century somewhere near eighteen hundred Scots were living in Gdansk, about one person in forty. There were so many that two districts of this city are still called Stare Szkoty and Nowe Szkoty. Old Scotland and New Scotland.\n\nOne of them, a merchant called William Forbes, made a fortune here and went home to Aberdeenshire with it. He built Craigievar Castle, the pink tower house on the Scottish shortbread tins. His nickname was Danzig Willie.\n\nSo a castle in Aberdeenshire was paid for out of this square.", "audio": null}, {"id": "golden-house", "topic": "rebuilt", "title": "The Golden House", "where": "Zlota Kamienica, Dlugi Targ 41, on the same side as Artus Court", "lat": 54.34878, "lon": 18.6538, "directions": "Keep going east along the same side of Dlugi Targ, away from the Town Hall, for about forty metres.\n\nYou want number 41, four doors along.\n\nYou will know it when you see it. The whole front is covered in carving, and the carving is not stone coloured.", "gate": null, "nudge": null, "question": {"ask": "The carvings and lettering all over the front of this house are picked out in one colour, and it is the colour the house is named after. What is it?", "answers": ["gold", "golden", "gilded", "gilt", "gold leaf", "goldleaf", "złoty", "zloty", "złota", "zlota", "yellow", "gold colour", "gold coloured"], "hint": "It is in the name of the building."}, "look": "Stand across the street so you can see the whole front at once.\n\nEvery band of carving is picked out. There are busts of rulers, battle scenes, and a line of figures above them.\n\nLook at what colour it has all been finished in.", "look_spoken": null, "after": "Gold, and it is real gilding, not paint.\n\nThe house was built between 1609 and 1618 for a mayor named Johann Speymann, and the busts along it are rulers he wanted to be associated with, including Zygmunt III Waza and Wladyslaw Jagiello. The single figure balanced on the very top is Fortune.\n\nHere is why it belongs with the Town Hall. In 1945 this house burned like everything else, and what was left standing was the front wall on its own, scorched and leaning, three storeys of it, about to fall into the street.\n\nThey did not knock it down. They propped it up and rebuilt the house behind it, using the surviving wall as the pattern. The regilding was still being finished in 1955.\n\nSo of everything on this square, this face is one of the few that genuinely came through. Everything behind it is new.", "after_spoken": "Gold, and it is real gilding, not paint.\n\nThe house was built between sixteen oh nine and sixteen eighteen for a mayor named Johann Speymann, and the busts along it are rulers he wanted to be associated with, including Zygmunt the Third Waza and Wladyslaw Jagiello. The single figure balanced on the very top is Fortune.\n\nHere is why it belongs with the Town Hall. In nineteen forty-five this house burned like everything else, and what was left standing was the front wall on its own, scorched and leaning, three storeys of it, about to fall into the street.\n\nThey did not knock it down. They propped it up and rebuilt the house behind it, using the surviving wall as the pattern. The regilding was still being finished in nineteen fifty-five.\n\nSo of everything on this square, this face is one of the few that genuinely came through. Everything behind it is new.", "audio": null}, {"id": "green-gate", "topic": "gold", "title": "The Green Gate", "where": "Brama Zielona, the big brick building closing the end of Dlugi Targ", "lat": 54.34868, "lon": 18.6556, "directions": "Carry on east to the end of Dlugi Targ, about a hundred and twenty metres.\n\nThe wide brick building blocking the whole end of the square, with the arched passages cut through it, is the Green Gate.\n\nStand in front of it, on the square side.", "gate": {"radius_m": 45, "allow_pass": true, "prompt": "Get to the front of the Green Gate at the far end of the Long Market."}, "nudge": null, "question": null, "look": "Look at the size of it, and then at what it is made of.\n\nIt is not a gate in the way the last two were. It has rooms, and windows, and chimneys.\n\nIt is a building with holes punched through it.", "look_spoken": null, "after": "It is a palace, and no king would live in it.\n\nIt was built in the 1560s as an official residence for Polish kings when they came to Gdansk. The city spent a fortune on it and modelled it on the town hall in Antwerp.\n\nThe kings took one look and stayed somewhere else. It was on the main square, on the road to the river, next to the market, and it was far too noisy. As a royal residence it was used essentially once.\n\nWalk through it. On the other side is the Motlawa, and that river is the entire reason for this city. Grain came down the Vistula from half of Poland, was stored in the warehouses on the far bank, and went out to Amsterdam, to Antwerp and to England.\n\nGdansk did not grow the grain. It just stood at the point where the river met the sea and charged everybody.", "after_spoken": "It is a palace, and no king would live in it.\n\nIt was built in the fifteen sixties as an official residence for Polish kings when they came to Gdansk. The city spent a fortune on it and modelled it on the town hall in Antwerp.\n\nThe kings took one look and stayed somewhere else. It was on the main square, on the road to the river, next to the market, and it was far too noisy. As a royal residence it was used essentially once.\n\nWalk through it. On the other side is the Motlawa, and that river is the entire reason for this city. Grain came down the Vistula from half of Poland, was stored in the warehouses on the far bank, and went out to Amsterdam, to Antwerp and to England.\n\nGdansk did not grow the grain. It just stood at the point where the river met the sea and charged everybody.", "audio": null}, {"id": "the-crane", "topic": "trade", "title": "The Crane", "where": "Zuraw, on the waterfront path north of the Green Gate", "lat": 54.35061, "lon": 18.65712, "directions": "Walk through one of the arches of the Green Gate and out to the river.\n\nTurn left and follow the waterfront path, Dlugie Pobrzeze, north for about two hundred and fifty metres. The river stays on your right the whole way.\n\nYou pass a run of brick gateways on your left, one at the end of each street. Do not bother counting them, just keep going north.\n\nThe Crane is the enormous wooden housing slung between two brick towers and leaning out over the water. You will not walk past it by accident.", "gate": null, "nudge": null, "question": {"ask": "The big wooden crane housing is held up between brick towers. How many towers are there?", "answers": ["2", "two", "dwa", "a pair", "both", "two towers", "two brick towers"], "hint": "One either side of the timber."}, "look": "Stand back along the quay so you can see the whole thing side on.\n\nA great slab of timber leans out over the water, sitting between towers of brick.\n\nCount the brick towers.", "look_spoken": null, "after": "Two, and the timber between them is the machine.\n\nThis was built between 1442 and 1444 and it was the biggest working crane in medieval Europe. It could lift two tonnes to a height of twenty-seven metres, and if you coupled both pairs of wheels together, four tonnes to eleven.\n\nThere was no engine. Inside those timbers are enormous wooden treadwheels, and the power was men walking inside them, like hamsters. Several at a time, for hours.\n\nIt did two jobs. It loaded cargo, and it stepped masts into ships, which is a thing almost nothing else in Europe could do at that size.\n\nIt burned in 1945 along with everything else, and what you are looking at was rebuilt in the fifties and sixties. The brick towers are largely original. The wooden part is not.\n\nOne thing that will not match the older photographs. Until recently the timber was almost black. A three year restoration finished in 2024 and the wood came back a much lighter brown, which is far closer to how it looked when it was still lifting things.", "after_spoken": "Two, and the timber between them is the machine.\n\nThis was built between fourteen forty-two and fourteen forty-four and it was the biggest working crane in medieval Europe. It could lift two tonnes to a height of twenty-seven metres, and if you coupled both pairs of wheels together, four tonnes to eleven.\n\nThere was no engine. Inside those timbers are enormous wooden treadwheels, and the power was men walking inside them, like hamsters. Several at a time, for hours.\n\nIt did two jobs. It loaded cargo, and it stepped masts into ships, which is a thing almost nothing else in Europe could do at that size.\n\nIt burned in nineteen forty-five along with everything else, and what you are looking at was rebuilt in the fifties and sixties. The brick towers are largely original. The wooden part is not.\n\nOne thing that will not match the older photographs. Until recently the timber was almost black. A three year restoration finished in twenty twenty-four and the wood came back a much lighter brown, which is far closer to how it looked when it was still lifting things.", "audio": null}, {"id": "mariacka", "topic": "gold", "title": "Ulica Mariacka", "where": "The street running west from the river through Brama Mariacka", "lat": 54.34962, "lon": 18.6547, "directions": "Turn round and walk back south along the waterfront, the way you came, about a hundred and fifty metres.\n\nYou are looking for a gateway on your right with a pointed roof and a small tower, signed Brama Mariacka. Read the signs rather than counting the gates, because there are more of them than you expect. If you get back to the Green Gate you have gone too far.\n\nGo through it, away from the river. You are now at the bottom of ulica Mariacka. Walk a little way up it and stop.", "gate": {"radius_m": 50, "allow_pass": true, "prompt": "Get onto Mariacka itself, in among the stone terraces."}, "nudge": null, "question": null, "look": "Stand in the middle of the street and look at the fronts of the houses.\n\nNobody's front door is at street level. Every house has a raised stone platform in front of it, with steps up and an iron rail round it.\n\nNow look at the stone spouts sticking out from them.", "look_spoken": null, "after": "Those platforms are przedproza, and they are a Gdansk speciality.\n\nThe ground here is low and wet, so the houses were built up above the street. The space that left in front became a sort of outdoor room where you sat, did business and greeted people, half in the house and half in the street.\n\nThe spouts are rzygacze, which is a blunter word in Polish than gargoyle is in English. They throw the roof water out over the pavement, and every one is carved differently. Dragons, fish, faces. If it rains hard, do not stand under one.\n\nOne of them, between numbers 6 and 7, has a name. Pomuchel, which is Kashubian for a Baltic cod.\n\nAnd look in the windows. Nearly every shop on this street sells one thing, and it is the reason Gdansk calls itself the amber capital of the world. It washes up on the beaches a few miles from here, and it is pine resin that has been sitting around for forty million years.", "after_spoken": "Those platforms are przedproza, and they are a Gdansk speciality.\n\nThe ground here is low and wet, so the houses were built up above the street. The space that left in front became a sort of outdoor room where you sat, did business and greeted people, half in the house and half in the street.\n\nThe spouts are rzygacze, which is a blunter word in Polish than gargoyle is in English. They throw the roof water out over the pavement, and every one is carved differently. Dragons, fish, faces. If it rains hard, do not stand under one.\n\nOne of them, between numbers six and seven, has a name. Pomuchel, which is Kashubian for a Baltic cod.\n\nAnd look in the windows. Nearly every shop on this street sells one thing, and it is the reason Gdansk calls itself the amber capital of the world. It washes up on the beaches a few miles from here, and it is pine resin that has been sitting around for forty million years.", "audio": null}, {"id": "st-marys", "topic": "rebuilt", "title": "St Mary's", "where": "Bazylika Mariacka, filling the west end of Mariacka", "lat": 54.34962, "lon": 18.6533, "directions": "Walk west up Mariacka, away from the river, about a hundred metres to the end.\n\nThe street runs straight at the church, which is the point.\n\nStop where the street ends and the building starts, and get your back against something so you can look up.", "gate": null, "nudge": null, "question": {"ask": "This is one of the biggest churches in the world of its kind. What is it built out of?", "answers": ["brick", "bricks", "red brick", "red bricks", "brickwork", "cegła", "cegla", "cegły", "cegly", "clay", "clay brick", "baked clay"], "hint": "Get close and look at the wall. It is not stone."}, "look": "Look at the size of it first, then walk up and put your hand flat on the wall.\n\nAll the great cathedrals you can name are made of cut stone.\n\nThis one is not.", "look_spoken": null, "after": "Brick. It is the largest brick church in the world, and depending on how you measure, one of the largest churches of any kind.\n\nIt is a hundred and five metres long and the inside will hold something like twenty thousand people. There is no stone here because there is no stone here. Northern Poland is flat, wet and made of clay, so the whole region built in brick and got very good at it.\n\nIt took about a hundred and sixty years to finish, from 1379 to 1502.\n\nIn 1945 the roof and the vaults burned and much of the inside was destroyed. The walls held. It was patched, then properly rebuilt, and the work went on for decades.\n\nThat is the last thing worth taking away from this walk.\n\nThe Town Hall, the Golden House, the Crane and this church all burned in the same few weeks of one spring. Every one of them was put back by hand. The people who did it decided that a careful copy of the truth was better than an honest hole in the ground.", "after_spoken": "Brick. It is the largest brick church in the world, and depending on how you measure, one of the largest churches of any kind.\n\nIt is a hundred and five metres long and the inside will hold something like twenty thousand people. There is no stone here because there is no stone here. Northern Poland is flat, wet and made of clay, so the whole region built in brick and got very good at it.\n\nIt took about a hundred and sixty years to finish, from thirteen seventy-nine to fifteen oh two.\n\nIn nineteen forty-five the roof and the vaults burned and much of the inside was destroyed. The walls held. It was patched, then properly rebuilt, and the work went on for decades.\n\nThat is the last thing worth taking away from this walk.\n\nThe Town Hall, the Golden House, the Crane and this church all burned in the same few weeks of one spring. Every one of them was put back by hand. The people who did it decided that a careful copy of the truth was better than an honest hole in the ground.", "audio": null}], "walk": {"n_stops": 10, "total_walk_m": 1614.9, "total_minutes": 20.2, "reversals": 1, "legs": [{"from": "upland-gate", "to": "golden-gate", "straight_m": 227.5, "walk_m": 295.8, "minutes": 3.7, "bearing": 82.4}, {"from": "golden-gate", "to": "town-hall", "straight_m": 254.7, "walk_m": 331.1, "minutes": 4.1, "bearing": 90.5}, {"from": "town-hall", "to": "neptune", "straight_m": 61.7, "walk_m": 80.2, "minutes": 1.0, "bearing": 93.1}, {"from": "neptune", "to": "artus-court", "straight_m": 18.0, "walk_m": 23.3, "minutes": 0.3, "bearing": 56.1}, {"from": "artus-court", "to": "golden-house", "straight_m": 44.7, "walk_m": 58.1, "minutes": 0.7, "bearing": 111.9}, {"from": "golden-house", "to": "green-gate", "straight_m": 117.2, "walk_m": 152.3, "minutes": 1.9, "bearing": 95.4}, {"from": "green-gate", "to": "the-crane", "straight_m": 236.1, "walk_m": 307.0, "minutes": 3.8, "bearing": 24.7}, {"from": "the-crane", "to": "mariacka", "straight_m": 191.6, "walk_m": 249.1, "minutes": 3.1, "bearing": 234.9}, {"from": "mariacka", "to": "st-marys", "straight_m": 90.7, "walk_m": 118.0, "minutes": 1.5, "bearing": 270.0}]}, "gated_stops": 3, "question_stops": 7}};</script>
+<script>window.NOTICING_BUNDLE = {"tour": {"format": 1, "combo_key": "amber-mile", "mode": "fixed", "name": "The Amber Mile", "tagline": "ten things worth stopping for", "city": "Gdansk", "intro": {"lead": "Ten stops round the old centre of Gdansk.", "body": "About a mile of walking and an hour if you do not stop for beer. Seven stops ask you a question you can only answer by looking at the thing in front of you. Three just need you to be standing in the right place.\n\nEverything is outdoors and free. You never have to go into a museum.", "start": "Start at the Upland Gate, the Brama Wyzynna, at the western end of the old town on Waly Jagiellonskie. It is the low stone gate with three carved shields on it, a few minutes from the main station."}, "outro": "That is the ten.\n\nIf you have any walking left, the shipyard is twenty minutes north of here. That is where the strikes of 1980 started, and where the thing that eventually pulled down the Berlin Wall got going. It is a different walk and it deserves its own hour.", "draft": false, "topics": [{"id": "trade", "name": "Merchants and Kings", "blurb": "A port that got rich on other people's grain, and the foreigners who came for a cut."}, {"id": "gold", "name": "Gold, Amber and Water", "blurb": "Why this city is the colour it is."}, {"id": "rebuilt", "name": "Burnt and Rebuilt", "blurb": "Almost none of this is old. All of it is real."}], "stops": [{"id": "upland-gate", "topic": "trade", "title": "The Upland Gate", "where": "Brama Wyzynna, Waly Jagiellonskie, at the western end of the old town", "lat": 54.34862, "lon": 18.64457, "directions": null, "gate": null, "nudge": null, "question": {"ask": "One of those pairs has a single horn in the middle of its forehead. What are they?", "answers": ["unicorns", "unicorn", "a unicorn", "two unicorns", "the unicorns", "jednorożec", "jednorożce", "jednorozec", "jednorozce", "unicorns on the left", "horned horses"], "_answers_note": "Be generous. The first answer with letters in it is the one shown when somebody asks to be told, so put the best-reading form first. Singulars, plurals, Polish forms and one-character typos are handled by the matcher, so these lists only need the genuinely different things a person might type.", "hint": "Look at the shield on the left as you face the gate. The two beasts holding it are not horses."}, "look": "Stand back far enough to see the whole front of the gate.\n\nThree carved shields run across it in a row, and each one is held up by a pair of animals. It is not the same animal on every shield, so look at all three.", "look_spoken": null, "after": "Left to right, those are the arms of Royal Prussia held by unicorns, Poland held by angels, and Gdansk held by lions. Three rulers on one wall, in the order that mattered to whoever paid for the carving.\n\nThis is the start of the Royal Route. When a Polish king came to Gdansk he came in through this gate and walked the way you are about to walk, straight down to the river. The city put on a show along it, and the show is still standing.\n\nThe gate went up between 1574 and 1588, and the shields were added in 1586.\n\nThe two crosses on the Gdansk shield turn up everywhere once you have seen them. Manhole covers, lamp posts, bins. Start counting.", "after_spoken": "Left to right, those are the arms of Royal Prussia held by unicorns, Poland held by angels, and Gdansk held by lions. Three rulers on one wall, in the order that mattered to whoever paid for the carving.\n\nThis is the start of the Royal Route. When a Polish king came to Gdansk he came in through this gate and walked the way you are about to walk, straight down to the river. The city put on a show along it, and the show is still standing.\n\nThe gate went up between fifteen seventy-four and fifteen eighty-eight, and the shields were added in fifteen eighty-six.\n\nThe two crosses on the Gdansk shield turn up everywhere once you have seen them. Manhole covers, lamp posts, bins. Start counting.", "audio": null}, {"id": "golden-gate", "topic": "trade", "title": "The Golden Gate", "where": "Zlota Brama, at the top of ulica Dluga", "lat": 54.34889, "lon": 18.64805, "directions": "Face the old town with the Upland Gate behind you and walk straight ahead, east, about two hundred metres.\n\nYou pass a squat round brick tower on your left. That is the old Prison Tower.\n\nKeep going through the short passage. The next gate, pale stone with statues standing on the roofline, is the Golden Gate.", "gate": null, "nudge": null, "question": {"ask": "How many of them are there?", "answers": ["4", "four", "cztery", "four statues", "four figures", "four of them"], "hint": "They are spaced along the parapet, one above each column."}, "look": "Walk through the gate, then turn round so it is in front of you and the long street is at your back.\n\nNow look at the very top of it, along the roofline. There are figures standing up there, one above each column.", "look_spoken": null, "after": "Four, and they are virtues. On this side, Peace, Liberty, Wealth and Fame. Walk round to the other side and there are four more: Concord, Justice, Piety and Prudence.\n\nThe split is the point. Facing out at the world, the city advertised what it had. Facing in at its own citizens, it listed what it expected of them.\n\nThe gate was built in 1612 by Abraham van den Blocke, a Flemish architect, which tells you where Gdansk was looking. Not east and not south. Across the sea, at Amsterdam and Antwerp.\n\nAlmost every good building on this walk was designed by a Dutchman or a Fleming.", "after_spoken": "Four, and they are virtues. On this side, Peace, Liberty, Wealth and Fame. Walk round to the other side and there are four more: Concord, Justice, Piety and Prudence.\n\nThe split is the point. Facing out at the world, the city advertised what it had. Facing in at its own citizens, it listed what it expected of them.\n\nThe gate was built in sixteen twelve by Abraham van den Blocke, a Flemish architect, which tells you where Gdansk was looking. Not east and not south. Across the sea, at Amsterdam and Antwerp.\n\nAlmost every good building on this walk was designed by a Dutchman or a Fleming.", "audio": null}, {"id": "town-hall", "topic": "rebuilt", "title": "The Main Town Hall", "where": "Ratusz Glownego Miasta, on the right hand side where ulica Dluga opens out", "lat": 54.34887, "lon": 18.65198, "directions": "Go through the Golden Gate and keep walking east along ulica Dluga, the wide street with the tall painted houses down both sides.\n\nStay on it for about two hundred and fifty metres.\n\nThe Town Hall is the tall building on your right with the one very high spire. Stand back on the left hand side of the street so you can see the top of it.", "gate": null, "nudge": null, "question": {"ask": "Is he a king, a saint, or a sailor?", "answers": ["king", "a king", "the king", "król", "krol", "monarch", "sigismund", "zygmunt", "zygmunt august", "sigismund augustus", "king sigismund", "a monarch"], "hint": "He is holding something in each hand, and one of them is not a tool."}, "look": "Look up at the tower. Keep going up, past the clock, past the gallery, all the way to the tip.\n\nThere is a small gilded figure standing right on the top. He is about eighty metres above your head, so squint.", "look_spoken": null, "after": "A king. Sigismund II Augustus, put up there in 1561, and gilded so that he would be the brightest thing in the city.\n\nNow the part worth knowing. In March 1945 the Soviet army shelled and burned this city centre for days, and about ninety per cent of the Main Town was destroyed. Over a thousand buildings. This tower burned and the spire came down.\n\nSo the king above you is a copy, on a rebuilt tower, on a street that was rubble to the height of a person.\n\nLook down the street at the houses. Almost every one of them is younger than the Beatles. They were rebuilt from photographs, paintings and the memories of people who had lived in them, and the work went on into the nineteen sixties.\n\nIt is not a fake. It is a city that was killed and then copied back out by hand.", "after_spoken": "A king. Sigismund the Second Augustus, put up there in fifteen sixty-one, and gilded so that he would be the brightest thing in the city.\n\nNow the part worth knowing. In March nineteen forty-five the Soviet army shelled and burned this city centre for days, and about ninety per cent of the Main Town was destroyed. Over a thousand buildings. This tower burned and the spire came down.\n\nSo the king above you is a copy, on a rebuilt tower, on a street that was rubble to the height of a person.\n\nLook down the street at the houses. Almost every one of them is younger than the Beatles. They were rebuilt from photographs, paintings and the memories of people who had lived in them, and the work went on into the nineteen sixties.\n\nIt is not a fake. It is a city that was killed and then copied back out by hand.", "audio": null}, {"id": "neptune", "topic": "gold", "title": "Neptune's Fountain", "where": "Fontanna Neptuna, in Dlugi Targ just past the Town Hall", "lat": 54.34884, "lon": 18.65293, "directions": "Carry on east for another sixty metres.\n\nThe street opens out into a wide square. This is Dlugi Targ, the Long Market.\n\nThe fountain is straight ahead of you behind an iron railing, with a dark green figure standing on top.", "gate": null, "nudge": null, "question": {"ask": "How many points are on the end of it?", "answers": ["3", "three", "trzy", "three prongs", "three points", "trzy zeby"], "hint": "It is the standard sea god issue. Count the prongs."}, "look": "Get close to the railing and look up at him.\n\nHe is bronze, gone green with age, and he is looking down at the water with a long fork lowered in one hand.", "look_spoken": null, "after": "Three. It is a trident, and there is a story attached to it.\n\nGdansk merchants used to throw coins into this fountain. Neptune got sick of it, struck the water with the trident, and shattered the gold into thousands of tiny flakes.\n\nThat is the city's own explanation for Goldwasser, the herbal liqueur that has been made here since the sixteenth century with real gold leaf floating in it. Twenty-two carat. You can buy a bottle two minutes from where you are standing and the flakes are still in there.\n\nThe fountain went up between 1606 and 1633 and it was the first monumental fountain in Poland.\n\nAnd he is facing the right way. He is turned towards the Artus Court behind him, not out at the square, because the merchants in that building were the ones who paid for him.", "after_spoken": "Three. It is a trident, and there is a story attached to it.\n\nGdansk merchants used to throw coins into this fountain. Neptune got sick of it, struck the water with the trident, and shattered the gold into thousands of tiny flakes.\n\nThat is the city's own explanation for Goldwasser, the herbal liqueur that has been made here since the sixteenth century with real gold leaf floating in it. Twenty-two carat. You can buy a bottle two minutes from where you are standing and the flakes are still in there.\n\nThe fountain went up between sixteen oh six and sixteen thirty-three and it was the first monumental fountain in Poland.\n\nAnd he is facing the right way. He is turned towards the Artus Court behind him, not out at the square, because the merchants in that building were the ones who paid for him.", "audio": null}, {"id": "artus-court", "topic": "trade", "title": "Artus Court", "where": "Dwor Artusa, the tall building directly behind Neptune", "lat": 54.34893, "lon": 18.65316, "directions": "Turn away from the middle of the square and face north.\n\nThe building immediately behind the fountain, with the four tall arched windows and the stepped gable above them, is Artus Court.\n\nIt is about twenty metres. Go and stand at the foot of its steps.", "gate": {"radius_m": 45, "allow_pass": true, "prompt": "Stand at the front of Artus Court, right behind the fountain."}, "nudge": null, "question": null, "look": "Stand facing the front of it and look at the four big arched windows.\n\nThis was not a church, a palace or a town hall.\n\nIt was a club.", "look_spoken": null, "after": "It is named after King Arthur. Yours.\n\nThe merchants who met here wanted to think of themselves as knights round a round table, dealing fairly and behaving well. The fashion for naming a merchants' hall after Arthur started in England, spread across the North Sea, and washed up here. The building is recorded as curia regis Artus, the court of King Arthur, in 1357.\n\nAnd there is a better British connection than the name.\n\nBy the seventeenth century somewhere near eighteen hundred Scots were living in Gdansk, about one person in forty. There were so many that two districts of this city are still called Stare Szkoty and Nowe Szkoty. Old Scotland and New Scotland.\n\nOne of them, a merchant called William Forbes, made a fortune here and went home to Aberdeenshire with it. He built Craigievar Castle, the pink tower house on the Scottish shortbread tins. His nickname was Danzig Willie.\n\nSo a castle in Aberdeenshire was paid for out of this square.", "after_spoken": "It is named after King Arthur. Yours.\n\nThe merchants who met here wanted to think of themselves as knights round a round table, dealing fairly and behaving well. The fashion for naming a merchants' hall after Arthur started in England, spread across the North Sea, and washed up here. The building is recorded as curia regis Artus, the court of King Arthur, in thirteen fifty-seven.\n\nAnd there is a better British connection than the name.\n\nBy the seventeenth century somewhere near eighteen hundred Scots were living in Gdansk, about one person in forty. There were so many that two districts of this city are still called Stare Szkoty and Nowe Szkoty. Old Scotland and New Scotland.\n\nOne of them, a merchant called William Forbes, made a fortune here and went home to Aberdeenshire with it. He built Craigievar Castle, the pink tower house on the Scottish shortbread tins. His nickname was Danzig Willie.\n\nSo a castle in Aberdeenshire was paid for out of this square.", "audio": null}, {"id": "golden-house", "topic": "rebuilt", "title": "The Golden House", "where": "Zlota Kamienica, Dlugi Targ 41, on the same side as Artus Court", "lat": 54.34878, "lon": 18.6538, "directions": "Keep going east along the same side of Dlugi Targ, away from the Town Hall, for about forty metres.\n\nYou want number 41, four doors along.\n\nYou will know it when you see it. The whole front is covered in carving, and the carving is not stone coloured.", "gate": null, "nudge": null, "question": {"ask": "What colour?", "answers": ["gold", "golden", "gilded", "gilt", "gold leaf", "goldleaf", "złoty", "zloty", "złota", "zlota", "yellow", "gold colour", "gold coloured"], "hint": "It is in the name of the building."}, "look": "Stand across the street so you can see the whole front at once.\n\nEvery band of carving is picked out: busts of rulers, battle scenes, and a line of figures above them. All of it finished in the same colour.", "look_spoken": null, "after": "Gold, and it is real gilding, not paint.\n\nThe house was built between 1609 and 1618 for a mayor named Johann Speymann, and the busts along it are rulers he wanted to be associated with, including Zygmunt III Waza and Wladyslaw Jagiello. The single figure balanced on the very top is Fortune.\n\nHere is why it belongs with the Town Hall. In 1945 this house burned like everything else, and what was left standing was the front wall on its own, scorched and leaning, three storeys of it, about to fall into the street.\n\nThey did not knock it down. They propped it up and rebuilt the house behind it, using the surviving wall as the pattern. The regilding was still being finished in 1955.\n\nSo of everything on this square, this face is one of the few that genuinely came through. Everything behind it is new.", "after_spoken": "Gold, and it is real gilding, not paint.\n\nThe house was built between sixteen oh nine and sixteen eighteen for a mayor named Johann Speymann, and the busts along it are rulers he wanted to be associated with, including Zygmunt the Third Waza and Wladyslaw Jagiello. The single figure balanced on the very top is Fortune.\n\nHere is why it belongs with the Town Hall. In nineteen forty-five this house burned like everything else, and what was left standing was the front wall on its own, scorched and leaning, three storeys of it, about to fall into the street.\n\nThey did not knock it down. They propped it up and rebuilt the house behind it, using the surviving wall as the pattern. The regilding was still being finished in nineteen fifty-five.\n\nSo of everything on this square, this face is one of the few that genuinely came through. Everything behind it is new.", "audio": null}, {"id": "green-gate", "topic": "gold", "title": "The Green Gate", "where": "Brama Zielona, the big brick building closing the end of Dlugi Targ", "lat": 54.34868, "lon": 18.6556, "directions": "Carry on east to the end of Dlugi Targ, about a hundred and twenty metres.\n\nThe wide brick building blocking the whole end of the square, with the arched passages cut through it, is the Green Gate.\n\nStand in front of it, on the square side.", "gate": {"radius_m": 45, "allow_pass": true, "prompt": "Get to the front of the Green Gate at the far end of the Long Market."}, "nudge": null, "question": null, "look": "Look at the size of it, and then at what it is made of.\n\nIt is not a gate in the way the last two were. It has rooms, and windows, and chimneys.\n\nIt is a building with holes punched through it.", "look_spoken": null, "after": "It is a palace, and no king would live in it.\n\nIt was built in the 1560s as an official residence for Polish kings when they came to Gdansk. The city spent a fortune on it and modelled it on the town hall in Antwerp.\n\nThe kings took one look and stayed somewhere else. It was on the main square, on the road to the river, next to the market, and it was far too noisy. As a royal residence it was used essentially once.\n\nWalk through it. On the other side is the Motlawa, and that river is the entire reason for this city. Grain came down the Vistula from half of Poland, was stored in the warehouses on the far bank, and went out to Amsterdam, to Antwerp and to England.\n\nGdansk did not grow the grain. It just stood at the point where the river met the sea and charged everybody.", "after_spoken": "It is a palace, and no king would live in it.\n\nIt was built in the fifteen sixties as an official residence for Polish kings when they came to Gdansk. The city spent a fortune on it and modelled it on the town hall in Antwerp.\n\nThe kings took one look and stayed somewhere else. It was on the main square, on the road to the river, next to the market, and it was far too noisy. As a royal residence it was used essentially once.\n\nWalk through it. On the other side is the Motlawa, and that river is the entire reason for this city. Grain came down the Vistula from half of Poland, was stored in the warehouses on the far bank, and went out to Amsterdam, to Antwerp and to England.\n\nGdansk did not grow the grain. It just stood at the point where the river met the sea and charged everybody.", "audio": null}, {"id": "the-crane", "topic": "trade", "title": "The Crane", "where": "Zuraw, on the waterfront path north of the Green Gate", "lat": 54.35061, "lon": 18.65712, "directions": "Walk through one of the arches of the Green Gate and out to the river.\n\nTurn left and follow the waterfront path, Dlugie Pobrzeze, north for about two hundred and fifty metres. The river stays on your right the whole way.\n\nYou pass a run of brick gateways on your left, one at the end of each street. Do not bother counting them, just keep going north.\n\nThe Crane is the enormous wooden housing slung between two brick towers and leaning out over the water. You will not walk past it by accident.", "gate": null, "nudge": null, "question": {"ask": "How many towers?", "answers": ["2", "two", "dwa", "a pair", "both", "two towers", "two brick towers"], "hint": "One either side of the timber."}, "look": "Stand back along the quay so you can see the whole thing side on.\n\nA great slab of timber leans out over the water, and it is held up between towers of brick.", "look_spoken": null, "after": "Two, and the timber between them is the machine.\n\nThis was built between 1442 and 1444 and it was the biggest working crane in medieval Europe. It could lift two tonnes to a height of twenty-seven metres, and if you coupled both pairs of wheels together, four tonnes to eleven.\n\nThere was no engine. Inside those timbers are enormous wooden treadwheels, and the power was men walking inside them, like hamsters. Several at a time, for hours.\n\nIt did two jobs. It loaded cargo, and it stepped masts into ships, which is a thing almost nothing else in Europe could do at that size.\n\nIt burned in 1945 along with everything else, and what you are looking at was rebuilt in the fifties and sixties. The brick towers are largely original. The wooden part is not.\n\nOne thing that will not match the older photographs. Until recently the timber was almost black. A three year restoration finished in 2024 and the wood came back a much lighter brown, which is far closer to how it looked when it was still lifting things.", "after_spoken": "Two, and the timber between them is the machine.\n\nThis was built between fourteen forty-two and fourteen forty-four and it was the biggest working crane in medieval Europe. It could lift two tonnes to a height of twenty-seven metres, and if you coupled both pairs of wheels together, four tonnes to eleven.\n\nThere was no engine. Inside those timbers are enormous wooden treadwheels, and the power was men walking inside them, like hamsters. Several at a time, for hours.\n\nIt did two jobs. It loaded cargo, and it stepped masts into ships, which is a thing almost nothing else in Europe could do at that size.\n\nIt burned in nineteen forty-five along with everything else, and what you are looking at was rebuilt in the fifties and sixties. The brick towers are largely original. The wooden part is not.\n\nOne thing that will not match the older photographs. Until recently the timber was almost black. A three year restoration finished in twenty twenty-four and the wood came back a much lighter brown, which is far closer to how it looked when it was still lifting things.", "audio": null}, {"id": "mariacka", "topic": "gold", "title": "Ulica Mariacka", "where": "The street running west from the river through Brama Mariacka", "lat": 54.34962, "lon": 18.6547, "directions": "Turn round and walk back south along the waterfront, the way you came, about a hundred and fifty metres.\n\nYou are looking for a gateway on your right with a pointed roof and a small tower, signed Brama Mariacka. Read the signs rather than counting the gates, because there are more of them than you expect. If you get back to the Green Gate you have gone too far.\n\nGo through it, away from the river. You are now at the bottom of ulica Mariacka. Walk a little way up it and stop.", "gate": {"radius_m": 50, "allow_pass": true, "prompt": "Get onto Mariacka itself, in among the stone terraces."}, "nudge": null, "question": null, "look": "Stand in the middle of the street and look at the fronts of the houses.\n\nNobody's front door is at street level. Every house has a raised stone platform in front of it, with steps up and an iron rail round it.\n\nNow look at the stone spouts sticking out from them.", "look_spoken": null, "after": "Those platforms are przedproza, and they are a Gdansk speciality.\n\nThe ground here is low and wet, so the houses were built up above the street. The space that left in front became a sort of outdoor room where you sat, did business and greeted people, half in the house and half in the street.\n\nThe spouts are rzygacze, which is a blunter word in Polish than gargoyle is in English. They throw the roof water out over the pavement, and every one is carved differently. Dragons, fish, faces. If it rains hard, do not stand under one.\n\nOne of them, between numbers 6 and 7, has a name. Pomuchel, which is Kashubian for a Baltic cod.\n\nAnd look in the windows. Nearly every shop on this street sells one thing, and it is the reason Gdansk calls itself the amber capital of the world. It washes up on the beaches a few miles from here, and it is pine resin that has been sitting around for forty million years.", "after_spoken": "Those platforms are przedproza, and they are a Gdansk speciality.\n\nThe ground here is low and wet, so the houses were built up above the street. The space that left in front became a sort of outdoor room where you sat, did business and greeted people, half in the house and half in the street.\n\nThe spouts are rzygacze, which is a blunter word in Polish than gargoyle is in English. They throw the roof water out over the pavement, and every one is carved differently. Dragons, fish, faces. If it rains hard, do not stand under one.\n\nOne of them, between numbers six and seven, has a name. Pomuchel, which is Kashubian for a Baltic cod.\n\nAnd look in the windows. Nearly every shop on this street sells one thing, and it is the reason Gdansk calls itself the amber capital of the world. It washes up on the beaches a few miles from here, and it is pine resin that has been sitting around for forty million years.", "audio": null}, {"id": "st-marys", "topic": "rebuilt", "title": "St Mary's", "where": "Bazylika Mariacka, filling the west end of Mariacka", "lat": 54.34962, "lon": 18.6533, "directions": "Walk west up Mariacka, away from the river, about a hundred metres to the end.\n\nThe street runs straight at the church, which is the point.\n\nStop where the street ends and the building starts, and get your back against something so you can look up.", "gate": null, "nudge": null, "question": {"ask": "So what is it built of?", "answers": ["brick", "bricks", "red brick", "red bricks", "brickwork", "cegła", "cegla", "cegły", "cegly", "clay", "clay brick", "baked clay"], "hint": "Get close and look at the wall. It is not stone."}, "look": "Look at the size of it first. Then walk right up and put your hand flat on the wall.\n\nEvery great cathedral you can name is built of cut stone. This one is not.", "look_spoken": null, "after": "Brick. It is the largest brick church in the world, and depending on how you measure, one of the largest churches of any kind.\n\nIt is a hundred and five metres long and the inside will hold something like twenty thousand people. There is no stone here because there is no stone here. Northern Poland is flat, wet and made of clay, so the whole region built in brick and got very good at it.\n\nIt took about a hundred and sixty years to finish, from 1379 to 1502.\n\nIn 1945 the roof and the vaults burned and much of the inside was destroyed. The walls held. It was patched, then properly rebuilt, and the work went on for decades.\n\nThat is the last thing worth taking away from this walk.\n\nThe Town Hall, the Golden House, the Crane and this church all burned in the same few weeks of one spring. Every one of them was put back by hand. The people who did it decided that a careful copy of the truth was better than an honest hole in the ground.", "after_spoken": "Brick. It is the largest brick church in the world, and depending on how you measure, one of the largest churches of any kind.\n\nIt is a hundred and five metres long and the inside will hold something like twenty thousand people. There is no stone here because there is no stone here. Northern Poland is flat, wet and made of clay, so the whole region built in brick and got very good at it.\n\nIt took about a hundred and sixty years to finish, from thirteen seventy-nine to fifteen oh two.\n\nIn nineteen forty-five the roof and the vaults burned and much of the inside was destroyed. The walls held. It was patched, then properly rebuilt, and the work went on for decades.\n\nThat is the last thing worth taking away from this walk.\n\nThe Town Hall, the Golden House, the Crane and this church all burned in the same few weeks of one spring. Every one of them was put back by hand. The people who did it decided that a careful copy of the truth was better than an honest hole in the ground.", "audio": null}], "walk": {"n_stops": 10, "total_walk_m": 1614.9, "total_minutes": 20.2, "reversals": 1, "legs": [{"from": "upland-gate", "to": "golden-gate", "straight_m": 227.5, "walk_m": 295.8, "minutes": 3.7, "bearing": 82.4}, {"from": "golden-gate", "to": "town-hall", "straight_m": 254.7, "walk_m": 331.1, "minutes": 4.1, "bearing": 90.5}, {"from": "town-hall", "to": "neptune", "straight_m": 61.7, "walk_m": 80.2, "minutes": 1.0, "bearing": 93.1}, {"from": "neptune", "to": "artus-court", "straight_m": 18.0, "walk_m": 23.3, "minutes": 0.3, "bearing": 56.1}, {"from": "artus-court", "to": "golden-house", "straight_m": 44.7, "walk_m": 58.1, "minutes": 0.7, "bearing": 111.9}, {"from": "golden-house", "to": "green-gate", "straight_m": 117.2, "walk_m": 152.3, "minutes": 1.9, "bearing": 95.4}, {"from": "green-gate", "to": "the-crane", "straight_m": 236.1, "walk_m": 307.0, "minutes": 3.8, "bearing": 24.7}, {"from": "the-crane", "to": "mariacka", "straight_m": 191.6, "walk_m": 249.1, "minutes": 3.1, "bearing": 234.9}, {"from": "mariacka", "to": "st-marys", "straight_m": 90.7, "walk_m": 118.0, "minutes": 1.5, "bearing": 270.0}]}, "gated_stops": 3, "question_stops": 7}};</script>
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
@@ -382,6 +387,15 @@ function typeInto(el, text, key, delay) {
     for (const [a, b] of bounds) if (k >= a && k <= b) return b === a ? 0.5 : (k - a) / (b - a);
     return 0.5;
   };
+  // Total run time, worked out up front from the same numbers the ticker uses.
+  // The card below waits this long before starting, so the directions and the
+  // next stop do not animate over the top of each other.
+  let total = delay || 0;
+  words.forEach((w, k2) => {
+    const curve = 1.35 - 0.7 * Math.sin(Math.PI * posIn(k2));
+    total += step * (w.textContent.length + 1) * curve;
+    if (/[.?!]["')\]]?$/.test(w.textContent)) total += SENTENCE_PAUSE_MS;
+  });
   let k = 0, t = null;
   const finish = () => {
     clearTimeout(t); typing.delete(key);
@@ -400,6 +414,7 @@ function typeInto(el, text, key, delay) {
   };
   t = setTimeout(tick, delay || 0);
   typing.set(key, { finish });
+  finish.duration = total;
   return finish;
 }
 function seenSet() { return new Set(LS.get("seen." + (ROUTE ? ROUTE.combo_key : "-"), [])); }
@@ -596,7 +611,67 @@ async function start(key) {
   if (ROUTE.gated_stops > 0) locationPreflight(false);
 }
 
-/* ---- the walk ---- */
+/* ---- the walk ----
+   One stage per stop, and a stage is one block of text followed by one thing to
+   do. The text carries, in order: what the last answer meant, how to walk here,
+   what to look at now, and the question. Then an answer box.
+
+   It used to be four separate pieces of furniture per stop: a directions card,
+   a look-at-this card, a question in its own tinted box, and an explainer that
+   appeared after answering. The question and the look text said much the same
+   thing twice, and the reader had to work out which box mattered. One block
+   reads like somebody talking, which is what it is. */
+
+// The parts of a stage, in the order they are said.
+function stageParts(i) {
+  const s = ROUTE.stops[i];
+  const prev = i > 0 ? ROUTE.stops[i - 1] : null;
+  const parts = [];
+
+  if (prev) {
+    // Somebody who asked to be told gets told, before the explanation.
+    if (prev.question && STATE.told[prev.id]) {
+      const shown = prev.question.answers.find((x) => /[a-z]/i.test(x))
+                    || prev.question.answers[0];
+      parts.push(`The answer was ${shown}.`);
+    }
+    parts.push(prev.after);
+  }
+
+  if (i > 0 && s.directions) {
+    const leg = (ROUTE.walk.legs || [])[i - 1];
+    const COMPASS = ["north", "north east", "east", "south east",
+                     "south", "south west", "west", "north west"];
+    const head = leg
+      ? `Head ${COMPASS[Math.round(leg.bearing / 45) % 8]}, about `
+        + `${Math.round(leg.walk_m)} metres, `
+        + `${leg.minutes < 2 ? "a minute or two" : Math.round(leg.minutes) + " minutes"}.`
+      : null;
+    parts.push((head ? head + "\n\n" : "") + s.directions);
+  }
+
+  parts.push(s.look);
+  if (s.nudge) parts.push(s.nudge.prompt);
+  if (s.question) parts.push(s.question.ask);
+  return parts.join("\n\n");
+}
+
+function endText() {
+  const last = ROUTE.stops[ROUTE.stops.length - 1];
+  const parts = [];
+  if (last.question && STATE.told[last.id]) {
+    const shown = last.question.answers.find((x) => /[a-z]/i.test(x))
+                  || last.question.answers[0];
+    parts.push(`The answer was ${shown}.`);
+  }
+  parts.push(last.after);
+  if (ROUTE.outro) parts.push(ROUTE.outro);
+  const km = (ROUTE.walk.total_walk_m / 1000).toFixed(1);
+  parts.push(`That is the walk. About ${km} km and ${ROUTE.stops.length} stops. `
+           + `Everything is still up the page if you want to read it again.`);
+  return parts.join("\n\n");
+}
+
 function renderWalk() {
   const n = ROUTE.stops.length;
   const done = Math.min(STATE.current, n);
@@ -608,293 +683,190 @@ function renderWalk() {
   box.innerHTML = "";
   clearTimeout(lateTimer);
 
-  for (let i = 0; i <= Math.min(STATE.current, n - 1); i++) {
-    // Directions come between the stops, as their own step, and they stay in
-    // the page so you can read them again halfway down the street.
-    if (i > 0 && ROUTE.stops[i].directions) box.appendChild(legCard(i));
-    box.appendChild(STATE.current > i ? doneCard(i) : activeCard(i));
+  for (let i = 0; i <= Math.min(STATE.current, n); i++) {
+    box.appendChild(i === n ? endStage() : stageCard(i, i < STATE.current));
   }
-  if (STATE.current >= n) box.appendChild(endCard());
   focusCurrent();
 }
 
-function cardShell(i, cls) {
+// Head, text, action. Nothing else.
+function stageCard(i, past) {
   const s = ROUTE.stops[i];
   const div = document.createElement("div");
-  div.className = "stop " + cls;
+  div.className = "stop " + (past ? "done" : "open");
   div.dataset.idx = i;
   const topic = ROUTE.topics.find((t) => t.id === s.topic);
   div.innerHTML =
     `<div class="shead"><span class="no">Stop ${i + 1}</span>
-       <span>${escapeHtml(topic ? topic.name : s.topic)}</span>
-       <span class="state"></span></div>
-     <div class="stitle">${escapeHtml(s.title)}</div>
-     <div class="swhere">${escapeHtml(s.where)}</div>`;
-  return div;
-}
+       <span>${escapeHtml(topic ? topic.name : "")}</span>
+       <span class="state">${past ? "✓" : ""}</span></div>
+     <div class="stitle">${escapeHtml(s.title)}</div>`;
 
-// A finished stop keeps its explainer. It is there to re-read on the way home,
-// and it is there again after a reload.
-function doneCard(i) {
-  const s = ROUTE.stops[i];
-  const div = cardShell(i, "done");
-  div.querySelector(".state").textContent = "✓";
-  const a = document.createElement("div");
-  a.className = "after";
-  a.textContent = s.after;
-  div.appendChild(a);
-  return div;
-}
-
-function legCard(i) {
-  const s = ROUTE.stops[i];
-  const leg = (ROUTE.walk.legs || [])[i - 1];
-  const div = document.createElement("div");
-  div.className = "leg";
-  // Which way, before how to find it. The compass heading and the distance come
-  // out of the coordinates, so they are right for whichever stop you have just
-  // come from; the written directions are the arrival detail, which does not
-  // change. On a fixed tour the written part is turn by turn and the heading is
-  // just confirmation.
-  const COMPASS = ["north", "north east", "east", "south east",
-                   "south", "south west", "west", "north west"];
-  const way = leg ? COMPASS[Math.round(leg.bearing / 45) % 8] : null;
-  div.innerHTML =
-    `<div class="leghead">Walk to stop ${i + 1}</div>` +
-    (leg ? `<div class="legmeta">Head ${way}, about ${Math.round(leg.walk_m)} m, `
-         + `${leg.minutes < 2 ? "a minute or two" : Math.round(leg.minutes) + " minutes"}.`
-         + `</div>` : "") +
-    `<div class="legtext">${escapeHtml(s.directions)}</div>`;
-  return div;
-}
-
-function endCard() {
-  const div = document.createElement("div");
-  div.className = "stop done";
-  const km = (ROUTE.walk.total_walk_m / 1000).toFixed(1);
-  div.innerHTML =
-    `<div class="stitle">That is the walk.</div>
-     <div class="after">${ROUTE.outro ? escapeHtml(ROUTE.outro) + "\n\n" : ""}You covered
-     about ${km} km and ${ROUTE.stops.length} stops. Have a look back up the page
-     on the way home. Everything is still there.</div>`;
-  return div;
-}
-
-function activeCard(i) {
-  const s = ROUTE.stops[i];
-  const div = cardShell(i, "open");
   const gated = !!s.gate && !STATE.gate[s.id];
-
-  if (gated) {
-    div.innerHTML += `
-      <div class="gatewrap">
-        <div class="gateq">${escapeHtml(s.gate.prompt)}</div>
-        <button class="btn primary gatebtn">I'm here, check my location</button>
-        <div class="gatestat" role="status" aria-live="polite"></div>
-        <div class="gatenote">Your location is read once when you tap it,
-        never tracked, and never while this page is closed.</div>
-        ${s.gate.allow_pass ? `<button class="gateskip">Location not working? Carry on anyway</button>` : ""}
-      </div>`;
-    const btn = div.querySelector(".gatebtn");
-    const stat = div.querySelector(".gatestat");
-    btn.onclick = () => checkin(i, btn, stat);
-    // An escape hatch, but only where the content says so. A city centre full
-    // of tall buildings will occasionally refuse to give a fix at all, and a
-    // walk that dead ends on a wet afternoon is worse than one somebody skipped
-    // a check on. The stops that ask a question have no such button, because
-    // there the answer is the proof you were there.
-    const pass = div.querySelector(".gateskip");
-    if (pass) pass.onclick = () => {
-      STATE.gate[s.id] = true;
-      saveState();
-      renderWalk();
-      toast("Carrying on without the check.");
-    };
-
-    // Scaffolding, and only when it has been asked for by hand. Note what is
-    // NOT here: anything that opens the stop. These move a made-up position and
-    // that is all, so the gate below is still the thing that decides.
-    if (TESTING) {
-      const dev = document.createElement("div");
-      dev.className = "devrow";
-      const away = SIM ? `${Math.round(haversineM(SIM.lat, SIM.lon, s.lat, s.lon))} m away`
-                       : "not simulating";
-      dev.innerHTML =
-        `<span class="devlabel">Testing</span>
-         <button data-act="start">Start ${SIM_START_M} m away</button>
-         <button data-act="step"${SIM ? "" : " disabled"}>Walk ${SIM_STEP_M} m closer</button>
-         <span class="devdist">${away}</span>
-         <div class="devnote">These move a made-up position. Nothing here opens
-         the stop, so you still have to get inside the radius and press the
-         button above.</div>`;
-      dev.querySelector('[data-act="start"]').onclick =
-        () => simStart(s, i > 0 ? ROUTE.stops[i - 1] : null);
-      dev.querySelector('[data-act="step"]').onclick = () => simStep(s);
-      div.appendChild(dev);
-    }
-    return div;
-  }
-
   const body = document.createElement("div");
   body.className = "stext";
   div.appendChild(body);
 
-  const revealed = !!STATE.revealed[s.id];
-  const lookKey = "look:" + s.id;
-  if (REDUCED || seenSet().has(lookKey)) {
-    body.textContent = s.look;
+  const text = stageParts(i);
+  const key = "stage:" + s.id;
+  if (past || REDUCED || seenSet().has(key)) {
+    body.textContent = text;
   } else {
     div.classList.add("arriving");
     div.addEventListener("animationend", (ev) => {
       if (ev.animationName === "resolve") div.classList.remove("arriving");
     });
-    const finish = typeInto(body, s.look, lookKey, ARRIVE_MS);
+    const finish = typeInto(body, text, key, ARRIVE_MS);
+    const tip = document.createElement("div");
+    tip.className = "skiptip";
+    tip.textContent = "Tap anywhere to see it all at once.";
+    div.appendChild(tip);
     div.addEventListener("click", (ev) => {
-      if (typing.has(lookKey) && !ev.target.closest("button")) finish();
+      if (typing.has(key) && !ev.target.closest("button, input")) {
+        finish();
+        tip.remove();
+      }
     });
   }
+  if (past) return div;
 
-  if (!revealed && s.question) {
-    // The question IS the location check on these stops. You cannot answer it
-    // without looking at the thing, which is the whole point, so there is no
-    // pass button here. There is also no score, no limit and no failure: wrong
-    // answers just say so, and the hint arrives on its own after a couple.
-    const wrong = STATE.wrong[s.id] || 0;
-    const q = document.createElement("div");
-    q.innerHTML =
-      `<div class="qask">${escapeHtml(s.question.ask)}</div>
-       <div class="qrow">
-         <input type="text" maxlength="60" enterkeyhint="send" autocapitalize="off"
-                autocorrect="off" spellcheck="false" autocomplete="off"
-                placeholder="your answer" aria-label="Your answer">
-         <button class="btn primary">Check</button>
-       </div>
-       ${wrong >= 2 && s.question.hint
-          ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}
-       <button class="qgiveup">Not sure? Tell me the answer.</button>`;
-    div.appendChild(q);
-    const inp = q.querySelector("input");
-    const go = q.querySelector(".btn");
-    const submit = () => {
-      const said = inp.value.trim();
-      if (!said) { toast("Type something first."); return; }
-      if (answerAccepted(said, s.question.answers)) {
-        STATE.revealed[s.id] = true;
-        saveState();
-        renderWalk();
-        return;
-      }
-      STATE.wrong[s.id] = (STATE.wrong[s.id] || 0) + 1;
-      saveState();
-      void div.offsetWidth;
-      div.classList.add("wrong");
-      toast(STATE.wrong[s.id] >= 2 ? "Still not it. Have a hint."
-                                   : "Not quite. Look again.");
-      if (STATE.wrong[s.id] === 2) renderWalk();     // the hint appears
-    };
-    go.onclick = submit;
-    inp.addEventListener("keydown", (ev) => {
-      if (ev.key === "Enter") { ev.preventDefault(); submit(); }
-    });
-    // Always available, from the first look at the card. It was briefly hidden
-    // until four wrong answers, on the theory that it should be earned, and that
-    // is the wrong theory: the case it exists for is a clue that is inaccurate,
-    // or a carving under a tarpaulin, and in both of those you know within five
-    // seconds that no amount of guessing will help. Making somebody type four
-    // wrong answers first is a toll, not a safeguard.
-    //
-    // It is a quiet line of text rather than a button so it does not compete
-    // with answering, which is still the good way to do it.
-    const giveup = q.querySelector(".qgiveup");
-    giveup.onclick = () => {
-      STATE.revealed[s.id] = true;
-      STATE.told[s.id] = true;      // so the card can say what the answer was
-      saveState();
-      renderWalk();
-      toast("No problem. Here it is.");
-    };
-  } else if (!revealed) {
-    // A soft prompt on many stops, not all. Confirm, then the reveal. There is
-    // no way to get this wrong and nothing is counted.
-    if (s.nudge) {
-      const n = document.createElement("div");
-      n.className = "nudge";
-      n.textContent = s.nudge.prompt;
-      div.appendChild(n);
-    }
-    const row = document.createElement("div");
-    row.className = "srow";
-    const btn = document.createElement("button");
-    btn.className = "btn primary";
-    btn.textContent = s.nudge ? s.nudge.confirm : "Tell me why it matters";
-    btn.onclick = () => reveal(i, div);
-    row.appendChild(btn);
-    div.appendChild(row);
+  div.appendChild(gated ? gateAction(i, s) : answerAction(i, s));
+  return div;
+}
 
-    // The old build handed out hints on a timer. Same idea, no penalty: if
-    // somebody has been standing here a while, quietly say where to look.
-    clearTimeout(lateTimer);
-    lateTimer = setTimeout(() => {
-      if (!div.isConnected || STATE.revealed[s.id]) return;
-      const late = document.createElement("div");
-      late.className = "lateprompt";
-      late.textContent = "Still looking? It is " + s.where.charAt(0).toLowerCase()
-                       + s.where.slice(1) + ".";
-      row.parentNode.insertBefore(late, row);
-    }, LATE_NUDGE_MS);
-  } else {
-    if (s.question && STATE.told[s.id]) {
-      // Only when they asked to be told. Somebody who answered it knows.
-      const said = document.createElement("div");
-      said.className = "qtold";
-      const shown = s.question.answers.find((x) => /[a-z]/i.test(x))
-                    || s.question.answers[0];
-      said.textContent = `The answer was ${shown}.`;
-      div.appendChild(said);
-    }
-    const a = document.createElement("div");
-    a.className = "after stext";
-    div.appendChild(a);
-    const afterKey = "after:" + s.id;
-    if (REDUCED || seenSet().has(afterKey)) a.textContent = s.after;
-    else {
-      const finish = typeInto(a, s.after, afterKey, 240);
-      div.addEventListener("click", (ev) => {
-        if (typing.has(afterKey) && !ev.target.closest("button")) finish();
-      });
-    }
-    const row = document.createElement("div");
-    row.className = "srow";
-    const last = i === ROUTE.stops.length - 1;
-    const btn = document.createElement("button");
-    btn.className = "btn primary";
-    btn.textContent = last ? "Finish the walk" : "On to the next stop";
-    btn.onclick = () => {
-      STATE.current = i + 1;
-      saveState();
-      renderWalk();
-    };
-    row.appendChild(btn);
-    div.appendChild(row);
+function endStage() {
+  const div = document.createElement("div");
+  div.className = "stop done";
+  div.dataset.idx = "end";
+  const body = document.createElement("div");
+  body.className = "stext";
+  div.appendChild(body);
+  const key = "stage:end";
+  if (REDUCED || seenSet().has(key)) body.textContent = endText();
+  else {
+    const finish = typeInto(body, endText(), key, 240);
+    div.addEventListener("click", () => { if (typing.has(key)) finish(); });
   }
   return div;
 }
 
-function reveal(i, div) {
+/* ---- the one thing to do ---- */
+
+function gateAction(i, s) {
+  const wrap = document.createElement("div");
+  wrap.className = "gatewrap";
+  wrap.innerHTML =
+    `<button class="btn primary gatebtn">I'm here, check my location</button>
+     <div class="gatestat" role="status" aria-live="polite"></div>
+     <div class="gatenote">Read once when you tap it, never tracked.</div>
+     ${s.gate.allow_pass
+        ? `<button class="gateskip">Location not working? Carry on anyway</button>` : ""}`;
+  const btn = wrap.querySelector(".gatebtn");
+  const stat = wrap.querySelector(".gatestat");
+  btn.onclick = () => checkin(i, btn, stat);
+  const pass = wrap.querySelector(".gateskip");
+  if (pass) pass.onclick = () => {
+    STATE.gate[s.id] = true;
+    advance(i);
+    toast("Carrying on without the check.");
+  };
+
+  if (TESTING) {
+    const dev = document.createElement("div");
+    dev.className = "devrow";
+    const away = SIM ? `${Math.round(haversineM(SIM.lat, SIM.lon, s.lat, s.lon))} m away`
+                     : "not simulating";
+    dev.innerHTML =
+      `<span class="devlabel">Testing</span>
+       <button data-act="start">Start ${SIM_START_M} m away</button>
+       <button data-act="step"${SIM ? "" : " disabled"}>Walk ${SIM_STEP_M} m closer</button>
+       <span class="devdist">${away}</span>
+       <div class="devnote">These move a made-up position. Nothing here opens the
+       stop, so you still have to get inside the radius.</div>`;
+    dev.querySelector('[data-act="start"]').onclick =
+      () => simStart(s, i > 0 ? ROUTE.stops[i - 1] : null);
+    dev.querySelector('[data-act="step"]').onclick = () => simStep(s);
+    wrap.appendChild(dev);
+  }
+  return wrap;
+}
+
+function answerAction(i, s) {
+  const row = document.createElement("div");
+  row.className = "srow";
+
+  // No question: the stop just needs acknowledging, and the payoff opens the
+  // next stage. This is how every London stop works.
+  if (!s.question) {
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = s.nudge ? s.nudge.confirm
+                      : (i === ROUTE.stops.length - 1 ? "Finish the walk" : "Done, what next?");
+    btn.onclick = () => advance(i);
+    row.appendChild(btn);
+    return row;
+  }
+
+  const wrong = STATE.wrong[s.id] || 0;
+  row.innerHTML =
+    `<div class="qrow">
+       <input type="text" maxlength="60" enterkeyhint="send" autocapitalize="off"
+              autocorrect="off" spellcheck="false" autocomplete="off"
+              placeholder="your answer" aria-label="Your answer">
+       <button class="btn primary">Check</button>
+     </div>
+     ${wrong >= 2 && s.question.hint
+        ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}
+     <button class="qgiveup">Not sure? Tell me the answer.</button>`;
+
+  const inp = row.querySelector("input");
+  const submit = () => {
+    const said = inp.value.trim();
+    if (!said) { toast("Type something first."); return; }
+    if (answerAccepted(said, s.question.answers)) { advance(i); return; }
+    // Read the count back out of the state rather than off the closure. The
+    // closure captures it at render time, and the card is not re-rendered on a
+    // wrong answer, so a second wrong answer kept writing 1 and the hint never
+    // arrived however long somebody stood there guessing.
+    const w = (STATE.wrong[s.id] || 0) + 1;
+    STATE.wrong[s.id] = w;
+    saveState();
+    const card = row.closest(".stop");
+    void card.offsetWidth;
+    card.classList.add("wrong");
+    toast(w >= 2 ? "Still not it. Have a hint." : "Not quite. Look again.");
+    if (w === 2) renderWalk();                  // the hint appears
+  };
+  row.querySelector(".btn").onclick = submit;
+  inp.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") { ev.preventDefault(); submit(); }
+  });
+  row.querySelector(".qgiveup").onclick = () => {
+    STATE.told[s.id] = true;
+    advance(i);
+    toast("No problem. It is explained next.");
+  };
+  return row;
+}
+
+// One way forward, used by every action.
+function advance(i) {
   const s = ROUTE.stops[i];
-  STATE.revealed[s.id] = true;
-  saveState();
-  const t = typing.get("look:" + s.id);
+  const t = typing.get("stage:" + s.id);
   if (t) t.finish();
+  STATE.revealed[s.id] = true;
+  STATE.current = Math.max(STATE.current, i + 1);
+  saveState();
   renderWalk();
 }
 
+
 let lastFocused = null;
 function focusCurrent() {
-  const card = document.querySelector(".stop.open");
+  const card = document.querySelector(".stop.open") || document.querySelector("#walk .stop:last-child");
   if (!card) return;
   const key = card.dataset.idx;
-  if (key === lastFocused) return;          // never fight somebody's own scroll
+  if (key === lastFocused) return;             // never fight somebody's own scroll
   lastFocused = key;
   requestAnimationFrame(() => {
     const top = card.getBoundingClientRect().top + window.scrollY
@@ -933,8 +905,7 @@ async function checkin(i, btn, stat) {
   const d = haversineM(c.latitude, c.longitude, s.lat, s.lon);
   if (gatePasses(d, c.accuracy, s.gate.radius_m)) {
     STATE.gate[s.id] = true;
-    saveState();
-    renderWalk();
+    advance(i);
     toast(SIM ? "Close enough. The gate opened on the real check."
                 : "You're there.");
     return;

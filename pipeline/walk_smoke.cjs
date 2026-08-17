@@ -61,7 +61,7 @@ const settle = (page) => page.waitForTimeout(120);
     if (await plain.locator("#modal.show").isVisible()) await plain.locator("#lclater").click();
     await plain.waitForTimeout(150);
 
-    check("no testing scaffolding on the first card without the flag",
+    check("no testing scaffolding on the first stage without the flag",
           (await plain.locator(".devrow").count()) === 0
           && !(await plain.locator("#simoffbtn").isVisible()));
 
@@ -69,9 +69,7 @@ const settle = (page) => page.waitForTimeout(120);
     const firstGate = route.stops.findIndex((s) => s.gate);
     for (let i = 0; i < firstGate; i++) {
       await plain.locator(".stop.open .srow .btn").click();
-      await plain.waitForTimeout(120);
-      await plain.locator(".stop.open .srow .btn").click();
-      await plain.waitForTimeout(120);
+      await plain.waitForTimeout(160);
     }
     const gateCard = plain.locator(".stop.open");
     check("the gated stop offers exactly one button, and it is the check",
@@ -83,7 +81,8 @@ const settle = (page) => page.waitForTimeout(120);
     await gateCard.locator(".gatebtn").click();
     await plain.waitForTimeout(1500);
     check("the gate stays shut with no position",
-          (await plain.locator(".stop.open .stext").count()) === 0);
+          (await plain.locator("#progresstext").textContent())
+            === `${firstGate}/${route.stops.length}`);
     check("progress cannot advance past a gate",
           (await plain.locator("#progresstext").textContent()) === `${firstGate}/${route.stops.length}`);
     await plain.close();
@@ -144,10 +143,39 @@ const settle = (page) => page.waitForTimeout(120);
       break;
     }
 
+    // Read the block first. Acting on a stage moves you to the next one, so a
+    // check that runs afterwards is checking the wrong text. That is exactly
+    // what happened when the gate branch was left above these.
+    const text = (await page.locator(".stop.open .stext").textContent())
+                   .replace(/\s+/g, " ").trim();
+    if (i > 0) {
+      const prevAfter = route.stops[i - 1].after.replace(/\s+/g, " ").trim().slice(0, 40);
+      if (!text.startsWith(prevAfter)) {
+        check(`stop ${i + 1} opens with the last stop's payoff`, false, text.slice(0, 50));
+      }
+      const dirs = stop.directions.replace(/\s+/g, " ").trim().slice(0, 40);
+      if (!text.includes(dirs)) check(`stop ${i + 1} carries its directions`, false, "missing");
+    }
+    if (stop.nudge) {
+      nudgesSeen++;
+      if (!text.includes(stop.nudge.prompt.replace(/\s+/g, " ").trim().slice(0, 30))) {
+        check(`stop ${i + 1} asks its soft prompt`, false, "missing from the block");
+      }
+      // Only where the nudge is the action. A stop that is also location gated
+      // uses the location check as its one thing to do, and the soft prompt is
+      // just part of the text above it.
+      if (!stop.gate) {
+        const label = (await page.locator(".stop.open .srow .btn").textContent()).trim();
+        if (label !== stop.nudge.confirm) {
+          check(`stop ${i + 1} button reads "${stop.nudge.confirm}"`, false, label);
+        }
+      }
+    }
+
     if (stop.gate) {
       gatesSeen++;
-      check(`stop ${i + 1} withholds its text until you are there`,
-            (await card.locator(".stext").count()) === 0);
+      check(`stop ${i + 1} asks you to be there before it will go on`,
+            (await card.locator(".gatebtn").count()) === 1);
 
       // Start the approach half a kilometre out and walk in. Nothing here
       // opens the stop: each press moves a made-up position and the ordinary
@@ -163,13 +191,13 @@ const settle = (page) => page.waitForTimeout(120);
           /away|Warm/.test(document.querySelector(".stop.open .gatestat")?.textContent || ""));
         const refusal = await page.locator(".stop.open .gatestat").textContent();
         check("a distant gate stays shut",
-              (await page.locator(".stop.open .stext").count()) === 0);
+              (await page.locator("#progresstext").textContent()) === `${i}/${n}`);
         check("the refusal gives a distance, not a no", /away|Warm/.test(refusal), refusal);
         check("the gate never says the word no", !/\bno\b/i.test(refusal), refusal);
       }
 
       let strides = 0;
-      while ((await page.locator(".stop.open .stext").count()) === 0) {
+      while ((await page.locator("#progresstext").textContent()) === `${i}/${n}`) {
         if (++strides > 12) break;
         await page.locator('.stop.open .devrow [data-act="step"]').click();
         await settle(page);
@@ -178,38 +206,11 @@ const settle = (page) => page.waitForTimeout(120);
       }
       check(`stop ${i + 1} took a real approach to open`,
             strides >= 3 && strides <= 12, `${strides} strides`);
-      await page.waitForSelector(".stop.open .stext");
     }
 
-    if (stop.nudge) {
-      nudgesSeen++;
-      const prompt = await page.locator(".stop.open .nudge").textContent();
-      if (prompt.trim() !== stop.nudge.prompt.trim()) {
-        check(`stop ${i + 1} asks its soft prompt`, false, prompt);
-      }
-      const label = (await page.locator(".stop.open .srow .btn").textContent()).trim();
-      if (label !== stop.nudge.confirm) {
-        check(`stop ${i + 1} button reads "${stop.nudge.confirm}"`, false, label);
-      }
-    } else {
-      if ((await page.locator(".stop.open .nudge").count()) !== 0) {
-        check(`stop ${i + 1} has no soft prompt`, false, "one was shown");
-      }
+    if (!stop.gate) {
+      await page.locator(".stop.open .srow .btn").click();
     }
-
-    await page.locator(".stop.open .srow .btn").click();
-    await settle(page);
-    const after = await page.locator(".stop.open .after").textContent();
-    if (after.trim() !== stop.after.trim()) {
-      check(`stop ${i + 1} shows its explainer`, false,
-            `${after.length} chars vs ${stop.after.length}`);
-    }
-
-    const label = (await page.locator(".stop.open .srow .btn").textContent()).trim();
-    const wanted = i === n - 1 ? "Finish the walk" : "On to the next stop";
-    if (label !== wanted) check(`stop ${i + 1} offers "${wanted}"`, false, label);
-
-    await page.locator(".stop.open .srow .btn").click();
     await page.waitForFunction(
       (want) => document.querySelector("#progresstext").textContent === want,
       `${i + 1}/${n}`);
@@ -229,8 +230,8 @@ const settle = (page) => page.waitForTimeout(120);
   await page.reload({ waitUntil: "networkidle" });
   check("progress survives a reload",
         (await page.locator("#progresstext").textContent()) === `${n}/${n}`);
-  check("every explainer is still there after a reload",
-        (await page.locator(".stop.done .after").count()) >= n, "some are missing");
+  check("the whole story is still there after a reload",
+        (await page.locator("#walk .stop").count()) === n + 1);
 
   check("no page errors", errors.length === 0, errors.slice(0, 3).join(" | "));
 

@@ -1,10 +1,11 @@
-/* End-to-end test for the Gdansk walk, driven against the single file build.
+/* End-to-end test for the Gdansk walk, against the single file build.
  *
  *   NODE_PATH=$(npm root -g) node pipeline/amber_smoke.cjs [--headed]
  *
- * It walks all ten stops: answers every question, gets one wrong on purpose to
- * check the hint arrives, and takes each location gate both ways, once by
- * simulated approach and once with the pass button.
+ * The walk is one stage per stop. A stage is a single block of text carrying,
+ * in order: what the last answer meant, how to walk here, what to look at, and
+ * the question. Then one thing to do. So most of what this checks is that the
+ * right things are in the right block, in the right order, and only once.
  */
 const { chromium } = require("playwright");
 const fs = require("fs");
@@ -21,7 +22,8 @@ function check(name, ok, detail) {
   console.log(`  FAIL  ${name}${detail ? "  — " + detail : ""}`);
   return false;
 }
-const settle = (p) => p.waitForTimeout(120);
+const settle = (p) => p.waitForTimeout(140);
+const squash = (t) => t.replace(/\s+/g, " ").trim();
 
 (async () => {
   const browser = await chromium.launch({ headless: !process.argv.includes("--headed") });
@@ -32,13 +34,13 @@ const settle = (p) => p.waitForTimeout(120);
   page.on("pageerror", (e) => errors.push(String(e)));
   page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
 
-  // Everything is inlined, so block the network entirely: this must work with
-  // no signal at all, which is the realistic condition abroad.
+  // Everything is inlined, so block the network: this has to work with no signal.
   await page.route("**/*", (r) => r.request().url().startsWith("file:")
     ? r.continue() : r.abort());
 
-  console.log(`  ${TOUR.name}: ${TOUR.stops.length} stops, `
-            + `${TOUR.question_stops} questions, ${TOUR.gated_stops} location gates, `
+  const n = TOUR.stops.length;
+  console.log(`  ${TOUR.name}: ${n} stops, ${TOUR.question_stops} questions, `
+            + `${TOUR.gated_stops} location gates, `
             + `${(TOUR.walk.total_walk_m / 1000).toFixed(2)} km\n`);
 
   await page.goto(FILE + "?testing=1");
@@ -50,139 +52,181 @@ const settle = (p) => p.waitForTimeout(120);
   check("no topic picker on a fixed tour", !(await page.locator("#picker").isVisible()));
   check("the intro says where to start",
         (await page.locator(".intro").textContent()).includes("Upland Gate"));
-  check("the start button is ready", await page.locator("#startbtn").isEnabled());
 
   await page.locator("#startbtn").click();
   await page.waitForSelector("#s-walk.on");
   if (await page.locator("#modal.show").isVisible()) await page.locator("#lclater").click();
   await settle(page);
-
-  const n = TOUR.stops.length;
   check("progress starts at zero",
         (await page.locator("#progresstext").textContent()) === `0/${n}`);
 
-  let asked = 0, gated = 0, passUsed = 0, hintSeen = false, toldOnce = false;
+  let asked = 0, gated = 0, passUsed = 0, toldAt = -1;
   for (let i = 0; i < n; i++) {
     const stop = TOUR.stops[i];
+    const prev = i > 0 ? TOUR.stops[i - 1] : null;
     const card = page.locator(".stop.open");
-    const title = (await card.locator(".stitle").textContent()).trim();
+    const title = squash(await card.locator(".stitle").textContent());
     if (title !== stop.title) {
-      check(`stop ${i + 1} is ${stop.title}`, false, `page shows ${title}`);
+      check(`stage ${i + 1} is ${stop.title}`, false, `page shows ${title}`);
       break;
     }
 
-    // Directions must be present, and must arrive before the stop they lead to.
-    if (i > 0) {
-      const legs = page.locator(".leg");
-      const last = await legs.nth((await legs.count()) - 1).textContent();
-      if (!last.includes(stop.directions.split("\n")[0].slice(0, 30))) {
-        check(`stop ${i + 1} is preceded by its directions`, false, last.slice(0, 60));
-      }
+    check(`stage ${i + 1} is a single block of text`,
+          (await card.locator(".stext").count()) === 1);
+    const text = squash(await card.locator(".stext").textContent());
+
+    if (prev) {
+      check(`stage ${i + 1} opens with what the last stop meant`,
+            text.startsWith(squash(prev.after).slice(0, 40))
+            || text.startsWith("The answer was"), text.slice(0, 50));
+      const dirAt = text.indexOf(squash(stop.directions).slice(0, 40));
+      const lookAt = text.indexOf(squash(stop.look).slice(0, 40));
+      check(`stage ${i + 1} then says how to walk here`, dirAt > 0);
+      check(`stage ${i + 1} puts the directions before what to look at`,
+            lookAt > dirAt, `${dirAt} then ${lookAt}`);
+    }
+    check(`stage ${i + 1} says what to look at`,
+          text.includes(squash(stop.look).slice(0, 40)));
+
+    if (toldAt >= 0 && toldAt === i - 1) {   // -1 also equals i-1 at stage one
+      const said = TOUR.stops[toldAt].question.answers.find((a) => /[a-z]/i.test(a));
+      check("the stage after a tell-me states the answer",
+            text.startsWith(`The answer was ${said}`), text.slice(0, 40));
     }
 
     if (stop.question) {
       asked++;
-      check(`stop ${i + 1} asks a question`, (await card.locator(".qask").count()) === 1);
-      check(`stop ${i + 1} has no pass button`, (await card.locator(".gateskip").count()) === 0);
-      // The way out has to be there before anything has gone wrong. A clue that
-      // is simply inaccurate is obvious within seconds, and making somebody
-      // guess wrong several times first would be a toll rather than a safeguard.
-      check(`stop ${i + 1} offers a tell-me from the start`,
+      const ask = squash(stop.question.ask);
+      check(`stage ${i + 1} ends with the question`, text.endsWith(ask), text.slice(-45));
+      check(`stage ${i + 1} does not ask the same thing twice`,
+            text.indexOf(ask) === text.lastIndexOf(ask));
+      check(`stage ${i + 1} has an answer box and no pass button`,
+            (await card.locator(".qrow input").count()) === 1
+            && (await card.locator(".gateskip").count()) === 0);
+      check(`stage ${i + 1} offers a tell-me from the start`,
             (await card.locator(".qgiveup").count()) === 1);
 
-      // One deliberate wrong answer per walk, twice, to bring the hint out.
-      if (!hintSeen) {
-        for (let t = 0; t < 2; t++) {
-          await page.locator(".stop.open .qrow input").fill("banana");
-          await page.locator(".stop.open .qrow .btn").click();
-          await page.waitForTimeout(200);
-        }
-        check("a wrong answer does not open the stop",
-              (await page.locator(".stop.open .after").count()) === 0);
+      if (asked === 1) {
+        await card.locator(".qrow input").fill("banana");
+        await card.locator(".qrow .btn").click();
+        await page.waitForTimeout(220);
+        check("a wrong answer does not move you on",
+              (await page.locator("#progresstext").textContent()) === `${i}/${n}`);
+        await page.locator(".stop.open .qrow input").fill("banana");
+        await page.locator(".stop.open .qrow .btn").click();
+        await page.waitForTimeout(260);
         check("the hint arrives after two wrong answers",
               (await page.locator(".stop.open .qhint").count()) === 1);
-        hintSeen = true;
       }
 
-      // Prefer a word over a digit. The bug that reached a published build was
-      // exactly here: this used answers[0], which for the Crane was "2", so the
-      // fact that "two" was rejected went unnoticed. Nobody types a digit.
+      // Prefer a word over a digit. Nobody types a digit, and the digit is what
+      // hid a rejected "two" in a published build.
       const use = stop.question.answers.find((a) => /[a-z]/i.test(a))
                   || stop.question.answers[0];
-      if (!toldOnce) {
-        // Once per walk, refuse to answer at all and just ask to be told.
-        toldOnce = true;
+      if (toldAt < 0 && asked === 2) {
+        toldAt = i;                                 // once per walk, ask to be told
         await page.locator(".stop.open .qgiveup").click();
-        await page.waitForTimeout(250);
-        check("asking to be told opens the stop",
-              (await page.locator(".stop.open .after").count()) === 1);
-        const told = await page.locator(".stop.open .qtold").textContent();
-        check("and it says what the answer was", told.includes(use), told);
       } else {
         await page.locator(".stop.open .qrow input").fill(use);
         await page.locator(".stop.open .qrow .btn").click();
-        await page.waitForTimeout(250);
-        check(`stop ${i + 1} opens on "${use}"`,
-              (await page.locator(".stop.open .after").count()) === 1);
-        check(`stop ${i + 1} does not say the answer to somebody who got it`,
-              (await page.locator(".stop.open .qtold").count()) === 0);
       }
     } else if (stop.gate) {
       gated++;
-      check(`stop ${i + 1} withholds its text until you are there`,
-            (await card.locator(".stext").count()) === 0);
-      check(`stop ${i + 1} offers a pass button`, (await card.locator(".gateskip").count()) === 1);
+      check(`stage ${i + 1} has a location check and a pass button`,
+            (await card.locator(".gatebtn").count()) === 1
+            && (await card.locator(".gateskip").count()) === 1);
+      check(`stage ${i + 1} has no answer box`,
+            (await card.locator(".qrow input").count()) === 0);
 
       if (passUsed === 0) {
-        // First one: use the pass button, which is what it is there for.
-        await page.locator(".stop.open .gateskip").click();
         passUsed++;
+        await card.locator(".gateskip").click();    // what the pass button is for
       } else {
-        // The rest: walk in properly and let the real check decide.
-        await page.locator('.stop.open .devrow [data-act="start"]').click();
+        await card.locator('.devrow [data-act="start"]').click();
         await settle(page);
+        await page.locator(".stop.open .gatebtn").click();
+        await page.waitForTimeout(280);
+        check(`stage ${i + 1} stays shut from 500 m away`,
+              (await page.locator("#progresstext").textContent()) === `${i}/${n}`);
         let strides = 0;
-        while ((await page.locator(".stop.open .stext").count()) === 0 && strides < 12) {
+        while ((await page.locator("#progresstext").textContent()) === `${i}/${n}`
+               && strides < 12) {
           strides++;
           await page.locator('.stop.open .devrow [data-act="step"]').click();
           await settle(page);
           await page.locator(".stop.open .gatebtn").click();
-          await page.waitForTimeout(220);
+          await page.waitForTimeout(240);
         }
-        check(`stop ${i + 1} took a real approach to open`, strides >= 3, `${strides} strides`);
+        check(`stage ${i + 1} took a real approach to open`, strides >= 3, `${strides} strides`);
       }
-      await page.waitForSelector(".stop.open .stext");
-      await page.locator(".stop.open .srow .btn").click();
-      await page.waitForTimeout(200);
     }
-
-    const after = await page.locator(".stop.open .after").textContent();
-    if (after.trim() !== stop.after.trim()) {
-      check(`stop ${i + 1} shows its explainer`, false,
-            `${after.length} chars vs ${stop.after.length}`);
-    }
-    await page.locator(".stop.open .srow .btn").click();
     await page.waitForFunction(
       (want) => document.querySelector("#progresstext").textContent === want,
       `${i + 1}/${n}`);
   }
 
-  check(`all ${n} stops walked in order`, true);
   check("seven stops asked a question", asked === 7, `${asked}`);
   check("three stops were location gated", gated === 3, `${gated}`);
-  check("every stop after the first had directions",
-        (await page.locator(".leg").count()) === n - 1,
-        `${await page.locator(".leg").count()} of ${n - 1}`);
-  check("the walk ends",
-        (await page.locator("#walk").textContent()).includes("That is the walk"));
+  check("every stage is one card",
+        (await page.locator("#walk .stop").count()) === n + 1,
+        `${await page.locator("#walk .stop").count()}`);
+  const ending = squash(await page.locator("#walk .stop").last().textContent());
+  check("the last stop's payoff is in the ending",
+        ending.includes(squash(TOUR.stops[n - 1].after).slice(0, 40)));
+  check("and the walk signs off", ending.includes("That is the walk"));
 
   await page.reload();
   await page.waitForSelector("#s-walk.on");
   check("progress survives a reload",
         (await page.locator("#progresstext").textContent()) === `${n}/${n}`);
-  check("the directions are still there afterwards",
-        (await page.locator(".leg").count()) === n - 1);
+  check("and the whole story is still there",
+        (await page.locator("#walk .stop").count()) === n + 1);
   check("no page errors", errors.length === 0, errors.slice(0, 3).join(" | "));
+
+  /* ---- the reveal has to be followable ----
+     Everything above runs with reduced motion so it is not racing an animation.
+     This part turns motion on. The directions once shipped with no animation at
+     all, and the page scrolled past them, so the one thing you have to read was
+     the easiest thing to miss. */
+  {
+    const live = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const lp = await live.newPage();
+    await lp.route("**/*", (r) => r.request().url().startsWith("file:")
+      ? r.continue() : r.abort());
+    await lp.goto(FILE);
+    await lp.evaluate(() => localStorage.clear());
+    await lp.reload();
+    await lp.waitForSelector("#startbtn");
+    await lp.locator("#startbtn").click();
+    await lp.waitForSelector("#s-walk.on");
+    if (await lp.locator("#modal.show").isVisible()) await lp.locator("#lclater").click();
+    await lp.waitForTimeout(2800);
+
+    const r = await lp.evaluate(() => {
+      const card = document.querySelector(".stop.open");
+      return { words: card.querySelectorAll(".stext .w").length,
+               shown: card.querySelectorAll(".stext .w.on").length,
+               tip: !!card.querySelector(".skiptip"),
+               top: card.getBoundingClientRect().top };
+    });
+    check("the stage reveals a word at a time", r.words > 20, `${r.words} words`);
+    check("and is still going after a moment",
+          r.shown > 0 && r.shown < r.words, `${r.shown}/${r.words}`);
+    check("and says you can tap to see it all", r.tip);
+    check("and is on screen while it does it",
+          r.top > -20 && r.top < 700, `top ${Math.round(r.top)}`);
+
+    await lp.locator(".stitle").first().click();
+    await lp.waitForTimeout(250);
+    const after = await lp.evaluate(() => {
+      const card = document.querySelector(".stop.open");
+      return { pending: card.querySelectorAll(".stext .w").length,
+               tip: !!card.querySelector(".skiptip") };
+    });
+    check("tapping finishes it at once", after.pending === 0, `${after.pending} left`);
+    check("and the tip goes away", !after.tip);
+    await live.close();
+  }
 
   await browser.close();
   console.log(`\n${failures === 0 ? "all checks passed" : failures + " FAILED"}`);
