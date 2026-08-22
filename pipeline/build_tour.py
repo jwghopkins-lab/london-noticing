@@ -196,6 +196,9 @@ def check(tour):
                     if len(word) > 2 and re.search(rf"\b{re.escape(word)}\b", ask):
                         notes.append(f"{where}: the question contains its own "
                                      f"answer {word!r}")
+        n = s.get("nudge")
+        if n is not None and not (n.get("prompt") or "").strip():
+            errors.append(f"{where}: nudge with no prompt")
         if g:
             r = g.get("radius_m")
             if not isinstance(r, (int, float)) or not (20 <= r <= 150):
@@ -247,7 +250,8 @@ def bake(tour):
             "id": s["id"], "topic": s["topic"], "title": s["title"],
             "where": s["where"], "lat": s["lat"], "lon": s["lon"],
             "directions": s.get("directions"),
-            "gate": s.get("gate"), "nudge": None, "question": s.get("question"),
+            "gate": s.get("gate"), "nudge": s.get("nudge"),
+            "question": s.get("question"),
             "look": s["look"], "look_spoken": s.get("look_spoken"),
             "after": s["after"], "after_spoken": s.get("after_spoken"),
             "audio": None,
@@ -303,7 +307,7 @@ def verify(artefact, source):
         o = src[s["id"]]
         for field in ("title", "where", "look", "after", "look_spoken",
                       "after_spoken", "directions", "lat", "lon", "topic",
-                      "gate", "question"):
+                      "gate", "question", "nudge"):
             if s.get(field) != o.get(field):
                 problems.append(f"{s['id']}: {field} does not match the source")
         for field in ("title", "where", "look", "after"):

@@ -85,8 +85,14 @@ for (const [name, file] of tours) {
 
     // One slip on a phone keyboard should not stop the walk. Only checked on
     // answers long enough for a single edit to be unambiguous.
+    //
+    // Typed from the answer as WRITTEN, not as normalised. Building the typo out
+    // of the normalised form makes a liar of the test: "darkness" normalises to
+    // "darknes" because the plural strip eats the last s, so a substitution on
+    // top of that is two edits from what a person would actually type, and the
+    // test failed on words nobody would ever enter.
     for (const a of accepted) {
-      const w = normalise(a);
+      const w = String(a).toLowerCase().trim();
       if (w.length < 6 || w.includes(" ")) continue;
       const typos = [w.slice(0, -1), w + w.slice(-1), w.slice(0, 2) + w.slice(3),
                      w.slice(0, 2) + "x" + w.slice(3),

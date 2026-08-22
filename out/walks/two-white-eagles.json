@@ -8,11 +8,11 @@
   "tagline": "six things worth stopping for",
   "city": "Saint-Antonin-Noble-Val",
   "intro": {
-    "lead": "Six stops round the middle of Saint-Antonin-Noble-Val.",
-    "body": "Under a kilometre of walking, about an hour. Three stops ask a question you can only answer by looking at the thing in front of you. Three just need you standing in the right place.\n\nAll outdoors, all free.",
+    "lead": "Seven stops round the middle of Saint-Antonin-Noble-Val.",
+    "body": "Under a kilometre of walking, about an hour.\n\nFour stops ask a question you can only answer by looking at the thing in front of you. Three just need you standing in the right place.\n\nIt is built for a Sunday morning, when the market is on. Everything is free. Everything is outdoors except the church, and on a Sunday the church is open.",
     "start": "Start on the bridge over the Aveyron, at the southern edge of the old town. From anywhere in the middle of town, walk down to the river and you will find it."
   },
-  "outro": "That is the six.\n\nIf you have any walking left, the pale cliff above the town is the Roc d'Anglars and there is a path up it. It is a stiff climb and it puts the whole town underneath you, roofs, river and all.\n\nAnd if you are here on a Sunday morning, go back to the square. The market fills every street you have just walked down.",
+  "outro": "That is the seven.\n\nNow go and sit down. The cafes are round the edge of this square and you are forty metres from all of them.\n\nIf you have any walking left after that, the pale cliff standing over the town is the Roc d'Anglars and there is a path up it. It is a stiff climb and it puts the whole town underneath you, roofs, river and all.",
   "draft": false,
   "topics": [
     {
@@ -26,9 +26,9 @@
       "blurb": "An abbey, a ring of walls and a foreign garrison. Two of the three are gone."
     },
     {
-      "id": "standing",
-      "name": "Still Standing",
-      "blurb": "The market and the oldest town hall in France, both still doing the job they were built for."
+      "id": "business",
+      "name": "The Business of the Town",
+      "blurb": "Skins, market stalls and the men who ran both. All three are still on the same streets."
     }
   ],
   "stops": [
@@ -56,22 +56,41 @@
     {
       "id": "eglise",
       "topic": "broken",
-      "title": "The Church That Is Younger Than It Looks",
+      "title": "Inside the Church",
       "where": "the parish church of Saint-Antonin, on the square by the town hall",
       "lat": 44.151,
       "lon": 1.7561,
-      "directions": "Come off the bridge into the town and keep going straight ahead, away from the water, about a hundred and thirty metres.\n\nYou want the open square with the town hall on it and the church beside it. The church tower is the tallest thing in the middle of the town, so walk at that.",
-      "gate": {
-        "radius_m": 70,
-        "allow_pass": true,
-        "prompt": "Get to the square in front of the church, by the town hall."
-      },
+      "directions": "Come off the bridge into the town and keep going straight ahead, away from the water, about a hundred and thirty metres.\n\nYou want the open square with the town hall on it and the church beside it. The church tower is the tallest thing in the middle of the town, so walk at that.\n\nThen go inside.",
+      "gate": null,
       "nudge": null,
-      "question": null,
-      "look": "Look at the church first, then look closely at the stone.\n\nIt is gothic. Pointed arches, tall windows, the lot. Now look at how regular the stonework is and how sharp every edge still is.",
+      "question": {
+        "ask": "What time of day has he set it?",
+        "answers": [
+          "night",
+          "at night",
+          "night time",
+          "nighttime",
+          "the night",
+          "dark",
+          "in the dark",
+          "after dark",
+          "darkness",
+          "la nuit",
+          "nuit",
+          "de nuit",
+          "midnight",
+          "evening",
+          "dusk",
+          "moonlight",
+          "by moonlight",
+          "night-time"
+        ],
+        "hint": "It is not a daylight scene. Look at what the sky and the water are doing."
+      },
+      "look": "This is the one stop that is indoors, and it is only on the walk because it is Sunday. If there is a service running, stay at the back and keep your voice down.\n\nSomewhere in here is a painting of the story you heard at the bridge. The boat, coming up the river, with the saint's body in it. Go and find it.\n\nThen look at the light the painter has used.",
       "look_spoken": null,
-      "after": "It was begun in 1862 and consecrated in 1872. It is younger than the railway.\n\nThe real one is gone. A Benedictine abbey was founded here in 763 and the town grew up around its walls. In 1562 the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June 1622 Louis XIII arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church.",
-      "after_spoken": "It was begun in eighteen sixty-two and consecrated in eighteen seventy-two. It is younger than the railway.\n\nThe real one is gone. A Benedictine abbey was founded here in seven six three and the town grew up around its walls. In fifteen sixty-two the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June sixteen twenty-two Louis the Thirteenth arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church.",
+      "after": "Night. The painting is by Fauconnier and he set the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some tellings say angels instead. Either way, nobody in that boat is rowing.\n\nThere is a second version of the same story carved on a tympanum, the panel over a doorway, by Alex Coutet of Capdenac. It shows the relics arriving at Noble Val.\n\nThe church around them is younger than the railway. It was begun in 1862 and consecrated in 1872.\n\nThe real one is gone. A Benedictine abbey was founded here in 763 and the town grew up around its walls. In 1562 the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June 1622 Louis XIII arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church.",
+      "after_spoken": "Night. The painting is by Fauconnier and he set the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some tellings say angels instead. Either way, nobody in that boat is rowing.\n\nThere is a second version of the same story carved on a tympanum, the panel over a doorway, by Alex Coutet of Capdenac. It shows the relics arriving at Noble Val.\n\nThe church around them is younger than the railway. It was begun in eighteen sixty-two and consecrated in eighteen seventy-two.\n\nThe real one is gone. A Benedictine abbey was founded here in seven six three and the town grew up around its walls. In fifteen sixty-two the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June sixteen twenty-two Louis the Thirteenth arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church.",
       "audio": null
     },
     {
@@ -147,29 +166,56 @@
       "audio": null
     },
     {
+      "id": "pelisserie",
+      "topic": "business",
+      "title": "The Street of Other People's Things",
+      "where": "rue de la Pelisserie, running between Place des Tilleuls and Place du Buoc",
+      "lat": 44.15205,
+      "lon": 1.75625,
+      "directions": "Walk straight back down rue Guilhem Peyre towards the square, about seventy metres, and turn into rue de la Pelisserie.\n\nThe name is on the wall at the corner. On a Sunday morning you will hear the street before you find the sign.",
+      "gate": {
+        "radius_m": 50,
+        "allow_pass": true,
+        "prompt": "Get into rue de la Pelisserie, in among the shopfronts."
+      },
+      "nudge": {
+        "prompt": "Look in the windows as you go, and pick the strangest single object you can find for sale.",
+        "confirm": "Found one"
+      },
+      "question": null,
+      "look": "Look at the shopfronts. Then look up above them.\n\nThe houses along here are the ones the trade paid for, and a good many of them are medieval under the paint. On a Sunday you will be looking at them over the top of a cheese stall.",
+      "look_spoken": null,
+      "after": "Pelisserie means pelts.\n\nThis was the street of the pelletiers, the men who dressed skins into fur, and the houses on both sides belonged to them and to the tanners. Thirteenth and fourteenth century money, most of it. It is the same trade you were standing in at Bessarel, one stage further on. They tanned it down by the water and sold it up here.\n\nThe street still sells other people's things. A lot of the shops in this part of town are brocante: second hand furniture, plates, tools, pictures, whatever came out of a house when somebody died.\n\nOn a Sunday morning the market runs the length of it, from Place des Tilleuls at one end to Place du Buoc at the other. It is rated one of the best markets in Occitanie, and in this part of France that is a serious claim.\n\nWhat is on the stalls tells you the month. Melons and tomatoes now. Truffles and chestnuts if you came back in January.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
       "id": "halle",
-      "topic": "standing",
+      "topic": "business",
       "title": "The Covered Market",
       "where": "the halle, in the main square in the middle of the town",
       "lat": 44.1517,
       "lon": 1.7562,
-      "directions": "Walk straight back down rue Guilhem Peyre the way you came, about a hundred and thirty metres, until it opens out into the main square.\n\nGo and stand underneath the covered market in the middle of it, in the shade.",
+      "directions": "Carry on to the end of Pelisserie and come out into the main square, about forty metres.\n\nGo straight to the covered market standing in the middle of it and get underneath, in the shade.",
       "gate": {
         "radius_m": 60,
         "allow_pass": true,
         "prompt": "Get into the main square, under or beside the covered market."
       },
-      "nudge": null,
+      "nudge": {
+        "prompt": "The cafes are round the edge of this square and they are open all morning. Pick the one you want now, because you are coming back to it at the end.",
+        "confirm": "Picked one"
+      },
       "question": null,
       "look": "Stand under the roof and look up at what is holding it there.\n\nThen look round the square at the fronts of the buildings. One of them is a great deal older than the others.",
       "look_spoken": null,
-      "after": "The halle went up in 1841, and the people of the town paid for it themselves.\n\nThe market is still running. Sunday morning, seven until one, out of this square and up the streets around it. It is rated one of the best markets in Occitanie, which in this part of France is a serious claim.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of 2013, with Helen Mirren running a restaurant and Om Puri running the rival one across the road. The scene where the pair of them go to the mayor to complain about each other was filmed on this square.",
-      "after_spoken": "The halle went up in eighteen forty-one, and the people of the town paid for it themselves.\n\nThe market is still running. Sunday morning, seven until one, out of this square and up the streets around it. It is rated one of the best markets in Occitanie, which in this part of France is a serious claim.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of twenty thirteen, with Helen Mirren running a restaurant and Om Puri running the rival one across the road. The scene where the pair of them go to the mayor to complain about each other was filmed on this square.",
+      "after": "The halle went up in 1841, and the people of the town paid for it themselves.\n\nIt is still doing the job it was built for. Sunday morning, seven until one.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of 2013, with Helen Mirren running a restaurant and Om Puri running the rival one across the road. The scene where the pair of them go to the mayor to complain about each other was filmed on this square.",
+      "after_spoken": "The halle went up in eighteen forty-one, and the people of the town paid for it themselves.\n\nIt is still doing the job it was built for. Sunday morning, seven until one.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of twenty thirteen, with Helen Mirren running a restaurant and Om Puri running the rival one across the road. The scene where the pair of them go to the mayor to complain about each other was filmed on this square.",
       "audio": null
     },
     {
       "id": "maison-romane",
-      "topic": "standing",
+      "topic": "business",
       "title": "The Oldest One",
       "where": "the Maison Romane, the old consuls' house on the main square",
       "lat": 44.15185,
@@ -201,10 +247,10 @@
     }
   ],
   "walk": {
-    "n_stops": 6,
-    "total_walk_m": 624.5,
-    "total_minutes": 7.8,
-    "reversals": 1,
+    "n_stops": 7,
+    "total_walk_m": 638.7,
+    "total_minutes": 8.0,
+    "reversals": 0,
     "legs": [
       {
         "from": "pont",
@@ -232,11 +278,19 @@
       },
       {
         "from": "caserne",
+        "to": "pelisserie",
+        "straight_m": 58.8,
+        "walk_m": 76.5,
+        "minutes": 1.0,
+        "bearing": 241.8
+      },
+      {
+        "from": "pelisserie",
         "to": "halle",
-        "straight_m": 87.0,
-        "walk_m": 113.1,
-        "minutes": 1.4,
-        "bearing": 219.9
+        "straight_m": 39.1,
+        "walk_m": 50.9,
+        "minutes": 0.6,
+        "bearing": 185.9
       },
       {
         "from": "halle",
@@ -249,5 +303,5 @@
     ]
   },
   "gated_stops": 3,
-  "question_stops": 3
+  "question_stops": 4
 }

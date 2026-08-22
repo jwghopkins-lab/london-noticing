@@ -112,6 +112,16 @@ async function walk(id) {
     }
     check(`stage ${i + 1} says what to look at`,
           text.includes(squash(stop.look).slice(0, 40)));
+    // A nudge is a soft prompt with nothing behind it: the brocante window, the
+    // cafe you are coming back to. It has to be in the first block or it may as
+    // well not exist, and it must never become something you have to answer.
+    if (stop.nudge) {
+      check(`stage ${i + 1} carries its soft prompt`,
+            text.includes(squash(stop.nudge.prompt).slice(0, 40)),
+            text.slice(-80));
+      check(`stage ${i + 1} does not turn the prompt into a gate`,
+            !text.endsWith(squash(stop.nudge.prompt)) || !stop.question);
+    }
 
     if (stop.question) {
       asked++;
