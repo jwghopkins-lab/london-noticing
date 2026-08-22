@@ -35,13 +35,13 @@ const MUST_FAIL = ["", "   ", "dunno", "no idea", "asdf", "banana", "skip", "123
 let failures = 0;
 function fail(msg) { failures++; console.log(`  FAIL  ${msg}`); }
 
-// Every Gdansk walk that has been built, not a named list. A second walk that
+// Every walk that has been built, not a named list. A walk that
 // nobody remembered to add here would be a second walk nobody checked.
-const dir = path.join(ROOT, "out", "gdansk");
+const dir = path.join(ROOT, "out", "walks");
 const tours = (fs.existsSync(dir) ? fs.readdirSync(dir) : [])
   .filter((f) => f.endsWith(".json")).sort()
   .map((f) => [f.replace(/\.json$/, ""), path.join(dir, f)]);
-if (!tours.length) { console.error("no built tours in out/gdansk"); process.exit(2); }
+if (!tours.length) { console.error("no built tours in out/walks"); process.exit(2); }
 
 for (const [name, file] of tours) {
   if (!fs.existsSync(file)) { console.log(`  skip  ${name} (not built)`); continue; }

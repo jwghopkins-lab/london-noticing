@@ -508,8 +508,8 @@ const TOUR = (BUNDLE && BUNDLE.tour) || null;
 // Answers are checked forgivingly on purpose. Nobody is being marked, and being
 // told you are wrong when you typed "3" instead of "three" would be maddening
 // while standing in a square in the rain.
-function normalise(text) {
-  return String(text).toLowerCase()
+function normalise(text, keepPlural) {
+  const out = String(text).toLowerCase()
     // Polish crossed L is its own letter, not l plus a mark, so NFD leaves it
     // alone and the strip below then deletes it. "cegla" survived and "cegla"
     // with the stroke came out as "ceg a". Map it by hand before decomposing.
@@ -521,8 +521,8 @@ function normalise(text) {
     // and the result was that typing "two" at a stop whose answer IS two
     // normalised to nothing and was marked wrong. The split-on-words check
     // below already handles an answer buried in a phrase.
-    .replace(/\b(a|an|the|is|it|its|they|are|of)\b/g, " ")
-    .replace(/s\b/g, "")
+    .replace(/\b(a|an|the|is|it|its|they|are|of)\b/g, " ");
+  return (keepPlural ? out : out.replace(/s\b/g, ""))
     .replace(/\s+/g, " ").trim();
 }
 // One typo should not stand between somebody and the rest of the walk. Only for
@@ -551,18 +551,28 @@ function oneSwapApart(a, b) {
   return at.length === 2 && at[1] === at[0] + 1
       && a[at[0]] === b[at[1]] && a[at[1]] === b[at[0]];
 }
-function answerAccepted(given, accepted) {
-  const g = normalise(given);
+function matchesUnder(given, accepted, keepPlural) {
+  const g = normalise(given, keepPlural);
   if (!g) return false;
   const words = g.split(" ");
   return accepted.some((a) => {
-    const want = normalise(a);
+    const want = normalise(a, keepPlural);
     if (!want) return false;
     if (g === want || words.includes(want)) return true;
     if (want.length < 5) return false;
     return withinOneEdit(g, want) || oneSwapApart(g, want)
         || words.some((w) => withinOneEdit(w, want) || oneSwapApart(w, want));
   });
+}
+// Tried both with the plural strip and without it. Dropping the last letter of
+// "english" leaves "englis", and the strip then turns that into "engli", which
+// is two edits from the answer instead of one, so a single slip was rejected.
+// Comparing the unstripped forms as well never refuses anything the stripped
+// pass would have accepted; the cross-stop rejection checks prove it does not
+// tip over into saying yes to everything.
+function answerAccepted(given, accepted) {
+  return matchesUnder(given, accepted, false)
+      || matchesUnder(given, accepted, true);
 }
 
 async function loadRoute(key) {

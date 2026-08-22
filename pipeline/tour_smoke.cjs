@@ -1,8 +1,8 @@
-/* End-to-end test for the Gdansk walks, against the single file builds.
+/* End-to-end test for the fixed walks, against the single file builds.
  *
- *   NODE_PATH=$(npm root -g) node pipeline/gdansk_smoke.cjs [tour-id] [--headed]
+ *   NODE_PATH=$(npm root -g) node pipeline/tour_smoke.cjs [tour-id] [--headed]
  *
- * With no tour id it walks every built Gdansk tour end to end, one after the
+ * With no tour id it walks every built tour end to end, one after the
  * other. There are two of them now, handed to two different groups, and a walk
  * that nobody remembered to add to a hardcoded list is a walk nobody tested.
  *
@@ -20,7 +20,7 @@ const ROOT = path.resolve(__dirname, "..");
 // them, so a tour added to content/gdansk/ is picked up with no edit here.
 const LEGACY = { "amber-mile": "amber-mile.html" };
 const only = process.argv.slice(2).find((a) => !a.startsWith("--"));
-const TOURS = fs.readdirSync(path.join(ROOT, "out", "gdansk"))
+const TOURS = fs.readdirSync(path.join(ROOT, "out", "walks"))
   .filter((f) => f.endsWith(".json")).sort()
   .map((f) => f.replace(/\.json$/, ""))
   .filter((id) => !only || id === only);
@@ -39,7 +39,7 @@ const squash = (t) => t.replace(/\s+/g, " ").trim();
 async function walk(id) {
   const FILE = "file://" + path.resolve(ROOT, "dist", LEGACY[id] || `${id}.html`);
   const TOUR = JSON.parse(fs.readFileSync(
-    path.resolve(ROOT, "out", "gdansk", `${id}.json`), "utf8"));
+    path.resolve(ROOT, "out", "walks", `${id}.json`), "utf8"));
 
   const browser = await chromium.launch({ headless: !process.argv.includes("--headed") });
   const ctx = await browser.newContext({
@@ -54,7 +54,7 @@ async function walk(id) {
     ? r.continue() : r.abort());
 
   const n = TOUR.stops.length;
-  console.log(`\n${TOUR.name} (/${LEGACY[id] ? "gdansk" : id}/)`);
+  console.log(`\n${TOUR.name} (/${TOUR.served_at || id}/)`);
   console.log(`  ${n} stops, ${TOUR.question_stops} questions, `
             + `${TOUR.gated_stops} location gates, `
             + `${(TOUR.walk.total_walk_m / 1000).toFixed(2)} km\n`);

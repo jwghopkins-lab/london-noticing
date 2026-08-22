@@ -2,6 +2,7 @@
   "format": 1,
   "combo_key": "amber-mile",
   "mode": "fixed",
+  "served_at": "gdansk",
   "directions_style": "turn_by_turn",
   "name": "The Amber Mile",
   "tagline": "ten things worth stopping for",

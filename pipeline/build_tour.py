@@ -33,7 +33,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
-SRC_DIR = BASE / "content" / "gdansk"
+# One directory per town under content/. London lives at the top level of
+# content/ and is built by a different pipeline, so a one-level glob picks up
+# the fixed walks and nothing else.
+SRC_GLOB = "content/*/*.json"
+OUT_DIR = BASE / "out" / "walks"
 APP = BASE / "app" / "index.html"
 MARKER = "<script>\n\"use strict\";"
 FORMAT_VERSION = 1
@@ -42,13 +46,18 @@ FORMAT_VERSION = 1
 # have that link. Anything newer is served at its own id.
 LEGACY_PATHS = {"amber-mile": ("gdansk", "amber-mile.html")}
 
-N_STOPS = 10
-TOPIC_SPLIT = [4, 3, 3]
-N_QUESTION_GATES = 7
-N_LOCATION_GATES = 3
-# The Main Town is small. Anything outside this is a typo, not a stop.
-LAT_RANGE = (54.340, 54.360)
-LON_RANGE = (18.635, 18.670)
+# The shape of a walk is the walk's own business, so each tour may declare it.
+# The defaults are the two Gdansk walks, which were written before there was
+# anything to declare. A tour that says nothing keeps building exactly as it did.
+DEFAULT_CONTRACT = {
+    "n_stops": 10,
+    "topic_split": [4, 3, 3],
+    "question_stops": 7,
+    "location_gates": 3,
+    # The Main Town of Gdansk is small. Anything outside this is a typo, not a
+    # stop. Every tour needs its own box for the same reason.
+    "bbox": [54.340, 54.360, 18.635, 18.670],
+}
 SCREEN_ONLY = ["see below", "see above", "as shown", "click", "scroll", "this page"]
 LONG_SENTENCE_WORDS = 34
 
@@ -104,9 +113,11 @@ def check(tour):
     """Contract-check the tour. Returns (errors, notes)."""
     errors, notes = [], []
     stops = tour["stops"]
+    c = dict(DEFAULT_CONTRACT, **tour.get("contract", {}))
+    lat_lo, lat_hi, lon_lo, lon_hi = c["bbox"]
 
-    if len(stops) != N_STOPS:
-        errors.append(f"{len(stops)} stops, expected {N_STOPS}")
+    if len(stops) != c["n_stops"]:
+        errors.append(f"{len(stops)} stops, expected {c['n_stops']}")
 
     topic_ids = {t["id"] for t in tour["topics"]}
     counts = {}
@@ -123,9 +134,8 @@ def check(tour):
         for field in ("title", "where", "look", "after"):
             if not (s.get(field) or "").strip():
                 errors.append(f"{where}: missing {field}")
-        if not (LAT_RANGE[0] <= s["lat"] <= LAT_RANGE[1]) \
-           or not (LON_RANGE[0] <= s["lon"] <= LON_RANGE[1]):
-            errors.append(f"{where}: coordinate is not in the Main Town")
+        if not (lat_lo <= s["lat"] <= lat_hi) or not (lon_lo <= s["lon"] <= lon_hi):
+            errors.append(f"{where}: coordinate is outside the walk's own town")
 
         # Every stop after the first must say how to walk to it. This is the
         # whole point of the addition: being told what to look at is no use if
@@ -155,6 +165,9 @@ def check(tour):
             errors.append(f"{where}: the first stop cannot have directions to it")
 
         q, g = s.get("question"), s.get("gate")
+        # Still one or the other, not both. The player renders a single action
+        # per stop and the gate wins, so a stop carrying both would drop its
+        # question silently. Combining the two needs a player change first.
         if q and g:
             errors.append(f"{where}: has both a question and a location gate; pick one")
         if not q and not g:
@@ -214,15 +227,15 @@ def check(tour):
                 errors.append(f"{field}: {phrase!r} is summing up; cut it")
 
     split = sorted(counts.values(), reverse=True)
-    if split != TOPIC_SPLIT:
-        errors.append(f"topic split is {split}, expected {TOPIC_SPLIT}")
+    if split != c["topic_split"]:
+        errors.append(f"topic split is {split}, expected {c['topic_split']}")
 
     n_q = sum(1 for s in stops if s.get("question"))
     n_g = sum(1 for s in stops if s.get("gate"))
-    if n_q != N_QUESTION_GATES:
-        errors.append(f"{n_q} question stops, expected {N_QUESTION_GATES}")
-    if n_g != N_LOCATION_GATES:
-        errors.append(f"{n_g} location-gated stops, expected {N_LOCATION_GATES}")
+    if n_q != c["question_stops"]:
+        errors.append(f"{n_q} question stops, expected {c['question_stops']}")
+    if n_g != c["location_gates"]:
+        errors.append(f"{n_g} location-gated stops, expected {c['location_gates']}")
 
     return errors, notes
 
@@ -244,6 +257,9 @@ def bake(tour):
         "format": FORMAT_VERSION,
         "combo_key": tour["id"],
         "mode": "fixed",
+        # The address it is served at, so tooling can report a real URL rather
+        # than guessing one from the id.
+        "served_at": LEGACY_PATHS.get(tour["id"], (tour.get("served_at", tour["id"]),))[0],
         # Turn by turn, written by hand along the actual streets. The player
         # must not bolt a computed heading on top: that distance is a straight
         # line times a detour factor, and across an open square it overstates.
@@ -326,12 +342,15 @@ def build_one(path, page_src):
     if problems:
         return False
 
-    served_dir, dist_name = LEGACY_PATHS.get(tid, (tid, f"{tid}.html"))
+    # A walk may name the address it is served at, because the id makes a poor
+    # URL when the name is evocative rather than geographic.
+    served_dir, dist_name = LEGACY_PATHS.get(
+        tid, (tour.get("served_at", tid), f"{tid}.html"))
 
     # A subdirectory, not out/ itself. The London tools glob out/*.json and
     # will happily treat anything they find there as one of their own routes,
     # which is exactly what happened the first time.
-    baked = BASE / "out" / "gdansk" / f"{tid}.json"
+    baked = OUT_DIR / f"{tid}.json"
     baked.parent.mkdir(parents=True, exist_ok=True)
     baked.write_text(json.dumps(artefact, ensure_ascii=False, indent=2), encoding="utf-8")
 
@@ -373,9 +392,9 @@ def main():
     only = args[args.index("--only") + 1] if "--only" in args else None
 
     page_src = APP.read_text(encoding="utf-8")
-    files = sorted(SRC_DIR.glob("*.json"))
+    files = sorted(BASE.glob(SRC_GLOB))
     if not files:
-        print(f"no tours in {SRC_DIR}")
+        print(f"no tours matching {SRC_GLOB}")
         return 1
 
     built = failed = 0
