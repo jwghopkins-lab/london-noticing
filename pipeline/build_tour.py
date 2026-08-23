@@ -31,6 +31,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
+import streets                                     # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
 # One directory per town under content/. London lives at the top level of
@@ -70,12 +71,35 @@ SUMMING_UP = [
     "it is worth remembering", "which is to say",
 ]
 
+# Riddle furniture. This is a tour guide, not a treasure hunt: the puzzle
+# framing is a hangover from the project this player was copied out of, where
+# the whole point was withholding an answer. Here the point is showing somebody
+# a thing. A guide says "there is a painting of that story on the wall". They do
+# not say "somewhere in here is a painting. Go and find it."
+RIDDLE_PHRASES = [
+    "somewhere in here", "somewhere on", "somewhere along", "see if you can",
+    "can you spot", "can you find", "your task", "the answer lies",
+    "look carefully and", "look closely and", "if you look carefully",
+    "not what it seems", "the trick is", "all is not", "reveals itself",
+    "hidden in plain sight", "go and find it", "hunt for", "seek out",
+    "riddle", "puzzle", "clue is",
+]
+
+# A guide standing next to you is brief. The explainer is read on the spot,
+# usually standing up, often in the sun, and 180 words is ninety seconds of
+# being talked at. These are the numbers the Noble Val rewrite was cut to.
+LOOK_WORDS_MAX = 80
+LOOK_WORDS_NOTE = 60
+AFTER_WORDS_MAX = 130
+AFTER_WORDS_NOTE = 110
+AFTER_PARAS_MAX = 4
+
 # Where a coordinate came from. This exists because a stop was placed by guess,
 # a compass bearing was then written to match the guess, and both were wrong the
 # same way, so nothing could catch it: the walker was sent east to somewhere
 # that is north west. Recording the provenance makes the guessing visible in the
 # data, and lets the checks below know which claims are worth cross-examining.
-COORD_SOURCES = {"surveyed", "published", "estimated"}
+COORD_SOURCES = {"osm", "surveyed", "published", "estimated"}
 
 COMPASS = {
     "north east": 45, "north-east": 45, "northeast": 45,
@@ -105,6 +129,17 @@ GENERIC_WORDS = {
     "side", "sides", "close", "about", "metres", "walk", "still", "inside",
 }
 
+# Words that introduce a street name, so an invented one can be caught. Every
+# street the directions name has to exist in the town's OSM extract.
+STREET_PREFIXES = {
+    "rue", "place", "boulevard", "avenue", "chemin", "quai", "impasse",
+    "ruelle", "venelle", "route", "cour", "passage", "sentier", "allee",
+    "ulica", "brama", "targ", "dwor", "via", "calle", "piazza",
+}
+# The authored distances on a leg should add up to what the router says it is.
+DIST_TOLERANCE_FRAC = 0.25
+DIST_TOLERANCE_M = 25.0
+
 WORD_NUMBERS = {
     "ten": 10, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
     "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
@@ -133,6 +168,45 @@ def authored_metres(text):
         head, tail = phrase.split(" and ", 1)
         return WORD_NUMBERS.get(head.strip(), 0) + WORD_NUMBERS.get(tail.strip(), 0)
     return WORD_NUMBERS.get(phrase.strip())
+
+
+def all_authored_metres(text):
+    """Every distance written into a piece of directions, not just the first.
+
+    A leg is often described in parts, "fifty metres, then another seventy".
+    Those have to add up to the routed length or one of them is wrong.
+    """
+    out = []
+    for m in re.finditer(r"\b(\d+)\s*metres\b", text):
+        out.append(int(m.group(1)))
+    for m in re.finditer(r"\b((?:a|one|two|three|four|five)\s+hundred"
+                         r"(?:\s+and\s+\w+)?|ten|twenty|thirty|forty|fifty|sixty"
+                         r"|seventy|eighty|ninety)\s+metres\b", text):
+        phrase = m.group(1)
+        if " and " in phrase:
+            head, tail = phrase.split(" and ", 1)
+            out.append(WORD_NUMBERS.get(head.strip(), 0)
+                       + WORD_NUMBERS.get(tail.strip(), 0))
+        else:
+            out.append(WORD_NUMBERS.get(phrase.strip(), 0))
+    return [n for n in out if n]
+
+
+def street_mentions(text):
+    """Candidate street names written in the text, longest form first."""
+    words = re.findall(r"[\w'\u2019-]+", text)
+    connectors = {"de", "du", "des", "la", "le", "les", "d", "l"}
+    found = []
+    for i, w in enumerate(words[:-1]):
+        # Capitalised, or it is the ordinary word: "the two rivers made the
+        # place. The Aveyron carried the trade" is not a street called Place.
+        if not w[:1].isupper() or streets.fold(w) not in STREET_PREFIXES:
+            continue
+        nxt = words[i + 1]
+        if not (nxt[:1].isupper() or streets.fold(nxt).strip("'\u2019") in connectors):
+            continue
+        found.append(words[i:i + 6])
+    return found
 
 
 def compass_claims(text):
@@ -297,6 +371,30 @@ def check(tour):
             if not g.get("allow_pass"):
                 notes.append(f"{where}: location gate with no pass button")
 
+        look, after = s.get("look") or "", s.get("after") or ""
+        for phrase in RIDDLE_PHRASES:
+            if phrase in look.lower():
+                errors.append(f"{where} look: {phrase!r} is treasure-hunt talk; "
+                              f"just say what is there")
+            if q and phrase in (q.get("ask") or "").lower():
+                errors.append(f"{where} question: {phrase!r} is treasure-hunt "
+                              f"talk; just ask the question")
+        n_look, n_after = len(look.split()), len(after.split())
+        if n_look > LOOK_WORDS_MAX:
+            errors.append(f"{where}: {n_look} words of look, max {LOOK_WORDS_MAX}")
+        elif n_look > LOOK_WORDS_NOTE:
+            notes.append(f"{where}: {n_look} words of look, aim under {LOOK_WORDS_NOTE}")
+        if n_after > AFTER_WORDS_MAX:
+            errors.append(f"{where}: {n_after} words of explainer, max "
+                          f"{AFTER_WORDS_MAX}. A guide is brief")
+        elif n_after > AFTER_WORDS_NOTE:
+            notes.append(f"{where}: {n_after} words of explainer, aim under "
+                         f"{AFTER_WORDS_NOTE}")
+        paras = after.count("\n\n") + 1
+        if paras > AFTER_PARAS_MAX:
+            errors.append(f"{where}: {paras} paragraphs of explainer, max "
+                          f"{AFTER_PARAS_MAX}")
+
         for field in ("look", "after", "directions"):
             text = s.get(field) or ""
             for phrase in SCREEN_ONLY:
@@ -319,6 +417,46 @@ def check(tour):
         for phrase in SUMMING_UP:
             if phrase in text.lower():
                 errors.append(f"{field}: {phrase!r} is summing up; cut it")
+
+    # ---- checked against the real map, when there is one -------------------
+    town = streets.load(tour["id"])
+    if town is None:
+        notes.append("no OSM extract for this tour; run the Fetch map data "
+                     "workflow so the directions can be checked against streets "
+                     "that exist")
+    else:
+        prose = " ".join(
+            [tour.get("outro") or "", (tour.get("intro") or {}).get("start", "")]
+            + [f"{s.get('directions','') or ''} {s.get('where','')} "
+               f"{s.get('look','')} {s.get('after','')}" for s in stops])
+        for mention in street_mentions(prose):
+            for n in range(len(mention), 1, -1):
+                if town.has_street(" ".join(mention[:n])):
+                    break
+            else:
+                errors.append(f"no street called {' '.join(mention[:4])!r} in "
+                              f"{tour.get('city', 'this town')}; the map says "
+                              f"otherwise")
+        for i, s in enumerate(stops):
+            where = f"stop {i + 1} ({s['id']})"
+            _, snap = town.snap(s["lat"], s["lon"])
+            if snap > streets.MAX_SNAP_M:
+                errors.append(f"{where}: {snap:.0f} m from the nearest walkable "
+                              f"way, so it is not somewhere you can stand")
+            if i == 0:
+                continue
+            r = town.route((stops[i - 1]["lat"], stops[i - 1]["lon"]),
+                           (s["lat"], s["lon"]))
+            if r is None:
+                errors.append(f"{where}: no walking route from the stop before it")
+                continue
+            said = sum(all_authored_metres(s.get("directions") or ""))
+            if said:
+                slack = max(DIST_TOLERANCE_M, r["metres"] * DIST_TOLERANCE_FRAC)
+                if abs(said - r["metres"]) > slack:
+                    errors.append(
+                        f"{where}: the directions add up to {said} m but the "
+                        f"streets route in {r['metres']:.0f} m")
 
     split = sorted(counts.values(), reverse=True)
     if split != c["topic_split"]:

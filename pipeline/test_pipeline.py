@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import combos                                      # noqa: E402
 import geo                                         # noqa: E402
 import verify_bakes                                # noqa: E402
+import build_tour                                  # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
 CONTENT = BASE / "content"
@@ -236,3 +237,36 @@ class TestBakedArtefacts(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
+
+
+class TestDirectionChecks(unittest.TestCase):
+    """The checks that read the map, tested without needing the map."""
+
+    def test_an_ordinary_word_is_not_a_street(self):
+        """'the two rivers made the place. The Aveyron carried the trade' was
+        read as a street called Place, and failed the build."""
+        text = "The two rivers made the place. The Aveyron carried the trade."
+        self.assertEqual(build_tour.street_mentions(text), [])
+
+    def test_a_real_street_is_picked_up(self):
+        got = build_tour.street_mentions("Walk up Rue du Pont de l'Aveyron.")
+        self.assertTrue(got, "missed a street name")
+        self.assertEqual(got[0][:2], ["Rue", "du"])
+
+    def test_every_distance_on_a_leg_is_counted(self):
+        """A leg described in parts has to add up, so all of them are read."""
+        text = ("about fifty metres. It runs on. Keep going another seventy "
+                "metres or so.")
+        self.assertEqual(sorted(build_tour.all_authored_metres(text)), [50, 70])
+
+    def test_spelled_out_distances_count_too(self):
+        self.assertEqual(build_tour.all_authored_metres(
+            "about a hundred and seventy metres"), [170])
+
+    def test_riddle_talk_is_named(self):
+        self.assertIn("go and find it", build_tour.RIDDLE_PHRASES)
+        self.assertIn("somewhere in here", build_tour.RIDDLE_PHRASES)
+
+
+if __name__ == "__main__":
+    unittest.main()

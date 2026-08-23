@@ -74,6 +74,24 @@ build. The rest are on whoever is writing.
     coarse network fix first and a good satellite fix a few seconds later.
 28. Size the radius to the thing. A bridge is not a doorway.
 
+## Voice, again: this is a guide, not a treasure hunt
+
+33. No riddle furniture in what you say at a stop. "Somewhere in here is a
+    painting. Go and find it" is the puzzle project this player was copied out
+    of, where withholding the answer WAS the product. Here the product is
+    showing somebody a thing, so say "there is a painting of that story on the
+    wall". Banned outright: somewhere in here, see if you can, can you spot,
+    your task, hidden in plain sight, go and find it, look carefully and, the
+    trick is, clue, riddle, puzzle. **[checked]**
+34. The explainer is brief. It is read standing up, often in the sun, and 180
+    words is ninety seconds of being talked at. Maximum 130 words and four
+    paragraphs; aim under 110. **[checked]**
+35. What to look at is shorter still. Maximum 80 words, aim under 60.
+    **[checked]**
+36. Lead with the answer, then the story. "Night. It is by Fauconnier, and he
+    painted the whole scene after dark." Not a paragraph of throat-clearing
+    first.
+
 ## Directions
 
 29. Every stop records where its coordinate came from: surveyed, published or
@@ -86,6 +104,24 @@ build. The rest are on whoever is writing.
     it? **[checked]**
 32. Be wary of a compass bearing into an estimated coordinate. Both can be
     wrong the same way, and then nothing can catch it. **[checked as a note]**
+
+### Checked against the real map
+
+The town's street network is fetched from OpenStreetMap by the Fetch map data
+workflow and committed to `data/osm/<tour>.json`. It runs on a GitHub runner
+because this sandbox cannot reach any OSM host. The bounding box comes from the
+tour's own contract, so this works for any town anywhere with no extra
+configuration.
+
+37. Every street the directions name must exist in the extract. An invented
+    street fails the build. **[checked]**
+38. The distances written into a leg must add up to what the router says that
+    leg is, along the actual streets, within 25 per cent. **[checked]**
+39. Every stop must be within 60 m of somewhere a person can walk.
+    **[checked]**
+40. Take coordinates from the extract, not from memory. The seven Noble Val
+    stops were out by up to 100 m when placed by eye, which the tightened gates
+    would have failed on.
 
 ## Facts
 
