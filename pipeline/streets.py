@@ -74,6 +74,14 @@ class Town:
     def has_street(self, name):
         return bool(self.street(name))
 
+    def canonical(self, name):
+        """The map's own spelling, so an unaccented mention still matches."""
+        want = fold(name)
+        for w in self.streets:
+            if w["name"] and fold(w["name"]) == want:
+                return w["name"]
+        return None
+
     def street_middle(self, name):
         """A point actually on the street, nearest its centre of gravity.
 

@@ -60,7 +60,7 @@
       "where": "the parish church, on Place de la Mairie",
       "lat": 44.150843,
       "lon": 1.755619,
-      "directions": "Come off the bridge and walk into the town on Rue du Pont de l'Aveyron. The name is on the wall; it is the street the bridge feeds into.\n\nFollow it straight up, about ninety metres, to the square at the top. That is Place de la Mairie.\n\nThe church is on the square. Go inside.",
+      "directions": "Come off the bridge and take Rue du Pont de l'Aveyron, which runs east away from the water.\n\nFollow it about ninety metres to the square at the top. That is Place de la Mairie.\n\nThe church is on the square. Go inside.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -100,7 +100,7 @@
       "where": "Place du Bessarel, where the old canal runs through the town",
       "lat": 44.152006,
       "lon": 1.75472,
-      "directions": "From Place de la Mairie, go back down Rue du Pont de l'Aveyron a few steps and take the turning right, into the lanes running north west.\n\nKeep going about two hundred metres, towards the sound of running water, until the lane opens into a square with a channel cut through it. That is Place du Bessarel.",
+      "directions": "From Place de la Mairie, head for Place du Bessarel, roughly north west and about two hundred metres away.\n\nThe lanes in between are medieval and several have no name on them, so do not try to count turnings. Keep bearing north west, towards the sound of running water.\n\nYou come out in a small square with a stone channel cut across it. That is the Bessarel.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -137,7 +137,7 @@
       "where": "the Caserne des Anglais, on Rue Guilhem Peyre",
       "lat": 44.151787,
       "lon": 1.756171,
-      "directions": "From Place du Bessarel, take Rue du Pont des Vierges south east out of the square, then turn right onto Rue Amelie Galup and keep straight on into Rue du Cluzel.\n\nAbout a hundred and seventy metres in all. It brings you out onto Rue Guilhem Peyre.\n\nWalk along it, reading the fronts of the houses.",
+      "directions": "From Place du Bessarel, head for Rue Guilhem Peyre, roughly east and about a hundred and seventy metres away.\n\nThe lanes again are narrow and some are unnamed. Keep going east and you will meet a longer street running across your way.\n\nThat is Guilhem Peyre. The house you want is the Caserne des Anglais, so walk along it reading the fronts.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -172,7 +172,7 @@
       "where": "rue de la Pelisserie, running between Place des Tilleuls and Place du Buoc",
       "lat": 44.152462,
       "lon": 1.756687,
-      "directions": "From the Caserne, carry on north east along Rue Guilhem Peyre about fifty metres. It runs straight into Rue de la Pelisserie.\n\nKeep going another seventy metres or so, into the middle of the street.",
+      "directions": "From the Caserne des Anglais, carry on along Rue Guilhem Peyre, which runs east from here. After about fifty metres it becomes Rue de la Pelisserie and turns north.\n\nKeep going another seventy metres, to the middle of the street.",
       "gate": {
         "radius_m": 40,
         "allow_pass": true,
@@ -196,7 +196,7 @@
       "where": "the halle, in the main square in the middle of the town",
       "lat": 44.151607,
       "lon": 1.756762,
-      "directions": "From Rue de la Pelisserie, walk south down the street to the far end, about a hundred metres. It opens straight into Place de la Halle.\n\nThe covered market stands in the middle of the square. Go and get underneath it, in the shade.",
+      "directions": "From the middle of Rue de la Pelisserie, walk south to the far end of the street, about a hundred metres.\n\nIt opens straight into Place de la Halle. The covered market stands in the middle of the square.\n\nGet underneath it, in the shade.",
       "gate": {
         "radius_m": 25,
         "allow_pass": true,
@@ -220,7 +220,7 @@
       "where": "the Maison Romane, the old consuls' house on the main square",
       "lat": 44.151809,
       "lon": 1.756546,
-      "directions": "From the covered market, cross Place de la Halle to the north west corner, about thirty metres, to the tall stone house with the square tower on top.\n\nStand back far enough to look up at the row of arches above the ground floor.",
+      "directions": "From the covered market, cross straight over Place de la Halle to its north west corner, about thirty metres.\n\nThe tall stone house with the square tower on top is the Maison Romane. Stand back far enough to look up at the row of arches above the ground floor.",
       "gate": null,
       "nudge": null,
       "question": {

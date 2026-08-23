@@ -123,6 +123,25 @@ configuration.
     stops were out by up to 100 m when placed by eye, which the tightened gates
     would have failed on.
 
+### If you are going to give street directions they have to be right
+
+41. A compass word next to a street name is a claim about THAT street, and it
+    is checked against the street's heading on that leg. "Take Rue du Pont des
+    Vierges south east out of the square" shipped; that street runs north east,
+    and the south east came off a different segment entirely. **[checked]**
+42. A street named in a leg must be one you actually walk on, or one you are
+    standing on at either end. **[checked]**
+43. Turn-by-turn only where the route earns it: every stretch named, and four
+    turns or fewer. Two of Noble Val's six legs are medieval warrens, six and
+    seven turns with a fifth to a quarter of the walking down lanes with no
+    name on them. No turn sequence written for those can be followed.
+    **[checked]**
+44. On a leg that does not earn it, say what to head for and let them
+    reorientate on arrival: name the target, give the routed distance and the
+    overall bearing, and say what they will see when they get there. Do not
+    name more than the street you leave and the one you arrive at.
+    **[checked]**
+
 ## Facts
 
 20. Do not write a question about a physical detail you have not verified. If

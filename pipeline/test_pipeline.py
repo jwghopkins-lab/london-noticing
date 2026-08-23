@@ -251,7 +251,7 @@ class TestDirectionChecks(unittest.TestCase):
     def test_a_real_street_is_picked_up(self):
         got = build_tour.street_mentions("Walk up Rue du Pont de l'Aveyron.")
         self.assertTrue(got, "missed a street name")
-        self.assertEqual(got[0][:2], ["Rue", "du"])
+        self.assertEqual(got[0][1][:2], ["Rue", "du"])
 
     def test_every_distance_on_a_leg_is_counted(self):
         """A leg described in parts has to add up, so all of them are read."""
@@ -262,6 +262,32 @@ class TestDirectionChecks(unittest.TestCase):
     def test_spelled_out_distances_count_too(self):
         self.assertEqual(build_tour.all_authored_metres(
             "about a hundred and seventy metres"), [170])
+
+    def test_a_compound_bearing_is_read_once(self):
+        """'west' sits inside 'north west'. Reading both made the compound look
+        like two claims, one of them 45 degrees out."""
+        got = build_tour.compass_positions("cross to the north west corner")
+        self.assertEqual([d for _, d, _ in got], [315])
+
+    def test_a_bearing_next_to_a_street_belongs_to_that_street(self):
+        text = "take Rue du Pont des Vierges south east out of the square"
+        mentions = build_tour.street_mentions(text)
+        pos = build_tour.compass_positions(text)[0][0]
+        att = build_tour.attached_street(text, pos, mentions)
+        self.assertIsNotNone(att, "the bearing was read as being about the leg")
+        self.assertEqual(att[1][:2], ["Rue", "du"])
+
+    def test_a_bearing_in_the_next_sentence_is_about_the_leg(self):
+        text = "Head for Place du Bessarel. About two hundred metres, north west."
+        mentions = build_tour.street_mentions(text)
+        pos = [p for p, _, _ in build_tour.compass_positions(text)][0]
+        self.assertIsNone(build_tour.attached_street(text, pos, mentions))
+
+    def test_turn_claims_do_not_fire_on_ordinary_words(self):
+        self.assertIsNone(build_tour.TURN_CLAIMS.search("do not count turnings"))
+        self.assertIsNone(build_tour.TURN_CLAIMS.search("it turns north"))
+        self.assertIsNotNone(build_tour.TURN_CLAIMS.search("turn right onto X"))
+        self.assertIsNotNone(build_tour.TURN_CLAIMS.search("take the first left"))
 
     def test_riddle_talk_is_named(self):
         self.assertIn("go and find it", build_tour.RIDDLE_PHRASES)

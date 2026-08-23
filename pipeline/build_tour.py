@@ -136,6 +136,21 @@ STREET_PREFIXES = {
     "ruelle", "venelle", "route", "cour", "passage", "sentier", "allee",
     "ulica", "brama", "targ", "dwor", "via", "calle", "piazza",
 }
+CONNECTORS = {"de", "du", "des", "la", "le", "les", "d", "l"}
+# A compass word this close after a street name, in the same sentence, is a
+# claim about THAT street rather than about the leg as a whole. This is the
+# exact shape of the fault it exists to catch: "take Rue du Pont des Vierges
+# south east out of the square" welded the bearing of a different segment onto
+# a street that actually runs north east.
+BEARING_ATTACH_CHARS = 60
+# Turn-by-turn is only honest where the route is fully named and short. In a
+# medieval town a quarter of the walking is down lanes with no name on them, and
+# no turn sequence written for those can be followed. Those legs say what to
+# head for instead.
+SIMPLE_MAX_TURNS = 4
+TURN_CLAIMS = re.compile(r"\b(turn|take the|first|second|third)\s+"
+                         r"(left|right|turning)", re.I)
+
 # The authored distances on a leg should add up to what the router says it is.
 DIST_TOLERANCE_FRAC = 0.25
 DIST_TOLERANCE_M = 25.0
@@ -193,20 +208,58 @@ def all_authored_metres(text):
 
 
 def street_mentions(text):
-    """Candidate street names written in the text, longest form first."""
-    words = re.findall(r"[\w'\u2019-]+", text)
-    connectors = {"de", "du", "des", "la", "le", "les", "d", "l"}
+    """Candidate street names in the text, as (character position, tokens)."""
+    toks = [(m.group(0), m.start()) for m in re.finditer(r"[\w'\u2019-]+", text)]
     found = []
-    for i, w in enumerate(words[:-1]):
+    for i, (w, pos) in enumerate(toks[:-1]):
         # Capitalised, or it is the ordinary word: "the two rivers made the
         # place. The Aveyron carried the trade" is not a street called Place.
         if not w[:1].isupper() or streets.fold(w) not in STREET_PREFIXES:
             continue
-        nxt = words[i + 1]
-        if not (nxt[:1].isupper() or streets.fold(nxt).strip("'\u2019") in connectors):
+        nxt = toks[i + 1][0]
+        if not (nxt[:1].isupper() or streets.fold(nxt).strip("'\u2019") in CONNECTORS):
             continue
-        found.append(words[i:i + 6])
+        found.append((pos, [t for t, _ in toks[i:i + 6]]))
     return found
+
+
+def resolve_street(town, tokens):
+    """The longest form of a mention that the map actually knows."""
+    for n in range(len(tokens), 1, -1):
+        name = " ".join(tokens[:n])
+        if town.has_street(name):
+            # The map's spelling, not the author's: "Rue Amelie Galup" has to
+            # come back as "Rue Amélie Galup" or nothing downstream will match.
+            return town.canonical(name) or name
+    return None
+
+
+def compass_positions(text):
+    """Compass words with where they sit in the text."""
+    t = text.lower()
+    out, spans = [], []
+    for word in sorted(COMPASS, key=len, reverse=True):
+        for m in re.finditer(rf"\b{re.escape(word)}\b", t):
+            # "west" sits inside "north west". Without this the compound is read
+            # twice, once correctly and once as a bearing 45 degrees out.
+            if any(m.start() < e and m.end() > b for b, e in spans):
+                continue
+            spans.append((m.start(), m.end()))
+            out.append((m.start(), COMPASS[word], word))
+    return sorted(out)
+
+
+def attached_street(text, pos, mentions):
+    """The street a compass word at `pos` is talking about, if any."""
+    best = None
+    for mpos, tokens in mentions:
+        if mpos >= pos or pos - mpos > BEARING_ATTACH_CHARS:
+            continue
+        if re.search(r"[.!?]|\n\n", text[mpos:pos]):
+            continue          # a new sentence is a new subject
+        if best is None or mpos > best[0]:
+            best = (mpos, tokens)
+    return best
 
 
 def compass_claims(text):
@@ -317,12 +370,6 @@ def check(tour):
                 # of the two is stale. Either way somebody gets sent the wrong way.
                 claims = compass_claims(d)
                 if claims:
-                    want = geo.bearing_deg(prev["lat"], prev["lon"], s["lat"], s["lon"])
-                    if all(angle_off(c, want) > COMPASS_TOLERANCE_DEG for c in claims):
-                        errors.append(
-                            f"{where}: directions say "
-                            f"{'/'.join(str(int(c)) for c in claims)} degrees but the "
-                            f"coordinates say {int(want)}; one of them is wrong")
                     if s.get("coord_source") == "estimated":
                         notes.append(f"{where}: a compass bearing into a coordinate "
                                      f"that is only estimated")
@@ -429,11 +476,8 @@ def check(tour):
             [tour.get("outro") or "", (tour.get("intro") or {}).get("start", "")]
             + [f"{s.get('directions','') or ''} {s.get('where','')} "
                f"{s.get('look','')} {s.get('after','')}" for s in stops])
-        for mention in street_mentions(prose):
-            for n in range(len(mention), 1, -1):
-                if town.has_street(" ".join(mention[:n])):
-                    break
-            else:
+        for _, mention in street_mentions(prose):
+            if resolve_street(town, mention) is None:
                 errors.append(f"no street called {' '.join(mention[:4])!r} in "
                               f"{tour.get('city', 'this town')}; the map says "
                               f"otherwise")
@@ -457,6 +501,60 @@ def check(tour):
                     errors.append(
                         f"{where}: the directions add up to {said} m but the "
                         f"streets route in {r['metres']:.0f} m")
+
+            # ---- what the map says about this leg ----
+            legs = [x for x in r["legs"] if x["metres"] >= 8]
+            unnamed = sum(x["metres"] for x in legs if not x["name"])
+            heading = {}
+            for x in legs:
+                if x["name"] and x["metres"] >= heading.get(x["name"], (0, 0))[0]:
+                    heading[x["name"]] = (x["metres"], x["bearing"])
+            simple = unnamed == 0 and len(legs) <= SIMPLE_MAX_TURNS
+            standing = set()
+            for pt in ((stops[i - 1]["lat"], stops[i - 1]["lon"]),
+                       (s["lat"], s["lon"])):
+                standing |= {n for n, _ in town.named_here(*pt, 45)}
+
+            text = s.get("directions") or ""
+            mentions = street_mentions(text)
+            named = []
+            for pos, tokens in mentions:
+                got = resolve_street(town, tokens)
+                if got:
+                    named.append((pos, got))
+
+            # You cannot send somebody down a street this leg never touches.
+            for _, name in named:
+                if name not in heading and name not in standing:
+                    errors.append(f"{where}: names {name!r}, which is not on the "
+                                  f"way from the stop before it")
+
+            # A quarter of this walk is unnamed lanes. Where that is true, a turn
+            # sequence cannot be followed, so do not write one.
+            if not simple:
+                why = (f"{len(legs)} turns, {unnamed / r['metres'] * 100:.0f}% of "
+                       f"it down lanes with no name")
+                if TURN_CLAIMS.search(text):
+                    errors.append(f"{where}: {why}. Say what to head for, not "
+                                  f"which way to turn")
+                if len({n for _, n in named}) > 2:
+                    errors.append(f"{where}: {why}, but the directions name "
+                                  f"{len({n for _, n in named})} streets")
+
+            # A bearing next to a street name is a claim about that street.
+            for pos, deg, word in compass_positions(text):
+                att = attached_street(text, pos, mentions)
+                name = resolve_street(town, att[1]) if att else None
+                if name and name in heading:
+                    if angle_off(deg, heading[name][1]) > COMPASS_TOLERANCE_DEG:
+                        errors.append(
+                            f"{where}: says {name} runs {word}, but on this leg "
+                            f"it runs {streets.compass_word(heading[name][1])}")
+                elif angle_off(deg, geo.bearing_deg(
+                        stops[i - 1]["lat"], stops[i - 1]["lon"],
+                        s["lat"], s["lon"])) > COMPASS_TOLERANCE_DEG:
+                    errors.append(f"{where}: says {word}, but the leg goes "
+                                  f"{streets.compass_word(geo.bearing_deg(stops[i-1]['lat'], stops[i-1]['lon'], s['lat'], s['lon']))}")
 
     split = sorted(counts.values(), reverse=True)
     if split != c["topic_split"]:
