@@ -40,6 +40,7 @@
       "lat": 44.14988,
       "lon": 1.75507,
       "directions": null,
+      "directions_mode": "turn_by_turn",
       "gate": {
         "radius_m": 35,
         "allow_pass": true,
@@ -60,7 +61,8 @@
       "where": "the parish church, on Place de la Mairie",
       "lat": 44.150843,
       "lon": 1.755619,
-      "directions": "Come off the bridge and take Rue du Pont de l'Aveyron, which runs east away from the water.\n\nFollow it about ninety metres to the square at the top. That is Place de la Mairie.\n\nThe church is on the square. Go inside.",
+      "directions": "Come off the bridge and take Rue du Pont de l'Aveyron, which runs east away from the water.\n\nFollow it up to the square at the top. About a hundred and thirty metres from the middle of the bridge. That is Place de la Mairie.\n\nThe church is on the square. Go inside.",
+      "directions_mode": "turn_by_turn",
       "gate": null,
       "nudge": null,
       "question": {
@@ -100,7 +102,8 @@
       "where": "Place du Bessarel, where the old canal runs through the town",
       "lat": 44.152006,
       "lon": 1.75472,
-      "directions": "From Place de la Mairie, go back down Rue du Pont de l'Aveyron, which runs north from the square, and carry on into Rue de Cayssac, which runs west.\n\nThat feeds through Place du Timple and Rue du Timple, both running north west, and comes out at Place du Bessarel. About two hundred metres in all.\n\nYou arrive in a long thin square with a stone channel cut across it.",
+      "directions": "From the church on Place de la Mairie, head north west, away from the river. About two hundred metres.\n\nYou may come out on Rue du Pont de l'Aveyron, Rue de Cayssac or Rue du Timplé. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a long thin square with water running across it.",
+      "directions_mode": "rough",
       "gate": null,
       "nudge": null,
       "question": {
@@ -137,7 +140,8 @@
       "where": "the Caserne des Anglais, on Rue Guilhem Peyre",
       "lat": 44.151787,
       "lon": 1.756171,
-      "directions": "From Place du Bessarel, walk east along the square to the far end and pick up Rue du Pont des Vierges, which runs north east.\n\nIt meets Rue Amelie Galup, running south east, and that feeds into Rue du Cluzel, running south. About a hundred and seventy metres in all.\n\nRue du Cluzel brings you out onto Rue Guilhem Peyre.",
+      "directions": "From Place du Bessarel, head east. About a hundred and fifty metres, all of it in narrow lanes.\n\nYou may come out on Rue du Pont des Vierges, Rue Amélie Galup or Rue du Cluzel. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a street sign for Rue Guilhem Peyre.",
+      "directions_mode": "rough",
       "gate": null,
       "nudge": {
         "prompt": "There is a brocante on this street, La Lanterne. Worth a look in the window as you pass.",
@@ -176,6 +180,7 @@
       "lat": 44.152462,
       "lon": 1.756687,
       "directions": "From the Caserne des Anglais, carry on along Rue Guilhem Peyre, which runs east from here. After about fifty metres it becomes Rue de la Pelisserie and turns north.\n\nKeep going another seventy metres, to the middle of the street.",
+      "directions_mode": "turn_by_turn",
       "gate": {
         "radius_m": 40,
         "allow_pass": true,
@@ -200,6 +205,7 @@
       "lat": 44.151607,
       "lon": 1.756762,
       "directions": "From the middle of Rue de la Pelisserie, walk south to the far end of the street, about a hundred metres.\n\nIt opens straight into Place de la Halle. The covered market stands in the middle of the square.\n\nGet underneath it, in the shade.",
+      "directions_mode": "turn_by_turn",
       "gate": {
         "radius_m": 25,
         "allow_pass": true,
@@ -224,6 +230,7 @@
       "lat": 44.151809,
       "lon": 1.756546,
       "directions": "From the covered market, cross straight over Place de la Halle to its north west corner, about thirty metres.\n\nThe tall stone house with the square tower on top is the Maison Romane. Stand back far enough to look up at the row of arches above the ground floor.",
+      "directions_mode": "turn_by_turn",
       "gate": null,
       "nudge": null,
       "question": {

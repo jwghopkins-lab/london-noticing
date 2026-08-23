@@ -1,261 +1,275 @@
 {
-  "_comment": "Two White Eagles. Seven stops round the middle of Saint-Antonin-Noble-Val, built for a Sunday morning when the market is on. Everything is outdoors except the church, which is open on a Sunday and is the reason the walk can have an indoor stop at all. Four stops ask a question, three are gated on position, and the last stop is a hunt for a particular carving. The brocante shops and the cafes are soft prompts rather than gates, because a shop that happens to be shut must not be able to stop the walk. Every fact was checked against a source before it was written. The two coordinates that matter most, the old town hall on Place de la Halle and the 1752 town hall, come from Wikidata and Wikipedia; the rest are placed relative to those, so gate radii are deliberately generous and every gate carries a pass button.",
-  "id": "two-white-eagles",
-  "served_at": "noble-val",
-  "name": "Two White Eagles",
-  "tagline": "six things worth stopping for",
-  "city": "Saint-Antonin-Noble-Val",
-  "mode": "fixed",
-  "contract": {
-    "n_stops": 7,
-    "topic_split": [
-      3,
-      2,
-      2
-    ],
-    "question_stops": 4,
-    "location_gates": 3,
-    "bbox": [
-      44.145,
-      44.158,
-      1.748,
-      1.765
-    ]
-  },
-  "intro": {
-    "lead": "Seven stops round the middle of Saint-Antonin-Noble-Val.",
-    "body": "Under a kilometre of walking, about an hour.\n\nFour stops ask a question you can only answer by looking at the thing in front of you. Three just need you standing in the right place.\n\nBuilt for a Sunday morning, when the market is on. Everything is free. Everything is outdoors except the church, and on a Sunday the church is open.",
-    "start": "Start on the road bridge over the Aveyron, at the southern edge of the old town, where Rue du Pont de l'Aveyron reaches the water."
-  },
-  "topics": [
-    {
-      "id": "water",
-      "name": "The Water",
-      "blurb": "Two rivers meet here. Everything the town has ever done came out of that, including the worst day in its history."
-    },
-    {
-      "id": "broken",
-      "name": "Knocked Down, Put Back",
-      "blurb": "An abbey, a ring of walls and a foreign garrison. Two of the three are gone."
-    },
-    {
-      "id": "business",
-      "name": "The Business of the Town",
-      "blurb": "Skins, market stalls and the men who ran both. All three are still on the same streets."
-    }
+ "_comment": "Two White Eagles. Seven stops round the middle of Saint-Antonin-Noble-Val, built for a Sunday morning when the market is on. Everything is outdoors except the church, which is open on a Sunday and is the reason the walk can have an indoor stop at all. Four stops ask a question, three are gated on position, and the last stop is a hunt for a particular carving. The brocante shops and the cafes are soft prompts rather than gates, because a shop that happens to be shut must not be able to stop the walk. Every fact was checked against a source before it was written. The two coordinates that matter most, the old town hall on Place de la Halle and the 1752 town hall, come from Wikidata and Wikipedia; the rest are placed relative to those, so gate radii are deliberately generous and every gate carries a pass button.",
+ "id": "two-white-eagles",
+ "served_at": "noble-val",
+ "name": "Two White Eagles",
+ "tagline": "six things worth stopping for",
+ "city": "Saint-Antonin-Noble-Val",
+ "mode": "fixed",
+ "contract": {
+  "n_stops": 7,
+  "topic_split": [
+   3,
+   2,
+   2
   ],
-  "outro": "That is the seven.\n\nNow go and sit down. The Cafe de la Halle is on this square and you are thirty metres from it.\n\nIf you have walking left, the pale cliff over the town is the Roc d'Anglars and there is a path up it. A stiff climb, and it puts the whole town below you.",
-  "stops": [
-    {
-      "id": "pont",
-      "topic": "water",
-      "title": "The Bridge",
-      "where": "the road bridge over the Aveyron, at the southern edge of the old town",
-      "lat": 44.14988,
-      "lon": 1.75507,
-      "gate": {
-        "radius_m": 35,
-        "allow_pass": true,
-        "prompt": "Get onto the bridge itself, with the river underneath you."
-      },
-      "question": null,
-      "look": "Stand on the bridge, in the middle of it if the traffic lets you.\n\nThe big river is the Aveyron. The smaller one joining it is the Bonnette. The pale cliff standing over the town is the Roc d'Anglars.",
-      "look_spoken": null,
-      "after": "The town is named after a corpse in a boat.\n\nAntonin was martyred at Pamiers, away south. The story says his body was put in a boat with nobody aboard and two white eagles steered it up this river to here. A monastery went up on the spot in 763 and the town grew round it. Noble Val is the rest of the name. The noble valley.\n\nThe two rivers made the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work.\n\nThey flood, too. In March 1930 the water rose twelve metres and covered three quarters of the town.",
-      "after_spoken": "The town is named after a corpse in a boat.\n\nAntonin was martyred at Pamiers, away south. The story says his body was put in a boat with nobody aboard and two white eagles steered it up this river to here. A monastery went up on the spot in seven six three and the town grew round it. Noble Val is the rest of the name. The noble valley.\n\nThe two rivers made the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work.\n\nThey flood, too. In March nineteen thirty the water rose twelve metres and covered three quarters of the town.",
-      "coord_source": "osm"
-    },
-    {
-      "id": "eglise",
-      "topic": "broken",
-      "title": "Inside the Church",
-      "where": "the parish church, on Place de la Mairie",
-      "lat": 44.150843,
-      "lon": 1.755619,
-      "directions": "Come off the bridge and take Rue du Pont de l'Aveyron, which runs east away from the water.\n\nFollow it about ninety metres to the square at the top. That is Place de la Mairie.\n\nThe church is on the square. Go inside.",
-      "gate": null,
-      "question": {
-        "ask": "What time of day has he set it?",
-        "answers": [
-          "night",
-          "at night",
-          "night time",
-          "nighttime",
-          "the night",
-          "dark",
-          "in the dark",
-          "after dark",
-          "darkness",
-          "la nuit",
-          "nuit",
-          "de nuit",
-          "midnight",
-          "evening",
-          "dusk",
-          "moonlight",
-          "by moonlight",
-          "night-time"
-        ],
-        "hint": "It is not a daylight scene. Look at what the sky and the water are doing."
-      },
-      "look": "One stop indoors, and only because it is Sunday. If a service is running, stay at the back.\n\nOn the wall there is a painting of the story you just heard. The boat coming up the river, with the saint's body in it.\n\nLook at the light in it.",
-      "look_spoken": null,
-      "after": "Night. It is by Fauconnier, and he painted the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some say angels. Either way nobody in the boat is rowing. There is a second version carved over a doorway here by Alex Coutet of Capdenac.\n\nThe church is younger than the railway. Begun in 1862, consecrated in 1872. The one it replaced is gone: an abbey stood here from 763 until 1562, when the town turned Protestant, wrecked it and threw the Catholics out.\n\nLouis XIII took the town back in 1622 and pulled the walls down. That is why a medieval walled town has no walls.",
-      "after_spoken": "Night. It is by Fauconnier, and he painted the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some say angels. Either way nobody in the boat is rowing. There is a second version carved over a doorway here by Alex Coutet of Capdenac.\n\nThe church is younger than the railway. Begun in eighteen sixty-two, consecrated in eighteen seventy-two. The one it replaced is gone: an abbey stood here from seven six three until fifteen sixty-two, when the town turned Protestant, wrecked it and threw the Catholics out.\n\nLouis the Thirteenth took the town back in sixteen twenty-two and pulled the walls down. That is why a medieval walled town has no walls.",
-      "coord_source": "osm"
-    },
-    {
-      "id": "bessarel",
-      "topic": "water",
-      "title": "Place du Bessarel",
-      "where": "Place du Bessarel, where the old canal runs through the town",
-      "lat": 44.152006,
-      "lon": 1.75472,
-      "directions": "From Place de la Mairie, go back down Rue du Pont de l'Aveyron, which runs north from the square, and carry on into Rue de Cayssac, which runs west.\n\nThat feeds through Place du Timple and Rue du Timple, both running north west, and comes out at Place du Bessarel. About two hundred metres in all.\n\nYou arrive in a long thin square with a stone channel cut across it.",
-      "gate": null,
-      "question": {
-        "ask": "What was it for?",
-        "answers": [
-          "washing clothes",
-          "washing",
-          "laundry",
-          "doing the laundry",
-          "washing linen",
-          "washing the clothes",
-          "lavoir",
-          "a lavoir",
-          "le lavoir",
-          "washhouse",
-          "wash house",
-          "a washhouse",
-          "cleaning clothes",
-          "laundering",
-          "clothes"
-        ],
-        "hint": "Look at the stone edge running along the water. It slopes down into it, and it has been worn smooth by something being rubbed on it."
-      },
-      "look": "The water crossing this square is not a river. It is a channel, cut on purpose, fed off the Bonnette.\n\nAt one side a low open building stands over it, with a long stone basin underneath and a sloping stone edge worn smooth.",
-      "look_spoken": null,
-      "after": "Washing clothes. It is a lavoir, the village washhouse, and every French town this size had one.\n\nThe channel is older than it looks. It was already the canal du Bessarel in 1315, and this whole quarter ran on it. Tanners, then drapers, because turning hides into leather and washing raw wool both need running water. Saint-Antonin got rich on calfskin in the 1200s and 1300s.\n\nThen the water took it back. The flood of March 1930 destroyed most of the quarter and two people drowned, one of them here. This square only exists because of it, opened on the ground the flood cleared.\n\nOne tannery is still standing, a little west of here.",
-      "after_spoken": "Washing clothes. It is a lavoir, the village washhouse, and every French town this size had one.\n\nThe channel is older than it looks. It was already the canal du Bessarel in thirteen fifteen, and this whole quarter ran on it. Tanners, then drapers, because turning hides into leather and washing raw wool both need running water. Saint-Antonin got rich on calfskin in the twelve hundreds and thirteen hundreds.\n\nThen the water took it back. The flood of March nineteen thirty destroyed most of the quarter and two people drowned, one of them here. This square only exists because of it, opened on the ground the flood cleared.\n\nOne tannery is still standing, a little west of here.",
-      "coord_source": "osm"
-    },
-    {
-      "id": "caserne",
-      "topic": "broken",
-      "title": "The Barracks on Guilhem Peyre",
-      "where": "the Caserne des Anglais, on Rue Guilhem Peyre",
-      "lat": 44.151787,
-      "lon": 1.756171,
-      "directions": "From Place du Bessarel, walk east along the square to the far end and pick up Rue du Pont des Vierges, which runs north east.\n\nIt meets Rue Amelie Galup, running south east, and that feeds into Rue du Cluzel, running south. About a hundred and seventy metres in all.\n\nRue du Cluzel brings you out onto Rue Guilhem Peyre.",
-      "gate": null,
-      "question": {
-        "ask": "One house on this street was a barracks. Whose soldiers were in it?",
-        "answers": [
-          "english",
-          "the english",
-          "england",
-          "englishmen",
-          "english soldiers",
-          "the english army",
-          "anglais",
-          "les anglais",
-          "des anglais",
-          "british",
-          "the british",
-          "britain",
-          "the brits"
-        ],
-        "hint": "The house still carries the name, in French, on a plaque or over a door. It is the last word that matters."
-      },
-      "look": "One house along here carries a name, carved or painted or on a plaque.\n\nIt has been called the same thing for nearly seven hundred years, and the name says who was living in it.",
-      "look_spoken": null,
-      "after": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from 1352 to 1354, in the middle of the Hundred Years War, when this part of France was changing hands over and over. It went on being a barracks long after they left, for the French crown.\n\nThey were here two years. The name has lasted nearly seven centuries.",
-      "after_spoken": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from thirteen fifty-two to thirteen fifty-four, in the middle of the Hundred Years War, when this part of France was changing hands over and over. It went on being a barracks long after they left, for the French crown.\n\nThey were here two years. The name has lasted nearly seven centuries.",
-      "coord_source": "osm",
-      "nudge": {
-        "prompt": "There is a brocante on this street, La Lanterne. Worth a look in the window as you pass.",
-        "confirm": "Had a look"
-      }
-    },
-    {
-      "id": "pelisserie",
-      "topic": "business",
-      "title": "The Street of Other People's Things",
-      "where": "rue de la Pelisserie, running between Place des Tilleuls and Place du Buoc",
-      "lat": 44.152462,
-      "lon": 1.756687,
-      "directions": "From the Caserne des Anglais, carry on along Rue Guilhem Peyre, which runs east from here. After about fifty metres it becomes Rue de la Pelisserie and turns north.\n\nKeep going another seventy metres, to the middle of the street.",
-      "gate": {
-        "radius_m": 40,
-        "allow_pass": true,
-        "prompt": "Get into the middle of Rue de la Pelisserie, in among the shopfronts."
-      },
-      "nudge": {
-        "prompt": "Look in the windows as you go, and pick the strangest single object you can find for sale.",
-        "confirm": "Found one"
-      },
-      "question": null,
-      "look": "Look at the shopfronts, then look above them.\n\nThe houses along here are the ones the trade paid for, and a good many are medieval under the paint. On a Sunday you see them over the top of a cheese stall.",
-      "look_spoken": null,
-      "after": "Pelisserie means pelts. This was the street of the pelletiers, who dressed skins into fur, and the houses on both sides were theirs and the tanners'. Thirteenth and fourteenth century money. The same trade as Bessarel, one stage on: tanned down by the water, sold up here.\n\nThe town still sells other people's things. There are brocantes scattered through these streets. Furniture, plates, tools, pictures, whatever came out of a house.\n\nOn a Sunday the market runs the whole length of it, Place des Tilleuls to Place du Buoc. What is on the stalls tells you the month. Melons and tomatoes now. Truffles and chestnuts in January.",
-      "after_spoken": null,
-      "coord_source": "osm"
-    },
-    {
-      "id": "halle",
-      "topic": "business",
-      "title": "The Covered Market",
-      "where": "the halle, in the main square in the middle of the town",
-      "lat": 44.151607,
-      "lon": 1.756762,
-      "directions": "From the middle of Rue de la Pelisserie, walk south to the far end of the street, about a hundred metres.\n\nIt opens straight into Place de la Halle. The covered market stands in the middle of the square.\n\nGet underneath it, in the shade.",
-      "gate": {
-        "radius_m": 25,
-        "allow_pass": true,
-        "prompt": "Get right up to the covered market in the middle of the square."
-      },
-      "question": null,
-      "look": "Stand under the roof and look up at what is holding it there.\n\nThen look round the square. One building on it is a great deal older than the rest.",
-      "look_spoken": null,
-      "after": "The halle went up in 1841 and the town paid for it themselves.\n\nIt is still doing its job. Sunday morning, seven until one.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of 2013, with Helen Mirren running a restaurant and Om Puri running the rival one. The scene where the two of them go to the mayor to complain about each other was filmed on this square.",
-      "after_spoken": "The halle went up in eighteen forty-one and the town paid for it themselves.\n\nIt is still doing its job. Sunday morning, seven until one.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of twenty thirteen, with Helen Mirren running a restaurant and Om Puri running the rival one. The scene where the two of them go to the mayor to complain about each other was filmed on this square.",
-      "nudge": {
-        "prompt": "The cafes are round the edge of this square and they are open all morning. Pick the one you want now, because you are coming back to it at the end.",
-        "confirm": "Picked one"
-      },
-      "coord_source": "osm"
-    },
-    {
-      "id": "maison-romane",
-      "topic": "business",
-      "title": "The Oldest One",
-      "where": "the Maison Romane, the old consuls' house on the main square",
-      "lat": 44.151809,
-      "lon": 1.756546,
-      "directions": "From the covered market, cross straight over Place de la Halle to its north west corner, about thirty metres.\n\nThe tall stone house with the square tower on top is the Maison Romane. Stand back far enough to look up at the row of arches above the ground floor.",
-      "gate": null,
-      "question": {
-        "ask": "Who are the two by the tree?",
-        "answers": [
-          "adam and eve",
-          "adam & eve",
-          "adam eve",
-          "eve and adam",
-          "adam et eve",
-          "adam et ève",
-          "adam",
-          "eve",
-          "adam and eve and the tree",
-          "adam and eve and the serpent"
-        ],
-        "hint": "Look at the row of small columns in the gallery above the big arches. The flat panels between them are carved. One has a tree with a figure standing on each side of it."
-      },
-      "look": "The carvings are the thing here, and they are easy to walk past.\n\nAbove the big ground floor arches there is a gallery of small columns with flat carved panels between them. One panel has a man sitting down holding a book. Another has two figures either side of a tree.",
-      "look_spoken": null,
-      "after": "Adam and Eve, under the tree. The seated man with the book is the emperor Justinian, holding his law code.\n\nThat pairing is not decoration. This building was a court. Justice was done in the hall behind those windows, so they put the first crime and the first law code on the front, where anybody waiting outside could see both.\n\nIt went up around 1125 for the viscount of Saint-Antonin and is generally called the oldest civil building in France. Not a church, not a castle. A town house. The consuls bought it in 1312 and ran the town from it until the Revolution.\n\nThe tower is not medieval. Viollet-le-Duc invented it in the 1840s, and it is the bit everybody photographs.",
-      "after_spoken": "Adam and Eve, under the tree. The seated man with the book is the emperor Justinian, holding his law code.\n\nThat pairing is not decoration. This building was a court. Justice was done in the hall behind those windows, so they put the first crime and the first law code on the front, where anybody waiting outside could see both.\n\nIt went up around eleven twenty-five for the viscount of Saint-Antonin and is generally called the oldest civil building in France. Not a church, not a castle. A town house. The consuls bought it in thirteen twelve and ran the town from it until the Revolution.\n\nThe tower is not medieval. Viollet-le-Duc invented it in the eighteen forties, and it is the bit everybody photographs.",
-      "coord_source": "osm"
-    }
+  "question_stops": 4,
+  "location_gates": 3,
+  "bbox": [
+   44.145,
+   44.158,
+   1.748,
+   1.765
   ]
+ },
+ "intro": {
+  "lead": "Seven stops round the middle of Saint-Antonin-Noble-Val.",
+  "body": "Under a kilometre of walking, about an hour.\n\nFour stops ask a question you can only answer by looking at the thing in front of you. Three just need you standing in the right place.\n\nBuilt for a Sunday morning, when the market is on. Everything is free. Everything is outdoors except the church, and on a Sunday the church is open.",
+  "start": "Start on the road bridge over the Aveyron, at the southern edge of the old town, where Rue du Pont de l'Aveyron reaches the water."
+ },
+ "topics": [
+  {
+   "id": "water",
+   "name": "The Water",
+   "blurb": "Two rivers meet here. Everything the town has ever done came out of that, including the worst day in its history."
+  },
+  {
+   "id": "broken",
+   "name": "Knocked Down, Put Back",
+   "blurb": "An abbey, a ring of walls and a foreign garrison. Two of the three are gone."
+  },
+  {
+   "id": "business",
+   "name": "The Business of the Town",
+   "blurb": "Skins, market stalls and the men who ran both. All three are still on the same streets."
+  }
+ ],
+ "outro": "That is the seven.\n\nNow go and sit down. The Cafe de la Halle is on this square and you are thirty metres from it.\n\nIf you have walking left, the pale cliff over the town is the Roc d'Anglars and there is a path up it. A stiff climb, and it puts the whole town below you.",
+ "stops": [
+  {
+   "id": "pont",
+   "topic": "water",
+   "title": "The Bridge",
+   "where": "the road bridge over the Aveyron, at the southern edge of the old town",
+   "lat": 44.14988,
+   "lon": 1.75507,
+   "gate": {
+    "radius_m": 35,
+    "allow_pass": true,
+    "prompt": "Get onto the bridge itself, with the river underneath you."
+   },
+   "question": null,
+   "look": "Stand on the bridge, in the middle of it if the traffic lets you.\n\nThe big river is the Aveyron. The smaller one joining it is the Bonnette. The pale cliff standing over the town is the Roc d'Anglars.",
+   "look_spoken": null,
+   "after": "The town is named after a corpse in a boat.\n\nAntonin was martyred at Pamiers, away south. The story says his body was put in a boat with nobody aboard and two white eagles steered it up this river to here. A monastery went up on the spot in 763 and the town grew round it. Noble Val is the rest of the name. The noble valley.\n\nThe two rivers made the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work.\n\nThey flood, too. In March 1930 the water rose twelve metres and covered three quarters of the town.",
+   "after_spoken": "The town is named after a corpse in a boat.\n\nAntonin was martyred at Pamiers, away south. The story says his body was put in a boat with nobody aboard and two white eagles steered it up this river to here. A monastery went up on the spot in seven six three and the town grew round it. Noble Val is the rest of the name. The noble valley.\n\nThe two rivers made the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work.\n\nThey flood, too. In March nineteen thirty the water rose twelve metres and covered three quarters of the town.",
+   "coord_source": "osm"
+  },
+  {
+   "id": "eglise",
+   "topic": "broken",
+   "title": "Inside the Church",
+   "where": "the parish church, on Place de la Mairie",
+   "lat": 44.150843,
+   "lon": 1.755619,
+   "directions": "Come off the bridge and take Rue du Pont de l'Aveyron, which runs east away from the water.\n\nFollow it up to the square at the top. About a hundred and thirty metres from the middle of the bridge. That is Place de la Mairie.\n\nThe church is on the square. Go inside.",
+   "gate": null,
+   "question": {
+    "ask": "What time of day has he set it?",
+    "answers": [
+     "night",
+     "at night",
+     "night time",
+     "nighttime",
+     "the night",
+     "dark",
+     "in the dark",
+     "after dark",
+     "darkness",
+     "la nuit",
+     "nuit",
+     "de nuit",
+     "midnight",
+     "evening",
+     "dusk",
+     "moonlight",
+     "by moonlight",
+     "night-time"
+    ],
+    "hint": "It is not a daylight scene. Look at what the sky and the water are doing."
+   },
+   "look": "One stop indoors, and only because it is Sunday. If a service is running, stay at the back.\n\nOn the wall there is a painting of the story you just heard. The boat coming up the river, with the saint's body in it.\n\nLook at the light in it.",
+   "look_spoken": null,
+   "after": "Night. It is by Fauconnier, and he painted the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some say angels. Either way nobody in the boat is rowing. There is a second version carved over a doorway here by Alex Coutet of Capdenac.\n\nThe church is younger than the railway. Begun in 1862, consecrated in 1872. The one it replaced is gone: an abbey stood here from 763 until 1562, when the town turned Protestant, wrecked it and threw the Catholics out.\n\nLouis XIII took the town back in 1622 and pulled the walls down. That is why a medieval walled town has no walls.",
+   "after_spoken": "Night. It is by Fauconnier, and he painted the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some say angels. Either way nobody in the boat is rowing. There is a second version carved over a doorway here by Alex Coutet of Capdenac.\n\nThe church is younger than the railway. Begun in eighteen sixty-two, consecrated in eighteen seventy-two. The one it replaced is gone: an abbey stood here from seven six three until fifteen sixty-two, when the town turned Protestant, wrecked it and threw the Catholics out.\n\nLouis the Thirteenth took the town back in sixteen twenty-two and pulled the walls down. That is why a medieval walled town has no walls.",
+   "coord_source": "osm"
+  },
+  {
+   "id": "bessarel",
+   "topic": "water",
+   "title": "Place du Bessarel",
+   "where": "Place du Bessarel, where the old canal runs through the town",
+   "lat": 44.152006,
+   "lon": 1.75472,
+   "directions": "From the church on Place de la Mairie, head north west, away from the river. About two hundred metres.",
+   "gate": null,
+   "question": {
+    "ask": "What was it for?",
+    "answers": [
+     "washing clothes",
+     "washing",
+     "laundry",
+     "doing the laundry",
+     "washing linen",
+     "washing the clothes",
+     "lavoir",
+     "a lavoir",
+     "le lavoir",
+     "washhouse",
+     "wash house",
+     "a washhouse",
+     "cleaning clothes",
+     "laundering",
+     "clothes"
+    ],
+    "hint": "Look at the stone edge running along the water. It slopes down into it, and it has been worn smooth by something being rubbed on it."
+   },
+   "look": "The water crossing this square is not a river. It is a channel, cut on purpose, fed off the Bonnette.\n\nAt one side a low open building stands over it, with a long stone basin underneath and a sloping stone edge worn smooth.",
+   "look_spoken": null,
+   "after": "Washing clothes. It is a lavoir, the village washhouse, and every French town this size had one.\n\nThe channel is older than it looks. It was already the canal du Bessarel in 1315, and this whole quarter ran on it. Tanners, then drapers, because turning hides into leather and washing raw wool both need running water. Saint-Antonin got rich on calfskin in the 1200s and 1300s.\n\nThen the water took it back. The flood of March 1930 destroyed most of the quarter and two people drowned, one of them here. This square only exists because of it, opened on the ground the flood cleared.\n\nOne tannery is still standing, a little west of here.",
+   "after_spoken": "Washing clothes. It is a lavoir, the village washhouse, and every French town this size had one.\n\nThe channel is older than it looks. It was already the canal du Bessarel in thirteen fifteen, and this whole quarter ran on it. Tanners, then drapers, because turning hides into leather and washing raw wool both need running water. Saint-Antonin got rich on calfskin in the twelve hundreds and thirteen hundreds.\n\nThen the water took it back. The flood of March nineteen thirty destroyed most of the quarter and two people drowned, one of them here. This square only exists because of it, opened on the ground the flood cleared.\n\nOne tannery is still standing, a little west of here.",
+   "coord_source": "osm",
+   "directions_mode": "rough",
+   "directions_streets": [
+    "Rue du Pont de l'Aveyron",
+    "Rue de Cayssac",
+    "Rue du Timplé"
+   ],
+   "directions_target": "a long thin square with water running across it"
+  },
+  {
+   "id": "caserne",
+   "topic": "broken",
+   "title": "The Barracks on Guilhem Peyre",
+   "where": "the Caserne des Anglais, on Rue Guilhem Peyre",
+   "lat": 44.151787,
+   "lon": 1.756171,
+   "directions": "From Place du Bessarel, head east. About a hundred and fifty metres, all of it in narrow lanes.",
+   "gate": null,
+   "question": {
+    "ask": "One house on this street was a barracks. Whose soldiers were in it?",
+    "answers": [
+     "english",
+     "the english",
+     "england",
+     "englishmen",
+     "english soldiers",
+     "the english army",
+     "anglais",
+     "les anglais",
+     "des anglais",
+     "british",
+     "the british",
+     "britain",
+     "the brits"
+    ],
+    "hint": "The house still carries the name, in French, on a plaque or over a door. It is the last word that matters."
+   },
+   "look": "One house along here carries a name, carved or painted or on a plaque.\n\nIt has been called the same thing for nearly seven hundred years, and the name says who was living in it.",
+   "look_spoken": null,
+   "after": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from 1352 to 1354, in the middle of the Hundred Years War, when this part of France was changing hands over and over. It went on being a barracks long after they left, for the French crown.\n\nThey were here two years. The name has lasted nearly seven centuries.",
+   "after_spoken": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from thirteen fifty-two to thirteen fifty-four, in the middle of the Hundred Years War, when this part of France was changing hands over and over. It went on being a barracks long after they left, for the French crown.\n\nThey were here two years. The name has lasted nearly seven centuries.",
+   "coord_source": "osm",
+   "nudge": {
+    "prompt": "There is a brocante on this street, La Lanterne. Worth a look in the window as you pass.",
+    "confirm": "Had a look"
+   },
+   "directions_mode": "rough",
+   "directions_streets": [
+    "Rue du Pont des Vierges",
+    "Rue Amélie Galup",
+    "Rue du Cluzel"
+   ],
+   "directions_target": "a street sign for Rue Guilhem Peyre"
+  },
+  {
+   "id": "pelisserie",
+   "topic": "business",
+   "title": "The Street of Other People's Things",
+   "where": "rue de la Pelisserie, running between Place des Tilleuls and Place du Buoc",
+   "lat": 44.152462,
+   "lon": 1.756687,
+   "directions": "From the Caserne des Anglais, carry on along Rue Guilhem Peyre, which runs east from here. After about fifty metres it becomes Rue de la Pelisserie and turns north.\n\nKeep going another seventy metres, to the middle of the street.",
+   "gate": {
+    "radius_m": 40,
+    "allow_pass": true,
+    "prompt": "Get into the middle of Rue de la Pelisserie, in among the shopfronts."
+   },
+   "nudge": {
+    "prompt": "Look in the windows as you go, and pick the strangest single object you can find for sale.",
+    "confirm": "Found one"
+   },
+   "question": null,
+   "look": "Look at the shopfronts, then look above them.\n\nThe houses along here are the ones the trade paid for, and a good many are medieval under the paint. On a Sunday you see them over the top of a cheese stall.",
+   "look_spoken": null,
+   "after": "Pelisserie means pelts. This was the street of the pelletiers, who dressed skins into fur, and the houses on both sides were theirs and the tanners'. Thirteenth and fourteenth century money. The same trade as Bessarel, one stage on: tanned down by the water, sold up here.\n\nThe town still sells other people's things. There are brocantes scattered through these streets. Furniture, plates, tools, pictures, whatever came out of a house.\n\nOn a Sunday the market runs the whole length of it, Place des Tilleuls to Place du Buoc. What is on the stalls tells you the month. Melons and tomatoes now. Truffles and chestnuts in January.",
+   "after_spoken": null,
+   "coord_source": "osm"
+  },
+  {
+   "id": "halle",
+   "topic": "business",
+   "title": "The Covered Market",
+   "where": "the halle, in the main square in the middle of the town",
+   "lat": 44.151607,
+   "lon": 1.756762,
+   "directions": "From the middle of Rue de la Pelisserie, walk south to the far end of the street, about a hundred metres.\n\nIt opens straight into Place de la Halle. The covered market stands in the middle of the square.\n\nGet underneath it, in the shade.",
+   "gate": {
+    "radius_m": 25,
+    "allow_pass": true,
+    "prompt": "Get right up to the covered market in the middle of the square."
+   },
+   "question": null,
+   "look": "Stand under the roof and look up at what is holding it there.\n\nThen look round the square. One building on it is a great deal older than the rest.",
+   "look_spoken": null,
+   "after": "The halle went up in 1841 and the town paid for it themselves.\n\nIt is still doing its job. Sunday morning, seven until one.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of 2013, with Helen Mirren running a restaurant and Om Puri running the rival one. The scene where the two of them go to the mayor to complain about each other was filmed on this square.",
+   "after_spoken": "The halle went up in eighteen forty-one and the town paid for it themselves.\n\nIt is still doing its job. Sunday morning, seven until one.\n\nThis square also plays a French village in a film. The Hundred-Foot Journey was shot here over nine weeks in the autumn of twenty thirteen, with Helen Mirren running a restaurant and Om Puri running the rival one. The scene where the two of them go to the mayor to complain about each other was filmed on this square.",
+   "nudge": {
+    "prompt": "The cafes are round the edge of this square and they are open all morning. Pick the one you want now, because you are coming back to it at the end.",
+    "confirm": "Picked one"
+   },
+   "coord_source": "osm"
+  },
+  {
+   "id": "maison-romane",
+   "topic": "business",
+   "title": "The Oldest One",
+   "where": "the Maison Romane, the old consuls' house on the main square",
+   "lat": 44.151809,
+   "lon": 1.756546,
+   "directions": "From the covered market, cross straight over Place de la Halle to its north west corner, about thirty metres.\n\nThe tall stone house with the square tower on top is the Maison Romane. Stand back far enough to look up at the row of arches above the ground floor.",
+   "gate": null,
+   "question": {
+    "ask": "Who are the two by the tree?",
+    "answers": [
+     "adam and eve",
+     "adam & eve",
+     "adam eve",
+     "eve and adam",
+     "adam et eve",
+     "adam et ève",
+     "adam",
+     "eve",
+     "adam and eve and the tree",
+     "adam and eve and the serpent"
+    ],
+    "hint": "Look at the row of small columns in the gallery above the big arches. The flat panels between them are carved. One has a tree with a figure standing on each side of it."
+   },
+   "look": "The carvings are the thing here, and they are easy to walk past.\n\nAbove the big ground floor arches there is a gallery of small columns with flat carved panels between them. One panel has a man sitting down holding a book. Another has two figures either side of a tree.",
+   "look_spoken": null,
+   "after": "Adam and Eve, under the tree. The seated man with the book is the emperor Justinian, holding his law code.\n\nThat pairing is not decoration. This building was a court. Justice was done in the hall behind those windows, so they put the first crime and the first law code on the front, where anybody waiting outside could see both.\n\nIt went up around 1125 for the viscount of Saint-Antonin and is generally called the oldest civil building in France. Not a church, not a castle. A town house. The consuls bought it in 1312 and ran the town from it until the Revolution.\n\nThe tower is not medieval. Viollet-le-Duc invented it in the 1840s, and it is the bit everybody photographs.",
+   "after_spoken": "Adam and Eve, under the tree. The seated man with the book is the emperor Justinian, holding his law code.\n\nThat pairing is not decoration. This building was a court. Justice was done in the hall behind those windows, so they put the first crime and the first law code on the front, where anybody waiting outside could see both.\n\nIt went up around eleven twenty-five for the viscount of Saint-Antonin and is generally called the oldest civil building in France. Not a church, not a castle. A town house. The consuls bought it in thirteen twelve and ran the town from it until the Revolution.\n\nThe tower is not medieval. Viollet-le-Duc invented it in the eighteen forties, and it is the bit everybody photographs.",
+   "coord_source": "osm"
+  }
+ ]
 }

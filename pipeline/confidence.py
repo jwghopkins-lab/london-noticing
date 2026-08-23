@@ -171,7 +171,8 @@ def score_leg(town, a, b, answers=None):
     out["metres"] = round(r["metres"], 1)
 
     legs = [x for x in r["legs"] if x["metres"] >= SHORT_LEG_M]
-    unnamed = sum(x["metres"] for x in legs if not x["name"])
+    unnamed = sum(x["metres"] for x in legs
+                  if not x["name"] and not x.get("obvious"))
     out["turns"] = max(0, len(legs) - 1)
     out["unnamed_frac"] = round(unnamed / r["metres"], 3) if r["metres"] else 0.0
 

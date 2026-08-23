@@ -551,6 +551,7 @@ def check(tour):
         prose = " ".join(
             [tour.get("outro") or "", (tour.get("intro") or {}).get("start", "")]
             + [f"{s.get('directions','') or ''} {s.get('where','')} "
+               f"{s.get('directions_target','') or ''} "
                f"{s.get('look','')} {s.get('after','')}" for s in stops])
         for _, mention in street_mentions(prose):
             if resolve_street(town, mention) is None:
@@ -645,6 +646,13 @@ def check(tour):
                 elif got not in heading and got not in standing:
                     errors.append(f"{where}: directions_streets names {got!r}, "
                                   f"which is not on the way from the stop before it")
+                elif got != name:
+                    # This list is printed to the walker as it is written, so it
+                    # has to carry the town's own spelling. "Rue Amelie Galup"
+                    # resolves fine and then goes out on the page without its
+                    # accent, next to street signs that have one.
+                    errors.append(f"{where}: directions_streets says {name!r}; "
+                                  f"the map spells it {got!r}")
 
             # In rough directions the streets belong in directions_streets, where
             # the caveat frames them honestly. Naming one in the prose promises
@@ -768,6 +776,22 @@ def _haversine(lat1, lon1, lat2, lon2):
     return 2 * r * asin(sqrt(a))
 
 
+def rough_survived(shipped_stop, source_stop):
+    """Every part of a rough leg made it into the artefact, unedited.
+
+    A rough leg is assembled from parts, so re-running the assembler inside the
+    verifier would prove nothing. What is checked instead is that all of the
+    source survived and that the standard caveat is present and unaltered.
+    Those are the things a bad bake would lose.
+    """
+    shipped = shipped_stop.get("directions") or ""
+    wanted = ([source_stop.get("directions") or "", ROUGH_LANES,
+               (source_stop.get("directions_target") or "").strip().rstrip(".")]
+              + list(source_stop.get("directions_streets") or []))
+    return [f"{shipped_stop['id']}: the shipped directions have lost {part[:40]!r}"
+            for part in wanted if part and part not in shipped]
+
+
 def verify(artefact, source):
     """Re-derive the artefact from the source file and complain about drift."""
     problems = []
@@ -777,9 +801,17 @@ def verify(artefact, source):
         return problems
     for s in artefact["stops"]:
         o = src[s["id"]]
-        for field in ("title", "where", "look", "after", "look_spoken",
-                      "after_spoken", "directions", "lat", "lon", "topic",
-                      "gate", "question", "nudge"):
+        fields = ["title", "where", "look", "after", "look_spoken",
+                  "after_spoken", "lat", "lon", "topic",
+                  "gate", "question", "nudge"]
+        if o.get("directions_mode") == "rough":
+            problems += rough_survived(s, o)
+        else:
+            fields.append("directions")
+            if s.get("directions_mode") != "turn_by_turn":
+                problems.append(f"{s['id']}: directions_mode does not match "
+                                f"the source")
+        for field in fields:
             if s.get(field) != o.get(field):
                 problems.append(f"{s['id']}: {field} does not match the source")
         for field in ("title", "where", "look", "after"):

@@ -44,6 +44,9 @@ class Town:
         self.water = doc.get("water", [])
         self.adj = {}
         self.edge_name = {}
+        # Bridges, steps and tunnels. Nameless in the data, unmissable on the
+        # ground, so they must not be counted as anonymous lanes.
+        self.edge_obvious = {}
         for way in self.streets:
             line = way["line"]
             for a, b in zip(line, line[1:]):
@@ -54,6 +57,8 @@ class Town:
                 self.adj.setdefault(ka, []).append((kb, d))
                 self.adj.setdefault(kb, []).append((ka, d))
                 self.edge_name[frozenset((ka, kb))] = way["name"]
+                if way.get("obvious"):
+                    self.edge_obvious[frozenset((ka, kb))] = way["obvious"]
         self.nodes = list(self.adj)
 
     # ---- lookup ----------------------------------------------------------
@@ -127,12 +132,12 @@ class Town:
                     continue
                 d = geo.seg_dist_m((lat, lon), ka, kb)
                 if best is None or d < best[0]:
-                    best = (d, ka, kb, way["name"])
+                    best = (d, ka, kb, way["name"], way.get("obvious"))
         if best is None:
             return None
-        d, ka, kb, name = best
+        d, ka, kb, name, obvious = best
         return {"point": geo.project_on_seg((lat, lon), ka, kb),
-                "a": ka, "b": kb, "name": name, "off_m": d}
+                "a": ka, "b": kb, "name": name, "obvious": obvious, "off_m": d}
 
     def off_network_m(self, lat, lon):
         """How far this point is from the nearest walkable way."""
@@ -188,7 +193,7 @@ class Town:
             return None
         # The two joining points are stitched into the graph for this search
         # only, so a walk starts and ends where the walker does.
-        extra, names = {}, {}
+        extra, names, obvious = {}, {}, {}
 
         def attach(p):
             node = tuple(round(x, 7) for x in p["point"])
@@ -199,6 +204,8 @@ class Town:
                 extra.setdefault(node, []).append((end, d))
                 extra.setdefault(end, []).append((node, d))
                 names[frozenset((node, end))] = p["name"]
+                if p.get("obvious"):
+                    obvious[frozenset((node, end))] = p["obvious"]
             return node
 
         start, goal = attach(pa), attach(pb)
@@ -209,6 +216,8 @@ class Town:
             extra.setdefault(start, []).append((goal, d))
             extra.setdefault(goal, []).append((start, d))
             names[frozenset((start, goal))] = pa["name"]
+            if pa.get("obvious"):
+                obvious[frozenset((start, goal))] = pa["obvious"]
         if start == goal:
             return {"metres": 0.0, "path": [start], "legs": [], "bearing": None}
         dist = {start: 0.0}
@@ -237,7 +246,7 @@ class Town:
             path.append(prev[path[-1]])
         path.reverse()
         return {"metres": self.path_metres(path), "path": path,
-                "legs": self._legs(path, names),
+                "legs": self._legs(path, names, obvious),
                 "bearing": geo.bearing_deg(path[0][0], path[0][1],
                                            path[1][0], path[1][1])}
 
@@ -250,19 +259,21 @@ class Town:
     def path_edges(path):
         return {frozenset((a, b)) for a, b in zip(path, path[1:])}
 
-    def _legs(self, path, extra_names=None):
+    def _legs(self, path, extra_names=None, extra_obvious=None):
         """Collapse the path into named stretches, with a turn at each join."""
         out = []
         for a, b in zip(path, path[1:]):
             key = frozenset((a, b))
             name = (extra_names or {}).get(key, self.edge_name.get(key))
+            obvious = (extra_obvious or {}).get(key,
+                                                self.edge_obvious.get(key))
             d = geo.haversine_m(a[0], a[1], b[0], b[1])
             brg = geo.bearing_deg(a[0], a[1], b[0], b[1])
             if out and out[-1]["name"] == name:
                 out[-1]["metres"] += d
                 out[-1]["end_bearing"] = brg
             else:
-                out.append({"name": name, "metres": d,
+                out.append({"name": name, "obvious": obvious, "metres": d,
                             "bearing": brg, "end_bearing": brg})
         for before, after in zip(out, out[1:]):
             after["turn"] = turn_word(before["end_bearing"], after["bearing"])

@@ -19,6 +19,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
+import streets                                     # noqa: E402
+import confidence                                  # noqa: E402
 import build_tour                                  # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
@@ -170,6 +172,160 @@ class TestDirectionChecks(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+# A town small enough to reason about by hand. One straight street running east,
+# one running north off its far end, and a nameless alley cutting the corner, so
+# there are two ways from the bottom left to the top right.
+#
+#   C (0.002, 0.002)
+#   |
+#   |  North Street
+#   |
+#   B (0.000, 0.002)
+#   |
+#   |  East Street
+#   |
+#   A (0.000, 0.000)
+#
+TOY = {
+    "streets": [
+        {"name": "East Street", "kind": "residential",
+         "line": [[0.0, 0.0], [0.0, 0.002]]},
+        {"name": "North Street", "kind": "residential",
+         "line": [[0.0, 0.002], [0.002, 0.002]]},
+    ],
+    "places": [], "water": [],
+}
+
+
+def toy(extra_streets=()):
+    doc = {"streets": list(TOY["streets"]) + list(extra_streets),
+           "places": [], "water": []}
+    return streets.Town(doc)
+
+
+class TestRoutingFromWhereYouStand(unittest.TestCase):
+    """The bridge bug: routing from the nearest NODE loses whole stretches."""
+
+    def test_a_stop_in_the_middle_of_a_long_way_is_not_moved_to_its_end(self):
+        town = toy()
+        # Halfway along East Street, which is drawn with a node at each end.
+        mid = (0.0, 0.001)
+        node, node_d = town.snap(*mid)
+        self.assertGreater(node_d, 100, "the nearest drawn node is far away")
+        self.assertAlmostEqual(town.off_network_m(*mid), 0.0, places=3,
+                               msg="but the walker is standing on the street")
+        r = town.route(mid, (0.002, 0.002))
+        # Half of East Street plus all of North Street, not just North Street.
+        self.assertGreater(r["metres"], 300, r["metres"])
+
+    def test_both_ends_on_one_stretch_do_not_go_round_by_the_junctions(self):
+        town = toy()
+        r = town.route((0.0, 0.0005), (0.0, 0.0015))
+        self.assertLess(r["metres"], 150, r["metres"])
+
+    def test_a_bridge_is_not_an_anonymous_lane(self):
+        """Nameless in the data, unmissable on the ground."""
+        plain = toy([{"name": None, "kind": "primary",
+                      "line": [[-0.001, 0.0], [0.0, 0.0]]}])
+        bridge = toy([{"name": None, "kind": "primary", "obvious": "bridge",
+                       "line": [[-0.001, 0.0], [0.0, 0.0]]}])
+        start, end = (-0.0005, 0.0), (0.0, 0.002)
+        got_plain = confidence.score_leg(plain, start, end, [])
+        got_bridge = confidence.score_leg(bridge, start, end, [])
+        self.assertGreater(got_plain["unnamed_frac"], 0.1)
+        self.assertEqual(got_bridge["unnamed_frac"], 0.0)
+
+
+class TestConfidence(unittest.TestCase):
+    def test_only_one_way_round_is_the_easiest_leg_not_the_hardest(self):
+        """margin 1.0 once meant 'no alternative exists', the best possible case,
+        and was scored as the worst."""
+        got = confidence.score_leg(toy(), (0.0, 0.0), (0.002, 0.002), [])
+        self.assertTrue(got["only_way"])
+        self.assertIsNone(got["margin"])
+        self.assertFalse([r for r in got["reasons"] if "toss-up" in r])
+
+    def test_two_ways_round_of_the_same_length_are_a_toss_up(self):
+        """A second street parallel to the first makes the route a coin flip."""
+        town = toy([{"name": "Back Lane", "kind": "residential",
+                     "line": [[0.0, 0.0], [0.002, 0.0], [0.002, 0.002]]}])
+        got = confidence.score_leg(town, (0.0, 0.0), (0.002, 0.002), [])
+        self.assertTrue([r for r in got["reasons"] if "toss-up" in r], got)
+
+    def test_a_disagreeing_engine_sends_a_leg_to_rough(self):
+        town = toy()
+        # A route down a different street entirely.
+        theirs = {"engine": "invented", "line": [[0.0, 0.0], [0.002, 0.0],
+                                                 [0.002, 0.002]]}
+        got = confidence.score_leg(town, (0.0, 0.0), (0.002, 0.002), [theirs])
+        self.assertEqual(got["verdict"], "rough")
+        self.assertTrue([r for r in got["reasons"] if "differently" in r], got)
+
+    def test_an_agreeing_engine_leaves_the_leg_alone(self):
+        town = toy()
+        theirs = {"engine": "agreeable",
+                  "line": [[0.0, 0.0], [0.0, 0.002], [0.002, 0.002]]}
+        got = confidence.score_leg(town, (0.0, 0.0), (0.002, 0.002), [theirs])
+        self.assertEqual(got["verdict"], "turn_by_turn", got["reasons"])
+
+    def test_an_engine_that_could_not_be_reached_is_a_note_not_a_verdict(self):
+        """A bad afternoon on a free server must not rewrite a walk."""
+        town = toy()
+        got = confidence.score_leg(town, (0.0, 0.0), (0.002, 0.002),
+                                   [{"engine": "down", "error": "timeout"}])
+        self.assertEqual(got["reasons"], [])
+        self.assertTrue(got["notes"])
+
+    def test_never_fetched_is_also_only_a_note(self):
+        got = confidence.score_leg(toy(), (0.0, 0.0), (0.002, 0.002), None)
+        self.assertEqual(got["reasons"], [])
+        self.assertTrue([n for n in got["notes"] if "second opinion" in n])
+
+    def test_a_few_metres_apart_on_a_short_leg_is_not_a_disagreement(self):
+        """28 m against 35 m is a 1.25 ratio and means nothing."""
+        town = toy()
+        short = confidence.agreement([(0.0, 0.0), (0.0, 0.0003)],
+                                     [(0.0, 0.0), (0.0, 0.0002)])
+        self.assertGreater(short["length_ratio"], confidence.AGREE_LENGTH)
+        self.assertLess(abs(short["their_metres"] - 33), confidence.AGREE_LENGTH_M)
+        got = confidence.score_leg(
+            town, (0.0, 0.0), (0.0, 0.0003),
+            [{"engine": "close enough", "line": [[0.0, 0.0], [0.0, 0.0002]]}])
+        self.assertEqual(got["verdict"], "turn_by_turn", got["reasons"])
+
+
+class TestRoughDirections(unittest.TestCase):
+    def test_the_shipped_text_carries_all_four_parts(self):
+        got = build_tour.rough_directions({
+            "directions": "From the bridge, head north. About fifty metres.",
+            "directions_streets": ["Rue A", "Rue B"],
+            "directions_target": "a tall stone tower",
+        })
+        self.assertIn("From the bridge", got)
+        self.assertIn("Rue A or Rue B", got)
+        self.assertIn(build_tour.ROUGH_LANES, got)
+        self.assertIn("What you are looking for is a tall stone tower.", got)
+
+    def test_one_street_is_not_listed_as_if_there_were_two(self):
+        got = build_tour.rough_directions({
+            "directions": "x", "directions_streets": ["Rue A"],
+            "directions_target": "y"})
+        self.assertIn("You may come out on Rue A.", got)
+
+    def test_the_verifier_notices_a_lost_part(self):
+        source = {"id": "b", "directions_mode": "rough",
+                  "directions": "From the bridge, head north.",
+                  "directions_streets": ["Rue A"],
+                  "directions_target": "a tall stone tower"}
+        good = {"id": "b", "directions": build_tour.rough_directions(source)}
+        self.assertEqual(build_tour.rough_survived(good, source), [])
+        for lost in (build_tour.ROUGH_LANES, "Rue A", "a tall stone tower",
+                     "From the bridge, head north."):
+            bad = {"id": "b", "directions": good["directions"].replace(lost, "")}
+            self.assertTrue(build_tour.rough_survived(bad, source),
+                            f"losing {lost!r} went unnoticed")
 
 
 if __name__ == "__main__":
