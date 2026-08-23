@@ -54,15 +54,16 @@
       "lat": 44.1504,
       "lon": 1.7551,
       "gate": {
-        "radius_m": 80,
+        "radius_m": 40,
         "allow_pass": true,
-        "prompt": "Get onto the bridge, or onto the bank beside it, with the river in front of you."
+        "prompt": "Get onto the bridge itself, with the river underneath you."
       },
       "question": null,
       "look": "Stand where you can see the water and the cliffs at the same time.\n\nThis is the Aveyron. A second, smaller river joins it here, the Bonnette. The pale rock wall standing over the town is the Roc d'Anglars.",
       "look_spoken": null,
       "after": "The town owes its name to a body in a boat.\n\nAntonin was killed at Pamiers, away to the south. The story goes that his corpse was put into a boat with nobody aboard, and that the boat came up this river steered by two white eagles and stopped here. A monastery went up on the spot in 763 and the town grew around it.\n\nNoble Val is the rest of the name. The noble valley. Nobody was being modest.\n\nThe two rivers are the whole reason for the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work, and that is what made the tanners rich.\n\nThey flood as well. In March 1930 the water rose twelve or thirteen metres and put three quarters of the town under. You are going to stand in the middle of what it took.",
-      "after_spoken": "The town owes its name to a body in a boat.\n\nAntonin was killed at Pamiers, away to the south. The story goes that his corpse was put into a boat with nobody aboard, and that the boat came up this river steered by two white eagles and stopped here. A monastery went up on the spot in seven six three and the town grew around it.\n\nNoble Val is the rest of the name. The noble valley. Nobody was being modest.\n\nThe two rivers are the whole reason for the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work, and that is what made the tanners rich.\n\nThey flood as well. In March nineteen thirty the water rose twelve or thirteen metres and put three quarters of the town under. You are going to stand in the middle of what it took."
+      "after_spoken": "The town owes its name to a body in a boat.\n\nAntonin was killed at Pamiers, away to the south. The story goes that his corpse was put into a boat with nobody aboard, and that the boat came up this river steered by two white eagles and stopped here. A monastery went up on the spot in seven six three and the town grew around it.\n\nNoble Val is the rest of the name. The noble valley. Nobody was being modest.\n\nThe two rivers are the whole reason for the place. The Aveyron carried the trade. The Bonnette was small enough to be split into channels and put to work, and that is what made the tanners rich.\n\nThey flood as well. In March nineteen thirty the water rose twelve or thirteen metres and put three quarters of the town under. You are going to stand in the middle of what it took.",
+      "coord_source": "estimated"
     },
     {
       "id": "eglise",
@@ -100,16 +101,17 @@
       "look": "This is the one stop that is indoors, and it is only on the walk because it is Sunday. If there is a service running, stay at the back and keep your voice down.\n\nSomewhere in here is a painting of the story you heard at the bridge. The boat, coming up the river, with the saint's body in it. Go and find it.\n\nThen look at the light the painter has used.",
       "look_spoken": null,
       "after": "Night. The painting is by Fauconnier and he set the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some tellings say angels instead. Either way, nobody in that boat is rowing.\n\nThere is a second version of the same story carved on a tympanum, the panel over a doorway, by Alex Coutet of Capdenac. It shows the relics arriving at Noble Val.\n\nThe church around them is younger than the railway. It was begun in 1862 and consecrated in 1872.\n\nThe real one is gone. A Benedictine abbey was founded here in 763 and the town grew up around its walls. In 1562 the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June 1622 Louis XIII arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church.",
-      "after_spoken": "Night. The painting is by Fauconnier and he set the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some tellings say angels instead. Either way, nobody in that boat is rowing.\n\nThere is a second version of the same story carved on a tympanum, the panel over a doorway, by Alex Coutet of Capdenac. It shows the relics arriving at Noble Val.\n\nThe church around them is younger than the railway. It was begun in eighteen sixty-two and consecrated in eighteen seventy-two.\n\nThe real one is gone. A Benedictine abbey was founded here in seven six three and the town grew up around its walls. In fifteen sixty-two the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June sixteen twenty-two Louis the Thirteenth arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church."
+      "after_spoken": "Night. The painting is by Fauconnier and he set the whole scene after dark.\n\nTwo white eagles is the version most people tell. Some tellings say angels instead. Either way, nobody in that boat is rowing.\n\nThere is a second version of the same story carved on a tympanum, the panel over a doorway, by Alex Coutet of Capdenac. It shows the relics arriving at Noble Val.\n\nThe church around them is younger than the railway. It was begun in eighteen sixty-two and consecrated in eighteen seventy-two.\n\nThe real one is gone. A Benedictine abbey was founded here in seven six three and the town grew up around its walls. In fifteen sixty-two the town, Protestant by then almost to a man, wrecked the abbey church, killed the canons and threw the Catholics out. It declared itself a Protestant republic and built its walls up higher.\n\nThat lasted sixty years. In June sixteen twenty-two Louis the Thirteenth arrived with an army, took the town, and had the ramparts pulled down.\n\nSo a medieval walled town has no walls, and a town that grew up round an abbey has a Victorian church.",
+      "coord_source": "published"
     },
     {
       "id": "bessarel",
       "topic": "water",
       "title": "Place du Bessarel",
       "where": "Place du Bessarel, where the old canal runs through the town",
-      "lat": 44.1512,
-      "lon": 1.7576,
-      "directions": "Leave the square on the far side from the bridge and work east through the narrow streets, downhill, towards the sound of running water. About a hundred and fifty metres.\n\nYou want an open square with a stone channel running through it, and a low open building standing over the water at one side.",
+      "lat": 44.15195,
+      "lon": 1.75477,
+      "directions": "Come out of the church and turn north west.\n\nWork through the narrow streets for about a hundred and fifty metres, heading for the sound of running water.\n\nYou want an open square with a stone channel running across it, and a low open building standing over the water at one side.",
       "gate": null,
       "question": {
         "ask": "What was it for?",
@@ -135,7 +137,8 @@
       "look": "The water going through here is not a river. It is a channel, cut on purpose, fed off the Bonnette.\n\nAt one side there is a low open building standing over it, with a long stone basin underneath and a sloping stone edge worn smooth.",
       "look_spoken": null,
       "after": "Washing clothes. It is a lavoir, the village washhouse, and every French town of this size had one.\n\nThe channel is older than it looks. It was already being called the canal du Bessarel in 1315. This whole quarter ran on it. The tanners worked here, and the drapers, because turning hides into leather and washing raw wool both need running water, and neither is welcome upstream of where people drink.\n\nSaint-Antonin got rich on leather in the 1200s and 1300s, calfskin above all, and sold it across the south of France.\n\nThen the water took it back. The flood of March 1930 destroyed most of this quarter and two people drowned, one of them here. The square you are standing in only exists because of that. It was opened up afterwards, on the ground the flood had cleared.\n\nOne tannery is still standing.",
-      "after_spoken": "Washing clothes. It is a lavoir, the village washhouse, and every French town of this size had one.\n\nThe channel is older than it looks. It was already being called the canal du Bessarel in thirteen fifteen. This whole quarter ran on it. The tanners worked here, and the drapers, because turning hides into leather and washing raw wool both need running water, and neither is welcome upstream of where people drink.\n\nSaint-Antonin got rich on leather in the twelve hundreds and thirteen hundreds, calfskin above all, and sold it across the south of France.\n\nThen the water took it back. The flood of March nineteen thirty destroyed most of this quarter and two people drowned, one of them here. The square you are standing in only exists because of that. It was opened up afterwards, on the ground the flood had cleared.\n\nOne tannery is still standing."
+      "after_spoken": "Washing clothes. It is a lavoir, the village washhouse, and every French town of this size had one.\n\nThe channel is older than it looks. It was already being called the canal du Bessarel in thirteen fifteen. This whole quarter ran on it. The tanners worked here, and the drapers, because turning hides into leather and washing raw wool both need running water, and neither is welcome upstream of where people drink.\n\nSaint-Antonin got rich on leather in the twelve hundreds and thirteen hundreds, calfskin above all, and sold it across the south of France.\n\nThen the water took it back. The flood of March nineteen thirty destroyed most of this quarter and two people drowned, one of them here. The square you are standing in only exists because of that. It was opened up afterwards, on the ground the flood had cleared.\n\nOne tannery is still standing.",
+      "coord_source": "estimated"
     },
     {
       "id": "caserne",
@@ -144,7 +147,7 @@
       "where": "rue Guilhem Peyre, one of the oldest streets in the town",
       "lat": 44.1523,
       "lon": 1.7569,
-      "directions": "Head back west and uphill into the middle of the town, and find rue Guilhem Peyre. It is one of the narrow old streets running off the market square, and the name is on the wall at the corner.\n\nWalk up it about a hundred and thirty metres, reading the fronts of the houses on both sides as you go.",
+      "directions": "From the Bessarel, walk back east into the middle of the town, about a hundred and seventy metres, and find rue Guilhem Peyre.\n\nIt is one of the narrow old streets running off the market square, and the name is on the wall at the corner.\n\nWalk up it, reading the fronts of the houses on both sides as you go.",
       "gate": null,
       "question": {
         "ask": "One house on this street was a barracks. Whose soldiers were in it?",
@@ -168,7 +171,8 @@
       "look": "Look along the house fronts for a name carved or painted on one of them, or a plaque set into the wall.\n\nOne of these buildings has been called the same thing for nearly seven hundred years, and the name says who was living in it.",
       "look_spoken": null,
       "after": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from 1352 to 1354, in the middle of the Hundred Years War, when this part of France was changing hands over and over. The house went on being a barracks long after they had gone, this time for the French crown.\n\nThey were here for two years. The name has lasted nearly seven centuries.",
-      "after_spoken": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from thirteen fifty-two to thirteen fifty-four, in the middle of the Hundred Years War, when this part of France was changing hands over and over. The house went on being a barracks long after they had gone, this time for the French crown.\n\nThey were here for two years. The name has lasted nearly seven centuries."
+      "after_spoken": "The English. It is the Caserne des Anglais.\n\nEnglish troops were quartered here from thirteen fifty-two to thirteen fifty-four, in the middle of the Hundred Years War, when this part of France was changing hands over and over. The house went on being a barracks long after they had gone, this time for the French crown.\n\nThey were here for two years. The name has lasted nearly seven centuries.",
+      "coord_source": "estimated"
     },
     {
       "id": "pelisserie",
@@ -179,9 +183,9 @@
       "lon": 1.75625,
       "directions": "Walk straight back down rue Guilhem Peyre towards the square, about seventy metres, and turn into rue de la Pelisserie.\n\nThe name is on the wall at the corner. On a Sunday morning you will hear the street before you find the sign.",
       "gate": {
-        "radius_m": 50,
+        "radius_m": 35,
         "allow_pass": true,
-        "prompt": "Get into rue de la Pelisserie, in among the shopfronts."
+        "prompt": "Get into the middle of rue de la Pelisserie, in among the shopfronts."
       },
       "nudge": {
         "prompt": "Look in the windows as you go, and pick the strangest single object you can find for sale.",
@@ -191,7 +195,8 @@
       "look": "Look at the shopfronts. Then look up above them.\n\nThe houses along here are the ones the trade paid for, and a good many of them are medieval under the paint. On a Sunday you will be looking at them over the top of a cheese stall.",
       "look_spoken": null,
       "after": "Pelisserie means pelts.\n\nThis was the street of the pelletiers, the men who dressed skins into fur, and the houses on both sides belonged to them and to the tanners. Thirteenth and fourteenth century money, most of it. It is the same trade you were standing in at Bessarel, one stage further on. They tanned it down by the water and sold it up here.\n\nThe street still sells other people's things. A lot of the shops in this part of town are brocante: second hand furniture, plates, tools, pictures, whatever came out of a house when somebody died.\n\nOn a Sunday morning the market runs the length of it, from Place des Tilleuls at one end to Place du Buoc at the other. It is rated one of the best markets in Occitanie, and in this part of France that is a serious claim.\n\nWhat is on the stalls tells you the month. Melons and tomatoes now. Truffles and chestnuts if you came back in January.",
-      "after_spoken": null
+      "after_spoken": null,
+      "coord_source": "estimated"
     },
     {
       "id": "halle",
@@ -202,9 +207,9 @@
       "lon": 1.7562,
       "directions": "Carry on to the end of Pelisserie and come out into the main square, about forty metres.\n\nGo straight to the covered market standing in the middle of it and get underneath, in the shade.",
       "gate": {
-        "radius_m": 60,
+        "radius_m": 30,
         "allow_pass": true,
-        "prompt": "Get into the main square, under or beside the covered market."
+        "prompt": "Get right up to the covered market in the middle of the square."
       },
       "question": null,
       "look": "Stand under the roof and look up at what is holding it there.\n\nThen look round the square at the fronts of the buildings. One of them is a great deal older than the others.",
@@ -214,7 +219,8 @@
       "nudge": {
         "prompt": "The cafes are round the edge of this square and they are open all morning. Pick the one you want now, because you are coming back to it at the end.",
         "confirm": "Picked one"
-      }
+      },
+      "coord_source": "estimated"
     },
     {
       "id": "maison-romane",
@@ -244,7 +250,8 @@
       "look": "This is the oldest building on the walk and the small carvings are the point of it.\n\nLook up at the gallery running above the big ground floor arches. Between the little columns there are flat carved panels with figures on them.\n\nOne panel has a man sitting down, holding a book. Another has two figures standing either side of a tree.",
       "look_spoken": null,
       "after": "Adam and Eve, under the tree of knowledge.\n\nThe seated man with the book is the emperor Justinian, holding his book of laws. Putting those two together was not decoration. This building was a court. Justice was done in the hall behind those windows, so they carved the first crime and the first law code onto the front of it, where anybody waiting outside could see both.\n\nThe house went up around 1125 for the viscount of Saint-Antonin. It is generally called the oldest civil building in France. Not a church, not a castle. A town house. In 1312 the consuls bought it, and it was the town hall from then until the Revolution.\n\nOne warning. The square tower with the little loggia on top is not medieval. Viollet-le-Duc restored the building between 1846 and 1853 and the tower is his, invented whole. It is one of the more argued-about things he ever did, and it is the bit everybody photographs.\n\nThe carvings are the real ones. Nine hundred years old, high up on the front, and almost everybody walks straight past them.",
-      "after_spoken": "Adam and Eve, under the tree of knowledge.\n\nThe seated man with the book is the emperor Justinian, holding his book of laws. Putting those two together was not decoration. This building was a court. Justice was done in the hall behind those windows, so they carved the first crime and the first law code onto the front of it, where anybody waiting outside could see both.\n\nThe house went up around eleven twenty-five for the viscount of Saint-Antonin. It is generally called the oldest civil building in France. Not a church, not a castle. A town house. In thirteen twelve the consuls bought it, and it was the town hall from then until the Revolution.\n\nOne warning. The square tower with the little loggia on top is not medieval. Viollet-le-Duc restored the building between eighteen forty-six and eighteen fifty-three and the tower is his, invented whole. It is one of the more argued-about things he ever did, and it is the bit everybody photographs.\n\nThe carvings are the real ones. Nine hundred years old, high up on the front, and almost everybody walks straight past them."
+      "after_spoken": "Adam and Eve, under the tree of knowledge.\n\nThe seated man with the book is the emperor Justinian, holding his book of laws. Putting those two together was not decoration. This building was a court. Justice was done in the hall behind those windows, so they carved the first crime and the first law code onto the front of it, where anybody waiting outside could see both.\n\nThe house went up around eleven twenty-five for the viscount of Saint-Antonin. It is generally called the oldest civil building in France. Not a church, not a castle. A town house. In thirteen twelve the consuls bought it, and it was the town hall from then until the Revolution.\n\nOne warning. The square tower with the little loggia on top is not medieval. Viollet-le-Duc restored the building between eighteen forty-six and eighteen fifty-three and the tower is his, invented whole. It is one of the more argued-about things he ever did, and it is the bit everybody photographs.\n\nThe carvings are the real ones. Nine hundred years old, high up on the front, and almost everybody walks straight past them.",
+      "coord_source": "published"
     }
   ]
 }

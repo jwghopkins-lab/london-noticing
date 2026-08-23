@@ -61,6 +61,32 @@ build. The rest are on whoever is writing.
 19. Every location gate carries a pass button. A walk that dead ends because a
     phone could not get a fix is worse than one somebody skipped a check on.
 
+## Location gates
+
+25. The reach of a gate is its radius plus 15 metres, whatever the phone claims
+    about its own accuracy. Subtracting the full reported accuracy turned a
+    50 m gate into a 50 + accuracy gate, and it opened from more than 50 metres
+    away, round a corner, on a different street. **[checked: geo and the player
+    are compared]**
+26. A fix worse than 75 metres opens nothing. It is not a near miss, it is no
+    information, and saying "warm" about it is a lie. **[checked]**
+27. Take the best fix of several seconds, not the first one. Phones hand over a
+    coarse network fix first and a good satellite fix a few seconds later.
+28. Size the radius to the thing. A bridge is not a doorway.
+
+## Directions
+
+29. Every stop records where its coordinate came from: surveyed, published or
+    estimated. **[checked]**
+30. A compass bearing in the directions must agree with the bearing between the
+    two coordinates. If it does not, one of them is stale. **[checked]**
+31. The first sentence must NAME the place you are setting off from. "Leave the
+    square on the far side from the bridge" has an origin in it and names
+    nothing: which square, and which side is the bridge on when you cannot see
+    it? **[checked]**
+32. Be wary of a compass bearing into an estimated coordinate. Both can be
+    wrong the same way, and then nothing can catch it. **[checked as a note]**
+
 ## Facts
 
 20. Do not write a question about a physical detail you have not verified. If

@@ -148,13 +148,25 @@ def check(points, leg_warn_min=LEG_WARN_MIN, leg_fail_min=LEG_FAIL_MIN):
     }
 
 
-def gate_passes(distance_m, reported_accuracy_m, radius_m):
-    """The location gate rule, kept exactly as Fedora had it.
+# Gate tolerance, retuned after walking Saint-Antonin. A phone's reported
+# accuracy is roughly a 68% confidence radius, so subtracting the whole of it
+# means "open if there is any plausible chance you are inside". That was too
+# generous: a 50 m gate became a 50 + accuracy gate, and under the old 150 m cap
+# a poor fix opened a 50 m gate from 200 m away, round a corner, on a different
+# street. The allowance is now small, and a fix too vague to be evidence of
+# anything is refused rather than believed.
+ACC_ALLOWANCE_M = 15.0      # the most a phone's own error estimate can buy you
+ACC_USELESS_M = 75.0        # past this the fix says nothing about where you are
 
-    The phone's own accuracy estimate is subtracted from the distance, capped
-    at 150 m so a wildly pessimistic reading cannot open a gate from the next
-    borough. A gate that can say no to somebody who IS standing there would be
-    worse than no gate at all.
+
+def gate_passes(distance_m, reported_accuracy_m, radius_m):
+    """The location gate rule.
+
+    Refusing a hopeless fix is the important half. Believing one is how a gate
+    opens from a street the walker has never set foot on, and that is worse than
+    refusing: they have a pass button, and no way to know the check lied.
     """
-    acc = min(float(reported_accuracy_m or 0.0), 150.0)
-    return (float(distance_m) - acc) <= float(radius_m)
+    acc = max(0.0, float(reported_accuracy_m or 0.0))
+    if acc > ACC_USELESS_M:
+        return False
+    return (float(distance_m) - min(acc, ACC_ALLOWANCE_M)) <= float(radius_m)

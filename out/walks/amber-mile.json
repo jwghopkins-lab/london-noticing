@@ -135,7 +135,7 @@
       "where": "Fontanna Neptuna, in Dlugi Targ just past the Town Hall",
       "lat": 54.34884,
       "lon": 18.65293,
-      "directions": "Carry on east for another sixty metres.\n\nThe street opens out into a wide square. This is Dlugi Targ, the Long Market.\n\nThe fountain is straight ahead of you behind an iron railing, with a dark green figure standing on top.",
+      "directions": "With the Town Hall behind you, carry on east for another sixty metres.\n\nThe street opens out into a wide square. This is Dlugi Targ, the Long Market.\n\nThe fountain is straight ahead of you behind an iron railing, with a dark green figure standing on top.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -163,7 +163,7 @@
       "where": "Dwor Artusa, the tall building directly behind Neptune",
       "lat": 54.34893,
       "lon": 18.65316,
-      "directions": "Turn away from the middle of the square and face north.\n\nThe building immediately behind the fountain, with the four tall arched windows and the stepped gable above them, is Artus Court.\n\nIt is about twenty metres. Go and stand at the foot of its steps.",
+      "directions": "Stand at Neptune's fountain, turn away from the middle of the square and face north.\n\nThe building immediately behind the fountain, with the four tall arched windows and the stepped gable above them, is Artus Court.\n\nIt is about twenty metres. Go and stand at the foot of its steps.",
       "gate": {
         "radius_m": 45,
         "allow_pass": true,
@@ -184,7 +184,7 @@
       "where": "Zlota Kamienica, Dlugi Targ 41, on the same side as Artus Court",
       "lat": 54.34878,
       "lon": 18.6538,
-      "directions": "Keep going east along the same side of Dlugi Targ, away from the Town Hall, for about forty metres.\n\nYou want number 41, four doors along.\n\nThe whole front is covered in carving, and the carving is not stone coloured.",
+      "directions": "With Artus Court behind you, keep going east along the same side of Dlugi Targ for about forty metres.\n\nYou want number 41, four doors along.\n\nThe whole front is covered in carving, and the carving is not stone coloured.",
       "gate": null,
       "nudge": null,
       "question": {

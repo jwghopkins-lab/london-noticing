@@ -41,9 +41,9 @@
       "lon": 1.7551,
       "directions": null,
       "gate": {
-        "radius_m": 80,
+        "radius_m": 40,
         "allow_pass": true,
-        "prompt": "Get onto the bridge, or onto the bank beside it, with the river in front of you."
+        "prompt": "Get onto the bridge itself, with the river underneath you."
       },
       "nudge": null,
       "question": null,
@@ -98,9 +98,9 @@
       "topic": "water",
       "title": "Place du Bessarel",
       "where": "Place du Bessarel, where the old canal runs through the town",
-      "lat": 44.1512,
-      "lon": 1.7576,
-      "directions": "Leave the square on the far side from the bridge and work east through the narrow streets, downhill, towards the sound of running water. About a hundred and fifty metres.\n\nYou want an open square with a stone channel running through it, and a low open building standing over the water at one side.",
+      "lat": 44.15195,
+      "lon": 1.75477,
+      "directions": "Come out of the church and turn north west.\n\nWork through the narrow streets for about a hundred and fifty metres, heading for the sound of running water.\n\nYou want an open square with a stone channel running across it, and a low open building standing over the water at one side.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -137,7 +137,7 @@
       "where": "rue Guilhem Peyre, one of the oldest streets in the town",
       "lat": 44.1523,
       "lon": 1.7569,
-      "directions": "Head back west and uphill into the middle of the town, and find rue Guilhem Peyre. It is one of the narrow old streets running off the market square, and the name is on the wall at the corner.\n\nWalk up it about a hundred and thirty metres, reading the fronts of the houses on both sides as you go.",
+      "directions": "From the Bessarel, walk back east into the middle of the town, about a hundred and seventy metres, and find rue Guilhem Peyre.\n\nIt is one of the narrow old streets running off the market square, and the name is on the wall at the corner.\n\nWalk up it, reading the fronts of the houses on both sides as you go.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -174,9 +174,9 @@
       "lon": 1.75625,
       "directions": "Walk straight back down rue Guilhem Peyre towards the square, about seventy metres, and turn into rue de la Pelisserie.\n\nThe name is on the wall at the corner. On a Sunday morning you will hear the street before you find the sign.",
       "gate": {
-        "radius_m": 50,
+        "radius_m": 35,
         "allow_pass": true,
-        "prompt": "Get into rue de la Pelisserie, in among the shopfronts."
+        "prompt": "Get into the middle of rue de la Pelisserie, in among the shopfronts."
       },
       "nudge": {
         "prompt": "Look in the windows as you go, and pick the strangest single object you can find for sale.",
@@ -198,9 +198,9 @@
       "lon": 1.7562,
       "directions": "Carry on to the end of Pelisserie and come out into the main square, about forty metres.\n\nGo straight to the covered market standing in the middle of it and get underneath, in the shade.",
       "gate": {
-        "radius_m": 60,
+        "radius_m": 30,
         "allow_pass": true,
-        "prompt": "Get into the main square, under or beside the covered market."
+        "prompt": "Get right up to the covered market in the middle of the square."
       },
       "nudge": {
         "prompt": "The cafes are round the edge of this square and they are open all morning. Pick the one you want now, because you are coming back to it at the end.",
@@ -248,9 +248,9 @@
   ],
   "walk": {
     "n_stops": 7,
-    "total_walk_m": 638.7,
-    "total_minutes": 8.0,
-    "reversals": 0,
+    "total_walk_m": 726.8,
+    "total_minutes": 9.1,
+    "reversals": 1,
     "legs": [
       {
         "from": "pont",
@@ -263,18 +263,18 @@
       {
         "from": "eglise",
         "to": "bessarel",
-        "straight_m": 121.7,
-        "walk_m": 158.2,
-        "minutes": 2.0,
-        "bearing": 79.5
+        "straight_m": 149.7,
+        "walk_m": 194.6,
+        "minutes": 2.4,
+        "bearing": 314.9
       },
       {
         "from": "bessarel",
         "to": "caserne",
-        "straight_m": 134.5,
-        "walk_m": 174.8,
-        "minutes": 2.2,
-        "bearing": 335.5
+        "straight_m": 174.3,
+        "walk_m": 226.6,
+        "minutes": 2.8,
+        "bearing": 77.1
       },
       {
         "from": "caserne",

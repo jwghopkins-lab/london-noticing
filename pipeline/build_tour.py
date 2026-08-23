@@ -70,6 +70,41 @@ SUMMING_UP = [
     "it is worth remembering", "which is to say",
 ]
 
+# Where a coordinate came from. This exists because a stop was placed by guess,
+# a compass bearing was then written to match the guess, and both were wrong the
+# same way, so nothing could catch it: the walker was sent east to somewhere
+# that is north west. Recording the provenance makes the guessing visible in the
+# data, and lets the checks below know which claims are worth cross-examining.
+COORD_SOURCES = {"surveyed", "published", "estimated"}
+
+COMPASS = {
+    "north east": 45, "north-east": 45, "northeast": 45,
+    "south east": 135, "south-east": 135, "southeast": 135,
+    "south west": 225, "south-west": 225, "southwest": 225,
+    "north west": 315, "north-west": 315, "northwest": 315,
+    "north": 0, "east": 90, "south": 180, "west": 270,
+}
+# A leg can bend, so the written bearing need not be the straight-line one, but
+# one of the bearings written down should point roughly the way the walk goes.
+COMPASS_TOLERANCE_DEG = 70
+
+# Directions have to say where they start from, BY NAME. The walker who asked
+# "where was I supposed to start?" was standing in a church doorway reading
+# "Leave the square on the far side from the bridge". That has an origin phrase
+# in it and still names nothing: which square, and which side is the bridge on
+# when you cannot see it? So a generic phrase is not enough. The first sentence
+# has to contain a word that identifies the stop you are standing at.
+#
+# Words too common to identify anything. Without this list "square" counts as
+# naming the previous stop, which is exactly the sentence that failed.
+GENERIC_WORDS = {
+    "place", "street", "square", "town", "main", "road", "corner", "where",
+    "running", "between", "north", "south", "east", "west", "along", "which",
+    "other", "things", "people", "little", "great", "small", "first", "second",
+    "third", "front", "there", "under", "above", "below", "right", "left",
+    "side", "sides", "close", "about", "metres", "walk", "still", "inside",
+}
+
 WORD_NUMBERS = {
     "ten": 10, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
     "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
@@ -98,6 +133,42 @@ def authored_metres(text):
         head, tail = phrase.split(" and ", 1)
         return WORD_NUMBERS.get(head.strip(), 0) + WORD_NUMBERS.get(tail.strip(), 0)
     return WORD_NUMBERS.get(phrase.strip())
+
+
+def compass_claims(text):
+    """Every compass bearing written into a piece of directions, in order.
+
+    Compounds are matched before their parts, so "north east" is one claim of 45
+    degrees rather than a claim of north and a claim of east.
+    """
+    t = text.lower()
+    found = []
+    for word in sorted(COMPASS, key=len, reverse=True):
+        pat = re.compile(rf"\b{re.escape(word)}\b")
+        while True:
+            m = pat.search(t)
+            if not m:
+                break
+            found.append((m.start(), COMPASS[word]))
+            t = t[:m.start()] + ("#" * (m.end() - m.start())) + t[m.end():]
+    return [deg for _, deg in sorted(found)]
+
+
+def angle_off(a, b):
+    return abs((a - b + 180.0) % 360.0 - 180.0)
+
+
+def naming_words(stop):
+    """Words that identify a stop well enough to set off from it."""
+    blob = f"{stop.get('title','')} {stop.get('where','')} {stop.get('id','')}"
+    blob = blob.lower().replace("-", " ")
+    return {w for w in re.findall(r"[a-z]{4,}", blob) if w not in GENERIC_WORDS}
+
+
+def names_its_start(directions, prev):
+    """Does the opening sentence name the place you are setting off from?"""
+    first = re.split(r"(?<=[.?!])\s+", directions.strip())[0].lower()
+    return any(w in first for w in naming_words(prev))
 
 
 def is_rounded(n):
@@ -136,6 +207,9 @@ def check(tour):
                 errors.append(f"{where}: missing {field}")
         if not (lat_lo <= s["lat"] <= lat_hi) or not (lon_lo <= s["lon"] <= lon_hi):
             errors.append(f"{where}: coordinate is outside the walk's own town")
+        if s.get("coord_source") not in COORD_SOURCES:
+            errors.append(f"{where}: coord_source must be one of "
+                          f"{sorted(COORD_SOURCES)}, not {s.get('coord_source')!r}")
 
         # Every stop after the first must say how to walk to it. This is the
         # whole point of the addition: being told what to look at is no use if
@@ -161,6 +235,23 @@ def check(tour):
                     if metres < 100 and re.search(r"minute", d, re.I):
                         errors.append(f"{where}: a walking time on a {metres} metre "
                                       f"leg; drop it")
+                prev = stops[i - 1]
+                if not names_its_start(d, prev):
+                    errors.append(f"{where}: the directions never say where you are "
+                                  f"setting off from")
+                # A written bearing that disagrees with the coordinates means one
+                # of the two is stale. Either way somebody gets sent the wrong way.
+                claims = compass_claims(d)
+                if claims:
+                    want = geo.bearing_deg(prev["lat"], prev["lon"], s["lat"], s["lon"])
+                    if all(angle_off(c, want) > COMPASS_TOLERANCE_DEG for c in claims):
+                        errors.append(
+                            f"{where}: directions say "
+                            f"{'/'.join(str(int(c)) for c in claims)} degrees but the "
+                            f"coordinates say {int(want)}; one of them is wrong")
+                    if s.get("coord_source") == "estimated":
+                        notes.append(f"{where}: a compass bearing into a coordinate "
+                                     f"that is only estimated")
         elif s.get("directions"):
             errors.append(f"{where}: the first stop cannot have directions to it")
 

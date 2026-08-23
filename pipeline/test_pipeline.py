@@ -10,6 +10,7 @@ that never fails is not a checker.
 """
 import copy
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -60,19 +61,47 @@ class TestGeo(unittest.TestCase):
     def test_zero_distance(self):
         self.assertAlmostEqual(geo.haversine_m(51.5, -0.1, 51.5, -0.1), 0.0, places=6)
 
-    def test_gate_subtracts_accuracy(self):
-        # 90 m away, 60 m of claimed accuracy, 50 m radius: 90 - 60 <= 50, so in.
-        self.assertTrue(geo.gate_passes(90, 60, 50))
-        # Same distance with a confident phone stays out.
+    def test_gate_subtracts_some_accuracy_but_not_all(self):
+        # 70 m out, 60 m of claimed error, 50 m radius. The old rule allowed the
+        # full 60 and opened. The allowance is capped at 25, so 70 - 25 > 50.
+        self.assertFalse(geo.gate_passes(70, 60, 50))
+        # Inside the radius outright is always in.
+        self.assertTrue(geo.gate_passes(45, 60, 50))
+        # And a confident phone gets no help it does not need.
         self.assertFalse(geo.gate_passes(90, 5, 50))
 
-    def test_gate_accuracy_is_capped(self):
-        """A phone claiming 5 km of error must not open a gate from Croydon."""
+    def test_a_hopeless_fix_opens_nothing(self):
+        """This is the one that matters. A phone that does not know where it is
+        must not be able to vouch for you, even standing on the spot."""
         self.assertFalse(geo.gate_passes(400, 5000, 60))
-        self.assertTrue(geo.gate_passes(200, 5000, 60))     # 200 - 150 <= 60
+        self.assertFalse(geo.gate_passes(200, 5000, 60))
+        self.assertFalse(geo.gate_passes(5, 200, 60))
+
+    def test_gate_cannot_open_much_beyond_its_radius(self):
+        """Whatever the phone claims, the reach is radius + 15 m and no more."""
+        for acc in (0, 10, 40, 74):
+            self.assertFalse(geo.gate_passes(50 + 15 + 1, acc, 50),
+                             f"opened at 66 m with accuracy {acc}")
+
+    def test_the_player_agrees_with_geo_about_the_gate(self):
+        """The gate rule exists twice, in Python here and in JavaScript in the
+        page that actually runs on the walk. Two implementations of one rule is
+        how a tightened gate ships tightened in the tests and loose on a phone,
+        so the numbers are read out of the shipped page and compared."""
+        page = (Path(__file__).resolve().parent.parent
+                / "app" / "index.html").read_text(encoding="utf-8")
+        for name, want in (("ACC_ALLOWANCE_M", geo.ACC_ALLOWANCE_M),
+                           ("ACC_USELESS_M", geo.ACC_USELESS_M)):
+            m = re.search(rf"const {name} = (\d+);", page)
+            self.assertIsNotNone(m, f"{name} not found in the player")
+            self.assertEqual(int(m.group(1)), int(want),
+                             f"{name} is {m.group(1)} in the player, {want} in geo")
+        self.assertIn("if (acc > ACC_USELESS_M) return false;", page,
+                      "the player no longer refuses a hopeless fix")
 
     def test_gate_opens_when_standing_there(self):
         self.assertTrue(geo.gate_passes(10, 20, 70))
+        self.assertTrue(geo.gate_passes(30, 30, 30))
 
     def test_long_leg_is_flagged(self):
         points = [("a", 51.5138, -0.0984), ("b", 51.5300, -0.0984)]   # ~1.8 km
