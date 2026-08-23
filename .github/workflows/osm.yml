@@ -1,0 +1,48 @@
+name: Fetch map data
+
+# The sandbox this repo is authored in cannot reach any OpenStreetMap host: the
+# egress proxy refuses overpass, nominatim, geofabrik and the tile servers
+# alike. A runner has ordinary internet. So the fetch happens here and the
+# result is committed, which also means the build and the author work from the
+# same file, offline, for ever.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tour:
+        description: "Tour id to fetch map data for, or 'all'"
+        default: "all"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osm
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch from OpenStreetMap
+        run: python3 pipeline/fetch_osm.py --tour "${{ inputs.tour }}"
+
+      - name: Commit the extract
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/osm
+          if git diff --cached --quiet; then
+            echo "map data unchanged"
+            exit 0
+          fi
+          git commit -m "Map data for ${{ inputs.tour }} from OpenStreetMap
+
+          Fetched on a runner because the authoring sandbox cannot reach any
+          OSM host. Map data from OpenStreetMap, licensed ODbL."
+          git push
