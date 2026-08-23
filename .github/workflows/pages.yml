@@ -1,4 +1,4 @@
-name: Build and publish the walk
+name: Build and publish the walks
 
 on:
   push:
@@ -23,29 +23,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      # The content contracts run before anything is built. A route that fails
-      # them should never reach a phone.
-      - name: Check the content
-        run: python3 pipeline/validate_content.py
-
-      - name: Bake the route artefacts
-        run: python3 pipeline/bake.py --include-drafts
-
-      # A generator should not be its own judge, so the artefacts on disk are
-      # re-checked by a separate program before they are published.
-      - name: Re-check the artefacts independently
-        run: python3 pipeline/verify_bakes.py
-
       - name: Unit tests
         run: python3 -m unittest discover -s pipeline -p 'test_*.py'
 
-      # The fixed walks share the player, so they are built and checked here
-      # too. Their contract check covers the things London has no equivalent of:
-      # every stop after the first must carry directions that name a turn and
-      # give a round distance, every stop must have exactly one kind of gate,
-      # and no title may give away its own answer. Every tour under content/
-      # is built, so adding one needs no edit to this file.
-      - name: Build and check the fixed walks
+      # Every tour under content/ is built and held to the contract in
+      # docs/house-style.md, so adding a town needs no edit to this file. The
+      # checks that matter are the ones that read the map: a street that does
+      # not exist, a heading that disagrees with the street it is attached to,
+      # streets named out of order, and a leg written turn-by-turn when the map
+      # is too thin to support it.
+      - name: Build and check the walks
         run: python3 pipeline/build_tour.py
 
       # Every listed answer must actually be accepted by the matcher in the
@@ -54,12 +41,13 @@ jobs:
       - name: Check every answer round-trips
         run: node pipeline/check_answers.cjs
 
-      # build_tour.py has already written app/gdansk/index.html,
-      # app/gunpowder-mile/index.html and app/noble-val/index.html, which is
-      # what gives each walk its own address on the site.
-      - name: Publish the single file builds alongside the site
+      # build_tour.py writes app/<served_at>/index.html per walk, which is what
+      # gives each one its own address, and dist/<id>.html as a single file
+      # somebody can keep. The archived walks — Gdansk and the London topic
+      # picker — are committed builds that are simply carried through, so their
+      # links keep working without anything rebuilding them.
+      - name: Collect the single file builds
         run: |
-          python3 pipeline/build_standalone.py
           mkdir -p app/download
           cp dist/*.html app/download/
 

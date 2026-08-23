@@ -19,8 +19,8 @@ import json
 import sys
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
-CONTENT = BASE / "content"
+BASE = Path(__file__).resolve().parent.parent.parent
+CONTENT = Path(__file__).resolve().parent          # the archived content lives beside this script
 
 
 def q(value):

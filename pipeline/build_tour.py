@@ -485,7 +485,7 @@ def check(tour):
                               f"otherwise")
         for i, s in enumerate(stops):
             where = f"stop {i + 1} ({s['id']})"
-            _, snap = town.snap(s["lat"], s["lon"])
+            snap = town.off_network_m(s["lat"], s["lon"])
             if snap > streets.MAX_SNAP_M:
                 errors.append(f"{where}: {snap:.0f} m from the nearest walkable "
                               f"way, so it is not somewhere you can stand")

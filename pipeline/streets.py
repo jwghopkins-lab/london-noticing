@@ -99,8 +99,37 @@ class Town:
         return min(self.nodes, key=lambda n: geo.haversine_m(lat, lon, n[0], n[1]))
 
     def snap(self, lat, lon):
+        """The graph node to route from, and how far it is.
+
+        Routing needs a node, so this returns one. It is NOT the answer to
+        "can a person stand here" — for that use off_network_m, which measures
+        to the nearest part of a way rather than to the nearest drawn point.
+        """
         n = self.nearest_node(lat, lon)
         return n, geo.haversine_m(lat, lon, n[0], n[1])
+
+    def off_network_m(self, lat, lon):
+        """How far this point is from the nearest walkable way."""
+        if not self.streets:
+            return float("inf")
+        return min(geo.point_to_line_m((lat, lon), [tuple(q) for q in w["line"]])
+                   for w in self.streets)
+
+    def place_near(self, lat, lon, within=25.0):
+        """The nearest thing OSM has a name for, if it is close enough to aim at.
+
+        A stop can sit well off the walkable network and still be easy to reach:
+        inside a church, under a market hall, in the middle of a square. What
+        makes those describable is that there is something to walk towards. So
+        the question is never only "how far off the path is this", it is "is
+        there a landmark here".
+        """
+        best = None
+        for place in self.places:
+            d = geo.haversine_m(lat, lon, place["lat"], place["lon"])
+            if d <= within and (best is None or d < best[1]):
+                best = (place, d)
+        return best
 
     def named_here(self, lat, lon, within=40.0):
         """What OSM calls the ways passing close to a point."""
@@ -114,8 +143,20 @@ class Town:
         return sorted(names.items(), key=lambda kv: kv[1])
 
     # ---- routing ---------------------------------------------------------
-    def route(self, a, b):
-        """Shortest walk along the street graph between two coordinates."""
+    def route(self, a, b, avoid=None, penalty=4.0):
+        """Shortest walk along the street graph between two coordinates.
+
+        `avoid` is a set of edges, each a frozenset of two node keys, whose
+        length is multiplied by `penalty` while searching. Routing twice, the
+        second time avoiding the first answer, is how the second-best way round
+        is found. It costs one extra Dijkstra and it is the single most useful
+        thing to know about a leg: where there are two ways round of much the
+        same length, a walker will take either, and turn-by-turn directions
+        that assume one of them are a coin toss.
+
+        The lengths reported are always the true ones. The penalty steers the
+        search; it never inflates the answer.
+        """
         start, _ = self.snap(*a)
         goal, _ = self.snap(*b)
         if start == goal:
@@ -132,6 +173,8 @@ class Town:
             if node == goal:
                 break
             for nxt, step in self.adj.get(node, ()):
+                if avoid and frozenset((node, nxt)) in avoid:
+                    step = step * penalty
                 nd = d + step
                 if nd < dist.get(nxt, float("inf")):
                     dist[nxt] = nd
@@ -143,10 +186,19 @@ class Town:
         while path[-1] != start:
             path.append(prev[path[-1]])
         path.reverse()
-        return {"metres": dist[goal], "path": path,
+        return {"metres": self.path_metres(path), "path": path,
                 "legs": self._legs(path),
                 "bearing": geo.bearing_deg(path[0][0], path[0][1],
                                            path[1][0], path[1][1])}
+
+    @staticmethod
+    def path_metres(path):
+        return sum(geo.haversine_m(a[0], a[1], b[0], b[1])
+                   for a, b in zip(path, path[1:]))
+
+    @staticmethod
+    def path_edges(path):
+        return {frozenset((a, b)) for a, b in zip(path, path[1:])}
 
     def _legs(self, path):
         """Collapse the path into named stretches, with a turn at each join."""

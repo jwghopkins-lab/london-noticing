@@ -49,6 +49,37 @@ def haversine_m(lat1, lon1, lat2, lon2):
     return 2 * EARTH_M * asin(sqrt(a))
 
 
+def seg_dist_m(p, a, b):
+    """Distance from a point to a line segment, in metres.
+
+    Flat-earth about the point itself, which over the few hundred metres these
+    walks cover is right to well under a metre.
+    """
+    kx = 111320.0 * cos(radians(p[0]))
+    ky = 110540.0
+    px, py = (p[1] - a[1]) * kx, (p[0] - a[0]) * ky
+    bx, by = (b[1] - a[1]) * kx, (b[0] - a[0]) * ky
+    l2 = bx * bx + by * by
+    t = 0.0 if l2 == 0 else max(0.0, min(1.0, (px * bx + py * by) / l2))
+    dx, dy = px - t * bx, py - t * by
+    return sqrt(dx * dx + dy * dy)
+
+
+def point_to_line_m(p, line):
+    """Distance from a point to the nearest part of a polyline, in metres.
+
+    To the nearest part, not the nearest drawn point. That distinction turned
+    out to matter: the first stop of the Noble Val walk stands in the middle of
+    a bridge, which OSM draws with a node at each end and nothing between, so
+    measuring to nodes put a walker standing on the bridge 41 m off the network.
+    """
+    if not line:
+        return float("inf")
+    if len(line) == 1:
+        return haversine_m(p[0], p[1], line[0][0], line[0][1])
+    return min(seg_dist_m(p, a, b) for a, b in zip(line, line[1:]))
+
+
 def walk_minutes(straight_m):
     """Minutes on foot for a straight-line distance, allowing for streets."""
     return straight_m * DETOUR / WALK_M_PER_MIN

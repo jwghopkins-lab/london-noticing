@@ -30,12 +30,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "pipeline"))
 from combos import all_combos                      # noqa: E402
 import geo                                         # noqa: E402
 import verify_bakes                                # noqa: E402
 
-BASE = Path(__file__).resolve().parent.parent
-CONTENT = BASE / "content"
+BASE = Path(__file__).resolve().parent.parent.parent
+CONTENT = Path(__file__).resolve().parent          # the archived content lives beside this script
 APP_ROUTES = BASE / "app" / "routes"
 FORMAT_VERSION = 1
 

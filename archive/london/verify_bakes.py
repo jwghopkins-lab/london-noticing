@@ -17,8 +17,8 @@ import sys
 from math import radians, sin, cos, asin, sqrt
 from pathlib import Path
 
-BASE = Path(__file__).resolve().parent.parent
-CONTENT = BASE / "content"
+BASE = Path(__file__).resolve().parent.parent.parent
+CONTENT = Path(__file__).resolve().parent          # the archived content lives beside this script
 FORMAT_VERSION = 1
 
 REQUIRED_STOP_FIELDS = ("id", "topic", "title", "where", "lat", "lon",

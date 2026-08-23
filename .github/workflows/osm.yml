@@ -1,17 +1,32 @@
 name: Fetch map data
 
 # The sandbox this repo is authored in cannot reach any OpenStreetMap host: the
-# egress proxy refuses overpass, nominatim, geofabrik and the tile servers
-# alike. A runner has ordinary internet. So the fetch happens here and the
-# result is committed, which also means the build and the author work from the
-# same file, offline, for ever.
+# egress proxy refuses overpass, nominatim, the routers and the tile servers
+# alike. A runner has ordinary internet. So the fetching happens here and the
+# results are committed, which also means the build and the author work from
+# the same files, offline, for ever.
+#
+# Two fetches, both keyed off each tour's own declared bounding box and stop
+# list, so a new town anywhere needs no configuration beyond the contract it
+# already has:
+#
+#   streets   the Overpass extract the walk is routed and checked against
+#   routes    what independent routing engines make of each leg, which is how
+#             confidence.py decides whether a leg can honestly be given as
+#             turn-by-turn directions at all
 
 on:
   workflow_dispatch:
     inputs:
       tour:
-        description: "Tour id to fetch map data for, or 'all'"
+        description: "Tour id, or 'all'"
         default: "all"
+        required: true
+      what:
+        description: "Which fetch to run"
+        type: choice
+        options: ["both", "streets", "routes"]
+        default: "both"
         required: true
 
 permissions:
@@ -29,20 +44,28 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fetch from OpenStreetMap
+      - name: Fetch the street layout from OpenStreetMap
+        if: inputs.what != 'routes'
         run: python3 pipeline/fetch_osm.py --tour "${{ inputs.tour }}"
 
-      - name: Commit the extract
+      # Second opinions on every leg, from engines that are not ours. Where they
+      # disagree with us or with each other, the leg is written as a heading and
+      # a landmark instead of a sequence of turns.
+      - name: Ask other routing engines to walk the same legs
+        if: inputs.what != 'streets'
+        run: python3 pipeline/fetch_routes.py --tour "${{ inputs.tour }}"
+
+      - name: Commit what came back
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/osm
+          git add data/osm data/routes
           if git diff --cached --quiet; then
             echo "map data unchanged"
             exit 0
           fi
-          git commit -m "Map data for ${{ inputs.tour }} from OpenStreetMap
+          git commit -m "Map data for ${{ inputs.tour }} (${{ inputs.what }})
 
           Fetched on a runner because the authoring sandbox cannot reach any
-          OSM host. Map data from OpenStreetMap, licensed ODbL."
+          map host. Data from OpenStreetMap, licensed ODbL."
           git push

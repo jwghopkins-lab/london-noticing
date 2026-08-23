@@ -12,7 +12,7 @@ from itertools import combinations
 from pathlib import Path
 import json
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent.parent.parent
 PICK = 3
 
 
