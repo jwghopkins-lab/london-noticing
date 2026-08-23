@@ -65,6 +65,17 @@ def seg_dist_m(p, a, b):
     return sqrt(dx * dx + dy * dy)
 
 
+def project_on_seg(p, a, b):
+    """The point on segment a-b nearest p, as (lat, lon)."""
+    kx = 111320.0 * cos(radians(p[0]))
+    ky = 110540.0
+    px, py = (p[1] - a[1]) * kx, (p[0] - a[0]) * ky
+    bx, by = (b[1] - a[1]) * kx, (b[0] - a[0]) * ky
+    l2 = bx * bx + by * by
+    t = 0.0 if l2 == 0 else max(0.0, min(1.0, (px * bx + py * by) / l2))
+    return (a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t)
+
+
 def point_to_line_m(p, line):
     """Distance from a point to the nearest part of a polyline, in metres.
 

@@ -34,9 +34,11 @@ Five signals, any one of which can send a leg to rough:
   snap        How far each end of the leg is from anywhere you can walk. A stop
               floating off the network means the route to it is a guess.
 
-Missing second opinions do not fail a build. A town whose route data has not
-been fetched yet is scored on the three local signals and told to go and fetch
-it, because the alternative is a repo where adding a town breaks the build.
+Absence of evidence is not evidence. A leg the engines disagree about is a
+reason to drop to rough; a leg no engine could be asked about — the fetch has
+never run, or both of them timed out — is a note telling somebody to go and ask,
+not a verdict. Otherwise a flaky afternoon on a volunteer-run server would
+silently rewrite a walk.
 """
 import json
 import sys
@@ -56,6 +58,9 @@ ROUTES_DIR = BASE / "data" / "routes"
 AGREE_TOL_M = 20.0
 AGREE_OVERLAP = 0.80
 AGREE_LENGTH = 1.25
+# ...and the gap has to be worth arguing about. Across a 30 m square, 28 m
+# against 35 m is a 1.25 ratio and means nothing at all.
+AGREE_LENGTH_M = 20.0
 SAMPLE_M = 8.0
 
 MARGIN_MIN = 1.25          # the next way round must be a quarter longer
@@ -142,7 +147,7 @@ def score_leg(town, a, b, answers=None):
     reported and scored around. An empty list means the fetch ran and every
     engine failed on this leg, which is a reason to be less sure, not more.
     """
-    out = {"verdict": "rough", "reasons": [], "engines": [],
+    out = {"verdict": "rough", "reasons": [], "notes": [], "engines": [],
            "metres": None, "turns": None, "unnamed_frac": None,
            "margin": None, "only_way": False, "snap_m": None}
 
@@ -207,7 +212,7 @@ def score_leg(town, a, b, answers=None):
 
     ours = [(p[0], p[1]) for p in r["path"]]
     if answers is None:
-        out["reasons"].append(
+        out["notes"].append(
             "no second opinion on file; run the Fetch route second opinions "
             "workflow")
     else:
@@ -219,8 +224,10 @@ def score_leg(town, a, b, answers=None):
                 continue
             cmp = agreement(ours, [tuple(p) for p in ans["line"]])
             cmp["engine"] = ans["engine"]
+            gap = abs(cmp["their_metres"] - r["metres"])
             ok = (cmp["overlap"] >= AGREE_OVERLAP
-                  and cmp["length_ratio"] <= AGREE_LENGTH)
+                  and (cmp["length_ratio"] <= AGREE_LENGTH
+                       or gap <= AGREE_LENGTH_M))
             cmp["agrees"] = ok
             out["engines"].append(cmp)
             agreed += 1 if ok else 0
@@ -230,9 +237,11 @@ def score_leg(town, a, b, answers=None):
                     f"{cmp['overlap'] * 100:.0f}% of the two routes coincide and "
                     f"it makes the leg {cmp['their_metres']:.0f} m against our "
                     f"{r['metres']:.0f} m")
-        if not agreed:
-            out["reasons"].append(
-                "no independent engine confirmed this route")
+        if not agreed and not out["reasons"]:
+            # Every engine failed to answer. That is a bad afternoon on a free
+            # server, not a fact about the streets.
+            out["notes"].append("no independent engine could be reached for "
+                                "this leg, so nothing confirms the route")
 
     if not out["reasons"]:
         out["verdict"] = "turn_by_turn"
@@ -273,6 +282,8 @@ def main():
                   f"margin {s['margin']}")
             for why in s["reasons"]:
                 print(f"        - {why}")
+            for why in s["notes"]:
+                print(f"        ? {why}")
     return 0
 
 

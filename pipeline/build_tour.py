@@ -32,6 +32,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
 import streets                                     # noqa: E402
+import confidence                                  # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
 # One directory per town under content/. London lives at the top level of
@@ -156,6 +157,30 @@ TURN_CLAIMS = re.compile(r"\b(turn|take the|first|second|third)\s+"
 # The authored distances on a leg should add up to what the router says it is.
 DIST_TOLERANCE_FRAC = 0.25
 DIST_TOLERANCE_M = 25.0
+
+# ---- the two ways a leg may be written -----------------------------------
+#
+# Which one a leg is allowed to use is not the author's taste. confidence.py
+# scores the leg against the map and against other routing engines, and a leg
+# that does not earn turn-by-turn cannot have it. The reason is a walker's
+# complaint that stop 4's directions were not quite right, together with the
+# observation that Google is not right there either. Where the map itself is
+# thin, the only honest thing to write is a heading and a landmark.
+#
+# Rough is not a lesser mode. It is what somebody who knows the town actually
+# says, and it cannot be wrong the way a turn sequence can be wrong, because it
+# does not claim the thing that turns out to be false.
+DIRECTIONS_MODES = ("turn_by_turn", "rough")
+# Rough directions describe a heading, not a route, so both the distance and the
+# bearing are held to looser limits than a turn sequence is.
+ROUGH_DIST_TOLERANCE_FRAC = 0.40
+ROUGH_COMPASS_TOLERANCE_DEG = 80
+
+# Written once, here, rather than by each author in their own words. It has to
+# say the same thing every time: you have not gone wrong, and here is what to
+# aim at. Rewriting it per stop is how a caveat turns into an apology.
+ROUGH_LANES = ("The lanes here are older than the map and most carry no sign, "
+               "so if you come out somewhere else you have not gone wrong.")
 
 WORD_NUMBERS = {
     "ten": 10, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
@@ -300,6 +325,26 @@ def names_its_start(directions, prev):
     return any(w in first for w in naming_words(prev))
 
 
+def human_list(items):
+    if len(items) == 1:
+        return items[0]
+    return f"{', '.join(items[:-1])} or {items[-1]}"
+
+
+def rough_directions(stop):
+    """The shipped text for a rough leg: heading, streets, caveat, landmark."""
+    out = [(stop.get("directions") or "").strip()]
+    named = stop.get("directions_streets") or []
+    if named:
+        out.append(f"You may come out on {human_list(named)}. {ROUGH_LANES}")
+    else:
+        out.append(ROUGH_LANES)
+    target = (stop.get("directions_target") or "").strip().rstrip(".")
+    if target:
+        out.append(f"What you are looking for is {target}.")
+    return "\n\n".join(out)
+
+
 def is_rounded(n):
     """Nearest 5 below 100, nearest 10 below 500, nearest 50 above that."""
     if n < 100:
@@ -348,7 +393,36 @@ def check(tour):
             if not d:
                 errors.append(f"{where}: no directions from the previous stop")
             else:
-                if len(d.split()) < 25:
+                mode = s.get("directions_mode", "turn_by_turn")
+                if mode not in DIRECTIONS_MODES:
+                    errors.append(f"{where}: directions_mode must be one of "
+                                  f"{list(DIRECTIONS_MODES)}, not {mode!r}")
+                    mode = "turn_by_turn"
+                if mode == "rough":
+                    # A heading, not a route. Left and right belong to a turn
+                    # sequence, and a turn sequence is exactly what this leg
+                    # has been judged unable to support.
+                    if not compass_positions(d):
+                        errors.append(f"{where}: rough directions must give a "
+                                      f"compass heading, not a turn")
+                    if TURN_CLAIMS.search(d):
+                        errors.append(f"{where}: rough directions must not count "
+                                      f"turnings; a turning you cannot name "
+                                      f"cannot be counted")
+                    if not (s.get("directions_target") or "").strip():
+                        errors.append(f"{where}: rough directions need a "
+                                      f"directions_target, the thing you are "
+                                      f"walking towards")
+                    if not (s.get("directions_streets") or []):
+                        notes.append(f"{where}: rough directions with no "
+                                     f"directions_streets; naming the streets you "
+                                     f"may come out on is most of the value")
+                else:
+                    for field in ("directions_target", "directions_streets"):
+                        if s.get(field):
+                            errors.append(f"{where}: {field} belongs to rough "
+                                          f"directions; this leg is turn_by_turn")
+                if len(d.split()) < (14 if mode == "rough" else 25):
                     notes.append(f"{where}: directions are only {len(d.split())} "
                                  f"words, probably not detailed enough")
                 if not re.search(r"(left|right|straight|north|south|east|west)", d, re.I):
@@ -483,6 +557,7 @@ def check(tour):
                 errors.append(f"no street called {' '.join(mention[:4])!r} in "
                               f"{tour.get('city', 'this town')}; the map says "
                               f"otherwise")
+        scores = confidence.score_tour(tour, town)
         for i, s in enumerate(stops):
             where = f"stop {i + 1} ({s['id']})"
             snap = town.off_network_m(s["lat"], s["lon"])
@@ -496,9 +571,12 @@ def check(tour):
             if r is None:
                 errors.append(f"{where}: no walking route from the stop before it")
                 continue
+            mode = s.get("directions_mode", "turn_by_turn")
             said = sum(all_authored_metres(s.get("directions") or ""))
             if said:
-                slack = max(DIST_TOLERANCE_M, r["metres"] * DIST_TOLERANCE_FRAC)
+                frac = (ROUGH_DIST_TOLERANCE_FRAC if mode == "rough"
+                        else DIST_TOLERANCE_FRAC)
+                slack = max(DIST_TOLERANCE_M, r["metres"] * frac)
                 if abs(said - r["metres"]) > slack:
                     errors.append(
                         f"{where}: the directions add up to {said} m but the "
@@ -540,6 +618,50 @@ def check(tour):
                     f"name, so counting turnings cannot work. Name the streets "
                     f"and say which way they run instead")
 
+            # Whether this leg may be given as a sequence of turns at all is
+            # decided by the map and by other routing engines, not by taste.
+            verdict = scores.get(s["id"])
+            if verdict and verdict["verdict"] == "rough" and mode != "rough":
+                errors.append(
+                    f"{where}: written as turn-by-turn, but this leg does not "
+                    f"support it. " + " Also: ".join(verdict["reasons"])
+                    + ". Write it as rough directions instead: a heading, a "
+                    f"rough distance, the streets you may come out on, and what "
+                    f"to look for.")
+            if verdict and verdict["verdict"] == "turn_by_turn" and mode == "rough":
+                notes.append(f"{where}: written rough, though the map supports "
+                             f"turn-by-turn here")
+            for why in (verdict or {}).get("notes", []):
+                notes.append(f"{where}: {why}")
+
+            # Streets you may come out on still have to be streets, and still
+            # have to be on this leg. Rough does not mean unchecked.
+            for name in (s.get("directions_streets") or []):
+                got = resolve_street(town, name.split())
+                if got is None:
+                    errors.append(f"{where}: directions_streets names {name!r}, "
+                                  f"which is not a street in "
+                                  f"{tour.get('city', 'this town')}")
+                elif got not in heading and got not in standing:
+                    errors.append(f"{where}: directions_streets names {got!r}, "
+                                  f"which is not on the way from the stop before it")
+
+            # In rough directions the streets belong in directions_streets, where
+            # the caveat frames them honestly. Naming one in the prose promises
+            # the walker they will be on it, which is the promise this mode
+            # exists to stop making. The origin is the exception: you have to say
+            # where you are setting off from.
+            if mode == "rough":
+                origin = {n for n, _ in town.named_here(
+                    stops[i - 1]["lat"], stops[i - 1]["lon"], STANDING_ON_M)}
+                for _, name in named:
+                    if name not in origin:
+                        errors.append(
+                            f"{where}: rough directions name {name!r} in the "
+                            f"prose; put it in directions_streets instead, so it "
+                            f"reads as a street you may meet rather than one you "
+                            f"are promised")
+
             # Named in the order you meet them. Endpoints are exempt: the street
             # you are standing on and the one you are heading for can be said at
             # any point, and usually are said first.
@@ -548,7 +670,8 @@ def check(tour):
             for name in routed_order:
                 if not deduped or deduped[-1] != name:
                     deduped.append(name)
-            claimed = [n for _, n in named if n in heading]
+            claimed = ([n for _, n in named if n in heading]
+                       if mode != "rough" else [])
             cursor = 0
             for name in claimed:
                 while cursor < len(deduped) and deduped[cursor] != name:
@@ -562,14 +685,16 @@ def check(tour):
             for pos, deg, word in compass_positions(text):
                 att = attached_street(text, pos, mentions)
                 name = resolve_street(town, att[1]) if att else None
+                tol = (ROUGH_COMPASS_TOLERANCE_DEG if mode == "rough"
+                       else COMPASS_TOLERANCE_DEG)
                 if name and name in heading:
-                    if angle_off(deg, heading[name][1]) > COMPASS_TOLERANCE_DEG:
+                    if angle_off(deg, heading[name][1]) > tol:
                         errors.append(
                             f"{where}: says {name} runs {word}, but on this leg "
                             f"it runs {streets.compass_word(heading[name][1])}")
                 elif angle_off(deg, geo.bearing_deg(
                         stops[i - 1]["lat"], stops[i - 1]["lon"],
-                        s["lat"], s["lon"])) > COMPASS_TOLERANCE_DEG:
+                        s["lat"], s["lon"])) > tol:
                     errors.append(f"{where}: says {word}, but the leg goes "
                                   f"{streets.compass_word(geo.bearing_deg(stops[i-1]['lat'], stops[i-1]['lon'], s['lat'], s['lon']))}")
 
@@ -593,7 +718,10 @@ def bake(tour):
         stops.append({
             "id": s["id"], "topic": s["topic"], "title": s["title"],
             "where": s["where"], "lat": s["lat"], "lon": s["lon"],
-            "directions": s.get("directions"),
+            "directions": (rough_directions(s)
+                           if s.get("directions_mode") == "rough"
+                           else s.get("directions")),
+            "directions_mode": s.get("directions_mode", "turn_by_turn"),
             "gate": s.get("gate"), "nudge": s.get("nudge"),
             "question": s.get("question"),
             "look": s["look"], "look_spoken": s.get("look_spoken"),

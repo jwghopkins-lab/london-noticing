@@ -108,11 +108,24 @@ def compact(raw):
         geom = el.get("geometry")
 
         if el.get("type") == "way" and tags.get("highway") in WALKABLE and geom:
-            streets.append({
+            way = {
                 "name": name,
                 "kind": tags["highway"],
                 "line": [[round(p["lat"], 6), round(p["lon"], 6)] for p in geom],
-            })
+            }
+            # A way with no name in the data is not always a way a walker
+            # cannot identify. A bridge is the most obvious thing in a town,
+            # and so is a flight of steps. Both are usually nameless in OSM,
+            # and counting them as anonymous lanes sent a leg to rough
+            # directions for crossing a bridge. What matters is whether the
+            # walker can tell they are on it.
+            if tags.get("bridge") not in (None, "no"):
+                way["obvious"] = "bridge"
+            elif tags["highway"] == "steps":
+                way["obvious"] = "steps"
+            elif tags.get("tunnel") not in (None, "no"):
+                way["obvious"] = "tunnel"
+            streets.append(way)
             continue
         if el.get("type") == "way" and tags.get("waterway") and geom:
             water.append({"name": name, "kind": tags["waterway"],

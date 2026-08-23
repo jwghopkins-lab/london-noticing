@@ -108,6 +108,32 @@ class Town:
         n = self.nearest_node(lat, lon)
         return n, geo.haversine_m(lat, lon, n[0], n[1])
 
+    def project(self, lat, lon):
+        """The point on the street network nearest this one.
+
+        Not the nearest drawn node: the nearest point on the nearest way, which
+        is where a walker standing here would actually join the streets. The
+        difference is not academic. Routing from nearest nodes made the walk
+        from the bridge to the church 87 m when two other engines said 128 and
+        138, because the bridge is drawn with a node at each end and the stop
+        stands in the middle, so forty metres of it simply vanished.
+        """
+        best = None
+        for way in self.streets:
+            line = way["line"]
+            for a, b in zip(line, line[1:]):
+                ka, kb = tuple(a), tuple(b)
+                if ka == kb:
+                    continue
+                d = geo.seg_dist_m((lat, lon), ka, kb)
+                if best is None or d < best[0]:
+                    best = (d, ka, kb, way["name"])
+        if best is None:
+            return None
+        d, ka, kb, name = best
+        return {"point": geo.project_on_seg((lat, lon), ka, kb),
+                "a": ka, "b": kb, "name": name, "off_m": d}
+
     def off_network_m(self, lat, lon):
         """How far this point is from the nearest walkable way."""
         if not self.streets:
@@ -157,8 +183,32 @@ class Town:
         The lengths reported are always the true ones. The penalty steers the
         search; it never inflates the answer.
         """
-        start, _ = self.snap(*a)
-        goal, _ = self.snap(*b)
+        pa, pb = self.project(*a), self.project(*b)
+        if pa is None or pb is None:
+            return None
+        # The two joining points are stitched into the graph for this search
+        # only, so a walk starts and ends where the walker does.
+        extra, names = {}, {}
+
+        def attach(p):
+            node = tuple(round(x, 7) for x in p["point"])
+            for end in (p["a"], p["b"]):
+                if end == node:
+                    continue
+                d = geo.haversine_m(node[0], node[1], end[0], end[1])
+                extra.setdefault(node, []).append((end, d))
+                extra.setdefault(end, []).append((node, d))
+                names[frozenset((node, end))] = p["name"]
+            return node
+
+        start, goal = attach(pa), attach(pb)
+        # Both ends on the same stretch of street: the walk between them never
+        # touches a junction, so without this it would go round by both ends.
+        if {pa["a"], pa["b"]} == {pb["a"], pb["b"]} and start != goal:
+            d = geo.haversine_m(start[0], start[1], goal[0], goal[1])
+            extra.setdefault(start, []).append((goal, d))
+            extra.setdefault(goal, []).append((start, d))
+            names[frozenset((start, goal))] = pa["name"]
         if start == goal:
             return {"metres": 0.0, "path": [start], "legs": [], "bearing": None}
         dist = {start: 0.0}
@@ -172,7 +222,7 @@ class Town:
             seen.add(node)
             if node == goal:
                 break
-            for nxt, step in self.adj.get(node, ()):
+            for nxt, step in list(self.adj.get(node, ())) + extra.get(node, []):
                 if avoid and frozenset((node, nxt)) in avoid:
                     step = step * penalty
                 nd = d + step
@@ -187,7 +237,7 @@ class Town:
             path.append(prev[path[-1]])
         path.reverse()
         return {"metres": self.path_metres(path), "path": path,
-                "legs": self._legs(path),
+                "legs": self._legs(path, names),
                 "bearing": geo.bearing_deg(path[0][0], path[0][1],
                                            path[1][0], path[1][1])}
 
@@ -200,11 +250,12 @@ class Town:
     def path_edges(path):
         return {frozenset((a, b)) for a, b in zip(path, path[1:])}
 
-    def _legs(self, path):
+    def _legs(self, path, extra_names=None):
         """Collapse the path into named stretches, with a turn at each join."""
         out = []
         for a, b in zip(path, path[1:]):
-            name = self.edge_name.get(frozenset((a, b)))
+            key = frozenset((a, b))
+            name = (extra_names or {}).get(key, self.edge_name.get(key))
             d = geo.haversine_m(a[0], a[1], b[0], b[1])
             brg = geo.bearing_deg(a[0], a[1], b[0], b[1])
             if out and out[-1]["name"] == name:
