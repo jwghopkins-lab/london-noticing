@@ -1,11 +1,16 @@
 # House style
 
-Every rule here came from something the user cut, reworded or complained about
-while the first Gdansk walk was being tested. They are written down so the
-second walk starts where the first one finished rather than relearning them.
+Every rule here came from something a real walker cut, reworded or complained
+about. They are written down so the next walk starts where the last one finished
+rather than relearning them one town at a time.
 
 Rules marked **[checked]** are enforced by `pipeline/build_tour.py` and fail the
 build. The rest are on whoever is writing.
+
+**This file is the rule list. The method that uses it is
+[`.claude/skills/tour-authoring/SKILL.md`](../.claude/skills/tour-authoring/SKILL.md)**
+— the order to do things in when building a walk for a town nobody has walked
+yet. Read that first; come back here for the detail.
 
 ## Voice
 
@@ -143,6 +148,54 @@ configuration.
 46. Naming a street you are standing on means within 30 m. At 45 m, in a town
     of four-metre alleys, that reached three streets over and exempted almost
     everything from rule 42. **[checked]**
+
+### Two ways to write a leg, and it is not your choice which
+
+The complaint that produced all of this: stop 4's directions were not quite
+right, together with the observation that Google is not right there either. That
+is the useful half. Where the map itself is thin — lanes with no name in the
+data and no sign on the wall — no amount of care in the writing fixes it. So
+every leg is scored by `pipeline/confidence.py` against the street graph and
+against two independent routing engines, and the score picks the mode.
+
+47. **turn_by_turn** is allowed only where the leg earns it: independent engines
+    agree, there is no second way round of much the same length, four turns or
+    fewer, a tenth or less of the walking down nameless lanes, and both ends
+    on the network. Otherwise the leg is **rough**, and writing it turn-by-turn
+    fails the build with the reasons attached. **[checked]**
+48. A rough leg has five parts and no others: the origin **by name**, a compass
+    heading, a rounded distance, the streets you may come out on, and the thing
+    you are walking towards. **[checked]**
+49. The "these lanes are older than the map" line is written once, in
+    `build_tour.py`, and pasted into every rough leg by the baker. Do not
+    rephrase it per stop. A caveat reworded each time reads as an apology.
+50. Rough legs never say left, right, or "second turning". A turning you cannot
+    name cannot be counted. **[checked]**
+51. In a rough leg the street names go in `directions_streets`, not in the
+    prose. Naming one in the sentence promises the walker they will be on it,
+    which is the promise this mode exists to stop making. The origin is the
+    exception; you have to say where you are setting off from. **[checked]**
+52. `directions_streets` is printed to the walker as written, so it carries the
+    map's own spelling. Rue du Timple is Rue du Timplé on the sign.
+    **[checked]**
+53. Ask other routing engines and keep their answers
+    (`pipeline/fetch_routes.py`, committed to `data/routes/`). Disagreement is a
+    reason to drop to rough. Silence — a fetch that never ran, an engine that
+    timed out — is a note, never a verdict. Otherwise a bad afternoon on a
+    volunteer-run server silently rewrites a walk. **[checked]**
+54. Route from where the walker stands, not from the nearest drawn node. The
+    first Noble Val leg measured 87 m against two engines' 128 and 138, because
+    the bridge is drawn with a node at each end and the stop is in the middle,
+    so forty metres vanished. Projecting onto the nearest part of the nearest
+    way brought our numbers to within a metre of OSRM on five legs of six.
+    **[checked]**
+55. A way with no name in the data is not always a way a walker cannot
+    identify. Bridges, steps and tunnels are nameless in OSM and unmissable on
+    the ground. **[checked]**
+56. Only a genuinely different second route counts as a second way round. Where
+    there is one way through, the penalised search is forced back down the same
+    streets and returns the same length, which reads as the worst possible score
+    for the most certain case there is. **[checked]**
 
 ## Facts
 

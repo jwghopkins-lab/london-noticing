@@ -1,89 +1,98 @@
 # london-noticing
 
-A gamified walking tour of central London. No puzzle, no team, no login, no
-secrets.
+Self-contained walking tours. You open a web page and get a walk: a handful of
+stops, each one a thing worth standing in front of, with directions between them
+that are true. No login, no signal needed, no team, no secrets.
 
-You open a web page, pick 3 topics from a list of 5, and get an 18-stop walking
-route: 6 stops per chosen topic. The point is to make you look at something you
-have walked past a hundred times and see it differently. Not "I solved it".
-"Oh, look at that."
+The point is to make somebody look at a thing they have walked past and see it
+differently. Not "I solved it". "Oh, look at that."
 
-Five topics choose three is exactly ten combinations, so the ten routes map
-one-to-one onto the possible picks. Route lookup is a table, not an algorithm.
+## Where the rules are
 
-## Status
+Two files, and they are the actual product now — the walks are what falls out of
+them.
 
-Complete. Thirty stops, six per topic, and all ten routes written and checked.
-Every route runs 18 stops, 6.0 to 8.4 km on foot, with 3 to 5 location-gated
-stops. Screenshots in `docs/shots/`.
+    docs/house-style.md                    56 numbered rules. The ones marked
+                                           [checked] fail the build.
+    .claude/skills/tour-authoring/SKILL.md the method: what order to do things in
+                                           when building a walk for a new town.
+
+Every rule came off a real complaint from somebody on a real walk. The comments
+in `pipeline/build_tour.py` say which rule each check enforces and what shipped
+without it.
+
+## Live walks
+
+| Walk | Where | Built from |
+|---|---|---|
+| Two White Eagles | `/noble-val/` | `content/saint-antonin/two-white-eagles.json` |
+
+Archived, links still live: two Gdansk walks at `/gdansk/` and
+`/gunpowder-mile/`, and the London topic picker at `/`. See `archive/README.md`.
 
 ## Running it
 
-    python3 pipeline/author_routes.py         # master order -> the route lookup
-    python3 pipeline/validate_content.py      # content contracts
-    python3 pipeline/bake.py                  # content -> route artefacts
-    python3 pipeline/verify_bakes.py          # independent re-check of the artefacts
-    python3 pipeline/emit_seed_sql.py         # the backend path, unused by the POC
-    python3 pipeline/build_standalone.py      # everything folded into one file
+    python3 pipeline/build_tour.py                   # the contract and the map
+    node pipeline/check_answers.cjs                  # every answer round-trips
     python3 -m unittest discover -s pipeline -p 'test_*.py'
+    NODE_PATH=$(npm root -g) node pipeline/tour_smoke.cjs   # the walk, end to end
 
-    npx http-server app -p 8080               # then open http://127.0.0.1:8080
-    NODE_PATH=$(npm root -g) node pipeline/walk_smoke.cjs --combo fire-fleet-rivers
+    python3 pipeline/confidence.py --tour <id>       # can this leg be given as turns?
+    python3 pipeline/streets.py --tour <id> --find "Maison Romane"
+    python3 pipeline/streets.py --tour <id> --near 44.1504 1.7551
 
-The page must be served over http. Opened straight off the disk it cannot fetch
-its own route files, and it will say so rather than looking broken.
+Map data is fetched by the **Fetch map data** workflow, on a GitHub runner,
+because this sandbox cannot reach any map host. It commits the results, so the
+build and the author work from the same files offline for ever.
 
 ## Layout
 
-    content/topics.json       the five topics
-    content/stops.json        the stop library: text, coordinates, gates, prompts
-    content/master_order.json the authored walking sequence, done by hand
-    content/routes.json       THE ROUTE LOOKUP. Authoritative. Generated from
-                              the master order; this is what the baker reads.
-    pipeline/             combos, geography, the bake harness, the checker, tests
-    app/                  the page, plus baked artefacts, deployed as static files
-    sql/seed.sql          generated; the backend path, not used by the POC
-    dist/                     the single-file build, for handing to a phone
-    docs/decisions.md         what was decided and why
+    content/<town>/<walk>.json  a walk: stops, text, coordinates, gates, answers
+    data/osm/<walk>.json        the street graph and named places, from Overpass
+    data/routes/<walk>.json     what OSRM and Valhalla make of each leg
+    pipeline/                   the builder, the checks, the router, the tests
+    app/                        the player, plus the built pages
+    dist/                       single-file builds, for handing to a phone
+    docs/house-style.md         the rules
+    docs/decisions.md           what was decided and why
+    archive/                    frozen walks, still published, no longer built
 
 ## Rules of the build
 
-**The route lookup is authoritative.** It fixes which 18 stops a combination
-gets and the order they are walked in. Nothing scores, ranks or reorders them.
-An earlier design scored six stops per topic and then looked up an authored
-order, and every route failed its checks because the scoring picked a different
-six from the one the order was written for.
+**The map decides, not the author.** Coordinates come out of the OSM extract.
+Distances come from routing along the streets. A compass bearing next to a
+street name is checked against that street's heading on that leg. And whether a
+leg may be written as a sequence of turns at all is a score, not a judgement:
+`pipeline/confidence.py` weighs what two independent routing engines make of it,
+whether there is a second way round of much the same length, how much of the
+walking is down nameless lanes, how many turns there are, and how far the ends
+sit off the network. A leg that fails is written as a heading and a landmark
+instead, and the build refuses to ship it any other way.
 
 **Artefacts are self-contained.** The phone on the walk may have no signal, so
-each route file carries every word, coordinate and prompt it needs. Once a route
-has loaded it is kept on the phone.
+each walk file carries every word, coordinate and prompt it needs.
 
-**Verification is separate from generation.** `verify_bakes.py` imports nothing
-from `bake.py` and re-derives everything from the content files, including a
-second implementation of the distance formula. A generator that grades itself
-grades itself generously.
+**Verification is separate from generation.** The checker re-derives everything
+from the source, with its own implementation of the distance formula. A
+generator that grades itself grades itself generously.
 
-**Roughly four stops per route are gated, and a gate cannot be talked out of
-it.** A walk that is nothing but check-ins is a chore, so most stops are not
-gated. The ones that are have no bypass: there is no skip button, no override,
-and no control anywhere in the shipped page that opens a gated stop. The only
-way in is a position inside the radius.
+**Every check is proved by breaking it.** A check nobody has ever seen fire is a
+check that does not work. Two were found silently doing nothing that way.
 
-The gate never says no, though. It reports warm or cold, because a phone in a
-courtyard can be a hundred metres out, and refusing somebody who is standing
-right there is worse than having no gate at all.
+**A gate cannot be talked out of it.** The ones that are gated on position have
+no bypass in the shipped page. But the gate never says no, only warm or cold,
+because a phone in a courtyard can be a hundred metres out, and it refuses any
+fix worse than 75 m outright rather than pretending to know.
 
-**Testing a gate from outside London** is done with an approach simulator that
-simulates walking rather than arriving. It is off unless asked for, by
-`?testing=1` in the address or five taps on the wordmark, and it is never
-written to storage, so it cannot follow you onto the street. It puts you 500 m
-out and moves you 120 m per press. Getting in takes about four presses and the
-ordinary check decides every time.
+**Testing a gate from somewhere else** uses an approach simulator that simulates
+walking rather than arriving. It is off unless asked for, by `?testing=1` in the
+address or five taps on the wordmark, and it is never written to storage, so it
+cannot follow you onto the street.
 
 **Everything is written to be spoken.** Short sentences, one idea each, nothing
 that only works on a screen, and a separate `*_spoken` field wherever dates and
-numbers need saying differently. Stop ids are stable forever so audio can be
-attached to them later. The audio itself is not built.
+numbers need saying differently. Stop ids are stable for ever so audio can be
+attached later. The audio itself is not built.
 
 ## Lineage
 
@@ -94,42 +103,6 @@ guess limits, leaderboard and collect mode were all stripped: that product had
 answers to hide and this one has nothing to hide at all.
 
 The bake harness posture came from the Trivium tour-kit extract. Its topic
-picker and its scoring were not reused, because with five fixed topics and a
-user who picks three there is no rotation problem and nothing to rank.
+picker and its scoring were not reused.
 
 No shared code, no shared database, no imports from either at runtime.
-
-## A second walk: Gdansk
-
-`content/gdansk/tour.json` is a ten-stop walk round the Main Town of Gdansk,
-built with `pipeline/build_gdansk.py` and sharing the same player. It is about
-1.6 km and an hour, and it works differently in three ways.
-
-**One fixed route.** No topics to choose. Everybody walks the same ten stops, so
-any number of people can be part way through at the same time without knowing
-about each other. Nothing is dated and nothing is shared.
-
-**Seven stops are gated on an answer rather than on GPS.** You are asked
-something you can only answer by looking at the thing in front of you: how many
-prongs are on the trident, which animals hold the shield, what the church is
-made of. In a city of tall narrow streets that is a better proof of presence
-than a satellite fix, and it is more fun. Answers are matched forgivingly, there
-is no score and no limit, and a hint appears on its own after two wrong tries.
-
-**The three that are gated on position carry a pass button**, which the London
-walk deliberately does not. A walk that dead ends because a phone could not get
-a fix is worse than one somebody skipped a check on. The stops that ask a
-question have no pass button, because there the answer is the proof.
-
-## Directions
-
-Every stop after the first carries written directions to it, and they appear as
-their own step between one stop and the next, with the compass heading and the
-distance worked out from the coordinates.
-
-The two walks author that differently. Gdansk has one fixed order, so its
-directions are full turn by turn with street names and turnings. London's ten
-routes each reach a stop from a different predecessor, so a fixed turn-by-turn
-would be wrong nine times out of ten; there the written part is arrival detail
-that holds whichever way you came, and the heading and distance in front of it
-are computed per leg.
