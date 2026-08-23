@@ -136,11 +136,13 @@ configuration.
     seven turns with a fifth to a quarter of the walking down lanes with no
     name on them. No turn sequence written for those can be followed.
     **[checked]**
-44. On a leg that does not earn it, say what to head for and let them
-    reorientate on arrival: name the target, give the routed distance and the
-    overall bearing, and say what they will see when they get there. Do not
-    name more than the street you leave and the one you arrive at.
-    **[checked]**
+44. On a leg that does not earn it, do not count turnings, because a turning
+    you cannot name cannot be counted. Name the streets instead and say which
+    way each one runs, in the order you meet them. **[checked]**
+45. Streets are named in the order you walk them. **[checked]**
+46. Naming a street you are standing on means within 30 m. At 45 m, in a town
+    of four-metre alleys, that reached three streets over and exempted almost
+    everything from rule 42. **[checked]**
 
 ## Facts
 

@@ -148,6 +148,8 @@ BEARING_ATTACH_CHARS = 60
 # no turn sequence written for those can be followed. Those legs say what to
 # head for instead.
 SIMPLE_MAX_TURNS = 4
+# How close counts as being on a street rather than merely near one.
+STANDING_ON_M = 30
 TURN_CLAIMS = re.compile(r"\b(turn|take the|first|second|third)\s+"
                          r"(left|right|turning)", re.I)
 
@@ -513,7 +515,7 @@ def check(tour):
             standing = set()
             for pt in ((stops[i - 1]["lat"], stops[i - 1]["lon"]),
                        (s["lat"], s["lon"])):
-                standing |= {n for n, _ in town.named_here(*pt, 45)}
+                standing |= {n for n, _ in town.named_here(*pt, STANDING_ON_M)}
 
             text = s.get("directions") or ""
             mentions = street_mentions(text)
@@ -531,15 +533,30 @@ def check(tour):
 
             # A quarter of this walk is unnamed lanes. Where that is true, a turn
             # sequence cannot be followed, so do not write one.
-            if not simple:
-                why = (f"{len(legs)} turns, {unnamed / r['metres'] * 100:.0f}% of "
-                       f"it down lanes with no name")
-                if TURN_CLAIMS.search(text):
-                    errors.append(f"{where}: {why}. Say what to head for, not "
-                                  f"which way to turn")
-                if len({n for _, n in named}) > 2:
-                    errors.append(f"{where}: {why}, but the directions name "
-                                  f"{len({n for _, n in named})} streets")
+            if not simple and TURN_CLAIMS.search(text):
+                errors.append(
+                    f"{where}: {len(legs)} turns and "
+                    f"{unnamed / r['metres'] * 100:.0f}% of it down lanes with no "
+                    f"name, so counting turnings cannot work. Name the streets "
+                    f"and say which way they run instead")
+
+            # Named in the order you meet them. Endpoints are exempt: the street
+            # you are standing on and the one you are heading for can be said at
+            # any point, and usually are said first.
+            routed_order = [x["name"] for x in legs if x["name"]]
+            deduped = []
+            for name in routed_order:
+                if not deduped or deduped[-1] != name:
+                    deduped.append(name)
+            claimed = [n for _, n in named if n in heading]
+            cursor = 0
+            for name in claimed:
+                while cursor < len(deduped) and deduped[cursor] != name:
+                    cursor += 1
+                if cursor >= len(deduped):
+                    errors.append(f"{where}: names {name!r} out of order; the way "
+                                  f"round is {' then '.join(deduped)}")
+                    break
 
             # A bearing next to a street name is a claim about that street.
             for pos, deg, word in compass_positions(text):

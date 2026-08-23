@@ -100,7 +100,7 @@
       "where": "Place du Bessarel, where the old canal runs through the town",
       "lat": 44.152006,
       "lon": 1.75472,
-      "directions": "From Place de la Mairie, head for Place du Bessarel, roughly north west and about two hundred metres away.\n\nThe lanes in between are medieval and several have no name on them, so do not try to count turnings. Keep bearing north west, towards the sound of running water.\n\nYou come out in a small square with a stone channel cut across it. That is the Bessarel.",
+      "directions": "From Place de la Mairie, go back down Rue du Pont de l'Aveyron, which runs north from the square, and carry on into Rue de Cayssac, which runs west.\n\nThat feeds through Place du Timple and Rue du Timple, both running north west, and comes out at Place du Bessarel. About two hundred metres in all.\n\nYou arrive in a long thin square with a stone channel cut across it.",
       "gate": null,
       "nudge": null,
       "question": {
@@ -137,9 +137,12 @@
       "where": "the Caserne des Anglais, on Rue Guilhem Peyre",
       "lat": 44.151787,
       "lon": 1.756171,
-      "directions": "From Place du Bessarel, head for Rue Guilhem Peyre, roughly east and about a hundred and seventy metres away.\n\nThe lanes again are narrow and some are unnamed. Keep going east and you will meet a longer street running across your way.\n\nThat is Guilhem Peyre. The house you want is the Caserne des Anglais, so walk along it reading the fronts.",
+      "directions": "From Place du Bessarel, walk east along the square to the far end and pick up Rue du Pont des Vierges, which runs north east.\n\nIt meets Rue Amelie Galup, running south east, and that feeds into Rue du Cluzel, running south. About a hundred and seventy metres in all.\n\nRue du Cluzel brings you out onto Rue Guilhem Peyre.",
       "gate": null,
-      "nudge": null,
+      "nudge": {
+        "prompt": "There is a brocante on this street, La Lanterne. Worth a look in the window as you pass.",
+        "confirm": "Had a look"
+      },
       "question": {
         "ask": "One house on this street was a barracks. Whose soldiers were in it?",
         "answers": [
@@ -185,7 +188,7 @@
       "question": null,
       "look": "Look at the shopfronts, then look above them.\n\nThe houses along here are the ones the trade paid for, and a good many are medieval under the paint. On a Sunday you see them over the top of a cheese stall.",
       "look_spoken": null,
-      "after": "Pelisserie means pelts. This was the street of the pelletiers, who dressed skins into fur, and the houses on both sides were theirs and the tanners'. Thirteenth and fourteenth century money. The same trade as Bessarel, one stage on: tanned down by the water, sold up here.\n\nIt still sells other people's things. Most of the shops along here are brocante. Furniture, plates, tools, pictures, whatever came out of a house.\n\nOn a Sunday the market runs the whole length of it, Place des Tilleuls to Place du Buoc. What is on the stalls tells you the month. Melons and tomatoes now. Truffles and chestnuts in January.",
+      "after": "Pelisserie means pelts. This was the street of the pelletiers, who dressed skins into fur, and the houses on both sides were theirs and the tanners'. Thirteenth and fourteenth century money. The same trade as Bessarel, one stage on: tanned down by the water, sold up here.\n\nThe town still sells other people's things. There are brocantes scattered through these streets. Furniture, plates, tools, pictures, whatever came out of a house.\n\nOn a Sunday the market runs the whole length of it, Place des Tilleuls to Place du Buoc. What is on the stalls tells you the month. Melons and tomatoes now. Truffles and chestnuts in January.",
       "after_spoken": null,
       "audio": null
     },

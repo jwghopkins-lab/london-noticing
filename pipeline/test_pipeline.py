@@ -289,6 +289,11 @@ class TestDirectionChecks(unittest.TestCase):
         self.assertIsNotNone(build_tour.TURN_CLAIMS.search("turn right onto X"))
         self.assertIsNotNone(build_tour.TURN_CLAIMS.search("take the first left"))
 
+    def test_standing_on_a_street_is_not_being_near_one(self):
+        """45 m reached three streets over in a town of four-metre alleys, and
+        made 'that street is not on your way' exempt almost everything."""
+        self.assertLessEqual(build_tour.STANDING_ON_M, 30)
+
     def test_riddle_talk_is_named(self):
         self.assertIn("go and find it", build_tour.RIDDLE_PHRASES)
         self.assertIn("somewhere in here", build_tour.RIDDLE_PHRASES)
