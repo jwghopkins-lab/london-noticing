@@ -171,13 +171,29 @@ def main():
     args = sys.argv[1:]
     want = args[args.index("--tour") + 1] if "--tour" in args else "all"
 
-    tours = []
-    for path in sorted(BASE.glob(SRC_GLOB)):
-        t = json.loads(path.read_text(encoding="utf-8"))
-        if want in ("all", t["id"]):
-            tours.append(t)
-    if not tours:
-        raise SystemExit(f"no tour matching {want!r}")
+    # A new town has no content file yet, and cannot have one: the stops come
+    # out of the extract, so the extract has to arrive first. Given a box and a
+    # name, fetch straight into data/osm/ and let the walk be written against
+    # it. Without this the only way to start a town was to commit a stub that
+    # fails the build, which is a bad thing to teach anybody to do.
+    if "--bbox" in args:
+        raw = args[args.index("--bbox") + 1]
+        box = [float(x) for x in raw.replace(",", " ").split()]
+        if len(box) != 4:
+            raise SystemExit("--bbox wants lat_lo,lat_hi,lon_lo,lon_hi")
+        tours = [{"id": want, "city": (args[args.index("--city") + 1]
+                                       if "--city" in args else None),
+                  "contract": {"bbox": box}}]
+        if want == "all":
+            raise SystemExit("--bbox needs --tour <id> to name the file")
+    else:
+        tours = []
+        for path in sorted(BASE.glob(SRC_GLOB)):
+            t = json.loads(path.read_text(encoding="utf-8"))
+            if want in ("all", t["id"]):
+                tours.append(t)
+        if not tours:
+            raise SystemExit(f"no tour matching {want!r}")
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for tour in tours:

@@ -22,6 +22,14 @@ on:
         description: "Tour id, or 'all'"
         default: "all"
         required: true
+      bbox:
+        description: "New town only: lat_lo,lat_hi,lon_lo,lon_hi (streets fetch)"
+        default: ""
+        required: false
+      city:
+        description: "New town only: the town's name"
+        default: ""
+        required: false
       what:
         description: "Which fetch to run"
         type: choice
@@ -46,7 +54,13 @@ jobs:
 
       - name: Fetch the street layout from OpenStreetMap
         if: inputs.what != 'routes'
-        run: python3 pipeline/fetch_osm.py --tour "${{ inputs.tour }}"
+        run: |
+          if [ -n "${{ inputs.bbox }}" ]; then
+            python3 pipeline/fetch_osm.py --tour "${{ inputs.tour }}" \
+              --bbox "${{ inputs.bbox }}" --city "${{ inputs.city }}"
+          else
+            python3 pipeline/fetch_osm.py --tour "${{ inputs.tour }}"
+          fi
 
       # Second opinions on every leg, from engines that are not ours. Where they
       # disagree with us or with each other, the leg is written as a heading and
