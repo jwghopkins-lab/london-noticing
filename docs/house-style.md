@@ -197,6 +197,25 @@ against two independent routing engines, and the score picks the mode.
     streets and returns the same length, which reads as the worst possible score
     for the most certain case there is. **[checked]**
 
+### Hills
+
+A street graph is drawn flat. It will tell you a hundred metres is a hundred
+metres whether it gains forty of them or none, so the route that reads best on
+paper is often the one that drops to a gate and climbs back for nothing.
+
+57. Climbing towards where you are going is not a complaint. Climbing the same
+    metres twice is. The number is **reclimb** — ascent minus the net gain — so
+    a walk that only ever climbs towards its end scores zero however steep it
+    is. Over 20 m is a note; over 50 m fails the build. **[checked]**
+58. Height belongs to the map, not to the route. It is fetched once per town
+    (`pipeline/fetch_elevation.py`) and read offline, so stops can be reordered
+    as often as you like without fetching anything again.
+59. Sum ascent with hysteresis, never as a plain sum of deltas. A metre of DEM
+    jitter every fifteen metres invents sixty metres of climbing per kilometre
+    of level street. **[checked]**
+60. In a hill town, decide the order by the profile before writing a word of
+    prose. Reordering seven stops is free; rewriting seven legs is not.
+
 ## Facts
 
 20. Do not write a question about a physical detail you have not verified. If

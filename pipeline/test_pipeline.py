@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
 import streets                                     # noqa: E402
 import confidence                                  # noqa: E402
+import terrain                                     # noqa: E402
 import build_tour                                  # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
@@ -326,6 +327,44 @@ class TestRoughDirections(unittest.TestCase):
             bad = {"id": "b", "directions": good["directions"].replace(lost, "")}
             self.assertTrue(build_tour.rough_survived(bad, source),
                             f"losing {lost!r} went unnoticed")
+
+
+class TestTerrain(unittest.TestCase):
+    def test_climbing_towards_where_you_are_going_is_not_wasted(self):
+        got = terrain.summarise([100, 110, 120, 130])
+        self.assertEqual(got["ascent"], 30)
+        self.assertEqual(got["reclimb"], 0)
+
+    def test_climbing_the_same_metres_twice_is(self):
+        # Up thirty, down thirty, up thirty again: ends where a straight climb
+        # would have, having done the work twice.
+        got = terrain.summarise([100, 130, 100, 130])
+        self.assertEqual(got["ascent"], 60)
+        self.assertEqual(got["reclimb"], 30)
+
+    def test_a_walk_that_ends_lower_wasted_all_of_its_climbing(self):
+        got = terrain.summarise([100, 120, 90])
+        self.assertEqual(got["reclimb"], 20)
+
+    def test_jitter_is_not_a_hill(self):
+        """A metre of DEM noise every sample must not accumulate."""
+        noisy = [100 + (1 if i % 2 else 0) for i in range(200)]
+        self.assertEqual(terrain.summarise(noisy)["ascent"], 0)
+
+    def test_a_real_step_is_still_seen_through_the_jitter(self):
+        got = terrain.summarise([100, 101, 100, 101, 140, 139, 140])
+        self.assertGreater(got["ascent"], 35)
+
+    def test_no_heights_is_not_a_flat_walk(self):
+        got = terrain.summarise([])
+        self.assertIsNone(got["start"])
+        self.assertEqual(got["ascent"], 0)
+
+    def test_a_height_lookup_far_from_any_sample_says_so(self):
+        ground = terrain.Terrain({"dataset": "test",
+                                  "points": [[44.0, 1.0, 250.0]]})
+        self.assertEqual(ground.height(44.0, 1.0), 250.0)
+        self.assertIsNone(ground.height(44.02, 1.02))
 
 
 if __name__ == "__main__":
