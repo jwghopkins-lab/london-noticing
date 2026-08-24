@@ -257,18 +257,48 @@ def street_mentions(text):
         nxt = toks[i + 1][0]
         if not (nxt[:1].isupper() or streets.fold(nxt).strip("'\u2019") in CONNECTORS):
             continue
-        found.append((pos, [t for t, _ in toks[i:i + 6]]))
+        # A French street name can carry a word BEFORE the prefix: Grand Rue
+        # Raymond VII, Grand Rue de la Barbacane, Petite Rue. Looking only
+        # forwards from "Rue" made every mention of the main street in Cordes
+        # read as an invented street and failed the whole build. So the mention
+        # starts at the preceding capitalised word when there is one, and
+        # resolve_street tries the longer form first.
+        start = i
+        if i and toks[i - 1][0][:1].isupper():
+            # Only refuse when a sentence ends BETWEEN the two words. Looking at
+            # what came before the earlier word instead meant a street name
+            # opening a sentence — "About sixty metres. Grand Rue Raymond VII
+            # runs straight into a gateway" — lost its first word and was
+            # reported as invented.
+            gap = text[toks[i - 1][1] + len(toks[i - 1][0]):pos]
+            if not any(c in gap for c in ".!?:;"):
+                start = i - 1
+        found.append((toks[start][1], [t for t, _ in toks[start:start + 7]]))
     return found
 
 
 def resolve_street(town, tokens):
-    """The longest form of a mention that the map actually knows."""
-    for n in range(len(tokens), 1, -1):
-        name = " ".join(tokens[:n])
-        if town.has_street(name):
-            # The map's spelling, not the author's: "Rue Amelie Galup" has to
-            # come back as "Rue Amélie Galup" or nothing downstream will match.
-            return town.canonical(name) or name
+    """The longest form of a mention that the map actually knows.
+
+    Tries dropping a leading word too, so a mention that picked up the previous
+    capitalised word by mistake ("Halle Grand Rue Raymond VII") still resolves,
+    and one that genuinely needs it ("Grand Rue Raymond VII") resolves to the
+    longer name because that is tried first.
+    """
+    for drop in (0, 1):
+        for n in range(len(tokens), drop + 1, -1):
+            name = " ".join(tokens[drop:n])
+            got = _known(town, name)
+            if got:
+                return got
+    return None
+
+
+def _known(town, name):
+    if town.has_street(name):
+        # The map's spelling, not the author's: "Rue Amelie Galup" has to come
+        # back as "Rue Amélie Galup" or nothing downstream will match.
+        return town.canonical(name) or name
     return None
 
 

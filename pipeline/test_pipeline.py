@@ -367,5 +367,52 @@ class TestTerrain(unittest.TestCase):
         self.assertIsNone(ground.height(44.02, 1.02))
 
 
+class TestStreetNamesWithAWordInFront(unittest.TestCase):
+    """Grand Rue Raymond VII. The prefix is not the first word.
+
+    Looking only forwards from "Rue" made every mention of the main street in
+    Cordes read as an invented street, and failed the whole build six times over.
+    """
+    class FakeTown:
+        NAMES = {"grand rue raymond vii": "Grand Rue Raymond VII",
+                 "rue obscure": "Rue Obscure",
+                 "place de la halle": "Place de la Halle"}
+
+        def has_street(self, name):
+            return name.lower() in self.NAMES
+
+        def canonical(self, name):
+            return self.NAMES.get(name.lower())
+
+    def resolve(self, text):
+        town = self.FakeTown()
+        return [build_tour.resolve_street(town, toks)
+                for _, toks in build_tour.street_mentions(text)]
+
+    def test_the_leading_word_is_picked_up(self):
+        self.assertEqual(
+            self.resolve("Follow Grand Rue Raymond VII, which runs west."),
+            ["Grand Rue Raymond VII"])
+
+    def test_a_street_opening_a_sentence_keeps_its_first_word(self):
+        """The exact text that failed: a full stop before, not between."""
+        self.assertEqual(
+            self.resolve("About sixty metres. Grand Rue Raymond VII runs to the gate."),
+            ["Grand Rue Raymond VII"])
+
+    def test_a_sentence_ending_between_the_two_words_still_splits_them(self):
+        self.assertEqual(
+            self.resolve("You reach the Halle. Rue Obscure joins here."),
+            ["Rue Obscure"])
+
+    def test_a_capitalised_word_in_front_that_is_not_part_of_the_name(self):
+        """Dropping the leading word is tried too, so this still resolves."""
+        self.assertEqual(self.resolve("Cross Place de la Halle to the corner."),
+                         ["Place de la Halle"])
+
+    def test_an_invented_street_is_still_invented(self):
+        self.assertEqual(self.resolve("Take Grand Rue de la Lune west."), [None])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

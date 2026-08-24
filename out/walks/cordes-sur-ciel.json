@@ -1,0 +1,299 @@
+{
+  "format": 1,
+  "combo_key": "cordes-sur-ciel",
+  "mode": "fixed",
+  "served_at": "cordes",
+  "directions_style": "turn_by_turn",
+  "name": "Built in One Go",
+  "tagline": "seven stops along the crest",
+  "city": "Cordes-sur-Ciel",
+  "intro": {
+    "lead": "Seven stops along the top of Cordes-sur-Ciel.",
+    "body": "Under half a kilometre of walking, about an hour. It starts near the top of the hill and runs one way down, so you should not have to climb anything twice.\n\nFour stops ask a question you can only answer by looking at the thing in front of you. Three just need you standing in the right place.\n\nBuilt for a Monday evening. Everything is outdoors and everything is free. The museums will be shut. The shops and cafes along this street generally are not, at this hour.",
+    "start": "Start at the Porte de Rous, the gateway that crosses the main street near the top of the hill, at the east end of the old town."
+  },
+  "outro": "That is the seven.\n\nThe way back up is the same street. If you would rather not, Rue Saint-Michel runs along the other side of the ridge and comes out by the market.\n\nIf you have an evening in you, the terraces on Rue Saint-Michel are the ones with the view.",
+  "draft": false,
+  "topics": [
+    {
+      "id": "houses",
+      "name": "Names Over the Doors",
+      "blurb": "Three houses on one street carry the names of jobs at a lord's court. None of the three is known to have housed one."
+    },
+    {
+      "id": "walls",
+      "name": "The Walls That Kept Moving",
+      "blurb": "The town outgrew itself almost at once. Six gateways are left standing inside it, with houses on both sides."
+    },
+    {
+      "id": "living",
+      "name": "What the Hill Sells",
+      "blurb": "A market was the whole point of founding the place. The hill has made its living three completely different ways since."
+    }
+  ],
+  "stops": [
+    {
+      "id": "rous",
+      "topic": "walls",
+      "title": "Porte de Rous",
+      "where": "the Porte de Rous, a gateway across the main street",
+      "lat": 44.063124,
+      "lon": 1.952889,
+      "directions": null,
+      "directions_mode": "turn_by_turn",
+      "gate": null,
+      "nudge": {
+        "prompt": "There are three or four workshops within twenty metres of this gate. Leather, enamel, jewellery. Worth a look in the windows as you set off.",
+        "confirm": "Had a look"
+      },
+      "question": {
+        "ask": "This street is named after the man who founded the town. What was his name?",
+        "answers": [
+          "Raymond",
+          "Raymond VII",
+          "Raimond",
+          "Raimond VII",
+          "Raymond the seventh",
+          "Raymond VII of Toulouse",
+          "Count Raymond",
+          "Raymond of Toulouse",
+          "Raymon",
+          "Raymond 7"
+        ],
+        "hint": "There is a street sign on the wall. The name on it has a number after it, in Roman numerals."
+      },
+      "look": "You are standing under a gate arch with houses on both sides of it and the town carrying on past you in both directions.\n\nA gate is meant to be the edge of a place. This one has not been the edge for a very long time.\n\nThe street sign is on the wall.",
+      "look_spoken": null,
+      "after": "Raymond the seventh, Count of Toulouse. He founded Cordes in 1222, after the crusade against the Cathars had burned its way across this country.\n\nIt was a bastide: a new town, laid out all at once on an empty hill, with a charter and a market and a wall. People came because the terms were good.\n\nThen it outgrew itself. Every time the town spread further down, a new wall went round the outside and the old gate was left stranded inland. Six of them are still standing.",
+      "after_spoken": "Raymond the seventh, Count of Toulouse. He founded Cordes in twelve twenty two, after the crusade against the Cathars had burned its way across this country.\n\nIt was a bastide: a new town, laid out all at once on an empty hill, with a charter and a market and a wall. People came because the terms were good.\n\nThen it outgrew itself. Every time the town spread further down, a new wall went round the outside and the old gate was left stranded inland. Six of them are still standing.",
+      "audio": null
+    },
+    {
+      "id": "fauconnier",
+      "topic": "houses",
+      "title": "The Grand Fauconnier",
+      "where": "the tall house at the top of the hill, where the street opens out",
+      "lat": 44.063229,
+      "lon": 1.951685,
+      "directions": "From the Porte de Rous, follow Grand Rue Raymond VII, which runs north west from the gate. About a hundred metres, climbing gently.\n\nIt opens out at the top of the hill. The house stands on the corner where the street meets Place de la Halle.",
+      "directions_mode": "turn_by_turn",
+      "gate": {
+        "radius_m": 25,
+        "allow_pass": true,
+        "prompt": "Stand in front of the house, where the street opens into Place de la Halle."
+      },
+      "nudge": null,
+      "question": null,
+      "look": "The front of this house is mostly window. Three storeys of them, in a town where most medieval building is thick wall with slits in it.\n\nThat is showing off, and it was expensive.\n\nThe wide arches at street level are the ground floor's original shape.",
+      "look_spoken": null,
+      "after": "Glass and cut stone were what a merchant spent money on when he had it. These fronts went up in the late twelve hundreds, when Cordes was making leather and cloth and doing very well out of both.\n\nThe house is named after the Grand Fauconnier, the falconer of a lord's household. Two more houses further down this street carry names like it. None of the three tells you who actually paid for it.\n\nThe modern art museum is inside this one now, and on a Monday evening it is shut.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "halle",
+      "topic": "living",
+      "title": "Under the Market Roof",
+      "where": "the covered market on Place de la Halle",
+      "lat": 44.063531,
+      "lon": 1.951492,
+      "directions": "From the Maison du Grand Fauconnier, carry on across Place de la Halle, which runs west. About fifty metres.\n\nThe market roof is the open building standing on pillars in the middle of the square. Get underneath it.",
+      "directions_mode": "turn_by_turn",
+      "gate": {
+        "radius_m": 30,
+        "allow_pass": true,
+        "prompt": "Get under the market roof, with the pillars around you."
+      },
+      "nudge": null,
+      "question": null,
+      "look": "The roof is held up on pillars and open on every side. That is a market hall, and a market was the whole point of founding the town.\n\nBeside it there is a well. It goes down through the rock of the hill, and it is the reason anybody could be asked to live up here.",
+      "look_spoken": null,
+      "after": "A bastide was a deal. The count laid out the plots and promised a market and a fair, and people came and paid him for the privilege of taking one.\n\nThe market is why the town is up here at all, on a ridge with no water in it. Everything else had to be solved afterwards.\n\nThe well is what solving it looked like: a shaft sunk through the rock beside the stalls, close to as deep as this hill is high.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "veneur",
+      "topic": "houses",
+      "title": "Next to the Town Hall",
+      "where": "the tall house beside the town hall, on Place Saint-Michel",
+      "lat": 44.063429,
+      "lon": 1.950673,
+      "directions": "From under the market roof, go back out to Grand Rue Raymond VII and follow it west. About seventy metres.\n\nThe street narrows and passes the town hall. The house you want is the tall one beside it, with a band of carving across the front.",
+      "directions_mode": "turn_by_turn",
+      "gate": null,
+      "nudge": null,
+      "question": {
+        "ask": "The name on this house is a job in a great household. What is the job?",
+        "answers": [
+          "huntsman",
+          "hunter",
+          "the huntsman",
+          "master of hounds",
+          "master of the hunt",
+          "huntmaster",
+          "veneur",
+          "grand veneur",
+          "houndsman",
+          "master of the hounds",
+          "huntsmen",
+          "chief huntsman"
+        ],
+        "hint": "There is a carved frieze above the arches showing what he did for a living. The word itself is written up on the house."
+      },
+      "look": "Look above the arches at street level. A band of carving runs the whole width of the house.\n\nIt is a hunt. Hounds running, and what they are running after.\n\nThe house has a name, and it is written up on the wall.",
+      "look_spoken": null,
+      "after": "Veneur. The huntsman, or master of hounds, one of the big offices in a lord's household.\n\nThe carving gives it away, and it is also the point. A merchant who put a hunt across the front of his house was borrowing the manners of people who hunted for a living rather than working for one.\n\nNobody knows for certain who built it. The names on these three houses were attached to them long afterwards.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "germaine",
+      "topic": "living",
+      "title": "A Sit Down",
+      "where": "the cafe on Grand Rue Raymond VII, next to the presbytery",
+      "lat": 44.063477,
+      "lon": 1.950159,
+      "directions": "From the house with the carved hunt on it, keep going west along Grand Rue Raymond VII. About forty metres.\n\nLes enfants de Germaine is on this street. If it is shut, La planche de Bacchus is a few doors further on.",
+      "directions_mode": "turn_by_turn",
+      "gate": {
+        "radius_m": 25,
+        "allow_pass": true,
+        "prompt": "Stand outside the cafe."
+      },
+      "nudge": null,
+      "question": null,
+      "look": "This is the stop for a drink. Take it outside if there is a table.\n\nYou are two thirds of the way along the ridge and about ten metres below the top of it. Everything from here on is downhill.",
+      "look_spoken": null,
+      "after": "Cordes emptied. The cloth and leather went, and the town went with them. By the eighteen hundreds the great houses were barns and pigeon lofts.\n\nWhat brought it back was people coming to look at it. Painters first. There is a square down the hill named after one of them, Yves Brayer.\n\nAlmost every shop you have passed today sells something to somebody who came to look. That is the third living this hill has made.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "ecuyer",
+      "topic": "houses",
+      "title": "The Third Name",
+      "where": "the big house at the corner, where Rue Obscure comes in",
+      "lat": 44.063479,
+      "lon": 1.949428,
+      "directions": "From Les enfants de Germaine, carry on west down Grand Rue Raymond VII. About sixty metres.\n\nThe house is the big one where a narrow lane called Rue Obscure joins the street.",
+      "directions_mode": "turn_by_turn",
+      "gate": null,
+      "nudge": null,
+      "question": {
+        "ask": "The falconer was at the top of the street and the huntsman halfway down. The name over this door is the third of them. What is it?",
+        "answers": [
+          "squire",
+          "ecuyer",
+          "écuyer",
+          "equerry",
+          "the squire",
+          "master of horse",
+          "master of the horse",
+          "grand ecuyer",
+          "grand écuyer",
+          "horseman",
+          "stable master",
+          "esquire"
+        ],
+        "hint": "It is a job at a court, like the other two. The word is French, and it is written up on the front of the house."
+      },
+      "look": "The biggest house on the street, and the last of the three.\n\nThe name is up on the front. It is a French word for a job, and like the other two it belongs to a great household rather than to a trade.\n\nThe narrow lane beside it is worth two steps for the look of it.",
+      "look_spoken": null,
+      "after": "Ecuyer. The squire, or equerry: the man who ran a lord's horses and his armour.\n\nFalconer, huntsman, squire. Three houses on one street, all named for offices at a court, and none of them known to have housed one. The names were attached later, by people looking back at a rich town and preferring a grander story than cloth and leather.\n\nThe lane beside it is Rue Obscure, and it means what it looks like.",
+      "after_spoken": null,
+      "audio": null
+    },
+    {
+      "id": "ormeaux",
+      "topic": "walls",
+      "title": "The Last Gate",
+      "where": "the gateway at the west end of the ridge",
+      "lat": 44.063656,
+      "lon": 1.948728,
+      "directions": "From the house on the corner of Rue Obscure, keep going west. About sixty metres.\n\nGrand Rue Raymond VII runs straight into a stone gateway. That is the last stop.",
+      "directions_mode": "turn_by_turn",
+      "gate": null,
+      "nudge": null,
+      "question": {
+        "ask": "This gate is named after a tree. Which tree?",
+        "answers": [
+          "elm",
+          "elms",
+          "elm tree",
+          "elm trees",
+          "the elms",
+          "ormeaux",
+          "orme",
+          "ormes",
+          "ormeau",
+          "young elms"
+        ],
+        "hint": "The name is on the gate, or on the street sign beside it. It is a tree that used to be planted outside town gates all over France."
+      },
+      "look": "Stand under the arch and look back up the street you came down. That is the whole of the old town, end to end, and you have walked all of it.\n\nNow the gate itself. There is a name on it, or on the wall beside it.",
+      "look_spoken": null,
+      "after": "Ormeaux. Elms.\n\nThere would have been elms outside this gate, on the open ground between the wall and the drop. That is where a town kept its trees, its meetings and its fairs.\n\nThey are gone. Dutch elm disease took most of the French ones in the last century, so the gate is named for something you cannot see from it.\n\nFour more gateways are below you, down the hill, marking where the town stopped on the way out.",
+      "after_spoken": null,
+      "audio": null
+    }
+  ],
+  "walk": {
+    "n_stops": 7,
+    "total_walk_m": 467.2,
+    "total_minutes": 5.8,
+    "reversals": 0,
+    "legs": [
+      {
+        "from": "rous",
+        "to": "fauconnier",
+        "straight_m": 96.9,
+        "walk_m": 126.0,
+        "minutes": 1.6,
+        "bearing": 276.9
+      },
+      {
+        "from": "fauconnier",
+        "to": "halle",
+        "straight_m": 37.0,
+        "walk_m": 48.0,
+        "minutes": 0.6,
+        "bearing": 335.3
+      },
+      {
+        "from": "halle",
+        "to": "veneur",
+        "straight_m": 66.4,
+        "walk_m": 86.3,
+        "minutes": 1.1,
+        "bearing": 260.2
+      },
+      {
+        "from": "veneur",
+        "to": "germaine",
+        "straight_m": 41.4,
+        "walk_m": 53.8,
+        "minutes": 0.7,
+        "bearing": 277.4
+      },
+      {
+        "from": "germaine",
+        "to": "ecuyer",
+        "straight_m": 58.4,
+        "walk_m": 75.9,
+        "minutes": 0.9,
+        "bearing": 270.2
+      },
+      {
+        "from": "ecuyer",
+        "to": "ormeaux",
+        "straight_m": 59.3,
+        "walk_m": 77.1,
+        "minutes": 1.0,
+        "bearing": 289.4
+      }
+    ]
+  },
+  "gated_stops": 3,
+  "question_stops": 4
+}
