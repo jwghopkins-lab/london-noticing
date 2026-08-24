@@ -14,6 +14,8 @@ name: Fetch map data
 #   routes    what independent routing engines make of each leg, which is how
 #             confidence.py decides whether a leg can honestly be given as
 #             turn-by-turn directions at all
+#   elevation the height of the ground under every street, so a walk in a hill
+#             town can be checked for climbing the same metres twice
 
 on:
   workflow_dispatch:
@@ -33,7 +35,7 @@ on:
       what:
         description: "Which fetch to run"
         type: choice
-        options: ["both", "streets", "routes"]
+        options: ["both", "streets", "routes", "elevation"]
         default: "both"
         required: true
 
@@ -53,7 +55,7 @@ jobs:
           python-version: "3.12"
 
       - name: Fetch the street layout from OpenStreetMap
-        if: inputs.what != 'routes'
+        if: inputs.what == 'both' || inputs.what == 'streets'
         run: |
           if [ -n "${{ inputs.bbox }}" ]; then
             python3 pipeline/fetch_osm.py --tour "${{ inputs.tour }}" \
@@ -66,14 +68,20 @@ jobs:
       # disagree with us or with each other, the leg is written as a heading and
       # a landmark instead of a sequence of turns.
       - name: Ask other routing engines to walk the same legs
-        if: inputs.what != 'streets'
+        if: inputs.what == 'both' || inputs.what == 'routes'
         run: python3 pipeline/fetch_routes.py --tour "${{ inputs.tour }}"
+
+      # Height belongs to the map, not to a route, so the stops can be
+      # reordered as often as you like without fetching it again.
+      - name: Fetch the height of the ground
+        if: inputs.what == 'both' || inputs.what == 'elevation'
+        run: python3 pipeline/fetch_elevation.py --tour "${{ inputs.tour }}"
 
       - name: Commit what came back
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/osm data/routes
+          git add data/osm data/routes data/elevation
           if git diff --cached --quiet; then
             echo "map data unchanged"
             exit 0
