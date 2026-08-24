@@ -33,6 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import geo                                         # noqa: E402
 import streets                                     # noqa: E402
 import confidence                                  # noqa: E402
+import terrain                                     # noqa: E402
 
 BASE = Path(__file__).resolve().parent.parent
 # One directory per town under content/. London lives at the top level of
@@ -181,6 +182,16 @@ ROUGH_COMPASS_TOLERANCE_DEG = 80
 # aim at. Rewriting it per stop is how a caveat turns into an apology.
 ROUGH_LANES = ("The lanes here are older than the map and most carry no sign, "
                "so if you come out somewhere else you have not gone wrong.")
+
+# ---- hills ---------------------------------------------------------------
+#
+# Climbing towards where you are going is not a complaint. Climbing the same
+# metres twice is. reclimb is ascent minus the net gain, so a walk that only
+# ever climbs towards its end scores zero however steep it is. The brief for a
+# town on a hilltop was "make sure you aren't sending us up and down more than
+# necessary", and this is the number that answers it.
+RECLIMB_NOTE_M = 20.0
+RECLIMB_MAX_M = 50.0
 
 WORD_NUMBERS = {
     "ten": 10, "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
@@ -705,6 +716,28 @@ def check(tour):
                         s["lat"], s["lon"])) > tol:
                     errors.append(f"{where}: says {word}, but the leg goes "
                                   f"{streets.compass_word(geo.bearing_deg(stops[i-1]['lat'], stops[i-1]['lon'], s['lat'], s['lon']))}")
+
+    # ---- hills, when the height of the ground is known ---------------------
+    ground = terrain.load(tour["id"])
+    if ground is None:
+        notes.append("no height data for this town; run the Fetch map data "
+                     "workflow with what: elevation, so the walk can be checked "
+                     "for climbing the same metres twice")
+    elif town is not None:
+        _, whole = terrain.walk_profile(tour, town, ground)
+        if whole["start"] is not None:
+            notes.append(
+                f"the walk runs {whole['start']:.0f} m to {whole['end']:.0f} m, "
+                f"climbing {whole['ascent']:.0f} m and dropping "
+                f"{whole['descent']:.0f} m")
+            if whole["reclimb"] > RECLIMB_MAX_M:
+                errors.append(
+                    f"the walk climbs {whole['reclimb']:.0f} m it had already "
+                    f"climbed once. Reorder the stops so the walking goes one "
+                    f"way up or one way down")
+            elif whole["reclimb"] > RECLIMB_NOTE_M:
+                notes.append(f"{whole['reclimb']:.0f} m of the climbing is "
+                             f"ground given away and taken back")
 
     split = sorted(counts.values(), reverse=True)
     if split != c["topic_split"]:

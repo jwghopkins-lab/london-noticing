@@ -77,11 +77,16 @@ jobs:
         if: inputs.what == 'both' || inputs.what == 'elevation'
         run: python3 pipeline/fetch_elevation.py --tour "${{ inputs.tour }}"
 
+      # A fetch can take minutes, and the branch often moves while it runs. The
+      # first Cordes fetch worked and then threw the answer away because the
+      # push was rejected, which is a silly way to lose two minutes of
+      # Overpass's time. Rebase and try again; the data is a new file, so there
+      # is nothing for a rebase to conflict with.
       - name: Commit what came back
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/osm data/routes data/elevation
+          git add data/osm data/routes data/elevation 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "map data unchanged"
             exit 0
@@ -90,4 +95,14 @@ jobs:
 
           Fetched on a runner because the authoring sandbox cannot reach any
           map host. Data from OpenStreetMap, licensed ODbL."
-          git push
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:"${{ github.ref_name }}"; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "push rejected; rebasing onto the branch as it now stands"
+            git pull --rebase origin "${{ github.ref_name }}"
+            sleep $((attempt * 3))
+          done
+          echo "could not push the fetched data after five attempts"
+          exit 1
