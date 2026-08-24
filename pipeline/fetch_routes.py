@@ -199,8 +199,11 @@ def main():
         print(f"  wrote {out.relative_to(BASE)}: {len(legs)} legs")
 
     if not found:
-        print(f"no tour matching {which!r}")
-        return 1
+        # A town whose extract has arrived but whose stops are not written yet
+        # has no legs to ask about. That is where every new town starts, so it
+        # is a message rather than a failure.
+        print(f"no walk written for {which!r} yet, so there are no legs to "
+              f"route; come back after the stops exist")
     return 0
 
 

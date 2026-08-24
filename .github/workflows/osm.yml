@@ -86,7 +86,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/osm data/routes data/elevation 2>/dev/null || true
+          # One directory at a time. Naming all three in one git add fails the
+          # whole add when any of them does not exist yet, which on a brand new
+          # town means the fetch is silently thrown away and the step reports
+          # "map data unchanged". That cost two Overpass fetches to spot.
+          for d in data/osm data/routes data/elevation; do
+            [ -d "$d" ] && git add "$d"
+          done
           if git diff --cached --quiet; then
             echo "map data unchanged"
             exit 0
