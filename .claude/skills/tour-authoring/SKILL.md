@@ -37,9 +37,22 @@ a `contract` block:
 `bbox` is `[lat_lo, lat_hi, lon_lo, lon_hi]` round the walkable area. Everything
 downstream keys off it, so a walk in any town anywhere needs no other setup.
 
-Then run the **Fetch map data** workflow (`.github/workflows/osm.yml`) with
-`what: streets`. It runs on a GitHub runner because this sandbox cannot reach
-any map host, and commits `data/osm/<walk-id>.json`. Pull that before writing.
+Then run the **Fetch map data** workflow (`.github/workflows/osm.yml`). It runs
+on a GitHub runner because this sandbox cannot reach any map host, and commits
+what it gets. Pull before writing.
+
+A brand new town has no content file yet, and cannot have one, because the stops
+come out of the extract. So pass the box straight to the workflow instead:
+
+    tour: cordes-sur-ciel
+    what: both
+    bbox: 44.0580,44.0710,1.9430,1.9640
+    city: Cordes-sur-Ciel
+
+`what: both` fetches the streets and the height of the ground. The route second
+opinions are skipped, because there are no stops yet to route between; come back
+for those at step 3. Write the same box into the tour's `contract.bbox` so a
+later refetch reproduces the same extract.
 
 Explore it before choosing anything:
 
@@ -67,20 +80,43 @@ Verify the physical detail before you write a question about it. A miscounted
 carving makes the stop unanswerable and there is no recovering from it on the
 day. Where a detail cannot be confirmed, ask something else or make it a gate.
 
-## 2. Place the stops from the extract
+## 2. Place the stops, and settle the order on the profile
 
 Take every coordinate from `--find` or `--near`, never by eye, and record
-`"coord_source": "osm"`. When the Noble Val stops were placed by eye they were
-out by up to a hundred metres, and the tightened gates would have refused three
-walkers standing in exactly the right place.
+`"coord_source": "osm"`.
 
-Order them so the walk does not double back and no leg is long enough to be
+In a hill town, decide the ORDER before writing a word of prose:
+
+```
+python3 pipeline/terrain.py --tour <walk-id>
+```
+
+What matters is not ascent but **reclimb** — ascent minus the net gain — the
+metres you gained, gave away and gained again. Cordes runs 277 m up over a
+283 m summit and down to 251 m: nine metres of ascent, nine of reclimb, and
+every leg but one is a single named stretch of one street. Six candidate orders
+were scored before one was written. Reordering seven stops is free; rewriting
+seven legs is not.
+
+Over 20 m of reclimb is a note. Over 50 m fails the build.
+
+## 2b. Coordinates
+
+When the Noble Val stops were placed by eye they were out by up to a hundred
+metres, and the tightened gates would have refused three walkers standing in
+exactly the right place.
+
+Also make sure the walk does not double back and no leg is long enough to be
 boring. `python3 pipeline/build_tour.py` reports both.
+
+A short walk is not a failure. Cordes is 381 m because the upper town is 250 m
+long. Padding it would have meant descending the hill and climbing back up.
 
 ## 3. Ask the other engines
 
-Run the same workflow with `what: routes`. It asks OSRM and Valhalla to walk
-each leg and commits their answers to `data/routes/<walk-id>.json`. Then:
+Now that the stops exist, run the same workflow with `what: routes`. It asks
+OSRM and Valhalla to walk each leg and commits their answers to
+`data/routes/<walk-id>.json`. Then:
 
 ```
 python3 pipeline/confidence.py --tour <walk-id>
@@ -167,6 +203,7 @@ workflow serves it at `/<served_at>/`.
 | *no street called X* | You invented it, or spelled it the way it sounds. |
 | *the map spells it Y* | Accents. The sign has them. |
 | *N m from the nearest walkable way* | The coordinate is in a field, or in the wrong place entirely. |
+| *climbs N m it had already climbed once* | Reorder the stops. Do not rewrite the prose first. |
 
 ## Things that were got wrong, so you do not have to
 
@@ -181,3 +218,8 @@ workflow serves it at `/<served_at>/`.
 - "Most of the shops along here are brocante" — written because it felt true.
   The map knows three antique shops in that town and none of them is on that
   street. It is on the next one, and it is now named on the stop it belongs to.
+- Two Overpass fetches thrown away and reported as success, because `git add`
+  on three directories fails entirely when one of them does not exist yet.
+- A street name with a word before the prefix. `Grand Rue Raymond VII` is the
+  main street of Cordes and the checker called it invented, six times, until the
+  mention was allowed to start one word earlier.

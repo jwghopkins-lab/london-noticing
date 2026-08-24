@@ -26,6 +26,7 @@ without it.
 | Walk | Where | Built from |
 |---|---|---|
 | Two White Eagles | `/noble-val/` | `content/saint-antonin/two-white-eagles.json` |
+| Built in One Go | `/cordes/` | `content/cordes/built-in-one-go.json` |
 
 Archived, links still live: two Gdansk walks at `/gdansk/` and
 `/gunpowder-mile/`, and the London topic picker at `/`. See `archive/README.md`.
@@ -38,6 +39,7 @@ Archived, links still live: two Gdansk walks at `/gdansk/` and
     NODE_PATH=$(npm root -g) node pipeline/tour_smoke.cjs   # the walk, end to end
 
     python3 pipeline/confidence.py --tour <id>       # can this leg be given as turns?
+    python3 pipeline/terrain.py --tour <id>          # does it climb the same metres twice?
     python3 pipeline/streets.py --tour <id> --find "Maison Romane"
     python3 pipeline/streets.py --tour <id> --near 44.1504 1.7551
 
@@ -50,6 +52,7 @@ build and the author work from the same files offline for ever.
     content/<town>/<walk>.json  a walk: stops, text, coordinates, gates, answers
     data/osm/<walk>.json        the street graph and named places, from Overpass
     data/routes/<walk>.json     what OSRM and Valhalla make of each leg
+    data/elevation/<walk>.json  the height of the ground under every street
     pipeline/                   the builder, the checks, the router, the tests
     app/                        the player, plus the built pages
     dist/                       single-file builds, for handing to a phone
