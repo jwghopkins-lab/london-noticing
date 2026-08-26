@@ -197,6 +197,42 @@ against two independent routing engines, and the score picks the mode.
     streets and returns the same length, which reads as the worst possible score
     for the most certain case there is. **[checked]**
 
+### Plain, and short, and that includes the clues
+
+A walk declares `contract.voice = "plain"` and is then held to everything in
+this section. The walks written before the rule existed do not declare it and
+are not touched.
+
+The prose had an accent, and it was mine rather than anybody's: balanced
+antithesis, the knowing aside, an abstract noun doing work a verb should do, and
+a short portentous sentence to land a paragraph. It reads like an essay about a
+town. A guide standing beside you says the thing and stops.
+
+61. **No knowing asides.** "That is the third living this hill has made." "That
+    is where a town kept its fairs." "And that is the point." They point back at
+    what you just said and add nothing. Say the thing once. "This is the oldest
+    house on the street" is fine: it points at something in front of you.
+    **[checked]**
+62. **No balanced antithesis.** "Not just X but Y." "Rather than working for
+    one." Pick a side and say it. **[checked]**
+63. **No abstract noun doing a verb's job.** "The well is what solving it looked
+    like" means "they dug a well". **[checked]**
+64. **No hedges or intensifiers.** almost certainly, arguably, essentially,
+    crucially, notably, genuinely, ultimately, in many ways, it is worth noting.
+    If the claim needs a hedge, make a smaller claim. **[checked]**
+65. **No essay nouns or essay verbs.** testament, tapestry, backdrop, narrative,
+    essence, microcosm; speaks to, stands as, serves as. **[checked]**
+66. **Short word over long.** use not utilise, buy not purchase, about not
+    approximately, before not prior to, most not the majority of. The check
+    names the short one. **[checked]**
+67. **Shorter than the old limits.** 60 words of what-to-look-at, 100 of
+    explainer, and no sentence over 25 words. **[checked]**
+68. **The clues get the same treatment.** A question is capped at 25 words and a
+    hint at 25, and both are held to every rule above. A clue does not need a
+    flourish; it needs to be answerable. **[checked]**
+69. **Directions are capped at 60 words.** A leg that needs more than that is a
+    leg the map cannot support. See rule 47. **[checked]**
+
 ### Hills
 
 A street graph is drawn flat. It will tell you a hundred metres is a hundred

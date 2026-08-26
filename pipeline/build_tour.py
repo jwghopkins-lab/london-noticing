@@ -96,6 +96,76 @@ AFTER_WORDS_MAX = 130
 AFTER_WORDS_NOTE = 110
 AFTER_PARAS_MAX = 4
 
+# ---- plain voice ---------------------------------------------------------
+#
+# A walk may declare contract.voice = "plain", and then it is held to the
+# stricter set below. The walks written before the rule existed do not declare
+# it and are not touched, which is deliberate: the rule is for what comes next.
+#
+# What the rule is for. The prose had a house accent, and it was mine rather
+# than anybody's: balanced antithesis, the knowing aside, an abstract noun
+# doing work a verb should do, and a short portentous sentence to land a
+# paragraph. It reads like an essay about a town. A guide standing beside you
+# says the thing and stops. Same for the questions: a clue does not need a
+# flourish, it needs to be answerable.
+VOICES = ("standard", "plain")
+
+PLAIN_LOOK_WORDS_MAX = 60
+PLAIN_LOOK_WORDS_NOTE = 45
+PLAIN_AFTER_WORDS_MAX = 100
+PLAIN_AFTER_WORDS_NOTE = 80
+PLAIN_SENTENCE_WORDS = 25
+PLAIN_ASK_WORDS = 25
+PLAIN_HINT_WORDS = 25
+PLAIN_DIRECTIONS_WORDS = 60
+
+# Tics. Each one is a way of sounding like an essay rather than a person, and
+# every one of them is quotable from a walk already published.
+FLOURISHES = [
+    # "That is the giveaway, and it is also the point."
+    # "this is the" is left alone: "This is the stop for a drink" introduces
+    # something in front of you, which is the opposite of the tic. "That is"
+    # and "which is" point BACK at what you just said, which is the tic.
+    (r"\b(?:and )?(?:that|which) is (?:also )?(?:the|why|what|where|how)\b"
+     r"(?! (?:walk|seven|six|five|last stop)\b)",
+     "a knowing aside. Say the thing and stop"),
+    (r"\bthe (?:giveaway|irony|joke|trick|catch|whole point|real point)\b",
+     "an essay flourish"),
+    # "what solving it looked like", "is what a bastide looks like"
+    (r"\bwhat .{0,30}? look(?:ed|s) like\b", "an abstract noun doing a verb's job"),
+    # "not X, it is Y" / "rather than working for one"
+    (r"\b(?:rather|other) than \w+ing\b", "balanced antithesis; pick one side"),
+    (r"\bnot (?:just|only|merely|simply) \w+", "the not-just-but construction"),
+    (r"\bis less \w+ than\b", "balanced antithesis; pick one side"),
+    # hedges stacked on a claim
+    (r"\b(?:almost certainly|arguably|effectively|essentially|fundamentally"
+     r"|ultimately|notably|crucially|precisely|genuinely|indeed|moreover"
+     r"|remarkably|curiously|tellingly|strikingly|in many ways|in a sense"
+     r"|of sorts|something of a|in practice|worth noting"
+     r"|it is worth (?:noting|remembering|saying|adding))\b",
+     "a hedge or an intensifier; cut it"),
+    # essay nouns
+    (r"\b(?:testament|tapestry|backdrop|narrative|essence|hallmark|microcosm"
+     r"|embodiment|juxtaposition|interplay|nexus)\b", "an essay noun"),
+    (r"\b(?:speaks to|stands as|serves as|bears witness|no accident|a reminder that)\b",
+     "an essay verb"),
+]
+FLOURISHES = [(re.compile(pat, re.I), why) for pat, why in FLOURISHES]
+
+# Long words with short ones sitting right next to them.
+WORDY = {
+    "utilise": "use", "utilize": "use", "commence": "start", "purchase": "buy",
+    "numerous": "many", "additional": "more", "approximately": "about",
+    "subsequently": "then", "prior to": "before", "in order to": "to",
+    "due to the fact that": "because", "a number of": "some",
+    "at this point in time": "now", "in the event that": "if",
+    "the majority of": "most", "possess": "have", "reside": "live",
+    "construct": "build", "demonstrate": "show", "obtain": "get",
+    "sufficient": "enough", "attempt": "try", "assist": "help",
+    "regarding": "about", "concerning": "about", "whilst": "while",
+    "amongst": "among", "endeavour": "try", "facilitate": "help",
+}
+
 # Where a coordinate came from. This exists because a stop was placed by guess,
 # a compass bearing was then written to match the guess, and both were wrong the
 # same way, so nothing could catch it: the walker was sent east to somewhere
@@ -366,6 +436,27 @@ def names_its_start(directions, prev):
     return any(w in first for w in naming_words(prev))
 
 
+def plain_faults(where, text):
+    """Every tic and every long word in one piece of prose.
+
+    Reported one line each, with what to do instead, because "this is not plain
+    enough" is not actionable and a walker never sees the difference between a
+    rule and a scolding.
+    """
+    out = []
+    if not text:
+        return out
+    for pattern, why in FLOURISHES:
+        m = pattern.search(text)
+        if m:
+            out.append(f"{where}: {m.group(0).strip()!r} is {why}")
+    low = text.lower()
+    for long_word, short in WORDY.items():
+        if re.search(rf"\b{re.escape(long_word)}\b", low):
+            out.append(f"{where}: {long_word!r}; say {short!r}")
+    return out
+
+
 def human_list(items):
     if len(items) == 1:
         return items[0]
@@ -401,6 +492,16 @@ def check(tour):
     stops = tour["stops"]
     c = dict(DEFAULT_CONTRACT, **tour.get("contract", {}))
     lat_lo, lat_hi, lon_lo, lon_hi = c["bbox"]
+
+    voice = c.get("voice", "standard")
+    if voice not in VOICES:
+        errors.append(f"contract.voice must be one of {list(VOICES)}, not {voice!r}")
+        voice = "standard"
+    plain = voice == "plain"
+    if not plain:
+        notes.append("this walk does not declare contract.voice = \"plain\". The "
+                     "walks written before that rule existed are left alone, but "
+                     "anything new should declare it")
 
     if len(stops) != c["n_stops"]:
         errors.append(f"{len(stops)} stops, expected {c['n_stops']}")
@@ -543,17 +644,21 @@ def check(tour):
             if q and phrase in (q.get("ask") or "").lower():
                 errors.append(f"{where} question: {phrase!r} is treasure-hunt "
                               f"talk; just ask the question")
+        look_max = PLAIN_LOOK_WORDS_MAX if plain else LOOK_WORDS_MAX
+        look_note = PLAIN_LOOK_WORDS_NOTE if plain else LOOK_WORDS_NOTE
+        after_max = PLAIN_AFTER_WORDS_MAX if plain else AFTER_WORDS_MAX
+        after_note = PLAIN_AFTER_WORDS_NOTE if plain else AFTER_WORDS_NOTE
         n_look, n_after = len(look.split()), len(after.split())
-        if n_look > LOOK_WORDS_MAX:
-            errors.append(f"{where}: {n_look} words of look, max {LOOK_WORDS_MAX}")
-        elif n_look > LOOK_WORDS_NOTE:
-            notes.append(f"{where}: {n_look} words of look, aim under {LOOK_WORDS_NOTE}")
-        if n_after > AFTER_WORDS_MAX:
+        if n_look > look_max:
+            errors.append(f"{where}: {n_look} words of look, max {look_max}")
+        elif n_look > look_note:
+            notes.append(f"{where}: {n_look} words of look, aim under {look_note}")
+        if n_after > after_max:
             errors.append(f"{where}: {n_after} words of explainer, max "
-                          f"{AFTER_WORDS_MAX}. A guide is brief")
-        elif n_after > AFTER_WORDS_NOTE:
+                          f"{after_max}. A guide is brief")
+        elif n_after > after_note:
             notes.append(f"{where}: {n_after} words of explainer, aim under "
-                         f"{AFTER_WORDS_NOTE}")
+                         f"{after_note}")
         paras = after.count("\n\n") + 1
         if paras > AFTER_PARAS_MAX:
             errors.append(f"{where}: {paras} paragraphs of explainer, max "
@@ -568,11 +673,37 @@ def check(tour):
                 if phrase in text.lower():
                     errors.append(f"{where} {field}: {phrase!r} is summing up; cut it")
             for sentence in re.split(r"(?<=[.?!])\s+", text):
-                if len(sentence.split()) > LONG_SENTENCE_WORDS:
-                    notes.append(f"{where} {field}: a sentence runs to "
-                                 f"{len(sentence.split())} words")
+                n = len(sentence.split())
+                if plain and n > PLAIN_SENTENCE_WORDS:
+                    errors.append(f"{where} {field}: a sentence runs to {n} words, "
+                                  f"max {PLAIN_SENTENCE_WORDS}. Break it in two")
+                elif n > LONG_SENTENCE_WORDS:
+                    notes.append(f"{where} {field}: a sentence runs to {n} words")
             if "—" in text:
                 notes.append(f"{where} {field}: contains a long dash")
+
+        # Everything a walker reads, the clues included. A question does not
+        # get to be florid because it is a question.
+        if plain:
+            pieces = [("look", look), ("after", after),
+                      ("directions", s.get("directions") or ""),
+                      ("nudge", (s.get("nudge") or {}).get("prompt") or "")]
+            if q:
+                pieces += [("question", q.get("ask") or ""),
+                           ("hint", q.get("hint") or "")]
+            for field, text in pieces:
+                errors += plain_faults(f"{where} {field}", text)
+            if q:
+                for field, cap in (("ask", PLAIN_ASK_WORDS),
+                                   ("hint", PLAIN_HINT_WORDS)):
+                    n = len((q.get(field) or "").split())
+                    if n > cap:
+                        errors.append(f"{where} question {field}: {n} words, "
+                                      f"max {cap}")
+            n = len((s.get("directions") or "").split())
+            if n > PLAIN_DIRECTIONS_WORDS:
+                errors.append(f"{where}: {n} words of directions, max "
+                              f"{PLAIN_DIRECTIONS_WORDS}")
         if re.search(r"\d", s.get("after", "")) and not s.get("after_spoken"):
             notes.append(f"{where}: digits in the explainer but no spoken form")
 
@@ -581,6 +712,16 @@ def check(tour):
         for phrase in SUMMING_UP:
             if phrase in text.lower():
                 errors.append(f"{field}: {phrase!r} is summing up; cut it")
+    if plain:
+        intro = tour.get("intro") or {}
+        for field, text in (("outro", tour.get("outro") or ""),
+                            ("intro lead", intro.get("lead") or ""),
+                            ("intro body", intro.get("body") or ""),
+                            ("intro start", intro.get("start") or ""),
+                            ("tagline", tour.get("tagline") or "")):
+            errors += plain_faults(field, text)
+        for t in tour.get("topics", []):
+            errors += plain_faults(f"topic {t['id']}", t.get("blurb") or "")
 
     # ---- checked against the real map, when there is one -------------------
     town = streets.load(tour["id"])

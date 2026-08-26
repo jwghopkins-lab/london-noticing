@@ -414,5 +414,71 @@ class TestStreetNamesWithAWordInFront(unittest.TestCase):
         self.assertEqual(self.resolve("Take Grand Rue de la Lune west."), [None])
 
 
+class TestPlainVoice(unittest.TestCase):
+    """Every example here is quotable from a walk that was published."""
+
+    def faults(self, text):
+        return [f.split(": ", 1)[1] for f in build_tour.plain_faults("x", text)]
+
+    def test_the_knowing_aside(self):
+        self.assertTrue(self.faults("That is the third living this hill has made."))
+        self.assertTrue(self.faults("That is where a town kept its fairs."))
+        self.assertTrue(self.faults("The carving gives it away, and that is the point."))
+
+    def test_pointing_at_something_in_front_of_you_is_not_the_aside(self):
+        """'This is' introduces; 'that is' points back. Only one is the tic."""
+        self.assertEqual(self.faults("This is the stop for a drink."), [])
+        self.assertEqual(self.faults("This is the oldest house on the street."), [])
+
+    def test_the_walk_may_still_end_on_its_own_last_line(self):
+        self.assertEqual(self.faults("That is the walk."), [])
+        self.assertEqual(self.faults("That is the seven."), [])
+
+    def test_an_abstract_noun_doing_a_verbs_job(self):
+        self.assertTrue(self.faults("The well is what solving it looked like."))
+
+    def test_balanced_antithesis(self):
+        self.assertTrue(self.faults("people who hunted for a living rather than working"))
+        self.assertTrue(self.faults("It is not just a house, it is a statement."))
+
+    def test_hedges_and_intensifiers(self):
+        for tic in ("almost certainly", "arguably", "essentially", "crucially",
+                    "in many ways", "it is worth noting"):
+            self.assertTrue(self.faults(f"The house was {tic} a merchant's."), tic)
+
+    def test_essay_nouns(self):
+        self.assertTrue(self.faults("The street is a testament to the trade."))
+        self.assertTrue(self.faults("The carvings speak to a wider tapestry."))
+
+    def test_long_words_get_the_short_one_offered(self):
+        got = build_tour.plain_faults("x", "Prior to the fair they would utilise the hall.")
+        self.assertTrue(any("'before'" in f for f in got), got)
+        self.assertTrue(any("'use'" in f for f in got), got)
+
+    def test_ordinary_plain_english_passes(self):
+        for line in ("The roof is held up on pillars and open on every side.",
+                     "Stand under the arch and look back up the street.",
+                     "There is a well beside it. It goes down through the rock.",
+                     "The lane is worth two steps.",
+                     "Ormeaux. Elms.",
+                     "Take the second turning and stop at the blue door."):
+            self.assertEqual(self.faults(line), [], line)
+
+
+class TestVoiceIsOptIn(unittest.TestCase):
+    """The walks written before the rule existed must be left exactly alone."""
+
+    def test_the_old_walks_do_not_declare_plain(self):
+        for path in sorted(BASE.glob("content/*/*.json")):
+            tour = json.loads(path.read_text(encoding="utf-8"))
+            voice = (tour.get("contract") or {}).get("voice", "standard")
+            self.assertIn(voice, build_tour.VOICES, path.name)
+
+    def test_plain_caps_are_tighter_than_the_old_ones(self):
+        self.assertLess(build_tour.PLAIN_LOOK_WORDS_MAX, build_tour.LOOK_WORDS_MAX)
+        self.assertLess(build_tour.PLAIN_AFTER_WORDS_MAX, build_tour.AFTER_WORDS_MAX)
+        self.assertLess(build_tour.PLAIN_SENTENCE_WORDS, build_tour.LONG_SENTENCE_WORDS)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

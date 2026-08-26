@@ -152,12 +152,34 @@ claim the thing that turns out to be false.
 
 ## 5. Write the stop
 
+Set `"voice": "plain"` in the contract. Everything below is then checked.
+
+**Plain English, and short.** The house accent to avoid is an essay accent:
+balanced antithesis, the knowing aside, an abstract noun doing a verb's job, a
+short portentous sentence to land a paragraph. A guide standing beside you says
+the thing and stops.
+
+| Instead of | Write |
+|---|---|
+| That is the third living this hill has made. | The town has made its living three ways. |
+| The well is what solving it looked like. | So they dug a well. |
+| hunted for a living rather than working for one | hunted for a living |
+| It is not just a house, it is a statement. | The house was built to be looked at. |
+| almost certainly a merchant's | probably a merchant's |
+| a testament to the trade | the trade paid for it |
+| prior to / utilise / approximately | before / use / about |
+
+**The clues too.** 25 words for a question, 25 for a hint. A clue does not need
+a flourish; it needs to be answerable.
+
+
+
 One block that walks you there, says what to look at and asks. Then one thing to
 do. Then one block explaining the answer.
 
-Brief. It is read standing up, often in the sun. 80 words for what to look at,
-130 for the explainer, and aim well under both. Lead with the answer, then the
-story.
+Brief. It is read standing up, often in the sun. Under `voice: plain` that is 60
+words for what to look at, 100 for the explainer, 60 for the directions, and no
+sentence over 25 words. Lead with the answer, then the story.
 
 No riddle furniture. This is a tour guide, not a treasure hunt — "there is a
 painting of that story on the wall", never "somewhere in here is a painting, go
@@ -204,6 +226,7 @@ workflow serves it at `/<served_at>/`.
 | *the map spells it Y* | Accents. The sign has them. |
 | *N m from the nearest walkable way* | The coordinate is in a field, or in the wrong place entirely. |
 | *climbs N m it had already climbed once* | Reorder the stops. Do not rewrite the prose first. |
+| *is a knowing aside / an essay noun / a hedge* | You slipped into essay voice. Say the thing and stop. |
 
 ## Things that were got wrong, so you do not have to
 
