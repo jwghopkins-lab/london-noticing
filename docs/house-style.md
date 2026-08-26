@@ -240,6 +240,32 @@ town. A guide standing beside you says the thing and stops.
 69. **Directions are capped at 60 words.** A leg that needs more than that is a
     leg the map cannot support. See rule 47. **[checked]**
 
+### Say it once
+
+70. **One stop is one card.** The title, the directions, what to look at, the
+    nudge and the question are read one under the other, in that order. Write
+    them as one thing. Written separately, each made to stand on its own, they
+    repeat each other word for word. This shipped:
+
+    > **A Street Named After a Court**
+    > Read the sign at the corner. This street is named after a courtroom. The
+    > court sat in Castres for most of a century.
+    > *This street is named after a courtroom. Read the sign.* What was the
+    > court called?
+
+    Four words repeated across two fields of a card fails the build; three is a
+    note. The same goes for the name, tagline and intro, which are also read
+    together. **[checked]**
+71. **Street and place names are exempt**, and only real ones off the map. The
+    first version of this check exempted anything that looked like a proper
+    noun, which meant a Title Case heading was exempt from everything, and the
+    title above sailed through the check written to catch it. **[checked]**
+72. **Two stop titles must not share a phrase.** "The Fountain on the Square"
+    followed by "A Memorial on the Square" reads as one place. **[checked]**
+73. The look sets up. The question asks. If the question can be cut to four
+    words because the look already did the work, cut it. "What was the court
+    called?" is the whole question.
+
 ### Hills
 
 A street graph is drawn flat. It will tell you a hundred metres is a hundred

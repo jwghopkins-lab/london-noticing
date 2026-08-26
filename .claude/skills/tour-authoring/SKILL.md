@@ -177,6 +177,20 @@ the thing and stops.
 **The clues too.** 25 words for a question, 25 for a hint. A clue does not need
 a flourish; it needs to be answerable.
 
+**Write the card, not the fields.** One stop is one card, and the walker reads
+the title, the directions, what to look at and the question one under the other.
+Draft them together and read them straight through. Written separately, each
+made to stand on its own, they repeat each other word for word:
+
+> **A Street Named After a Court**
+> Read the sign at the corner. This street is named after a courtroom. The court
+> sat in Castres for most of a century.
+> *This street is named after a courtroom. Read the sign.* What was it called?
+
+The look sets up; the question asks. Four repeated words across two fields fails
+the build. The fix is almost always to cut the question down: "What was the
+court called?" is the whole question.
+
 
 
 One block that walks you there, says what to look at and asks. Then one thing to
@@ -232,6 +246,7 @@ workflow serves it at `/<served_at>/`.
 | *N m from the nearest walkable way* | The coordinate is in a field, or in the wrong place entirely. |
 | *climbs N m it had already climbed once* | Reorder the stops. Do not rewrite the prose first. |
 | *is a knowing aside / an essay noun / a hedge* | You slipped into essay voice. Say the thing and stop. |
+| *is said in both the ask and the look* | You wrote the fields separately. Read the card straight through and cut. |
 
 ## Things that were got wrong, so you do not have to
 

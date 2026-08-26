@@ -3,7 +3,7 @@
  "id": "castres",
  "served_at": "castres",
  "name": "Half the Town",
- "tagline": "seven stops round the old centre",
+ "tagline": "a walk round a town that split in two",
  "city": "Castres",
  "mode": "fixed",
  "contract": {
@@ -50,7 +50,7 @@
   {
    "id": "edit",
    "topic": "split",
-   "title": "A Street Named After a Court",
+   "title": "Where the Court Sat",
    "where": "the narrow street off the north west corner of Place de la République",
    "lat": 43.603861,
    "lon": 2.240096,
@@ -58,7 +58,7 @@
    "gate": null,
    "nudge": null,
    "question": {
-    "ask": "This street is named after a courtroom. Read the sign. What was the court called?",
+    "ask": "What was the court called?",
     "answers": [
      "Chambre de l'Édit",
      "Chambre de l'Edit",
@@ -71,9 +71,9 @@
      "Édit",
      "Edit"
     ],
-    "hint": "The sign is on the wall at the corner. Three words after Rue."
+    "hint": "Three words after Rue."
    },
-   "look": "Read the sign at the corner. This street is named after a courtroom.\n\nThe court sat in Castres for most of a century.",
+   "look": "An ordinary back street with an odd name.\n\nA court sat in Castres for most of a century. This street still carries its name.\n\nThe plaque is on the wall where the street meets the square.",
    "look_spoken": null,
    "after": "The Chambre de l'Édit. The Edict of Nantes gave French Protestants courts of their own, with Catholic and Protestant judges in equal numbers.\n\nCastres got one because half the town was Protestant.\n\nIt sat until 1679. Then the king moved it to Castelnaudary, and six years later he cancelled the Edict.",
    "after_spoken": "The Chambre de l'Édit. The Edict of Nantes gave French Protestants courts of their own, with Catholic and Protestant judges in equal numbers.\n\nCastres got one because half the town was Protestant.\n\nIt sat until sixteen seventy nine. Then the king moved it to Castelnaudary, and six years later he cancelled the Edict."
@@ -105,7 +105,7 @@
     ],
     "hint": "It is on the front of the building and on the street sign beside it."
    },
-   "look": "The cathedral is big, plain and late. Work started in 1677.\n\nThere was an abbey on this spot for eight hundred years before that. The church is named after the man whose rule those monks lived by.",
+   "look": "Big, plain and late. Work started in 1677.\n\nThere was an abbey on this spot for eight hundred years before that, and the monks lived by one man's rule. The church carries his name.",
    "look_spoken": null,
    "after": "Benoît. Benedict, in English.\n\nThe abbey here was Benedictine and it came first. Castres exists because monks settled on the river in the ninth century.\n\nBy the time this church went up, the town had been arguing about religion for a hundred years. It is the Catholic half of that argument. You will see the other half later.",
    "after_spoken": null,
@@ -121,7 +121,7 @@
   {
    "id": "angelots",
    "topic": "water",
-   "title": "The Fountain on the Square",
+   "title": "The Fountain",
    "where": "the fountain at the west end of Place Jean Jaurès",
    "lat": 43.605477,
    "lon": 2.241086,
@@ -167,9 +167,9 @@
      "de Fermat",
      "Pierre"
     ],
-    "hint": "The memorial names him. He was a judge in this town as well."
+    "hint": "The memorial names him. He also sat as a judge here."
    },
-   "look": "One of the great mathematicians of the sixteen hundreds worked in Castres.\n\nHe was a lawyer by trade. He did his mathematics in the evenings and hardly published any of it.\n\nHis name is on this square.",
+   "look": "One of the great mathematicians of the sixteen hundreds worked in Castres.\n\nHe was a lawyer by trade. He did his mathematics in the evenings and hardly published any of it.\n\nHis name is on the memorial.",
    "look_spoken": null,
    "after": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in 1665.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the 1990s to find one.",
    "after_spoken": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in sixteen sixty five.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the nineteen nineties to find one."
@@ -190,7 +190,7 @@
    },
    "nudge": null,
    "question": null,
-   "look": "This is the stop for a drink. Les Arcades is under the arches and Etienne Coffee is next door.\n\nThe statue is Jean Jaurès. He was born in Castres in 1859, and almost every town in France has a street named after him.",
+   "look": "This is the stop for a drink. Etienne Coffee is next door if the bar is shut.\n\nThe statue is Jean Jaurès. He was born in Castres in 1859, and almost every town in France has a street named after him.",
    "look_spoken": null,
    "after": "Jaurès taught philosophy, went into politics and became the leading French socialist of his day.\n\nHe spent the summer of 1914 arguing against the war that was coming. On 31 July a nationalist shot him through a café window in Paris.\n\nFrance was at war three days later.",
    "after_spoken": "Jaurès taught philosophy, went into politics and became the leading French socialist of his day.\n\nHe spent the summer of nineteen fourteen arguing against the war that was coming. On the thirty first of July a nationalist shot him through a café window in Paris.\n\nFrance was at war three days later."

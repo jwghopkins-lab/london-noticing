@@ -456,6 +456,84 @@ def names_its_start(directions, prev):
     return any(w in first for w in naming_words(prev))
 
 
+# ---- saying it twice -----------------------------------------------------
+#
+# Every other check in this file reads one field at a time. The walker does not.
+# One stop is one card, and the card is the title, then how to walk there, then
+# what to look at, then the question, one under the other. Fields written
+# separately, each made to stand on its own, come out as:
+#
+#   Read the sign at the corner. This street is named after a courtroom.
+#   The court sat in Castres for most of a century.
+#   This street is named after a courtroom. Read the sign. What was it called?
+#
+# Nothing caught that, because nothing had ever compared two fields.
+REPEAT_ERROR_WORDS = 4     # four words the same, twice on one card
+REPEAT_NOTE_WORDS = 3
+# A run of nothing but function words is not a repeated phrase, it is English.
+# "like this one" turning up twice tells you nothing; "at the corner" does.
+FUNCTION_WORDS = {
+    "a", "an", "and", "as", "at", "be", "but", "by", "for", "from", "here",
+    "in", "into", "is", "it", "its", "like", "of", "on", "one", "or", "out",
+    "over", "so", "than", "that", "the", "then", "there", "they", "this",
+    "to", "up", "was", "were", "with", "you", "your", "not", "no", "if",
+    "have", "has", "had", "do", "does", "did", "are", "will", "would",
+    "he", "she", "his", "her", "him", "we", "us", "them", "who", "what",
+    "which", "when", "all", "any", "some", "more", "most", "very", "can",
+    "could", "should", "may", "might", "must", "been", "being", "just",
+    "only", "even", "also", "still",
+}
+
+
+def _words(text):
+    return [m.group(0) for m in re.finditer(r"[\w'\u2019]+", text or "")]
+
+
+def known_names(town):
+    """Every street and place name the map knows, folded.
+
+    Needed because the exemption cannot be "it looks like a proper noun". A stop
+    title is Title Case, so every run of words in it looks like a proper noun,
+    and "A Street Named After a Court" sailed through a check that was supposed
+    to catch exactly that title. Only a real name off the map is exempt.
+    """
+    if town is None:
+        return set()
+    out = {streets.fold(w["name"]) for w in town.streets if w["name"]}
+    out |= {streets.fold(p["name"]) for p in town.places if p.get("name")}
+    return out
+
+
+def repeated_across(pieces, names=(), longest=9):
+    """Phrases said twice on one card, longest first.
+
+    `pieces` is [(name, text), ...] in the order the walker reads them. Street
+    and place names are exempt: a street has to be called the same thing every
+    time it is mentioned.
+    """
+    seen = {}
+    for field, text in pieces:
+        toks = _words(text)
+        for n in range(REPEAT_NOTE_WORDS, longest + 1):
+            for i in range(len(toks) - n + 1):
+                run = toks[i:i + n]
+                key = " ".join(streets.fold(w) for w in run)
+                if all(w in FUNCTION_WORDS for w in key.split()):
+                    continue
+                if any(key in name for name in names):
+                    continue
+                seen.setdefault(key, {}).setdefault(field, " ".join(run))
+    hits = [(len(k.split()), k, v) for k, v in seen.items() if len(v) > 1]
+    hits.sort(reverse=True)
+    out, covered = [], []
+    for n, key, where in hits:
+        if any(key in bigger for bigger in covered):
+            continue
+        covered.append(key)
+        out.append((n, list(where.values())[0], sorted(where)))
+    return out
+
+
 def plain_faults(where, text):
     """Every tic and every long word in one piece of prose.
 
@@ -527,6 +605,7 @@ def check(tour):
     c = dict(DEFAULT_CONTRACT, **tour.get("contract", {}))
     lat_lo, lat_hi, lon_lo, lon_hi = c["bbox"]
 
+    names = known_names(streets.load(tour["id"]))
     voice = c.get("voice", "standard")
     if voice not in VOICES:
         errors.append(f"contract.voice must be one of {list(VOICES)}, not {voice!r}")
@@ -738,6 +817,23 @@ def check(tour):
             if n > PLAIN_DIRECTIONS_WORDS:
                 errors.append(f"{where}: {n} words of directions, max "
                               f"{PLAIN_DIRECTIONS_WORDS}")
+
+            # One stop is one card, and the walker reads these one under the
+            # other. Written separately, each made to stand on its own, they
+            # repeat each other word for word.
+            card = [("title", s.get("title") or ""),
+                    ("directions", s.get("directions") or ""),
+                    ("look", look), ("nudge", (s.get("nudge") or {}).get("prompt") or ""),
+                    ("ask", (q or {}).get("ask") or ""),
+                    ("hint", (q or {}).get("hint") or ""),
+                    ("after", after)]
+            for n_words, phrase, fields in repeated_across(card, names):
+                line = (f"{where}: {phrase!r} is said in both the "
+                        f"{' and the '.join(fields)}")
+                if n_words >= REPEAT_ERROR_WORDS:
+                    errors.append(line + ". Say it once")
+                else:
+                    notes.append(line)
         if re.search(r"\d", s.get("after", "")) and not s.get("after_spoken"):
             notes.append(f"{where}: digits in the explainer but no spoken form")
 
@@ -756,6 +852,18 @@ def check(tour):
             errors += plain_faults(field, text)
         for t in tour.get("topics", []):
             errors += plain_faults(f"topic {t['id']}", t.get("blurb") or "")
+        header = [("name", tour.get("name") or ""),
+                  ("tagline", tour.get("tagline") or ""),
+                  ("intro lead", intro.get("lead") or ""),
+                  ("intro body", intro.get("body") or ""),
+                  ("intro start", intro.get("start") or "")]
+        for n_words, phrase, fields in repeated_across(header, names):
+            line = (f"the opening says {phrase!r} in both the "
+                    f"{' and the '.join(fields)}")
+            if n_words >= REPEAT_ERROR_WORDS:
+                errors.append(line + ". Say it once")
+            else:
+                notes.append(line)
 
     # ---- checked against the real map, when there is one -------------------
     town = streets.load(tour["id"])
@@ -952,6 +1060,15 @@ def check(tour):
             elif whole["reclimb"] > RECLIMB_NOTE_M:
                 notes.append(f"{whole['reclimb']:.0f} m of the climbing is "
                              f"ground given away and taken back")
+
+    # Titles sit next to each other in the walker's head even though they are
+    # never on screen together. "The Fountain on the Square" followed by "A
+    # Memorial on the Square" reads as one place, not two.
+    if plain:
+        for n_words, phrase, which in repeated_across(
+                [(s["id"], s.get("title") or "") for s in stops], names):
+            notes.append(f"the titles of {' and '.join(which)} both say "
+                         f"{phrase!r}")
 
     split = sorted(counts.values(), reverse=True)
     if split != c["topic_split"]:

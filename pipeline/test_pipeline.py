@@ -539,5 +539,64 @@ class TestTheCaveatTellsTheTruth(unittest.TestCase):
                          if "no caveat" in f])
 
 
+class TestSayingItTwice(unittest.TestCase):
+    """One stop is one card. The walker reads the fields one under the other.
+
+    Every other check in build_tour reads one field at a time, which is how the
+    first Castres clue shipped saying the same seven words in the look and in
+    the question.
+    """
+
+    SHIPPED = [
+        ("title", "A Street Named After a Court"),
+        ("look", "Read the sign at the corner. This street is named after a "
+                 "courtroom. The court sat in Castres for most of a century."),
+        ("ask", "This street is named after a courtroom. Read the sign. What "
+                "was the court called?"),
+        ("hint", "The sign is on the wall at the corner. Three words after Rue."),
+    ]
+
+    def test_the_clue_that_started_this(self):
+        hits = build_tour.repeated_across(self.SHIPPED)
+        worst = hits[0]
+        self.assertGreaterEqual(worst[0], build_tour.REPEAT_ERROR_WORDS)
+        self.assertIn("named after a courtroom", worst[1].lower())
+        self.assertEqual(worst[2], ["ask", "look"])
+
+    def test_the_shorter_repeats_are_caught_too(self):
+        said = {h[1].lower() for h in build_tour.repeated_across(self.SHIPPED)}
+        self.assertTrue(any("read the sign" in x for x in said), said)
+        self.assertTrue(any("at the corner" in x for x in said), said)
+
+    def test_a_street_name_may_repeat_as_often_as_it_likes(self):
+        pieces = [("directions", "Take Grand Rue Raymond VII, which runs west."),
+                  ("look", "You are standing on Grand Rue Raymond VII.")]
+        names = {"grand rue raymond vii"}
+        self.assertEqual(build_tour.repeated_across(pieces, names), [])
+
+    def test_a_title_in_title_case_is_not_a_proper_noun(self):
+        """The exemption cannot be 'it looks capitalised'.
+
+        "A Street Named After a Court" is Title Case, so every run of words in
+        it looks like a name, and the first version of this check let it through.
+        """
+        pieces = [("title", "A Street Named After a Court"),
+                  ("look", "This street is named after a court.")]
+        self.assertTrue(build_tour.repeated_across(pieces))
+
+    def test_function_words_are_not_a_repeated_phrase(self):
+        pieces = [("look", "It is like this one over there."),
+                  ("after", "Buildings like this one followed.")]
+        self.assertEqual(build_tour.repeated_across(pieces), [])
+
+    def test_ordinary_writing_repeats_nothing(self):
+        pieces = [("title", "The Old Bridge"),
+                  ("look", "Stop in the middle. The houses opposite stand over "
+                           "the water."),
+                  ("ask", "What is the river called?"),
+                  ("hint", "There is a sign on the quay. Five letters.")]
+        self.assertEqual(build_tour.repeated_across(pieces), [])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
