@@ -480,5 +480,26 @@ class TestVoiceIsOptIn(unittest.TestCase):
         self.assertLess(build_tour.PLAIN_SENTENCE_WORDS, build_tour.LONG_SENTENCE_WORDS)
 
 
+class TestNamingTheOrigin(unittest.TestCase):
+    """The first sentence has to name the stop you are setting off from."""
+
+    EDIT = {"id": "edit", "title": "A Street Named After a Court",
+            "where": "the narrow street off Place de la République"}
+
+    def test_an_accented_name_still_matches_its_own_id(self):
+        """'edit' is not a substring of 'edit' with an acute on the e."""
+        self.assertTrue(build_tour.names_its_start(
+            "From Rue Chambre de l'\u00c9dit, walk back to the corner.", self.EDIT))
+
+    def test_a_stop_that_is_not_named_is_caught(self):
+        self.assertFalse(build_tour.names_its_start(
+            "Leave the square on the far side and keep going.", self.EDIT))
+
+    def test_a_generic_word_does_not_count_as_naming_anything(self):
+        """'Leave the square' names nothing: which square, and which side?"""
+        self.assertNotIn("square", build_tour.naming_words(self.EDIT))
+        self.assertNotIn("street", build_tour.naming_words(self.EDIT))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

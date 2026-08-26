@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Half the Town</title>
+<!-- user-scalable is deliberately left alone: people will want to pinch-zoom a
+     carving on a wall, and every input is 16px so iOS never auto-zooms. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* Palette taken from the things the walk actually looks at. The ground is
+     Portland stone, which is what the City is faced in and which is cooler and
+     greyer than it looks in photographs. The ink is cast iron, near black with
+     a blue cast, off the bollards and the railings. The accent is the oxide red
+     of the tile courses in the Roman wall, which is also the red of the cross
+     on the City arms and the tongues of the boundary dragons. Nothing here is
+     warm cream and nothing is terracotta.
+
+     Three theme states, not two. An explicit choice stamps data-theme on the
+     root; the default setting stamps nothing and only prefers-color-scheme
+     separates light from dark. So the bare :root carries the whole light
+     palette, the media query redefines tokens for the unstamped dark case, and
+     the [data-theme] blocks let a deliberate choice win in either direction.
+     Every component reads tokens, never a literal, or it renders one theme's
+     text on the other theme's ground. */
+  :root {
+    --paper: #ECEBE7; --panel: #FAFAF8; --ink: #191B1C; --ink-soft: #5C6163;
+    --line: #CFCFC8; --accent: #9E2B25; --accent-soft: #F0DEDB;
+    --accent-ink: #FFFFFF;
+    --good: #2F6B4F; --good-soft: #DCE9E2;
+    --warn: #9E2B25; --warn-soft: #F0DEDB;
+    --key: #E0E0DA; --key-ink: #191B1C; --shadow: 0 1px 3px rgba(25,27,28,.13);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141617; --panel: #1D2022; --ink: #E8E7E3; --ink-soft: #9AA0A2;
+      --line: #363B3D; --accent: #E08078; --accent-soft: #3A2220;
+      --accent-ink: #141617;
+      --good: #6FBF97; --good-soft: #1E3229;
+      --warn: #E08078; --warn-soft: #3A2220;
+      --key: #2A2E30; --key-ink: #E8E7E3; --shadow: 0 1px 3px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141617; --panel: #1D2022; --ink: #E8E7E3; --ink-soft: #9AA0A2;
+    --line: #363B3D; --accent: #E08078; --accent-soft: #3A2220;
+    --accent-ink: #141617;
+    --good: #6FBF97; --good-soft: #1E3229;
+    --warn: #E08078; --warn-soft: #3A2220;
+    --key: #2A2E30; --key-ink: #E8E7E3; --shadow: 0 1px 3px rgba(0,0,0,.45);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--paper); color: var(--ink);
+         font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+         display: flex; flex-direction: column; align-items: center; }
+  .screen { width: 100%; max-width: 560px; display: none; flex-direction: column;
+            min-height: 100dvh; padding: 8px 12px calc(20px + env(safe-area-inset-bottom)); }
+  .screen.on { display: flex; }
+  header { display: flex; align-items: baseline; gap: 10px; padding: 6px 2px; }
+  .wordmark { font-family: Georgia, "Times New Roman", serif; font-weight: 700;
+              font-size: 1.2rem; letter-spacing: .08em; white-space: nowrap; }
+  .wordmark span { color: var(--accent); margin-left: .3em; }
+  .tagline { font-size: .68rem; color: var(--ink-soft); letter-spacing: .08em;
+             text-transform: uppercase; }
+  .spacer { flex: 1; }
+  .banner { background: var(--warn-soft); color: var(--warn); border-radius: 8px;
+            font-size: .74rem; padding: 7px 10px; margin: 6px 0; line-height: 1.4; }
+  .banner.sim { background: var(--accent-soft); color: var(--ink); }
+
+  .intro { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
+           padding: 10px 2px 4px; }
+  .intro .lead { font-size: 1.15rem; margin-bottom: 10px; }
+  .intro p { margin-bottom: 10px; color: var(--ink-soft); font-size: .92rem; }
+
+  /* The choosing is the part that makes this feel like yours, so the cards are
+     big, the tap target is the whole card, and the count is always visible. */
+  .picker { display: flex; flex-direction: column; gap: 9px; margin: 6px 0 4px; }
+  .topic { display: flex; align-items: flex-start; gap: 12px; text-align: left;
+           background: var(--panel); border: 1.5px solid var(--line);
+           border-radius: 14px; padding: 14px; box-shadow: var(--shadow);
+           cursor: pointer; color: var(--ink); font: inherit; width: 100%;
+           transition: border-color .18s ease, background .18s ease, transform .12s ease; }
+  .topic:active { transform: scale(.99); }
+  .topic .tick { flex: 0 0 24px; height: 24px; border-radius: 50%;
+                 border: 1.5px solid var(--line); display: grid; place-items: center;
+                 font-size: .9rem; color: transparent; margin-top: 1px;
+                 transition: background .18s ease, border-color .18s ease, color .18s ease; }
+  .topic .tname { display: block; font-family: Georgia, serif; font-weight: 700;
+                  font-size: 1.05rem; margin-bottom: 4px; }
+  .topic .tblurb { display: block; font-size: .84rem; color: var(--ink-soft);
+                   line-height: 1.45; }
+  .topic.on { border-color: var(--accent); background: var(--accent-soft); }
+  .topic.on .tick { background: var(--accent); border-color: var(--accent);
+                    color: var(--accent-ink); }
+  .topic.full:not(.on) { opacity: .48; }
+  .topic:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .pickbar { position: sticky; bottom: 0; background: var(--paper);
+             padding: 10px 0 calc(6px + env(safe-area-inset-bottom));
+             border-top: 1px solid var(--line); margin-top: 6px; }
+  .pickcount { font-size: .78rem; color: var(--ink-soft); text-align: center;
+               margin-bottom: 8px; min-height: 1.2em; }
+
+  .btn { border: none; border-radius: 10px; padding: 14px 0; font-size: .98rem;
+         font-weight: 600; cursor: pointer; width: 100%; min-height: 46px; }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.primary:disabled { opacity: .45; cursor: default; }
+  .btn.ghost { background: var(--key); color: var(--key-ink); }
+
+  /* The progress bar rides at the top while the walk scrolls under it. */
+  #topbar { position: sticky; top: 0; z-index: 6; background: var(--paper);
+            padding: 6px 2px 8px; border-bottom: 1px solid var(--line);
+            display: flex; flex-direction: column; gap: 5px; }
+  .meter { display: flex; align-items: center; gap: 9px; }
+  .mlabel { font-size: .72rem; color: var(--ink-soft); white-space: nowrap;
+            flex: 0 0 62px; }
+  .mbar { flex: 1; height: 8px; border-radius: 999px; background: var(--key);
+          overflow: hidden; }
+  .mfill { height: 100%; width: 0; border-radius: 999px; background: var(--good);
+           transition: width .4s ease; }
+  .mnum { font-size: .78rem; color: var(--ink-soft); font-variant-numeric: tabular-nums;
+          min-width: 3.2em; text-align: right; }
+
+  #walk { flex: 1; }
+  .stop { background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+          padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow); }
+  .stop.done { border-color: var(--good); }
+  .shead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+           font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+           text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+  .shead .no { color: var(--accent); }
+  .shead .state { margin-left: auto; }
+  .stitle { font-family: Georgia, serif; font-size: 1.15rem; line-height: 1.3;
+            margin-bottom: 12px; }
+  /* Tap to finish the reveal was there from the start and nothing said so. */
+  .skiptip { margin-top: 10px; font-size: .7rem; color: var(--ink-soft);
+             letter-spacing: .04em; }
+  .payrule { border-top: 1px solid var(--line); margin: 16px 0 14px; }
+  .stext + .stext { margin-top: 0; }
+  /* .picker sets display:flex, which beats the browser default for [hidden].
+     Anything hidden must actually be hidden. */
+  [hidden] { display: none !important; }
+  .swhere { font-size: .78rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .stext { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
+           white-space: pre-line; }
+  /* Words, not characters. The whole text is laid out invisibly from the first
+     frame, so the card never grows and lines never re-wrap mid-reveal, and each
+     word then darkens into place. It reads like a voice rather than a machine. */
+  .stext .w, .legtext .w { opacity: 0; }
+  .stext .w.on, .legtext .w.on { opacity: 1; transition: opacity .45s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .stext .w, .legtext .w { opacity: 1; }
+  }
+  .after { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
+           font-family: Georgia, serif; font-size: .98rem; line-height: 1.6;
+           white-space: pre-line; }
+  .srow { margin-top: 14px; }
+  .nudge { font-family: Georgia, serif; font-size: 1rem; line-height: 1.5;
+           background: var(--accent-soft); color: var(--ink); border-radius: 10px;
+           padding: 12px; margin-top: 14px; }
+  .lateprompt { margin-top: 10px; font-size: .82rem; color: var(--ink-soft);
+                line-height: 1.45; }
+
+  /* The gate: a question of presence, before anything is said. */
+  .gatewrap { text-align: center; padding: 4px 2px 2px; }
+  .gateq { font-family: Georgia, serif; font-size: 1.02rem; margin-bottom: 12px;
+           line-height: 1.5; }
+  .gatestat { font-size: .8rem; color: var(--ink-soft); min-height: 1.2em;
+              margin: 10px 0 2px; font-variant-numeric: tabular-nums; }
+  .gatenote { font-size: .68rem; color: var(--ink-soft); margin-top: 6px; }
+
+  /* A newly opened stop does not simply appear. A hairline draws across the top
+     of the card and the card resolves out of blur behind it, before the words
+     start. Two seconds, once, never on a card already seen. */
+  .stop.arriving { position: relative; overflow: hidden;
+                   animation: resolve 2000ms cubic-bezier(.2,.7,.25,1) forwards; }
+  .stop.arriving::after {
+    content: ""; position: absolute; top: 0; left: 0; height: 2px; width: 0;
+    background: var(--accent); animation: scanline 1240ms ease-out forwards; }
+  @keyframes scanline { 0% { width: 0; opacity: 1 } 78% { width: 100%; opacity: 1 }
+                        100% { width: 100%; opacity: 0 } }
+  @keyframes resolve {
+    0%   { opacity: 0; filter: blur(7px); transform: translateY(7px) scale(.985); }
+    38%  { opacity: .35; filter: blur(7px); transform: translateY(7px) scale(.985); }
+    100% { opacity: 1; filter: blur(0);    transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  .toolrow { display: flex; gap: 6px; justify-content: center; padding: 12px 0 2px;
+             flex-wrap: wrap; }
+  .tool { border: 1px solid var(--line); background: var(--panel); color: var(--ink-soft);
+          font-size: .76rem; padding: 11px 16px; border-radius: 999px; cursor: pointer;
+          min-height: 44px; }
+  .tool:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  #modal { position: fixed; inset: 0; background: rgba(14,12,10,.55); display: none;
+           align-items: center; justify-content: center; padding: 18px; z-index: 20; }
+  #modal.show { display: flex; }
+  .card { background: var(--panel); color: var(--ink); border-radius: 16px;
+          padding: 22px 20px; max-width: 400px; width: 100%;
+          box-shadow: 0 12px 40px rgba(0,0,0,.35); max-height: 86dvh; overflow-y: auto; }
+  .card h2 { font-family: Georgia, serif; font-size: 1.3rem; margin-bottom: 8px; }
+  .card .sub { color: var(--ink-soft); font-size: .84rem; margin-bottom: 10px; line-height: 1.5; }
+  .card .sub ol { margin: 6px 0 0 18px; }
+  .card .sub li { margin-bottom: 5px; }
+  .card .sub b { color: var(--ink); }
+  .btnrow { display: flex; gap: 8px; margin-top: 14px; }
+  .btnrow .btn { flex: 1; padding: 12px 0; font-size: .9rem; }
+  /* The approach simulator. Deliberately styled as scaffolding rather than as
+     part of the walk, so nobody mistakes it for a feature. */
+  .devrow { margin-top: 14px; padding: 10px; border: 1px dashed var(--line);
+            border-radius: 10px; display: flex; flex-wrap: wrap; gap: 6px;
+            align-items: center; }
+  .devrow .devlabel { font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+                      color: var(--ink-soft); width: 100%; }
+  .devrow button { border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+                   font: inherit; font-size: .78rem; padding: 9px 12px; border-radius: 999px;
+                   cursor: pointer; min-height: 40px; }
+  .devrow .devdist { font-size: .74rem; color: var(--ink-soft); margin-left: auto;
+                     font-variant-numeric: tabular-nums; }
+  .devnote { width: 100%; font-size: .68rem; color: var(--ink-soft); line-height: 1.45; }
+
+  /* The question. There is no score and no way to fail, so this is styled as a
+     prompt rather than as an exam. */
+  .qask { margin-top: 14px; font-family: Georgia, serif; font-size: 1rem;
+          line-height: 1.5; background: var(--accent-soft); color: var(--ink);
+          border-radius: 10px; padding: 12px; }
+  .qrow { margin-top: 10px; display: flex; gap: 8px; }
+  .qrow input { flex: 1; padding: 12px; font-size: 1rem; border-radius: 9px;
+                border: 1.5px solid var(--line); background: var(--paper);
+                color: var(--ink); min-height: 46px; }
+  .qrow input:focus-visible { outline: 2px solid var(--accent); }
+  .qrow .btn { width: 96px; flex: none; padding: 11px 0; }
+  .qhint { margin-top: 9px; font-size: .82rem; color: var(--ink-soft); line-height: 1.45; }
+  .qtold { margin-top: 14px; font-size: .84rem; color: var(--ink-soft);
+           border-left: 3px solid var(--line); padding-left: 10px; }
+  .qgiveup { display: block; margin-top: 10px; border: none; background: none;
+             color: var(--ink-soft); font: inherit; font-size: .78rem; cursor: pointer;
+             text-decoration: underline dotted; text-underline-offset: 3px; padding: 6px 0; }
+  .stop.wrong { animation: shake .35s; }
+  @keyframes shake { 25% { transform: translateX(-6px) } 75% { transform: translateX(6px) } }
+
+  /* Directions between two stops. Deliberately not a card like a stop: it is
+     the bit in between, so it reads as a road sign rather than as content. */
+  .leg { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px;
+         margin: 2px 0 12px 6px; }
+  .leghead { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
+             color: var(--ink-soft); margin-bottom: 6px; }
+  .legtext { font-family: Georgia, serif; font-size: .96rem; line-height: 1.6;
+             white-space: pre-line; }
+  .legmeta { margin-bottom: 7px; font-size: .74rem; color: var(--ink-soft);
+             font-variant-numeric: tabular-nums; }
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+           background: var(--ink); color: var(--paper); font-size: .82rem; padding: 10px 16px;
+           border-radius: 14px; opacity: 0; transition: opacity .25s; pointer-events: none;
+           z-index: 30; width: calc(100% - 32px); max-width: 420px; text-align: center;
+           line-height: 1.35; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="screen on" id="s-pick">
+  <header>
+    <div>
+      <div class="wordmark">LONDON<span>NOTICING</span></div>
+      <div class="tagline">oh, look at that</div>
+    </div>
+  </header>
+
+  <div class="intro">
+    <div class="lead">Pick three things you like the sound of.</div>
+    <p>You will get an eighteen stop walk through central London, six stops for
+       each thing you chose, in an order that makes sense on foot.</p>
+    <p>There is nothing to solve and nothing to win. The point is to make you
+       look at something you have walked past a hundred times.</p>
+  </div>
+
+  <div class="picker" id="picker"></div>
+
+  <div class="pickbar">
+    <div class="pickcount" id="pickcount"></div>
+    <button class="btn primary" id="startbtn" disabled>Choose three to start</button>
+  </div>
+</div>
+
+<div class="screen" id="s-walk">
+  <header>
+    <div>
+      <div class="wordmark">LONDON<span>NOTICING</span></div>
+      <div class="tagline" id="walktitle"></div>
+    </div>
+  </header>
+  <div id="simbanner" class="banner sim" style="display:none"></div>
+  <div id="topbar">
+    <div class="meter">
+      <span class="mlabel">Progress</span>
+      <div class="mbar"><div id="progressfill" class="mfill"></div></div>
+      <span class="mnum" id="progresstext"></span>
+    </div>
+  </div>
+  <div id="walk"></div>
+  <div class="toolrow">
+    <button class="tool" id="simoffbtn" hidden>Back to the real GPS</button>
+    <button class="tool" id="restartbtn">Start over</button>
+  </div>
+</div>
+
+<div id="modal"><div class="card" id="modalcard"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>window.NOTICING_BUNDLE = {"tour": {"format": 1, "combo_key": "castres", "mode": "fixed", "served_at": "castres", "directions_style": "turn_by_turn", "name": "Half the Town", "tagline": "seven stops round the old centre", "city": "Castres", "intro": {"lead": "Seven stops round the old centre of Castres.", "body": "Just under a kilometre, about an hour. It is flat.\n\nFour stops ask a question you can only answer by looking. Three just need you standing in the right place.\n\nBuilt for a Monday evening. Everything is outdoors and free. The museums are shut. The shops and bars in the centre are not.", "start": "Start on Place de la République, by the theatre. Leave the square on its north west side and walk forty metres up the narrow street."}, "outro": "That is the seven.\n\nThe bars on the quay are behind you. Les Arcades and S&L are both on Quai Tourcaudière.\n\nIf you want more, the Musée Goya is in the old bishop's palace by Place de la République. The formal garden behind it is open in the day.", "draft": false, "topics": [{"id": "split", "name": "Two Churches and a Court", "blurb": "Half the town was Protestant. The king gave it a court of its own to keep the peace."}, {"id": "men", "name": "Two Men From Here", "blurb": "A mathematician who judged cases by day. A politician shot for arguing against a war."}, {"id": "water", "name": "The River and the Fountain", "blurb": "The town made leather and cloth on the water. Nobody could drink it."}], "stops": [{"id": "edit", "topic": "split", "title": "A Street Named After a Court", "where": "the narrow street off the north west corner of Place de la République", "lat": 43.603861, "lon": 2.240096, "directions": null, "directions_mode": "turn_by_turn", "gate": null, "nudge": null, "question": {"ask": "This street is named after a courtroom. Read the sign. What was the court called?", "answers": ["Chambre de l'Édit", "Chambre de l'Edit", "chambre de l edit", "la Chambre de l'Édit", "la Chambre de l'Edit", "the Chamber of the Edict", "Chamber of the Edict", "Chambre de l Edit", "Édit", "Edit"], "hint": "The sign is on the wall at the corner. Three words after Rue."}, "look": "Read the sign at the corner. This street is named after a courtroom.\n\nThe court sat in Castres for most of a century.", "look_spoken": null, "after": "The Chambre de l'Édit. The Edict of Nantes gave French Protestants courts of their own, with Catholic and Protestant judges in equal numbers.\n\nCastres got one because half the town was Protestant.\n\nIt sat until 1679. Then the king moved it to Castelnaudary, and six years later he cancelled the Edict.", "after_spoken": "The Chambre de l'Édit. The Edict of Nantes gave French Protestants courts of their own, with Catholic and Protestant judges in equal numbers.\n\nCastres got one because half the town was Protestant.\n\nIt sat until sixteen seventy nine. Then the king moved it to Castelnaudary, and six years later he cancelled the Edict.", "audio": null}, {"id": "cathedrale", "topic": "split", "title": "The Cathedral", "where": "the cathedral, in the middle of the old town", "lat": 43.604241, "lon": 2.24174, "directions": "From Rue Chambre de l'Édit, walk back to the corner and take Rue Jacques Limouzy, which runs north east.\n\nThen Rue Sabatier, which runs north, and Rue Beaujeu, which runs east. About two hundred and twenty metres.\n\nThe cathedral is straight ahead.", "directions_mode": "turn_by_turn", "gate": null, "nudge": null, "question": {"ask": "The cathedral is named after a saint. Which one?", "answers": ["Benoît", "Benoit", "Benedict", "Saint Benoît", "Saint Benoit", "St Benoit", "Saint Benedict", "St Benedict", "Benedict of Nursia", "Benoît de Nursie"], "hint": "It is on the front of the building and on the street sign beside it."}, "look": "The cathedral is big, plain and late. Work started in 1677.\n\nThere was an abbey on this spot for eight hundred years before that. The church is named after the man whose rule those monks lived by.", "look_spoken": null, "after": "Benoît. Benedict, in English.\n\nThe abbey here was Benedictine and it came first. Castres exists because monks settled on the river in the ninth century.\n\nBy the time this church went up, the town had been arguing about religion for a hundred years. It is the Catholic half of that argument. You will see the other half later.", "after_spoken": null, "audio": null}, {"id": "angelots", "topic": "water", "title": "The Fountain on the Square", "where": "the fountain at the west end of Place Jean Jaurès", "lat": 43.605477, "lon": 2.241086, "directions": "From the cathedral, take Rue Saint-Benoît and Rue Beaujeu, which both run west.\n\nThen Rue Sabatier and Rue Henri IV, which run north. About a hundred and seventy metres.\n\nThe square opens out at the end.", "directions_mode": "turn_by_turn", "gate": {"radius_m": 25, "allow_pass": true, "prompt": "Stand at the fountain."}, "nudge": null, "question": null, "look": "A town on a river still needed a fountain. There were tanneries and dye works upstream.\n\nThe stone figures on this one are cherubs. Angelots is the French for them.", "look_spoken": null, "after": "Castres drank from fountains like this one until the town was plumbed.\n\nThe river did the work and the fountains did the drinking. Every trade the town lived on put something in the water.\n\nThe square you are standing on was the corn market.", "after_spoken": null, "audio": null}, {"id": "fermat", "topic": "men", "title": "A Memorial on the Square", "where": "the memorial at the east end of Place Jean Jaurès", "lat": 43.605443, "lon": 2.241725, "directions": "From the fountain, go back to Rue Henri IV and cross into Place Jean Jaurès, which runs east. About eighty metres.\n\nThe memorial is at the far end of the square.", "directions_mode": "turn_by_turn", "gate": null, "nudge": null, "question": {"ask": "A mathematician is remembered on this square. What was his name?", "answers": ["Fermat", "Pierre de Fermat", "Pierre Fermat", "de Fermat", "Pierre"], "hint": "The memorial names him. He was a judge in this town as well."}, "look": "One of the great mathematicians of the sixteen hundreds worked in Castres.\n\nHe was a lawyer by trade. He did his mathematics in the evenings and hardly published any of it.\n\nHis name is on this square.", "look_spoken": null, "after": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in 1665.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the 1990s to find one.", "after_spoken": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in sixteen sixty five.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the nineteen nineties to find one.", "audio": null}, {"id": "arcades", "topic": "men", "title": "A Drink on the Quay", "where": "the arcades on Quai Tourcaudière, by the statue", "lat": 43.605418, "lon": 2.242362, "directions": "From the memorial, carry on east along Place Jean Jaurès until you reach the river.\n\nTurn onto Quai Tourcaudière, which runs north. About seventy metres. The arcades are on your side of the road.", "directions_mode": "turn_by_turn", "gate": {"radius_m": 25, "allow_pass": true, "prompt": "Stand under the arcades, by the statue."}, "nudge": null, "question": null, "look": "This is the stop for a drink. Les Arcades is under the arches and Etienne Coffee is next door.\n\nThe statue is Jean Jaurès. He was born in Castres in 1859, and almost every town in France has a street named after him.", "look_spoken": null, "after": "Jaurès taught philosophy, went into politics and became the leading French socialist of his day.\n\nHe spent the summer of 1914 arguing against the war that was coming. On 31 July a nationalist shot him through a café window in Paris.\n\nFrance was at war three days later.", "after_spoken": "Jaurès taught philosophy, went into politics and became the leading French socialist of his day.\n\nHe spent the summer of nineteen fourteen arguing against the war that was coming. On the thirty first of July a nationalist shot him through a café window in Paris.\n\nFrance was at war three days later.", "audio": null}, {"id": "temple", "topic": "split", "title": "The Temple", "where": "the Grand temple, on Rue du Consulat", "lat": 43.60699, "lon": 2.241781, "directions": "From the arcades, head north through the lanes behind the square. About two hundred and twenty metres.\n\nYou may come out on Place Jean Jaurès, Rue Malpas, Rue des Capucins or Rue du Consulat. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is the Grand temple, on Rue du Consulat.", "directions_mode": "rough", "gate": {"radius_m": 25, "allow_pass": true, "prompt": "Stand outside the temple."}, "nudge": null, "question": null, "look": "This is a Protestant temple. Look at the name. There is no saint in it.\n\nCastres was one of the strongest Protestant towns in the south of France. The court you started at existed because of towns like this one.", "look_spoken": null, "after": "This building is much younger than the argument.\n\nWhen the Edict was cancelled in 1685, Protestant worship became illegal and the temples came down. Castres kept its Protestants anyway. They met in barns and in the woods for a hundred years.\n\nFreedom came back with the Revolution, and buildings like this one followed.", "after_spoken": "This building is much younger than the argument.\n\nWhen the Edict was cancelled in sixteen eighty five, Protestant worship became illegal and the temples came down. Castres kept its Protestants anyway. They met in barns and in the woods for a hundred years.\n\nFreedom came back with the Revolution, and buildings like this one followed.", "audio": null}, {"id": "pont-vieux", "topic": "water", "title": "The Old Bridge", "where": "the middle of the Pont Vieux", "lat": 43.606495, "lon": 2.243061, "directions": "From the temple, take Rue du Carras, which runs east, down to the water.\n\nTurn south along Quai du Carras and go onto the Pont Vieux. About a hundred and forty metres. Stop in the middle.", "directions_mode": "turn_by_turn", "gate": null, "nudge": null, "question": {"ask": "What is the river called?", "answers": ["Agout", "Agoût", "l'Agout", "l'Agoût", "the Agout", "River Agout", "Agout river"], "hint": "There is a sign on the bridge or on the quay. Five letters."}, "look": "Stop in the middle. The houses on the far bank are built out over the water.\n\nThe bottom of each one was a workshop. Tanners and dyers needed running water, and they needed a lot of it.", "look_spoken": null, "after": "The Agout. Castres made leather and cloth for six hundred years and all of it needed this water.\n\nThe houses were workshops downstairs and homes upstairs. The waste went into the river, so the fountain on the square is where people drank.\n\nThe bridge under you is the oldest crossing in the town.", "after_spoken": null, "audio": null}], "walk": {"n_stops": 7, "total_walk_m": 893.1, "total_minutes": 11.2, "reversals": 0, "legs": [{"from": "edit", "to": "cathedrale", "straight_m": 139.0, "walk_m": 180.6, "minutes": 2.3, "bearing": 72.3}, {"from": "cathedrale", "to": "angelots", "straight_m": 147.2, "walk_m": 191.3, "minutes": 2.4, "bearing": 339.0}, {"from": "angelots", "to": "fermat", "straight_m": 51.6, "walk_m": 67.1, "minutes": 0.8, "bearing": 94.2}, {"from": "fermat", "to": "arcades", "straight_m": 51.4, "walk_m": 66.8, "minutes": 0.8, "bearing": 93.1}, {"from": "arcades", "to": "temple", "straight_m": 181.0, "walk_m": 235.2, "minutes": 2.9, "bearing": 345.0}, {"from": "temple", "to": "pont-vieux", "straight_m": 116.8, "walk_m": 151.9, "minutes": 1.9, "bearing": 118.1}]}, "gated_stops": 3, "question_stops": 4}};</script>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PICK = 3;
+const ROUTES = "routes/";
+const LATE_NUDGE_MS = 45000;   // how long before we quietly offer a hand
+
+// Testing scaffolding is off unless it is asked for by hand. On a real walk
+// there is no button to press, and there is no way to reach one, because a
+// visible control that opens a gated stop is a skip button whatever it is
+// called. Add ?testing=1 or #testing to the address to bring it back.
+// Deliberately NOT enabled by hostname. An earlier version switched itself on
+// for localhost, which meant the local build quietly had scaffolding the real
+// one did not, and the test that was supposed to prove a gate cannot be walked
+// past was running against a page that still had the walk-closer buttons on it.
+// Implicit is how you end up testing the wrong build. Ask for it every time.
+let TESTING = /(?:^|[?&])testing=1(?:&|$)/.test(location.search)
+           || location.hash === "#testing";
+const FIX_WINDOW_MS = 7000;    // how long to keep listening for a better fix
+const FIX_GOOD_ENOUGH_M = 20;  // and when to stop waiting for one
+const SIM_START_M = 500;       // where a simulated approach begins
+const SIM_STEP_M = 120;        // and how far one press of the button walks
+
+// Two walks are served from the same origin, so they share one local storage.
+// Without a namespace the second one to be opened reads the first one's saved
+// position, and London cheerfully tries to resume a route called amber-mile
+// that it has never heard of. Namespace by which walk this build is.
+const NS = "noticing."
+         + ((window.NOTICING_BUNDLE && window.NOTICING_BUNDLE.tour
+             && window.NOTICING_BUNDLE.tour.combo_key) || "london") + ".";
+const LS = {
+  get: (k, d) => { try { return JSON.parse(localStorage.getItem(NS + k)) ?? d; }
+                   catch { return d; } },
+  set: (k, v) => { try { localStorage.setItem(NS + k, JSON.stringify(v)); } catch {} },
+  del: (k) => { try { localStorage.removeItem(NS + k); } catch {} },
+};
+
+let TOPICS = [];
+let picked = [];
+let ROUTE = null;              // the baked artefact, self-contained
+let STATE = null;              // { combo, current, gate: {}, revealed: {} }
+let SIM = null;                // { lat, lon, acc, label } while testing
+const typing = new Map();
+let lateTimer = null;
+
+function toast(msg) {
+  $("toast").textContent = msg;
+  $("toast").classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => $("toast").classList.remove("show"), 3400);
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function closeModal() { $("modal").classList.remove("show"); }
+
+/* ---- the word-by-word reveal, kept from the earlier build ---- */
+const TYPE_SLOWDOWN = 2.6;
+const SENTENCE_PAUSE_MS = 700;
+const ARRIVE_MS = 2000;
+function typeInto(el, text, key, delay) {
+  el.textContent = "";
+  const words = [];
+  for (const tok of text.split(/(\s+)/)) {
+    if (!tok) continue;
+    if (/^\s+$/.test(tok)) { el.appendChild(document.createTextNode(tok)); continue; }
+    const w = document.createElement("span");
+    w.className = "w"; w.textContent = tok;
+    el.appendChild(w); words.push(w);
+  }
+  const step = Math.max(8, Math.min(22, Math.floor(3200 / Math.max(1, text.length))))
+               * TYPE_SLOWDOWN;
+  const bounds = [];
+  let s0 = 0;
+  words.forEach((w, k) => {
+    if (/[.?!]["')\]]?$/.test(w.textContent) || k === words.length - 1) {
+      bounds.push([s0, k]); s0 = k + 1;
+    }
+  });
+  const posIn = (k) => {
+    for (const [a, b] of bounds) if (k >= a && k <= b) return b === a ? 0.5 : (k - a) / (b - a);
+    return 0.5;
+  };
+  // Total run time, worked out up front from the same numbers the ticker uses.
+  // The card below waits this long before starting, so the directions and the
+  // next stop do not animate over the top of each other.
+  let total = delay || 0;
+  words.forEach((w, k2) => {
+    const curve = 1.35 - 0.7 * Math.sin(Math.PI * posIn(k2));
+    total += step * (w.textContent.length + 1) * curve;
+    if (/[.?!]["')\]]?$/.test(w.textContent)) total += SENTENCE_PAUSE_MS;
+  });
+  let k = 0, t = null;
+  const finish = () => {
+    clearTimeout(t); typing.delete(key);
+    for (const w of words) w.classList.remove("w", "on");
+    markSeen(key);
+  };
+  const tick = () => {
+    if (k >= words.length) { finish(); return; }
+    const w = words[k];
+    w.classList.add("on");
+    const curve = 1.35 - 0.7 * Math.sin(Math.PI * posIn(k));
+    let wait = step * (w.textContent.length + 1) * curve;
+    if (/[.?!]["')\]]?$/.test(w.textContent)) wait += SENTENCE_PAUSE_MS;
+    k += 1;
+    t = setTimeout(tick, wait);
+  };
+  t = setTimeout(tick, delay || 0);
+  typing.set(key, { finish });
+  finish.duration = total;
+  return finish;
+}
+function seenSet() { return new Set(LS.get("seen." + (ROUTE ? ROUTE.combo_key : "-"), [])); }
+function markSeen(key) {
+  if (!ROUTE) return;
+  const s = seenSet(); s.add(key);
+  LS.set("seen." + ROUTE.combo_key, [...s]);
+}
+
+/* ---- geography. The same haversine and the same pass rule as the pipeline. ---- */
+function haversineM(lat1, lon1, lat2, lon2) {
+  const R = 6371008.8, r = Math.PI / 180;
+  const p1 = lat1 * r, p2 = lat2 * r;
+  const a = Math.sin((lat2 - lat1) * r / 2) ** 2
+          + Math.cos(p1) * Math.cos(p2) * Math.sin((lon2 - lon1) * r / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+// The phone's own accuracy estimate is subtracted, capped at 150 m. A gate that
+// can say no to somebody who IS standing there is worse than no gate at all.
+/* Gate tolerance, retuned after walking Saint-Antonin, where a 50 m gate opened
+   from more than 50 m away, round a corner, on a different street.
+
+   A phone's reported accuracy is roughly a 68% confidence radius. Subtracting
+   all of it means "open if there is any plausible chance you are inside", which
+   turned a 50 m gate into a 50 + accuracy gate; under the old 150 m cap a poor
+   fix opened a 50 m gate from 200 m. So the allowance is now small and fixed,
+   and the reach of any gate is its radius plus 15 m and nothing more.
+
+   Refusing a hopeless fix is the important half. Believing one is how a gate
+   opens somewhere the walker has never stood, and that is worse than refusing,
+   because refusing is visible and they have a pass button. */
+const ACC_ALLOWANCE_M = 15;
+const ACC_USELESS_M = 75;
+
+function gatePasses(distanceM, accuracyM, radiusM) {
+  const acc = Math.max(0, accuracyM || 0);
+  if (acc > ACC_USELESS_M) return false;
+  return distanceM - Math.min(acc, ACC_ALLOWANCE_M) <= radiusM;
+}
+function bearingDeg(lat1, lon1, lat2, lon2) {
+  const r = Math.PI / 180;
+  const p1 = lat1 * r, p2 = lat2 * r, dl = (lon2 - lon1) * r;
+  return (Math.atan2(Math.sin(dl) * Math.cos(p2),
+                     Math.cos(p1) * Math.sin(p2)
+                     - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / r + 360) % 360;
+}
+function destPoint(lat, lon, bearing, metres) {
+  const R = 6371008.8, r = Math.PI / 180;
+  const d = metres / R, b = bearing * r, p1 = lat * r, l1 = lon * r;
+  const p2 = Math.asin(Math.sin(p1) * Math.cos(d)
+                       + Math.cos(p1) * Math.sin(d) * Math.cos(b));
+  const l2 = l1 + Math.atan2(Math.sin(b) * Math.sin(d) * Math.cos(p1),
+                             Math.cos(d) - Math.sin(p1) * Math.sin(p2));
+  return { lat: p2 / r, lon: ((l2 / r + 540) % 360) - 180 };
+}
+
+/* ---- the topic picker ---- */
+function renderPicker() {
+  const box = $("picker");
+  box.innerHTML = "";
+  TOPICS.forEach((t) => {
+    const on = picked.includes(t.id);
+    const b = document.createElement("button");
+    b.className = "topic" + (on ? " on" : "") + (picked.length >= PICK ? " full" : "");
+    b.type = "button";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    b.innerHTML = `<span class="tick" aria-hidden="true">✓</span>
+      <span><span class="tname">${escapeHtml(t.name)}</span>
+      <span class="tblurb">${escapeHtml(t.blurb)}</span></span>`;
+    b.onclick = () => togglePick(t.id);
+    box.appendChild(b);
+  });
+  const left = PICK - picked.length;
+  $("pickcount").textContent = left > 0
+    ? `${picked.length} of ${PICK} chosen. Pick ${left} more.`
+    : "That is your three. Change one any time before you set off.";
+  const btn = $("startbtn");
+  btn.disabled = picked.length !== PICK;
+  btn.textContent = picked.length === PICK ? "Start walking" : "Choose three to start";
+}
+function togglePick(id) {
+  const at = picked.indexOf(id);
+  if (at >= 0) picked.splice(at, 1);
+  else if (picked.length < PICK) picked.push(id);
+  else { toast("Three is the limit. Tap one to swap it out."); return; }
+  LS.set("picked", picked);
+  renderPicker();
+}
+// Sorted, so that Fire then Rivers and Rivers then Fire are one route and one
+// cache entry. The pipeline builds its filenames the same way.
+function comboKey(ids) { return [...ids].sort().join("-"); }
+
+/* ---- loading a route ---- */
+// The standalone build inlines every route into the page itself, so a single
+// file can be handed to somebody with no server and no connection at all.
+// pipeline/build_standalone.py writes that bundle; the served build has none
+// and fetches instead.
+const BUNDLE = window.NOTICING_BUNDLE || null;
+// A bundle carries either a set of topics to choose from, or one fixed tour
+// that everybody walks. Nothing is dated and nothing is shared either way, so
+// any number of people can be part way through at the same time.
+const TOUR = (BUNDLE && BUNDLE.tour) || null;
+
+// Answers are checked forgivingly on purpose. Nobody is being marked, and being
+// told you are wrong when you typed "3" instead of "three" would be maddening
+// while standing in a square in the rain.
+function normalise(text, keepPlural) {
+  const out = String(text).toLowerCase()
+    // Polish crossed L is its own letter, not l plus a mark, so NFD leaves it
+    // alone and the strip below then deletes it. "cegla" survived and "cegla"
+    // with the stroke came out as "ceg a". Map it by hand before decomposing.
+    .replace(/\u0142/g, "l")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]/g, " ")
+    // Filler only. NEVER strip a word that could itself be an answer: "two" and
+    // "pair" were in this list to make "a pair of unicorns" match "unicorns",
+    // and the result was that typing "two" at a stop whose answer IS two
+    // normalised to nothing and was marked wrong. The split-on-words check
+    // below already handles an answer buried in a phrase.
+    .replace(/\b(a|an|the|is|it|its|they|are|of)\b/g, " ");
+  return (keepPlural ? out : out.replace(/s\b/g, ""))
+    .replace(/\s+/g, " ").trim();
+}
+// One typo should not stand between somebody and the rest of the walk. Only for
+// answers of five characters or more, where a single edit is almost certainly a
+// slip on a phone keyboard rather than a different word: at four characters or
+// fewer, "four" and "your" are one edit apart and so are far too many numbers.
+function withinOneEdit(a, b) {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (a.length > b.length) i++;
+    else if (a.length < b.length) j++;
+    else { i++; j++; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
+}
+// Two letters swapped round is the commonest phone typo of the lot, and it
+// costs two edits under the rule above, so it needs its own case. "brickwrok"
+// should not be the thing that ends somebody's walk.
+function oneSwapApart(a, b) {
+  if (a.length !== b.length) return false;
+  const at = [];
+  for (let k = 0; k < a.length; k++) if (a[k] !== b[k]) at.push(k);
+  return at.length === 2 && at[1] === at[0] + 1
+      && a[at[0]] === b[at[1]] && a[at[1]] === b[at[0]];
+}
+function matchesUnder(given, accepted, keepPlural) {
+  const g = normalise(given, keepPlural);
+  if (!g) return false;
+  const words = g.split(" ");
+  return accepted.some((a) => {
+    const want = normalise(a, keepPlural);
+    if (!want) return false;
+    if (g === want || words.includes(want)) return true;
+    if (want.length < 5) return false;
+    return withinOneEdit(g, want) || oneSwapApart(g, want)
+        || words.some((w) => withinOneEdit(w, want) || oneSwapApart(w, want));
+  });
+}
+// Tried both with the plural strip and without it. Dropping the last letter of
+// "english" leaves "englis", and the strip then turns that into "engli", which
+// is two edits from the answer instead of one, so a single slip was rejected.
+// Comparing the unstripped forms as well never refuses anything the stripped
+// pass would have accepted; the cross-stop rejection checks prove it does not
+// tip over into saying yes to everything.
+function answerAccepted(given, accepted) {
+  return matchesUnder(given, accepted, false)
+      || matchesUnder(given, accepted, true);
+}
+
+async function loadRoute(key) {
+  if (TOUR && TOUR.combo_key === key) return TOUR;
+  if (BUNDLE && BUNDLE.routes && BUNDLE.routes[key]) return BUNDLE.routes[key];
+  // A route already walked is kept locally, because the phone on the walk may
+  // have no signal and the artefact is self-contained by design.
+  const cached = LS.get("route." + key, null);
+  try {
+    const res = await fetch(ROUTES + key + ".json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const doc = await res.json();
+    LS.set("route." + key, doc);
+    return doc;
+  } catch (err) {
+    if (cached) { toast("No signal. Using the copy on this phone."); return cached; }
+    throw err;
+  }
+}
+
+function freshState(key) {
+  return { combo: key, current: 0, gate: {}, revealed: {}, wrong: {}, told: {} };
+}
+function saveState() { if (STATE) LS.set("state." + STATE.combo, STATE); }
+
+async function start(key) {
+  try {
+    ROUTE = await loadRoute(key);
+  } catch (err) {
+    toast(location.protocol === "file:"
+      ? "Open this over http, not as a file. The route cannot be fetched from disk."
+      : "Could not load that route. Check your connection.");
+    return;
+  }
+  if (!ROUTE.stops || !ROUTE.stops.length) {
+    toast("That combination has no stops written yet.");
+    return;
+  }
+  STATE = LS.get("state." + key, null);
+  if (!STATE || STATE.combo !== key) STATE = freshState(key);
+  if (!STATE.wrong) STATE.wrong = {};        // older saved walks predate these
+  if (!STATE.told) STATE.told = {};
+  LS.set("last", key);
+  $("walktitle").textContent = TOUR
+    ? `${ROUTE.stops.length} stops · about an hour`
+    : ROUTE.topics.map((t) => t.name).join(" · ");
+  $("s-pick").classList.remove("on");
+  $("s-walk").classList.add("on");
+  renderWalk();
+  if (ROUTE.gated_stops > 0) locationPreflight(false);
+}
+
+/* ---- the walk ----
+   One stage per stop, and a stage is two blocks of text with something to do
+   between them.
+
+     The way there. How to walk here, what to look at, and the question.
+     Then an answer box, or a location check.
+     The pay-off. What the answer meant.
+     Then a button to the next stop.
+
+   Both blocks are written out a word at a time, so the directions can be
+   followed as they arrive rather than appearing all at once. Everything for one
+   stop lives on one card and nothing is said twice. */
+
+// Block one: how to get here, what to look at, what is being asked.
+function waysThere(i) {
+  const s = ROUTE.stops[i];
+  const parts = [];
+  // Turn-by-turn directions already say which way and how far, along the real
+  // streets. Adding a computed heading on top repeats it and disagrees with it.
+  if (i > 0 && s.directions && ROUTE.directions_style === "turn_by_turn") {
+    parts.push(s.directions);
+  } else if (i > 0 && s.directions) {
+    const leg = (ROUTE.walk.legs || [])[i - 1];
+    const COMPASS = ["north", "north east", "east", "south east",
+                     "south", "south west", "west", "north west"];
+    // Under a hundred metres, say the distance and stop. "About 23 metres, a
+    // minute or two" is nonsense: it is twenty paces. And "about" does not sit
+    // with a number worked out to the metre, so round to something a person
+    // would actually say.
+    const round = (m) => m < 100 ? Math.round(m / 5) * 5
+                       : m < 500 ? Math.round(m / 10) * 10
+                       : Math.round(m / 50) * 50;
+    const head = leg
+      ? `Head ${COMPASS[Math.round(leg.bearing / 45) % 8]}, about `
+        + `${round(leg.walk_m)} metres`
+        + (leg.walk_m < 100 ? "."
+           : `, ${leg.minutes < 2 ? "a minute or two"
+                                  : Math.round(leg.minutes) + " minutes"}.`)
+      : null;
+    parts.push((head ? head + "\n\n" : "") + s.directions);
+  }
+  parts.push(s.look);
+  if (s.nudge) parts.push(s.nudge.prompt);
+  if (s.question) parts.push(s.question.ask);
+  return parts.join("\n\n");
+}
+
+// Block two: what it meant.
+function payOff(i) {
+  const s = ROUTE.stops[i];
+  const parts = [];
+  if (s.question && STATE.told[s.id]) {
+    const shown = s.question.answers.find((x) => /[a-z]/i.test(x))
+                  || s.question.answers[0];
+    parts.push(`The answer was ${shown}.`);
+  }
+  parts.push(s.after);
+  return parts.join("\n\n");
+}
+
+// A tour that wrote its own ending gets to use it. The fallback is only there
+// so a tour with no outro does not finish on a blank card.
+function endText() {
+  return ROUTE.outro || "That is the walk.";
+}
+
+function renderWalk() {
+  const n = ROUTE.stops.length;
+  const done = Math.min(STATE.current, n);
+  $("progressfill").style.width = (100 * done / n) + "%";
+  $("progresstext").textContent = `${done}/${n}`;
+  paintSimBanner();
+
+  const box = $("walk");
+  box.innerHTML = "";
+  for (let i = 0; i <= Math.min(STATE.current, n); i++) {
+    box.appendChild(i === n ? endStage() : stageCard(i, i < STATE.current));
+  }
+  focusCurrent();
+}
+
+// Write a block out a word at a time, unless it has been seen before.
+function writeBlock(card, text, key, delay) {
+  const el = document.createElement("div");
+  el.className = "stext";
+  card.appendChild(el);
+  if (REDUCED || seenSet().has(key)) { el.textContent = text; return; }
+  const finish = typeInto(el, text, key, delay);
+  const tip = document.createElement("div");
+  tip.className = "skiptip";
+  tip.textContent = "Tap anywhere to see it all at once.";
+  card.appendChild(tip);
+  card.addEventListener("click", (ev) => {
+    if (typing.has(key) && !ev.target.closest("button, input")) {
+      finish();
+      tip.remove();
+    }
+  });
+}
+
+function stageCard(i, past) {
+  const s = ROUTE.stops[i];
+  const div = document.createElement("div");
+  div.className = "stop " + (past ? "done" : "open");
+  div.dataset.idx = i;
+  const topic = ROUTE.topics.find((t) => t.id === s.topic);
+  div.innerHTML =
+    `<div class="shead"><span class="no">Stop ${i + 1}</span>
+       <span>${escapeHtml(topic ? topic.name : "")}</span>
+       <span class="state">${past ? "✓" : ""}</span></div>
+     <div class="stitle">${escapeHtml(s.title)}</div>`;
+
+  const answered = !!STATE.revealed[s.id];
+  const gated = !!s.gate && !STATE.gate[s.id];
+
+  if (!past && !answered && !REDUCED && !seenSet().has("a:" + s.id)) {
+    div.classList.add("arriving");
+    div.addEventListener("animationend", (ev) => {
+      if (ev.animationName === "resolve") div.classList.remove("arriving");
+    });
+  }
+  writeBlock(div, waysThere(i), "a:" + s.id, ARRIVE_MS);
+
+  if (!answered) {
+    if (!past) div.appendChild(gated ? gateAction(i, s) : answerAction(i, s));
+    return div;
+  }
+
+  const rule = document.createElement("div");
+  rule.className = "payrule";
+  div.appendChild(rule);
+  writeBlock(div, payOff(i), "b:" + s.id, 240);
+
+  if (!past) {
+    const row = document.createElement("div");
+    row.className = "srow";
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = i === ROUTE.stops.length - 1
+      ? "Finish the walk" : `On to stop ${i + 2}`;
+    btn.onclick = () => {
+      const t = typing.get("b:" + s.id);
+      if (t) t.finish();
+      STATE.current = Math.max(STATE.current, i + 1);
+      saveState();
+      renderWalk();
+    };
+    row.appendChild(btn);
+    div.appendChild(row);
+  }
+  return div;
+}
+
+function endStage() {
+  const div = document.createElement("div");
+  div.className = "stop done";
+  div.dataset.idx = "end";
+  writeBlock(div, endText(), "b:end", 240);
+  return div;
+}
+
+/* ---- the one thing to do ---- */
+
+function gateAction(i, s) {
+  const wrap = document.createElement("div");
+  wrap.className = "gatewrap";
+  wrap.innerHTML =
+    `<button class="btn primary gatebtn">I'm here, check my location</button>
+     <div class="gatestat" role="status" aria-live="polite"></div>
+     <div class="gatenote">Read once when you tap it, never tracked.</div>
+     ${s.gate.allow_pass
+        ? `<button class="gateskip">Location not working? Carry on anyway</button>` : ""}`;
+  const btn = wrap.querySelector(".gatebtn");
+  const stat = wrap.querySelector(".gatestat");
+  btn.onclick = () => checkin(i, btn, stat);
+  const pass = wrap.querySelector(".gateskip");
+  if (pass) pass.onclick = () => {
+    STATE.gate[s.id] = true;
+    openPayOff(i);
+    toast("Carrying on without the check.");
+  };
+
+  if (TESTING) {
+    const dev = document.createElement("div");
+    dev.className = "devrow";
+    const away = SIM ? `${Math.round(haversineM(SIM.lat, SIM.lon, s.lat, s.lon))} m away`
+                     : "not simulating";
+    dev.innerHTML =
+      `<span class="devlabel">Testing</span>
+       <button data-act="start">Start ${SIM_START_M} m away</button>
+       <button data-act="step"${SIM ? "" : " disabled"}>Walk ${SIM_STEP_M} m closer</button>
+       <span class="devdist">${away}</span>
+       <div class="devnote">These move a made-up position. Nothing here opens the
+       stop, so you still have to get inside the radius.</div>`;
+    dev.querySelector('[data-act="start"]').onclick =
+      () => simStart(s, i > 0 ? ROUTE.stops[i - 1] : null);
+    dev.querySelector('[data-act="step"]').onclick = () => simStep(s);
+    wrap.appendChild(dev);
+  }
+  return wrap;
+}
+
+function answerAction(i, s) {
+  const row = document.createElement("div");
+  row.className = "srow";
+
+  // No question: the stop just needs acknowledging. Every London stop is this.
+  if (!s.question) {
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = s.nudge ? s.nudge.confirm : "Tell me why it matters";
+    btn.onclick = () => openPayOff(i);
+    row.appendChild(btn);
+    return row;
+  }
+
+  const wrong = STATE.wrong[s.id] || 0;
+  row.innerHTML =
+    `<div class="qrow">
+       <input type="text" maxlength="60" enterkeyhint="send" autocapitalize="off"
+              autocorrect="off" spellcheck="false" autocomplete="off"
+              placeholder="your answer" aria-label="Your answer">
+       <button class="btn primary">Check</button>
+     </div>
+     ${wrong >= 2 && s.question.hint
+        ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}
+     <button class="qgiveup">Not sure? Tell me the answer.</button>`;
+
+  const inp = row.querySelector("input");
+  const submit = () => {
+    const said = inp.value.trim();
+    if (!said) { toast("Type something first."); return; }
+    if (answerAccepted(said, s.question.answers)) { openPayOff(i); return; }
+    // Read the count back out of the state, not off the closure. The card is
+    // not re-rendered on a wrong answer, so a closure copy stayed at zero and
+    // the second wrong answer kept writing one. The hint never arrived.
+    const w = (STATE.wrong[s.id] || 0) + 1;
+    STATE.wrong[s.id] = w;
+    saveState();
+    const card = row.closest(".stop");
+    void card.offsetWidth;
+    card.classList.add("wrong");
+    toast(w >= 2 ? "Still not it. Have a hint." : "Not quite. Look again.");
+    if (w === 2) renderWalk();                  // the hint appears
+  };
+  row.querySelector(".btn").onclick = submit;
+  inp.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") { ev.preventDefault(); submit(); }
+  });
+  row.querySelector(".qgiveup").onclick = () => {
+    STATE.told[s.id] = true;
+    openPayOff(i);
+    toast("No problem. Here it is.");
+  };
+  return row;
+}
+
+// Answering opens the pay-off on the same card. It does NOT move you on: the
+// button under it does that, so the explanation is read where it was earned.
+function openPayOff(i) {
+  const s = ROUTE.stops[i];
+  const t = typing.get("a:" + s.id);
+  if (t) t.finish();
+  STATE.revealed[s.id] = true;
+  saveState();
+  renderWalk();
+}
+
+
+let lastFocused = null;
+function focusCurrent() {
+  const card = document.querySelector(".stop.open") || document.querySelector("#walk .stop:last-child");
+  if (!card) return;
+  const key = card.dataset.idx;
+  if (key === lastFocused) return;             // never fight somebody's own scroll
+  lastFocused = key;
+  requestAnimationFrame(() => {
+    const top = card.getBoundingClientRect().top + window.scrollY
+              - ($("topbar").offsetHeight + 10);
+    window.scrollTo({ top: Math.max(0, top), behavior: REDUCED ? "auto" : "smooth" });
+  });
+}
+
+/* ---- location ---- */
+function getFix() {
+  if (SIM) {
+    return Promise.resolve({ latitude: SIM.lat, longitude: SIM.lon, accuracy: SIM.acc });
+  }
+  // Phones hand over a coarse network fix first and a good satellite fix a few
+  // seconds later. Taking the first one and subtracting its large error is how
+  // a gate opens from the next street, so watch for a few seconds and keep the
+  // best reading rather than the first. maximumAge is 0 because a cached fix
+  // from twenty seconds ago is twenty-five metres of walking out of date.
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) { reject(new Error("nogeo")); return; }
+    let best = null, done = false, id = null;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      if (id !== null) navigator.geolocation.clearWatch(id);
+      if (best) resolve(best); else reject(new Error("nofix"));
+    };
+    const timer = setTimeout(finish, FIX_WINDOW_MS);
+    id = navigator.geolocation.watchPosition(
+      (pos) => {
+        if (!best || pos.coords.accuracy < best.accuracy) best = pos.coords;
+        if (best.accuracy <= FIX_GOOD_ENOUGH_M) finish();
+      },
+      (err) => { if (!best) { done = true; clearTimeout(timer); reject(err); } },
+      { enableHighAccuracy: true, timeout: FIX_WINDOW_MS, maximumAge: 0 });
+  });
+}
+
+async function checkin(i, btn, stat) {
+  const s = ROUTE.stops[i];
+  btn.disabled = true;
+  stat.textContent = "Finding you…";
+  let c;
+  try {
+    c = await getFix();
+  } catch (err) {
+    stat.textContent = err && err.code === 1
+      ? "Location is blocked for this site. Allow it in your browser settings."
+      : "No fix here. That is usually walls, not settings. Try again in the open.";
+    btn.disabled = false;
+    return;
+  }
+  const d = haversineM(c.latitude, c.longitude, s.lat, s.lon);
+  if (gatePasses(d, c.accuracy, s.gate.radius_m)) {
+    STATE.gate[s.id] = true;
+    openPayOff(i);
+    toast(SIM ? "Close enough. The gate opened on the real check."
+                : `You're there. ${Math.round(d)} m out.`);
+    return;
+  }
+  // A vague fix is not a near miss, it is no information, and saying "warm"
+  // about it would be a lie. Say what the phone actually claimed.
+  if ((c.accuracy || 0) > ACC_USELESS_M) {
+    stat.textContent = `Your phone only knows where it is to about `
+      + `${Math.round(c.accuracy)} m, which is not enough to tell. Step into the `
+      + `open and try again.`;
+    btn.disabled = false;
+    return;
+  }
+  // Warm and cold, never a flat no. A phone in a courtyard can be 100 m out.
+  stat.textContent =
+    d >= 1000 ? `About ${(d / 1000).toFixed(1)} km away.`
+    : d > 250 ? `About ${Math.round(d / 50) * 50} m away.`
+    : `Warm. About ${Math.round(d / 10) * 10} m. Keep going.`;
+  btn.disabled = false;
+}
+
+// Checked once, at the start, while there is still wifi and patience. A phone
+// that has quietly denied the site will not prompt on a street corner. It just
+// refuses, with the stop withheld, and that is a miserable way to find out.
+function platform() {
+  const ua = navigator.userAgent;
+  if (/iPad|iPhone|iPod/.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+  if (/Android/.test(ua)) return "android";
+  return "desktop";
+}
+const HOWTO = {
+  ios: `<b>iPhone or iPad</b>
+    <ol>
+      <li><b>Settings → Safari → Location</b>. If it says <b>Deny</b>, change it
+          to <b>Ask</b>. On Deny you will never even see a prompt.</li>
+      <li>Back here, tap <b>aA</b> (or ⋯) in the address bar →
+          <b>Website Settings</b> → <b>Location</b> → <b>Allow</b>.</li>
+      <li><b>Settings → Privacy &amp; Security → Location Services</b> on, and
+          <b>Safari Websites</b> set to <b>While Using the App</b>.</li>
+    </ol>
+    If you saved this to your Home Screen, that counts as a separate app and
+    needs its own permission.`,
+  android: `<b>Android</b>
+    <ol>
+      <li>Tap the icon just left of the address bar (a lock or two sliders) →
+          <b>Permissions</b> → <b>Location</b> → <b>Allow</b>.</li>
+      <li>Then <b>Settings → Location</b> on the phone itself, and make sure
+          your browser is allowed to use it.</li>
+    </ol>`,
+  desktop: `<b>On a computer</b>
+    <ol>
+      <li>Click the icon at the left of the address bar → <b>Site settings</b>
+          → <b>Location</b> → <b>Allow</b>, then reload.</li>
+    </ol>
+    A laptop's location is far rougher than a phone's. Walk with the phone.`,
+};
+function locationPreflight(force) {
+  if (SIM) return;
+  if (!force && LS.get("locok." + ROUTE.combo_key, false)) return;
+  const n = ROUTE.gated_stops;
+  const show = (body, buttons) => {
+    $("modalcard").innerHTML = `<h2>Before you set off</h2>${body}
+      <div class="btnrow">${buttons}</div>`;
+    $("modal").classList.add("show");
+  };
+  show(`<div class="sub">${n} stop${n === 1 ? "" : "s"} on this walk only
+    open${n === 1 ? "s" : ""} when you are standing in the right place, so the
+    page needs permission to check where you are. It is read once each time you
+    tap the button, never tracked, and never while this page is
+    closed.<br><br>Let us make sure it works now, rather than find out on a
+    street corner.</div>`,
+    `<button class="btn ghost" id="lclater">Later</button>
+     <button class="btn primary" id="lcgo">Check location</button>`);
+  $("lclater").onclick = closeModal;
+  $("lcgo").onclick = async () => {
+    $("lcgo").disabled = true; $("lcgo").textContent = "Checking…";
+    try {
+      await getFix();
+      LS.set("locok." + ROUTE.combo_key, true);
+      show(`<div class="sub"><b>That works.</b> Nothing else to do. The page
+        will ask again at each place.</div>`,
+        `<button class="btn primary" id="lcdone">Good</button>`);
+      $("lcdone").onclick = closeModal;
+    } catch (err) {
+      const blocked = err && err.code === 1;
+      show(`<div class="sub">${blocked
+          ? "Location is switched off for this site. Here is how to turn it on."
+          : "No fix here. That is usually walls, not settings. Try again outside. "
+            + "If it keeps failing, check the settings below."}</div>
+        <div class="sub">${HOWTO[platform()]}</div>`,
+        `<button class="btn ghost" id="lcskip">I'll sort it later</button>
+         <button class="btn primary" id="lcretry">Try again</button>`);
+      $("lcskip").onclick = closeModal;
+      $("lcretry").onclick = () => locationPreflight(true);
+    }
+  };
+}
+
+/* ---- the approach simulator ----
+   A way to exercise the gates without being in London. It simulates WALKING,
+   not arriving. There is no control that places you at a stop and no control
+   that opens one. You start half a kilometre out and press a button that moves
+   you a hundred and twenty metres closer, and the stop opens when the ordinary
+   check says you are inside the radius. Reaching a gated stop takes four
+   presses, and the warm and cold readings change on the way in, which is the
+   behaviour worth testing anyway.
+
+   The earlier version had a "stand at stop 7" list. It fed a real position into
+   a real check, so the pass rule stayed honest, but one tap opened any gated
+   stop, and a control that opens a gated stop is a skip button whatever the
+   label says. It is gone.
+
+   It is also deliberately loud. A banner stays up the whole time a made-up
+   position is in use, because a quiet override eventually gets mistaken for a
+   working gate. */
+function paintSimBanner() {
+  const b = $("simbanner"), off = $("simoffbtn");
+  if (!SIM) {
+    b.style.display = "none";
+    if (off) off.hidden = true;
+    return;
+  }
+  b.style.display = "block";
+  b.textContent = "Testing. Standing at a made-up position, about "
+                + `${Math.round(SIM.dist)} m from this stop. `
+                + "The gate rule is the real one and is not being bypassed.";
+  if (off) off.hidden = false;
+}
+function setSim(sim) {
+  SIM = sim;
+  if (sim) LS.set("sim", sim); else LS.del("sim");
+  paintSimBanner();
+  renderWalk();
+}
+// Start the approach: drop the walker SIM_START_M short of the stop, on the
+// bearing the real walk comes in from where that is known, due south otherwise.
+function simStart(stop, from) {
+  const back = from ? bearingDeg(stop.lat, stop.lon, from.lat, from.lon) : 180;
+  const p = destPoint(stop.lat, stop.lon, back, SIM_START_M);
+  setSim({ lat: p.lat, lon: p.lon, acc: 20, dist: SIM_START_M });
+}
+// One press, one step closer. It cannot overshoot onto the stop itself: the
+// last stride stops short, so the gate is always what lets you in.
+function simStep(stop) {
+  if (!SIM) return;
+  const d = haversineM(SIM.lat, SIM.lon, stop.lat, stop.lon);
+  const step = Math.min(SIM_STEP_M, Math.max(0, d - 5));
+  if (step <= 0) { toast("That is as close as this will take you."); return; }
+  const b = bearingDeg(SIM.lat, SIM.lon, stop.lat, stop.lon);
+  const p = destPoint(SIM.lat, SIM.lon, b, step);
+  setSim({ lat: p.lat, lon: p.lon, acc: 20,
+           dist: haversineM(p.lat, p.lon, stop.lat, stop.lon) });
+}
+
+/* ---- wiring ---- */
+$("startbtn").onclick = () => start(comboKey(picked));
+$("simoffbtn").onclick = () => { setSim(null); toast("Back to the real GPS."); };
+
+// A way in that does not depend on the address bar. The page may be embedded
+// somewhere that never passes a query string or a hash through, and five taps
+// on the wordmark is not something anybody does by accident on a walk. It lives
+// in memory only and is never written down, so it cannot follow you to London.
+let taps = 0, tapTimer = null;
+for (const mark of document.querySelectorAll(".wordmark")) {
+  mark.addEventListener("click", () => {
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => { taps = 0; }, 2500);
+    if (++taps < 5) return;
+    taps = 0;
+    TESTING = !TESTING;
+    if (!TESTING) setSim(null);
+    else if (ROUTE) renderWalk();
+    toast(TESTING
+      ? "Testing on. You can simulate walking towards a gated stop."
+      : "Testing off.");
+  });
+}
+// Changing only the hash does not re-run this script, so the flag would appear
+// to do nothing. Reload so it is read again.
+window.addEventListener("hashchange", () => {
+  if ((location.hash === "#testing") !== TESTING) location.reload();
+});
+$("restartbtn").onclick = () => {
+  $("modalcard").innerHTML = `<h2>Start over?</h2>
+    <div class="sub">This forgets how far you have walked and takes you back to
+    the topics. Nothing else is kept.</div>
+    <div class="btnrow">
+      <button class="btn ghost" id="sono">Keep walking</button>
+      <button class="btn primary" id="soyes">Start over</button>
+    </div>`;
+  $("modal").classList.add("show");
+  $("sono").onclick = closeModal;
+  $("soyes").onclick = () => {
+    LS.del("state." + STATE.combo);
+    LS.del("seen." + STATE.combo);
+    LS.del("last");
+    STATE = null; ROUTE = null; lastFocused = null;
+    closeModal();
+    $("s-walk").classList.remove("on");
+    $("s-pick").classList.add("on");
+    renderPicker();
+  };
+};
+$("modal").onclick = (ev) => { if (ev.target === $("modal")) closeModal(); };
+
+// One fixed tour: no choosing, so the first screen is an introduction and a
+// button rather than a picker. Everything after that is identical.
+function setUpFixedTour() {
+  document.title = TOUR.name;
+  for (const mark of document.querySelectorAll(".wordmark")) {
+    const bits = TOUR.name.split(" ");
+    mark.innerHTML = `${escapeHtml(bits.slice(0, -1).join(" ") || TOUR.name)}`
+                   + (bits.length > 1 ? `<span>${escapeHtml(bits[bits.length - 1])}</span>` : "");
+  }
+  for (const t of document.querySelectorAll(".tagline")) {
+    if (t.id !== "walktitle") t.textContent = TOUR.tagline || "";
+  }
+  // Taken out of the document, not merely hidden. A choose-your-topics control
+  // on a walk that has no topics to choose is confusing even when it is empty,
+  // and hiding relies on a CSS rule that .picker was already overriding.
+  $("picker").remove();
+  $("pickcount").remove();
+  const intro = document.querySelector(".intro");
+  intro.innerHTML =
+    `<div class="lead">${escapeHtml(TOUR.intro.lead)}</div>` +
+    TOUR.intro.body.split("\n\n").map((para) => `<p>${escapeHtml(para)}</p>`).join("") +
+    `<p><b>Where to start.</b> ${escapeHtml(TOUR.intro.start)}</p>`;
+  const btn = $("startbtn");
+  btn.disabled = false;
+  btn.textContent = "Start the walk";
+  btn.onclick = () => start(TOUR.combo_key);
+}
+
+(async () => {
+  if (TOUR) {
+    setUpFixedTour();
+    if (TESTING) SIM = LS.get("sim", null); else { SIM = null; LS.del("sim"); }
+    if (LS.get("last", null) === TOUR.combo_key) await start(TOUR.combo_key);
+    return;
+  }
+  try {
+    if (BUNDLE && BUNDLE.topics) TOPICS = BUNDLE.topics;
+    else TOPICS = (await (await fetch("topics.json", { cache: "no-cache" })).json()).topics;
+  } catch (err) {
+    document.body.insertAdjacentHTML("afterbegin",
+      `<div class="banner" style="max-width:560px">Could not load the topics.
+       ${location.protocol === "file:"
+         ? "Open this over http rather than straight off the disk."
+         : "Check your connection and reload."}</div>`);
+    return;
+  }
+  // A made-up position must never outlive testing mode. Without this, somebody
+  // who once opened the page with ?testing=1 would carry a working bypass in
+  // local storage into a real walk, and the gates would be quietly off.
+  if (TESTING) SIM = LS.get("sim", null);
+  else { SIM = null; LS.del("sim"); }
+  picked = (LS.get("picked", []) || []).filter((id) => TOPICS.some((t) => t.id === id));
+  renderPicker();
+  // A returning walker resumes where they were, but only if this build actually
+  // has that route. A stale key from another walk should be dropped, not fetched.
+  const last = LS.get("last", null);
+  const known = !BUNDLE || !BUNDLE.routes || Boolean(BUNDLE.routes[last]);
+  if (last && known) await start(last);
+  else if (last) LS.del("last");
+})();
+</script>
+</body>
+</html>

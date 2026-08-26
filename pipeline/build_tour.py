@@ -424,15 +424,21 @@ def angle_off(a, b):
 
 
 def naming_words(stop):
-    """Words that identify a stop well enough to set off from it."""
+    """Words that identify a stop well enough to set off from it.
+
+    Accents folded on both sides. Without that, a stop whose id is "edit" and
+    whose street is Rue Chambre de l'Édit failed to match its own name, because
+    "édit" does not contain the substring "edit". The street resolver has folded
+    since Noble Val; this had not caught up.
+    """
     blob = f"{stop.get('title','')} {stop.get('where','')} {stop.get('id','')}"
-    blob = blob.lower().replace("-", " ")
+    blob = streets.fold(blob).replace("-", " ")
     return {w for w in re.findall(r"[a-z]{4,}", blob) if w not in GENERIC_WORDS}
 
 
 def names_its_start(directions, prev):
     """Does the opening sentence name the place you are setting off from?"""
-    first = re.split(r"(?<=[.?!])\s+", directions.strip())[0].lower()
+    first = streets.fold(re.split(r"(?<=[.?!])\s+", directions.strip())[0])
     return any(w in first for w in naming_words(prev))
 
 

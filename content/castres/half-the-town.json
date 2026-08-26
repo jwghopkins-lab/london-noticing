@@ -1,0 +1,241 @@
+{
+ "_comment": "Half the Town. Seven stops round the old centre of Castres, written for a Monday evening when the museums are shut. Everything is outdoors. The town is flat: the walk runs 181 m down to 171 m at the river, 901 m in all, and climbs three metres it had already climbed. The first walk written under contract.voice = plain, so every stop, question and hint is held to the shorter caps and the ban on essay voice. Four questions, three location gates, one drinks stop on the quay. Every coordinate, street, shop and bar named here came out of data/osm/castres.json and data/elevation/castres.json. Each answer is readable on the spot: a street plaque, the name on a cathedral, a memorial, a river sign.",
+ "id": "castres",
+ "served_at": "castres",
+ "name": "Half the Town",
+ "tagline": "seven stops round the old centre",
+ "city": "Castres",
+ "mode": "fixed",
+ "contract": {
+  "n_stops": 7,
+  "topic_split": [
+   3,
+   2,
+   2
+  ],
+  "question_stops": 4,
+  "location_gates": 3,
+  "voice": "plain",
+  "bbox": [
+   43.598,
+   43.612,
+   2.232,
+   2.25
+  ]
+ },
+ "intro": {
+  "lead": "Seven stops round the old centre of Castres.",
+  "body": "Just under a kilometre, about an hour. It is flat.\n\nFour stops ask a question you can only answer by looking. Three just need you standing in the right place.\n\nBuilt for a Monday evening. Everything is outdoors and free. The museums are shut. The shops and bars in the centre are not.",
+  "start": "Start on Place de la République, by the theatre. Leave the square on its north west side and walk forty metres up the narrow street."
+ },
+ "topics": [
+  {
+   "id": "split",
+   "name": "Two Churches and a Court",
+   "blurb": "Half the town was Protestant. The king gave it a court of its own to keep the peace."
+  },
+  {
+   "id": "men",
+   "name": "Two Men From Here",
+   "blurb": "A mathematician who judged cases by day. A politician shot for arguing against a war."
+  },
+  {
+   "id": "water",
+   "name": "The River and the Fountain",
+   "blurb": "The town made leather and cloth on the water. Nobody could drink it."
+  }
+ ],
+ "outro": "That is the seven.\n\nThe bars on the quay are behind you. Les Arcades and S&L are both on Quai Tourcaudière.\n\nIf you want more, the Musée Goya is in the old bishop's palace by Place de la République. The formal garden behind it is open in the day.",
+ "stops": [
+  {
+   "id": "edit",
+   "topic": "split",
+   "title": "A Street Named After a Court",
+   "where": "the narrow street off the north west corner of Place de la République",
+   "lat": 43.603861,
+   "lon": 2.240096,
+   "coord_source": "osm",
+   "gate": null,
+   "nudge": null,
+   "question": {
+    "ask": "This street is named after a courtroom. Read the sign. What was the court called?",
+    "answers": [
+     "Chambre de l'Édit",
+     "Chambre de l'Edit",
+     "chambre de l edit",
+     "la Chambre de l'Édit",
+     "la Chambre de l'Edit",
+     "the Chamber of the Edict",
+     "Chamber of the Edict",
+     "Chambre de l Edit",
+     "Édit",
+     "Edit"
+    ],
+    "hint": "The sign is on the wall at the corner. Three words after Rue."
+   },
+   "look": "Read the sign at the corner. This street is named after a courtroom.\n\nThe court sat in Castres for most of a century.",
+   "look_spoken": null,
+   "after": "The Chambre de l'Édit. The Edict of Nantes gave French Protestants courts of their own, with Catholic and Protestant judges in equal numbers.\n\nCastres got one because half the town was Protestant.\n\nIt sat until 1679. Then the king moved it to Castelnaudary, and six years later he cancelled the Edict.",
+   "after_spoken": "The Chambre de l'Édit. The Edict of Nantes gave French Protestants courts of their own, with Catholic and Protestant judges in equal numbers.\n\nCastres got one because half the town was Protestant.\n\nIt sat until sixteen seventy nine. Then the king moved it to Castelnaudary, and six years later he cancelled the Edict."
+  },
+  {
+   "id": "cathedrale",
+   "topic": "split",
+   "title": "The Cathedral",
+   "where": "the cathedral, in the middle of the old town",
+   "lat": 43.604241,
+   "lon": 2.24174,
+   "coord_source": "osm",
+   "directions": "From Rue Chambre de l'Édit, walk back to the corner and take Rue Jacques Limouzy, which runs north east.\n\nThen Rue Sabatier, which runs north, and Rue Beaujeu, which runs east. About two hundred and twenty metres.\n\nThe cathedral is straight ahead.",
+   "gate": null,
+   "nudge": null,
+   "question": {
+    "ask": "The cathedral is named after a saint. Which one?",
+    "answers": [
+     "Benoît",
+     "Benoit",
+     "Benedict",
+     "Saint Benoît",
+     "Saint Benoit",
+     "St Benoit",
+     "Saint Benedict",
+     "St Benedict",
+     "Benedict of Nursia",
+     "Benoît de Nursie"
+    ],
+    "hint": "It is on the front of the building and on the street sign beside it."
+   },
+   "look": "The cathedral is big, plain and late. Work started in 1677.\n\nThere was an abbey on this spot for eight hundred years before that. The church is named after the man whose rule those monks lived by.",
+   "look_spoken": null,
+   "after": "Benoît. Benedict, in English.\n\nThe abbey here was Benedictine and it came first. Castres exists because monks settled on the river in the ninth century.\n\nBy the time this church went up, the town had been arguing about religion for a hundred years. It is the Catholic half of that argument. You will see the other half later.",
+   "after_spoken": null
+  },
+  {
+   "id": "angelots",
+   "topic": "water",
+   "title": "The Fountain on the Square",
+   "where": "the fountain at the west end of Place Jean Jaurès",
+   "lat": 43.605477,
+   "lon": 2.241086,
+   "coord_source": "osm",
+   "directions": "From the cathedral, take Rue Saint-Benoît and Rue Beaujeu, which both run west.\n\nThen Rue Sabatier and Rue Henri IV, which run north. About a hundred and seventy metres.\n\nThe square opens out at the end.",
+   "gate": {
+    "radius_m": 25,
+    "allow_pass": true,
+    "prompt": "Stand at the fountain."
+   },
+   "nudge": null,
+   "question": null,
+   "look": "A town on a river still needed a fountain. There were tanneries and dye works upstream.\n\nThe stone figures on this one are cherubs. Angelots is the French for them.",
+   "look_spoken": null,
+   "after": "Castres drank from fountains like this one until the town was plumbed.\n\nThe river did the work and the fountains did the drinking. Every trade the town lived on put something in the water.\n\nThe square you are standing on was the corn market.",
+   "after_spoken": null
+  },
+  {
+   "id": "fermat",
+   "topic": "men",
+   "title": "A Memorial on the Square",
+   "where": "the memorial at the east end of Place Jean Jaurès",
+   "lat": 43.605443,
+   "lon": 2.241725,
+   "coord_source": "osm",
+   "directions": "From the fountain, go back to Rue Henri IV and cross into Place Jean Jaurès, which runs east. About eighty metres.\n\nThe memorial is at the far end of the square.",
+   "gate": null,
+   "nudge": null,
+   "question": {
+    "ask": "A mathematician is remembered on this square. What was his name?",
+    "answers": [
+     "Fermat",
+     "Pierre de Fermat",
+     "Pierre Fermat",
+     "de Fermat",
+     "Pierre"
+    ],
+    "hint": "The memorial names him. He was a judge in this town as well."
+   },
+   "look": "One of the great mathematicians of the sixteen hundreds worked in Castres.\n\nHe was a lawyer by trade. He did his mathematics in the evenings and hardly published any of it.\n\nHis name is on this square.",
+   "look_spoken": null,
+   "after": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in 1665.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the 1990s to find one.",
+   "after_spoken": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in sixteen sixty five.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the nineteen nineties to find one."
+  },
+  {
+   "id": "arcades",
+   "topic": "men",
+   "title": "A Drink on the Quay",
+   "where": "the arcades on Quai Tourcaudière, by the statue",
+   "lat": 43.605418,
+   "lon": 2.242362,
+   "coord_source": "osm",
+   "directions": "From the memorial, carry on east along Place Jean Jaurès until you reach the river.\n\nTurn onto Quai Tourcaudière, which runs north. About seventy metres. The arcades are on your side of the road.",
+   "gate": {
+    "radius_m": 25,
+    "allow_pass": true,
+    "prompt": "Stand under the arcades, by the statue."
+   },
+   "nudge": null,
+   "question": null,
+   "look": "This is the stop for a drink. Les Arcades is under the arches and Etienne Coffee is next door.\n\nThe statue is Jean Jaurès. He was born in Castres in 1859, and almost every town in France has a street named after him.",
+   "look_spoken": null,
+   "after": "Jaurès taught philosophy, went into politics and became the leading French socialist of his day.\n\nHe spent the summer of 1914 arguing against the war that was coming. On 31 July a nationalist shot him through a café window in Paris.\n\nFrance was at war three days later.",
+   "after_spoken": "Jaurès taught philosophy, went into politics and became the leading French socialist of his day.\n\nHe spent the summer of nineteen fourteen arguing against the war that was coming. On the thirty first of July a nationalist shot him through a café window in Paris.\n\nFrance was at war three days later."
+  },
+  {
+   "id": "temple",
+   "topic": "split",
+   "title": "The Temple",
+   "where": "the Grand temple, on Rue du Consulat",
+   "lat": 43.60699,
+   "lon": 2.241781,
+   "coord_source": "osm",
+   "directions": "From the arcades, head north through the lanes behind the square. About two hundred and twenty metres.",
+   "gate": {
+    "radius_m": 25,
+    "allow_pass": true,
+    "prompt": "Stand outside the temple."
+   },
+   "nudge": null,
+   "question": null,
+   "look": "This is a Protestant temple. Look at the name. There is no saint in it.\n\nCastres was one of the strongest Protestant towns in the south of France. The court you started at existed because of towns like this one.",
+   "look_spoken": null,
+   "after": "This building is much younger than the argument.\n\nWhen the Edict was cancelled in 1685, Protestant worship became illegal and the temples came down. Castres kept its Protestants anyway. They met in barns and in the woods for a hundred years.\n\nFreedom came back with the Revolution, and buildings like this one followed.",
+   "after_spoken": "This building is much younger than the argument.\n\nWhen the Edict was cancelled in sixteen eighty five, Protestant worship became illegal and the temples came down. Castres kept its Protestants anyway. They met in barns and in the woods for a hundred years.\n\nFreedom came back with the Revolution, and buildings like this one followed.",
+   "directions_mode": "rough",
+   "directions_streets": [
+    "Place Jean Jaurès",
+    "Rue Malpas",
+    "Rue des Capucins",
+    "Rue du Consulat"
+   ],
+   "directions_target": "the Grand temple, on Rue du Consulat"
+  },
+  {
+   "id": "pont-vieux",
+   "topic": "water",
+   "title": "The Old Bridge",
+   "where": "the middle of the Pont Vieux",
+   "lat": 43.606495,
+   "lon": 2.243061,
+   "coord_source": "osm",
+   "directions": "From the temple, take Rue du Carras, which runs east, down to the water.\n\nTurn south along Quai du Carras and go onto the Pont Vieux. About a hundred and forty metres. Stop in the middle.",
+   "gate": null,
+   "nudge": null,
+   "question": {
+    "ask": "What is the river called?",
+    "answers": [
+     "Agout",
+     "Agoût",
+     "l'Agout",
+     "l'Agoût",
+     "the Agout",
+     "River Agout",
+     "Agout river"
+    ],
+    "hint": "There is a sign on the bridge or on the quay. Five letters."
+   },
+   "look": "Stop in the middle. The houses on the far bank are built out over the water.\n\nThe bottom of each one was a workshop. Tanners and dyers needed running water, and they needed a lot of it.",
+   "look_spoken": null,
+   "after": "The Agout. Castres made leather and cloth for six hundred years and all of it needed this water.\n\nThe houses were workshops downstairs and homes upstairs. The waste went into the river, so the fountain on the square is where people drank.\n\nThe bridge under you is the oldest crossing in the town.",
+   "after_spoken": null
+  }
+ ]
+}
