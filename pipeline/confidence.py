@@ -131,13 +131,33 @@ def agreement(ours, theirs, tol=AGREE_TOL_M):
 
 # ---- the score -----------------------------------------------------------
 
+# A stop moved by more than this is a different stop, and an answer fetched for
+# where it used to be says nothing about where it is now.
+STALE_M = 10.0
+
+
 def load_answers(tour_id):
-    """The committed second opinions, keyed by (from, to). {} if never fetched."""
+    """The committed second opinions, keyed by (from, to). None if never fetched.
+
+    The endpoints each answer was fetched for are kept alongside it, so a stop
+    that has since moved can be spotted. Without that, moving a stop by fifty
+    metres leaves the old answers in place, agreeing with a route nobody walks.
+    """
     path = ROUTES_DIR / f"{tour_id}.json"
     if not path.exists():
         return None
     doc = json.loads(path.read_text(encoding="utf-8"))
-    return {(leg["from"], leg["to"]): leg["answers"] for leg in doc["legs"]}
+    return {(leg["from"], leg["to"]): leg for leg in doc["legs"]}
+
+
+def fresh_answers(leg, a, b):
+    """This leg's answers, if they were fetched for these two points."""
+    if leg is None:
+        return []
+    for stored, now in ((leg.get("from_at"), a), (leg.get("to_at"), b)):
+        if not stored or geo.haversine_m(stored[0], stored[1], now[0], now[1]) > STALE_M:
+            return None
+    return leg["answers"]
 
 
 def score_leg(town, a, b, answers=None):
@@ -258,9 +278,21 @@ def score_tour(tour, town=None):
     out = {}
     stops = tour["stops"]
     for before, after in zip(stops, stops[1:]):
-        got = None if answers is None else answers.get((before["id"], after["id"]), [])
-        out[after["id"]] = score_leg(
-            town, (before["lat"], before["lon"]), (after["lat"], after["lon"]), got)
+        a = (before["lat"], before["lon"])
+        b = (after["lat"], after["lon"])
+        stale = False
+        if answers is None:
+            got = None
+        else:
+            got = fresh_answers(answers.get((before["id"], after["id"])), a, b)
+            if got is None:
+                # Fetched for somewhere else. No answer, not a wrong answer.
+                got, stale = [], True
+        out[after["id"]] = score_leg(town, a, b, got)
+        if stale:
+            out[after["id"]]["notes"].append(
+                "the second opinion on file was fetched for a different "
+                "coordinate; this stop has moved since. Re-run the routes fetch")
     return out
 
 

@@ -127,16 +127,30 @@
    "lon": 2.241086,
    "coord_source": "osm",
    "directions": "From the cathedral, head north through the lanes towards the main square. About a hundred and seventy metres.",
-   "gate": {
-    "radius_m": 25,
-    "allow_pass": true,
-    "prompt": "Stand at the fountain."
-   },
+   "gate": null,
    "nudge": null,
-   "question": null,
-   "look": "A town on a river still needed a fountain. There were tanneries and dye works upstream.\n\nThe stone figures on this one are cherubs. Angelots is the French for them.",
+   "question": {
+    "ask": "The fountain is named after the figures on it. What are they?",
+    "answers": [
+     "cherubs",
+     "cherub",
+     "angels",
+     "angel",
+     "angelots",
+     "angelot",
+     "little angels",
+     "baby angels",
+     "putti",
+     "putto",
+     "cherubim",
+     "winged children",
+     "cupids"
+    ],
+    "hint": "There are several of them, in stone, and they are not adults."
+   },
+   "look": "A town on a river still needed a fountain. There were tanneries and dye works upstream.\n\nLook at the stone figures on this one.",
    "look_spoken": null,
-   "after": "Castres drank from fountains like this one until the town was plumbed.\n\nThe river did the work and the fountains did the drinking. Every trade the town lived on put something in the water.\n\nThe square you are standing on was the corn market.",
+   "after": "Cherubs. Angelots in French, and the fountain takes its name from them.\n\nCastres drank from fountains like this until the town was plumbed. The river ran the trades and put something in the water at every one of them.\n\nThe square is the old corn market.",
    "after_spoken": null,
    "directions_mode": "rough",
    "directions_streets": [
@@ -150,29 +164,26 @@
   {
    "id": "fermat",
    "topic": "men",
-   "title": "A Memorial on the Square",
-   "where": "the memorial at the east end of Place Jean Jaurès",
-   "lat": 43.605443,
-   "lon": 2.241725,
+   "title": "The Mathematician",
+   "where": "the east end of Place Jean Jaurès",
+   "lat": 43.605301,
+   "lon": 2.242047,
    "coord_source": "osm",
-   "directions": "From the fountain, go back to Rue Henri IV and cross into Place Jean Jaurès, which runs east. About eighty metres.\n\nThe memorial is at the far end of the square.",
-   "gate": null,
-   "nudge": null,
-   "question": {
-    "ask": "A mathematician is remembered on this square. What was his name?",
-    "answers": [
-     "Fermat",
-     "Pierre de Fermat",
-     "Pierre Fermat",
-     "de Fermat",
-     "Pierre"
-    ],
-    "hint": "The memorial names him. He also sat as a judge here."
+   "directions": "From the fountain, go back to Rue Henri IV and walk the length of Place Jean Jaurès, which runs east. About a hundred metres.\n\nStop near the far end, where the square opens onto the quay.",
+   "gate": {
+    "radius_m": 30,
+    "allow_pass": true,
+    "prompt": "Stand at the east end of the square."
    },
-   "look": "One of the great mathematicians of the sixteen hundreds worked in Castres.\n\nHe was a lawyer by trade. He did his mathematics in the evenings and hardly published any of it.\n\nHis name is on the memorial.",
+   "nudge": {
+    "prompt": "There is a small metal plaque to him set back off the north side of the square, in among the jewellers. It is easy to miss.",
+    "confirm": "Had a look"
+   },
+   "question": null,
+   "look": "One of the great mathematicians of the sixteen hundreds lived and died in Castres.\n\nHe was a lawyer by trade. He did his sums in the evenings and published almost none of them.",
    "look_spoken": null,
-   "after": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in 1665.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the 1990s to find one.",
-   "after_spoken": "Pierre de Fermat. He was a judge on the court in the street you started on, and he died in Castres in sixteen sixty five.\n\nHe wrote in the margins of his books. One note claimed he had a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the nineteen nineties to find one."
+   "after": "Pierre de Fermat. He was a judge on the court in the street you started on, and he was buried here on 13 January 1665.\n\nHe wrote in the margins of his books. One note claimed a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the 1990s to find one.",
+   "after_spoken": "Pierre de Fermat. He was a judge on the court in the street you started on, and he was buried here on the thirteenth of January sixteen sixty five.\n\nHe wrote in the margins of his books. One note claimed a proof that a certain sum has no whole number answers. The margin, he said, was too small to hold it.\n\nIt took until the nineteen nineties to find one."
   },
   {
    "id": "arcades",
@@ -182,7 +193,7 @@
    "lat": 43.605418,
    "lon": 2.242362,
    "coord_source": "osm",
-   "directions": "From the memorial, carry on east along Place Jean Jaurès until you reach the river.\n\nTurn onto Quai Tourcaudière, which runs north. About seventy metres. Les Arcades is under the arches.",
+   "directions": "From the east end of Place Jean Jaurès, turn onto Quai Tourcaudière, which runs north. About fifty metres.\n\nLes Arcades is under the arches, a few doors along.",
    "gate": {
     "radius_m": 25,
     "allow_pass": true,

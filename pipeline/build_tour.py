@@ -456,6 +456,70 @@ def names_its_start(directions, prev):
     return any(w in first for w in naming_words(prev))
 
 
+# ---- a question has to rest on something real -----------------------------
+#
+# "A mathematician is remembered on this square. What was his name?" shipped on
+# the strength of an OSM node tagged, in full, historic=memorial. That is a dot
+# on a map. It does not say statue, plaque or stone, it does not say what is
+# written on it, and the walker could not find it.
+#
+# A thing OSM merely records the existence of is fine to walk to and fine to
+# talk about. It is not enough to promise somebody they can read an answer off
+# it. For that the map has to say what kind of thing it is, or what it says.
+VAGUE_WITHOUT_DETAIL = {
+    "historic": {"memorial", "monument", "plaque", "tomb", "boundary_stone"},
+    "tourism": {"artwork"},
+    "man_made": {"plaque"},
+}
+DETAIL_TAGS = ("memorial", "artwork_type", "inscription", "description",
+               "material", "subject", "subject:wikidata", "wikidata",
+               "wikipedia", "image", "height")
+# How close a stop has to be to a place for the question to be resting on it.
+RESTS_ON_M = 12.0
+
+
+# A plaque 29 m back from the square, inside a block of jewellers, is a fine
+# thing to mention and a bad thing to build a question on.
+REACHABLE_M = 20.0
+
+
+def out_of_reach(town, stop):
+    """A small findable thing a question hangs off, that you cannot get near.
+
+    Only small things. A cathedral sits 21 m off the walkable way because it is
+    a cathedral, and you stand at its door, which is on the street. A plaque
+    29 m back from a square is a different problem entirely.
+    """
+    if town is None or not stop.get("question"):
+        return None
+    got = town.place_near(stop["lat"], stop["lon"], RESTS_ON_M)
+    if not got:
+        return None
+    place, _ = got
+    tags = place.get("tags") or {}
+    if not any(tags.get(k) in v for k, v in VAGUE_WITHOUT_DETAIL.items()):
+        return None
+    off = town.off_network_m(place["lat"], place["lon"])
+    return (place, off) if off > REACHABLE_M else None
+
+
+def rests_on_a_dot(town, stop):
+    """The place this question hangs off, when the map barely knows it exists."""
+    if town is None or not stop.get("question"):
+        return None
+    got = town.place_near(stop["lat"], stop["lon"], RESTS_ON_M)
+    if not got:
+        return None
+    place, _ = got
+    tags = place.get("tags") or {}
+    vague = any(tags.get(k) in v for k, v in VAGUE_WITHOUT_DETAIL.items())
+    if not vague:
+        return None
+    if any(k in tags for k in DETAIL_TAGS):
+        return None
+    return place
+
+
 # ---- saying it twice -----------------------------------------------------
 #
 # Every other check in this file reads one field at a time. The walker does not.
@@ -882,6 +946,22 @@ def check(tour):
                 errors.append(f"no street called {' '.join(mention[:4])!r} in "
                               f"{tour.get('city', 'this town')}; the map says "
                               f"otherwise")
+        for s_ in stops:
+            here = f"stop {stops.index(s_) + 1} ({s_['id']})"
+            far = out_of_reach(town, s_)
+            if far:
+                errors.append(
+                    f"{here}: the question rests on {far[0]['name']!r}, which is "
+                    f"{far[1]:.0f} m off the nearest walkable way. Ask about "
+                    f"something a walker can stand in front of")
+            dot = rests_on_a_dot(town, s_)
+            if dot:
+                errors.append(
+                    f"{here}: the question rests on {dot['name']!r}, which the "
+                    f"map records as {dot['tags']} and nothing else. That is a "
+                    f"dot on a map, not something you can promise a walker they "
+                    f"will find. Ask about something the map describes")
+
         scores = confidence.score_tour(tour, town)
         # Where the engines disagree about a leg, the streets on THEIR route are
         # the ones a walker may actually come out on. A rough leg is allowed to
@@ -967,7 +1047,8 @@ def check(tour):
             # have to be on this leg, or on a route another engine would take.
             # Rough does not mean unchecked.
             plausible = set(heading) | standing
-            for ans in engine_lines.get((stops[i - 1]["id"], s["id"]), []):
+            for ans in (engine_lines.get((stops[i - 1]["id"], s["id"]))
+                        or {}).get("answers", []):
                 if ans.get("line"):
                     plausible |= town.names_near_line(ans["line"])
             for name in (s.get("directions_streets") or []):
