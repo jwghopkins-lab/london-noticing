@@ -50,6 +50,16 @@ WALKABLE = {
 # Tags that make a thing worth naming in a walk.
 PLACE_KEYS = ("historic", "tourism", "amenity", "man_made", "building",
               "shop", "bridge", "waterway", "place", "natural")
+# What KIND of thing it is, and whether anybody can read anything off it. A walk
+# asked somebody to find the name on a Fermat memorial in Castres, on the
+# strength of a node tagged only historic=memorial. That is a dot on a map. It
+# does not say statue, plaque or stone, it does not say what is written on it,
+# and the walker could not find it. These keys are the difference, and the
+# extract was throwing every one of them away.
+DETAIL_KEYS = ("memorial", "artwork_type", "inscription", "description",
+               "material", "start_date", "subject", "subject:wikidata",
+               "wikidata", "wikipedia", "height", "direction", "location",
+               "religion", "denomination", "opening_hours", "website")
 
 
 def query(bbox):
@@ -143,6 +153,7 @@ def compact(raw):
         kept = {k: tags[k] for k in PLACE_KEYS if k in tags}
         if not kept:
             continue
+        kept.update({k: tags[k] for k in DETAIL_KEYS if k in tags})
         places.append({"name": name, "lat": lat, "lon": lon, "tags": kept})
 
     # Two ways can carry the same name and the same geometry through different
