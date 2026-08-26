@@ -11,6 +11,10 @@ by directions that are true. Everything hard about it is in that last clause.
 The rules live in `docs/house-style.md`. This is the order to do things in.
 Where the two disagree, the house style wins: it is the one the build enforces.
 
+**Read `docs/voice.md` first.** It is the owner's own file, and it holds the
+part a checker cannot: what the walks should sound like. Where it and the house
+style disagree, `voice.md` wins and the house style needs updating to match.
+
 ## The one idea to hold on to
 
 **Nothing goes in a walk because it sounded right. It goes in because something
@@ -76,7 +80,9 @@ Gather far more than you need — about fifteen — then pick on four tests:
 - **Standable**: at least three want a location gate, so the walk knows you got
   there. A gate and a question can share a stop.
 
-Verify the physical detail before you write a question about it. A miscounted
+Verify the physical detail before you write a question about it. The map has to
+say what the thing IS, not just that it is there: `historic=memorial` alone is a
+dot. And the walker has to be able to stand in front of it. A miscounted
 carving makes the stop unanswerable and there is no recovering from it on the
 day. Where a detail cannot be confirmed, ask something else or make it a gate.
 
@@ -247,6 +253,9 @@ workflow serves it at `/<served_at>/`.
 | *climbs N m it had already climbed once* | Reorder the stops. Do not rewrite the prose first. |
 | *is a knowing aside / an essay noun / a hedge* | You slipped into essay voice. Say the thing and stop. |
 | *is said in both the ask and the look* | You wrote the fields separately. Read the card straight through and cut. |
+| *the question rests on X, which the map records as…* | You are promising a walker they can read something off a dot on a map. |
+| *is N m off the nearest walkable way* | They cannot stand in front of it. Move the question, not the stop. |
+| *fetched for a different coordinate* | You moved a stop. Re-run the routes fetch before trusting the score. |
 
 ## Things that were got wrong, so you do not have to
 

@@ -598,5 +598,67 @@ class TestSayingItTwice(unittest.TestCase):
         self.assertEqual(build_tour.repeated_across(pieces), [])
 
 
+class TestAQuestionRestsOnSomethingReal(unittest.TestCase):
+    """The Fermat plaque. A walker stood on the square and could not find it."""
+
+    class Town:
+        def __init__(self, tags, off=5.0):
+            self.places = [{"name": "Pierre de Fermat", "lat": 0.0, "lon": 0.0,
+                            "tags": tags}]
+            self._off = off
+
+        def place_near(self, lat, lon, within):
+            return (self.places[0], 0.0)
+
+        def off_network_m(self, lat, lon):
+            return self._off
+
+    STOP = {"id": "fermat", "lat": 0.0, "lon": 0.0,
+            "question": {"ask": "What was his name?", "answers": ["Fermat"]}}
+
+    def test_a_bare_memorial_node_cannot_carry_a_question(self):
+        town = self.Town({"historic": "memorial"})
+        self.assertIsNotNone(build_tour.rests_on_a_dot(town, self.STOP))
+
+    def test_the_same_node_with_an_inscription_can(self):
+        town = self.Town({"historic": "memorial", "memorial": "plaque",
+                          "inscription": "En ces lieux..."})
+        self.assertIsNone(build_tour.rests_on_a_dot(town, self.STOP))
+
+    def test_a_gate_may_stand_anywhere_it_likes(self):
+        town = self.Town({"historic": "memorial"})
+        gate = {"id": "fermat", "lat": 0.0, "lon": 0.0, "question": None}
+        self.assertIsNone(build_tour.rests_on_a_dot(town, gate))
+
+    def test_a_plaque_you_cannot_get_near_cannot_carry_a_question(self):
+        town = self.Town({"historic": "memorial", "memorial": "plaque"}, off=29.0)
+        self.assertIsNotNone(build_tour.out_of_reach(town, self.STOP))
+
+    def test_a_cathedral_is_allowed_to_be_a_cathedral(self):
+        """21 m off the network because it is a big building. You use the door."""
+        town = self.Town({"amenity": "place_of_worship", "building": "church"},
+                         off=21.0)
+        self.assertIsNone(build_tour.out_of_reach(town, self.STOP))
+
+
+class TestStaleSecondOpinions(unittest.TestCase):
+    """Move a stop and the answers fetched for the old spot must not count."""
+
+    LEG = {"from": "a", "to": "b", "from_at": [43.6, 2.24], "to_at": [43.601, 2.241],
+           "answers": [{"engine": "osrm-foot", "metres": 120.0}]}
+
+    def test_the_same_coordinates_are_fresh(self):
+        got = confidence.fresh_answers(self.LEG, (43.6, 2.24), (43.601, 2.241))
+        self.assertEqual(len(got), 1)
+
+    def test_a_moved_stop_makes_them_stale(self):
+        self.assertIsNone(
+            confidence.fresh_answers(self.LEG, (43.6, 2.24), (43.6015, 2.2425)))
+
+    def test_a_metre_of_drift_is_not_a_move(self):
+        self.assertIsNotNone(
+            confidence.fresh_answers(self.LEG, (43.60001, 2.24), (43.601, 2.241)))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

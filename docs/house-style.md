@@ -7,6 +7,10 @@ rather than relearning them one town at a time.
 Rules marked **[checked]** are enforced by `pipeline/build_tour.py` and fail the
 build. The rest are on whoever is writing.
 
+**The voice this is all trying to reach is in [`voice.md`](voice.md), which is
+the owner's own file. Where that disagrees with anything here, it wins and this
+file is what needs changing.**
+
 **This file is the rule list. The method that uses it is
 [`.claude/skills/tour-authoring/SKILL.md`](../.claude/skills/tour-authoring/SKILL.md)**
 — the order to do things in when building a walk for a town nobody has walked
@@ -262,6 +266,24 @@ town. A guide standing beside you says the thing and stops.
     title above sailed through the check written to catch it. **[checked]**
 72. **Two stop titles must not share a phrase.** "The Fountain on the Square"
     followed by "A Memorial on the Square" reads as one place. **[checked]**
+### A question has to rest on something real
+
+74. **A question may not hang off a thing the map only records the existence
+    of.** `historic=memorial` and nothing else is a dot on a map. It does not
+    say statue, plaque or stone, and it does not say whether anything is written
+    on it. Ask about something the map describes. **[checked]**
+75. **Nor off a small thing more than 20 m from the nearest walkable way.** A
+    plaque set back off a square, inside a block, is a fine thing to mention and
+    a bad thing to build a question on. Scoped to small findable objects: a
+    cathedral sits 21 m off the network because it is a cathedral, and you use
+    the door. **[checked]**
+76. Keep the tags that say what a thing is. The extract threw away
+    `memorial=plaque`, `inscription` and `material`, so the evidence that would
+    have settled it was never fetched. **[checked in `fetch_osm.py`]**
+77. A second opinion is fetched for a pair of coordinates. Move a stop and it
+    stops applying. The stored endpoints are compared and a stale answer counts
+    as no answer. **[checked]**
+
 73. The look sets up. The question asks. If the question can be cut to four
     words because the look already did the work, cut it. "What was the court
     called?" is the whole question.
