@@ -26,7 +26,7 @@
  "intro": {
   "lead": "Seven stops round the old centre of Castres.",
   "body": "Just under a kilometre, about an hour. It is flat.\n\nFour stops ask a question you can only answer by looking. Three just need you standing in the right place.\n\nBuilt for a Monday evening. Everything is outdoors and free. The museums are shut. The shops and bars in the centre are not.",
-  "start": "Start on Place de la République, by the theatre. Leave the square on its north west side and walk forty metres up the narrow street."
+  "start": "Start on Place de la République, by the theatre. Leave the square on its north west side and walk forty metres along the narrow street."
  },
  "topics": [
   {
@@ -86,7 +86,7 @@
    "lat": 43.604241,
    "lon": 2.24174,
    "coord_source": "osm",
-   "directions": "From Rue Chambre de l'Édit, walk back to the corner and take Rue Jacques Limouzy, which runs north east.\n\nThen Rue Sabatier, which runs north, and Rue Beaujeu, which runs east. About two hundred and twenty metres.\n\nThe cathedral is straight ahead.",
+   "directions": "From Rue Chambre de l'Édit, head east into the old town. About two hundred and fifty metres.",
    "gate": null,
    "nudge": null,
    "question": {
@@ -108,7 +108,15 @@
    "look": "The cathedral is big, plain and late. Work started in 1677.\n\nThere was an abbey on this spot for eight hundred years before that. The church is named after the man whose rule those monks lived by.",
    "look_spoken": null,
    "after": "Benoît. Benedict, in English.\n\nThe abbey here was Benedictine and it came first. Castres exists because monks settled on the river in the ninth century.\n\nBy the time this church went up, the town had been arguing about religion for a hundred years. It is the Catholic half of that argument. You will see the other half later.",
-   "after_spoken": null
+   "after_spoken": null,
+   "directions_mode": "rough",
+   "directions_streets": [
+    "Rue Jacques Limouzy",
+    "Rue Sabatier",
+    "Rue Beaujeu",
+    "Place du 8 Mai 1945"
+   ],
+   "directions_target": "the cathedral"
   },
   {
    "id": "angelots",
@@ -118,7 +126,7 @@
    "lat": 43.605477,
    "lon": 2.241086,
    "coord_source": "osm",
-   "directions": "From the cathedral, take Rue Saint-Benoît and Rue Beaujeu, which both run west.\n\nThen Rue Sabatier and Rue Henri IV, which run north. About a hundred and seventy metres.\n\nThe square opens out at the end.",
+   "directions": "From the cathedral, head north through the lanes towards the main square. About a hundred and seventy metres.",
    "gate": {
     "radius_m": 25,
     "allow_pass": true,
@@ -129,7 +137,15 @@
    "look": "A town on a river still needed a fountain. There were tanneries and dye works upstream.\n\nThe stone figures on this one are cherubs. Angelots is the French for them.",
    "look_spoken": null,
    "after": "Castres drank from fountains like this one until the town was plumbed.\n\nThe river did the work and the fountains did the drinking. Every trade the town lived on put something in the water.\n\nThe square you are standing on was the corn market.",
-   "after_spoken": null
+   "after_spoken": null,
+   "directions_mode": "rough",
+   "directions_streets": [
+    "Rue Beaujeu",
+    "Rue Sabatier",
+    "Rue Henri IV",
+    "Place du 8 Mai 1945"
+   ],
+   "directions_target": "a stone fountain with cherubs on it, at the west end of Place Jean Jaurès"
   },
   {
    "id": "fermat",
@@ -166,7 +182,7 @@
    "lat": 43.605418,
    "lon": 2.242362,
    "coord_source": "osm",
-   "directions": "From the memorial, carry on east along Place Jean Jaurès until you reach the river.\n\nTurn onto Quai Tourcaudière, which runs north. About seventy metres. The arcades are on your side of the road.",
+   "directions": "From the memorial, carry on east along Place Jean Jaurès until you reach the river.\n\nTurn onto Quai Tourcaudière, which runs north. About seventy metres. Les Arcades is under the arches.",
    "gate": {
     "radius_m": 25,
     "allow_pass": true,
@@ -216,7 +232,7 @@
    "lat": 43.606495,
    "lon": 2.243061,
    "coord_source": "osm",
-   "directions": "From the temple, take Rue du Carras, which runs east, down to the water.\n\nTurn south along Quai du Carras and go onto the Pont Vieux. About a hundred and forty metres. Stop in the middle.",
+   "directions": "From the temple, head south east to the river. About a hundred and forty metres.",
    "gate": null,
    "nudge": null,
    "question": {
@@ -235,7 +251,14 @@
    "look": "Stop in the middle. The houses on the far bank are built out over the water.\n\nThe bottom of each one was a workshop. Tanners and dyers needed running water, and they needed a lot of it.",
    "look_spoken": null,
    "after": "The Agout. Castres made leather and cloth for six hundred years and all of it needed this water.\n\nThe houses were workshops downstairs and homes upstairs. The waste went into the river, so the fountain on the square is where people drank.\n\nThe bridge under you is the oldest crossing in the town.",
-   "after_spoken": null
+   "after_spoken": null,
+   "directions_mode": "rough",
+   "directions_streets": [
+    "Rue du Carras",
+    "Quai du Carras",
+    "Quai Miredames"
+   ],
+   "directions_target": "the Pont Vieux, with houses built out over the water on the far bank"
   }
  ]
 }

@@ -501,5 +501,43 @@ class TestNamingTheOrigin(unittest.TestCase):
         self.assertNotIn("street", build_tour.naming_words(self.EDIT))
 
 
+class TestTheCaveatTellsTheTruth(unittest.TestCase):
+    """Two reasons a leg goes rough, and they are not the same reason.
+
+    Noble Val's warrens really are unsigned lanes older than the map. Castres is
+    an ordinary signed town centre where three routes are the same length.
+    Pasting the warren line onto Castres would be a lie about the place.
+    """
+
+    STOP = {"id": "x", "directions": "From the temple, head east. About fifty metres.",
+            "directions_streets": ["Rue A"], "directions_target": "a bridge"}
+
+    def test_nameless_lanes_get_the_warren_line(self):
+        cause = build_tour.rough_cause({"unnamed_frac": 0.30})
+        self.assertEqual(cause, "warren")
+        self.assertIn("older than the map",
+                      build_tour.rough_directions(self.STOP, cause))
+
+    def test_a_choice_of_routes_gets_the_other_line(self):
+        cause = build_tour.rough_cause({"unnamed_frac": 0.0, "margin": 1.05})
+        self.assertEqual(cause, "choices")
+        got = build_tour.rough_directions(self.STOP, cause)
+        self.assertIn("more than one way through", got)
+        self.assertNotIn("older than the map", got)
+
+    def test_no_score_keeps_the_wording_a_walk_already_shipped_with(self):
+        """A later rule must not rewrite a published walk."""
+        self.assertEqual(build_tour.rough_cause(None), "warren")
+
+    def test_the_verifier_wants_a_caveat_and_does_not_mind_which(self):
+        for cause in ("warren", "choices"):
+            shipped = {"id": "x",
+                       "directions": build_tour.rough_directions(self.STOP, cause)}
+            self.assertEqual(build_tour.rough_survived(shipped, self.STOP), [])
+        bare = {"id": "x", "directions": "From the temple, head east. Rue A. a bridge"}
+        self.assertTrue([f for f in build_tour.rough_survived(bare, self.STOP)
+                         if "no caveat" in f])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

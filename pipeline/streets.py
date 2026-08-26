@@ -162,6 +162,24 @@ class Town:
                 best = (place, d)
         return best
 
+    def names_near_line(self, line, within=20.0, step_m=10.0):
+        """Every street this polyline runs along.
+
+        Used to work out which streets a walker might plausibly come out on. On
+        a leg where two routing engines disagree, the streets on THEIR route are
+        exactly the ones worth naming, and they are not on ours.
+        """
+        names = set()
+        pts = [tuple(p) for p in line]
+        for a, b in zip(pts, pts[1:]):
+            d = geo.haversine_m(a[0], a[1], b[0], b[1])
+            steps = max(1, int(d // step_m))
+            for i in range(steps + 1):
+                f = i / steps
+                names |= {n for n, _ in self.named_here(
+                    a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, within)}
+        return names
+
     def named_here(self, lat, lon, within=40.0):
         """What OSM calls the ways passing close to a point."""
         names = {}

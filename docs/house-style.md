@@ -166,9 +166,13 @@ against two independent routing engines, and the score picks the mode.
 48. A rough leg has five parts and no others: the origin **by name**, a compass
     heading, a rounded distance, the streets you may come out on, and the thing
     you are walking towards. **[checked]**
-49. The "these lanes are older than the map" line is written once, in
-    `build_tour.py`, and pasted into every rough leg by the baker. Do not
-    rephrase it per stop. A caveat reworded each time reads as an apology.
+49. The caveat on a rough leg is written once, in `build_tour.py`, and pasted
+    in by the baker. Do not rephrase it per stop: a caveat reworded each time
+    reads as an apology. But there are **two** of them, and the right one is
+    picked from the reason the leg was demoted. Noble Val's warrens really are
+    unsigned lanes older than the map. Castres is an ordinary signed town centre
+    where three routes are the same length, and pasting the warren line onto it
+    would be a lie about the place. **[checked]**
 50. Rough legs never say left, right, or "second turning". A turning you cannot
     name cannot be counted. **[checked]**
 51. In a rough leg the street names go in `directions_streets`, not in the
@@ -178,6 +182,9 @@ against two independent routing engines, and the score picks the mode.
 52. `directions_streets` is printed to the walker as written, so it carries the
     map's own spelling. Rue du Timple is Rue du Timplé on the sign.
     **[checked]**
+52b. On a leg the engines disagree about, the streets on THEIR route are the
+    ones a walker may actually come out on, and they are not on ours. A rough
+    leg may name those too. **[checked]**
 53. Ask other routing engines and keep their answers
     (`pipeline/fetch_routes.py`, committed to `data/routes/`). Disagreement is a
     reason to drop to rough. Silence — a fetch that never ran, an engine that

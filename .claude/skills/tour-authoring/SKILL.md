@@ -143,8 +143,13 @@ where you are setting off from.
 "directions_target": "a street sign for Rue Guilhem Peyre"
 ```
 
-The builder assembles the shipped text and adds the standard caveat. Do not
-write your own version of it.
+The builder assembles the shipped text and adds the caveat, choosing between
+"the lanes here are older than the map" and "there is more than one way through
+here" from the reason the leg was demoted. Do not write your own version.
+
+`directions_streets` may name streets from the OTHER engines' routes as well as
+ours. On a leg they disagree about, those are the streets a walker will actually
+come out on.
 
 Rough is not the booby prize. It is what somebody who knows the town says, and
 it cannot be wrong in the way a turn sequence can be wrong, because it does not

@@ -250,8 +250,22 @@ ROUGH_COMPASS_TOLERANCE_DEG = 80
 # Written once, here, rather than by each author in their own words. It has to
 # say the same thing every time: you have not gone wrong, and here is what to
 # aim at. Rewriting it per stop is how a caveat turns into an apology.
-ROUGH_LANES = ("The lanes here are older than the map and most carry no sign, "
-               "so if you come out somewhere else you have not gone wrong.")
+#
+# But it has to say the TRUE thing. There are two reasons a leg goes rough and
+# they are not the same reason. Noble Val's warrens really are unsigned lanes
+# older than the map. Castres is an ordinary signed town centre where three or
+# four routes are the same length, and pasting the warren line onto it would be
+# a lie about the place. So the caveat follows the cause.
+ROUGH_CAVEATS = {
+    "warren": ("The lanes here are older than the map and most carry no sign, "
+               "so if you come out somewhere else you have not gone wrong."),
+    "choices": ("There is more than one way through here and they are all about "
+                "the same length, so if you come out somewhere else you have "
+                "not gone wrong."),
+}
+# The wording that shipped before the two causes were told apart. Walks written
+# under the old rule keep it, so archiving a walk means archiving its text too.
+ROUGH_LANES = ROUGH_CAVEATS["warren"]
 
 # ---- hills ---------------------------------------------------------------
 #
@@ -469,14 +483,28 @@ def human_list(items):
     return f"{', '.join(items[:-1])} or {items[-1]}"
 
 
-def rough_directions(stop):
+def rough_cause(score):
+    """Why this leg cannot be given as turns: a warren, or a choice of routes.
+
+    No score means no opinion, and no opinion keeps the wording the walk already
+    shipped with. Walks written before the two causes were told apart must not
+    have their text changed by a later rule.
+    """
+    if score is None:
+        return "warren"
+    return "warren" if (score.get("unnamed_frac") or 0) > confidence.UNNAMED_MAX \
+        else "choices"
+
+
+def rough_directions(stop, cause="warren"):
     """The shipped text for a rough leg: heading, streets, caveat, landmark."""
+    caveat = ROUGH_CAVEATS.get(cause, ROUGH_LANES)
     out = [(stop.get("directions") or "").strip()]
     named = stop.get("directions_streets") or []
     if named:
-        out.append(f"You may come out on {human_list(named)}. {ROUGH_LANES}")
+        out.append(f"You may come out on {human_list(named)}. {caveat}")
     else:
-        out.append(ROUGH_LANES)
+        out.append(caveat)
     target = (stop.get("directions_target") or "").strip().rstrip(".")
     if target:
         out.append(f"What you are looking for is {target}.")
@@ -747,6 +775,10 @@ def check(tour):
                               f"{tour.get('city', 'this town')}; the map says "
                               f"otherwise")
         scores = confidence.score_tour(tour, town)
+        # Where the engines disagree about a leg, the streets on THEIR route are
+        # the ones a walker may actually come out on. A rough leg is allowed to
+        # name those as well as ours, which is the whole point of the mode.
+        engine_lines = confidence.load_answers(tour["id"]) or {}
         for i, s in enumerate(stops):
             where = f"stop {i + 1} ({s['id']})"
             snap = town.off_network_m(s["lat"], s["lon"])
@@ -824,14 +856,19 @@ def check(tour):
                 notes.append(f"{where}: {why}")
 
             # Streets you may come out on still have to be streets, and still
-            # have to be on this leg. Rough does not mean unchecked.
+            # have to be on this leg, or on a route another engine would take.
+            # Rough does not mean unchecked.
+            plausible = set(heading) | standing
+            for ans in engine_lines.get((stops[i - 1]["id"], s["id"]), []):
+                if ans.get("line"):
+                    plausible |= town.names_near_line(ans["line"])
             for name in (s.get("directions_streets") or []):
                 got = resolve_street(town, name.split())
                 if got is None:
                     errors.append(f"{where}: directions_streets names {name!r}, "
                                   f"which is not a street in "
                                   f"{tour.get('city', 'this town')}")
-                elif got not in heading and got not in standing:
+                elif got not in plausible:
                     errors.append(f"{where}: directions_streets names {got!r}, "
                                   f"which is not on the way from the stop before it")
                 elif got != name:
@@ -931,12 +968,16 @@ def check(tour):
 
 
 def bake(tour):
+    # Walks written before the two causes were told apart keep the wording they
+    # shipped with. Anything declaring voice: plain gets the true one.
+    plain = (tour.get("contract") or {}).get("voice") == "plain"
+    scores = confidence.score_tour(tour) if plain else {}
     stops = []
     for s in tour["stops"]:
         stops.append({
             "id": s["id"], "topic": s["topic"], "title": s["title"],
             "where": s["where"], "lat": s["lat"], "lon": s["lon"],
-            "directions": (rough_directions(s)
+            "directions": (rough_directions(s, rough_cause(scores.get(s["id"])))
                            if s.get("directions_mode") == "rough"
                            else s.get("directions")),
             "directions_mode": s.get("directions_mode", "turn_by_turn"),
@@ -995,11 +1036,15 @@ def rough_survived(shipped_stop, source_stop):
     Those are the things a bad bake would lose.
     """
     shipped = shipped_stop.get("directions") or ""
-    wanted = ([source_stop.get("directions") or "", ROUGH_LANES,
+    out = []
+    if not any(c in shipped for c in ROUGH_CAVEATS.values()):
+        out.append(f"{shipped_stop['id']}: the shipped directions carry no caveat")
+    wanted = ([source_stop.get("directions") or "",
                (source_stop.get("directions_target") or "").strip().rstrip(".")]
               + list(source_stop.get("directions_streets") or []))
-    return [f"{shipped_stop['id']}: the shipped directions have lost {part[:40]!r}"
+    out += [f"{shipped_stop['id']}: the shipped directions have lost {part[:40]!r}"
             for part in wanted if part and part not in shipped]
+    return out
 
 
 def verify(artefact, source):
