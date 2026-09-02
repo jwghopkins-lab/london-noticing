@@ -389,7 +389,7 @@
    "lat": 51.501784,
    "lon": -0.053587,
    "coord_source": "osm",
-   "directions": "From the engine house, head back north west towards the water. About sixty metres. It is the last stop.",
+   "directions": "From the engine house, follow Rotherhithe Street west. About sixty metres.\n\nThe pub is on the river side of the road. It is the last stop.",
    "gate": null,
    "nudge": {
     "prompt": "This is the stop for a drink. The jetty out the back is the place to have it.",
@@ -410,12 +410,7 @@
    "look_spoken": "Go through to the back if there is room. The pub stands on its own stairs.\n\nA ship tied up here in July sixteen twenty, took on passengers, and dropped down the coast to pick up the rest.",
    "after": "The Mayflower. Her master was Christopher Jones, who lived on this street and lies in the churchyard you have just come from.\n\nShe came back the next year and was probably broken up here for timber.\n\nA hundred and two people sailed. About half of them were dead within a year of landing.",
    "after_spoken": null,
-   "directions_mode": "rough",
-   "directions_streets": [
-    "Tunnel Road",
-    "Rotherhithe Street"
-   ],
-   "directions_target": "a pub on the river side of the road, with a jetty behind it"
+   "directions_mode": "turn_by_turn"
   }
  ]
 }

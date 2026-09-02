@@ -322,8 +322,8 @@
       "where": "the pub on the river, at the end of St Marychurch Street",
       "lat": 51.501784,
       "lon": -0.053587,
-      "directions": "From the engine house, head back north west towards the water. About sixty metres. It is the last stop.\n\nYou may come out on Tunnel Road or Rotherhithe Street. There is more than one way through here and they are all about the same length, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a pub on the river side of the road, with a jetty behind it.",
-      "directions_mode": "rough",
+      "directions": "From the engine house, follow Rotherhithe Street west. About sixty metres.\n\nThe pub is on the river side of the road. It is the last stop.",
+      "directions_mode": "turn_by_turn",
       "gate": null,
       "nudge": {
         "prompt": "This is the stop for a drink. The jetty out the back is the place to have it.",
