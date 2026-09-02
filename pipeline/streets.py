@@ -28,6 +28,8 @@ BASE = Path(__file__).resolve().parent.parent
 OSM_DIR = BASE / "data" / "osm"
 # A stop further than this from any walkable way is in a field, or wrong.
 MAX_SNAP_M = 60.0
+# Grid cell for the named-street index, about 55 m on a side.
+CELL = 0.0005
 
 
 def fold(text):
@@ -113,6 +115,57 @@ class Town:
         n = self.nearest_node(lat, lon)
         return n, geo.haversine_m(lat, lon, n[0], n[1])
 
+    # ---- pavements ------------------------------------------------------
+    #
+    # In a French village the walkable network IS the streets. In London the
+    # pavement each side of a street is mapped as its own way, and 72 per cent
+    # of the ways in the Southwark extract have no name at all. So the shortest
+    # foot route threads along unnamed footways that run a few metres from, and
+    # parallel to, a perfectly well named street, and every leg reads as
+    # "unnamed lanes" when a walker would simply say Tooley Street.
+    #
+    # An unnamed way close to a named one, running the same way, takes its
+    # name. That is what the sign on the wall says, which is the only thing
+    # that matters to somebody holding a phone.
+    SIDEWALK_M = 18.0          # how far a pavement sits from its street
+    SIDEWALK_ANGLE = 35.0      # and how nearly parallel it has to run
+
+    def _build_named_index(self):
+        self._cells = {}
+        for way in self.streets:
+            if not way["name"]:
+                continue
+            line = way["line"]
+            for a, b in zip(line, line[1:]):
+                ka, kb = tuple(a), tuple(b)
+                if ka == kb:
+                    continue
+                mid = ((ka[0] + kb[0]) / 2, (ka[1] + kb[1]) / 2)
+                key = (int(mid[0] / CELL), int(mid[1] / CELL))
+                self._cells.setdefault(key, []).append((ka, kb, way["name"]))
+
+    def infer_name(self, a, b):
+        """The named street an unnamed way is the pavement of, if there is one."""
+        if not hasattr(self, "_cells"):
+            self._build_named_index()
+        mid = ((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+        brg = geo.bearing_deg(a[0], a[1], b[0], b[1])
+        ci, cj = int(mid[0] / CELL), int(mid[1] / CELL)
+        best = None
+        for i in range(ci - 1, ci + 2):
+            for j in range(cj - 1, cj + 2):
+                for na, nb, name in self._cells.get((i, j), ()):
+                    d = geo.seg_dist_m(mid, na, nb)
+                    if d > self.SIDEWALK_M:
+                        continue
+                    other = geo.bearing_deg(na[0], na[1], nb[0], nb[1])
+                    off = abs((brg - other + 90.0) % 180.0 - 90.0)
+                    if off > self.SIDEWALK_ANGLE:
+                        continue
+                    if best is None or d < best[0]:
+                        best = (d, name)
+        return best[1] if best else None
+
     def project(self, lat, lon):
         """The point on the street network nearest this one.
 
@@ -138,6 +191,24 @@ class Town:
         d, ka, kb, name, obvious = best
         return {"point": geo.project_on_seg((lat, lon), ka, kb),
                 "a": ka, "b": kb, "name": name, "obvious": obvious, "off_m": d}
+
+    def component_size(self, lat, lon, cap=5000):
+        """How many nodes you can reach on foot from here.
+
+        A path drawn in a park but never joined to the street network is its own
+        little island, and routing to it simply fails. "No walking route" is a
+        true but useless thing to tell an author; "this stop is on a seventeen
+        node fragment" tells them to move it twenty metres.
+        """
+        start, _ = self.snap(lat, lon)
+        seen, stack = {start}, [start]
+        while stack and len(seen) < cap:
+            node = stack.pop()
+            for nxt, _ in self.adj.get(node, ()):
+                if nxt not in seen:
+                    seen.add(nxt)
+                    stack.append(nxt)
+        return len(seen)
 
     def off_network_m(self, lat, lon):
         """How far this point is from the nearest walkable way."""
@@ -283,6 +354,10 @@ class Town:
         for a, b in zip(path, path[1:]):
             key = frozenset((a, b))
             name = (extra_names or {}).get(key, self.edge_name.get(key))
+            inferred = False
+            if not name:
+                name = self.infer_name(a, b)
+                inferred = name is not None
             obvious = (extra_obvious or {}).get(key,
                                                 self.edge_obvious.get(key))
             d = geo.haversine_m(a[0], a[1], b[0], b[1])
@@ -291,7 +366,8 @@ class Town:
                 out[-1]["metres"] += d
                 out[-1]["end_bearing"] = brg
             else:
-                out.append({"name": name, "obvious": obvious, "metres": d,
+                out.append({"name": name, "inferred": inferred,
+                            "obvious": obvious, "metres": d,
                             "bearing": brg, "end_bearing": brg})
         for before, after in zip(out, out[1:]):
             after["turn"] = turn_word(before["end_bearing"], after["bearing"])

@@ -127,7 +127,8 @@ FLOURISHES = [
     # something in front of you, which is the opposite of the tic. "That is"
     # and "which is" point BACK at what you just said, which is the tic.
     (r"\b(?:and )?(?:that|which) is (?:also )?(?:the|why|what|where|how)\b"
-     r"(?! (?:walk|seven|six|five|last stop)\b)",
+     r"(?! (?:walk|last stop|one|two|three|four|five|six|seven|eight|nine"
+     r"|ten|eleven|twelve)\b)",
      "a knowing aside. Say the thing and stop"),
     (r"\bthe (?:giveaway|irony|joke|trick|catch|whole point|real point)\b",
      "an essay flourish"),
@@ -222,6 +223,9 @@ BEARING_ATTACH_CHARS = 60
 SIMPLE_MAX_TURNS = 4
 # How close counts as being on a street rather than merely near one.
 STANDING_ON_M = 30
+# Below this many reachable nodes, a stop is on an island of its own rather than
+# on the network. A park path drawn but never joined to a street does this.
+ISLAND_NODES = 200
 TURN_CLAIMS = re.compile(r"\b(turn|take the|first|second|third)\s+"
                          r"(left|right|turning)", re.I)
 
@@ -282,6 +286,10 @@ WORD_NUMBERS = {
     "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
     "a hundred": 100, "one hundred": 100, "two hundred": 200,
     "three hundred": 300, "four hundred": 400, "five hundred": 500,
+    # Six to nine were missing, so "six hundred and fifty metres" matched only
+    # the "fifty metres" on the end and a 650 m leg read as 50 m.
+    "six hundred": 600, "seven hundred": 700, "eight hundred": 800,
+    "nine hundred": 900,
 }
 
 
@@ -295,7 +303,8 @@ def authored_metres(text):
     if m:
         return int(m.group(1))
     # "a hundred and fifty metres", "two hundred metres", "sixty metres"
-    m = re.search(r"\b((?:a|one|two|three|four|five)\s+hundred(?:\s+and\s+\w+)?"
+    m = re.search(r"\b((?:a|one|two|three|four|five|six|seven|eight|nine)"
+                  r"\s+hundred(?:\s+and\s+\w+)?"
                   r"|ten|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety)"
                   r"\s+metres\b", text)
     if not m:
@@ -316,7 +325,7 @@ def all_authored_metres(text):
     out = []
     for m in re.finditer(r"\b(\d+)\s*metres\b", text):
         out.append(int(m.group(1)))
-    for m in re.finditer(r"\b((?:a|one|two|three|four|five)\s+hundred"
+    for m in re.finditer(r"\b((?:a|one|two|three|four|five|six|seven|eight|nine)\s+hundred"
                          r"(?:\s+and\s+\w+)?|ten|twenty|thirty|forty|fifty|sixty"
                          r"|seventy|eighty|ninety)\s+metres\b", text):
         phrase = m.group(1)
@@ -978,7 +987,16 @@ def check(tour):
             r = town.route((stops[i - 1]["lat"], stops[i - 1]["lon"]),
                            (s["lat"], s["lon"]))
             if r is None:
-                errors.append(f"{where}: no walking route from the stop before it")
+                size = town.component_size(s["lat"], s["lon"])
+                if size < ISLAND_NODES:
+                    errors.append(
+                        f"{where}: sits on an isolated fragment of the walkable "
+                        f"network, {size} nodes wide. The map never joins it to "
+                        f"anything, so no route can reach it. Move the stop a few "
+                        f"metres onto a street")
+                else:
+                    errors.append(f"{where}: no walking route from the stop "
+                                  f"before it")
                 continue
             mode = s.get("directions_mode", "turn_by_turn")
             said = sum(all_authored_metres(s.get("directions") or ""))

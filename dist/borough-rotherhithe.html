@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Everybody Left From Here</title>
+<!-- user-scalable is deliberately left alone: people will want to pinch-zoom a
+     carving on a wall, and every input is 16px so iOS never auto-zooms. -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* Palette taken from the things the walk actually looks at. The ground is
+     Portland stone, which is what the City is faced in and which is cooler and
+     greyer than it looks in photographs. The ink is cast iron, near black with
+     a blue cast, off the bollards and the railings. The accent is the oxide red
+     of the tile courses in the Roman wall, which is also the red of the cross
+     on the City arms and the tongues of the boundary dragons. Nothing here is
+     warm cream and nothing is terracotta.
+
+     Three theme states, not two. An explicit choice stamps data-theme on the
+     root; the default setting stamps nothing and only prefers-color-scheme
+     separates light from dark. So the bare :root carries the whole light
+     palette, the media query redefines tokens for the unstamped dark case, and
+     the [data-theme] blocks let a deliberate choice win in either direction.
+     Every component reads tokens, never a literal, or it renders one theme's
+     text on the other theme's ground. */
+  :root {
+    --paper: #ECEBE7; --panel: #FAFAF8; --ink: #191B1C; --ink-soft: #5C6163;
+    --line: #CFCFC8; --accent: #9E2B25; --accent-soft: #F0DEDB;
+    --accent-ink: #FFFFFF;
+    --good: #2F6B4F; --good-soft: #DCE9E2;
+    --warn: #9E2B25; --warn-soft: #F0DEDB;
+    --key: #E0E0DA; --key-ink: #191B1C; --shadow: 0 1px 3px rgba(25,27,28,.13);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141617; --panel: #1D2022; --ink: #E8E7E3; --ink-soft: #9AA0A2;
+      --line: #363B3D; --accent: #E08078; --accent-soft: #3A2220;
+      --accent-ink: #141617;
+      --good: #6FBF97; --good-soft: #1E3229;
+      --warn: #E08078; --warn-soft: #3A2220;
+      --key: #2A2E30; --key-ink: #E8E7E3; --shadow: 0 1px 3px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141617; --panel: #1D2022; --ink: #E8E7E3; --ink-soft: #9AA0A2;
+    --line: #363B3D; --accent: #E08078; --accent-soft: #3A2220;
+    --accent-ink: #141617;
+    --good: #6FBF97; --good-soft: #1E3229;
+    --warn: #E08078; --warn-soft: #3A2220;
+    --key: #2A2E30; --key-ink: #E8E7E3; --shadow: 0 1px 3px rgba(0,0,0,.45);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body { background: var(--paper); color: var(--ink);
+         font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+         display: flex; flex-direction: column; align-items: center; }
+  .screen { width: 100%; max-width: 560px; display: none; flex-direction: column;
+            min-height: 100dvh; padding: 8px 12px calc(20px + env(safe-area-inset-bottom)); }
+  .screen.on { display: flex; }
+  header { display: flex; align-items: baseline; gap: 10px; padding: 6px 2px; }
+  .wordmark { font-family: Georgia, "Times New Roman", serif; font-weight: 700;
+              font-size: 1.2rem; letter-spacing: .08em; white-space: nowrap; }
+  .wordmark span { color: var(--accent); margin-left: .3em; }
+  .tagline { font-size: .68rem; color: var(--ink-soft); letter-spacing: .08em;
+             text-transform: uppercase; }
+  .spacer { flex: 1; }
+  .banner { background: var(--warn-soft); color: var(--warn); border-radius: 8px;
+            font-size: .74rem; padding: 7px 10px; margin: 6px 0; line-height: 1.4; }
+  .banner.sim { background: var(--accent-soft); color: var(--ink); }
+
+  .intro { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
+           padding: 10px 2px 4px; }
+  .intro .lead { font-size: 1.15rem; margin-bottom: 10px; }
+  .intro p { margin-bottom: 10px; color: var(--ink-soft); font-size: .92rem; }
+
+  /* The choosing is the part that makes this feel like yours, so the cards are
+     big, the tap target is the whole card, and the count is always visible. */
+  .picker { display: flex; flex-direction: column; gap: 9px; margin: 6px 0 4px; }
+  .topic { display: flex; align-items: flex-start; gap: 12px; text-align: left;
+           background: var(--panel); border: 1.5px solid var(--line);
+           border-radius: 14px; padding: 14px; box-shadow: var(--shadow);
+           cursor: pointer; color: var(--ink); font: inherit; width: 100%;
+           transition: border-color .18s ease, background .18s ease, transform .12s ease; }
+  .topic:active { transform: scale(.99); }
+  .topic .tick { flex: 0 0 24px; height: 24px; border-radius: 50%;
+                 border: 1.5px solid var(--line); display: grid; place-items: center;
+                 font-size: .9rem; color: transparent; margin-top: 1px;
+                 transition: background .18s ease, border-color .18s ease, color .18s ease; }
+  .topic .tname { display: block; font-family: Georgia, serif; font-weight: 700;
+                  font-size: 1.05rem; margin-bottom: 4px; }
+  .topic .tblurb { display: block; font-size: .84rem; color: var(--ink-soft);
+                   line-height: 1.45; }
+  .topic.on { border-color: var(--accent); background: var(--accent-soft); }
+  .topic.on .tick { background: var(--accent); border-color: var(--accent);
+                    color: var(--accent-ink); }
+  .topic.full:not(.on) { opacity: .48; }
+  .topic:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .pickbar { position: sticky; bottom: 0; background: var(--paper);
+             padding: 10px 0 calc(6px + env(safe-area-inset-bottom));
+             border-top: 1px solid var(--line); margin-top: 6px; }
+  .pickcount { font-size: .78rem; color: var(--ink-soft); text-align: center;
+               margin-bottom: 8px; min-height: 1.2em; }
+
+  .btn { border: none; border-radius: 10px; padding: 14px 0; font-size: .98rem;
+         font-weight: 600; cursor: pointer; width: 100%; min-height: 46px; }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.primary:disabled { opacity: .45; cursor: default; }
+  .btn.ghost { background: var(--key); color: var(--key-ink); }
+
+  /* The progress bar rides at the top while the walk scrolls under it. */
+  #topbar { position: sticky; top: 0; z-index: 6; background: var(--paper);
+            padding: 6px 2px 8px; border-bottom: 1px solid var(--line);
+            display: flex; flex-direction: column; gap: 5px; }
+  .meter { display: flex; align-items: center; gap: 9px; }
+  .mlabel { font-size: .72rem; color: var(--ink-soft); white-space: nowrap;
+            flex: 0 0 62px; }
+  .mbar { flex: 1; height: 8px; border-radius: 999px; background: var(--key);
+          overflow: hidden; }
+  .mfill { height: 100%; width: 0; border-radius: 999px; background: var(--good);
+           transition: width .4s ease; }
+  .mnum { font-size: .78rem; color: var(--ink-soft); font-variant-numeric: tabular-nums;
+          min-width: 3.2em; text-align: right; }
+
+  #walk { flex: 1; }
+  .stop { background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+          padding: 14px; margin-bottom: 10px; box-shadow: var(--shadow); }
+  .stop.done { border-color: var(--good); }
+  .shead { display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+           font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+           text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+  .shead .no { color: var(--accent); }
+  .shead .state { margin-left: auto; }
+  .stitle { font-family: Georgia, serif; font-size: 1.15rem; line-height: 1.3;
+            margin-bottom: 12px; }
+  /* Tap to finish the reveal was there from the start and nothing said so. */
+  .skiptip { margin-top: 10px; font-size: .7rem; color: var(--ink-soft);
+             letter-spacing: .04em; }
+  .payrule { border-top: 1px solid var(--line); margin: 16px 0 14px; }
+  .stext + .stext { margin-top: 0; }
+  /* .picker sets display:flex, which beats the browser default for [hidden].
+     Anything hidden must actually be hidden. */
+  [hidden] { display: none !important; }
+  .swhere { font-size: .78rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .stext { font-family: Georgia, serif; font-size: 1rem; line-height: 1.55;
+           white-space: pre-line; }
+  /* Words, not characters. The whole text is laid out invisibly from the first
+     frame, so the card never grows and lines never re-wrap mid-reveal, and each
+     word then darkens into place. It reads like a voice rather than a machine. */
+  .stext .w, .legtext .w { opacity: 0; }
+  .stext .w.on, .legtext .w.on { opacity: 1; transition: opacity .45s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .stext .w, .legtext .w { opacity: 1; }
+  }
+  .after { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);
+           font-family: Georgia, serif; font-size: .98rem; line-height: 1.6;
+           white-space: pre-line; }
+  .srow { margin-top: 14px; }
+  .nudge { font-family: Georgia, serif; font-size: 1rem; line-height: 1.5;
+           background: var(--accent-soft); color: var(--ink); border-radius: 10px;
+           padding: 12px; margin-top: 14px; }
+  .lateprompt { margin-top: 10px; font-size: .82rem; color: var(--ink-soft);
+                line-height: 1.45; }
+
+  /* The gate: a question of presence, before anything is said. */
+  .gatewrap { text-align: center; padding: 4px 2px 2px; }
+  .gateq { font-family: Georgia, serif; font-size: 1.02rem; margin-bottom: 12px;
+           line-height: 1.5; }
+  .gatestat { font-size: .8rem; color: var(--ink-soft); min-height: 1.2em;
+              margin: 10px 0 2px; font-variant-numeric: tabular-nums; }
+  .gatenote { font-size: .68rem; color: var(--ink-soft); margin-top: 6px; }
+
+  /* A newly opened stop does not simply appear. A hairline draws across the top
+     of the card and the card resolves out of blur behind it, before the words
+     start. Two seconds, once, never on a card already seen. */
+  .stop.arriving { position: relative; overflow: hidden;
+                   animation: resolve 2000ms cubic-bezier(.2,.7,.25,1) forwards; }
+  .stop.arriving::after {
+    content: ""; position: absolute; top: 0; left: 0; height: 2px; width: 0;
+    background: var(--accent); animation: scanline 1240ms ease-out forwards; }
+  @keyframes scanline { 0% { width: 0; opacity: 1 } 78% { width: 100%; opacity: 1 }
+                        100% { width: 100%; opacity: 0 } }
+  @keyframes resolve {
+    0%   { opacity: 0; filter: blur(7px); transform: translateY(7px) scale(.985); }
+    38%  { opacity: .35; filter: blur(7px); transform: translateY(7px) scale(.985); }
+    100% { opacity: 1; filter: blur(0);    transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+  .toolrow { display: flex; gap: 6px; justify-content: center; padding: 12px 0 2px;
+             flex-wrap: wrap; }
+  .tool { border: 1px solid var(--line); background: var(--panel); color: var(--ink-soft);
+          font-size: .76rem; padding: 11px 16px; border-radius: 999px; cursor: pointer;
+          min-height: 44px; }
+  .tool:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  #modal { position: fixed; inset: 0; background: rgba(14,12,10,.55); display: none;
+           align-items: center; justify-content: center; padding: 18px; z-index: 20; }
+  #modal.show { display: flex; }
+  .card { background: var(--panel); color: var(--ink); border-radius: 16px;
+          padding: 22px 20px; max-width: 400px; width: 100%;
+          box-shadow: 0 12px 40px rgba(0,0,0,.35); max-height: 86dvh; overflow-y: auto; }
+  .card h2 { font-family: Georgia, serif; font-size: 1.3rem; margin-bottom: 8px; }
+  .card .sub { color: var(--ink-soft); font-size: .84rem; margin-bottom: 10px; line-height: 1.5; }
+  .card .sub ol { margin: 6px 0 0 18px; }
+  .card .sub li { margin-bottom: 5px; }
+  .card .sub b { color: var(--ink); }
+  .btnrow { display: flex; gap: 8px; margin-top: 14px; }
+  .btnrow .btn { flex: 1; padding: 12px 0; font-size: .9rem; }
+  /* The approach simulator. Deliberately styled as scaffolding rather than as
+     part of the walk, so nobody mistakes it for a feature. */
+  .devrow { margin-top: 14px; padding: 10px; border: 1px dashed var(--line);
+            border-radius: 10px; display: flex; flex-wrap: wrap; gap: 6px;
+            align-items: center; }
+  .devrow .devlabel { font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+                      color: var(--ink-soft); width: 100%; }
+  .devrow button { border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+                   font: inherit; font-size: .78rem; padding: 9px 12px; border-radius: 999px;
+                   cursor: pointer; min-height: 40px; }
+  .devrow .devdist { font-size: .74rem; color: var(--ink-soft); margin-left: auto;
+                     font-variant-numeric: tabular-nums; }
+  .devnote { width: 100%; font-size: .68rem; color: var(--ink-soft); line-height: 1.45; }
+
+  /* The question. There is no score and no way to fail, so this is styled as a
+     prompt rather than as an exam. */
+  .qask { margin-top: 14px; font-family: Georgia, serif; font-size: 1rem;
+          line-height: 1.5; background: var(--accent-soft); color: var(--ink);
+          border-radius: 10px; padding: 12px; }
+  .qrow { margin-top: 10px; display: flex; gap: 8px; }
+  .qrow input { flex: 1; padding: 12px; font-size: 1rem; border-radius: 9px;
+                border: 1.5px solid var(--line); background: var(--paper);
+                color: var(--ink); min-height: 46px; }
+  .qrow input:focus-visible { outline: 2px solid var(--accent); }
+  .qrow .btn { width: 96px; flex: none; padding: 11px 0; }
+  .qhint { margin-top: 9px; font-size: .82rem; color: var(--ink-soft); line-height: 1.45; }
+  .qtold { margin-top: 14px; font-size: .84rem; color: var(--ink-soft);
+           border-left: 3px solid var(--line); padding-left: 10px; }
+  .qgiveup { display: block; margin-top: 10px; border: none; background: none;
+             color: var(--ink-soft); font: inherit; font-size: .78rem; cursor: pointer;
+             text-decoration: underline dotted; text-underline-offset: 3px; padding: 6px 0; }
+  .stop.wrong { animation: shake .35s; }
+  @keyframes shake { 25% { transform: translateX(-6px) } 75% { transform: translateX(6px) } }
+
+  /* Directions between two stops. Deliberately not a card like a stop: it is
+     the bit in between, so it reads as a road sign rather than as content. */
+  .leg { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px;
+         margin: 2px 0 12px 6px; }
+  .leghead { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase;
+             color: var(--ink-soft); margin-bottom: 6px; }
+  .legtext { font-family: Georgia, serif; font-size: .96rem; line-height: 1.6;
+             white-space: pre-line; }
+  .legmeta { margin-bottom: 7px; font-size: .74rem; color: var(--ink-soft);
+             font-variant-numeric: tabular-nums; }
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+           background: var(--ink); color: var(--paper); font-size: .82rem; padding: 10px 16px;
+           border-radius: 14px; opacity: 0; transition: opacity .25s; pointer-events: none;
+           z-index: 30; width: calc(100% - 32px); max-width: 420px; text-align: center;
+           line-height: 1.35; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="screen on" id="s-pick">
+  <header>
+    <div>
+      <div class="wordmark">LONDON<span>NOTICING</span></div>
+      <div class="tagline">oh, look at that</div>
+    </div>
+  </header>
+
+  <div class="intro">
+    <div class="lead">Pick three things you like the sound of.</div>
+    <p>You will get an eighteen stop walk through central London, six stops for
+       each thing you chose, in an order that makes sense on foot.</p>
+    <p>There is nothing to solve and nothing to win. The point is to make you
+       look at something you have walked past a hundred times.</p>
+  </div>
+
+  <div class="picker" id="picker"></div>
+
+  <div class="pickbar">
+    <div class="pickcount" id="pickcount"></div>
+    <button class="btn primary" id="startbtn" disabled>Choose three to start</button>
+  </div>
+</div>
+
+<div class="screen" id="s-walk">
+  <header>
+    <div>
+      <div class="wordmark">LONDON<span>NOTICING</span></div>
+      <div class="tagline" id="walktitle"></div>
+    </div>
+  </header>
+  <div id="simbanner" class="banner sim" style="display:none"></div>
+  <div id="topbar">
+    <div class="meter">
+      <span class="mlabel">Progress</span>
+      <div class="mbar"><div id="progressfill" class="mfill"></div></div>
+      <span class="mnum" id="progresstext"></span>
+    </div>
+  </div>
+  <div id="walk"></div>
+  <div class="toolrow">
+    <button class="tool" id="simoffbtn" hidden>Back to the real GPS</button>
+    <button class="tool" id="restartbtn">Start over</button>
+  </div>
+</div>
+
+<div id="modal"><div class="card" id="modalcard"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>window.NOTICING_BUNDLE = {"tour": {"format": 1, "combo_key": "borough-rotherhithe", "mode": "fixed", "served_at": "borough", "directions_style": "turn_by_turn", "name": "Everybody Left From Here", "tagline": "pilgrims, prisoners and emigrants, along four kilometres of south bank", "city": "London", "intro": {"lead": "Twelve stops from Borough to Rotherhithe.", "body": "Four kilometres along the south bank, about two hours with the stops. It is flat.\n\nSeven ask a question you can only answer by looking. Five just need you standing in the right place.\n\nEverything is outdoors and free. If you only have an hour, break off at Tower Bridge, which is number six.", "start": "Start in Angel Place, the narrow alley beside the library off Borough High Street."}, "outro": "Twelve stops, and you are at the pub.\n\nThe last two are both within sight of it. Rotherhithe station is five minutes back the way you came.\n\nIf you have more walking in you, the path carries on east past the old dock entrances towards Greenwich.", "draft": false, "topics": [{"id": "borough", "name": "Pilgrims and Prisoners", "blurb": "Everyone going south left from this street, and some of them were not allowed to leave at all."}, {"id": "river", "name": "The Working River", "blurb": "Four hundred years of bridges, wharves and slums, on one bend of the Thames."}, {"id": "sea", "name": "The Ships That Left", "blurb": "A tunnel under the water, a church full of sailors, and the stairs one ship sailed from."}], "stops": [{"id": "marshalsea", "topic": "borough", "title": "The Wall in Angel Place", "where": "Angel Place, the narrow alley beside the library", "lat": 51.501641, "lon": -0.091575, "directions": null, "directions_mode": "turn_by_turn", "gate": null, "nudge": null, "question": {"ask": "A famous writer's father was locked up here. Who was the writer?", "answers": ["Dickens", "Charles Dickens", "Dickins", "Charles Dickins", "Chas Dickens"], "hint": "The plaque names him. He was twelve at the time."}, "look": "A brick wall down one side of a narrow alley. It is the last piece of the Marshalsea, a prison for people who owed money.\n\nYou could not get out until you paid, and you could not earn while you were in.", "look_spoken": null, "after": "Charles Dickens. His father John was brought here in February 1824 owing a baker forty pounds.\n\nCharles was twelve. He was taken out of school and sent to paste labels on pots in a blacking factory by the river, six days a week.\n\nHe put the prison in Little Dorrit. He never told his own children any of it.", "after_spoken": "Charles Dickens. His father John was brought here in February eighteen twenty four owing a baker forty pounds.\n\nCharles was twelve. He was taken out of school and sent to paste labels on pots in a blacking factory by the river, six days a week.\n\nHe put the prison in Little Dorrit. He never told his own children any of it.", "audio": null}, {"id": "talbot", "topic": "borough", "title": "Talbot Yard", "where": "the plaque in Talbot Yard, off Borough High Street", "lat": 51.504154, "lon": -0.090338, "directions": "From Angel Place, head north up the High Street. About four hundred metres.\n\nYou may come out on Angel Place, Borough High Street or Talbot Yard. There is more than one way through here and they are all about the same length, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a plaque on the wall of a narrow yard on the east side of the street.", "directions_mode": "rough", "gate": null, "nudge": null, "question": {"ask": "Pilgrims set off from an inn here in a famous book. Who wrote it?", "answers": ["Chaucer", "Geoffrey Chaucer", "Chauser", "Geoffrey Chauser", "Chaucher"], "hint": "His name is on the plaque, with the name of the inn."}, "look": "The Tabard stood here. It was one of a long row along this street, because everybody heading south had to start from Southwark.\n\nThe yards are still called after the inns. The inns themselves have gone.", "look_spoken": null, "after": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where thirty pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in 1676, was rebuilt, and was pulled down in 1873.", "after_spoken": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where thirty pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in sixteen seventy six, was rebuilt, and was pulled down in eighteen seventy three.", "audio": null}, {"id": "george", "topic": "borough", "title": "The George", "where": "the yard in front of the George Inn", "lat": 51.504181, "lon": -0.089968, "directions": "From the Talbot plaque, carry on east into the yard. About ninety metres.\n\nYou may come out on Talbot Yard or Borough High Street. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a building with two tiers of open wooden gallery across its front.", "directions_mode": "rough", "gate": {"radius_m": 25, "allow_pass": true, "prompt": "Stand in the yard, in front of the galleries."}, "nudge": null, "question": null, "look": "Two tiers of open wooden gallery along the front. Coaches pulled into this yard and passengers walked round the balconies to their rooms.\n\nIt is the last one left in London. There were dozens.", "look_spoken": null, "after": "The National Trust owns it, which saved it.\n\nWhat stands here went up after the Southwark fire of 1676. Two of its three sides came down in 1899 to clear space for a railway yard, so you are looking at a third of it.\n\nDickens drank here.", "after_spoken": "The National Trust owns it, which saved it.\n\nWhat stands here went up after the Southwark fire of sixteen seventy six. Two of its three sides came down in eighteen ninety nine to clear space for a railway yard, so you are looking at a third of it.\n\nDickens drank here.", "audio": null}, {"id": "cathedral", "topic": "borough", "title": "Southwark Cathedral", "where": "the churchyard on the north side of the cathedral", "lat": 51.506144, "lon": -0.08968, "directions": "From the George, head north through the market. About three hundred metres. The lanes are narrow and busy on a market day.\n\nYou may come out on Borough High Street, Bedale Street or Green Dragon Court. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is the cathedral, and the churchyard on its north side.", "directions_mode": "rough", "gate": {"radius_m": 35, "allow_pass": true, "prompt": "Stand in the churchyard, on the north side."}, "nudge": null, "question": null, "look": "Two men were here in the same year, 1607.\n\nOne was buried in this church that December. The other was baptised in it that November.\n\nThere is a university named after the second one.", "look_spoken": "Two men were here in the same year, sixteen oh seven.\n\nOne was buried in this church that December. The other was baptised in it that November.\n\nThere is a university named after the second one.", "after": "Edmund Shakespeare, William's youngest brother and an actor like him. He died at twenty-seven, and William paid twenty shillings for a forenoon knell of the great bell, which was the expensive option.\n\nJohn Harvard was a butcher's son from this parish. He went to Massachusetts, died at thirty, and left his books and half his money to a new college outside Boston.", "after_spoken": null, "audio": null}, {"id": "bridge-mosaic", "topic": "river", "title": "Old London Bridge", "where": "the mosaic on the riverside walk, near Hay's Galleria", "lat": 51.506258, "lon": -0.083303, "directions": "From the cathedral, head east to the river, then downstream. About five hundred and fifty metres.\n\nYou may come out on Green Dragon Court, Duke Street Hill, London Bridge Walk or The Queen's Walk. There is more than one way through here and they are all about the same length, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a mosaic of an old bridge, set into the wall on the landward side.", "directions_mode": "rough", "gate": null, "nudge": null, "question": {"ask": "The mosaic shows the old bridge. What was built along the whole length of it?", "answers": ["houses", "shops", "houses and shops", "shops and houses", "buildings", "homes", "a row of houses", "house", "shop", "dwellings"], "hint": "Look at the skyline in the picture. It is not a bare crossing."}, "look": "A picture in tile, showing London Bridge at night in the fifteenth century.\n\nFor six hundred years that was the only way over the Thames in London. Everybody crossing went past what you can see here.", "look_spoken": null, "after": "Houses and shops, seven storeys high in places, leaning out over the water.\n\nThere was a chapel on it, and a gatehouse at the Southwark end where the heads of traitors were set on poles. A German visitor counted thirty of them in 1598.\n\nThe buildings came off in 1762 and the bridge itself went in 1831.", "after_spoken": "Houses and shops, seven storeys high in places, leaning out over the water.\n\nThere was a chapel on it, and a gatehouse at the Southwark end where the heads of traitors were set on poles. A German visitor counted thirty of them in fifteen ninety eight.\n\nThe buildings came off in seventeen sixty two and the bridge itself went in eighteen thirty one.", "audio": null}, {"id": "tower-bridge", "topic": "river", "title": "Tower Bridge", "where": "the southern end of Tower Bridge", "lat": 51.504193, "lon": -0.076138, "directions": "From the mosaic, keep the water on your left and carry on south east. About six hundred metres, all of it on the riverside walk.\n\nYou may come out on The Queen's Walk or Shad Thames. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is the southern end of Tower Bridge.", "directions_mode": "rough", "gate": {"radius_m": 35, "allow_pass": true, "prompt": "Stand at the southern end of the bridge."}, "nudge": null, "question": null, "look": "Both halves still lift, about eight hundred times a year.\n\nThe stonework is a shell. Underneath it the whole thing is a steel frame, dressed in stone so it would not embarrass the Tower across the water.", "look_spoken": null, "after": "It opened in 1894, after eight years of building.\n\nOn 30 December 1952 a number 78 bus was crossing when the two halves began to rise under it. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nNobody was badly hurt. He was given ten pounds.", "after_spoken": "It opened in eighteen ninety four, after eight years of building.\n\nOn the thirtieth of December nineteen fifty two a number seventy eight bus was crossing when the two halves began to rise under it. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nNobody was badly hurt. He was given ten pounds.", "audio": null}, {"id": "jacobs-island", "topic": "river", "title": "St Saviour's Dock", "where": "the footbridge across the mouth of the dock", "lat": 51.50219, "lon": -0.0707, "directions": "From the bridge, head south east between the warehouses. About five hundred metres, down a street narrow enough to feel like a canyon.\n\nYou may come out on Tower Bridge or Shad Thames. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a footbridge over a tidal creek, at the end of the warehouses.", "directions_mode": "rough", "gate": {"radius_m": 25, "allow_pass": true, "prompt": "Stand on the footbridge over the creek."}, "nudge": null, "question": null, "look": "A tidal creek between warehouses. A small river called the Neckinger comes out here.\n\nThe slum on the far side was called Jacob's Island: a lattice of ditches, plank bridges and rotting timber, with the worst cholera in London.", "look_spoken": null, "after": "Dickens killed Bill Sikes here at the end of Oliver Twist, in a chase over the roofs.\n\nHe described it so exactly that an alderman stood up in public and announced that no such place existed. Dickens went back and described it again, in more detail.\n\nIt was pulled down in the eighteen fifties.", "after_spoken": null, "audio": null}, {"id": "old-justice", "topic": "river", "title": "The River Wall", "where": "Bermondsey Wall East, by the Old Justice", "lat": 51.500195, "lon": -0.064229, "directions": "From the footbridge, head south east and then east, keeping near the river. About six hundred and fifty metres.\n\nYou may come out on Mill Street, Bermondsey Wall West, Chambers Street or Farncombe Street. There is more than one way through here and they are all about the same length, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a pub called the Old Justice, on the river side of Bermondsey Wall East.", "directions_mode": "rough", "gate": {"radius_m": 30, "allow_pass": true, "prompt": "Stand on the river side of the road, by the pub."}, "nudge": null, "question": null, "look": "You are on a river wall. Everything behind you is below the high tide line and always has been.\n\nLook downstream, past the bend. The docks that filled that ground were the biggest timber yards in the country.", "look_spoken": null, "after": "On the afternoon of 7 September 1940 the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for eleven weeks.", "after_spoken": "On the afternoon of the seventh of September nineteen forty the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for eleven weeks.", "audio": null}, {"id": "kings-stairs", "topic": "sea", "title": "King's Stairs Gardens", "where": "the river side of Bermondsey Wall East, by the gardens", "lat": 51.500444, "lon": -0.05907, "directions": "From the Old Justice, follow Bermondsey Wall East, which runs east along the river wall. About four hundred metres.\n\nThe gardens open out on the water side, just before Cathay Street.", "directions_mode": "turn_by_turn", "gate": null, "nudge": null, "question": {"ask": "The girl by the wall. Who was she?", "answers": ["his daughter", "daughter", "Joyce", "Joyce Salter", "his daughter Joyce", "their daughter", "the daughter", "his child", "his girl"], "hint": "There is a board nearby that names all three of them."}, "look": "Two bronze figures in the grass, and a cat.\n\nThe seated one is Alfred Salter. He gave up a Harley Street career to doctor the poorest parish in London, and the parish sent him to Parliament.", "look_spoken": null, "after": "Joyce, his daughter. She caught scarlet fever from his patients and died in 1910, aged eight.\n\nThe Salters had decided to live in Bermondsey rather than send her somewhere safer. That decision killed her, and they stayed anyway.\n\nThe stone ruin behind you is much older. Edward III built a manor house on this bank in 1353, when it was an island in the marsh.", "after_spoken": "Joyce, his daughter. She caught scarlet fever from his patients and died in nineteen ten, aged eight.\n\nThe Salters had decided to live in Bermondsey rather than send her somewhere safer. That decision killed her, and they stayed anyway.\n\nThe stone ruin behind you is much older. Edward the third built a manor house on this bank in thirteen fifty three, when it was an island in the marsh.", "audio": null}, {"id": "st-mary", "topic": "sea", "title": "The Church at Rotherhithe", "where": "the churchyard on St Marychurch Street", "lat": 51.501389, "lon": -0.053953, "directions": "From the gardens, head east, keeping near the water. About four hundred metres. The path leaves the river for a stretch and comes back.\n\nYou may come out on Cathay Street, Bermondsey Wall East, King's Stairs or Rotherhithe Street. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a red brick church on the corner of St Marychurch Street.", "directions_mode": "rough", "gate": {"radius_m": 30, "allow_pass": true, "prompt": "Stand in the churchyard."}, "nudge": null, "question": null, "look": "A red brick church of 1715, paid for by the people who worked the river here.\n\nThe master of the ship that carried the Pilgrims to America in 1620 is buried in this churchyard. No stone. Nobody wrote down where.", "look_spoken": "A red brick church of seventeen fifteen, paid for by the people who worked the river here.\n\nThe master of the ship that carried the Pilgrims to America in sixteen twenty is buried in this churchyard. No stone. Nobody wrote down where.", "after": "Two timbers of the communion table came out of a warship. The Temeraire was broken up just downstream in 1838. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in 1784, learned English in six months, and died of smallpox inside the year.", "after_spoken": "Two timbers of the communion table came out of a warship. The Temeraire was broken up just downstream in eighteen thirty eight. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in seventeen eighty four, learned English in six months, and died of smallpox inside the year.", "audio": null}, {"id": "brunel", "topic": "sea", "title": "The Engine House", "where": "the old engine house beside Rotherhithe station", "lat": 51.501612, "lon": -0.052942, "directions": "From the churchyard, head east along the main street. About a hundred and thirty metres, past the station entrance.\n\nYou may come out on Rotherhithe Street or Tunnel Road. The lanes here are older than the map and most carry no sign, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a squat brick building with a tall chimney, beside the station.", "directions_mode": "rough", "gate": null, "nudge": null, "question": {"ask": "A father and son drove this shaft down and dug east. What was their name?", "answers": ["Brunel", "Brunell", "Bruneau", "Marc Brunel", "Isambard Kingdom Brunel", "the Brunels", "Brunels"], "hint": "It is on this building, and on the pub up the road."}, "look": "Low brick, with a chimney. It held the pumps that kept the water out.\n\nThe shaft beside it goes down to the first tunnel ever dug under a river anybody could sail on.", "look_spoken": null, "after": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In 1828 Isambard was washed up the shaft on a wave and two men beside him drowned. He was twenty-two.\n\nIt opened in 1843 as a foot tunnel, and trains use it now.", "after_spoken": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In eighteen twenty eight Isambard was washed up the shaft on a wave and two men beside him drowned. He was twenty-two.\n\nIt opened in eighteen forty three as a foot tunnel, and trains use it now.", "audio": null}, {"id": "mayflower", "topic": "sea", "title": "The Pub at the Stairs", "where": "the pub on the river, at the end of St Marychurch Street", "lat": 51.501784, "lon": -0.053587, "directions": "From the engine house, head back north west towards the water. About sixty metres. It is the last stop.\n\nYou may come out on Tunnel Road or Rotherhithe Street. There is more than one way through here and they are all about the same length, so if you come out somewhere else you have not gone wrong.\n\nWhat you are looking for is a pub on the river side of the road, with a jetty behind it.", "directions_mode": "rough", "gate": null, "nudge": {"prompt": "This is the stop for a drink. The jetty out the back is the place to have it.", "confirm": "Got one"}, "question": {"ask": "This pub is named after a ship. Which one?", "answers": ["Mayflower", "the Mayflower", "May flower", "Mayflour", "Mayflowers"], "hint": "It is on the sign over the door."}, "look": "Go through to the back if there is room. The pub stands on its own stairs.\n\nA ship tied up here in July 1620, took on passengers, and dropped down the coast to pick up the rest.", "look_spoken": "Go through to the back if there is room. The pub stands on its own stairs.\n\nA ship tied up here in July sixteen twenty, took on passengers, and dropped down the coast to pick up the rest.", "after": "The Mayflower. Her master was Christopher Jones, who lived on this street and lies in the churchyard you have just come from.\n\nShe came back the next year and was probably broken up here for timber.\n\nA hundred and two people sailed. About half of them were dead within a year of landing.", "after_spoken": null, "audio": null}], "walk": {"n_stops": 12, "total_walk_m": 4306.9, "total_minutes": 53.8, "reversals": 1, "legs": [{"from": "marshalsea", "to": "talbot", "straight_m": 292.3, "walk_m": 379.9, "minutes": 4.7, "bearing": 17.0}, {"from": "talbot", "to": "george", "straight_m": 25.8, "walk_m": 33.5, "minutes": 0.4, "bearing": 83.3}, {"from": "george", "to": "cathedral", "straight_m": 219.2, "walk_m": 284.9, "minutes": 3.6, "bearing": 5.2}, {"from": "cathedral", "to": "bridge-mosaic", "straight_m": 441.5, "walk_m": 574.0, "minutes": 7.2, "bearing": 88.4}, {"from": "bridge-mosaic", "to": "tower-bridge", "straight_m": 546.5, "walk_m": 710.4, "minutes": 8.9, "bearing": 114.8}, {"from": "tower-bridge", "to": "jacobs-island", "straight_m": 437.4, "walk_m": 568.6, "minutes": 7.1, "bearing": 120.6}, {"from": "jacobs-island", "to": "old-justice", "straight_m": 499.8, "walk_m": 649.8, "minutes": 8.1, "bearing": 116.3}, {"from": "old-justice", "to": "kings-stairs", "straight_m": 358.2, "walk_m": 465.6, "minutes": 5.8, "bearing": 85.6}, {"from": "kings-stairs", "to": "st-mary", "straight_m": 369.5, "walk_m": 480.3, "minutes": 6.0, "bearing": 73.5}, {"from": "st-mary", "to": "brunel", "straight_m": 74.2, "walk_m": 96.5, "minutes": 1.2, "bearing": 70.5}, {"from": "brunel", "to": "mayflower", "straight_m": 48.6, "walk_m": 63.1, "minutes": 0.8, "bearing": 293.2}]}, "gated_stops": 6, "question_stops": 6}};</script>
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PICK = 3;
+const ROUTES = "routes/";
+const LATE_NUDGE_MS = 45000;   // how long before we quietly offer a hand
+
+// Testing scaffolding is off unless it is asked for by hand. On a real walk
+// there is no button to press, and there is no way to reach one, because a
+// visible control that opens a gated stop is a skip button whatever it is
+// called. Add ?testing=1 or #testing to the address to bring it back.
+// Deliberately NOT enabled by hostname. An earlier version switched itself on
+// for localhost, which meant the local build quietly had scaffolding the real
+// one did not, and the test that was supposed to prove a gate cannot be walked
+// past was running against a page that still had the walk-closer buttons on it.
+// Implicit is how you end up testing the wrong build. Ask for it every time.
+let TESTING = /(?:^|[?&])testing=1(?:&|$)/.test(location.search)
+           || location.hash === "#testing";
+const FIX_WINDOW_MS = 7000;    // how long to keep listening for a better fix
+const FIX_GOOD_ENOUGH_M = 20;  // and when to stop waiting for one
+const SIM_START_M = 500;       // where a simulated approach begins
+const SIM_STEP_M = 120;        // and how far one press of the button walks
+
+// Two walks are served from the same origin, so they share one local storage.
+// Without a namespace the second one to be opened reads the first one's saved
+// position, and London cheerfully tries to resume a route called amber-mile
+// that it has never heard of. Namespace by which walk this build is.
+const NS = "noticing."
+         + ((window.NOTICING_BUNDLE && window.NOTICING_BUNDLE.tour
+             && window.NOTICING_BUNDLE.tour.combo_key) || "london") + ".";
+const LS = {
+  get: (k, d) => { try { return JSON.parse(localStorage.getItem(NS + k)) ?? d; }
+                   catch { return d; } },
+  set: (k, v) => { try { localStorage.setItem(NS + k, JSON.stringify(v)); } catch {} },
+  del: (k) => { try { localStorage.removeItem(NS + k); } catch {} },
+};
+
+let TOPICS = [];
+let picked = [];
+let ROUTE = null;              // the baked artefact, self-contained
+let STATE = null;              // { combo, current, gate: {}, revealed: {} }
+let SIM = null;                // { lat, lon, acc, label } while testing
+const typing = new Map();
+let lateTimer = null;
+
+function toast(msg) {
+  $("toast").textContent = msg;
+  $("toast").classList.add("show");
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => $("toast").classList.remove("show"), 3400);
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+function closeModal() { $("modal").classList.remove("show"); }
+
+/* ---- the word-by-word reveal, kept from the earlier build ---- */
+const TYPE_SLOWDOWN = 2.6;
+const SENTENCE_PAUSE_MS = 700;
+const ARRIVE_MS = 2000;
+function typeInto(el, text, key, delay) {
+  el.textContent = "";
+  const words = [];
+  for (const tok of text.split(/(\s+)/)) {
+    if (!tok) continue;
+    if (/^\s+$/.test(tok)) { el.appendChild(document.createTextNode(tok)); continue; }
+    const w = document.createElement("span");
+    w.className = "w"; w.textContent = tok;
+    el.appendChild(w); words.push(w);
+  }
+  const step = Math.max(8, Math.min(22, Math.floor(3200 / Math.max(1, text.length))))
+               * TYPE_SLOWDOWN;
+  const bounds = [];
+  let s0 = 0;
+  words.forEach((w, k) => {
+    if (/[.?!]["')\]]?$/.test(w.textContent) || k === words.length - 1) {
+      bounds.push([s0, k]); s0 = k + 1;
+    }
+  });
+  const posIn = (k) => {
+    for (const [a, b] of bounds) if (k >= a && k <= b) return b === a ? 0.5 : (k - a) / (b - a);
+    return 0.5;
+  };
+  // Total run time, worked out up front from the same numbers the ticker uses.
+  // The card below waits this long before starting, so the directions and the
+  // next stop do not animate over the top of each other.
+  let total = delay || 0;
+  words.forEach((w, k2) => {
+    const curve = 1.35 - 0.7 * Math.sin(Math.PI * posIn(k2));
+    total += step * (w.textContent.length + 1) * curve;
+    if (/[.?!]["')\]]?$/.test(w.textContent)) total += SENTENCE_PAUSE_MS;
+  });
+  let k = 0, t = null;
+  const finish = () => {
+    clearTimeout(t); typing.delete(key);
+    for (const w of words) w.classList.remove("w", "on");
+    markSeen(key);
+  };
+  const tick = () => {
+    if (k >= words.length) { finish(); return; }
+    const w = words[k];
+    w.classList.add("on");
+    const curve = 1.35 - 0.7 * Math.sin(Math.PI * posIn(k));
+    let wait = step * (w.textContent.length + 1) * curve;
+    if (/[.?!]["')\]]?$/.test(w.textContent)) wait += SENTENCE_PAUSE_MS;
+    k += 1;
+    t = setTimeout(tick, wait);
+  };
+  t = setTimeout(tick, delay || 0);
+  typing.set(key, { finish });
+  finish.duration = total;
+  return finish;
+}
+function seenSet() { return new Set(LS.get("seen." + (ROUTE ? ROUTE.combo_key : "-"), [])); }
+function markSeen(key) {
+  if (!ROUTE) return;
+  const s = seenSet(); s.add(key);
+  LS.set("seen." + ROUTE.combo_key, [...s]);
+}
+
+/* ---- geography. The same haversine and the same pass rule as the pipeline. ---- */
+function haversineM(lat1, lon1, lat2, lon2) {
+  const R = 6371008.8, r = Math.PI / 180;
+  const p1 = lat1 * r, p2 = lat2 * r;
+  const a = Math.sin((lat2 - lat1) * r / 2) ** 2
+          + Math.cos(p1) * Math.cos(p2) * Math.sin((lon2 - lon1) * r / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+// The phone's own accuracy estimate is subtracted, capped at 150 m. A gate that
+// can say no to somebody who IS standing there is worse than no gate at all.
+/* Gate tolerance, retuned after walking Saint-Antonin, where a 50 m gate opened
+   from more than 50 m away, round a corner, on a different street.
+
+   A phone's reported accuracy is roughly a 68% confidence radius. Subtracting
+   all of it means "open if there is any plausible chance you are inside", which
+   turned a 50 m gate into a 50 + accuracy gate; under the old 150 m cap a poor
+   fix opened a 50 m gate from 200 m. So the allowance is now small and fixed,
+   and the reach of any gate is its radius plus 15 m and nothing more.
+
+   Refusing a hopeless fix is the important half. Believing one is how a gate
+   opens somewhere the walker has never stood, and that is worse than refusing,
+   because refusing is visible and they have a pass button. */
+const ACC_ALLOWANCE_M = 15;
+const ACC_USELESS_M = 75;
+
+function gatePasses(distanceM, accuracyM, radiusM) {
+  const acc = Math.max(0, accuracyM || 0);
+  if (acc > ACC_USELESS_M) return false;
+  return distanceM - Math.min(acc, ACC_ALLOWANCE_M) <= radiusM;
+}
+function bearingDeg(lat1, lon1, lat2, lon2) {
+  const r = Math.PI / 180;
+  const p1 = lat1 * r, p2 = lat2 * r, dl = (lon2 - lon1) * r;
+  return (Math.atan2(Math.sin(dl) * Math.cos(p2),
+                     Math.cos(p1) * Math.sin(p2)
+                     - Math.sin(p1) * Math.cos(p2) * Math.cos(dl)) / r + 360) % 360;
+}
+function destPoint(lat, lon, bearing, metres) {
+  const R = 6371008.8, r = Math.PI / 180;
+  const d = metres / R, b = bearing * r, p1 = lat * r, l1 = lon * r;
+  const p2 = Math.asin(Math.sin(p1) * Math.cos(d)
+                       + Math.cos(p1) * Math.sin(d) * Math.cos(b));
+  const l2 = l1 + Math.atan2(Math.sin(b) * Math.sin(d) * Math.cos(p1),
+                             Math.cos(d) - Math.sin(p1) * Math.sin(p2));
+  return { lat: p2 / r, lon: ((l2 / r + 540) % 360) - 180 };
+}
+
+/* ---- the topic picker ---- */
+function renderPicker() {
+  const box = $("picker");
+  box.innerHTML = "";
+  TOPICS.forEach((t) => {
+    const on = picked.includes(t.id);
+    const b = document.createElement("button");
+    b.className = "topic" + (on ? " on" : "") + (picked.length >= PICK ? " full" : "");
+    b.type = "button";
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    b.innerHTML = `<span class="tick" aria-hidden="true">✓</span>
+      <span><span class="tname">${escapeHtml(t.name)}</span>
+      <span class="tblurb">${escapeHtml(t.blurb)}</span></span>`;
+    b.onclick = () => togglePick(t.id);
+    box.appendChild(b);
+  });
+  const left = PICK - picked.length;
+  $("pickcount").textContent = left > 0
+    ? `${picked.length} of ${PICK} chosen. Pick ${left} more.`
+    : "That is your three. Change one any time before you set off.";
+  const btn = $("startbtn");
+  btn.disabled = picked.length !== PICK;
+  btn.textContent = picked.length === PICK ? "Start walking" : "Choose three to start";
+}
+function togglePick(id) {
+  const at = picked.indexOf(id);
+  if (at >= 0) picked.splice(at, 1);
+  else if (picked.length < PICK) picked.push(id);
+  else { toast("Three is the limit. Tap one to swap it out."); return; }
+  LS.set("picked", picked);
+  renderPicker();
+}
+// Sorted, so that Fire then Rivers and Rivers then Fire are one route and one
+// cache entry. The pipeline builds its filenames the same way.
+function comboKey(ids) { return [...ids].sort().join("-"); }
+
+/* ---- loading a route ---- */
+// The standalone build inlines every route into the page itself, so a single
+// file can be handed to somebody with no server and no connection at all.
+// pipeline/build_standalone.py writes that bundle; the served build has none
+// and fetches instead.
+const BUNDLE = window.NOTICING_BUNDLE || null;
+// A bundle carries either a set of topics to choose from, or one fixed tour
+// that everybody walks. Nothing is dated and nothing is shared either way, so
+// any number of people can be part way through at the same time.
+const TOUR = (BUNDLE && BUNDLE.tour) || null;
+
+// Answers are checked forgivingly on purpose. Nobody is being marked, and being
+// told you are wrong when you typed "3" instead of "three" would be maddening
+// while standing in a square in the rain.
+function normalise(text, keepPlural) {
+  const out = String(text).toLowerCase()
+    // Polish crossed L is its own letter, not l plus a mark, so NFD leaves it
+    // alone and the strip below then deletes it. "cegla" survived and "cegla"
+    // with the stroke came out as "ceg a". Map it by hand before decomposing.
+    .replace(/\u0142/g, "l")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]/g, " ")
+    // Filler only. NEVER strip a word that could itself be an answer: "two" and
+    // "pair" were in this list to make "a pair of unicorns" match "unicorns",
+    // and the result was that typing "two" at a stop whose answer IS two
+    // normalised to nothing and was marked wrong. The split-on-words check
+    // below already handles an answer buried in a phrase.
+    .replace(/\b(a|an|the|is|it|its|they|are|of)\b/g, " ");
+  return (keepPlural ? out : out.replace(/s\b/g, ""))
+    .replace(/\s+/g, " ").trim();
+}
+// One typo should not stand between somebody and the rest of the walk. Only for
+// answers of five characters or more, where a single edit is almost certainly a
+// slip on a phone keyboard rather than a different word: at four characters or
+// fewer, "four" and "your" are one edit apart and so are far too many numbers.
+function withinOneEdit(a, b) {
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, edits = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++edits > 1) return false;
+    if (a.length > b.length) i++;
+    else if (a.length < b.length) j++;
+    else { i++; j++; }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1;
+}
+// Two letters swapped round is the commonest phone typo of the lot, and it
+// costs two edits under the rule above, so it needs its own case. "brickwrok"
+// should not be the thing that ends somebody's walk.
+function oneSwapApart(a, b) {
+  if (a.length !== b.length) return false;
+  const at = [];
+  for (let k = 0; k < a.length; k++) if (a[k] !== b[k]) at.push(k);
+  return at.length === 2 && at[1] === at[0] + 1
+      && a[at[0]] === b[at[1]] && a[at[1]] === b[at[0]];
+}
+function matchesUnder(given, accepted, keepPlural) {
+  const g = normalise(given, keepPlural);
+  if (!g) return false;
+  const words = g.split(" ");
+  return accepted.some((a) => {
+    const want = normalise(a, keepPlural);
+    if (!want) return false;
+    if (g === want || words.includes(want)) return true;
+    if (want.length < 5) return false;
+    return withinOneEdit(g, want) || oneSwapApart(g, want)
+        || words.some((w) => withinOneEdit(w, want) || oneSwapApart(w, want));
+  });
+}
+// Tried both with the plural strip and without it. Dropping the last letter of
+// "english" leaves "englis", and the strip then turns that into "engli", which
+// is two edits from the answer instead of one, so a single slip was rejected.
+// Comparing the unstripped forms as well never refuses anything the stripped
+// pass would have accepted; the cross-stop rejection checks prove it does not
+// tip over into saying yes to everything.
+function answerAccepted(given, accepted) {
+  return matchesUnder(given, accepted, false)
+      || matchesUnder(given, accepted, true);
+}
+
+async function loadRoute(key) {
+  if (TOUR && TOUR.combo_key === key) return TOUR;
+  if (BUNDLE && BUNDLE.routes && BUNDLE.routes[key]) return BUNDLE.routes[key];
+  // A route already walked is kept locally, because the phone on the walk may
+  // have no signal and the artefact is self-contained by design.
+  const cached = LS.get("route." + key, null);
+  try {
+    const res = await fetch(ROUTES + key + ".json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const doc = await res.json();
+    LS.set("route." + key, doc);
+    return doc;
+  } catch (err) {
+    if (cached) { toast("No signal. Using the copy on this phone."); return cached; }
+    throw err;
+  }
+}
+
+function freshState(key) {
+  return { combo: key, current: 0, gate: {}, revealed: {}, wrong: {}, told: {} };
+}
+function saveState() { if (STATE) LS.set("state." + STATE.combo, STATE); }
+
+async function start(key) {
+  try {
+    ROUTE = await loadRoute(key);
+  } catch (err) {
+    toast(location.protocol === "file:"
+      ? "Open this over http, not as a file. The route cannot be fetched from disk."
+      : "Could not load that route. Check your connection.");
+    return;
+  }
+  if (!ROUTE.stops || !ROUTE.stops.length) {
+    toast("That combination has no stops written yet.");
+    return;
+  }
+  STATE = LS.get("state." + key, null);
+  if (!STATE || STATE.combo !== key) STATE = freshState(key);
+  if (!STATE.wrong) STATE.wrong = {};        // older saved walks predate these
+  if (!STATE.told) STATE.told = {};
+  LS.set("last", key);
+  $("walktitle").textContent = TOUR
+    ? `${ROUTE.stops.length} stops · about an hour`
+    : ROUTE.topics.map((t) => t.name).join(" · ");
+  $("s-pick").classList.remove("on");
+  $("s-walk").classList.add("on");
+  renderWalk();
+  if (ROUTE.gated_stops > 0) locationPreflight(false);
+}
+
+/* ---- the walk ----
+   One stage per stop, and a stage is two blocks of text with something to do
+   between them.
+
+     The way there. How to walk here, what to look at, and the question.
+     Then an answer box, or a location check.
+     The pay-off. What the answer meant.
+     Then a button to the next stop.
+
+   Both blocks are written out a word at a time, so the directions can be
+   followed as they arrive rather than appearing all at once. Everything for one
+   stop lives on one card and nothing is said twice. */
+
+// Block one: how to get here, what to look at, what is being asked.
+function waysThere(i) {
+  const s = ROUTE.stops[i];
+  const parts = [];
+  // Turn-by-turn directions already say which way and how far, along the real
+  // streets. Adding a computed heading on top repeats it and disagrees with it.
+  if (i > 0 && s.directions && ROUTE.directions_style === "turn_by_turn") {
+    parts.push(s.directions);
+  } else if (i > 0 && s.directions) {
+    const leg = (ROUTE.walk.legs || [])[i - 1];
+    const COMPASS = ["north", "north east", "east", "south east",
+                     "south", "south west", "west", "north west"];
+    // Under a hundred metres, say the distance and stop. "About 23 metres, a
+    // minute or two" is nonsense: it is twenty paces. And "about" does not sit
+    // with a number worked out to the metre, so round to something a person
+    // would actually say.
+    const round = (m) => m < 100 ? Math.round(m / 5) * 5
+                       : m < 500 ? Math.round(m / 10) * 10
+                       : Math.round(m / 50) * 50;
+    const head = leg
+      ? `Head ${COMPASS[Math.round(leg.bearing / 45) % 8]}, about `
+        + `${round(leg.walk_m)} metres`
+        + (leg.walk_m < 100 ? "."
+           : `, ${leg.minutes < 2 ? "a minute or two"
+                                  : Math.round(leg.minutes) + " minutes"}.`)
+      : null;
+    parts.push((head ? head + "\n\n" : "") + s.directions);
+  }
+  parts.push(s.look);
+  if (s.nudge) parts.push(s.nudge.prompt);
+  if (s.question) parts.push(s.question.ask);
+  return parts.join("\n\n");
+}
+
+// Block two: what it meant.
+function payOff(i) {
+  const s = ROUTE.stops[i];
+  const parts = [];
+  if (s.question && STATE.told[s.id]) {
+    const shown = s.question.answers.find((x) => /[a-z]/i.test(x))
+                  || s.question.answers[0];
+    parts.push(`The answer was ${shown}.`);
+  }
+  parts.push(s.after);
+  return parts.join("\n\n");
+}
+
+// A tour that wrote its own ending gets to use it. The fallback is only there
+// so a tour with no outro does not finish on a blank card.
+function endText() {
+  return ROUTE.outro || "That is the walk.";
+}
+
+function renderWalk() {
+  const n = ROUTE.stops.length;
+  const done = Math.min(STATE.current, n);
+  $("progressfill").style.width = (100 * done / n) + "%";
+  $("progresstext").textContent = `${done}/${n}`;
+  paintSimBanner();
+
+  const box = $("walk");
+  box.innerHTML = "";
+  for (let i = 0; i <= Math.min(STATE.current, n); i++) {
+    box.appendChild(i === n ? endStage() : stageCard(i, i < STATE.current));
+  }
+  focusCurrent();
+}
+
+// Write a block out a word at a time, unless it has been seen before.
+function writeBlock(card, text, key, delay) {
+  const el = document.createElement("div");
+  el.className = "stext";
+  card.appendChild(el);
+  if (REDUCED || seenSet().has(key)) { el.textContent = text; return; }
+  const finish = typeInto(el, text, key, delay);
+  const tip = document.createElement("div");
+  tip.className = "skiptip";
+  tip.textContent = "Tap anywhere to see it all at once.";
+  card.appendChild(tip);
+  card.addEventListener("click", (ev) => {
+    if (typing.has(key) && !ev.target.closest("button, input")) {
+      finish();
+      tip.remove();
+    }
+  });
+}
+
+function stageCard(i, past) {
+  const s = ROUTE.stops[i];
+  const div = document.createElement("div");
+  div.className = "stop " + (past ? "done" : "open");
+  div.dataset.idx = i;
+  const topic = ROUTE.topics.find((t) => t.id === s.topic);
+  div.innerHTML =
+    `<div class="shead"><span class="no">Stop ${i + 1}</span>
+       <span>${escapeHtml(topic ? topic.name : "")}</span>
+       <span class="state">${past ? "✓" : ""}</span></div>
+     <div class="stitle">${escapeHtml(s.title)}</div>`;
+
+  const answered = !!STATE.revealed[s.id];
+  const gated = !!s.gate && !STATE.gate[s.id];
+
+  if (!past && !answered && !REDUCED && !seenSet().has("a:" + s.id)) {
+    div.classList.add("arriving");
+    div.addEventListener("animationend", (ev) => {
+      if (ev.animationName === "resolve") div.classList.remove("arriving");
+    });
+  }
+  writeBlock(div, waysThere(i), "a:" + s.id, ARRIVE_MS);
+
+  if (!answered) {
+    if (!past) div.appendChild(gated ? gateAction(i, s) : answerAction(i, s));
+    return div;
+  }
+
+  const rule = document.createElement("div");
+  rule.className = "payrule";
+  div.appendChild(rule);
+  writeBlock(div, payOff(i), "b:" + s.id, 240);
+
+  if (!past) {
+    const row = document.createElement("div");
+    row.className = "srow";
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = i === ROUTE.stops.length - 1
+      ? "Finish the walk" : `On to stop ${i + 2}`;
+    btn.onclick = () => {
+      const t = typing.get("b:" + s.id);
+      if (t) t.finish();
+      STATE.current = Math.max(STATE.current, i + 1);
+      saveState();
+      renderWalk();
+    };
+    row.appendChild(btn);
+    div.appendChild(row);
+  }
+  return div;
+}
+
+function endStage() {
+  const div = document.createElement("div");
+  div.className = "stop done";
+  div.dataset.idx = "end";
+  writeBlock(div, endText(), "b:end", 240);
+  return div;
+}
+
+/* ---- the one thing to do ---- */
+
+function gateAction(i, s) {
+  const wrap = document.createElement("div");
+  wrap.className = "gatewrap";
+  wrap.innerHTML =
+    `<button class="btn primary gatebtn">I'm here, check my location</button>
+     <div class="gatestat" role="status" aria-live="polite"></div>
+     <div class="gatenote">Read once when you tap it, never tracked.</div>
+     ${s.gate.allow_pass
+        ? `<button class="gateskip">Location not working? Carry on anyway</button>` : ""}`;
+  const btn = wrap.querySelector(".gatebtn");
+  const stat = wrap.querySelector(".gatestat");
+  btn.onclick = () => checkin(i, btn, stat);
+  const pass = wrap.querySelector(".gateskip");
+  if (pass) pass.onclick = () => {
+    STATE.gate[s.id] = true;
+    openPayOff(i);
+    toast("Carrying on without the check.");
+  };
+
+  if (TESTING) {
+    const dev = document.createElement("div");
+    dev.className = "devrow";
+    const away = SIM ? `${Math.round(haversineM(SIM.lat, SIM.lon, s.lat, s.lon))} m away`
+                     : "not simulating";
+    dev.innerHTML =
+      `<span class="devlabel">Testing</span>
+       <button data-act="start">Start ${SIM_START_M} m away</button>
+       <button data-act="step"${SIM ? "" : " disabled"}>Walk ${SIM_STEP_M} m closer</button>
+       <span class="devdist">${away}</span>
+       <div class="devnote">These move a made-up position. Nothing here opens the
+       stop, so you still have to get inside the radius.</div>`;
+    dev.querySelector('[data-act="start"]').onclick =
+      () => simStart(s, i > 0 ? ROUTE.stops[i - 1] : null);
+    dev.querySelector('[data-act="step"]').onclick = () => simStep(s);
+    wrap.appendChild(dev);
+  }
+  return wrap;
+}
+
+function answerAction(i, s) {
+  const row = document.createElement("div");
+  row.className = "srow";
+
+  // No question: the stop just needs acknowledging. Every London stop is this.
+  if (!s.question) {
+    const btn = document.createElement("button");
+    btn.className = "btn primary";
+    btn.textContent = s.nudge ? s.nudge.confirm : "Tell me why it matters";
+    btn.onclick = () => openPayOff(i);
+    row.appendChild(btn);
+    return row;
+  }
+
+  const wrong = STATE.wrong[s.id] || 0;
+  row.innerHTML =
+    `<div class="qrow">
+       <input type="text" maxlength="60" enterkeyhint="send" autocapitalize="off"
+              autocorrect="off" spellcheck="false" autocomplete="off"
+              placeholder="your answer" aria-label="Your answer">
+       <button class="btn primary">Check</button>
+     </div>
+     ${wrong >= 2 && s.question.hint
+        ? `<div class="qhint">${escapeHtml(s.question.hint)}</div>` : ""}
+     <button class="qgiveup">Not sure? Tell me the answer.</button>`;
+
+  const inp = row.querySelector("input");
+  const submit = () => {
+    const said = inp.value.trim();
+    if (!said) { toast("Type something first."); return; }
+    if (answerAccepted(said, s.question.answers)) { openPayOff(i); return; }
+    // Read the count back out of the state, not off the closure. The card is
+    // not re-rendered on a wrong answer, so a closure copy stayed at zero and
+    // the second wrong answer kept writing one. The hint never arrived.
+    const w = (STATE.wrong[s.id] || 0) + 1;
+    STATE.wrong[s.id] = w;
+    saveState();
+    const card = row.closest(".stop");
+    void card.offsetWidth;
+    card.classList.add("wrong");
+    toast(w >= 2 ? "Still not it. Have a hint." : "Not quite. Look again.");
+    if (w === 2) renderWalk();                  // the hint appears
+  };
+  row.querySelector(".btn").onclick = submit;
+  inp.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") { ev.preventDefault(); submit(); }
+  });
+  row.querySelector(".qgiveup").onclick = () => {
+    STATE.told[s.id] = true;
+    openPayOff(i);
+    toast("No problem. Here it is.");
+  };
+  return row;
+}
+
+// Answering opens the pay-off on the same card. It does NOT move you on: the
+// button under it does that, so the explanation is read where it was earned.
+function openPayOff(i) {
+  const s = ROUTE.stops[i];
+  const t = typing.get("a:" + s.id);
+  if (t) t.finish();
+  STATE.revealed[s.id] = true;
+  saveState();
+  renderWalk();
+}
+
+
+let lastFocused = null;
+function focusCurrent() {
+  const card = document.querySelector(".stop.open") || document.querySelector("#walk .stop:last-child");
+  if (!card) return;
+  const key = card.dataset.idx;
+  if (key === lastFocused) return;             // never fight somebody's own scroll
+  lastFocused = key;
+  requestAnimationFrame(() => {
+    const top = card.getBoundingClientRect().top + window.scrollY
+              - ($("topbar").offsetHeight + 10);
+    window.scrollTo({ top: Math.max(0, top), behavior: REDUCED ? "auto" : "smooth" });
+  });
+}
+
+/* ---- location ---- */
+function getFix() {
+  if (SIM) {
+    return Promise.resolve({ latitude: SIM.lat, longitude: SIM.lon, accuracy: SIM.acc });
+  }
+  // Phones hand over a coarse network fix first and a good satellite fix a few
+  // seconds later. Taking the first one and subtracting its large error is how
+  // a gate opens from the next street, so watch for a few seconds and keep the
+  // best reading rather than the first. maximumAge is 0 because a cached fix
+  // from twenty seconds ago is twenty-five metres of walking out of date.
+  return new Promise((resolve, reject) => {
+    if (!navigator.geolocation) { reject(new Error("nogeo")); return; }
+    let best = null, done = false, id = null;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      if (id !== null) navigator.geolocation.clearWatch(id);
+      if (best) resolve(best); else reject(new Error("nofix"));
+    };
+    const timer = setTimeout(finish, FIX_WINDOW_MS);
+    id = navigator.geolocation.watchPosition(
+      (pos) => {
+        if (!best || pos.coords.accuracy < best.accuracy) best = pos.coords;
+        if (best.accuracy <= FIX_GOOD_ENOUGH_M) finish();
+      },
+      (err) => { if (!best) { done = true; clearTimeout(timer); reject(err); } },
+      { enableHighAccuracy: true, timeout: FIX_WINDOW_MS, maximumAge: 0 });
+  });
+}
+
+async function checkin(i, btn, stat) {
+  const s = ROUTE.stops[i];
+  btn.disabled = true;
+  stat.textContent = "Finding you…";
+  let c;
+  try {
+    c = await getFix();
+  } catch (err) {
+    stat.textContent = err && err.code === 1
+      ? "Location is blocked for this site. Allow it in your browser settings."
+      : "No fix here. That is usually walls, not settings. Try again in the open.";
+    btn.disabled = false;
+    return;
+  }
+  const d = haversineM(c.latitude, c.longitude, s.lat, s.lon);
+  if (gatePasses(d, c.accuracy, s.gate.radius_m)) {
+    STATE.gate[s.id] = true;
+    openPayOff(i);
+    toast(SIM ? "Close enough. The gate opened on the real check."
+                : `You're there. ${Math.round(d)} m out.`);
+    return;
+  }
+  // A vague fix is not a near miss, it is no information, and saying "warm"
+  // about it would be a lie. Say what the phone actually claimed.
+  if ((c.accuracy || 0) > ACC_USELESS_M) {
+    stat.textContent = `Your phone only knows where it is to about `
+      + `${Math.round(c.accuracy)} m, which is not enough to tell. Step into the `
+      + `open and try again.`;
+    btn.disabled = false;
+    return;
+  }
+  // Warm and cold, never a flat no. A phone in a courtyard can be 100 m out.
+  stat.textContent =
+    d >= 1000 ? `About ${(d / 1000).toFixed(1)} km away.`
+    : d > 250 ? `About ${Math.round(d / 50) * 50} m away.`
+    : `Warm. About ${Math.round(d / 10) * 10} m. Keep going.`;
+  btn.disabled = false;
+}
+
+// Checked once, at the start, while there is still wifi and patience. A phone
+// that has quietly denied the site will not prompt on a street corner. It just
+// refuses, with the stop withheld, and that is a miserable way to find out.
+function platform() {
+  const ua = navigator.userAgent;
+  if (/iPad|iPhone|iPod/.test(ua) ||
+      (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "ios";
+  if (/Android/.test(ua)) return "android";
+  return "desktop";
+}
+const HOWTO = {
+  ios: `<b>iPhone or iPad</b>
+    <ol>
+      <li><b>Settings → Safari → Location</b>. If it says <b>Deny</b>, change it
+          to <b>Ask</b>. On Deny you will never even see a prompt.</li>
+      <li>Back here, tap <b>aA</b> (or ⋯) in the address bar →
+          <b>Website Settings</b> → <b>Location</b> → <b>Allow</b>.</li>
+      <li><b>Settings → Privacy &amp; Security → Location Services</b> on, and
+          <b>Safari Websites</b> set to <b>While Using the App</b>.</li>
+    </ol>
+    If you saved this to your Home Screen, that counts as a separate app and
+    needs its own permission.`,
+  android: `<b>Android</b>
+    <ol>
+      <li>Tap the icon just left of the address bar (a lock or two sliders) →
+          <b>Permissions</b> → <b>Location</b> → <b>Allow</b>.</li>
+      <li>Then <b>Settings → Location</b> on the phone itself, and make sure
+          your browser is allowed to use it.</li>
+    </ol>`,
+  desktop: `<b>On a computer</b>
+    <ol>
+      <li>Click the icon at the left of the address bar → <b>Site settings</b>
+          → <b>Location</b> → <b>Allow</b>, then reload.</li>
+    </ol>
+    A laptop's location is far rougher than a phone's. Walk with the phone.`,
+};
+function locationPreflight(force) {
+  if (SIM) return;
+  if (!force && LS.get("locok." + ROUTE.combo_key, false)) return;
+  const n = ROUTE.gated_stops;
+  const show = (body, buttons) => {
+    $("modalcard").innerHTML = `<h2>Before you set off</h2>${body}
+      <div class="btnrow">${buttons}</div>`;
+    $("modal").classList.add("show");
+  };
+  show(`<div class="sub">${n} stop${n === 1 ? "" : "s"} on this walk only
+    open${n === 1 ? "s" : ""} when you are standing in the right place, so the
+    page needs permission to check where you are. It is read once each time you
+    tap the button, never tracked, and never while this page is
+    closed.<br><br>Let us make sure it works now, rather than find out on a
+    street corner.</div>`,
+    `<button class="btn ghost" id="lclater">Later</button>
+     <button class="btn primary" id="lcgo">Check location</button>`);
+  $("lclater").onclick = closeModal;
+  $("lcgo").onclick = async () => {
+    $("lcgo").disabled = true; $("lcgo").textContent = "Checking…";
+    try {
+      await getFix();
+      LS.set("locok." + ROUTE.combo_key, true);
+      show(`<div class="sub"><b>That works.</b> Nothing else to do. The page
+        will ask again at each place.</div>`,
+        `<button class="btn primary" id="lcdone">Good</button>`);
+      $("lcdone").onclick = closeModal;
+    } catch (err) {
+      const blocked = err && err.code === 1;
+      show(`<div class="sub">${blocked
+          ? "Location is switched off for this site. Here is how to turn it on."
+          : "No fix here. That is usually walls, not settings. Try again outside. "
+            + "If it keeps failing, check the settings below."}</div>
+        <div class="sub">${HOWTO[platform()]}</div>`,
+        `<button class="btn ghost" id="lcskip">I'll sort it later</button>
+         <button class="btn primary" id="lcretry">Try again</button>`);
+      $("lcskip").onclick = closeModal;
+      $("lcretry").onclick = () => locationPreflight(true);
+    }
+  };
+}
+
+/* ---- the approach simulator ----
+   A way to exercise the gates without being in London. It simulates WALKING,
+   not arriving. There is no control that places you at a stop and no control
+   that opens one. You start half a kilometre out and press a button that moves
+   you a hundred and twenty metres closer, and the stop opens when the ordinary
+   check says you are inside the radius. Reaching a gated stop takes four
+   presses, and the warm and cold readings change on the way in, which is the
+   behaviour worth testing anyway.
+
+   The earlier version had a "stand at stop 7" list. It fed a real position into
+   a real check, so the pass rule stayed honest, but one tap opened any gated
+   stop, and a control that opens a gated stop is a skip button whatever the
+   label says. It is gone.
+
+   It is also deliberately loud. A banner stays up the whole time a made-up
+   position is in use, because a quiet override eventually gets mistaken for a
+   working gate. */
+function paintSimBanner() {
+  const b = $("simbanner"), off = $("simoffbtn");
+  if (!SIM) {
+    b.style.display = "none";
+    if (off) off.hidden = true;
+    return;
+  }
+  b.style.display = "block";
+  b.textContent = "Testing. Standing at a made-up position, about "
+                + `${Math.round(SIM.dist)} m from this stop. `
+                + "The gate rule is the real one and is not being bypassed.";
+  if (off) off.hidden = false;
+}
+function setSim(sim) {
+  SIM = sim;
+  if (sim) LS.set("sim", sim); else LS.del("sim");
+  paintSimBanner();
+  renderWalk();
+}
+// Start the approach: drop the walker SIM_START_M short of the stop, on the
+// bearing the real walk comes in from where that is known, due south otherwise.
+function simStart(stop, from) {
+  const back = from ? bearingDeg(stop.lat, stop.lon, from.lat, from.lon) : 180;
+  const p = destPoint(stop.lat, stop.lon, back, SIM_START_M);
+  setSim({ lat: p.lat, lon: p.lon, acc: 20, dist: SIM_START_M });
+}
+// One press, one step closer. It cannot overshoot onto the stop itself: the
+// last stride stops short, so the gate is always what lets you in.
+function simStep(stop) {
+  if (!SIM) return;
+  const d = haversineM(SIM.lat, SIM.lon, stop.lat, stop.lon);
+  const step = Math.min(SIM_STEP_M, Math.max(0, d - 5));
+  if (step <= 0) { toast("That is as close as this will take you."); return; }
+  const b = bearingDeg(SIM.lat, SIM.lon, stop.lat, stop.lon);
+  const p = destPoint(SIM.lat, SIM.lon, b, step);
+  setSim({ lat: p.lat, lon: p.lon, acc: 20,
+           dist: haversineM(p.lat, p.lon, stop.lat, stop.lon) });
+}
+
+/* ---- wiring ---- */
+$("startbtn").onclick = () => start(comboKey(picked));
+$("simoffbtn").onclick = () => { setSim(null); toast("Back to the real GPS."); };
+
+// A way in that does not depend on the address bar. The page may be embedded
+// somewhere that never passes a query string or a hash through, and five taps
+// on the wordmark is not something anybody does by accident on a walk. It lives
+// in memory only and is never written down, so it cannot follow you to London.
+let taps = 0, tapTimer = null;
+for (const mark of document.querySelectorAll(".wordmark")) {
+  mark.addEventListener("click", () => {
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => { taps = 0; }, 2500);
+    if (++taps < 5) return;
+    taps = 0;
+    TESTING = !TESTING;
+    if (!TESTING) setSim(null);
+    else if (ROUTE) renderWalk();
+    toast(TESTING
+      ? "Testing on. You can simulate walking towards a gated stop."
+      : "Testing off.");
+  });
+}
+// Changing only the hash does not re-run this script, so the flag would appear
+// to do nothing. Reload so it is read again.
+window.addEventListener("hashchange", () => {
+  if ((location.hash === "#testing") !== TESTING) location.reload();
+});
+$("restartbtn").onclick = () => {
+  $("modalcard").innerHTML = `<h2>Start over?</h2>
+    <div class="sub">This forgets how far you have walked and takes you back to
+    the topics. Nothing else is kept.</div>
+    <div class="btnrow">
+      <button class="btn ghost" id="sono">Keep walking</button>
+      <button class="btn primary" id="soyes">Start over</button>
+    </div>`;
+  $("modal").classList.add("show");
+  $("sono").onclick = closeModal;
+  $("soyes").onclick = () => {
+    LS.del("state." + STATE.combo);
+    LS.del("seen." + STATE.combo);
+    LS.del("last");
+    STATE = null; ROUTE = null; lastFocused = null;
+    closeModal();
+    $("s-walk").classList.remove("on");
+    $("s-pick").classList.add("on");
+    renderPicker();
+  };
+};
+$("modal").onclick = (ev) => { if (ev.target === $("modal")) closeModal(); };
+
+// One fixed tour: no choosing, so the first screen is an introduction and a
+// button rather than a picker. Everything after that is identical.
+function setUpFixedTour() {
+  document.title = TOUR.name;
+  for (const mark of document.querySelectorAll(".wordmark")) {
+    const bits = TOUR.name.split(" ");
+    mark.innerHTML = `${escapeHtml(bits.slice(0, -1).join(" ") || TOUR.name)}`
+                   + (bits.length > 1 ? `<span>${escapeHtml(bits[bits.length - 1])}</span>` : "");
+  }
+  for (const t of document.querySelectorAll(".tagline")) {
+    if (t.id !== "walktitle") t.textContent = TOUR.tagline || "";
+  }
+  // Taken out of the document, not merely hidden. A choose-your-topics control
+  // on a walk that has no topics to choose is confusing even when it is empty,
+  // and hiding relies on a CSS rule that .picker was already overriding.
+  $("picker").remove();
+  $("pickcount").remove();
+  const intro = document.querySelector(".intro");
+  intro.innerHTML =
+    `<div class="lead">${escapeHtml(TOUR.intro.lead)}</div>` +
+    TOUR.intro.body.split("\n\n").map((para) => `<p>${escapeHtml(para)}</p>`).join("") +
+    `<p><b>Where to start.</b> ${escapeHtml(TOUR.intro.start)}</p>`;
+  const btn = $("startbtn");
+  btn.disabled = false;
+  btn.textContent = "Start the walk";
+  btn.onclick = () => start(TOUR.combo_key);
+}
+
+(async () => {
+  if (TOUR) {
+    setUpFixedTour();
+    if (TESTING) SIM = LS.get("sim", null); else { SIM = null; LS.del("sim"); }
+    if (LS.get("last", null) === TOUR.combo_key) await start(TOUR.combo_key);
+    return;
+  }
+  try {
+    if (BUNDLE && BUNDLE.topics) TOPICS = BUNDLE.topics;
+    else TOPICS = (await (await fetch("topics.json", { cache: "no-cache" })).json()).topics;
+  } catch (err) {
+    document.body.insertAdjacentHTML("afterbegin",
+      `<div class="banner" style="max-width:560px">Could not load the topics.
+       ${location.protocol === "file:"
+         ? "Open this over http rather than straight off the disk."
+         : "Check your connection and reload."}</div>`);
+    return;
+  }
+  // A made-up position must never outlive testing mode. Without this, somebody
+  // who once opened the page with ?testing=1 would carry a working bypass in
+  // local storage into a real walk, and the gates would be quietly off.
+  if (TESTING) SIM = LS.get("sim", null);
+  else { SIM = null; LS.del("sim"); }
+  picked = (LS.get("picked", []) || []).filter((id) => TOPICS.some((t) => t.id === id));
+  renderPicker();
+  // A returning walker resumes where they were, but only if this build actually
+  // has that route. A stale key from another walk should be dropped, not fetched.
+  const last = LS.get("last", null);
+  const known = !BUNDLE || !BUNDLE.routes || Boolean(BUNDLE.routes[last]);
+  if (last && known) await start(last);
+  else if (last) LS.del("last");
+})();
+</script>
+</body>
+</html>
