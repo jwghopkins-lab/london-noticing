@@ -84,8 +84,8 @@
       },
       "look": "The Tabard stood here. It was one of a long row along this street, because everybody heading south had to start from Southwark.\n\nThe yards are still called after the inns. The inns themselves have gone.",
       "look_spoken": null,
-      "after": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where thirty pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in 1676, was rebuilt, and was pulled down in 1873.",
-      "after_spoken": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where thirty pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in sixteen seventy six, was rebuilt, and was pulled down in eighteen seventy three.",
+      "after": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where nine and twenty pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in 1676, was rebuilt, and was pulled down in 1873.",
+      "after_spoken": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where nine and twenty pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in sixteen seventy six, was rebuilt, and was pulled down in eighteen seventy three.",
       "audio": null
     },
     {
@@ -106,8 +106,8 @@
       "question": null,
       "look": "Two tiers of open wooden gallery along the front. Coaches pulled into this yard and passengers walked round the balconies to their rooms.\n\nIt is the last one left in London. There were dozens.",
       "look_spoken": null,
-      "after": "The National Trust owns it, which saved it.\n\nWhat stands here went up after the Southwark fire of 1676. Two of its three sides came down in 1899 to clear space for a railway yard, so you are looking at a third of it.\n\nDickens drank here.",
-      "after_spoken": "The National Trust owns it, which saved it.\n\nWhat stands here went up after the Southwark fire of sixteen seventy six. Two of its three sides came down in eighteen ninety nine to clear space for a railway yard, so you are looking at a third of it.\n\nDickens drank here.",
+      "after": "The National Trust owns it, which saved it.\n\nWhat stands here went up after the Southwark fire of 1676. Two of its three sides came down in the eighteen eighties, to clear space for a railway yard. You are looking at a third of it.\n\nDickens drank here.",
+      "after_spoken": "The National Trust owns it, which saved it.\n\nWhat stands here went up after the Southwark fire of sixteen seventy six. Two of its three sides came down in the eighteen eighties, to clear space for a railway yard. You are looking at a third of it.\n\nDickens drank here.",
       "audio": null
     },
     {
@@ -159,7 +159,7 @@
         ],
         "hint": "Look at the skyline in the picture. It is not a bare crossing."
       },
-      "look": "A picture in tile, showing London Bridge at night in the fifteenth century.\n\nFor six hundred years that was the only way over the Thames in London. Everybody crossing went past what you can see here.",
+      "look": "A picture in tile, showing London Bridge at night in the fifteenth century.\n\nFor more than five hundred years it was the only bridge over the Thames in London. Everybody crossing went past what you can see here.",
       "look_spoken": null,
       "after": "Houses and shops, seven storeys high in places, leaning out over the water.\n\nThere was a chapel on it, and a gatehouse at the Southwark end where the heads of traitors were set on poles. A German visitor counted thirty of them in 1598.\n\nThe buildings came off in 1762 and the bridge itself went in 1831.",
       "after_spoken": "Houses and shops, seven storeys high in places, leaning out over the water.\n\nThere was a chapel on it, and a gatehouse at the Southwark end where the heads of traitors were set on poles. A German visitor counted thirty of them in fifteen ninety eight.\n\nThe buildings came off in seventeen sixty two and the bridge itself went in eighteen thirty one.",
@@ -227,8 +227,8 @@
       "question": null,
       "look": "You are on a river wall. Everything behind you is below the high tide line and always has been.\n\nLook downstream, past the bend. The docks that filled that ground were the biggest timber yards in the country.",
       "look_spoken": null,
-      "after": "On the afternoon of 7 September 1940 the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for eleven weeks.",
-      "after_spoken": "On the afternoon of the seventh of September nineteen forty the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for eleven weeks.",
+      "after": "On the afternoon of 7 September 1940 the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for fifty-seven nights running.",
+      "after_spoken": "On the afternoon of the seventh of September nineteen forty the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for fifty-seven nights running.",
       "audio": null
     },
     {
@@ -255,9 +255,9 @@
           "his child",
           "his girl"
         ],
-        "hint": "There is a board nearby that names all three of them."
+        "hint": "Go into the gardens. There is a board there naming all three figures."
       },
-      "look": "Two bronze figures in the grass, and a cat.\n\nThe seated one is Alfred Salter. He gave up a Harley Street career to doctor the poorest parish in London, and the parish sent him to Parliament.",
+      "look": "Walk into the gardens on the river side. Two bronze figures sit in the grass, and a cat.\n\nThe seated one is Alfred Salter. He gave up a Harley Street career to doctor the poorest parish in London, and the parish sent him to Parliament.",
       "look_spoken": null,
       "after": "Joyce, his daughter. She caught scarlet fever from his patients and died in 1910, aged eight.\n\nThe Salters had decided to live in Bermondsey rather than send her somewhere safer. That decision killed her, and they stayed anyway.\n\nThe stone ruin behind you is much older. Edward III built a manor house on this bank in 1353, when it was an island in the marsh.",
       "after_spoken": "Joyce, his daughter. She caught scarlet fever from his patients and died in nineteen ten, aged eight.\n\nThe Salters had decided to live in Bermondsey rather than send her somewhere safer. That decision killed her, and they stayed anyway.\n\nThe stone ruin behind you is much older. Edward the third built a manor house on this bank in thirteen fifty three, when it was an island in the marsh.",
@@ -311,8 +311,8 @@
       },
       "look": "Low brick, with a chimney. It held the pumps that kept the water out.\n\nThe shaft beside it goes down to the first tunnel ever dug under a river anybody could sail on.",
       "look_spoken": null,
-      "after": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In 1828 Isambard was washed up the shaft on a wave and two men beside him drowned. He was twenty-two.\n\nIt opened in 1843 as a foot tunnel, and trains use it now.",
-      "after_spoken": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In eighteen twenty eight Isambard was washed up the shaft on a wave and two men beside him drowned. He was twenty-two.\n\nIt opened in eighteen forty three as a foot tunnel, and trains use it now.",
+      "after": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In 1828 Isambard was washed up the shaft on a wave. Six men behind him drowned. He was twenty-two.\n\nIt opened in 1843 as a foot tunnel, and trains use it now.",
+      "after_spoken": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In eighteen twenty eight Isambard was washed up the shaft on a wave. Six men behind him drowned. He was twenty-two.\n\nIt opened in eighteen forty three as a foot tunnel, and trains use it now.",
       "audio": null
     },
     {
