@@ -153,6 +153,23 @@ configuration.
     of four-metre alleys, that reached three streets over and exempted almost
     everything from rule 42. **[checked]**
 
+### When the map cannot give you turns
+
+86. **Say where they are going, not what they might walk past.** The old `rough`
+    mode listed a leg's streets under "You may come out on Green Dragon Court,
+    Duke Street Hill, London Bridge Walk or The Queen's Walk", then added a
+    caveat. The list was usually the route itself, in order, dressed as a set of
+    maybes, and it read as vague because it was. `destination` mode replaces it:
+    where you set off from, which way, roughly how far, and what you are looking
+    for. Nothing else. **[checked]**
+87. **Name the way if there is one to name.** Destination directions may name a
+    street in the prose, and should where the leg runs along one. "Downstream
+    along The Queen's Walk" is the most useful thing that can be said about that
+    leg. The old mode forbade it, because its caveat had already promised
+    nothing. **[checked]**
+88. **`rough` is closed.** Walks written under it keep it and keep their text
+    word for word. Nothing new uses it. **[noted]**
+
 ### The street that carries the leg
 
 81. **Where one named street covers more than half a leg, name it.** The score
@@ -160,6 +177,21 @@ configuration.
     walker cannot end up on Tennis Street by mistake, so a second way round of
     similar length is not a reason to be vague. It is a reason to be vague only
     where the instruction is a count of turnings. **[checked]**
+89. **Nameless metres are not the problem. Nameless choices are.** A hundred
+    and eighty metres of riverside path with nothing leading off it is a
+    corridor: you cannot take a wrong turning where there is no turning to take.
+    Fifty metres of alley with four openings off it is a different thing
+    entirely. The signal counts junctions on unnamed stretches, not metres.
+    **[checked]**
+90. **A nameless gap inside a street is that street.** The Thames Path is The
+    Queen's Walk for four hundred metres, nameless for seventy-five, then The
+    Queen's Walk again. Three stretches and two turns, for walking in a straight
+    line. Up to 120 m, the gap is absorbed. **[checked in `streets.py`]**
+91. **A second way round only matters where the walker is counting.** Where
+    every stretch of a leg has a name they are following names, and somebody who
+    takes the other way round has taken a different walk to the same place, not
+    been misled. The margin signal is a reason only when there are nameless
+    choices on the leg as well. **[checked]**
 82. **A junction crossing is not a turning.** Two metres of a side street in the
     middle of a three-hundred-metre run split one street into three stretches
     and invented two turns, which was on its own enough to demote the leg.

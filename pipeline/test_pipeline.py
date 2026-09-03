@@ -111,6 +111,30 @@ class TestGeo(unittest.TestCase):
         self.assertTrue(any("more than once" in p for p in geo.check(points)["problems"]))
 
 
+class TestDestinationMode(unittest.TestCase):
+    """The mode that replaced the list of streets you may come out on."""
+
+    STOP = {"id": "x", "directions_mode": "destination",
+            "directions": "From the cathedral, head east to the river. About "
+                          "five hundred metres.",
+            "directions_target": "a mosaic set into the wall"}
+
+    def test_it_says_where_you_are_going_and_stops(self):
+        got = build_tour.rough_directions(self.STOP)
+        self.assertIn("What you are looking for is a mosaic", got)
+        self.assertNotIn("You may come out on", got)
+        for caveat in build_tour.ROUGH_CAVEATS.values():
+            self.assertNotIn(caveat, got)
+
+    def test_the_old_mode_keeps_its_list_and_its_caveat(self):
+        """Walks written before this change must not be rewritten by it."""
+        old = dict(self.STOP, directions_mode="rough",
+                   directions_streets=["Duke Street Hill"])
+        got = build_tour.rough_directions(old, "choices")
+        self.assertIn("You may come out on Duke Street Hill", got)
+        self.assertIn(build_tour.ROUGH_CAVEATS["choices"], got)
+
+
 class TestIntroCounts(unittest.TestCase):
     """The Borough walk shipped saying seven questions and five gates when it
     had six of each. Nothing compared the sentence with the stops."""
@@ -277,6 +301,12 @@ def toy(extra_streets=()):
     return streets.Town(doc)
 
 
+def bare(town_streets):
+    """A town made only of what is listed, for tests about nameless ways."""
+    return streets.Town({"streets": list(town_streets), "places": [],
+                         "water": []})
+
+
 class TestRoutingFromWhereYouStand(unittest.TestCase):
     """The bridge bug: routing from the nearest NODE loses whole stretches."""
 
@@ -303,6 +333,19 @@ class TestRoutingFromWhereYouStand(unittest.TestCase):
         self.assertEqual([x["name"] for x in r["legs"]], ["East Street"])
         self.assertAlmostEqual(r["metres"], sum(x["metres"] for x in r["legs"]),
                                places=3)
+
+    def test_a_nameless_gap_inside_a_street_is_that_street(self):
+        """The Thames Path is The Queen's Walk for four hundred metres,
+        nameless for seventy-five, then The Queen's Walk again. Three
+        stretches and two turns for walking in a straight line."""
+        town = toy([{"name": "River Walk", "kind": "footway",
+                     "line": [[0.002, 0.002], [0.0025, 0.002]]},
+                    {"name": None, "kind": "footway",
+                     "line": [[0.0025, 0.002], [0.0029, 0.002]]},
+                    {"name": "River Walk", "kind": "footway",
+                     "line": [[0.0029, 0.002], [0.0035, 0.002]]}])
+        r = town.route((0.002, 0.002), (0.0035, 0.002))
+        self.assertEqual([x["name"] for x in r["legs"]], ["River Walk"])
 
     def test_a_short_stretch_at_the_end_of_a_leg_is_kept(self):
         """Only crumbs between two stretches are junctions. The yard you are
@@ -341,19 +384,56 @@ class TestConfidence(unittest.TestCase):
         self.assertIsNone(got["margin"])
         self.assertFalse([r for r in got["reasons"] if "toss-up" in r])
 
-    def test_two_ways_round_of_the_same_length_are_a_toss_up(self):
-        """A second way round makes counting turnings a coin flip.
+    LOOSE = [
+        # North Street, but nameless, with a turning off the middle of it.
+        {"name": None, "kind": "footway",
+         "line": [[0.0, 0.002], [0.001, 0.002], [0.002, 0.002]]},
+        {"name": "Stub", "kind": "footway",
+         "line": [[0.001, 0.002], [0.001, 0.0022]]},
+    ]
+    BACK = {"name": "Back Lane", "kind": "residential",
+            "line": [[0.0, 0.0], [0.0021, 0.0], [0.0021, 0.002],
+                     [0.002, 0.002]]}
 
-        Back Lane is a shade longer, so the walk still goes East then North and
-        no single street carries it. That matters: where one street does carry
-        the leg, the second way round is not a way of getting it wrong.
-        """
-        town = toy([{"name": "Back Lane", "kind": "residential",
-                     "line": [[0.0, 0.0], [0.0021, 0.0], [0.0021, 0.002],
-                              [0.002, 0.002]]}])
+    def test_two_ways_round_of_the_same_length_are_a_toss_up(self):
+        """A second way round is a coin flip only where part of the route has
+        no name. Somebody following names has nothing to miscount, and taking
+        the other way round is a different walk to the same place, not a
+        mistake anybody was led into."""
+        town = bare([TOY["streets"][0]] + self.LOOSE + [self.BACK])
         got = confidence.score_leg(town, (0.0, 0.0), (0.002, 0.002), [])
-        self.assertIsNone(got["spine"], got)
+        self.assertEqual(got["unnamed_choices"], 1, got)
         self.assertTrue([r for r in got["reasons"] if "toss-up" in r], got)
+
+    def test_a_fully_named_route_is_not_a_toss_up(self):
+        town = toy([self.BACK])
+        got = confidence.score_leg(town, (0.0, 0.0), (0.002, 0.002), [])
+        self.assertIsNotNone(got["margin"])
+        self.assertLess(got["margin"], confidence.MARGIN_MIN, got)
+        self.assertFalse([r for r in got["reasons"] if "toss-up" in r], got)
+
+    def test_a_long_nameless_corridor_is_followable(self):
+        """A hundred and eighty metres of riverside path with nothing leading
+        off it. Counted as metres it was a third of the leg and sent it to
+        rough; counted as choices it is none."""
+        town = toy([{"name": None, "kind": "footway",
+                     "line": [[0.002, 0.002], [0.0034, 0.002]]}])
+        got = confidence.score_leg(town, (0.0, 0.0), (0.0034, 0.002), [])
+        self.assertGreater(got["unnamed_frac"], 0.15, got)
+        self.assertEqual(got["unnamed_choices"], 0, got)
+        self.assertEqual(got["verdict"], "turn_by_turn", got)
+
+    def test_several_turnings_off_a_nameless_lane_are_not(self):
+        extra = [{"name": None, "kind": "footway",
+                  "line": [[0.002, 0.002], [0.0026, 0.002], [0.0028, 0.002],
+                           [0.003, 0.002], [0.0034, 0.002]]}]
+        extra += [{"name": f"Stub {n}", "kind": "footway",
+                   "line": [[lat, 0.002], [lat, 0.0022]]}
+                  for n, lat in enumerate((0.0026, 0.0028, 0.003))]
+        town = toy(extra)
+        got = confidence.score_leg(town, (0.0, 0.0), (0.0034, 0.002), [])
+        self.assertEqual(got["unnamed_choices"], 3, got)
+        self.assertTrue([r for r in got["reasons"] if "no name for" in r], got)
 
     def test_a_street_that_carries_the_leg_beats_the_other_way_round(self):
         """The first leg of the Borough walk: 313 m straight up Borough High

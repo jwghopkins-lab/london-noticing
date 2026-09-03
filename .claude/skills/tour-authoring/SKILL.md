@@ -133,6 +133,19 @@ directions.** It tells you which legs you are allowed to describe as turns.
 
 ## 4. Write each leg in the mode you were given
 
+**Read the map before you decide the leg cannot be described.** Four things
+looked like reasons to give up and were not:
+
+- a metre of a side street left in the middle of a run, where the route crossed
+  a junction;
+- a nameless gap between two stretches of one street;
+- a nameless stretch at either end of the leg, which is the approach to a door;
+- a nameless stretch with nothing leading off it, which is a corridor however
+  long it runs.
+
+What is left after those is the real difficulty: turnings you cannot name, and
+too many of them to count off a phone.
+
 **The street that carries the leg is the whole instruction.** Where one named
 street covers more than half the walking, the score reports it as the leg's
 *spine* and the directions must name it, in either mode. Told to go up Borough
@@ -147,35 +160,26 @@ where you are setting off from.
 > From Place du Bessarel, walk east along the square to the far end and pick up
 > Rue du Pont des Vierges, which runs north east.
 
-**rough** — a heading and a landmark. Five parts, in the JSON:
+**destination** — where they are setting off from, which way, roughly how far,
+and what they are looking for. Three parts:
 
 ```json
-"directions_mode": "rough",
-"directions": "From Place du Bessarel, head east. About a hundred and fifty metres, all of it in narrow lanes.",
-"directions_streets": ["Rue du Pont des Vierges", "Rue Amélie Galup", "Rue du Cluzel"],
-"directions_target": "a street sign for Rue Guilhem Peyre"
+"directions_mode": "destination",
+"directions": "From the cathedral, head east to the river, then downstream along The Queen's Walk. About five hundred and fifty metres.",
+"directions_target": "a mosaic of an old bridge, set into the wall on the landward side"
 ```
 
-The builder assembles the shipped text and adds the caveat. There are three,
-and the reason the leg was demoted picks one:
+Name the street if the leg runs along one. That is allowed here and it is
+usually the most useful thing there is to say.
 
-| cause | says |
-|---|---|
-| `warren` | the lanes are older than the map and carry no sign |
-| `choices` | more than one way through, all about the same length |
-| `unsigned` | one way along, but parts of it have no name on the map |
+This is not the booby prize. It is what somebody who knows the place says when
+the way through is a muddle, and it cannot be wrong the way a turn sequence can
+be wrong, because it does not claim the thing that turns out to be false.
 
-Set `"directions_caveat"` on the stop to choose. It is checked against the
-score, so it can pick between true descriptions and cannot invent one. Do not
-write your own caveat text.
-
-`directions_streets` may name streets from the OTHER engines' routes as well as
-ours. On a leg they disagree about, those are the streets a walker will actually
-come out on.
-
-Rough is not the booby prize. It is what somebody who knows the town says, and
-it cannot be wrong in the way a turn sequence can be wrong, because it does not
-claim the thing that turns out to be false.
+**rough** is the closed predecessor. It listed the leg's streets under "You may
+come out on ..." and added a caveat. The list was usually the route itself, in
+order, dressed up as a set of maybes, and it read as vague because it was.
+Walks written under it keep it word for word. Do not write a new one.
 
 ## 5. Write the stop
 
@@ -303,3 +307,9 @@ workflow serves it at `/<served_at>/`.
 - Forty metres of nameless yard counted as a lane the walker had to pick out
   from other lanes. It was the yard the pub is in, at the end of the leg. A
   short nameless stretch at either end of a leg is the approach to a door.
+- Nameless walking measured in metres rather than in choices. A hundred and
+  eighty metres of riverside path with nothing leading off it scored worse than
+  fifty metres of alley with four openings. Count the junctions.
+- A leg demoted for having another way round, when every stretch of it had a
+  name. Following names is not counting turnings, and the other way round is a
+  different walk to the same place, not a mistake anybody was led into.

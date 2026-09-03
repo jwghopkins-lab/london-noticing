@@ -131,7 +131,7 @@
    "lat": 51.506144,
    "lon": -0.08968,
    "coord_source": "osm",
-   "directions": "From the George, head north through the market. About three hundred metres. The lanes are narrow and busy on a market day.",
+   "directions": "Out of the yard, turn right up Borough High Street, then left into Bedale Street and on into Green Dragon Court. About three hundred metres, straight through the middle of the market.\n\nThe cathedral is at the end of the court.",
    "gate": {
     "radius_m": 35,
     "allow_pass": true,
@@ -143,14 +143,7 @@
    "look_spoken": "Two men were here in the same year, sixteen oh seven.\n\nOne was buried in this church that December. The other was baptised in it that November.\n\nThere is a university named after the second one.",
    "after": "Edmund Shakespeare, William's youngest brother and an actor like him. He died at twenty-seven, and William paid twenty shillings for a forenoon knell of the great bell, the expensive option.\n\nJohn Harvard was a butcher's son from this parish. He went to Massachusetts, died at thirty, and left his books and half his money to a new college outside Boston.",
    "after_spoken": null,
-   "directions_mode": "rough",
-   "directions_streets": [
-    "Borough High Street",
-    "Bedale Street",
-    "Green Dragon Court"
-   ],
-   "directions_target": "the cathedral, and the churchyard on its north side",
-   "directions_caveat": "choices"
+   "directions_mode": "turn_by_turn"
   },
   {
    "id": "bridge-mosaic",
@@ -160,7 +153,7 @@
    "lat": 51.506258,
    "lon": -0.083303,
    "coord_source": "osm",
-   "directions": "From the cathedral, head east to the river, then downstream. About five hundred and fifty metres.",
+   "directions": "From the cathedral, head east to the river, then downstream along The Queen's Walk. About five hundred and fifty metres.",
    "gate": null,
    "nudge": null,
    "question": {
@@ -183,15 +176,8 @@
    "look_spoken": null,
    "after": "Houses and shops, seven storeys high in places, leaning out over the water.\n\nThere was a chapel on it, and a gatehouse at the Southwark end where the heads of traitors were set on poles. A German visitor counted thirty of them in 1598.\n\nThe buildings came off in 1762 and the bridge was replaced in 1831.",
    "after_spoken": "Houses and shops, seven storeys high in places, leaning out over the water.\n\nThere was a chapel on it, and a gatehouse at the Southwark end where the heads of traitors were set on poles. A German visitor counted thirty of them in fifteen ninety eight.\n\nThe buildings came off in seventeen sixty two and the bridge itself went in eighteen thirty one.",
-   "directions_mode": "rough",
-   "directions_streets": [
-    "Green Dragon Court",
-    "Duke Street Hill",
-    "London Bridge Walk",
-    "The Queen's Walk"
-   ],
-   "directions_target": "a mosaic of an old bridge, set into the wall on the landward side",
-   "directions_caveat": "choices"
+   "directions_mode": "destination",
+   "directions_target": "a mosaic of an old bridge, set into the wall on the landward side"
   },
   {
    "id": "tower-bridge",
@@ -201,7 +187,7 @@
    "lat": 51.504193,
    "lon": -0.076138,
    "coord_source": "osm",
-   "directions": "From the mosaic, keep the water on your left and carry on south east. About six hundred metres, all of it on the riverside walk.",
+   "directions": "From the mosaic, follow The Queen's Walk east along the river, with the water on your left. About six hundred metres.\n\nIt comes out on Shad Thames, under the south end of Tower Bridge.",
    "gate": {
     "radius_m": 35,
     "allow_pass": true,
@@ -213,13 +199,7 @@
    "look_spoken": null,
    "after": "It opened in 1894, after eight years of building.\n\nOn 30 December 1952 a number 78 bus was crossing when the two halves began to rise under it. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nNobody was badly hurt. He was given ten pounds.",
    "after_spoken": "It opened in eighteen ninety four, after eight years of building.\n\nOn the thirtieth of December nineteen fifty two a number seventy eight bus was crossing when the two halves began to rise under it. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nNobody was badly hurt. He was given ten pounds.",
-   "directions_mode": "rough",
-   "directions_streets": [
-    "The Queen's Walk",
-    "Shad Thames"
-   ],
-   "directions_target": "the southern end of Tower Bridge",
-   "directions_caveat": "unsigned"
+   "directions_mode": "turn_by_turn"
   },
   {
    "id": "jacobs-island",
@@ -229,7 +209,7 @@
    "lat": 51.50219,
    "lon": -0.0707,
    "coord_source": "osm",
-   "directions": "From the bridge, head south east between the warehouses. About five hundred metres, down a narrow street with high brick on both sides.",
+   "directions": "From the bridge, drop down into Shad Thames and follow it south east between the warehouses. About five hundred metres.\n\nWhere the street ends, keep going to the footbridge over the creek.",
    "gate": {
     "radius_m": 25,
     "allow_pass": true,
@@ -241,13 +221,7 @@
    "look_spoken": null,
    "after": "Dickens killed Bill Sikes here at the end of Oliver Twist, in a chase over the roofs.\n\nHe described it so exactly that an alderman stood up in public and announced that no such place existed. Dickens went back and described it again, in more detail.\n\nIt was pulled down in the eighteen fifties.",
    "after_spoken": null,
-   "directions_mode": "rough",
-   "directions_streets": [
-    "Tower Bridge",
-    "Shad Thames"
-   ],
-   "directions_target": "a footbridge over a tidal creek, at the end of the warehouses",
-   "directions_caveat": "unsigned"
+   "directions_mode": "turn_by_turn"
   },
   {
    "id": "old-justice",
@@ -269,15 +243,8 @@
    "look_spoken": null,
    "after": "On the afternoon of 7 September 1940 the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. Crews coming back after dark could steer by the glow.\n\nThey came back every night for fifty-seven nights running.",
    "after_spoken": "On the afternoon of the seventh of September nineteen forty the bombers came up the river and the timber caught.\n\nA fire officer out on the water that night said the whole bloody world was on fire. The glow was navigation enough for the crews who came back after dark.\n\nThey came back every night for fifty-seven nights running.",
-   "directions_mode": "rough",
-   "directions_streets": [
-    "Mill Street",
-    "Bermondsey Wall West",
-    "Chambers Street",
-    "Farncombe Street"
-   ],
-   "directions_target": "a pub called the Old Justice, on the river side of Bermondsey Wall East",
-   "directions_caveat": "choices"
+   "directions_mode": "destination",
+   "directions_target": "a pub called the Old Justice, on the river side of Bermondsey Wall East"
   },
   {
    "id": "kings-stairs",
@@ -331,15 +298,8 @@
    "look_spoken": "A red brick church of seventeen fifteen, paid for by the people who worked the river here.\n\nThe master of the ship that carried the Pilgrims to America in sixteen twenty is buried in this churchyard. No stone. Nobody wrote down where.",
    "after": "Two timbers of the communion table came out of a warship. The Temeraire was broken up just downstream in 1838. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in 1784, learned English in six months, and died of smallpox inside the year.",
    "after_spoken": "Two timbers of the communion table came out of a warship. The Temeraire was broken up just downstream in eighteen thirty eight. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in seventeen eighty four, learned English in six months, and died of smallpox inside the year.",
-   "directions_mode": "rough",
-   "directions_streets": [
-    "Cathay Street",
-    "Bermondsey Wall East",
-    "King's Stairs",
-    "Rotherhithe Street"
-   ],
-   "directions_target": "a red brick church on the corner of St Marychurch Street",
-   "directions_caveat": "unsigned"
+   "directions_mode": "destination",
+   "directions_target": "a red brick church on the corner of St Marychurch Street"
   },
   {
    "id": "brunel",

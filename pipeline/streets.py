@@ -34,6 +34,11 @@ CELL = 0.0005
 # of the street you are actually walking down. A named stretch shorter than this,
 # with a stretch either side of it, is a crossing rather than a turning.
 JUNCTION_M = 8.0
+# A nameless gap between two stretches of the same street is a hole in the data,
+# not a different way. The Thames Path is "The Queen's Walk" for four hundred
+# metres, nameless for seventy-five, then "The Queen's Walk" again. Up to this
+# long, the gap is the street.
+GAP_M = 120.0
 
 
 def fold(text):
@@ -369,11 +374,25 @@ class Town:
             if out and out[-1]["name"] == name:
                 out[-1]["metres"] += d
                 out[-1]["end_bearing"] = brg
+                out[-1]["nodes"].append(b)
             else:
                 out.append({"name": name, "inferred": inferred,
                             "obvious": obvious, "metres": d,
-                            "bearing": brg, "end_bearing": brg})
+                            "bearing": brg, "end_bearing": brg,
+                            "nodes": [a, b]})
         return self._tidy(out)
+
+    def junctions_on(self, leg):
+        """How many places along this stretch a walker could leave it.
+
+        The nodes at each end are where the leg turns, so only the ones in
+        between count. A stretch with none of them is a corridor: however long
+        it is and whatever the map calls it, there is nowhere else to go, and
+        somebody walking it cannot take a wrong turning because there is no
+        turning to take.
+        """
+        return sum(1 for n in leg.get("nodes", [])[1:-1]
+                   if len(self.adj.get(n, ())) > 2)
 
     @staticmethod
     def _tidy(legs):
@@ -400,13 +419,30 @@ class Town:
             # walker spends the time on. The total is unchanged either way.
             keep = before if before["metres"] >= after["metres"] else after
             keep["metres"] += legs[i]["metres"]
+            keep["nodes"] = (keep["nodes"] + legs[i]["nodes"] if keep is before
+                             else legs[i]["nodes"] + keep["nodes"])
             del legs[i]
             i = max(1, i - 1)
+        # A nameless gap inside one street is that street. Done before the
+        # merge below, so the two halves it separated become one stretch.
+        i = 1
+        while i < len(legs) - 1:
+            leg = legs[i]
+            if (leg["name"] is None and leg["metres"] <= GAP_M
+                    and legs[i - 1]["name"] is not None
+                    and legs[i - 1]["name"] == legs[i + 1]["name"]):
+                legs[i - 1]["metres"] += leg["metres"]
+                legs[i - 1]["nodes"] += leg["nodes"]
+                legs[i - 1]["end_bearing"] = leg["end_bearing"]
+                del legs[i]
+                continue
+            i += 1
         out = []
         for leg in legs:
             if out and out[-1]["name"] == leg["name"]:
                 out[-1]["metres"] += leg["metres"]
                 out[-1]["end_bearing"] = leg["end_bearing"]
+                out[-1]["nodes"] += leg["nodes"]
             else:
                 out.append(leg)
         for before, after in zip(out, out[1:]):

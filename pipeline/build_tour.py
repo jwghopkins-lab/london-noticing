@@ -268,7 +268,14 @@ DIST_TOLERANCE_M = 25.0
 # Rough is not a lesser mode. It is what somebody who knows the town actually
 # says, and it cannot be wrong the way a turn sequence can be wrong, because it
 # does not claim the thing that turns out to be false.
-DIRECTIONS_MODES = ("turn_by_turn", "rough")
+# "rough" listed a leg's streets under "you may come out on ..." and added a
+# caveat. It was read as vague and unhelpful, and it was: the list was usually
+# the route itself, in order, dressed up as a set of maybes. What replaced it
+# says where you are setting off from, which way, how far, and what you are
+# looking for, and then stops. Walks written before that keep "rough" and keep
+# their text word for word; nothing new should use it.
+DIRECTIONS_MODES = ("turn_by_turn", "destination", "rough")
+VAGUE_MODES = ("destination", "rough")
 # Rough directions describe a heading, not a route, so both the distance and the
 # bearing are held to looser limits than a turn sequence is.
 ROUGH_DIST_TOLERANCE_FRAC = 0.40
@@ -428,6 +435,44 @@ def street_mentions(text):
             continue
         out.append((pos, tokens))
     return out
+
+
+def named_streets(town, text):
+    """Every street in the text that the map recognises, in the order written.
+
+    street_mentions above only spots a name by its shape, which needs a type
+    word: Rue, or Street, or Yard. Plenty of streets have none. Shad Thames is
+    a street; so are Cheapside and Bankside and Piccadilly. Nothing structural
+    marks them out, so the only way to find them is to offer every run of
+    capitalised words to the map and keep what it knows.
+
+    That is too loose to accuse anybody of inventing a street with, which is
+    what street_mentions is for. It is exactly right for the opposite question:
+    did the directions name the street the leg runs along.
+    """
+    toks = [(m.group(0), m.start()) for m in re.finditer(r"[\w'\u2019-]+", text)]
+    out, i = [], 0
+    while i < len(toks):
+        if not toks[i][0][:1].isupper():
+            i += 1
+            continue
+        got = resolve_span(town, [t for t, _ in toks[i:i + 7]])
+        if got is None:
+            i += 1
+            continue
+        name, span = got
+        out.append((toks[i][1], name))
+        i += span
+    return out
+
+
+def resolve_span(town, tokens):
+    """The longest known street starting at these tokens, and how many it used."""
+    for n in range(min(len(tokens), 7), 1, -1):
+        got = _known(town, " ".join(tokens[:n]))
+        if got:
+            return got, n
+    return None
 
 
 def resolve_street(town, tokens):
@@ -812,14 +857,20 @@ def caveat_faults(where, stop, score):
 
 
 def rough_directions(stop, cause="warren"):
-    """The shipped text for a rough leg: heading, streets, caveat, landmark."""
-    caveat = ROUGH_CAVEATS.get(cause, ROUGH_LANES)
+    """The shipped text for a leg the map cannot give as turns.
+
+    Two shapes. `destination` is the one to write now: where you set off from,
+    which way, how far, and what you are looking for. `rough` is what walks
+    written before it shipped with, and it stays exactly as it was, list of
+    streets and caveat and all, because changing it would rewrite walks that
+    are finished.
+    """
     out = [(stop.get("directions") or "").strip()]
-    named = stop.get("directions_streets") or []
-    if named:
-        out.append(f"You may come out on {human_list(named)}. {caveat}")
-    else:
-        out.append(caveat)
+    if stop.get("directions_mode") != "destination":
+        caveat = ROUGH_CAVEATS.get(cause, ROUGH_LANES)
+        named = stop.get("directions_streets") or []
+        out.append(f"You may come out on {human_list(named)}. {caveat}"
+                   if named else caveat)
     target = (stop.get("directions_target") or "").strip().rstrip(".")
     if target:
         out.append(f"What you are looking for is {target}.")
@@ -890,32 +941,43 @@ def check(tour):
                     errors.append(f"{where}: directions_mode must be one of "
                                   f"{list(DIRECTIONS_MODES)}, not {mode!r}")
                     mode = "turn_by_turn"
-                if mode == "rough":
+                if mode in VAGUE_MODES:
                     # A heading, not a route. Left and right belong to a turn
                     # sequence, and a turn sequence is exactly what this leg
                     # has been judged unable to support.
                     if not compass_positions(d):
-                        errors.append(f"{where}: rough directions must give a "
+                        errors.append(f"{where}: {mode} directions must give a "
                                       f"compass heading, not a turn")
                     if TURN_CLAIMS.search(d):
-                        errors.append(f"{where}: rough directions must not count "
-                                      f"turnings; a turning you cannot name "
-                                      f"cannot be counted")
+                        errors.append(f"{where}: {mode} directions must not "
+                                      f"count turnings; a turning you cannot "
+                                      f"name cannot be counted")
                     if not (s.get("directions_target") or "").strip():
-                        errors.append(f"{where}: rough directions need a "
+                        errors.append(f"{where}: {mode} directions need a "
                                       f"directions_target, the thing you are "
                                       f"walking towards")
+                if mode == "destination":
+                    for field in ("directions_streets", "directions_caveat"):
+                        if s.get(field):
+                            errors.append(
+                                f"{where}: {field} belongs to the old rough "
+                                f"mode. Destination directions give a heading, "
+                                f"a distance and what to look for, and stop")
+                if mode == "rough":
+                    notes.append(f"{where}: written in the old rough mode, "
+                                 f"which lists streets you may come out on. "
+                                 f"New walks use destination")
                     if not (s.get("directions_streets") or []):
                         notes.append(f"{where}: rough directions with no "
-                                     f"directions_streets; naming the streets you "
-                                     f"may come out on is most of the value")
-                else:
+                                     f"directions_streets")
+                if mode == "turn_by_turn":
                     for field in ("directions_target", "directions_streets"):
                         if s.get(field):
-                            errors.append(f"{where}: {field} belongs to rough "
-                                          f"directions; this leg is turn_by_turn")
+                            errors.append(f"{where}: {field} belongs to a leg "
+                                          f"the map cannot give as turns; this "
+                                          f"one it can")
                 errors += caveat_faults(where, s, None)
-                if len(d.split()) < (14 if mode == "rough" else 25):
+                if len(d.split()) < (14 if mode in VAGUE_MODES else 25):
                     notes.append(f"{where}: directions are only {len(d.split())} "
                                  f"words, probably not detailed enough")
                 if not re.search(r"(left|right|straight|north|south|east|west)", d, re.I):
@@ -1187,7 +1249,7 @@ def check(tour):
             mode = s.get("directions_mode", "turn_by_turn")
             said = sum(all_authored_metres(s.get("directions") or ""))
             if said:
-                frac = (ROUGH_DIST_TOLERANCE_FRAC if mode == "rough"
+                frac = (ROUGH_DIST_TOLERANCE_FRAC if mode in VAGUE_MODES
                         else DIST_TOLERANCE_FRAC)
                 slack = max(DIST_TOLERANCE_M, r["metres"] * frac)
                 if abs(said - r["metres"]) > slack:
@@ -1207,7 +1269,7 @@ def check(tour):
             for x in legs:
                 if x["name"] and x["metres"] >= heading.get(x["name"], (0, 0))[0]:
                     heading[x["name"]] = (x["metres"], x["bearing"])
-            simple = unnamed == 0 and len(legs) <= SIMPLE_MAX_TURNS
+            simple = unnamed == 0 and max(0, len(legs) - 1) <= SIMPLE_MAX_TURNS
             standing = set()
             for pt in ((stops[i - 1]["lat"], stops[i - 1]["lon"]),
                        (s["lat"], s["lon"])):
@@ -1215,11 +1277,7 @@ def check(tour):
 
             text = s.get("directions") or ""
             mentions = street_mentions(text)
-            named = []
-            for pos, tokens in mentions:
-                got = resolve_street(town, tokens)
-                if got:
-                    named.append((pos, got))
+            named = named_streets(town, text)
 
             # You cannot send somebody down a street this leg never touches.
             for _, name in named:
@@ -1231,7 +1289,7 @@ def check(tour):
             # sequence cannot be followed, so do not write one.
             if not simple and TURN_CLAIMS.search(text):
                 errors.append(
-                    f"{where}: {len(legs)} turns and "
+                    f"{where}: {max(0, len(legs) - 1)} turns and "
                     f"{unnamed / r['metres'] * 100:.0f}% of it down lanes with no "
                     f"name, so counting turnings cannot work. Name the streets "
                     f"and say which way they run instead")
@@ -1239,14 +1297,14 @@ def check(tour):
             # Whether this leg may be given as a sequence of turns at all is
             # decided by the map and by other routing engines, not by taste.
             verdict = scores.get(s["id"])
-            if verdict and verdict["verdict"] == "rough" and mode != "rough":
+            if verdict and verdict["verdict"] == "rough" and mode not in VAGUE_MODES:
                 errors.append(
                     f"{where}: written as turn-by-turn, but this leg does not "
                     f"support it. " + " Also: ".join(verdict["reasons"])
                     + ". Write it as rough directions instead: a heading, a "
                     f"rough distance, the streets you may come out on, and what "
                     f"to look for.")
-            if verdict and verdict["verdict"] == "turn_by_turn" and mode == "rough":
+            if verdict and verdict["verdict"] == "turn_by_turn" and mode in VAGUE_MODES:
                 notes.append(f"{where}: written rough, though the map supports "
                              f"turn-by-turn here")
             for why in (verdict or {}).get("notes", []):
@@ -1296,11 +1354,12 @@ def check(tour):
                     errors.append(f"{where}: directions_streets says {name!r}; "
                                   f"the map spells it {got!r}")
 
-            # In rough directions the streets belong in directions_streets, where
-            # the caveat frames them honestly. Naming one in the prose promises
-            # the walker they will be on it, which is the promise this mode
-            # exists to stop making. The origin is the exception: you have to say
-            # where you are setting off from.
+            # Under the old rough mode the streets belonged in
+            # directions_streets, where the caveat framed them honestly, and
+            # naming one in the prose promised the walker they would be on it.
+            # Destination directions make no such promise and are better for
+            # naming the way: "downstream along The Queen's Walk" is the most
+            # useful thing that can be said about that leg.
             if mode == "rough":
                 origin = {n for n, _ in town.named_here(
                     stops[i - 1]["lat"], stops[i - 1]["lon"], STANDING_ON_M)}
@@ -1321,7 +1380,7 @@ def check(tour):
                 if not deduped or deduped[-1] != name:
                     deduped.append(name)
             claimed = ([n for _, n in named if n in heading]
-                       if mode != "rough" else [])
+                       if mode not in VAGUE_MODES else [])
             cursor = 0
             for name in claimed:
                 while cursor < len(deduped) and deduped[cursor] != name:
@@ -1335,7 +1394,7 @@ def check(tour):
             for pos, deg, word in compass_positions(text):
                 att = attached_street(text, pos, mentions)
                 name = resolve_street(town, att[1]) if att else None
-                tol = (ROUGH_COMPASS_TOLERANCE_DEG if mode == "rough"
+                tol = (ROUGH_COMPASS_TOLERANCE_DEG if mode in VAGUE_MODES
                        else COMPASS_TOLERANCE_DEG)
                 if name and name in heading:
                     if angle_off(deg, heading[name][1]) > tol:
@@ -1404,7 +1463,7 @@ def bake(tour):
             "id": s["id"], "topic": s["topic"], "title": s["title"],
             "where": s["where"], "lat": s["lat"], "lon": s["lon"],
             "directions": (rough_directions(s, rough_cause(scores.get(s["id"]), s))
-                           if s.get("directions_mode") == "rough"
+                           if s.get("directions_mode") in VAGUE_MODES
                            else s.get("directions")),
             "directions_mode": s.get("directions_mode", "turn_by_turn"),
             "gate": s.get("gate"), "nudge": s.get("nudge"),
@@ -1463,7 +1522,8 @@ def rough_survived(shipped_stop, source_stop):
     """
     shipped = shipped_stop.get("directions") or ""
     out = []
-    if not any(c in shipped for c in ROUGH_CAVEATS.values()):
+    if (source_stop.get("directions_mode") != "destination"
+            and not any(c in shipped for c in ROUGH_CAVEATS.values())):
         out.append(f"{shipped_stop['id']}: the shipped directions carry no caveat")
     wanted = ([source_stop.get("directions") or "",
                (source_stop.get("directions_target") or "").strip().rstrip(".")]
@@ -1485,7 +1545,7 @@ def verify(artefact, source):
         fields = ["title", "where", "look", "after", "look_spoken",
                   "after_spoken", "lat", "lon", "topic",
                   "gate", "question", "nudge"]
-        if o.get("directions_mode") == "rough":
+        if o.get("directions_mode") in VAGUE_MODES:
             problems += rough_survived(s, o)
         else:
             fields.append("directions")
