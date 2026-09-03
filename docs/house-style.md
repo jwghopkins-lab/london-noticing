@@ -153,6 +153,29 @@ configuration.
     of four-metre alleys, that reached three streets over and exempted almost
     everything from rule 42. **[checked]**
 
+### The street that carries the leg
+
+81. **Where one named street covers more than half a leg, name it.** The score
+    calls that street the leg's *spine*. Told to walk up Borough High Street a
+    walker cannot end up on Tennis Street by mistake, so a second way round of
+    similar length is not a reason to be vague. It is a reason to be vague only
+    where the instruction is a count of turnings. **[checked]**
+82. **A junction crossing is not a turning.** Two metres of a side street in the
+    middle of a three-hundred-metre run split one street into three stretches
+    and invented two turns, which was on its own enough to demote the leg.
+    **[checked in `streets.py`]**
+83. **A short nameless stretch at either end of a leg is the approach.** The
+    yard the pub stands in, the path from the road to the door. Nameless walking
+    counts against a leg between named streets, where a lane has to be picked
+    out from other lanes. **[checked]**
+84. **Every check must have fired at least once somewhere.** The street-mention
+    finder looked for a type word at the front of a name — Rue, Via, Ulica — so
+    in London it returned nothing, for every leg, and five checks that read it
+    passed by default. A whole walk shipped with its directions never compared
+    against the map. **[checked]**
+85. **The intro's counts are checked against the stops.** It said seven
+    questions and five gates on a walk with six of each. **[checked]**
+
 ### Two ways to write a leg, and it is not your choice which
 
 The complaint that produced all of this: stop 4's directions were not quite
@@ -243,6 +266,23 @@ town. A guide standing beside you says the thing and stops.
     flourish; it needs to be answerable. **[checked]**
 69. **Directions are capped at 60 words.** A leg that needs more than that is a
     leg the map cannot support. See rule 47. **[checked]**
+78. **No reversal pairs.** Two short sentences arranged so the second turns on
+    the first is a figure of speech, not a fact. This shipped and was read as
+    cryptic:
+
+    > The yards are still called after the inns. The inns themselves have gone.
+
+    Say what is there and what is not in one sentence: "The pubs are gone but
+    the yards still carry their names." The check fires when a short sentence
+    saying something is absent reuses a noun from the sentence before it.
+    **[checked]**
+79. **No emphasis that does no work.** itself, themselves, himself, herself. If
+    the sentence reads the same without the word, the word was there for the
+    beat. **[checked]**
+80. **Say the fact before the reason, and only give a reason that was asked
+    for.** "It was one of a long row along this street, because everybody
+    heading south had to start from Southwark" front-loads a cause nobody
+    wanted. "The Tabard was one of many inns on this road" is the fact.
 
 ### Say it once
 

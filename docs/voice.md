@@ -58,6 +58,33 @@ The first Castres clue said "This street is named after a courtroom" in the look
 and again in the question. **Principle guessed: the walker reads the card
 straight through, so write it straight through.**
 
+### Two sentences turned against each other
+This shipped at Talbot Yard and you rewrote it:
+
+```
+Mine:   The Tabard stood here. It was one of a long row along this street,
+        because everybody heading south had to start from Southwark.
+        The yards are still called after the inns. The inns themselves have gone.
+Yours:  The Tabard inn used to be one of many pubs on this road, they are gone,
+        but the yards still have the names that the pubs used to.
+```
+
+Three separate things went wrong and they are worth naming apart.
+
+**The reversal.** "The yards are still called after the inns. The inns
+themselves have gone." Same noun, then the turn, then the beat. Both sentences
+are true and the pair is a figure of speech. Yours puts it in one sentence and
+loses nothing. **Principle guessed: if two sentences are arranged against each
+other, say it in one.** Now checked.
+
+**The word doing nothing.** "themselves". Read the sentence without it. Now
+checked, along with itself, himself and herself.
+
+**The reason nobody asked for.** "because everybody heading south had to start
+from Southwark" arrives before the reader has wondered why. Yours drops it
+entirely. **Principle guessed: give the fact. A reason only earns its place
+when the fact is surprising without it.**
+
 ### No walking time on a short leg
 "About 23 metres, a minute or two" is nonsense; it is twenty paces.
 

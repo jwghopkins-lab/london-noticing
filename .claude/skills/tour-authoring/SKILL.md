@@ -133,6 +133,13 @@ directions.** It tells you which legs you are allowed to describe as turns.
 
 ## 4. Write each leg in the mode you were given
 
+**The street that carries the leg is the whole instruction.** Where one named
+street covers more than half the walking, the score reports it as the leg's
+*spine* and the directions must name it, in either mode. Told to go up Borough
+High Street you cannot end up on Tennis Street by mistake, so a second way round
+of similar length is not a reason to be vague on a leg like that. It is a reason
+to be vague where the instruction is "second on the left".
+
 **turn_by_turn** — name the streets in the order you walk them, say which way
 each runs, give one rounded distance for the whole leg, and start by naming
 where you are setting off from.
@@ -149,9 +156,18 @@ where you are setting off from.
 "directions_target": "a street sign for Rue Guilhem Peyre"
 ```
 
-The builder assembles the shipped text and adds the caveat, choosing between
-"the lanes here are older than the map" and "there is more than one way through
-here" from the reason the leg was demoted. Do not write your own version.
+The builder assembles the shipped text and adds the caveat. There are three,
+and the reason the leg was demoted picks one:
+
+| cause | says |
+|---|---|
+| `warren` | the lanes are older than the map and carry no sign |
+| `choices` | more than one way through, all about the same length |
+| `unsigned` | one way along, but parts of it have no name on the map |
+
+Set `"directions_caveat"` on the stop to choose. It is checked against the
+score, so it can pick between true descriptions and cannot invent one. Do not
+write your own caveat text.
 
 `directions_streets` may name streets from the OTHER engines' routes as well as
 ours. On a leg they disagree about, those are the streets a walker will actually
@@ -275,3 +291,15 @@ workflow serves it at `/<served_at>/`.
 - A street name with a word before the prefix. `Grand Rue Raymond VII` is the
   main street of Cordes and the checker called it invented, six times, until the
   mention was allowed to start one word earlier.
+- The same checker, in English, finding nothing at all. It looked for a type
+  word at the FRONT of a name, which is how Rue and Via and Ulica work and is
+  not how Street and Road and Yard do. Every check that reads street mentions
+  passed by default, and a whole walk shipped with its directions never once
+  compared against the map. If a check has never fired on a town, find out
+  whether it can.
+- 1.5 m of a side street left in the middle of a 313 m run, where the route
+  crossed a junction. It split one street into three, invented two turns, and
+  pushed a leg out of turn-by-turn directions for going straight on.
+- Forty metres of nameless yard counted as a lane the walker had to pick out
+  from other lanes. It was the yard the pub is in, at the end of the leg. A
+  short nameless stretch at either end of a leg is the approach to a door.

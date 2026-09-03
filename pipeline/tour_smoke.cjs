@@ -41,7 +41,13 @@ async function walk(id) {
   const TOUR = JSON.parse(fs.readFileSync(
     path.resolve(ROOT, "out", "walks", `${id}.json`), "utf8"));
 
-  const browser = await chromium.launch({ headless: !process.argv.includes("--headed") });
+  // A sandbox may ship one Chromium build and this Playwright expect another.
+  // CHROMIUM_PATH points at whatever is actually installed; unset, nothing
+  // changes and Playwright finds its own.
+  const browser = await chromium.launch({
+    headless: !process.argv.includes("--headed"),
+    ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}),
+  });
   const ctx = await browser.newContext({
     viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
   const page = await ctx.newPage();

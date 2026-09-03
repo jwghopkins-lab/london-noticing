@@ -150,8 +150,18 @@ FLOURISHES = [
      r"|embodiment|juxtaposition|interplay|nexus)\b", "an essay noun"),
     (r"\b(?:speaks to|stands as|serves as|bears witness|no accident|a reminder that)\b",
      "an essay verb"),
+    # "The inns themselves have gone." The word adds nothing except a beat.
+    (r"\b(?:itself|themselves|himself|herself)\b(?! \w+ed\b)",
+     "emphasis doing no work; cut it"),
 ]
 FLOURISHES = [(re.compile(pat, re.I), why) for pat, why in FLOURISHES]
+
+# Words that say a thing is no longer there. Half of a reversal pair.
+ABSENCE = re.compile(
+    r"\b(?:gone|vanished|disappeared|demolished|no longer|nothing|none|never)\b",
+    re.I)
+# Two sentences turned against each other are a figure of speech, not a fact.
+REVERSAL_WORDS = 10
 
 # Long words with short ones sitting right next to them.
 WORDY = {
@@ -208,6 +218,19 @@ STREET_PREFIXES = {
     "rue", "place", "boulevard", "avenue", "chemin", "quai", "impasse",
     "ruelle", "venelle", "route", "cour", "passage", "sentier", "allee",
     "ulica", "brama", "targ", "dwor", "via", "calle", "piazza",
+}
+# English does it the other way up. "Borough High Street", "Bermondsey Wall
+# East", "Talbot Yard": the type word is at the END of the name, or there is no
+# type word at all. Only looking for a leading Rue or Place meant that on the
+# Borough walk street_mentions returned nothing whatever, so every check that
+# reads it passed by default and the directions shipped having never been
+# compared with the map. That is how "head north up the High Street" went out
+# for 313 metres of a street the map names on every corner.
+STREET_SUFFIXES = {
+    "street", "road", "lane", "walk", "way", "yard", "court", "place", "hill",
+    "wall", "row", "gardens", "square", "bridge", "alley", "close", "terrace",
+    "crescent", "mews", "wharf", "quay", "embankment", "rise", "passage",
+    "approach", "stairs", "steps", "green", "park", "avenue", "drive",
 }
 CONNECTORS = {"de", "du", "des", "la", "le", "les", "d", "l"}
 # A compass word this close after a street name, in the same sentence, is a
@@ -266,6 +289,12 @@ ROUGH_CAVEATS = {
     "choices": ("There is more than one way through here and they are all about "
                 "the same length, so if you come out somewhere else you have "
                 "not gone wrong."),
+    # Added for the Thames Path, where the third cause turned up: one obvious
+    # way along, with stretches the map has no name for. Calling that a warren
+    # would have been a lie about a riverside walk laid out in the 1980s, and
+    # calling it a choice of routes a lie about a path with no junctions.
+    "unsigned": ("Parts of this stretch have no name on the map, so go by the "
+                 "line of the path rather than by street names."),
 }
 # The wording that shipped before the two causes were told apart. Walks written
 # under the old rule keep it, so archiving a walk means archiving its text too.
@@ -342,6 +371,28 @@ def street_mentions(text):
     """Candidate street names in the text, as (character position, tokens)."""
     toks = [(m.group(0), m.start()) for m in re.finditer(r"[\w'\u2019-]+", text)]
     found = []
+    # Names built the English way, with the type word last. The run of
+    # capitalised words ending at the type word is the name, and it carries on
+    # through any capitalised word after it, for "Bermondsey Wall East".
+    for i, (w, pos) in enumerate(toks):
+        if not w[:1].isupper() or streets.fold(w) not in STREET_SUFFIXES:
+            continue
+        start = i
+        while start and toks[start - 1][0][:1].isupper():
+            gap = text[toks[start - 1][1] + len(toks[start - 1][0]):
+                       toks[start][1]]
+            if any(c in gap for c in ".!?:;"):
+                break
+            start -= 1
+        if start == i:
+            continue                    # a bare "Street", not a name
+        end = i + 1
+        while end < len(toks) and toks[end][0][:1].isupper():
+            gap = text[toks[end - 1][1] + len(toks[end - 1][0]):toks[end][1]]
+            if any(c in gap for c in ".!?:;,"):
+                break
+            end += 1
+        found.append((toks[start][1], [t for t, _ in toks[start:end]]))
     for i, (w, pos) in enumerate(toks[:-1]):
         # Capitalised, or it is the ordinary word: "the two rivers made the
         # place. The Aveyron carried the trade" is not a street called Place.
@@ -367,7 +418,16 @@ def street_mentions(text):
             if not any(c in gap for c in ".!?:;"):
                 start = i - 1
         found.append((toks[start][1], [t for t, _ in toks[start:start + 7]]))
-    return found
+    found.sort(key=lambda m: (m[0], -len(m[1])))
+    out = []
+    for pos, tokens in found:
+        # A name found both ways round is one name. "Place du Bessarel" is a
+        # prefix match; "Bessarel Place" would be a suffix one. Keep the first
+        # and longest at each position.
+        if out and out[-1][0] == pos:
+            continue
+        out.append((pos, tokens))
+    return out
 
 
 def resolve_street(town, tokens):
@@ -625,7 +685,81 @@ def plain_faults(where, text):
     for long_word, short in WORDY.items():
         if re.search(rf"\b{re.escape(long_word)}\b", low):
             out.append(f"{where}: {long_word!r}; say {short!r}")
+    out += reversal_faults(where, text)
     return out
+
+
+def reversal_faults(where, text):
+    """Two short sentences arranged so the second turns on the first.
+
+    This shipped: "The yards are still called after the inns. The inns
+    themselves have gone." Both sentences are true and together they are a
+    rhetorical figure — the same noun, then the reversal, then the beat. It is
+    the essay accent surviving at the level of the paragraph, where the
+    word-by-word checks cannot see it, and it was read as cryptic by the first
+    person who read it. Say what is there, then say what is not, in one
+    sentence: "The pubs are gone but the yards still carry their names."
+
+    Narrow on purpose. The second sentence has to be short, has to reuse a
+    noun from the first, and has to be the one that says something is absent.
+    """
+    out = []
+    parts = [p.strip() for p in re.split(r"(?<=[.!?])\s+", text) if p.strip()]
+    for before, after in zip(parts, parts[1:]):
+        if len(after.split()) > REVERSAL_WORDS or not ABSENCE.search(after):
+            continue
+        if ABSENCE.search(before):
+            continue
+        shared = ({w for w in content_words(before)}
+                  & {w for w in content_words(after)})
+        if shared:
+            out.append(
+                f"{where}: {after!r} turns the sentence before it round on "
+                f"{sorted(shared)[0]!r}. Two sentences arranged against each "
+                f"other is a figure of speech. Say it in one")
+    return out
+
+
+def content_words(text):
+    return {w for w in re.findall(r"[a-z']+", text.lower())
+            if w not in FUNCTION_WORDS and len(w) > 2}
+
+
+# What the intro says it is counting, and how to count it.
+INTRO_COUNTS = (
+    (re.compile(r"\b([a-z]+)\s+stops?\b(?!\s+(?:ask|just|need))", re.I),
+     "stops", lambda t: len(t["stops"])),
+    (re.compile(r"\b([a-z]+)\s+(?:stops?\s+)?ask\b", re.I), "questions",
+     lambda t: sum(1 for s in t["stops"] if s.get("question"))),
+    (re.compile(r"\b([a-z]+)\s+(?:stops?\s+)?(?:just\s+)?need\b", re.I),
+     "location gates", lambda t: sum(1 for s in t["stops"] if s.get("gate"))),
+)
+COUNT_WORDS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+               "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+               "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15}
+
+
+def intro_count_faults(tour):
+    """Numbers the intro states about the walk, checked against the walk."""
+    intro = tour.get("intro") or {}
+    text = f"{intro.get('lead', '')} {intro.get('body', '')}"
+    out = []
+    for pattern, what, count in INTRO_COUNTS:
+        for m in pattern.finditer(text):
+            said = COUNT_WORDS.get(m.group(1).lower())
+            if said is not None and said != count(tour):
+                out.append(f"intro says {m.group(0)!r}, but this walk has "
+                           f"{count(tour)} {what}")
+    return out
+
+
+def same_street(name):
+    """One key for the spellings OSM carries of a single street.
+
+    The riverside path is "The Queen's Walk" on some ways and "The Queens Walk"
+    on others. Naming one of them in the directions is naming the street.
+    """
+    return streets.fold(name).replace("'", "").replace("\u2019", "")
 
 
 def human_list(items):
@@ -634,17 +768,47 @@ def human_list(items):
     return f"{', '.join(items[:-1])} or {items[-1]}"
 
 
-def rough_cause(score):
+def rough_cause(score, stop=None):
     """Why this leg cannot be given as turns: a warren, or a choice of routes.
 
     No score means no opinion, and no opinion keeps the wording the walk already
     shipped with. Walks written before the two causes were told apart must not
     have their text changed by a later rule.
+
+    A stop may name its own cause in `directions_caveat`, which is how a third
+    cause was added without moving a word of any walk written before it. The
+    author's choice is checked against the score in caveat_faults, so it can
+    pick between true descriptions and cannot invent one.
     """
+    said = (stop or {}).get("directions_caveat")
+    if said in ROUGH_CAVEATS:
+        return said
     if score is None:
         return "warren"
     return "warren" if (score.get("unnamed_frac") or 0) > confidence.UNNAMED_MAX \
         else "choices"
+
+
+def caveat_faults(where, stop, score):
+    """A named cause has to be the cause. The caveat is shown to the walker."""
+    said = stop.get("directions_caveat")
+    if said is None:
+        return []
+    if stop.get("directions_mode") != "rough":
+        return [f"{where}: directions_caveat belongs to rough directions only"]
+    if said not in ROUGH_CAVEATS:
+        return [f"{where}: directions_caveat must be one of "
+                f"{sorted(ROUGH_CAVEATS)}, not {said!r}"]
+    if score is None:
+        return []
+    unnamed = (score.get("unnamed_frac") or 0) > confidence.UNNAMED_MAX
+    if said in ("warren", "unsigned") and not unnamed:
+        return [f"{where}: directions_caveat says {said!r}, but every stretch "
+                f"of this leg has a name on the map"]
+    if said == "choices" and score.get("only_way"):
+        return [f"{where}: directions_caveat says 'choices', but there is only "
+                f"one way round"]
+    return []
 
 
 def rough_directions(stop, cause="warren"):
@@ -750,6 +914,7 @@ def check(tour):
                         if s.get(field):
                             errors.append(f"{where}: {field} belongs to rough "
                                           f"directions; this leg is turn_by_turn")
+                errors += caveat_faults(where, s, None)
                 if len(d.split()) < (14 if mode == "rough" else 25):
                     notes.append(f"{where}: directions are only {len(d.split())} "
                                  f"words, probably not detailed enough")
@@ -915,6 +1080,12 @@ def check(tour):
         for phrase in SUMMING_UP:
             if phrase in text.lower():
                 errors.append(f"{field}: {phrase!r} is summing up; cut it")
+
+    # The intro counts the stops for the walker before they set off, and those
+    # counts drift. The Borough walk went out saying seven questions and five
+    # gates when it had six of each: nothing was comparing the sentence with
+    # the stops, so it could be edited without anybody noticing.
+    errors += intro_count_faults(tour)
     if plain:
         intro = tour.get("intro") or {}
         for field, text in (("outro", tour.get("outro") or ""),
@@ -945,16 +1116,31 @@ def check(tour):
                      "workflow so the directions can be checked against streets "
                      "that exist")
     else:
-        prose = " ".join(
-            [tour.get("outro") or "", (tour.get("intro") or {}).get("start", "")]
+        # Told apart because they make different promises. A street named in
+        # the directions is one the walker is about to stand on, and if the map
+        # has never heard of it the walk is broken. A street named in the
+        # telling may be anywhere on earth: the Bermondsey doctor turned down a
+        # Harley Street practice, and Harley Street is a real street eight
+        # kilometres outside this extract. Erroring on that would be the
+        # checker refusing to allow the walk to mention the rest of the world.
+        walked = " ".join(
+            [(tour.get("intro") or {}).get("start", "")]
             + [f"{s.get('directions','') or ''} {s.get('where','')} "
-               f"{s.get('directions_target','') or ''} "
-               f"{s.get('look','')} {s.get('after','')}" for s in stops])
-        for _, mention in street_mentions(prose):
+               f"{s.get('directions_target','') or ''}" for s in stops])
+        told = " ".join([tour.get("outro") or ""]
+                        + [f"{s.get('look','')} {s.get('after','')}"
+                           for s in stops])
+        for _, mention in street_mentions(walked):
             if resolve_street(town, mention) is None:
                 errors.append(f"no street called {' '.join(mention[:4])!r} in "
                               f"{tour.get('city', 'this town')}; the map says "
                               f"otherwise")
+        for _, mention in street_mentions(told):
+            if resolve_street(town, mention) is None:
+                notes.append(f"{' '.join(mention[:4])!r} is not a street in "
+                             f"{tour.get('city', 'this town')}; fine if it is "
+                             f"somewhere else, wrong if the walker is meant to "
+                             f"find it")
         for s_ in stops:
             here = f"stop {stops.index(s_) + 1} ({s_['id']})"
             far = out_of_reach(town, s_)
@@ -1011,7 +1197,12 @@ def check(tour):
 
             # ---- what the map says about this leg ----
             legs = [x for x in r["legs"] if x["metres"] >= 8]
-            unnamed = sum(x["metres"] for x in legs if not x["name"])
+            # The same stripping the score uses, so the two agree about what
+            # counts. The George stands up a yard OSM has no name for; that is
+            # the last forty metres of the leg and the door you are walking to,
+            # not a lane to be picked out from other lanes.
+            unnamed = sum(x["metres"] for x in confidence.strip_approach(legs)
+                          if not x["name"] and not x.get("obvious"))
             heading = {}
             for x in legs:
                 if x["name"] and x["metres"] >= heading.get(x["name"], (0, 0))[0]:
@@ -1060,6 +1251,25 @@ def check(tour):
                              f"turn-by-turn here")
             for why in (verdict or {}).get("notes", []):
                 notes.append(f"{where}: {why}")
+            errors += caveat_faults(where, s, verdict)
+
+            # The one street a leg mostly runs along has to be named in the
+            # directions. This is the check that was missing when the first leg
+            # of the Borough walk shipped as "head north up the High Street"
+            # followed by three streets you might come out on, for 313 metres
+            # of Borough High Street with its name on every corner. Told the
+            # name, a walker cannot get that leg wrong. Not told it, they are
+            # being asked to guess at something the map states plainly.
+            spine = (verdict or {}).get("spine")
+            claimed_names = {same_street(n) for _, n in named}
+            claimed_names |= {same_street(n)
+                              for n in (s.get("directions_streets") or [])}
+            if spine and same_street(spine) not in claimed_names:
+                errors.append(
+                    f"{where}: {spine!r} carries "
+                    f"{verdict['spine_share'] * 100:.0f}% of this leg and is "
+                    f"not named in the directions. Name it. On a leg like this "
+                    f"the name is the whole instruction")
 
             # Streets you may come out on still have to be streets, and still
             # have to be on this leg, or on a route another engine would take.
@@ -1193,7 +1403,7 @@ def bake(tour):
         stops.append({
             "id": s["id"], "topic": s["topic"], "title": s["title"],
             "where": s["where"], "lat": s["lat"], "lon": s["lon"],
-            "directions": (rough_directions(s, rough_cause(scores.get(s["id"])))
+            "directions": (rough_directions(s, rough_cause(scores.get(s["id"]), s))
                            if s.get("directions_mode") == "rough"
                            else s.get("directions")),
             "directions_mode": s.get("directions_mode", "turn_by_turn"),

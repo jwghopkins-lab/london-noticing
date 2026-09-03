@@ -27,9 +27,13 @@ Five signals, any one of which can send a leg to rough:
               needs no second engine and is the most useful of the five. Where
               two routes are within a quarter of each other a walker will take
               either, so directions that assume one of them are a coin toss.
+              Except on a spine — see below. That question only bites when the
+              directions are a sequence of turnings to be counted off.
   unnamed     How much of the walking is down lanes the map has no name for. You
               cannot tell somebody to take a street that has no name, and you
               cannot tell them to count turnings past lanes they cannot see.
+              Counted between named streets only: a short nameless stretch at
+              either end is the approach to the door, not a decision.
   turns       A person holding a phone in the sun follows about four.
   snap        How far each end of the leg is from anywhere you can walk. A stop
               floating off the network means the route to it is a guess.
@@ -70,6 +74,14 @@ SNAP_MAX_M = 25.0
 LANDMARK_M = 25.0          # something OSM names, close enough to walk towards
 ALTERNATIVE_SHARE = 0.60   # above this the "other" route is the same route
 SHORT_LEG_M = 8.0          # stretches below this are joins, not turns
+# One named street carrying this much of a leg makes the leg a spine: the
+# instruction is "walk up that street", and there is nothing to get wrong.
+SPINE_SHARE = 0.55
+# An unnamed stretch at either end of a leg is the approach: the yard you step
+# out of, the path across the green to the door. Up to this length it is not a
+# choice a walker has to make, so it is not counted against the leg. Past it,
+# it is a stretch of walking like any other.
+APPROACH_M = 60.0
 
 MODES = ("turn_by_turn", "rough")
 
@@ -129,6 +141,26 @@ def agreement(ours, theirs, tol=AGREE_TOL_M):
     }
 
 
+def strip_approach(legs):
+    """Drop a short nameless stretch from either end of a leg.
+
+    Almost every unnamed stretch on the Borough walk turned out to be the first
+    or the last one: the yard the stop stands in, the pavement from the road to
+    the pub door, the path over the green. None of those is a lane a walker has
+    to pick out from other lanes, which is the thing the unnamed signal exists
+    to catch. Counting them sent three legs to rough directions for the crime of
+    having a doorstep.
+    """
+    out = list(legs)
+    while out and not out[0]["name"] and not out[0].get("obvious") \
+            and out[0]["metres"] <= APPROACH_M:
+        out.pop(0)
+    while out and not out[-1]["name"] and not out[-1].get("obvious") \
+            and out[-1]["metres"] <= APPROACH_M:
+        out.pop()
+    return out
+
+
 # ---- the score -----------------------------------------------------------
 
 # A stop moved by more than this is a different stop, and an answer fetched for
@@ -169,7 +201,8 @@ def score_leg(town, a, b, answers=None):
     """
     out = {"verdict": "rough", "reasons": [], "notes": [], "engines": [],
            "metres": None, "turns": None, "unnamed_frac": None,
-           "margin": None, "only_way": False, "snap_m": None}
+           "margin": None, "only_way": False, "snap_m": None,
+           "spine": None, "spine_share": None, "approach_m": 0.0}
 
     # A stop off the walkable network is only a problem when there is nothing
     # there to aim at. The church stop sits 41 m off the graph because it is
@@ -191,10 +224,36 @@ def score_leg(town, a, b, answers=None):
     out["metres"] = round(r["metres"], 1)
 
     legs = [x for x in r["legs"] if x["metres"] >= SHORT_LEG_M]
-    unnamed = sum(x["metres"] for x in legs
+    inner = strip_approach(legs)
+    out["approach_m"] = round(
+        sum(x["metres"] for x in legs) - sum(x["metres"] for x in inner), 1)
+    unnamed = sum(x["metres"] for x in inner
                   if not x["name"] and not x.get("obvious"))
     out["turns"] = max(0, len(legs) - 1)
     out["unnamed_frac"] = round(unnamed / r["metres"], 3) if r["metres"] else 0.0
+
+    # The spine: the one named street the leg mostly runs along, if there is
+    # one. This is what makes the margin signal safe to ignore. Told to walk up
+    # Borough High Street you cannot end up on Tennis Street by mistake — you
+    # are on a street with its name written on it, and the other way round is
+    # not a way of getting this wrong, only a different walk somebody could
+    # have taken. The signal was written for a warren, where the instruction is
+    # "second on the left" and a second way round makes the count meaningless.
+    # Grouped by folded name, because OSM carries the riverside path as both
+    # "The Queen's Walk" and "The Queens Walk" and they are one street. Kept
+    # apart, neither half reached the share and the leg had no spine.
+    by_name = {}
+    for x in r["legs"]:
+        if x["name"]:
+            key = streets.fold(x["name"]).replace("'", "").replace("\u2019", "")
+            spellings, along = by_name.get(key, ({}, 0.0))
+            spellings[x["name"]] = spellings.get(x["name"], 0.0) + x["metres"]
+            by_name[key] = (spellings, along + x["metres"])
+    if by_name and r["metres"]:
+        spellings, along = max(by_name.values(), key=lambda v: v[1])
+        out["spine_share"] = round(along / r["metres"], 3)
+        if out["spine_share"] >= SPINE_SHARE:
+            out["spine"] = max(spellings.items(), key=lambda kv: kv[1])[0]
 
     # The second-best way round, found by making the best one expensive.
     #
@@ -226,10 +285,17 @@ def score_leg(town, a, b, answers=None):
     if out["turns"] > TURNS_MAX:
         out["reasons"].append(
             f"{out['turns']} turns, more than anybody follows off a phone")
-    if out["margin"] is not None and out["margin"] < MARGIN_MIN:
+    if (out["margin"] is not None and out["margin"] < MARGIN_MIN
+            and not out["spine"]):
         out["reasons"].append(
             f"there is another way round only {(out['margin'] - 1) * 100:.0f}% "
             f"longer, so which streets you end up on is close to a toss-up")
+    elif out["margin"] is not None and out["margin"] < MARGIN_MIN:
+        out["notes"].append(
+            f"there is another way round only {(out['margin'] - 1) * 100:.0f}% "
+            f"longer, but {out['spine']} carries "
+            f"{out['spine_share'] * 100:.0f}% of this leg, so naming it is "
+            f"enough")
 
     ours = [(p[0], p[1]) for p in r["path"]]
     if answers is None:
@@ -312,7 +378,8 @@ def main():
             mark = "OK  " if s["verdict"] == "turn_by_turn" else "ROUGH"
             print(f"  {mark} {stop_id:<16} {s['metres']:.0f} m  "
                   f"{s['turns']} turns  {s['unnamed_frac'] * 100:.0f}% unnamed  "
-                  f"margin {s['margin']}")
+                  f"margin {s['margin']}  "
+                  f"spine {s['spine'] or '-'}")
             for why in s["reasons"]:
                 print(f"        - {why}")
             for why in s["notes"]:

@@ -30,6 +30,10 @@ OSM_DIR = BASE / "data" / "osm"
 MAX_SNAP_M = 60.0
 # Grid cell for the named-street index, about 55 m on a side.
 CELL = 0.0005
+# Crossing a side street puts a metre or two of that street's name in the middle
+# of the street you are actually walking down. A named stretch shorter than this,
+# with a stretch either side of it, is a crossing rather than a turning.
+JUNCTION_M = 8.0
 
 
 def fold(text):
@@ -369,6 +373,42 @@ class Town:
                 out.append({"name": name, "inferred": inferred,
                             "obvious": obvious, "metres": d,
                             "bearing": brg, "end_bearing": brg})
+        return self._tidy(out)
+
+    @staticmethod
+    def _tidy(legs):
+        """Absorb junction crumbs, then re-merge the street they interrupted.
+
+        Walking 400 m up Borough High Street crosses Newcomen Street, and the
+        junction geometry puts 1.5 m of Newcomen Street in the middle of the
+        run. That splits one street into three stretches and invents two turns,
+        which is enough on its own to push a leg past the turn limit and out of
+        turn-by-turn directions. It did exactly that, on the first leg of the
+        Borough walk, for a stretch a walker would describe as "go up the road".
+
+        Only interior crumbs are absorbed. A short first or last stretch is the
+        yard you start in or the yard you are aiming at, and it stays.
+        """
+        legs = list(legs)
+        i = 1
+        while len(legs) > 2 and i < len(legs) - 1:
+            if legs[i]["metres"] >= JUNCTION_M:
+                i += 1
+                continue
+            before, after = legs[i - 1], legs[i + 1]
+            # Into the longer neighbour, so the metres stay with the street the
+            # walker spends the time on. The total is unchanged either way.
+            keep = before if before["metres"] >= after["metres"] else after
+            keep["metres"] += legs[i]["metres"]
+            del legs[i]
+            i = max(1, i - 1)
+        out = []
+        for leg in legs:
+            if out and out[-1]["name"] == leg["name"]:
+                out[-1]["metres"] += leg["metres"]
+                out[-1]["end_bearing"] = leg["end_bearing"]
+            else:
+                out.append(leg)
         for before, after in zip(out, out[1:]):
             after["turn"] = turn_word(before["end_bearing"], after["bearing"])
         return out
