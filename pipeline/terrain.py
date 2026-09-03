@@ -20,7 +20,7 @@ Heights come from data/elevation/<tour>.json, fetched by fetch_elevation.py.
 No file means no profile, reported as a note rather than a failure, exactly as
 with the routing second opinions.
 
-    python3 pipeline/terrain.py --tour cordes-sur-ciel
+    python3 pipeline/terrain.py --tour borough-rotherhithe
 """
 import json
 import sys

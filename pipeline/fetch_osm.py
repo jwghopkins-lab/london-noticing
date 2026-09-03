@@ -15,7 +15,7 @@ Nothing about this is specific to one town. The bounding box comes from the
 tour's own contract, so any walk anywhere on Earth gets its map data with no
 configuration beyond the box it already had to declare.
 
-    python3 pipeline/fetch_osm.py --tour two-white-eagles
+    python3 pipeline/fetch_osm.py --tour borough-rotherhithe
     python3 pipeline/fetch_osm.py --tour all
 """
 import json

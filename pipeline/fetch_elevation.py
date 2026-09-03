@@ -16,7 +16,7 @@ Source is OpenTopoData's public instance. EU DEM at 25 m for Europe, falling
 back to SRTM at 30 m anywhere else, so this works for any town on Earth — the
 fallback is automatic and reported.
 
-    python3 pipeline/fetch_elevation.py --tour cordes-sur-ciel
+    python3 pipeline/fetch_elevation.py --tour borough-rotherhithe
     python3 pipeline/fetch_elevation.py --tour all
 """
 import json

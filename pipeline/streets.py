@@ -10,9 +10,9 @@ location gates would have failed on.
 Now the coordinates come from OSM, the distances come from routing along the
 actual street graph, and the authored prose is checked against both.
 
-    python3 pipeline/streets.py --tour two-white-eagles --find "Maison Romane"
-    python3 pipeline/streets.py --tour two-white-eagles --near 44.1504 1.7551
-    python3 pipeline/streets.py --tour two-white-eagles --route
+    python3 pipeline/streets.py --tour borough-rotherhithe --find "Talbot Yard"
+    python3 pipeline/streets.py --tour borough-rotherhithe --near 51.5042 -0.0903
+    python3 pipeline/streets.py --tour borough-rotherhithe --route
 """
 import heapq
 import json

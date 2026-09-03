@@ -34,7 +34,7 @@ Runs on a GitHub Actions runner, like fetch_osm.py, because this sandbox cannot
 reach any map host. The answers are committed to data/routes/<tour>.json so the
 build and the author work from the same file, offline.
 
-    python3 pipeline/fetch_routes.py --tour two-white-eagles
+    python3 pipeline/fetch_routes.py --tour borough-rotherhithe
     python3 pipeline/fetch_routes.py --tour all
 """
 import json
