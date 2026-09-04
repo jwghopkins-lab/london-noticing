@@ -2,8 +2,8 @@
  "_comment": "Everybody Left From Here. Twelve stops from Borough High Street to Rotherhithe, about four kilometres and two hours, written round people and the things that happened to them rather than round buildings. The brief asked for about an hour and then for Borough to Rotherhithe, which cannot both be had: the intro says so and marks Tower Bridge, stop six, as the hour mark. Everything is outdoors and free. Seven questions, five location gates, and the last stop is a pub. Every coordinate, plaque, sculpture and pub named here came out of data/osm/borough-rotherhithe.json. The five archived London themes were City themes and none of their thirty stops is south of the river, so this is new writing; the one thing carried over is the old London Bridge material from the St Magnus stop, which belongs at the Southwark end anyway.",
  "id": "borough-rotherhithe",
  "served_at": "borough",
- "name": "Everybody Left From Here",
- "tagline": "pilgrims, prisoners and emigrants, along four kilometres of south bank",
+ "name": "Borough to Rotherhithe",
+ "tagline": "A walking tour of hidden history",
  "city": "London",
  "mode": "fixed",
  "contract": {
@@ -24,8 +24,8 @@
   ]
  },
  "intro": {
-  "lead": "Borough to Rotherhithe.",
-  "body": "A walking tour of hidden history.\n\nAn hour or two, depending how long you spend at the market and pubs along the way!",
+  "lead": "An hour or two, depending how long you spend at the market and pubs along the way!",
+  "body": "",
   "start": "Begin in Angel Place, the narrow alley beside the library off Borough High Street."
  },
  "topics": [

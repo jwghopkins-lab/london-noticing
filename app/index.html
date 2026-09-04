@@ -60,6 +60,7 @@
   .wordmark { font-family: Georgia, "Times New Roman", serif; font-weight: 700;
               font-size: 1.2rem; letter-spacing: .08em; white-space: nowrap; }
   .wordmark span { color: var(--accent); margin-left: .3em; }
+  .wordmark-name span { margin-left: 0; }
   .tagline { font-size: .68rem; color: var(--ink-soft); letter-spacing: .08em;
              text-transform: uppercase; }
   .spacer { flex: 1; }
@@ -1225,8 +1226,13 @@ function setUpFixedTour() {
   document.title = TOUR.name;
   for (const mark of document.querySelectorAll(".wordmark")) {
     const bits = TOUR.name.split(" ");
+    // A real space between the words, not the 0.3em margin the LONDONNOTICING
+    // wordmark uses to hold two halves of one compound word apart. A walk name
+    // is a phrase: without the space it is read aloud, copied and searched as
+    // "Borough toRotherhithe".
+    mark.classList.add("wordmark-name");
     mark.innerHTML = `${escapeHtml(bits.slice(0, -1).join(" ") || TOUR.name)}`
-                   + (bits.length > 1 ? `<span>${escapeHtml(bits[bits.length - 1])}</span>` : "");
+                   + (bits.length > 1 ? ` <span>${escapeHtml(bits[bits.length - 1])}</span>` : "");
   }
   for (const t of document.querySelectorAll(".tagline")) {
     if (t.id !== "walktitle") t.textContent = TOUR.tagline || "";
@@ -1239,7 +1245,9 @@ function setUpFixedTour() {
   const intro = document.querySelector(".intro");
   intro.innerHTML =
     `<div class="lead">${escapeHtml(TOUR.intro.lead)}</div>` +
-    TOUR.intro.body.split("\n\n").map((para) => `<p>${escapeHtml(para)}</p>`).join("") +
+    // An empty body used to leave an empty paragraph pushing the rest down.
+    (TOUR.intro.body || "").split("\n\n").filter(Boolean)
+      .map((para) => `<p>${escapeHtml(para)}</p>`).join("") +
     `<p><b>Where to start.</b> ${escapeHtml(TOUR.intro.start)}</p>`;
   const btn = $("startbtn");
   btn.disabled = false;

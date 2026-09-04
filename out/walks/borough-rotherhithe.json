@@ -4,12 +4,12 @@
   "mode": "fixed",
   "served_at": "borough",
   "directions_style": "turn_by_turn",
-  "name": "Everybody Left From Here",
-  "tagline": "pilgrims, prisoners and emigrants, along four kilometres of south bank",
+  "name": "Borough to Rotherhithe",
+  "tagline": "A walking tour of hidden history",
   "city": "London",
   "intro": {
-    "lead": "Borough to Rotherhithe.",
-    "body": "A walking tour of hidden history.\n\nAn hour or two, depending how long you spend at the market and pubs along the way!",
+    "lead": "An hour or two, depending how long you spend at the market and pubs along the way!",
+    "body": "",
     "start": "Begin in Angel Place, the narrow alley beside the library off Borough High Street."
   },
   "outro": "Twelve stops, and you are at the pub.\n\nThe engine house and the church are both a couple of minutes back up the road. Rotherhithe station is a couple of minutes past them.\n\nIf you have more walking in you, the path carries on east past the old dock entrances towards Greenwich.",
