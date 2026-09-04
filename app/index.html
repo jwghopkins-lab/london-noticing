@@ -168,6 +168,12 @@
   .gatestat { font-size: .8rem; color: var(--ink-soft); min-height: 1.2em;
               margin: 10px 0 2px; font-variant-numeric: tabular-nums; }
   .gatenote { font-size: .68rem; color: var(--ink-soft); margin-top: 6px; }
+  .gateask { font-family: Georgia, "Times New Roman", serif; font-size: .95rem;
+             line-height: 1.5; margin-bottom: 10px; }
+  .gateskip { display: block; margin-top: 10px; border: none; background: none;
+              color: var(--ink-soft); font: inherit; font-size: .78rem;
+              cursor: pointer; text-decoration: underline dotted;
+              text-underline-offset: 3px; padding: 6px 0; }
 
   /* A newly opened stop does not simply appear. A hairline draws across the top
      of the card and the card resolves out of blur behind it, before the words
@@ -225,9 +231,14 @@
           line-height: 1.5; background: var(--accent-soft); color: var(--ink);
           border-radius: 10px; padding: 12px; }
   .qrow { margin-top: 10px; display: flex; gap: 8px; }
-  .qrow input { flex: 1; padding: 12px; font-size: 1rem; border-radius: 9px;
-                border: 1.5px solid var(--line); background: var(--paper);
-                color: var(--ink); min-height: 46px; }
+  /* min-width: 0 or the Check button walks off the right of the screen. A flex
+     item will not shrink below the intrinsic width of its content, and a text
+     input's intrinsic width is about twenty characters whatever you set. On a
+     360 px phone the button ended four pixels past the edge; on a 320 px one,
+     forty-four. */
+  .qrow input { flex: 1; min-width: 0; padding: 12px; font-size: 1rem;
+                border-radius: 9px; border: 1.5px solid var(--line);
+                background: var(--paper); color: var(--ink); min-height: 46px; }
   .qrow input:focus-visible { outline: 2px solid var(--accent); }
   .qrow .btn { width: 96px; flex: none; padding: 11px 0; }
   .qhint { margin-top: 9px; font-size: .82rem; color: var(--ink-soft); line-height: 1.45; }
@@ -636,7 +647,7 @@ async function start(key) {
   if (!STATE.told) STATE.told = {};
   LS.set("last", key);
   $("walktitle").textContent = TOUR
-    ? `${ROUTE.stops.length} stops · about an hour`
+    ? `${ROUTE.stops.length} stops`
     : ROUTE.topics.map((t) => t.name).join(" · ");
   $("s-pick").classList.remove("on");
   $("s-walk").classList.add("on");
@@ -810,8 +821,13 @@ function endStage() {
 function gateAction(i, s) {
   const wrap = document.createElement("div");
   wrap.className = "gatewrap";
+  // The prompt says where to stand. It is the whole instruction at a gated
+  // stop, it is written per stop, it is checked against the map at build time
+  // — and it was never rendered, so six stops asked people to press a button
+  // without saying where to press it from.
   wrap.innerHTML =
-    `<button class="btn primary gatebtn">I'm here, check my location</button>
+    `${s.gate.prompt ? `<div class="gateask">${escapeHtml(s.gate.prompt)}</div>` : ""}
+     <button class="btn primary gatebtn">I'm here, check my location</button>
      <div class="gatestat" role="status" aria-live="polite"></div>
      <div class="gatenote">Read once when you tap it, never tracked.</div>
      ${s.gate.allow_pass
@@ -887,7 +903,16 @@ function answerAction(i, s) {
     void card.offsetWidth;
     card.classList.add("wrong");
     toast(w >= 2 ? "Still not it. Have a hint." : "Not quite. Look again.");
-    if (w === 2) renderWalk();                  // the hint appears
+    // The hint used to arrive by re-rendering the entire walk, which threw away
+    // what had been typed and took the keyboard away with it, in the middle of
+    // somebody's second guess. It is one element; put it where it goes.
+    if (w >= 2 && s.question.hint && !row.querySelector(".qhint")) {
+      const hint = document.createElement("div");
+      hint.className = "qhint";
+      hint.textContent = s.question.hint;
+      row.insertBefore(hint, row.querySelector(".qgiveup"));
+    }
+    inp.select();
   };
   row.querySelector(".btn").onclick = submit;
   inp.addEventListener("keydown", (ev) => {
@@ -953,7 +978,16 @@ function getFix() {
         if (!best || pos.coords.accuracy < best.accuracy) best = pos.coords;
         if (best.accuracy <= FIX_GOOD_ENOUGH_M) finish();
       },
-      (err) => { if (!best) { done = true; clearTimeout(timer); reject(err); } },
+      // Without the clearWatch, a refused or failed fix left a high-accuracy
+      // watch running for the rest of the afternoon, on a phone somebody still
+      // needs at the end of it.
+      (err) => {
+        if (best) return;
+        done = true;
+        clearTimeout(timer);
+        if (id !== null) navigator.geolocation.clearWatch(id);
+        reject(err);
+      },
       { enableHighAccuracy: true, timeout: FIX_WINDOW_MS, maximumAge: 0 });
   });
 }
@@ -1050,7 +1084,10 @@ function locationPreflight(force) {
     street corner.</div>`,
     `<button class="btn ghost" id="lclater">Later</button>
      <button class="btn primary" id="lcgo">Check location</button>`);
-  $("lclater").onclick = closeModal;
+  $("lclater").onclick = () => {
+    LS.set("locok." + ROUTE.combo_key, true);
+    closeModal();
+  };
   $("lcgo").onclick = async () => {
     $("lcgo").disabled = true; $("lcgo").textContent = "Checking…";
     try {

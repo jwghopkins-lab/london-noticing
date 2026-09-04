@@ -20,6 +20,9 @@ const ROOT = path.resolve(__dirname, "..");
 // them, so a tour added to content/gdansk/ is picked up with no edit here.
 const LEGACY = { "amber-mile": "amber-mile.html" };
 const only = process.argv.slice(2).find((a) => !a.startsWith("--"));
+// Only what is currently built. An archived walk is a frozen page that will
+// never pick up a change to the player, so testing it against today's player
+// asserts a contract nobody intends to keep.
 const TOURS = fs.readdirSync(path.join(ROOT, "out", "walks"))
   .filter((f) => f.endsWith(".json")).sort()
   .map((f) => f.replace(/\.json$/, ""))
@@ -182,6 +185,17 @@ async function walk(id) {
       check(`stage ${i + 1} has a location check and a pass button`,
             (await card.locator(".gatebtn").count()) === 1
             && (await card.locator(".gateskip").count()) === 1);
+      // The prompt says where to stand. It shipped in the bundle for months
+      // and was never put on the screen, so six stops asked people to press a
+      // button without saying where to press it from.
+      check(`stage ${i + 1} says where to stand`,
+            squash(await card.locator(".gateask").textContent()) === stop.gate.prompt,
+            squash(await card.locator(".gateask").textContent()));
+      // ...and the pass button had no style rule at all, so it rendered as a
+      // grey browser default in the middle of a serif card.
+      check(`stage ${i + 1} pass button is styled, not a browser default`,
+            await card.locator(".gateskip").evaluate(
+              (el) => getComputedStyle(el).backgroundColor === "rgba(0, 0, 0, 0)"));
       check(`stage ${i + 1} has no answer box`,
             (await card.locator(".qrow input").count()) === 0);
 

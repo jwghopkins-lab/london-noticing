@@ -8,11 +8,11 @@
   "tagline": "pilgrims, prisoners and emigrants, along four kilometres of south bank",
   "city": "London",
   "intro": {
-    "lead": "Twelve stops from Borough to Rotherhithe.",
-    "body": "Four kilometres along the south bank, about two hours with the stops. It is flat.\n\nSix ask a question you can only answer by looking. Six just need you standing in the right place.\n\nEverything is outdoors and free. If you only have an hour, break off at Tower Bridge, which is number six.",
-    "start": "Start in Angel Place, the narrow alley beside the library off Borough High Street."
+    "lead": "Borough to Rotherhithe.",
+    "body": "A walking tour of hidden history.\n\nAn hour or two, depending how long you spend at the market and pubs along the way!",
+    "start": "Begin in Angel Place, the narrow alley beside the library off Borough High Street."
   },
-  "outro": "Twelve stops, and you are at the pub.\n\nThe engine house and the church are both a few minutes back up the road. Rotherhithe station is five minutes the same way.\n\nIf you have more walking in you, the path carries on east past the old dock entrances towards Greenwich.",
+  "outro": "Twelve stops, and you are at the pub.\n\nThe engine house and the church are both a couple of minutes back up the road. Rotherhithe station is a couple of minutes past them.\n\nIf you have more walking in you, the path carries on east past the old dock entrances towards Greenwich.",
   "draft": false,
   "topics": [
     {
@@ -54,10 +54,10 @@
         ],
         "hint": "The plaque names him. He was twelve at the time."
       },
-      "look": "A brick wall down one side of a narrow alley. It is the last piece of the Marshalsea, a prison for people who owed money.\n\nYou could not leave until you paid, and there was no way to earn it inside.",
+      "look": "A brick wall down one side of a narrow alley. It is the last piece of the Marshalsea, a prison for people who owed money.\n\nYou could not leave until you paid, which was hard to do from inside.",
       "look_spoken": null,
-      "after": "Charles Dickens. His father John was brought here in February 1824 owing a baker forty pounds.\n\nCharles was twelve. He was taken out of school and sent to paste labels on pots in a blacking factory by the river, six days a week.\n\nHe put the prison in Little Dorrit. He never told his own children any of it.",
-      "after_spoken": "Charles Dickens. His father John was brought here in February eighteen twenty four owing a baker forty pounds.\n\nCharles was twelve. He was taken out of school and sent to paste labels on pots in a blacking factory by the river, six days a week.\n\nHe put the prison in Little Dorrit. He never told his own children any of it.",
+      "after": "Charles Dickens. His father John was brought here in February 1824 owing a baker forty pounds.\n\nCharles had turned twelve a fortnight before. He was already at work by then, pasting labels on pots in a blacking factory by the river, six days a week.\n\nHe put the prison in Little Dorrit. He never told his own children any of it.",
+      "after_spoken": "Charles Dickens. His father John was brought here in February eighteen twenty four owing a baker forty pounds.\n\nCharles had turned twelve a fortnight before. He was already at work by then, pasting labels on pots in a blacking factory by the river, six days a week.\n\nHe put the prison in Little Dorrit. He never told his own children any of it.",
       "audio": null
     },
     {
@@ -84,8 +84,8 @@
       },
       "look": "The Tabard stood in this yard. It was one of many inns along this road.\n\nThey are all gone now, but the yards still carry their names.",
       "look_spoken": null,
-      "after": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where twenty-nine pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in 1676, was rebuilt, and was pulled down in 1873.",
-      "after_spoken": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where twenty-nine pilgrims meet and agree to tell stories on the road.\n\nHe wrote it in the thirteen eighties. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in sixteen seventy six, was rebuilt, and was pulled down in eighteen seventy three.",
+      "after": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where twenty-nine pilgrims meet and agree to tell stories on the road.\n\nHe started it in the thirteen eighties and was still writing it when he died. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in 1676, was rebuilt, and was pulled down in 1873.",
+      "after_spoken": "Geoffrey Chaucer. The Canterbury Tales begins at the Tabard, where twenty-nine pilgrims meet and agree to tell stories on the road.\n\nHe started it in the thirteen eighties and was still writing it when he died. The inn was real and so was the landlord, Harry Bailly, who turns up in the book under his own name.\n\nIt burned in sixteen seventy six, was rebuilt, and was pulled down in eighteen seventy three.",
       "audio": null
     },
     {
@@ -183,8 +183,8 @@
       "question": null,
       "look": "Both halves still lift, about eight hundred times a year.\n\nThe stonework is a shell. Underneath it the whole thing is a steel frame, dressed in stone to match the Tower across the water.",
       "look_spoken": null,
-      "after": "It opened in 1894, after eight years of building.\n\nOn 30 December 1952 a number 78 bus was crossing when the two halves began to rise under it. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nNobody was badly hurt. He was given ten pounds.",
-      "after_spoken": "It opened in eighteen ninety four, after eight years of building.\n\nOn the thirtieth of December nineteen fifty two a number seventy eight bus was crossing when the two halves began to rise under it. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nNobody was badly hurt. He was given ten pounds.",
+      "after": "It opened in 1894, after eight years of building.\n\nOn 30 December 1952 a number 78 bus was crossing when the bascule under it began to rise. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nThe conductor broke his leg and twelve passengers were hurt. Gunter got ten pounds and a day off.",
+      "after_spoken": "It opened in eighteen ninety four, after eight years of building.\n\nOn the thirtieth of December nineteen fifty two a number seventy eight bus was crossing when the bascule under it began to rise. The driver, Albert Gunter, put his foot down and jumped the gap.\n\nThe conductor broke his leg and twelve passengers were hurt. Gunter got ten pounds and a day off.",
       "audio": null
     },
     {
@@ -205,7 +205,7 @@
       "question": null,
       "look": "A tidal creek between warehouses. A small river called the Neckinger comes out here.\n\nThe slum on the far side was called Jacob's Island: a maze of ditches, plank bridges and rotting timber, with the worst cholera in London.",
       "look_spoken": null,
-      "after": "Dickens killed Bill Sikes here at the end of Oliver Twist, in a chase over the roofs.\n\nHe described it so exactly that an alderman stood up in public and announced that no such place existed. Dickens went back and described it again, in more detail.\n\nIt was pulled down in the eighteen fifties.",
+      "after": "Dickens killed Bill Sikes here at the end of Oliver Twist, in a chase over the roofs.\n\nHe described it so exactly that Sir Peter Laurie, a former Lord Mayor, announced in public that no such place existed. Dickens answered him by name, in a preface, twelve years later.\n\nIt was cleared in the eighteen sixties.",
       "after_spoken": null,
       "audio": null
     },
@@ -216,12 +216,12 @@
       "where": "Bermondsey Wall East, by the Old Justice",
       "lat": 51.500195,
       "lon": -0.064229,
-      "directions": "From the footbridge, head south east and then east, keeping near the river. About six hundred and fifty metres.\n\nWhat you are looking for is a pub called the Old Justice, on the river side of Bermondsey Wall East.",
+      "directions": "From the footbridge, head south east and then east. The riverside is closed along here, so the way runs a street back from the water. About six hundred and fifty metres.\n\nWhat you are looking for is a pub called the Old Justice, on the land side of Bermondsey Wall East.",
       "directions_mode": "destination",
       "gate": {
         "radius_m": 30,
         "allow_pass": true,
-        "prompt": "Stand on the river side of the road, by the pub."
+        "prompt": "Cross to the river side of the road, opposite the pub."
       },
       "nudge": null,
       "question": null,
@@ -243,7 +243,7 @@
       "gate": null,
       "nudge": null,
       "question": {
-        "ask": "The girl by the wall. Who was she?",
+        "ask": "The girl. Who was she?",
         "answers": [
           "his daughter",
           "daughter",
@@ -253,14 +253,17 @@
           "their daughter",
           "the daughter",
           "his child",
-          "his girl"
+          "his girl",
+          "his kid",
+          "kid",
+          "child"
         ],
-        "hint": "A board beside the figures names all three."
+        "hint": "The woman standing is his wife, Ada."
       },
-      "look": "Two bronze figures sit in the grass on the river side, and a cat.\n\nThe seated one is Alfred Salter. He gave up a Harley Street career to doctor the poorest parish in London, and the parish sent him to Parliament.",
+      "look": "Four bronzes: a man on a bench, a woman standing, a girl leaning on the wall, and a cat.\n\nThe man is Alfred Salter. He gave up Harley Street to doctor the poorest parish in London, and the parish sent him to Parliament.",
       "look_spoken": null,
-      "after": "Joyce, his daughter. She caught scarlet fever from his patients and died in 1910, aged eight.\n\nThe Salters had chosen to live in Bermondsey instead of somewhere safer. They stayed on after she died.\n\nThe stone ruin behind you is much older. Edward III built a manor house on this bank in 1353, when it was an island in the marsh.",
-      "after_spoken": "Joyce, his daughter. She caught scarlet fever from his patients and died in nineteen ten, aged eight.\n\nThe Salters had decided to live in Bermondsey rather than send her somewhere safer. That decision killed her, and they stayed anyway.\n\nThe stone ruin behind you is much older. Edward the third built a manor house on this bank in thirteen fifty three, when it was an island in the marsh.",
+      "after": "Joyce, his daughter. She caught scarlet fever from his patients and died in 1910, aged eight.\n\nThe Salters had chosen to live in Bermondsey instead of somewhere safer. They stayed on after she died. Ada became mayor here and got the streets planted with trees.\n\nThe stone ruin behind you is much older. Edward III built a manor house on this bank in 1353, when it was an island in the marsh.",
+      "after_spoken": "Joyce, his daughter. She caught scarlet fever from his patients and died in nineteen ten, aged eight.\n\nThe Salters had chosen to live in Bermondsey instead of somewhere safer. They stayed on after she died. Ada became mayor here and got the streets planted with trees.\n\nThe stone ruin behind you is much older. Edward the third built a manor house on this bank in thirteen fifty three, when it was an island in the marsh.",
       "audio": null
     },
     {
@@ -279,10 +282,10 @@
       },
       "nudge": null,
       "question": null,
-      "look": "A red brick church of 1715, paid for by the people who worked the river here.\n\nThe master of the ship that carried the Pilgrims to America in 1620 is buried in this churchyard. Nobody wrote down where.",
-      "look_spoken": "A red brick church of seventeen fifteen, paid for by the people who worked the river here.\n\nThe master of the ship that carried the Pilgrims to America in sixteen twenty is buried in this churchyard. No stone. Nobody wrote down where.",
-      "after": "Two timbers of the communion table came out of a warship. The Temeraire was broken up just downstream in 1838. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in 1784, learned English in six months, and died of smallpox inside the year.",
-      "after_spoken": "Two timbers of the communion table came out of a warship. The Temeraire was broken up just downstream in eighteen thirty eight. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in seventeen eighty four, learned English in six months, and died of smallpox inside the year.",
+      "look": "A red brick church of 1715, paid for by the people who worked the river.\n\nThe master of the ship that carried the Pilgrims to America in 1620 is buried in this churchyard. No one knows where exactly, but there is a memorial to him.",
+      "look_spoken": "A red brick church of seventeen fifteen, paid for by the people who worked the river.\n\nThe master of the ship that carried the Pilgrims to America in sixteen twenty is buried in this churchyard. No one knows where exactly, but there is a memorial to him.",
+      "after": "The communion table and two chairs are built from the timbers of a warship. The Temeraire was broken up just downstream in 1838. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in 1784, learned English in a few months, and died of smallpox inside the year.",
+      "after_spoken": "The communion table and two chairs are built from the timbers of a warship. The Temeraire was broken up just downstream in eighteen thirty eight. Turner painted her being towed to the yard.\n\nThere is also a monument to Prince Lee Boo of Palau. He came to England in seventeen eighty four, learned English in a few months, and died of smallpox inside the year.",
       "audio": null
     },
     {
@@ -292,12 +295,12 @@
       "where": "the old engine house beside Rotherhithe station",
       "lat": 51.501612,
       "lon": -0.052942,
-      "directions": "From the churchyard, go east along Rotherhithe Street, past the station entrance, then right into Tunnel Road. About a hundred and thirty metres.\n\nLook for a squat brick building with a tall chimney.",
+      "directions": "From the churchyard, go east along Rotherhithe Street, then right into Tunnel Road. About a hundred and thirty metres.\n\nLook for a squat brick building with a tall chimney.",
       "directions_mode": "turn_by_turn",
       "gate": null,
       "nudge": null,
       "question": {
-        "ask": "A father and son drove this shaft down and dug east. What was their name?",
+        "ask": "A father and son sank this shaft and dug north under the river. What was their name?",
         "answers": [
           "Brunel",
           "Brunell",
@@ -311,8 +314,8 @@
       },
       "look": "Low brick, with a chimney. It held the pumps that kept the water out.\n\nThe shaft beside it goes down to the first tunnel ever dug under a river that ships used.",
       "look_spoken": null,
-      "after": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In 1828 Isambard was washed up the shaft on a wave. Six men behind him drowned. He was twenty-two.\n\nIt opened in 1843 as a foot tunnel, and trains use it now.",
-      "after_spoken": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in five times. In eighteen twenty eight Isambard was washed up the shaft on a wave. Six men behind him drowned. He was twenty-two.\n\nIt opened in eighteen forty three as a foot tunnel, and trains use it now.",
+      "after": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in six times. In 1828 Isambard was washed up the shaft on a wave. Six men behind him drowned. He was twenty-one.\n\nIt opened in 1843 as a foot tunnel, and trains use it now.",
+      "after_spoken": "The Brunels. Marc designed it and his son Isambard ran the works.\n\nIt took eighteen years and the river broke in six times. In eighteen twenty eight Isambard was washed up the shaft on a wave. Six men behind him drowned. He was twenty-one.\n\nIt opened in eighteen forty three as a foot tunnel, and trains use it now.",
       "audio": null
     },
     {
@@ -326,7 +329,7 @@
       "directions_mode": "turn_by_turn",
       "gate": null,
       "nudge": {
-        "prompt": "This is the stop for a drink. The jetty out the back is the place to have it.",
+        "prompt": "This is the stop for a drink, and the jetty out the back is the place to have it. The pub opens at noon.",
         "confirm": "Got one"
       },
       "question": {
@@ -342,7 +345,7 @@
       },
       "look": "Go through to the back if there is room. The pub is built over the old landing stairs.\n\nA ship tied up here in July 1620, took on passengers, and dropped down the coast to pick up the rest.",
       "look_spoken": "Go through to the back if there is room. The pub stands on its own stairs.\n\nA ship tied up here in July sixteen twenty, took on passengers, and dropped down the coast to pick up the rest.",
-      "after": "The Mayflower. Her master was Christopher Jones, who lived on this street and lies in the churchyard you have just come from.\n\nShe came back the next year and was probably broken up here for timber.\n\nA hundred and two people sailed. About half of them were dead within a year of landing.",
+      "after": "The Mayflower. Her master was Christopher Jones, who lies in the churchyard you have just come from.\n\nShe came back to these stairs the next year and was probably broken up here for timber.\n\nForty-five of the hundred and two died that first winter. The rest stayed. They had signed an agreement before they landed, to make their own laws and keep to them. By the next autumn they had a harvest in.",
       "after_spoken": null,
       "audio": null
     }
