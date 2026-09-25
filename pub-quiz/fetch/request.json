@@ -1,516 +1,2755 @@
 {
- "run": "r1",
- "shards": 12,
+ "run": "r2",
+ "shards": 8,
  "osm": false,
- "crawl_osm_pubs": true,
+ "crawl_osm_pubs": false,
  "postcodes": [
+  "E1 1BU",
+  "E1 4AA",
+  "E1 6GY",
+  "E1 6LY",
   "E1 7EZ",
+  "E1 7JF",
+  "E1 8JN",
+  "E1 8PT",
+  "E10 5QN",
+  "E10 6AE",
+  "E11 1NP",
+  "E11 2AA",
+  "E11 2EY",
+  "E11 2RL",
+  "E11 4EA",
+  "E12 5DB",
+  "E14 3HT",
+  "E14 3RS",
+  "E14 4AE",
+  "E14 7NW",
+  "E14 8BP",
+  "E15 2BX",
+  "E15 2RB",
+  "E16 2PN",
+  "E17 3HX",
+  "E17 5RG",
+  "E17 6AL",
+  "E17 6DJ",
+  "E18 1JJ",
+  "E18 2QL",
+  "E1W 1LA",
+  "E1W 3SH",
+  "E2 0EL",
+  "E2 0JD",
+  "E2 6LG",
+  "E2 7QB",
+  "E2 7RG",
+  "E2 8DP",
+  "E2 8HZ",
+  "E2 9AG",
+  "E2 9LY",
+  "E3 2DA",
+  "E3 5AA",
+  "E3 5HD",
+  "E3 5NR",
+  "E3 5SN",
+  "E4 6RB",
+  "E4 8LU",
+  "E5 8EG",
+  "E5 8JQ",
+  "E5 8NN",
+  "E5 9JP",
+  "E6 1PW",
+  "E7 0DZ",
+  "E8 1DU",
+  "E8 1HP",
+  "E8 1JH",
+  "E8 1NH",
+  "E8 2JS",
+  "E8 3DF",
+  "E8 4AH",
+  "E8 4QJ",
+  "E9 5EN",
+  "E9 5ER",
+  "E9 5LN",
+  "E9 6AS",
+  "E9 6DU",
+  "E9 6NA",
+  "E9 7AB",
+  "E9 7BT",
+  "E9 7HJ",
+  "E9 7JL",
+  "EC1A 4ER",
   "EC1A 7JQ",
+  "EC1M 6BP",
   "EC1M 6DB",
+  "EC1M 6EB",
   "EC1N 7RA",
   "EC1N 7TR",
   "EC1R 0EG",
-  "EC1R 4QL",
   "EC1R 4QP",
   "EC1V 0DX",
   "EC1V 2PN",
+  "EC1V 7DT",
   "EC1Y 1AG",
+  "EC1Y 1BD",
+  "EC2A 2BH",
   "EC2A 3BX",
+  "EC2A 3EP",
+  "EC2A 3PD",
+  "EC2A 3PZ",
+  "EC2A 3SQ",
   "EC2A 4RD",
+  "EC2M 4PT",
+  "EC2M 6SA",
+  "EC2M 7LS",
+  "EC2M 7NX",
+  "EC2N 4BQ",
+  "EC2R 6DA",
+  "EC3N 1AL",
   "EC3N 1DD",
   "EC3N 1JL",
-  "EC3N 3AJ",
+  "EC3N 1NU",
+  "EC3N 2AE",
+  "EC3N 2AU",
+  "EC3N 2ET",
+  "EC3R 6DB",
+  "EC3R 7BD",
+  "EC3R 7PP",
   "EC3R 8DJ",
+  "EC3V 3PD",
+  "EC4 1HL",
+  "EC4A 1JS",
+  "EC4M 7DE",
   "EC4M 7JU",
+  "EC4M 9BR",
+  "EC4N 1SP",
+  "EC4N 5AD",
+  "EC4R 0AN",
+  "EC4V 6AA",
   "EC4Y 1DE",
   "EC4Y 8JJ",
+  "N1 0AX",
+  "N1 0NP",
+  "N1 0NY",
+  "N1 0PN",
+  "N1 0RW",
+  "N1 1DF",
+  "N1 1RG",
+  "N1 1RL",
+  "N1 1RU",
+  "N1 2AS",
+  "N1 2LY",
+  "N1 2TB",
+  "N1 2XH",
+  "N1 4QU",
+  "N1 5AA",
+  "N1 5LH",
   "N1 6BU",
+  "N1 7DU",
+  "N1 7LB",
+  "N1 8HD",
+  "N1 8LN",
+  "N1 8PZ",
+  "N1 9BL",
+  "N1 9HF",
+  "N1 9LQ",
+  "N10 2DP",
+  "N10 3TH",
+  "N11 1NA",
+  "N11 2EU",
+  "N12 0BP",
+  "N12 8NR",
+  "N12 9QH",
+  "N15 4HQ",
+  "N16 0EB",
+  "N16 0LH",
+  "N16 0UH",
+  "N16 6XS",
+  "N16 9ES",
+  "N17 6XE",
+  "N17 8AS",
+  "N17 9BQ",
+  "N17 9NG",
+  "N17 9TP",
+  "N17 9TT",
+  "N19 3TX",
+  "N19 5QU",
+  "N2 0LZ",
+  "N2 0NW",
+  "N2 8AB",
+  "N2 9ED",
+  "N20 9HH",
+  "N20 9HS",
+  "N21 3NP",
+  "N22 7SS",
+  "N22 7TB",
+  "N3 1DH",
+  "N4 3AD",
+  "N4 3HB",
+  "N4 4AP",
+  "N5 2LL",
+  "N5 2NN",
+  "N6 4AB",
+  "N6 4BD",
+  "N6 5AT",
+  "N6 5JX",
+  "N7 6AR",
+  "N7 8JE",
+  "N7 8LT",
+  "N7 8XH",
+  "N7 9EF",
+  "N8 7NX",
+  "N8 7QB",
+  "N8 8AA",
+  "N8 8DH",
+  "N8 8TD",
+  "N8 9HX",
+  "NW1 0SG",
+  "NW1 0SR",
+  "NW1 0SS",
+  "NW1 1DG",
+  "NW1 2HL",
+  "NW1 3AU",
+  "NW1 5AL",
+  "NW1 5JY",
   "NW1 6HE",
-  "SW1P 2AA",
-  "W1F 8QG",
-  "W1H 5HT",
+  "NW1 6XE",
+  "NW1 7JE",
+  "NW1 7QD",
+  "NW1 7RU",
+  "NW1 8AN",
+  "NW1 8LL",
+  "NW1 8QP",
+  "NW1 8QR",
+  "NW1 9EA",
+  "NW10 3JJ",
+  "NW10 5HA",
+  "NW3 1HE",
+  "NW3 1HQ",
+  "NW3 2AE",
+  "NW3 2QE",
+  "NW3 2QU",
+  "NW3 2SB",
+  "NW3 4PL",
+  "NW3 4RL",
+  "NW3 4UE",
+  "NW5 1SP",
+  "NW5 2AA",
+  "NW5 2NX",
+  "NW5 2SG",
+  "NW5 2TG",
+  "NW5 3LG",
+  "NW6 1LG",
+  "NW6 1NR",
+  "NW6 1RD",
+  "NW6 2BY",
+  "NW6 2LU",
+  "NW6 5UA",
+  "NW6 6LE",
+  "NW6 7JR",
+  "NW6 7QB",
+  "NW7 2DQ",
+  "NW7 4EA",
+  "NW8 6LA",
+  "SE1 0UG",
+  "SE1 1JX",
+  "SE1 1NH",
+  "SE1 1PQ",
+  "SE1 1TU",
+  "SE1 1XU",
+  "SE1 2EZ",
+  "SE1 2HG",
+  "SE1 2HQ",
+  "SE1 2LJ",
+  "SE1 2NE",
+  "SE1 2PF",
+  "SE1 3NY",
+  "SE1 4JU",
+  "SE1 4PR",
+  "SE1 4YG",
+  "SE1 6AQ",
+  "SE1 7BH",
+  "SE1 7BU",
+  "SE1 7DZ",
+  "SE1 7PZ",
+  "SE1 7RG",
+  "SE1 8BU",
+  "SE1 8LW",
+  "SE1 8NY",
+  "SE1 8TB",
+  "SE1 8TJ",
+  "SE1 8UD",
+  "SE1 9EF",
+  "SE1 9HP",
+  "SE1 9LX",
+  "SE1 9NY",
+  "SE1 9SG",
+  "SE1 9UD",
+  "SE10 0BE",
+  "SE10 0DY",
+  "SE10 8ER",
+  "SE10 8JA",
+  "SE10 8PD",
+  "SE10 8RT",
+  "SE10 8UH",
+  "SE10 9BL",
+  "SE10 9FR",
+  "SE10 9HU",
+  "SE10 9HY",
+  "SE10 9JH",
+  "SE10 9LZ",
+  "SE10 9NP",
+  "SE10 9NW",
+  "SE10 9PQ",
+  "SE10 9TZ",
+  "SE11 4EZ",
+  "SE11 4PP",
+  "SE11 4RS",
+  "SE11 5ER",
+  "SE11 5UG",
+  "SE11 6SF",
+  "SE12 0PS",
+  "SE12 8PU",
+  "SE13 7HS",
+  "SE14 5LW",
+  "SE14 5TW",
+  "SE14 6AA",
+  "SE14 6AF",
+  "SE14 6TJ",
+  "SE15 1QS",
+  "SE15 3BE",
+  "SE15 3BU",
+  "SE15 3NX",
+  "SE15 3QQ",
+  "SE15 4JR",
+  "SE15 4QL",
+  "SE15 5SE",
+  "SE16 3RA",
+  "SE16 4NB",
+  "SE16 4NF",
+  "SE16 5QU",
+  "SE16 7AQ",
+  "SE16 7PL",
+  "SE16 7SZ",
+  "SE17 1QG",
+  "SE18 4LT",
+  "SE18 6GH",
+  "SE19 1QH",
+  "SE19 1TQ",
+  "SE19 1TX",
+  "SE19 2EZ",
+  "SE20 8RZ",
+  "SE22 0RR",
+  "SE22 9QA",
+  "SE23 1BS",
+  "SE23 1RH",
+  "SE23 3XZ",
+  "SE24 0NJ",
+  "SE24 9HU",
+  "SE25 4PT",
+  "SE25 6EB",
+  "SE26 4BB",
+  "SE27 0HS",
+  "SE27 9AF",
+  "SE27 9QY",
+  "SE3 0BS",
+  "SE3 0QJ",
+  "SE3 0RB",
+  "SE3 0RL",
+  "SE3 7AA",
+  "SE3 7JQ",
+  "SE3 8SU",
+  "SE3 9FW",
+  "SE3 9LE",
+  "SE4 2BT",
+  "SE4 2DH",
+  "SE5 0RP",
+  "SE5 0RS",
+  "SE5 8BB",
+  "SE5 8BG",
+  "SE5 8RE",
+  "SE5 9AR",
+  "SE6 4RE",
+  "SE6 4SP",
+  "SE9 4PH",
+  "SE9 5DQ",
+  "SW10 0BH",
+  "SW10 9HX",
+  "SW10 9PN",
+  "SW11 1DJ",
+  "SW11 1EJ",
+  "SW11 1SA",
+  "SW11 1SY",
+  "SW11 3AA",
+  "SW11 3AE",
+  "SW11 3BW",
+  "SW11 4LR",
+  "SW11 4PF",
+  "SW11 5RD",
+  "SW12 8JB",
+  "SW12 8NX",
+  "SW12 8QX",
+  "SW12 9AU",
+  "SW14 7AF",
+  "SW14 7QR",
+  "SW14 8TA",
+  "SW15 1EU",
+  "SW15 1HJ",
+  "SW15 1NT",
+  "SW15 1RG",
+  "SW15 1SL",
+  "SW15 2SP",
+  "SW15 3NG",
+  "SW15 4HL",
+  "SW15 6SP",
+  "SW15 6TD",
+  "SW16 1BS",
+  "SW16 5SD",
+  "SW17 0NY",
+  "SW17 0SF",
+  "SW17 7EB",
+  "SW17 7EG",
+  "SW17 7PB",
+  "SW17 7PG",
+  "SW17 9NG",
+  "SW18 1AA",
+  "SW18 1NP",
+  "SW18 1TB",
+  "SW18 1TF",
+  "SW18 1UR",
+  "SW18 4AQ",
+  "SW18 4EJ",
+  "SW18 4LB",
+  "SW18 4SR",
+  "SW18 5JL",
+  "SW18 5LS",
+  "SW19 1AN",
+  "SW19 1BN",
+  "SW19 1DF",
+  "SW19 2RD",
+  "SW19 3NW",
+  "SW19 3TA",
+  "SW19 4ST",
+  "SW19 4SU",
+  "SW19 4UN",
+  "SW19 5BA",
+  "SW19 5DQ",
+  "SW19 5DX",
+  "SW19 5EA",
+  "SW19 7NE",
+  "SW19 8DR",
+  "SW1A 1RP",
+  "SW1A 2BX",
+  "SW1E 6PR",
+  "SW1H 0DB",
+  "SW1H 0NP",
+  "SW1H 9EX",
+  "SW1P 1PJ",
+  "SW1P 2HP",
+  "SW1P 2LU",
+  "SW1V 2LP",
+  "SW1W 0NR",
+  "SW1W 0PP",
+  "SW1W 0RP",
+  "SW1W 9RB",
+  "SW1X 7QA",
+  "SW1Y 6HD",
+  "SW1Y 6QY",
+  "SW2 1DF",
+  "SW2 1NL",
+  "SW2 5UA",
+  "SW20 0LA",
+  "SW3 4EE",
+  "SW3 4PL",
+  "SW3 5TB",
+  "SW4 6BJ",
+  "SW4 7AA",
+  "SW4 7BX",
+  "SW4 7BZ",
+  "SW4 7SQ",
+  "SW4 7UJ",
+  "SW4 9DE",
+  "SW5 0BE",
+  "SW5 0LJ",
+  "SW5 0QT",
+  "SW5 9AN",
+  "SW5 9JA",
+  "SW5 9RL",
+  "SW6 1AA",
+  "SW6 1AY",
+  "SW6 1HL",
+  "SW6 1LY",
+  "SW6 1QR",
+  "SW6 1TT",
+  "SW6 3LF",
+  "SW6 4XG",
+  "SW6 5SA",
+  "SW6 5SB",
+  "SW6 7LW",
+  "SW7 2BB",
+  "SW7 2BX",
+  "SW7 2HQ",
+  "SW7 3EX",
+  "SW7 4DN",
+  "SW7 4RB",
+  "SW7 4SS",
+  "SW7 5QL",
+  "SW8 1LA",
+  "SW8 1SP",
+  "SW8 2LE",
+  "SW8 2PB",
+  "SW8 2TH",
+  "SW8 3DH",
+  "SW8 4BT",
+  "SW8 4UG",
+  "SW9 6AQ",
+  "SW9 6LH",
+  "SW9 8BQ",
+  "SW9 8LF",
+  "SW9 8PA",
+  "SW9 9AP",
+  "SW9 9BT",
+  "W11 1PY",
+  "W11 2ED",
+  "W11 2QA",
+  "W11 2RP",
+  "W11 3DA",
+  "W11 3HQ",
+  "W11 4UA",
+  "W12 8AA",
+  "W12 8DF",
+  "W12 8HH",
+  "W12 9AZ",
+  "W12 9DH",
+  "W12 9HY",
+  "W13 8DL",
+  "W13 8PH",
+  "W13 9EP",
+  "W14 0LS",
+  "W14 8BA",
+  "W1B 5DP",
+  "W1B 5JY",
+  "W1B 5QH",
+  "W1C 2AD",
+  "W1D 5BH",
+  "W1D 5DD",
+  "W1D 5NA",
+  "W1D 6DJ",
+  "W1D 6QA",
+  "W1D 6QB",
+  "W1D 7LT",
+  "W1F 0QB",
+  "W1F 7HG",
+  "W1F 7HZ",
+  "W1F 7RY",
+  "W1F 8PU",
+  "W1F 8QJ",
+  "W1G 0JA",
+  "W1H 7AF",
+  "W1H 7NE",
+  "W1J 6PT",
+  "W1J 7QA",
+  "W1S 1AF",
+  "W1S 1PY",
+  "W1T 1JU",
   "W1T 2ED",
-  "W1W 7ES",
+  "W1T 2QF",
+  "W1T 3LJ",
+  "W1T 4LZ",
+  "W1T 5DU",
+  "W1T 5LD",
+  "W1T 5ND",
+  "W1U 1EL",
+  "W1U 3EE",
+  "W1U 5JN",
+  "W1W 5PN",
+  "W1W 6AN",
+  "W1W 6SD",
+  "W1W 7EP",
+  "W1W 7LQ",
+  "W1W 8HJ",
+  "W2 1HH",
+  "W2 1RL",
+  "W2 2NH",
+  "W2 3QH",
+  "W2 4AL",
+  "W2 4LW",
+  "W2 5AA",
+  "W2 5BE",
+  "W2 6DT",
+  "W2 6NG",
+  "W3 9DJ",
+  "W4 1LN",
+  "W4 1LW",
+  "W4 1SY",
+  "W4 2DR",
+  "W4 2DT",
+  "W4 3PH",
+  "W4 4BZ",
+  "W4 4PH",
+  "W4 4TT",
+  "W4 5LF",
+  "W4 5TA",
+  "W4 5TF",
+  "W4 5TT",
+  "W5 2HZ",
+  "W5 2UU",
+  "W5 3PA",
+  "W5 4XB",
+  "W5 5DB",
+  "W5 5EU",
+  "W5 5EX",
+  "W6 0DZ",
+  "W6 0JD",
+  "W6 0LA",
+  "W6 0XF",
+  "W6 7NL",
+  "W6 7PB",
+  "W6 8BS",
+  "W6 8RE",
+  "W6 9BG",
+  "W6 9DJ",
+  "W6 9HA",
+  "W6 9HR",
+  "W6 9HW",
+  "W6 9PH",
+  "W6 9YD",
+  "W7 2DT",
+  "W8 4DP",
+  "W8 4DY",
+  "W8 4EP",
+  "W8 5BJ",
+  "W8 5EP",
+  "W8 5NP",
+  "W8 6LA",
+  "W8 6UX",
+  "W8 7AR",
+  "W9 1EE",
+  "W9 1NJ",
+  "W9 2BA",
+  "WC1A 1JJ",
+  "WC1A 1LH",
+  "WC1E 6BP",
+  "WC1E 7LY",
+  "WC1H 0AL",
+  "WC1H 0AY",
+  "WC1H 8JF",
+  "WC1N 1AP",
+  "WC1N 1HX",
+  "WC1N 3AP",
   "WC1N 3ES",
+  "WC1R 8JF",
   "WC1X 8PN",
+  "WC1X 8QY",
   "WC1X 8SF",
-  "WC2H 8HJ",
-  "WC2N 6HH"
+  "WC2A 2HE",
+  "WC2B 5RR",
+  "WC2B 5TD",
+  "WC2E 7LJ",
+  "WC2E 7NG",
+  "WC2E 8NS",
+  "WC2H 0HG",
+  "WC2H 7AD",
+  "WC2H 7BL",
+  "WC2H 9EP",
+  "WC2H 9FA",
+  "WC2N 4AL",
+  "WC2N 4AP",
+  "WC2N 5DS",
+  "WC2N 6HH",
+  "WC2N 6ND",
+  "WC2R 3LD"
+ ],
+ "sitemaps": [
+  {
+   "url": "https://www.greeneking.co.uk/sitemap.xml",
+   "match": "greeneking\\.co\\.uk/pubs/greater-london/[^/]+/?$",
+   "prefix": "gk",
+   "follow": 5
+  },
+  {
+   "url": "https://www.greeneking-pubs.co.uk/sitemap.xml",
+   "match": "/pubs/(greater-london|london|middlesex)/[^/]+/?$",
+   "prefix": "gkp",
+   "follow": 5
+  },
+  {
+   "url": "https://www.nicholsonspubs.co.uk/sitemap.xml",
+   "match": "/restaurants/london/[^/]+/?$",
+   "prefix": "nich",
+   "follow": 5
+  },
+  {
+   "url": "https://www.chefandbrewer.com/sitemap.xml",
+   "match": "/pubs/greater-london/[^/]+/?$",
+   "prefix": "cab",
+   "follow": 5
+  },
+  {
+   "url": "https://www.taylor-walker.co.uk/sitemap.xml",
+   "match": "london",
+   "prefix": "tw",
+   "follow": 5
+  },
+  {
+   "url": "https://www.emberinns.co.uk/sitemap.xml",
+   "match": "london",
+   "prefix": "ember",
+   "follow": 5
+  },
+  {
+   "url": "https://www.antic-london.com/sitemap.xml",
+   "match": "antic-london\\.com/[^/]+/?$",
+   "prefix": "antic",
+   "follow": 5
+  },
+  {
+   "url": "https://www.thecraftbeerco.com/sitemap.xml",
+   "match": "/(pubs|events)/",
+   "prefix": "cbc",
+   "follow": 3
+  },
+  {
+   "url": "https://questionone.com/sitemap_index.xml",
+   "match": "questionone\\.com/venues/[^/]+/?$",
+   "prefix": "q1",
+   "follow": 0
+  },
+  {
+   "url": "https://questionone.com/wp-sitemap.xml",
+   "match": "questionone\\.com/venues/[^/]+/?$",
+   "prefix": "q1w",
+   "follow": 0
+  }
  ],
  "pages": [
   {
-   "id": "hub-pubquizzers",
+   "id": "lst-triviane-1",
    "urls": [
-    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/"
+    "https://trivianearme.net/london-england-gb/venues/the-depot"
    ],
    "keep": "all",
-   "follow": 80,
-   "follow_re": "/pub-quiz/\\d+/"
+   "follow": 0,
+   "follow_external": true
   },
   {
-   "id": "hub-urbanpubs-whatson",
+   "id": "lst-triviane-2",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on"
+    "https://trivianearme.net/london-england-gb/venues/camden-road-arms"
    ],
    "keep": "all",
-   "follow": 80,
-   "follow_re": "whats-on/.*(quiz|trivia)"
+   "follow": 0,
+   "follow_external": true
   },
   {
-   "id": "hub-bigfatquiz",
+   "id": "lst-triviane-3",
    "urls": [
-    "https://thebigfatquiz.com/pubs/"
+    "https://trivianearme.net/london-england-gb/venues/duke-of-wellington-3"
    ],
    "keep": "all",
-   "follow": 150,
-   "follow_re": "thebigfatquiz\\.com/(pubs|venues?)/.+"
+   "follow": 0,
+   "follow_external": true
   },
   {
-   "id": "hub-questionone-uk",
+   "id": "lst-triviane-4",
    "urls": [
-    "https://questionone.co/uk/venues/castle-farringdon"
+    "https://trivianearme.net/london-england-gb/venues/singer-tavern"
    ],
    "keep": "all",
-   "follow": 120,
-   "follow_re": "/venues/"
+   "follow": 0,
+   "follow_external": true
   },
   {
-   "id": "hub-questionone",
+   "id": "lst-triviane-5",
    "urls": [
-    "https://questionone.com/"
+    "https://trivianearme.net/london-england-gb/venues/spice-of-life"
    ],
    "keep": "all",
-   "follow": 200,
-   "follow_re": "/venues/"
+   "follow": 0,
+   "follow_external": true
   },
   {
-   "id": "hub-compleatquiz",
+   "id": "lst-triviane-6",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-castle"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-7",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-crown-3"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-8",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-crown-2"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-9",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-hawk-s-nest"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-10",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-robin-hood"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-11",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-star-of-bethnal-green"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-12",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-woodbine"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-13",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/althorp"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-14",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/cock-bottle"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-15",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/coopers-arms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-16",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/dial-arch"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-17",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/duke-of-hammersmith"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-18",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/duke-on-the-green"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-19",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/flat-iron-square"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-20",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/green-man-2"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-21",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/hammersmith-ram"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-22",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/house-of-hammerton"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-23",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/king-of-prussia"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-24",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-admiral-hardy"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-25",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-builders-arms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-26",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-duke-of-sussex-se15"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-27",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-edinboro-castle"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-28",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-garden-gate"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-29",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-george-vulture"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-30",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-old-queens-head"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-31",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-peacock-angel"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-32",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-prince"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-33",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-princess-victoria"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-34",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-sail-loft-greenwich"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-35",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-ten-bells"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-36",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/three-compasses"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-37",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/boleyn-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-38",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/earl-of-derby"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-39",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/effra-social"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-40",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/fentiman-arms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-41",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-alwyne-castle"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-42",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-bohemia"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-43",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-crabtree"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-44",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-durell-arms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-45",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-grafton-arms-pub-rooms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-46",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-island-queen"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-47",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-jolly-gardeners"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-48",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-lamb"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-49",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-lord-napier-star"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-50",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-marquess-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-51",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-moby-dick-greenland-dock"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-52",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-pelton-arms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-53",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-railway-2"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-54",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-southwark-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-55",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-star-by-hackney-downs"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-56",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-three-compasses-dalston"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-57",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-tommyfield"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-58",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-woodman-pub"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-59",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/white-horse"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-triviane-60",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/venues/the-charlotte-despard-pub"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-1",
+   "urls": [
+    "https://quizadvisor.com/venues/arab-boy-putney"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-2",
+   "urls": [
+    "https://quizadvisor.com/venues/beer-merchants-tap"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-3",
+   "urls": [
+    "https://quizadvisor.com/venues/black-lion-west-hampstead-every-sunday"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-4",
+   "urls": [
+    "https://quizadvisor.com/venues/bohemia-north-finchley"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-5",
+   "urls": [
+    "https://quizadvisor.com/venues/bollo-house-chiswick"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-6",
+   "urls": [
+    "https://quizadvisor.com/venues/boxpark-camden"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-7",
+   "urls": [
+    "https://quizadvisor.com/venues/boxpark-shoreditch"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-8",
+   "urls": [
+    "https://quizadvisor.com/venues/bull-islington"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-9",
+   "urls": [
+    "https://quizadvisor.com/venues/camden-road-arms-camden"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-10",
+   "urls": [
+    "https://quizadvisor.com/venues/castle-farringdon-75-644"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-11",
+   "urls": [
+    "https://quizadvisor.com/venues/castle-holland-park"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-12",
+   "urls": [
+    "https://quizadvisor.com/venues/champion-notting-hill"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-13",
+   "urls": [
+    "https://quizadvisor.com/venues/clock-house-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-14",
+   "urls": [
+    "https://quizadvisor.com/venues/coopers-arms"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-15",
+   "urls": [
+    "https://quizadvisor.com/venues/crabtree-fulham"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-16",
+   "urls": [
+    "https://quizadvisor.com/venues/crofton-park-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-17",
+   "urls": [
+    "https://quizadvisor.com/venues/crown-anchor-chiswick"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-18",
+   "urls": [
+    "https://quizadvisor.com/venues/dial-arch"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-19",
+   "urls": [
+    "https://quizadvisor.com/venues/dock-11"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-20",
+   "urls": [
+    "https://quizadvisor.com/venues/drapers-arms-ealing"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-21",
+   "urls": [
+    "https://quizadvisor.com/venues/duchy-arms-kennington"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-22",
+   "urls": [
+    "https://quizadvisor.com/venues/duke-of-hammersmith-hammersmith-london"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-23",
+   "urls": [
+    "https://quizadvisor.com/venues/duke-of-sussex-chiswick-every-sunday"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-24",
+   "urls": [
+    "https://quizadvisor.com/venues/duke-of-wellington-notting-hill"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-25",
+   "urls": [
+    "https://quizadvisor.com/venues/durell-arms-fulham"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-26",
+   "urls": [
+    "https://quizadvisor.com/venues/eagle-hoxton"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-27",
+   "urls": [
+    "https://quizadvisor.com/venues/east-hill-wandsworth"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-28",
+   "urls": [
+    "https://quizadvisor.com/venues/east-putney-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-29",
+   "urls": [
+    "https://quizadvisor.com/venues/edinboro-castle-camden"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-30",
+   "urls": [
+    "https://quizadvisor.com/venues/effra-social"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-31",
+   "urls": [
+    "https://quizadvisor.com/venues/elephant-barrel"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-32",
+   "urls": [
+    "https://quizadvisor.com/venues/eltham-gpo-eltham"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-33",
+   "urls": [
+    "https://quizadvisor.com/venues/fentiman-arms-vauxhall"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-34",
+   "urls": [
+    "https://quizadvisor.com/venues/fire-stables"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-35",
+   "urls": [
+    "https://quizadvisor.com/venues/flat-iron-square"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-36",
+   "urls": [
+    "https://quizadvisor.com/venues/fox-under-the-hill"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-37",
+   "urls": [
+    "https://quizadvisor.com/venues/garden-shed-wimbledon"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-38",
+   "urls": [
+    "https://quizadvisor.com/venues/grapes-limehouse"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-39",
+   "urls": [
+    "https://quizadvisor.com/venues/grove-house-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-40",
+   "urls": [
+    "https://quizadvisor.com/venues/hagen-hyde"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-41",
+   "urls": [
+    "https://quizadvisor.com/venues/hammerton-brewery-taproom-highbury"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-42",
+   "urls": [
+    "https://quizadvisor.com/venues/hare-and-billet-blackheath"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-43",
+   "urls": [
+    "https://quizadvisor.com/venues/hop-poles-hammersmith"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-44",
+   "urls": [
+    "https://quizadvisor.com/venues/hope-and-anchor-brixton"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-45",
+   "urls": [
+    "https://quizadvisor.com/venues/house-of-hammerton-islington"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-46",
+   "urls": [
+    "https://quizadvisor.com/venues/hoxton-cabin"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-47",
+   "urls": [
+    "https://quizadvisor.com/venues/huntsman-hounds-elephant-and-castle"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-48",
+   "urls": [
+    "https://quizadvisor.com/venues/island-queen-islington-85-238"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-49",
+   "urls": [
+    "https://quizadvisor.com/venues/islington-town-house"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-50",
+   "urls": [
+    "https://quizadvisor.com/venues/jobbers-rest-upminster"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-51",
+   "urls": [
+    "https://quizadvisor.com/venues/kings-arms-waterloo"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-52",
+   "urls": [
+    "https://quizadvisor.com/venues/knowles-of-norwood"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-53",
+   "urls": [
+    "https://quizadvisor.com/venues/lamb-chiswick"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-54",
+   "urls": [
+    "https://quizadvisor.com/venues/leman-street-tavern"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-55",
+   "urls": [
+    "https://quizadvisor.com/venues/lord-morpeth-bow"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-56",
+   "urls": [
+    "https://quizadvisor.com/venues/lord-napier-star-hackney-wick"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-57",
+   "urls": [
+    "https://quizadvisor.com/venues/lucky-voice-islington"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-quizadvi-58",
+   "urls": [
+    "https://quizadvisor.com/venues/lucky-voice-liverpool-street"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-1",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/1055/the-brewery-tap/"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-2",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=0&uni=38296535629f772c7e1d3398ae6cb3c6"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-3",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=1&uni=38296535629f772c7e1d3398ae6cb3c6"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-4",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=2&uni=38296535629f772c7e1d3398ae6cb3c6"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-5",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=3&uni=38296535629f772c7e1d3398ae6cb3c6"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-6",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=4&uni=38296535629f772c7e1d3398ae6cb3c6"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "lst-pubquizz-7",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=5&uni=38296535629f772c7e1d3398ae6cb3c6"
+   ],
+   "keep": "all",
+   "follow": 0,
+   "follow_external": true
+  },
+  {
+   "id": "host-bigfat-125",
+   "urls": [
+    "https://www.marketplaceuk.com/locations/vauxhall"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-126",
+   "urls": [
+    "https://www.thelighthousebattersea.com/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-127",
+   "urls": [
+    "https://www.theherne.co.uk/make-a-reservation"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-128",
+   "urls": [
+    "https://www.portlandarmspub.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-129",
+   "urls": [
+    "https://starbyliverpoolstreet.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-130",
+   "urls": [
+    "https://theroyalstar.co.uk/reservation/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-131",
+   "urls": [
+    "https://www.bellevueclapham.com/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-132",
+   "urls": [
+    "https://www.thegreatnorthwood.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-133",
+   "urls": [
+    "https://www.princealbert.pub/bookings"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-134",
+   "urls": [
+    "https://www.phoenixclapham.com/book-a-table%20"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-135",
+   "urls": [
+    "https://www.thethieves.pub/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-136",
+   "urls": [
+    "https://www.thegreatsouthernpub.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-137",
+   "urls": [
+    "https://distortionbrewing.co.uk/contact-us"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-bigfat-138",
+   "urls": [
+    "https://www.angeloakpeckham.com/bookings"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-139",
+   "urls": [
+    "https://themalltavern.com/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-140",
+   "urls": [
+    "https://thesmugglerstavern.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-141",
+   "urls": [
+    "https://drink.brewdog.com/uk/birdcage"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-142",
+   "urls": [
+    "https://www.urbanpubsandbars.com/venues/crown-castle"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-143",
+   "urls": [
+    "https://www.thehoratia.co.uk/visit"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-144",
+   "urls": [
+    "https://www.dickensinn.co.uk/contact-us/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-145",
+   "urls": [
+    "https://theelmhurst.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-146",
+   "urls": [
+    "https://thecolonelfawcett.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-147",
+   "urls": [
+    "https://redink.co.uk/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "host-comple-148",
+   "urls": [
+    "https://wordpress.org/plugins/gdpr-cookie-compliance/"
+   ],
+   "follow": 6
+  },
+  {
+   "id": "hub-compleatquiz-all",
    "urls": [
     "https://compleatquiz.com/quiz-listing/"
    ],
    "keep": "all",
-   "follow": 0
+   "follow": 6,
+   "follow_re": "compleatquiz\\.com/(quiz-listing|venues?)/.+"
   },
   {
-   "id": "hub-speedquizzing-london",
+   "id": "deep-osm-way-345696147",
    "urls": [
-    "https://www.speedquizzing.com/pub-quiz/london/"
+    "http://kingsarmsfitzrovia.co.uk"
    ],
-   "keep": "all",
-   "follow": 0
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "hub-quizadvisor-london",
+   "id": "deep-osm-relation-15847513",
    "urls": [
-    "https://quizadvisor.com/cities/london"
+    "http://oldenglishpub.co.uk"
    ],
-   "keep": "all",
-   "follow": 150,
-   "follow_re": "/venues/"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "hub-secretldn",
+   "id": "deep-osm-way-107521318",
    "urls": [
-    "https://secretldn.com/best-pub-quizzes-london/"
+    "http://thedukeofwellington.london"
    ],
-   "keep": "all",
-   "follow": 0
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "hub-designmynight-quiz",
+   "id": "deep-osm-way-1027522305",
    "urls": [
-    "https://www.designmynight.com/london/whats-on/quiz-nights-in-london"
+    "http://www.blacklionplaistow.co.uk"
    ],
-   "keep": "all",
-   "follow": 0
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "hub-020-tuesdays",
+   "id": "deep-osm-way-195029749",
    "urls": [
-    "https://www.020.co.uk/p/pub-quiz/tuesdays/london.shtml"
+    "http://www.geronimo-inns.co.uk/thecrown"
    ],
-   "keep": "all",
-   "follow": 0
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "hub-trivianearme-tuesday",
+   "id": "deep-osm-way-222915078",
    "urls": [
-    "https://trivianearme.net/london-england-gb/tuesday"
+    "http://www.sizzlingpubs.co.uk/findapub/london/thecrownnortholt"
    ],
-   "keep": "all",
-   "follow": 100,
-   "follow_re": "/london-england-gb/venues/"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "hub-londonquizlist-tuesday",
+   "id": "deep-osm-way-128419853",
    "urls": [
-    "https://londonquizlist.wordpress.com/tuesday/"
+    "http://www.thebuildersarmskensington.co.uk"
    ],
-   "keep": "all",
-   "follow": 0
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-crown-tavern-ec1r-0eg",
+   "id": "deep-osm-node-277909036",
    "urls": [
-    "https://www.thecrowntavernec1.co.uk/"
+    "http://www.thecastlelondon.com"
    ],
-   "follow": 4,
-   "name": "The Crown Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-slaughtered-lamb-ec1v-0dx",
+   "id": "deep-osm-node-529912984",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/slaughtered-lamb-pub-quiz",
-    "https://www.urbanpubsandbars.com/venues/slaughtered-lamb"
+    "http://www.thecrownandanchor.com"
    ],
-   "follow": 4,
-   "name": "The Slaughtered Lamb"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-craft-beer-co-clerkenwell-ec1n-7tr",
+   "id": "deep-osm-way-31052744",
    "urls": [
-    "http://www.thecraftbeerco.com/events/quiz-nights-clerkenwell",
-    "http://www.thecraftbeerco.com/events",
-    "https://www.thecraftbeerco.com/clerkenwell"
+    "http://www.thedrapersarms.com"
    ],
-   "follow": 4,
-   "name": "The Craft Beer Co. Clerkenwell"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-castle-ec1m-6db",
+   "id": "deep-osm-node-304744886",
    "urls": [
-    "https://www.thecastlefarringdon.co.uk/events",
-    "https://questionone.co/uk/venues/castle-farringdon",
-    "https://www.thecastlefarringdon.co.uk/"
+    "http://www.thegreenmanhotelatwembley.co.uk"
    ],
-   "follow": 4,
-   "name": "The Castle"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-sir-christopher-hatton-ec1n-7ra",
+   "id": "deep-osm-node-10266440600",
    "urls": [
-    "https://questionone.com/venues/pub-quiz-sir-christopher-hatton-chancery-lane-tuesdays/",
-    "https://www.nicholsonspubs.co.uk/restaurants/london/thesirchristopherhattonhattongardenlondon"
+    "https://admiralhardygreenwich.co.uk"
    ],
-   "follow": 4,
-   "name": "The Sir Christopher Hatton"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-old-ivy-house",
+   "id": "deep-osm-way-663004043",
    "urls": [
-    "https://oldivyhouse.co.uk/whats-on/quiz",
-    "https://oldivyhouse.co.uk/"
+    "https://beermerchantstap.com"
    ],
-   "follow": 4,
-   "name": "The Old Ivy House"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-coin-laundry-ec1r-4qp",
+   "id": "deep-osm-way-172055438",
    "urls": [
-    "https://coinlaundry.co.uk/whats-on/quiznight",
-    "https://coinlaundry.co.uk/"
+    "https://blacklionkilburn.co.uk"
    ],
-   "follow": 4,
-   "name": "Coin Laundry"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-exmouth-arms-ec1r-4ql",
+   "id": "deep-osm-way-490745333",
    "urls": [
-    "https://www.urbanpubsandbars.com/venues/exmouth-arms",
-    "https://www.urbanpubsandbars.com/whats-on"
+    "https://dowepping.co.uk"
    ],
-   "follow": 4,
-   "name": "The Exmouth Arms"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-royal-star-ec1v-2pn",
+   "id": "deep-osm-way-298087465",
    "urls": [
-    "https://theroyalstar.co.uk/"
+    "https://effrasocial.com"
    ],
-   "follow": 4,
-   "name": "The Royal Star"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-george-vulture-n1-6bu",
+   "id": "deep-osm-way-144713460",
    "urls": [
-    "https://www.useyourlocal.com/pubs/george-and-vulture-london-n1-6375/offers-events/quiz-night-32033/",
-    "https://www.useyourlocal.com/pubs/george-and-vulture-london-n1-6375/offers-events/quiz-night-32048/"
+    "https://elephantandbarrel.co.uk/fulham-home-page"
    ],
-   "follow": 4,
-   "name": "The George & Vulture"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-singer-tavern-ec1y-1ag",
+   "id": "deep-osm-way-86678068",
    "urls": [
-    "https://www.urbanpubsandbars.com/city-by-urban/whats-on/singer-quiz",
-    "https://www.urbanpubsandbars.com/city-by-urban/venues/singer-tavern"
+    "https://grovehousetavern.co.uk"
    ],
-   "follow": 4,
-   "name": "Singer Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-griffin-ec2a-4rd",
+   "id": "deep-osm-way-310822362",
    "urls": [
-    "https://www.the-griffin.com/",
-    "https://www.urbanpubsandbars.com/venues/the-griffin"
+    "https://hagenandhyde.com"
    ],
-   "follow": 4,
-   "name": "The Griffin"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-munich-cricket-club-tower-hill-ec3n-3aj",
+   "id": "deep-osm-node-305415324",
    "urls": [
-    "https://munichcricketclub.co.uk/events/quiz-night/",
-    "https://munichcricketclub.co.uk/locations/tower-hill/"
+    "https://hammertonbrewery.co.uk/site/about"
    ],
-   "follow": 4,
-   "name": "Munich Cricket Club Tower Hill"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-minories-ec3n-1jl",
+   "id": "deep-osm-node-348911273",
    "urls": [
-    "https://www.speedquizzing.com/pub-quiz/london/",
-    "https://www.socialpubandkitchen.co.uk/minories-london"
+    "https://samuelsmithsbrewery.co.uk/pubs"
    ],
-   "follow": 4,
-   "name": "The Minories"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-punch-tavern-ec4y-1de",
+   "id": "deep-osm-node-10582361575",
    "urls": [
-    "https://www.punchtavern.com/whats-on/the-punch-quiz",
-    "https://www.urbanpubsandbars.com/whats-on/the-punch-quiz"
+    "https://thedukew1h.co.uk"
    ],
-   "follow": 4,
-   "name": "Punch Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-harrow-ec4y-8jj",
+   "id": "deep-osm-way-155341971",
    "urls": [
-    "https://www.harrowlondon.co.uk/"
+    "https://theeaglefarringdon.co.uk"
    ],
-   "follow": 4,
-   "name": "The Harrow"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-paternoster-tavern-ec4m-7ju",
+   "id": "deep-osm-way-374461268",
    "urls": [
-    "https://paternostertavern.co.uk/"
+    "https://thejollygardeners.co.uk"
    ],
-   "follow": 4,
-   "name": "Paternoster Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-star-by-liverpool-street-e1-7ez",
+   "id": "deep-osm-way-1068933456",
    "urls": [
-    "https://starbyliverpoolstreet.co.uk/whats-on/all-events/",
-    "https://starbyliverpoolstreet.co.uk/events/pub-quiz-2029-06-05/"
+    "https://thethreecompassesaldenham.co.uk"
    ],
-   "follow": 4,
-   "name": "Star by Liverpool Street"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-retro-bar-wc2n-6hh",
+   "id": "deep-osm-way-1047462857",
    "urls": [
-    "https://www.retrobarlondon.co.uk/london"
+    "https://whitehorsebrentwood.co.uk"
    ],
-   "follow": 4,
-   "name": "Retro Bar"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-queen-s-head-wc1x-8sf",
+   "id": "deep-osm-way-899331123",
    "urls": [
-    "https://www.thequeensheadholborn.com/whats-on",
-    "https://questionone.com/venues/pub-quiz-tuesdays-7pm-at-the-queens-head-holborn/"
+    "https://www.brewery-tap.co.uk"
    ],
-   "follow": 4,
-   "name": "The Queen's Head"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-barley-mow",
+   "id": "deep-osm-node-299106201",
    "urls": [
-    "https://thebarleymowmarylebone.com/our-famous-quiz"
+    "https://www.buildersarmscroydon.co.uk"
    ],
-   "follow": 4,
-   "name": "The Barley Mow"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-brewdog-soho-w1f-8qg",
+   "id": "deep-osm-way-170337137",
    "urls": [
-    "https://compleatquiz.com/quiz-listing/",
-    "https://drink.brewdog.com/uk/brewdog-soho?booking_type_id=60df33799cc7d426714b9439"
+    "https://www.castle-harrow.co.uk"
    ],
-   "follow": 4,
-   "name": "BrewDog Soho"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-brewdog-seven-dials-wc2h-8hj",
+   "id": "deep-osm-way-159741243",
    "urls": [
-    "https://brewdog.com/pages/bars/seven-dials",
-    "https://compleatquiz.com/quiz-listing/",
-    "https://drink.brewdog.com/uk/brewdog-seven-dials"
+    "https://www.castlehollandpark.co.uk/#"
    ],
-   "follow": 4,
-   "name": "BrewDog Seven Dials"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-green-man-w1w-7es",
+   "id": "deep-osm-way-357564841",
    "urls": [
-    "https://www.thegreenmanw1.co.uk/events",
-    "https://www.thegreenmanw1.co.uk/faq",
-    "https://www.thegreenmanw1.co.uk/"
+    "https://www.castleportobello.co.uk"
    ],
-   "follow": 4,
-   "name": "The Green Man"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-rising-sun-w1t-2ed",
+   "id": "deep-osm-way-123092742",
    "urls": [
-    "https://www.greeneking.co.uk/pubs/greater-london/rising-sun/pub-quiz",
-    "https://www.greeneking.co.uk/pubs/greater-london/rising-sun/whats-on",
-    "https://www.greeneking.co.uk/pubs/greater-london/rising-sun"
+    "https://www.coopersarmskilburn.co.uk"
    ],
-   "follow": 4,
-   "name": "Rising Sun"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-coach-horses",
+   "id": "deep-osm-node-1522909770",
    "urls": [
-    "https://www.greeneking.co.uk/pubs/greater-london/coach-and-horses/pub-quiz",
-    "https://www.coachandhorsesmayfair.co.uk/"
+    "https://www.crafted-social.co.uk/hop-poles-hammersmith"
    ],
-   "follow": 4,
-   "name": "Coach & Horses"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-rugby-tavern-wc1n-3es",
+   "id": "deep-osm-node-10018880685",
    "urls": [
-    "https://rugbytavern.co.uk/"
+    "https://www.craftunionpubs.com/brewery-tap-brentwood"
    ],
-   "follow": 4,
-   "name": "The Rugby Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-loose-box-sw1p-2aa",
+   "id": "deep-osm-node-1676757006",
    "urls": [
-    "https://www.theloosebox.co.uk/"
+    "https://www.craftunionpubs.com/crown-pub-sutton"
    ],
-   "follow": 4,
-   "name": "The Loose Box"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-sir-john-balcombe-nw1-6he",
+   "id": "deep-osm-way-142306062",
    "urls": [
-    "https://www.pubsmiths.co.uk/sir-john-balcombe-marylebone/event",
-    "https://www.pubsmiths.co.uk/sir-john-balcombe-marylebone"
+    "https://www.craftunionpubs.com/eaglet-pub-finsbury"
    ],
-   "follow": 4,
-   "name": "Sir John Balcombe"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-craft-beer-co-clerkenwell-hatton-garden",
+   "id": "deep-osm-way-937498584",
    "urls": [
-    "http://www.thecraftbeerco.com/events/quiz-nights-clerkenwell",
-    "http://www.thecraftbeerco.com/events"
+    "https://www.craftunionpubs.com/white-horse-shepherds-bush"
    ],
-   "follow": 4,
-   "name": "The Craft Beer Co. (Clerkenwell / Hatton Garden)"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-princess-victoria",
+   "id": "deep-osm-way-100856450",
    "urls": [
-    "https://princessvictoria.co.uk/tuesday-pub-quiz/"
+    "https://www.craftunionpubs.com/white-house-enfield"
    ],
-   "follow": 4,
-   "name": "The Princess Victoria"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-victoria",
+   "id": "deep-osm-way-205143238",
    "urls": [
-    "https://www.victoriapaddington.co.uk/whats-on/quiz-night"
+    "https://www.crownandanchorchiswick.com"
    ],
-   "follow": 4,
-   "name": "The Victoria"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-bertie-s-bar-at-the-prince-of-wales",
+   "id": "deep-osm-node-331298014",
    "urls": [
-    "https://www.greeneking.co.uk/pubs/greater-london/prince-of-wales-wimbledon/berties-bar"
+    "https://www.crownislington.co.uk"
    ],
-   "follow": 4,
-   "name": "Bertie's Bar at the Prince of Wales"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-star-of-bethnal-green",
+   "id": "deep-osm-way-135669417",
    "urls": [
-    "https://starofbethnalgreen.co.uk/events/drag-pub-quiz-with-margaraine-2025-06-10/"
+    "https://www.dialarch.com"
    ],
-   "follow": 4,
-   "name": "Star of Bethnal Green"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-flat-iron-square",
+   "id": "deep-osm-node-858431027",
    "urls": [
-    "https://flatironsquare.co.uk/event/speed-quizzing/"
+    "https://www.duke.london"
    ],
-   "follow": 4,
-   "name": "Flat Iron Square"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-east-dulwich-tavern-the-edt",
+   "id": "deep-osm-way-95806698",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-tuesdays-at-the-edt"
+    "https://www.dukeofsussex.co.uk"
    ],
-   "follow": 4,
-   "name": "East Dulwich Tavern (The EDT)"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-slaughtered-lamb",
+   "id": "deep-osm-way-158919239",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/slaughtered-lamb-pub-quiz"
+    "https://www.dukeofwellingtonbelgravia.co.uk"
    ],
-   "follow": 4,
-   "name": "The Slaughtered Lamb"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-sun-of-camberwell",
+   "id": "deep-osm-way-855193705",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-tuesdays-at-the-sun"
+    "https://www.emberinns.co.uk/nationalsearch/london/the-huntsman-and-hounds-upminster"
    ],
-   "follow": 4,
-   "name": "The Sun of Camberwell"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-the-crown-castle",
+   "id": "deep-osm-node-56446211",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-the-crown-castle"
+    "https://www.emberinns.co.uk/nationalsearch/southeast/the-crown-shirley"
    ],
-   "follow": 4,
-   "name": "The Crown & Castle"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-singer-tavern",
+   "id": "deep-osm-node-25524219",
    "urls": [
-    "https://www.urbanpubsandbars.com/city-by-urban/whats-on/singer-quiz"
+    "https://www.emberinns.co.uk/nationalsearch/southeast/the-railway-hotel-west-wickham"
    ],
-   "follow": 4,
-   "name": "Singer Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-st-john-s-tavern",
+   "id": "deep-osm-way-108251970",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-st-johns-tavern"
+    "https://www.greeneking-pubs.co.uk/pubs/greater-london/green-man"
    ],
-   "follow": 4,
-   "name": "St. John's Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   },
   {
-   "id": "seed-punch-tavern",
+   "id": "deep-osm-node-12920922056",
    "urls": [
-    "https://www.urbanpubsandbars.com/whats-on/the-punch-quiz"
+    "https://www.greeneking.co.uk/pubs/greater-london/crown"
    ],
-   "follow": 4,
-   "name": "Punch Tavern"
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-31293000",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/greater-london/hope-and-anchor"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-239482111",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/greater-london/railway-west-hampstead"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-993678884",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/kent/bull"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-1171226026",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/middlesex/green-man"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-837636082",
+   "urls": [
+    "https://www.greenmanputney.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-479277796",
+   "urls": [
+    "https://www.hareandbillet.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-274268703",
+   "urls": [
+    "https://www.hopeandanchorbrixton.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-791132629",
+   "urls": [
+    "https://www.hoppolewandsworth.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-20973312",
+   "urls": [
+    "https://www.kingsarms-fulham.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-230373565",
+   "urls": [
+    "https://www.marquesscanonbury.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-466926232",
+   "urls": [
+    "https://www.nicholsonspubs.co.uk/restaurants/london/thecrownbrewerstreetlondon"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-383980821",
+   "urls": [
+    "https://www.nicholsonspubs.co.uk/restaurants/london/thegreenman"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-272299419",
+   "urls": [
+    "https://www.nicholsonspubs.co.uk/restaurants/london/thewhitehorsecarnabystreetlondon"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-889916461",
+   "urls": [
+    "https://www.peltonarms.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-3537180023",
+   "urls": [
+    "https://www.thealthorp.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-30729269",
+   "urls": [
+    "https://www.thealwynecastleislington.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-893965349",
+   "urls": [
+    "https://www.thebuildersarmschelsea.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-149385999",
+   "urls": [
+    "https://www.thebull-otford.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-154117129",
+   "urls": [
+    "https://www.thebullhighgate.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-288991925",
+   "urls": [
+    "https://www.thebullstreatham.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-1351858504",
+   "urls": [
+    "https://www.thebullwanstead.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-337127150",
+   "urls": [
+    "https://www.thecrownandanchornw1.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-372808122",
+   "urls": [
+    "https://www.thecrownhackney.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-8779283132",
+   "urls": [
+    "https://www.thedepotpub.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-251811996",
+   "urls": [
+    "https://www.thedukeofsussex.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-357280516",
+   "urls": [
+    "https://www.thedukeofwellingtonpub.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-775919714",
+   "urls": [
+    "https://www.theeagle.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-67449821",
+   "urls": [
+    "https://www.theislandqueenislington.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-1053467007",
+   "urls": [
+    "https://www.thejollygardenerssw15.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-112564610",
+   "urls": [
+    "https://www.thelamblondon.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-536399756",
+   "urls": [
+    "https://www.theprincen16.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-391389796",
+   "urls": [
+    "https://www.theprincen22.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-913129291",
+   "urls": [
+    "https://www.therailwaysw16.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-502991820",
+   "urls": [
+    "https://www.threecompassesfarringdon.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-257372061",
+   "urls": [
+    "https://www.vintageinn.co.uk/content/vintage-inn/en/restaurants/south-east/thegreenmanlongfield/restaurantsfood"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-689572058",
+   "urls": [
+    "https://www.whitehorsebeckenham.co.uk/#"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-291977904",
+   "urls": [
+    "https://www.whitehorsebrixton.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-223186830",
+   "urls": [
+    "https://www.whitehorseharrow.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-223059509",
+   "urls": [
+    "https://www.whitehorserichmond.co.uk"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-374780156",
+   "urls": [
+    "https://www.whitehorsesw6.com"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-way-436523538",
+   "urls": [
+    "https://www.youngs.co.uk/pub-detail.asp?PubID=283"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+  },
+  {
+   "id": "deep-osm-node-309516454",
+   "urls": [
+    "https://www.youngs.co.uk/pub-detail.asp?PubID=293"
+   ],
+   "follow": 12,
+   "follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
   }
  ]
 }

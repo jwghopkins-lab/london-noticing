@@ -115,6 +115,15 @@ async function doEntry(c) {
       .slice(0, follow)
     for (const u of extra) { seen.add(u); const p = await grab(u, c.follow_keep || 'quiz', null); p.followed = true; pages.push(p) }
   }
+  // A listings site's venue page links to the pub's own website ("Visit
+  // website"). Queue that site as an entry of its own, so it is crawled like
+  // any other pub site.
+  if (c.follow_external) {
+    const ext = [...new Set(pages.flatMap(p => (p.links_out || [])
+      .filter(l => /website|visit|official|book/i.test(l.text) && !SKIP_HOST.test(new URL(l.href).hostname))
+      .map(l => l.href.split('#')[0])))].slice(0, 2)
+    ext.forEach((u, n) => queue.push({ id: `${c.id}~ext${n + 1}`, urls: [u], follow: 5, from: c.id }))
+  }
   for (const p of pages) delete p._follow
   results[c.id] = pages
   done++
@@ -122,8 +131,15 @@ async function doEntry(c) {
 }
 
 const queue = [...entries]
+let active = 0
 await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
-  while (queue.length) await doEntry(queue.shift())
+  // Entries can add entries (follow_external), so a worker only stops when
+  // the queue is empty and nobody else is still working.
+  while (queue.length || active) {
+    if (!queue.length) { await new Promise(r => setTimeout(r, 500)); continue }
+    active++
+    try { await doEntry(queue.shift()) } finally { active-- }
+  }
 }))
 await browser.close()
 

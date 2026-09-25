@@ -71,7 +71,8 @@ def evidence_text(q):
     if pages is None:
         return None
     texts = []
-    for page in pages.get(q["candidate_id"], []):
+    # A listing page's venues are checked one by one as "<entry>~<n>".
+    for page in pages.get(q["candidate_id"].split("~")[0], []):
         if q["source_url"] in (page.get("url"), page.get("final_url")):
             texts.append(page.get("text") or "")
             texts.extend(f.get("text", "") for f in page.get("frames", []))

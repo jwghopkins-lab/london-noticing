@@ -114,6 +114,20 @@ def main():
             score = sim + (0.5 if same_site else 0) - (d or 0) / 2000
             if not best or score > best[0]:
                 best = (score, p, d)
+        if not best and not centre:
+            # No postcode position yet: a pub of much the same name whose OSM
+            # address has the same postcode is the pub; failing that, the only
+            # one of that name in the same postcode district.
+            pc_q = (q.get("postcode") or "").replace(" ", "").upper()
+            named = [p for p in pubs if difflib.SequenceMatcher(None, qn, norm(p.get("name"))).ratio() >= 0.85]
+            same = [p for p in named if pc_q and (p.get("addr:postcode") or "").replace(" ", "").upper() == pc_q]
+            district = lambda pc: re.match(r"[A-Z]{1,2}\d[A-Z\d]?", pc or "")
+            dq = district(pc_q[:-3]) if len(pc_q) > 4 else None
+            near = [p for p in named if dq and district((p.get("addr:postcode") or "").replace(" ", "").upper()[:-3])
+                    and district((p.get("addr:postcode") or "").replace(" ", "").upper()[:-3]).group(0) == dq.group(0)]
+            pick = same[0] if len(same) == 1 else near[0] if len(near) == 1 else None
+            if pick:
+                best = (1, pick, None)
         if best:
             _, p, d = best
             q.update(lat=p["lat"], lon=p["lon"], location_source="osm", osm=p["osm"], area=area(p["lat"], p["lon"]))
