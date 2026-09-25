@@ -1,0 +1,23 @@
+{
+ "E8 2LN": {
+  "postcode": "E8 2LN",
+  "lat": 51.550524,
+  "lon": -0.069213,
+  "district": "Hackney",
+  "ward": "Dalston"
+ },
+ "N6 5XJ": {
+  "postcode": "N6 5XJ",
+  "lat": 51.57279,
+  "lon": -0.139906,
+  "district": "Haringey",
+  "ward": "Highgate"
+ },
+ "SE1 9DA": {
+  "postcode": "SE1 9DA",
+  "lat": 51.506167,
+  "lon": -0.089174,
+  "district": "Southwark",
+  "ward": "Borough & Bankside"
+ }
+}
