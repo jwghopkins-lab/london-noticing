@@ -146,7 +146,9 @@ def main():
             exact = [p for p in pubs if sim(qn, p["_n"]) >= 0.92]
             sites = [p for p in named if own_site(q, p)]
             for cands, label in ((same_pc, "name and postcode"), (same_d, "name in district"), (sites, "own website"),
-                                 (exact if len(qn) >= 8 else [], "unique name")):
+                                 # OSM does not list every pub, so a one-word name being unique
+                                 # there proves little; two or more words it does.
+                                 (exact if len(qn.split()) >= 2 else [], "unique name")):
                 if len(cands) == 1:
                     pick, how = cands[0], label
                     break

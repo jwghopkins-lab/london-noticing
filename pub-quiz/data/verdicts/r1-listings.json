@@ -1,0 +1,549 @@
+[
+ {
+  "read": [
+   {
+    "id": "hub-bigfatquiz~1",
+    "verdict": "confirmed",
+    "why": "Big Fat Quiz Company's own venue list gives The Star @Liverpool Street as Tuesday \u00b7 7pm. The page marks its non-weekly and paused entries (Fortnightly, Returning soon, Coming soon), and this entry has no such mark, so it counts as weekly.",
+    "pub_name": "The Star @Liverpool Street",
+    "address": "94 Middlesex Street, London, E1 7EZ",
+    "postcode": "E1 7EZ",
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "host": "The Big Fat Quiz Company",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "quote": "Tuesday \u00b7 7pm\nThe Star @Liverpool Street"
+   },
+   {
+    "id": "hub-bigfatquiz~4",
+    "verdict": "not_this_pub",
+    "why": "The entry is for Cape of Good Hope, Iffley Road, Oxford, OX4 1EA, which is outside London.",
+    "pub_name": "Cape of Good Hope",
+    "address": "Iffley Road, Oxford, OX4 1EA",
+    "postcode": "OX4 1EA",
+    "start": "20:00",
+    "host": "The Big Fat Quiz Company",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "quote": "Tuesday \u00b7 8pm\nCape of Good Hope"
+   },
+   {
+    "id": "hub-bigfatquiz~7",
+    "verdict": "ended_or_stale",
+    "why": "The Old Red Lion entry is marked 'Returning soon' and 'Returns 1 September 2026', which the rules count as ended_or_stale.",
+    "pub_name": "Old Red Lion",
+    "address": "42 Kennington Park Road, London, SE11 4RS",
+    "postcode": "SE11 4RS",
+    "start": "20:00",
+    "host": "The Big Fat Quiz Company",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "quote": "Tuesday \u00b7 8pm\nReturning soon\nOld Red Lion"
+   },
+   {
+    "id": "hub-compleatquiz~2",
+    "verdict": "unclear",
+    "why": "Compleat Quiz's listing gives The Birdcage as Day: Tuesday, Time: 20:00, Host: Eddie. The page does not mark any entries as non-weekly (the file found none), so nothing shows that this regular slot is weekly.",
+    "pub_name": "The Birdcage",
+    "address": "80 Columbia Rd, London , Shoreditch , E2 7QB",
+    "postcode": "E2 7QB",
+    "start": "20:00",
+    "host": "Compleat Quiz (host: Eddie)",
+    "source_url": "https://compleatquiz.com/quiz-listing/",
+    "source_kind": "host",
+    "quote": "Day: Tuesday",
+    "extra_quotes": [
+     "Time: 20:00"
+    ]
+   },
+   {
+    "id": "hub-questionone~2",
+    "verdict": "confirmed",
+    "why": "Question One's own venue list has 'PUB QUIZ \u2013 Alwyne Castle, Islington \u2013 Every Tuesday' with 'Tuesday 20:00'. Non-weekly entries on the page are marked (First Wednesday etc.), and this one says Every Tuesday.",
+    "pub_name": "Alwyne Castle",
+    "address": "",
+    "postcode": "",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "Question One",
+    "source_url": "https://questionone.com/",
+    "source_kind": "host",
+    "quote": "PUB QUIZ \u2013 Alwyne Castle, Islington \u2013 Every Tuesday\nTuesday 20:00"
+   },
+   {
+    "id": "hub-questionone~5",
+    "verdict": "confirmed",
+    "why": "Question One's own venue page for The Lamb, Chiswick says 'every Tuesday at 8pm for the pub quiz' and gives Tuesday 20:00. It shows no pause or old dates.",
+    "pub_name": "The Lamb",
+    "address": "9 Greater, London England W4 4PH, United Kingdom",
+    "postcode": "W4 4PH",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "Question One",
+    "source_url": "https://questionone.com/venues/lamb-chiswick/",
+    "source_kind": "host",
+    "quote": "Join us at The Lamb, Chiswick every Tuesday at 8pm for the pub quiz!"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~2",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own what's-on page for The Crown & Castle (Dalston) says 'EVERY TUESDAY \u2022 8PM' and describes a weekly pub quiz. The only date is the 2023 footer copyright, and there are no dated events.",
+    "pub_name": "The Crown & Castle",
+    "address": "",
+    "postcode": "",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-the-crown-castle",
+    "source_kind": "company",
+    "quote": "EVERY TUESDAY \u2022\u00a08PM",
+    "extra_quotes": [
+     "Join us every Tuesday evening to put your useless and non useless trivia to the test with our weekly pub quiz."
+    ]
+   },
+   {
+    "id": "hub-urbanpubs-whatson~5",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own what's-on page for Balham Bowls Club says 'Join us at 8pm every Tuesday for our pub quiz!' The only date is the footer copyright, and there are no dated events.",
+    "pub_name": "Balham Bowls Club",
+    "address": "",
+    "postcode": "",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/balham-bowls-club-pub-quiz",
+    "source_kind": "company",
+    "quote": "Join us at 8pm every Tuesday for our pub quiz!"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~8",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own what's-on page for The Clapton Hart says 'Join us at 8pm every Tuesday for our pub quiz!' and describes a weekly quiz. There are no dated events or pause notices.",
+    "pub_name": "The Clapton Hart",
+    "address": "",
+    "postcode": "",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-the-clapton-hart",
+    "source_kind": "company",
+    "quote": "Join us at 8pm every Tuesday for our pub quiz!"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "hub-bigfatquiz~1",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:00"
+   },
+   {
+    "id": "hub-questionone~2",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-questionone~5",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~2",
+    "refuted": false,
+    "problems": [
+     "Quote whitespace mismatch: in the evidence, line 13 has a non-breaking space (U+00A0) after the bullet, so it reads 'EVERY TUESDAY \u2022\u00a08PM'. The quote as given has a regular space there. A byte-exact check will fail unless whitespace is normalised. The 8PM start time appears only in this line; the extra_quote has Tuesday but no time. The substance holds: it is weekly on Tuesdays at 8pm, on the pub company's own page for this pub. The '\u00a9 2023' in the footer is a site copyright line, not a dated listing."
+    ],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~5",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~8",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "hub-bigfatquiz~2",
+    "verdict": "confirmed",
+    "why": "Big Fat Quiz Company's own pub list entry for Royal Star gives Tuesday \u00b7 7.30pm with no fortnightly/returning mark, while the same page visibly marks non-weekly and not-yet-running entries (Fortnightly, Returning soon, Coming soon).",
+    "pub_name": "Royal Star",
+    "address": "220 City Road, London, EC1V 2PN",
+    "postcode": "EC1V 2PN",
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "host": "The Big Fat Quiz Company",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "quote": "Tuesday \u00b7 7.30pm\nRoyal Star"
+   },
+   {
+    "id": "hub-bigfatquiz~5",
+    "verdict": "confirmed",
+    "why": "Big Fat Quiz Company's own list entry for Catford Bridge Tavern shows Tuesday \u00b7 8pm with no non-weekly or returning mark; the page marks such entries elsewhere (Fortnightly, Returning soon, Coming soon).",
+    "pub_name": "Catford Bridge Tavern",
+    "address": "Station Approach, London, SE6 4RE",
+    "postcode": "SE6 4RE",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "The Big Fat Quiz Company",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "quote": "Tuesday \u00b7 8pm\nCatford Bridge Tavern"
+   },
+   {
+    "id": "hub-bigfatquiz~8",
+    "verdict": "confirmed",
+    "why": "Big Fat Quiz Company's own list entry for The Great North Wood shows Tuesday \u00b7 8pm, unmarked, while the page marks non-weekly/not-yet-running entries (Fortnightly, Returning soon, Coming soon).",
+    "pub_name": "The Great North Wood",
+    "address": "3 Knight's Hill, West Norwood, London, SE27 0HS",
+    "postcode": "SE27 0HS",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "The Big Fat Quiz Company",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "quote": "Tuesday \u00b7 8pm\nThe Great North Wood"
+   },
+   {
+    "id": "hub-compleatquiz~3",
+    "verdict": "unclear",
+    "why": "Compleat Quiz listing gives 'Day: Tuesday' and 'Time: 8pm' for The Crown and Castle, but the page shows no entries marked as non-weekly (no frequency marking at all), so weekly frequency cannot be established from the slot alone.",
+    "pub_name": "The Crown and Castle",
+    "address": "600 Kingsland Road, Dalston, London, E8 4AH",
+    "postcode": "E8 4AH",
+    "start": "20:00",
+    "freq_note": "Tuesdays (frequency not stated)",
+    "host": "Compleat Quiz",
+    "source_url": "https://compleatquiz.com/quiz-listing/",
+    "source_kind": "host",
+    "quote": "Day: Tuesday",
+    "extra_quotes": [
+     "Time: 8pm"
+    ]
+   },
+   {
+    "id": "hub-questionone~3",
+    "verdict": "confirmed",
+    "why": "Question One's own venue list shows The New Inn, Richmond as Tuesday 19:00 with no frequency qualifier, while the same page marks its non-weekly entries in their titles (Every Other Sunday, Every other Sunday, Monthly).",
+    "pub_name": "The New Inn",
+    "address": "",
+    "postcode": "",
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "host": "Question One",
+    "source_url": "https://questionone.com/venues/",
+    "source_kind": "host",
+    "quote": "PUB QUIZ \u2013 The New Inn, Richmond\nTuesday 19:00"
+   },
+   {
+    "id": "hub-questionone~6",
+    "verdict": "confirmed",
+    "why": "Question One's own venue page for Alwyne Castle, Islington, titled 'Every Tuesday', says 'On Tuesday evenings at 8pm ... their weekly pub quiz'; no signs of a break.",
+    "pub_name": "The Alwyne Castle",
+    "address": "83 Saint Paul's Road, England N1 2LY, United Kingdom",
+    "postcode": "N1 2LY",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": "Question One",
+    "source_url": "https://questionone.com/venues/alwyne-castle/",
+    "source_kind": "host",
+    "quote": "On Tuesday evenings at 8pm, settle in for a night of trivia with their weekly pub quiz!"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~3",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own what's-on page for The Birdcage says Quiz Night at The Birdcage, 7:30PM EVERY TUESDAY; only the footer copyright year is dated, which is not an event date.",
+    "pub_name": "The Birdcage",
+    "address": "",
+    "postcode": "",
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "host": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/quiz-night-at-the-birdcage",
+    "source_kind": "company",
+    "quote": "7:30PM EVERY TUESDAY",
+    "extra_quotes": [
+     "Quiz Night at The Birdcage"
+    ]
+   },
+   {
+    "id": "hub-urbanpubs-whatson~6",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own what's-on page for Singer Tavern: 'QUIZ NIGHT AT SINGER TAVERN.' and 'Every Tuesday at 7pm'; no break or stale dates.",
+    "pub_name": "Singer Tavern",
+    "address": "",
+    "postcode": "",
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "host": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/singer-quiz",
+    "source_kind": "company",
+    "quote": "Every Tuesday at 7pm",
+    "extra_quotes": [
+     "QUIZ NIGHT AT SINGER TAVERN."
+    ]
+   },
+   {
+    "id": "hub-urbanpubs-whatson~9",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own what's-on page for the Harrild and Sons quiz (for Great Ormond Street Hospital) says 'Every Tuesday from 6pm'; the monthly part is only the theme, not the frequency. 6pm is read as the quiz's start time.",
+    "pub_name": "Harrild and Sons",
+    "address": "",
+    "postcode": "",
+    "start": "18:00",
+    "freq_note": "Every Tuesday",
+    "host": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/quiz-at-harrild-and-sons",
+    "source_kind": "company",
+    "quote": "Every Tuesday from 6pm",
+    "extra_quotes": [
+     "Join us at Harrild and Sons for a night of trivia"
+    ]
+   }
+  ],
+  "challenge": [
+   {
+    "id": "hub-bigfatquiz~2",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "hub-bigfatquiz~5",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-bigfatquiz~8",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-questionone~3",
+    "refuted": true,
+    "problems": [
+     "Question One normally puts the frequency in each entry's name: its other entries read 'Every Tuesday', 'Every Thursday', 'Fridays', 'Monthly' and so on. 'PUB QUIZ \u2013 The New Inn, Richmond' has no frequency, so per the listing rule it cannot be counted as weekly.",
+     "The entry gives no address or postcode. Question One also lists venues outside London (Poole, Cambridge, Milton Keynes, Windsor, Epsom), so the evidence does not show this Richmond is the London one."
+    ],
+    "start_seen": "19:00"
+   },
+   {
+    "id": "hub-questionone~6",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~3",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~6",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~9",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "18:00"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "hub-bigfatquiz~3",
+    "verdict": "confirmed",
+    "why": "Big Fat Quiz Company's own pub list: Belle Vue entry reads 'Tuesday \u00b7 8pm' with no fortnightly/returning/coming-soon mark, while the same page visibly marks its non-weekly and not-yet-running entries (Fortnightly, Returning soon, Coming soon). London SW4, so it is weekly on Tuesday with an 8pm start.",
+    "pub_name": "Belle Vue",
+    "address": "Clapham Common, Clapham, London, SW4 7AA",
+    "postcode": "SW4 7AA",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "host": "The Big Fat Quiz Company",
+    "quote": "Tuesday \u00b7 8pm\nBelle Vue",
+    "extra_quotes": [],
+    "start": "20:00",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "hub-bigfatquiz~6",
+    "verdict": "confirmed",
+    "why": "Big Fat Quiz Company's own pub list: Leyton Star entry reads 'Tuesday \u00b7 8pm' with no fortnightly/returning/coming-soon mark, and the page does mark its non-weekly entries. London E15, so it is weekly on Tuesday at 8pm.",
+    "pub_name": "Leyton Star",
+    "address": "116 High Road, London, E15 2BX",
+    "postcode": "E15 2BX",
+    "source_url": "https://thebigfatquiz.com/pubs/",
+    "source_kind": "host",
+    "host": "The Big Fat Quiz Company",
+    "quote": "Tuesday \u00b7 8pm\nLeyton Star",
+    "extra_quotes": [],
+    "start": "20:00",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "hub-compleatquiz~1",
+    "verdict": "unclear",
+    "why": "Compleat Quiz listing gives Smugglers Tavern 'Day: Tuesday' and 'Time: 19:30' as a slot. The file shows no entries that the page marks as non-weekly, so there is nothing to show that an unmarked slot means weekly. Frequency can't be established.",
+    "pub_name": "Smugglers Tavern",
+    "address": "28 Warren Street, London, W1T 5ND",
+    "postcode": "W1T 5ND",
+    "source_url": "https://compleatquiz.com/quiz-listing/",
+    "source_kind": "host",
+    "host": "Oleksii (Compleat Quiz)",
+    "quote": "Day: Tuesday",
+    "extra_quotes": [
+     "Time: 19:30"
+    ],
+    "start": "19:30",
+    "freq_note": "Tuesday (frequency not stated)"
+   },
+   {
+    "id": "hub-questionone~1",
+    "verdict": "confirmed",
+    "why": "Question One's own site lists 'PUB QUIZ \u2013 Lamb, Chiswick \u2013 Every Tuesday' with 'Tuesday 20:00'. It is explicitly weekly, the start time is given, and nothing suggests it has stopped. Chiswick is in London.",
+    "pub_name": "Lamb, Chiswick",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://questionone.com/",
+    "source_kind": "host",
+    "host": "Question One",
+    "quote": "PUB QUIZ \u2013 Lamb, Chiswick \u2013 Every Tuesday\nTuesday 20:00",
+    "extra_quotes": [],
+    "start": "20:00",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "hub-questionone~4",
+    "verdict": "unclear",
+    "why": "The entry is only 'Duke Of Wellington, Notting Hill' with 'Tuesday 19:00'. Unlike other Question One entries, it has neither the 'PUB QUIZ \u2013' label nor a frequency (the site writes 'Every Tuesday' on weekly entries, e.g. Lamb, Chiswick), so it is unclear whether this is a quiz or whether it is weekly.",
+    "pub_name": "Duke Of Wellington, Notting Hill",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://questionone.com/venues/",
+    "source_kind": "host",
+    "host": "Question One",
+    "quote": "Duke Of Wellington, Notting Hill\nTuesday 19:00",
+    "extra_quotes": [],
+    "start": "19:00",
+    "freq_note": "Tuesday (frequency not stated)"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~1",
+    "verdict": "unclear",
+    "why": "This is Urban Pubs & Bars' what's-on index page for all its pubs. The candidate names no single pub, and the page lists weekly Tuesday quizzes at many pubs (Crown & Castle 8PM, The Birdcage 7:30PM, EDT 8:00PM, Balham Bowls Club 8PM, Singer Tavern 7PM, St. John's Tavern 7.30PM, Clapton Hart 8PM, Harrild & Sons from 6PM, White Lion 8PM). No one pub can be identified for this candidate; those pubs are covered by the individual what's-on candidates.",
+    "pub_name": "",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on",
+    "source_kind": "company",
+    "host": "",
+    "quote": "",
+    "extra_quotes": [],
+    "start": "",
+    "freq_note": ""
+   },
+   {
+    "id": "hub-urbanpubs-whatson~4",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own event page for East Dulwich Tavern: 'EVERY TUESDAY AT 8:00PM' / 'Every Tuesday at 8pm', described as a weekly quiz night with no dates and nothing suggesting a pause.",
+    "pub_name": "East Dulwich Tavern",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/pub-quiz-tuesdays-at-the-edt",
+    "source_kind": "company",
+    "host": "",
+    "quote": "Every Tuesday at 8pm",
+    "extra_quotes": [],
+    "start": "20:00",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~7",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own event page for St. John's Tavern (Archway): 'Every Tuesday | 7.30pm' quiz night. It is weekly, the start time is given, and nothing suggests it has stopped.",
+    "pub_name": "St. John's Tavern",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-st-johns-tavern",
+    "source_kind": "company",
+    "host": "",
+    "quote": "Every Tuesday | 7.30pm",
+    "extra_quotes": [],
+    "start": "19:30",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~10",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars' own event page for The Udder Quiz at The White Lion: 'Every Tuesday | 8pm'. It is weekly, the start time is given, and nothing suggests it has stopped.",
+    "pub_name": "The White Lion",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/the-udder-quiz",
+    "source_kind": "company",
+    "host": "",
+    "quote": "Every Tuesday | 8pm",
+    "extra_quotes": [],
+    "start": "20:00",
+    "freq_note": "Every Tuesday"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "hub-bigfatquiz~3",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-bigfatquiz~6",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-questionone~1",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~4",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~7",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "hub-urbanpubs-whatson~10",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   }
+  ]
+ }
+]

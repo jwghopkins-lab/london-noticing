@@ -1,0 +1,1553 @@
+[
+ {
+  "read": [
+   {
+    "id": "osm-way-100275592",
+    "verdict": "confirmed",
+    "why": "The pub's own What's On page lists 'ROEBUCK PUB QUIZ \u2013 Every Tuesday at 7.30pm'. It is weekly, has a start time and shows no sign of a pause.",
+    "pub_name": "The Roebuck",
+    "source_url": "https://theroebuck.net/whats-on/",
+    "source_kind": "pub",
+    "quote": "ROEBUCK PUB QUIZ \u2013 Every Tuesday at 7.30pm",
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "address": "",
+    "postcode": ""
+   },
+   {
+    "id": "osm-way-149060320",
+    "verdict": "no_quiz",
+    "why": "The pub's What's On page only mentions 'live music and quiz nights' in general. No quiz is listed, and no day or time is given.",
+    "pub_name": "The Champion",
+    "source_url": "https://www.thechampionpub.co.uk/whats-on",
+    "source_kind": "pub",
+    "address": "1 Wellington Terrace, W2 4LW",
+    "postcode": "W2 4LW"
+   },
+   {
+    "id": "osm-way-139911657",
+    "verdict": "not_weekly",
+    "why": "The only quiz on the pub's news page is a 'CHARITY QUIZ NIGHT' post dated 08/09/2026, which looks like a one-off event with no day or time. 'TUESDAY GAME NIGHTS' is a games night, not a quiz.",
+    "pub_name": "Tavern On The Hill",
+    "source_url": "https://www.tavernonthehill.co.uk/whatshappening",
+    "source_kind": "pub",
+    "quote": "CHARITY QUIZ NIGHT",
+    "address": "318 Higham Hill Rd, Walthamstow",
+    "postcode": "E17 5RG"
+   },
+   {
+    "id": "osm-node-3790320757",
+    "verdict": "not_tuesday",
+    "why": "The Brook Green Hotel's What's On page (Smith's Cocktail Bar is part of this pub) lists its quiz as 'Every Wednesday', 7:00pm - 9:30pm. It is not on a Tuesday.",
+    "pub_name": "Brook Green Hotel",
+    "source_url": "https://www.brookgreenhotel.co.uk/whats-on/",
+    "source_kind": "pub",
+    "quote": "Join us every Wednesday from 9th September, 7:00pm \u2013 9:30pm, for a fun evening of trivia",
+    "start": "19:00",
+    "freq_note": "Every Wednesday",
+    "address": "170 Shepherds Bush Road, London, Hammersmith, W6 7PB",
+    "postcode": "W6 7PB"
+   },
+   {
+    "id": "osm-way-444744679",
+    "verdict": "no_start_time",
+    "why": "The pub's own homepage says there is a weekly Pub Quiz on Tuesday evenings but gives no start time.",
+    "pub_name": "The Mayflower",
+    "source_url": "https://www.mayflowerpub.co.uk",
+    "source_kind": "pub",
+    "quote": "Join us on Tuesday evenings for our weekly Pub Quiz",
+    "freq_note": "Every Tuesday",
+    "address": "117 Rotherhithe Street, Rotherhithe, London, SE16 4NF",
+    "postcode": "SE16 4NF"
+   },
+   {
+    "id": "osm-node-248546654",
+    "verdict": "confirmed",
+    "why": "The pub's own homepage has a 'Quiz Night' section that says 'Every Tuesday at 8pm'. It is weekly, has a start time and shows no sign of a pause.",
+    "pub_name": "The Moby Dick",
+    "source_url": "https://www.mobydickgreenlanddock.co.uk",
+    "source_kind": "pub",
+    "quote": "Every Tuesday at 8pm",
+    "extra_quotes": [
+     "Quiz Night"
+    ],
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "address": "6 Russell Place, Greenland Dock, London",
+    "postcode": "SE16 7PL"
+   },
+   {
+    "id": "seed-the-queen-s-head-wc1x-8sf",
+    "verdict": "confirmed",
+    "why": "The pub's own What's On page lists 'PUB QUIZ TUESDAYS': every Tuesday at 7pm. Question One's own venue listing agrees: every Tuesday at 19:00.",
+    "pub_name": "The Queens Head",
+    "source_url": "https://www.thequeensheadholborn.com/whats-on",
+    "source_kind": "pub",
+    "quote": "Join us every Tuesday at 7pm for the best pub quiz in Holborn.",
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "host": "Question One",
+    "address": "64 Theobalds Road, London",
+    "postcode": "WC1X 8SF"
+   },
+   {
+    "id": "seed-bertie-s-bar-at-the-prince-of-wales",
+    "verdict": "confirmed",
+    "why": "Greene King's page for Bertie's Bar at the Prince of Wales, Wimbledon says the pub quiz is every Tuesday at 8pm. The what's-on page shows the same quiz 'Every Tuesday' 20:00 - 22:00, with upcoming dates of Tue 29 Sep and Tue 06 Oct.",
+    "pub_name": "Bertie's Bar",
+    "source_url": "https://www.greeneking.co.uk/pubs/greater-london/prince-of-wales-wimbledon/berties-bar",
+    "source_kind": "company",
+    "quote": "Join us for our pub quiz every Tuesday at 8pm",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "address": "2 Hartfield Road, Wimbledon",
+    "postcode": "SW19 3TA"
+   },
+   {
+    "id": "osm-way-525700383",
+    "verdict": "confirmed",
+    "why": "The pub's own event page for its Pub Quiz shows Tue 29th Sep, 8:00 pm - 10:00 pm, and says 'Prove it every Tuesday at our legendary Pub Quiz!'. It is weekly, has a start time and the date is upcoming.",
+    "pub_name": "Lord Napier Star",
+    "source_url": "https://lordnapierstar.co.uk/events/lord-napier-star-pub-quiz-2026-09-29/",
+    "source_kind": "pub",
+    "quote": "Prove it every Tuesday at our legendary Pub Quiz!",
+    "extra_quotes": [
+     "8:00 pm - 10:00 pm"
+    ],
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "address": "25 White Post Lane, London",
+    "postcode": "E9 5ER"
+   },
+   {
+    "id": "osm-way-475721718",
+    "verdict": "confirmed",
+    "why": "The pub's own site lists the Big Bear Quiz on consecutive upcoming Tuesdays (29 Sep, 6, 13, 20 and 27 Oct), each at 8 PM, with more dates to come.",
+    "pub_name": "Kings Arms",
+    "source_url": "https://www.kingsarms-soho.co.uk/events/big-bear-quiz?eventDate=2026-09-29T19:00:00.000Z",
+    "source_kind": "pub",
+    "quote": "Tue 29th Sep at 8 - 10:30 PM",
+    "extra_quotes": [
+     "TUE 6TH OCT AT 8 PM",
+     "TUE 29TH SEP AT 8 PM"
+    ],
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "address": "23 Poland Street Oxford Street, Westminster, Greater London",
+    "postcode": "W1F 8QJ"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-100275592",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "osm-node-248546654",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "seed-the-queen-s-head-wc1x-8sf",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:00"
+   },
+   {
+    "id": "seed-bertie-s-bar-at-the-prince-of-wales",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "osm-way-525700383",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "osm-way-475721718",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-way-102403099",
+    "verdict": "no_start_time",
+    "why": "The pub's own What's On page describes a weekly Tuesday Night Quiz but gives no start time anywhere.",
+    "pub_name": "Simon The Tanner",
+    "source_url": "https://www.simonthetanner.co.uk/whatson",
+    "source_kind": "pub",
+    "quote": "weekly Tuesday Night Quiz is a mix of head scratching trivia, music, pictures and lively fun",
+    "freq_note": "Every Tuesday",
+    "address": "231 Long Lane, London",
+    "postcode": "SE1 4PR",
+    "start": ""
+   },
+   {
+    "id": "osm-node-49311908",
+    "verdict": "no_quiz",
+    "why": "The Volunteer's events page only mentions 'live music and quiz nights' in general, lists no actual quiz event, and gives no day or time.",
+    "pub_name": "The Volunteer",
+    "source_url": "https://www.thevolunteernw1.co.uk/events",
+    "source_kind": "pub",
+    "address": "245-247 Baker Street, London",
+    "postcode": "NW1 6XE"
+   },
+   {
+    "id": "osm-way-395000517",
+    "verdict": "not_weekly",
+    "why": "The Jaguar Shoes group events page lists one Pub Quiz at Hand of Glory on Tue 29 Sep at 8:00pm. The listing runs to 10 Oct but has no quiz on Tue 6 Oct, so the evidence shows only a single date. The quiz may well be weekly, but this page does not show it.",
+    "pub_name": "Hand of Glory",
+    "source_url": "https://www.jaguarshoes.com/pages/events",
+    "source_kind": "company",
+    "quote": "Tue 29 Sep \u2015 8:00pm",
+    "start": "20:00",
+    "freq_note": "Single dated listing (Tue 29 Sep)"
+   },
+   {
+    "id": "osm-way-291700402",
+    "verdict": "not_tuesday",
+    "why": "The Greyhound's site only mentions 'weekly pub staples like ... pub quizzes' with no day or time, and its hours show it is closed on Tuesdays (TUE: CLOSED), so there can be no Tuesday quiz.",
+    "pub_name": "The Greyhound",
+    "source_url": "https://www.thegreyhound.uk",
+    "source_kind": "pub",
+    "quote": "HOURS MON: CLOSED TUE: CLOSED WED: 4PM-11PM",
+    "address": "109 Peckham High Street",
+    "postcode": "SE15 5SE"
+   },
+   {
+    "id": "osm-way-586607947",
+    "verdict": "not_tuesday",
+    "why": "The White Swan's pub quiz is every Wednesday. The Tuesday listing is 'Tuesday Tipples', a wine offer.",
+    "pub_name": "White Swan",
+    "source_url": "https://www.whiteswantwickenham.co.uk/whats-on",
+    "source_kind": "company",
+    "quote": "Every wintery wednesday, join us at the White Swan for our weekly Pub Quiz! (\u00a32 cash pp)",
+    "freq_note": "Every Wednesday",
+    "address": "White Swan, Riverside, Twickenham, Middlesex",
+    "postcode": "TW1 3DN"
+   },
+   {
+    "id": "osm-node-13327212416",
+    "verdict": "not_tuesday",
+    "why": "The Colts Pub Quiz is fortnightly on Wednesdays (7 and 21 Oct 2026, 19:30), so it is neither on Tuesday nor weekly.",
+    "pub_name": "Three Colts Tavern",
+    "source_url": "https://www.threecoltstavern.co.uk/events",
+    "source_kind": "pub",
+    "quote": "Join us for our fortnightly Colts Quiz",
+    "freq_note": "Fortnightly, Wednesdays",
+    "start": "19:30",
+    "address": "199 Cambridge Heath Road",
+    "postcode": "E2 0EL"
+   },
+   {
+    "id": "osm-way-445139621",
+    "verdict": "confirmed",
+    "why": "The pub's own event page for the Drag Pub Quiz with Margarine says it runs every Tuesday from 7.30pm, and lists the next date as Tuesday 29 September (EVERY TUESDAY), 7:30 PM - 9:45 PM. It also appears on the current What's On listing.",
+    "pub_name": "Star of Bethnal Green",
+    "source_url": "https://starofbethnalgreen.co.uk/whats-on/drag-pub-quiz-with-margarine/",
+    "source_kind": "pub",
+    "quote": "It takes place each and every Tuesday from 7.30pm.",
+    "extra_quotes": [
+     "TUESDAY 29TH SEPTEMBER (EVERY TUESDAY)"
+    ],
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "host": "Margarine",
+    "address": "359 Bethnal Green Rd, London",
+    "postcode": "E2 6LG"
+   },
+   {
+    "id": "osm-node-5382875197",
+    "verdict": "not_tuesday",
+    "why": "The Greene King page for the Golden Lion, Romford, says the pub quiz is every Thursday. The only Tuesday item is a football fixture.",
+    "pub_name": "The Golden Lion",
+    "source_url": "https://www.greeneking.co.uk/pubs/essex/golden-lion/pub-quiz",
+    "source_kind": "company",
+    "quote": "Join Our Pub Quiz, Every Thursday At The Golden Lion, Romford",
+    "freq_note": "Every Thursday",
+    "address": "2 High Street, Romford, Essex",
+    "postcode": "RM1 1HR"
+   },
+   {
+    "id": "osm-way-503225516",
+    "verdict": "not_tuesday",
+    "why": "The Fence's What's On page says its quiz night is every Monday.",
+    "pub_name": "The Fence",
+    "source_url": "https://www.thefenceuk.co.uk/whats-on",
+    "source_kind": "company",
+    "quote": "The Fence Quiz Night is the place to be every Monday night",
+    "freq_note": "Every Monday",
+    "address": "The Fence, 67-69 Cowcross Street, Farringdon, London",
+    "postcode": "EC1M 6BP"
+   },
+   {
+    "id": "osm-node-302172067",
+    "verdict": "confirmed",
+    "why": "The pub's own site says the quiz is every Tuesday from 8 pm, on the offers banner, the weekly schedule ('Every Tuesday \u00b7 8:00 PM') and the drinks-menu page ('Starts at 8:00 PM'). One caveat: the dated 'Upcoming Schedule' widget still shows July 2026 dates, but the undated weekly statements have nothing saying the quiz has stopped.",
+    "pub_name": "George & Dragon",
+    "source_url": "https://georgeanddragonacton.co.uk",
+    "source_kind": "pub",
+    "quote": "Quiz Night every Tuesday from 8 pm",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "address": "183 High Street, Acton, London",
+    "postcode": "W3 9DJ"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-445139621",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "osm-node-302172067",
+    "refuted": false,
+    "problems": [
+     "Minor, not refuting: the dated 'Upcoming Schedule' on /sports-events and the fixtures on the homepage stop at July 2026 (Tue 14 Jul, Tue 21 Jul, World Cup final 19 Jul), so that part of the site is about 2 months stale. The quiz is still described as recurring on every page ('Quiz Night every Tuesday from 8 pm', 'Every Tuesday \u00b7 8:00 PM', 'Tuesday: Pub Quiz Night 8pm', 'Starts at 8:00 PM'), the page shows \u00a9 2026, and nothing says the quiz has stopped."
+    ],
+    "start_seen": "20:00"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-relation-17299869",
+    "verdict": "confirmed",
+    "why": "The pub's own What's On page lists 'Weekly Quiz - Every Tuesday', and the next event is shown as Tuesday 29th September at 7:00PM. The page is from 2026 and nothing says the quiz has stopped.",
+    "pub_name": "The Rose & Crown",
+    "address": "220 Heston Road, Heston, TW5 0RH",
+    "postcode": "TW5 0RH",
+    "source_url": "https://www.roseandcrownheston.co.uk/whats-on",
+    "source_kind": "pub",
+    "quote": "Tuesday 29th September, 7:00PM",
+    "extra_quotes": [
+     "Weekly Quiz - Every Tuesday"
+    ],
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-409316355",
+    "verdict": "no_quiz",
+    "why": "The What's On page only mentions 'live music and quiz nights' in a general intro. No quiz is actually listed, and no day or time is given. The only listed event is a Spritz offer.",
+    "pub_name": "The Washington",
+    "address": "50 Englands Lane, NW3 4UE",
+    "postcode": "NW3 4UE",
+    "source_url": "https://www.thewashingtonhampstead.co.uk/whats-on",
+    "source_kind": "pub",
+    "quote": "",
+    "start": "",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-node-14206898649",
+    "verdict": "unclear",
+    "why": "The homepage mentions 'weekly quizzes & live music' but gives no day or time. The What's On page came back empty, so there is no evidence of a Tuesday quiz or a start time.",
+    "pub_name": "The Elephants Head",
+    "address": "224 Camden High Street, London, NW1 8QR",
+    "postcode": "NW1 8QR",
+    "source_url": "https://www.elephantsheadcamden.com",
+    "source_kind": "pub",
+    "quote": "From weekly quizzes & live music to seasonal events",
+    "start": "",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-node-27477157",
+    "verdict": "not_tuesday",
+    "why": "The pub's own site lists its quiz as every Monday from 8pm (Pub Quiz with Petey), not Tuesday.",
+    "pub_name": "The Wheatsheaf",
+    "address": "The Wheatsheaf, 41 Haven Lane, Ealing, London, W5 2HZ",
+    "postcode": "W5 2HZ",
+    "source_url": "https://wheatsheaf-ealing.co.uk",
+    "source_kind": "pub",
+    "quote": "Every Monday from 8pm",
+    "start": "20:00",
+    "freq_note": "Every Monday",
+    "host": "quiz-master Pete"
+   },
+   {
+    "id": "osm-node-675808547",
+    "verdict": "not_tuesday",
+    "why": "This is Davy's group events page. The only quiz listed is a one-off free Quiz Night at Davy's at Holborn on Wednesday 30 September from 6pm. There is no Tuesday quiz, and it is not clear which Davy's bar this candidate is.",
+    "pub_name": "Davy's",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.davy.co.uk/wine-tastings/events/",
+    "source_kind": "company",
+    "quote": "Join us at Davy\u2019s at Holborn on 30 September for a free Quiz Night from 6pm.",
+    "start": "",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-node-6119354792",
+    "verdict": "not_this_pub",
+    "why": "The Urban Pubs & Bars City What's On page lists Tuesday quizzes only at Harrild & Sons and the Singer Tavern, plus a Wednesday quiz at Old Street Tavern. The Gun's own listings are brunch, lunch and roasts, with no quiz. The Gun venue page came back empty.",
+    "pub_name": "The Gun",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.urbanpubsandbars.com/city-by-urban/whats-on",
+    "source_kind": "company",
+    "quote": "",
+    "start": "",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-way-680363356",
+    "verdict": "no_start_time",
+    "why": "The Hungry Horse page for this pub says the quiz runs every Tuesday, but the only time given is 'Tables are available from 5pm on the night of the quiz'. That is when tables open, not when the quiz starts.",
+    "pub_name": "Greene Man",
+    "address": "Old Church Road, Chingford, London, E4 6RB",
+    "postcode": "E4 6RB",
+    "source_url": "https://www.hungryhorse.co.uk/pubs/greater-london/greene-man/pub-quiz",
+    "source_kind": "company",
+    "quote": "JOIN OUR PUB QUIZ, EVERY TUESDAY AT THE GREENE MAN, CHINGFORD",
+    "start": "",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "seed-munich-cricket-club-tower-hill-ec3n-3aj",
+    "verdict": "confirmed",
+    "why": "Munich Cricket Club's own quiz page says the quiz is every Tuesday, and gives Tower Hill its own time: 6:30PM (Canary Wharf is 7PM). The Tower Hill venue page also lists 'QUIZ NIGHTS Every Tuesday'. Nothing says the quiz has stopped. The page gives the Tower Hill postcode as EC3N 2AU.",
+    "pub_name": "Munich Cricket Club Tower Hill",
+    "address": "9 Crutched Friars, London EC3N 2AU",
+    "postcode": "EC3N 2AU",
+    "source_url": "https://munichcricketclub.co.uk/events/quiz-night/",
+    "source_kind": "pub",
+    "quote": "Every Tuesday | Tower Hill & Victoria from 6:30PM, Canary Wharf from 7PM",
+    "start": "18:30",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-885138744",
+    "verdict": "confirmed",
+    "why": "McMullen's page for the Queen Victoria lists 'Every Tuesday 7:00pm Charity Quiz Night' for each month from September to December 2026. The booking widget says the quiz starts at 7pm every Tuesday evening. Note: the address is Theydon Bois, Epping (CM16 7ES), which is in Essex just outside Greater London.",
+    "pub_name": "Queen Victoria",
+    "address": "Coppice Row, Theydon Bois, Epping CM16 7ES",
+    "postcode": "CM16 7ES",
+    "source_url": "https://www.mcmullens.co.uk/local-pub/queen-victoria/",
+    "source_kind": "company",
+    "quote": "Book a table for our Tuesday quiz night. The quiz starts at 7pm every Tuesday evening.",
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-node-12633199507",
+    "verdict": "not_tuesday",
+    "why": "The Fox's quiz is a Sunday Pub Quiz, every Sunday from 8pm, run by Inquizition. It is not on a Tuesday.",
+    "pub_name": "The Fox at Crouch End",
+    "address": "2 Park Road, Crouch End, London N8 8TD",
+    "postcode": "N8 8TD",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/fox-sunday-pub-quiz",
+    "source_kind": "company",
+    "quote": "EVERY SUNDAY FROM 8PM",
+    "start": "20:00",
+    "freq_note": "Every Sunday",
+    "host": "Inquizition"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-relation-17299869",
+    "refuted": false,
+    "start_seen": "19:00",
+    "problems": [
+     "Note, not a refutation: 'Opening Soon!' sits just above 'All Opening Times', so it reads as the opening-hours status widget (fetched Friday 23:14 BST, after the 23:00 close). It does not suggest the quiz has stopped. The quote is at line 47 and the extra quote at line 49 of the whats-on page, and they are adjacent. The listing is dated Tuesday 29 September 2026 (upcoming) and marked 'Weekly Quiz - Every Tuesday'. The site is the pub's own (Star Pubs/Propeller), at 220 Heston Road, Heston, TW5 0RH."
+    ]
+   },
+   {
+    "id": "seed-munich-cricket-club-tower-hill-ec3n-3aj",
+    "refuted": false,
+    "start_seen": "18:30",
+    "problems": [
+     "Note, not a refutation: this is the group quiz page covering 3 venues, but Tower Hill is clearly named with 6:30PM (Canary Wharf is 7PM). The quote matches line 31 exactly. The page gives 'from 6:30PM', which is the only start time shown. The Tower Hill location page also lists 'QUIZ NIGHTS Every Tuesday' and a 'weekly Pub Quiz'. No dates suggest the listing is old."
+    ]
+   },
+   {
+    "id": "osm-way-885138744",
+    "refuted": false,
+    "start_seen": "19:00",
+    "problems": [
+     "Note, not one of the refutation criteria: this pub is at Coppice Row, Theydon Bois, Epping CM16 7ES (Essex, just outside the Greater London boundary). Check this if the dataset should be strictly London. The seed URL mcmullens.co.uk/queenvictoria (not followed from another page) redirects to this pub's McMullen page, so it is the candidate's own listed website. The quote matches line 1088 exactly on the source_url page block. It is backed by 'Every Tuesday 7:00pm Charity Quiz Night' for Sep-Dec 2026."
+    ]
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-way-649578364",
+    "verdict": "confirmed",
+    "why": "The pub's own What's On page lists a weekly Tuesday quiz starting at 8pm, and says tables can be reserved from 7:30pm. The page mentions 2026 and gives no sign the quiz has stopped.",
+    "pub_name": "Brouge",
+    "address": "241 Hampton Rd, Twickenham, Fulwell, TW2 5NJ",
+    "postcode": "TW2 5NJ",
+    "start": "20:00",
+    "quote": "Tuesdays at 8pm: Quiz Night cash prizes & jackpot, teams of 6.",
+    "extra_quotes": [
+     "Weekly quiz, reserve a table in the bar area from 7:30pm."
+    ],
+    "source_url": "https://brouge.co.uk/whats-on/",
+    "source_kind": "pub",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-node-255012045",
+    "verdict": "no_quiz",
+    "why": "The Castle-run events page only says in general terms that there are 'live music and quiz nights'. It lists no actual quiz, day or time; the only event shown is a Spritz offer.",
+    "pub_name": "The King's Head",
+    "address": "2 Crouch End Hill, N8 8AA",
+    "postcode": "N8 8AA",
+    "start": "",
+    "quote": "from live music and quiz nights to limited-edition menus",
+    "extra_quotes": [],
+    "source_url": "https://www.thekingsheadcrouchend.co.uk/events",
+    "source_kind": "pub",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-way-1076851225",
+    "verdict": "not_weekly",
+    "why": "The pub's own What's On listing says the pub quiz is on the first Tuesday of the month, so it is not weekly. No start time is given either.",
+    "pub_name": "The Beehive",
+    "address": "Stoneleigh Road, London, N17 9BQ",
+    "postcode": "N17 9BQ",
+    "start": "",
+    "quote": "First Tuesday of the month",
+    "extra_quotes": [
+     "PUB QUIZ"
+    ],
+    "source_url": "https://beehiven17.com/events/",
+    "source_kind": "pub",
+    "freq_note": "First Tuesday of the month",
+    "host": ""
+   },
+   {
+    "id": "osm-way-305492454",
+    "verdict": "not_tuesday",
+    "why": "The Sebright Quiz Night is every Monday at 7:30pm (Mon 28 Sep, 5 Oct and 12 Oct are listed). On Tuesdays the pub runs a pool competition, not a quiz.",
+    "pub_name": "Sebright Arms",
+    "address": "31-35 Coate St, London E2 9AG",
+    "postcode": "E2 9AG",
+    "start": "19:30",
+    "quote": "Sebright Quiz Night",
+    "extra_quotes": [
+     "Mon 28 Sep \u2015 7:30pm"
+    ],
+    "source_url": "https://www.sebrightarms.com/sebright-arms-whats-on",
+    "source_kind": "pub",
+    "freq_note": "Every Monday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-311753727",
+    "verdict": "not_tuesday",
+    "why": "The only quiz is a monthly one on the first Wednesday of the month at 8pm. It is not on a Tuesday and not weekly.",
+    "pub_name": "The Albany",
+    "address": "",
+    "postcode": "",
+    "start": "20:00",
+    "quote": "1st Wednesday of the Month",
+    "extra_quotes": [
+     "Starts at 8pm, but come early and grab dinner with us!"
+    ],
+    "source_url": "https://www.thealbanyintwickenham.co.uk",
+    "source_kind": "pub",
+    "freq_note": "1st Wednesday of the month",
+    "host": ""
+   },
+   {
+    "id": "osm-way-875868241",
+    "verdict": "not_tuesday",
+    "why": "The Young's What's On page for this pub lists the weekly quiz as every Thursday, 7:00pm to 9:00pm. There is no Tuesday quiz.",
+    "pub_name": "King's Arms",
+    "address": "190 Fulham Road, Chelsea, London, SW10 9PN",
+    "postcode": "SW10 9PN",
+    "start": "19:00",
+    "quote": "Join us for our weekly quiz every Thursday",
+    "extra_quotes": [],
+    "source_url": "https://www.thekingsarmschelsea.co.uk/whats-on/",
+    "source_kind": "company",
+    "freq_note": "Every Thursday",
+    "host": ""
+   },
+   {
+    "id": "osm-node-4232481693",
+    "verdict": "not_tuesday",
+    "why": "The Knowles Pub Quiz is every Wednesday from 8pm, hosted by Inquizition. It is not on Tuesday.",
+    "pub_name": "Knowles of Norwood",
+    "address": "294-296 Norwood Road, West Norwood, London, SE27 9AF",
+    "postcode": "SE27 9AF",
+    "start": "20:00",
+    "quote": "Every Wednesday from 8pm",
+    "extra_quotes": [],
+    "source_url": "https://knowlesofnorwood.co.uk/whats-on/",
+    "source_kind": "pub",
+    "freq_note": "Every Wednesday",
+    "host": "Inquizition"
+   },
+   {
+    "id": "osm-node-10266440541",
+    "verdict": "no_start_time",
+    "why": "Greene King's page for this pub says the quiz is every Tuesday. The only time it gives is under 'Start time', and it only says tables are available from 5pm on quiz night, which is not the quiz's start time.",
+    "pub_name": "Kings Arms",
+    "address": "16 King William Walk, Greenwich, London, SE10 9JH",
+    "postcode": "SE10 9JH",
+    "start": "",
+    "quote": "Join Our Pub Quiz, Every Tuesday At The Kings Arms, Greenwich",
+    "extra_quotes": [
+     "Start time: Tables are available from 5pm on the night of the quiz"
+    ],
+    "source_url": "https://www.greeneking.co.uk/pubs/greater-london/kings-arms-greenwich/pub-quiz",
+    "source_kind": "company",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-361094607",
+    "verdict": "not_tuesday",
+    "why": "The Fuller's What's On page for this pub lists the quiz as on Wednesday, with no Tuesday quiz and no time given.",
+    "pub_name": "The Union Tavern",
+    "address": "The Union Tavern, 45 Woodfield Road, London, W9 2BA",
+    "postcode": "W9 2BA",
+    "start": "",
+    "quote": "Put your knowledge to the test!",
+    "extra_quotes": [],
+    "source_url": "https://www.union-tavern.co.uk/whats-on",
+    "source_kind": "company",
+    "freq_note": "Wednesday",
+    "host": ""
+   },
+   {
+    "id": "seed-the-slaughtered-lamb-ec1v-0dx",
+    "verdict": "confirmed",
+    "why": "The Urban Pubs & Bars page for The Slaughtered Lamb lists 'Pub Quiz at The Slamb' every Tuesday at 7:30pm, and the quiz's own page says the same. The only 2023 date is a copyright footer. The venue page also lists an upcoming Halloween event on Sat 31 Oct, so the listings are current.",
+    "pub_name": "The Slaughtered Lamb",
+    "address": "",
+    "postcode": "EC1V 0DX",
+    "start": "19:30",
+    "quote": "EVERY TUESDAY AT 7:30PM",
+    "extra_quotes": [
+     "Pub Quiz at The Slamb"
+    ],
+    "source_url": "https://www.urbanpubsandbars.com/venues/slaughtered-lamb",
+    "source_kind": "company",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-649578364",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "seed-the-slaughtered-lamb-ec1v-0dx",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-node-13518978862",
+    "verdict": "not_tuesday",
+    "why": "The Bush Tavern's own what's-on page lists 'QUIZ MONDAYS' (7pm - 9pm, Every Monday). Tuesday is only a \u00a34 pint offer.",
+    "pub_name": "The Bush Tavern",
+    "source_url": "https://thebushtavern.com/whats-on",
+    "source_kind": "pub",
+    "quote": "Join us every Monday for our weekly quiz night for the chance to win a \u00a3150 bar tab - \u00a33 entry",
+    "freq_note": "Every Monday",
+    "start": "19:00",
+    "address": "",
+    "postcode": ""
+   },
+   {
+    "id": "osm-way-148878074",
+    "verdict": "unclear",
+    "why": "The Prince Regent (W1U 5JN) what's-on page only mentions 'live music and quiz nights' in generic boilerplate. No quiz day or time is listed and no quiz event appears.",
+    "pub_name": "The Prince Regent",
+    "source_url": "https://www.theprinceregentw1.co.uk/whats-on",
+    "source_kind": "pub",
+    "address": "71 Marylebone High Street, W1U 5JN",
+    "postcode": "W1U 5JN"
+   },
+   {
+    "id": "osm-node-364655175",
+    "verdict": "unclear",
+    "why": "Wolfpack group homepage only has 'Quiz'/'Quiz Table' as DesignMyNight booking types for several venues. No quiz day or time is given, it is not clear which venue this candidate is, and the events page is empty.",
+    "pub_name": "Wolfpack",
+    "source_url": "https://wolfpackbars.com",
+    "source_kind": "company"
+   },
+   {
+    "id": "osm-node-3793532459",
+    "verdict": "not_this_pub",
+    "why": "The candidate's page is Craft Beer Co. Hammersmith, which is empty. The group events page has no Hammersmith quiz. The only Tuesday quiz is a single past event, 'Quiz night in Clerkenwell' on Tuesday 16 September 2025, which is a different branch and stale. Other quizzes are Sunday or Wednesday at other branches.",
+    "pub_name": "The Craft Beer Co. Hammersmith",
+    "source_url": "http://www.thecraftbeerco.com/events",
+    "source_kind": "company"
+   },
+   {
+    "id": "osm-way-490082508",
+    "verdict": "confirmed",
+    "why": "The pub's own quiz page says 'Pub Quiz Night every Tuesday! Starting at 7:30 PM', \u00a33 entry. The what's-on page (which mentions 2026) also lists 'Quiz / Every Tuesday from 19:30'. Nothing suggests it has stopped.",
+    "pub_name": "Malt and Hops",
+    "source_url": "https://www.maltandhopslondon.co.uk/pub-quiz-night-at-malt-and-hops/",
+    "source_kind": "pub",
+    "quote": "Join us at Malt and Hops in North Finchley for our exciting Pub Quiz Night every Tuesday! Starting at 7:30 PM",
+    "freq_note": "Every Tuesday",
+    "start": "19:30",
+    "address": "",
+    "postcode": ""
+   },
+   {
+    "id": "osm-way-531239102",
+    "verdict": "confirmed",
+    "why": "Rose & Crown Wimbledon's own what's-on page lists 'Quiz Night / Every Tuesday / 8:00pm - 10:00pm' with quizmaster Duncan and 'Every Tuesday Night From 8pm'. The page is current, with September 2026 events and Autumn Nations 2026.",
+    "pub_name": "Rose & Crown",
+    "source_url": "https://www.roseandcrownwimbledon.co.uk/whats-on/",
+    "source_kind": "pub",
+    "quote": "Every Tuesday Night From 8pm",
+    "extra_quotes": [
+     "Join Our Infamous Quiz Master Duncan and our regular Quizzers"
+    ],
+    "freq_note": "Every Tuesday",
+    "start": "20:00",
+    "host": "Duncan",
+    "address": "",
+    "postcode": "SW19 5BA"
+   },
+   {
+    "id": "osm-node-448921712",
+    "verdict": "not_tuesday",
+    "why": "The Elephant Inn (Fuller's) what's-on page lists 'Quiz Night at the Elephant Inn' as 'Every Wednesday'. No Tuesday quiz.",
+    "pub_name": "The Elephant Inn",
+    "source_url": "https://www.elephantinnfinchley.co.uk/whats-on",
+    "source_kind": "pub",
+    "freq_note": "Every Wednesday",
+    "address": "The Elephant Inn, Finchley, 283 Ballards Lane, London, N12 8NR",
+    "postcode": "N12 8NR"
+   },
+   {
+    "id": "osm-way-363039919",
+    "verdict": "unclear",
+    "why": "On its own, this would be confirmed. The pub's own what's-on page lists 'Best Pub Quiz in Town!' at 07:30 PM on consecutive Tuesdays (1, 8, 15, 22 and 29 Sept 2026), with 'Join us every Tuesday', and the homepage says 'Pub Quiz Tuesdays'. But the same page says 'We're closed for a lick of paint 7th Sep \u2013 2nd Oct', with reopening on Saturday 3rd October. So the pub, and the quiz, is currently paused. It should resume on Tuesday 6 Oct but the page does not say so explicitly. Re-check after reopening.",
+    "pub_name": "The Cock & Bottle",
+    "source_url": "https://www.cockandbottlew11.com/whats-on",
+    "source_kind": "pub",
+    "quote": "September 29th 2026, 07:30 PM",
+    "extra_quotes": [
+     "Join us every Tuesday for a room full of laughter and learning"
+    ],
+    "freq_note": "Every Tuesday",
+    "start": "19:30",
+    "address": "17 Needham Road, Notting Hill, W11 2RP",
+    "postcode": "W11 2RP"
+   },
+   {
+    "id": "osm-way-469910180",
+    "verdict": "not_tuesday",
+    "why": "The King's Head Earl's Court (Fuller's) what's-on page lists 'Quiz Night At The Kings Head', run by Paul from PJ Quiz Co, as 'Every Wednesday'. No Tuesday quiz.",
+    "pub_name": "The King's Head",
+    "source_url": "https://www.kingsheadearlscourt.co.uk/whats-on",
+    "source_kind": "pub",
+    "freq_note": "Every Wednesday",
+    "host": "PJ Quiz Co",
+    "address": "The King's Head, Earl's Court, 17 Hogarth Place, Earl's Court, London, SW5 0QT",
+    "postcode": "SW5 0QT"
+   },
+   {
+    "id": "osm-way-474422893",
+    "verdict": "not_tuesday",
+    "why": "Urban Pubs & Bars pages for the Duke of York, Haggerston list 'Pub Quiz at The Duke of York / EVERY MONDAY AT 19:30', and the quiz booking page says 'PUB QUIZ (MONDAYS)'. The Tuesday quizzes on the group what's-on page are at other pubs.",
+    "pub_name": "Duke of York",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/pub-quiz-duke-of-york",
+    "source_kind": "company",
+    "quote": "Every Monday at 7:30pm",
+    "freq_note": "Every Monday",
+    "start": "19:30",
+    "address": "",
+    "postcode": "N1 5AA"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-490082508",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "osm-way-531239102",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-node-1387549550",
+    "verdict": "not_tuesday",
+    "pub_name": "Central Station",
+    "source_url": "https://centralstation.co.uk/whats-on/",
+    "source_kind": "pub",
+    "why": "The only quiz on the What's On page is the Douze Points Eurovision quiz, held on the second Thursday of each month at 7 PM. On Tuesdays the page only lists free pool."
+   },
+   {
+    "id": "osm-way-356687576",
+    "verdict": "no_quiz",
+    "pub_name": "The Sun In Splendour",
+    "source_url": "https://www.suninsplendourpub.co.uk/events",
+    "source_kind": "pub",
+    "address": "7 Portobello Road, W11 3DA",
+    "postcode": "W11 3DA",
+    "why": "The events page mentions 'live music and quiz nights' only in general terms. It lists no actual quiz, with no day or time. The only listed event is an \u00a38 spritz offer."
+   },
+   {
+    "id": "osm-way-1060529595",
+    "verdict": "not_tuesday",
+    "pub_name": "George London",
+    "source_url": "https://www.greatlocalpubs.co.uk/george-south-woodford/events",
+    "source_kind": "company",
+    "address": "70 High Road, Redbridge, Greater London, E18 2QL",
+    "postcode": "E18 2QL",
+    "why": "On the Stonegate events page, THE PUB QUIZ is on Sundays at 20:00 (27 Sep, 4 Oct, 11 Oct). The Tuesday listings are Real Ale Tuesday and Bingo, not a quiz."
+   },
+   {
+    "id": "seed-the-royal-star-ec1v-2pn",
+    "verdict": "confirmed",
+    "pub_name": "The Royal Star",
+    "source_url": "https://theroyalstar.co.uk/events/",
+    "source_kind": "pub",
+    "quote": "WELCOME TO THE ULTIMATE PUB QUIZ EXPERIENCE! EVERY TUESDAY AT 7:30PM, THIS COZY PUB TRANSFORMS INTO A HUB OF COMPETITIVE SPIRIT",
+    "extra_quotes": [
+     "THE BIG FAT QUIZ EVERY TUESDAY"
+    ],
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "address": "220 CITY RD, LONDON EC1V 2PN",
+    "postcode": "EC1V 2PN",
+    "why": "The pub's own events page lists 'The Big Fat Quiz' every Tuesday at 7:30pm, with a weekly rolling jackpot, \u00a32 per person entry and an \u00a380 bar tab. The page has no dates, so nothing suggests it is old. The /the-big-fat-quiz/ subpage returns a 404, but the events page and homepage still promote the quiz."
+   },
+   {
+    "id": "seed-star-of-bethnal-green",
+    "verdict": "confirmed",
+    "pub_name": "Star of Bethnal Green",
+    "source_url": "https://starofbethnalgreen.co.uk/events/drag-pub-quiz-with-margaraine-2025-06-10/",
+    "source_kind": "pub",
+    "quote": "It takes place each and every Tuesday from 7.30pm.",
+    "extra_quotes": [
+     "Our Tuesday nights are technically a quiz."
+    ],
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "host": "Margarine",
+    "address": "359 Bethnal Green Rd, London E2 6LG",
+    "postcode": "E2 6LG",
+    "why": "The pub's own event page for the Drag Pub Quiz with Margarine says it runs each and every Tuesday from 7.30pm. That page's URL carries a 2025 date, but the pub's current What's On calendar also lists the quiz on Tue 29 Sep, 7:30 PM - 9:45 PM, so it is still running."
+   },
+   {
+    "id": "osm-way-1244732780",
+    "verdict": "not_tuesday",
+    "pub_name": "The Ship",
+    "source_url": "https://www.shiplittlethurrock.co.uk/whats-on/",
+    "source_kind": "pub",
+    "address": "Dock Rd, Grays, London",
+    "postcode": "RM17 6EX",
+    "why": "The quiz night is on the last Thursday of the month, and Facebook posts call it a 'monthly quiz on Thursday'. The only Tuesday event is a lunchtime sing-a-long on the first Tuesday of the month. The pub is in Grays (RM17)."
+   },
+   {
+    "id": "osm-node-10092511647",
+    "verdict": "not_tuesday",
+    "pub_name": "The Hanbury",
+    "source_url": "https://www.thehanbury.co.uk/events/pub-quiz/",
+    "source_kind": "pub",
+    "address": "33 Linton Street, London, N17DU",
+    "postcode": "N17DU",
+    "why": "The pub's quiz page says 'Every Thursday | 7pm', and the booking widget also shows 'Pub Quiz - Thursday'. No Tuesday quiz is listed."
+   },
+   {
+    "id": "osm-way-243679451",
+    "verdict": "not_tuesday",
+    "pub_name": "The Ivy House",
+    "source_url": "https://www.ivyhousenunhead.com/whats-on",
+    "source_kind": "pub",
+    "address": "The Ivy House, 40 Stuart Road, London SE15 3BE",
+    "postcode": "SE15 3BE",
+    "why": "The regular pub quiz is every Wednesday from 8pm, and the dated listings show quizzes on Wed 30 Sep, 7 Oct, 21 Oct and 28 Oct. Tuesdays have Crib Club and gigs, not a quiz."
+   },
+   {
+    "id": "osm-node-298220599",
+    "verdict": "not_this_pub",
+    "pub_name": "Lord Wargrave",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on",
+    "source_kind": "company",
+    "why": "The Lord Wargrave site redirects to the Urban Pubs & Bars group site, and its venue page came back empty. On the group What's On page, Lord Wargrave's only entry is Sunday Roasts. The Tuesday quizzes on that page are at other group pubs (Crown & Castle, The Birdcage, East Dulwich Tavern, Balham Bowls Club, Singer Tavern, St. John's Tavern, Clapton Hart, Harrild & Sons, The White Lion)."
+   },
+   {
+    "id": "osm-way-187242347",
+    "verdict": "not_tuesday",
+    "pub_name": "The Bald Faced Stag",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-the-bald-faced-stag",
+    "source_kind": "company",
+    "postcode": "N2 8AB",
+    "why": "The group's own page for this pub's quiz says 'EVERY SUNDAY AT 7:30PM'. The only Tuesday event is a knitting and crochet club on the 2nd Tuesday of the month."
+   }
+  ],
+  "challenge": [
+   {
+    "id": "seed-the-royal-star-ec1v-2pn",
+    "refuted": false,
+    "problems": [
+     "Minor: the linked dedicated page https://theroyalstar.co.uk/the-big-fat-quiz/ returns 404. The live events page on the pub's own site (no dates, the site is current with 'CHRISTMAS BOOKINGS NOW OPEN') still lists 'THE BIG FAT QUIZ EVERY TUESDAY' with 'EVERY TUESDAY AT 7:30PM', so this is not taken as evidence the quiz has stopped. The quote matches line 91 exactly (the original line has a leading space). The extra quote matches line 90."
+    ],
+    "start_seen": "19:30"
+   },
+   {
+    "id": "seed-star-of-bethnal-green",
+    "refuted": false,
+    "problems": [
+     "Minor: source_url is a dated event page from 2025-06-10 ('Tue 10th Jun'). It still says 'It takes place each and every Tuesday from 7.30pm.', and the current what's-on page on the pub's own site lists 'DRAG PUB QUIZ WITH MARGARINE' on TUE 29 SEP at 7:30 PM, so the quiz is still running. Both quotes appear exactly on the source page (lines 34 and 31)."
+    ],
+    "start_seen": "19:30"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-way-1002485821",
+    "verdict": "no_quiz",
+    "why": "The Nicholson's pages for The Swan, Hammersmith only mention 'quiz nights' in generic boilerplate. No quiz is listed, and no day or time is given.",
+    "pub_name": "The Swan",
+    "address": "46 Hammersmith Broadway, W6 0DZ",
+    "postcode": "W6 0DZ",
+    "source_url": "https://www.nicholsonspubs.co.uk/restaurants/london/theswanhammersmithlondon/whats-on",
+    "source_kind": "company",
+    "quote": "",
+    "start": "",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-node-10266440633",
+    "verdict": "no_quiz",
+    "why": "The Gipsy Moth's what's-on page only mentions 'quiz nights' in generic boilerplate. The only listed item is a Spritz offer, and no quiz day or time is given.",
+    "pub_name": "The Gipsy Moth",
+    "address": "60 Greenwich Church Street, Greenwich, SE10 9BL",
+    "postcode": "SE10 9BL",
+    "source_url": "https://www.thegipsymothgreenwich.co.uk/whats-on",
+    "source_kind": "pub",
+    "quote": "",
+    "start": "",
+    "freq_note": "",
+    "host": ""
+   },
+   {
+    "id": "osm-way-227830213",
+    "verdict": "confirmed",
+    "why": "The pub's own site lists 'Every Tuesday- Pub Quiz 8pm' under its upcoming September events. The page mentions 2026, and nothing suggests the quiz has stopped.",
+    "pub_name": "The Snooty Fox",
+    "address": "75 Grosvenor Avenue, London N5 2NN",
+    "postcode": "N5 2NN",
+    "source_url": "http://www.snootyfoxlondon.co.uk",
+    "source_kind": "pub",
+    "quote": "Every Tuesday- Pub Quiz 8pm - \u00a32 CASH to play",
+    "extra_quotes": [],
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-299662731",
+    "verdict": "confirmed",
+    "why": "The Stonegate (Social Pub & Kitchen) events page for Vineyard Islington lists a pub quiz on consecutive upcoming Tuesdays (29 Sep, 6 Oct, 13 Oct), each 19:30-21:30.",
+    "pub_name": "Vineyard Islington",
+    "address": "179 Upper Street, Islington, Greater London, N1 1RG",
+    "postcode": "N1 1RG",
+    "source_url": "https://www.socialpubandkitchen.co.uk/vineyard-islington/events",
+    "source_kind": "company",
+    "quote": "pub quiz\nTuesday 29th September\n19:30 - 21:30",
+    "extra_quotes": [],
+    "start": "19:30",
+    "freq_note": "Every Tuesday (dated weekly listings)",
+    "host": ""
+   },
+   {
+    "id": "osm-node-3790021587",
+    "verdict": "not_tuesday",
+    "why": "The Vault (New Ash Green, Kent) holds its quiz on the 3rd Monday of the month at 8pm. That is monthly and not on a Tuesday. The first-Tuesday event is an open mic, not a quiz.",
+    "pub_name": "The Vault",
+    "address": "1 The Row, New Ash Green, Longfield, Kent DA3 8JB",
+    "postcode": "DA3 8JB",
+    "source_url": "https://www.thevault-newashgreen.co.uk",
+    "source_kind": "pub",
+    "quote": "Our Quiz Night is held on the 3rd Monday of the month at 8pm",
+    "start": "",
+    "freq_note": "3rd Monday of the month",
+    "host": ""
+   },
+   {
+    "id": "osm-way-86725862",
+    "verdict": "confirmed",
+    "why": "The pub's own What's On page ('Every Week At The Royal George') lists 'Tuesday - Quiz' every Tuesday evening from 7.30pm. There are no stale dates. Note that the pub is in Hersham, KT12, which is outside Greater London.",
+    "pub_name": "The Royal George",
+    "address": "130 Hersham Road, Hersham, KT12 5QJ",
+    "postcode": "KT12 5QJ",
+    "source_url": "https://www.royalgeorgepub.co.uk/whatson",
+    "source_kind": "pub",
+    "quote": "Every Tuesday evening from 7.30pm",
+    "extra_quotes": [
+     "Tuesday - Quiz"
+    ],
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-node-13179269420",
+    "verdict": "not_tuesday",
+    "why": "Peckham Arches is closed on Tuesdays. Its only quiz is a one-off 'Quiz for Palestine' on Wednesday 14 October.",
+    "pub_name": "Peckham Arches",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://peckhamarches.com/whats-on.html",
+    "source_kind": "pub",
+    "quote": "QUIZ FOR PALESTINE",
+    "start": "",
+    "freq_note": "One-off Wednesday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-90884291",
+    "verdict": "not_tuesday",
+    "why": "The Greene King page for The Crown & Horseshoes, Enfield lists a weekly Sunday Night Quiz at 20:00. The only weekly Tuesday event is a Mother & Baby group at 15:00.",
+    "pub_name": "The Crown & Horseshoes",
+    "address": "12-15 Horseshoe Lane, Enfield, Middlesex, EN2 6PZ",
+    "postcode": "EN2 6PZ",
+    "source_url": "https://www.greeneking.co.uk/pubs/middlesex/crown-and-horseshoes/whats-on",
+    "source_kind": "company",
+    "quote": "Sunday Night Quiz at Crown & Horseshoes!",
+    "start": "",
+    "freq_note": "Every Sunday",
+    "host": ""
+   },
+   {
+    "id": "seed-the-slaughtered-lamb",
+    "verdict": "confirmed",
+    "why": "Urban Pubs & Bars has a live, undated page for this pub ('Pub Quiz at The Slamb', 'your favourite Clerkenwell pub') that says 'EVERY TUESDAY AT 7:30PM'. The '\u00a9 2023' is the site-wide footer; the group's what's-on page shows the same footer beside current Sept 2026 events. Caveat: the quiz does not appear in the visible quiz passages of the group's what's-on list.",
+    "pub_name": "The Slaughtered Lamb",
+    "address": "",
+    "postcode": "",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on/slaughtered-lamb-pub-quiz",
+    "source_kind": "company",
+    "quote": "Join us at 7:30pm every Tuesday for our Pub Quiz!",
+    "extra_quotes": [
+     "EVERY TUESDAY AT 7:30PM"
+    ],
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "host": ""
+   },
+   {
+    "id": "osm-way-1333311979",
+    "verdict": "not_tuesday",
+    "why": "The George IV's weekly pub quiz is on Mondays (hosted by Lucky Cow Quiz Co.). Tuesday night is Dungeons & Dragons, and the Bring Your Baby quiz is on the first Thursday of the month.",
+    "pub_name": "The George IV",
+    "address": "The George IV, 185 High Road, Chiswick, London, W4 2DR",
+    "postcode": "W4 2DR",
+    "source_url": "https://www.georgeiv.co.uk/whats-on",
+    "source_kind": "pub",
+    "quote": "Monday Pub Quiz",
+    "start": "",
+    "freq_note": "Every Monday",
+    "host": "Lucky Cow Quiz Co."
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-227830213",
+    "refuted": false,
+    "start_seen": "20:00",
+    "problems": []
+   },
+   {
+    "id": "osm-way-299662731",
+    "refuted": false,
+    "start_seen": "19:30",
+    "problems": []
+   },
+   {
+    "id": "osm-way-86725862",
+    "refuted": false,
+    "start_seen": "19:30",
+    "problems": [
+     "This does not count against criteria (a) to (f), but the pub is at 130 Hersham Road, Hersham, KT12 5QJ. The OSM record for way/86725862 gives the city as Walton-on-Thames, which is in Surrey, outside Greater London. It is the same pub as the candidate, so point (b) holds. It may not belong in a list of London pubs."
+    ]
+   },
+   {
+    "id": "seed-the-slaughtered-lamb",
+    "refuted": true,
+    "start_seen": "19:30",
+    "problems": [
+     "The quote and the extra quote are exact. The page is the pub group's (Urban Pubs & Bars) own page for The Slamb. It says weekly on Tuesdays at 7:30pm.",
+     "Point (e), whether the quiz is still running, cannot be confirmed. The group's own What's On page (https://www.urbanpubsandbars.com/whats-on), fetched the same day (2026-09-25), is current: it has a Fri 25 Sep event and 'from the 8th of Sept.' dates that match 2026. It lists two other Slaughtered Lamb events ('Live Music at The Slaughtered Lamb' and 'Laughs at Slamb', every Wednesday). It also lists about 18 quizzes at other group pubs, several of them on Tuesdays. It does not list the Slaughtered Lamb pub quiz. The evidence extractor keeps every passage that mentions a quiz, so the quiz would have shown up if the page listed it.",
+     "The quiz page was a seed URL ('followed from another page: False'). It was not reached from any link in the current listing, so it may be an orphaned page that was never taken down. The only year on it is '\u00a9 2023'. This absence is enough to doubt the listing is current."
+    ]
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-way-1240005017",
+    "verdict": "no_quiz",
+    "why": "The Garden Gate's own What's On page has only generic Castle boilerplate ('from live music and quiz nights to...'). It lists no actual quiz, day or time. The home and group-bookings pages are empty.",
+    "pub_name": "The Garden Gate",
+    "address": "14 South End Road, Hampstead, London",
+    "postcode": "NW3 2QE",
+    "source_url": "https://www.thegardengatehampstead.co.uk/whats-on",
+    "source_kind": "pub"
+   },
+   {
+    "id": "osm-node-14181043765",
+    "verdict": "no_quiz",
+    "why": "The Southwark Tavern's own events page has only generic Castle boilerplate mentioning 'quiz nights'. The only listed event is a Spritz offer. No quiz, day or time is given.",
+    "pub_name": "The Southwark Tavern",
+    "address": "22 Southwark Street, London",
+    "postcode": "SE1 1TU",
+    "source_url": "https://www.thesouthwarktavern.co.uk/events",
+    "source_kind": "pub"
+   },
+   {
+    "id": "osm-way-29391600",
+    "verdict": "confirmed",
+    "why": "The pub's own events page (a Mosaic Pub & Dining site) lists 'QUIZ NIGHT' followed on the next line by 'Every Tuesday from 8pm', with \u00a32.50 entry. The page is current (2026 calendar and copyright) and nothing says the quiz has stopped.",
+    "pub_name": "East Putney Tavern",
+    "address": "94-98 Upper Richmond Road",
+    "postcode": "SW15 2SP",
+    "source_url": "https://www.eastputneytavern.co.uk/events/",
+    "source_kind": "pub",
+    "quote": "Every Tuesday from 8pm",
+    "extra_quotes": [
+     "QUIZ NIGHT"
+    ],
+    "start": "20:00",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "osm-way-579402933",
+    "verdict": "not_tuesday",
+    "why": "The pub's own site mentions a weekly pub quiz, but its dated calendar shows it on Wednesday 30 September at 20:00 ('Wednesday pub quiz'). Tuesday 29 September lists only a football match.",
+    "pub_name": "The Sir Colin Campbell",
+    "address": "264-266 Kilburn High Road, London",
+    "postcode": "NW6 2BY",
+    "source_url": "https://www.sircc.pub",
+    "source_kind": "pub",
+    "freq_note": "Every Wednesday"
+   },
+   {
+    "id": "seed-the-princess-victoria",
+    "verdict": "confirmed",
+    "why": "The pub's own 'Tuesday Pub Quiz' page says the quiz is back on a Tuesday, every Tuesday evening at 7.30pm, with \u00a32.50 entry and a \u00a3100 bar tab prize. The page is current (2026 news items) and nothing suggests a pause.",
+    "pub_name": "The Princess Victoria",
+    "address": "217 Uxbridge Road, Shepherd\u2019s Bush, London",
+    "postcode": "W12 9DH",
+    "source_url": "https://princessvictoria.co.uk/tuesday-pub-quiz/",
+    "source_kind": "pub",
+    "quote": "Our popular pub quiz is now back ON A TUESDAY. Join us every Tuesday evening at 7.30pm",
+    "start": "19:30",
+    "freq_note": "Every Tuesday"
+   },
+   {
+    "id": "osm-way-321450395",
+    "verdict": "unclear",
+    "why": "The Brixton page has a 'QUIZ BOOKING' button but gives no quiz day or time. On the group events page the only Brixton quiz is a single 'Brixton Quiz Night' on Thursday 24 February 2022, which is old and not a Tuesday. The Tuesday quiz listed there (16 September 2025) is at Clerkenwell, a different pub.",
+    "pub_name": "The Craft Beer Co. Brixton",
+    "address": "11-13 Brixton Station Road, London",
+    "postcode": "SW9 8PA",
+    "source_url": "http://www.thecraftbeerco.com/brixton",
+    "source_kind": "company"
+   },
+   {
+    "id": "osm-node-7523464145",
+    "verdict": "not_tuesday",
+    "why": "The Windjammer's own What's On page lists 'Quiz Night' on 5 October, 2 November and 7 December 2026, each marked 'First Monday of the month'. That is a monthly Monday quiz, not a weekly Tuesday one.",
+    "pub_name": "The Windjammer",
+    "address": "25 Admiralty Avenue, Silvertown, London",
+    "postcode": "E16 2PN",
+    "source_url": "https://www.windjammerlondon.co.uk/whats-on",
+    "source_kind": "pub",
+    "freq_note": "First Monday of the month"
+   },
+   {
+    "id": "osm-way-1182358157",
+    "verdict": "not_tuesday",
+    "why": "Sambrook's own site describes 'Quiz Up at the Brewery' as a weekly Sunday quiz at 7pm, relaunched on 13 September 2026. Tuesdays at the taproom are 2-for-1 pizza, not a quiz.",
+    "pub_name": "Sambrook's Brewery Tap",
+    "address": "40 Ram Street, Ram Quarter, Wandsworth, London",
+    "postcode": "SW18 1UR",
+    "source_url": "https://www.sambrooksbrewery.co.uk/blogs/whats-on/quiz-up-at-the-brewery-sunday-quiz-night-returns-to-sambrooks-taproom",
+    "source_kind": "pub",
+    "freq_note": "Every Sunday"
+   },
+   {
+    "id": "osm-way-589699814",
+    "verdict": "no_quiz",
+    "why": "The Old Ship's own venue pages are empty. On the Urban Pubs & Bars group What's On page, the only Old Ship entry is 'Sunday Lunch at the Old Ship'. The Tuesday quizzes listed there are at other pubs (Crown & Castle, The Birdcage, EDT, Balham Bowls Club, Singer Tavern, St. John's Tavern, Clapton Hart, Harrild & Sons, The White Lion).",
+    "pub_name": "The Old Ship",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on",
+    "source_kind": "company"
+   },
+   {
+    "id": "osm-node-666918951",
+    "verdict": "not_tuesday",
+    "why": "The Chamberlain Hotel's own What's On page lists the Pub Quiz as 'Every Wednesday' (starting Wednesday 20th August). Tuesday is Board Games Night.",
+    "pub_name": "The Chamberlain Hotel",
+    "address": "Tower Bridge, 132-135 Minories, London",
+    "postcode": "EC3N 1NU",
+    "source_url": "https://www.thechamberlainhotel.co.uk/whats-on",
+    "source_kind": "pub",
+    "freq_note": "Every Wednesday"
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-29391600",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "seed-the-princess-victoria",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-way-258498191",
+    "verdict": "not_tuesday",
+    "pub_name": "George Staples",
+    "why": "The pub's events page lists the weekly quiz ('QUIZ WITH OUR SAMMY J') on Thursday 1st October 19:00. Tuesdays are Cask Ale Club, not a quiz.",
+    "source_url": "https://www.greatlocalpubs.co.uk/george-staples-sidcup/events",
+    "source_kind": "company",
+    "address": "273 Blackfen Road, Sidcup",
+    "postcode": "DA15 8PR"
+   },
+   {
+    "id": "osm-node-2261572101",
+    "verdict": "unclear",
+    "pub_name": "The Bridge House",
+    "why": "The pub's What's On page only says in general terms that there are 'quiz nights'. No day, time or schedule is given for any quiz.",
+    "source_url": "https://www.thebridgehouselittlevenice.co.uk/whats-on",
+    "source_kind": "pub",
+    "address": "13 Westbourne Terrace Road, London",
+    "postcode": "W2 6NG"
+   },
+   {
+    "id": "osm-way-987866346",
+    "verdict": "confirmed",
+    "pub_name": "The Havelock Tavern",
+    "quote": "Tue 29 Sep / 19:00 - 21:00",
+    "extra_quotes": [
+     "Quiz Night @ The Havelock",
+     "Every Tuesday"
+    ],
+    "start": "19:00",
+    "freq_note": "Every Tuesday",
+    "why": "The pub's own events page lists 'Quiz Night @ The Havelock, Every Tuesday, 19:00 - 21:00', with dated entries on consecutive Tuesdays from 29 Sep 2026 to Jan.",
+    "source_url": "https://www.havelocktavern.com/events",
+    "source_kind": "pub",
+    "address": "57 Masbro Road, Kensington Olympia",
+    "postcode": "W14 0LS",
+    "host": ""
+   },
+   {
+    "id": "osm-node-26040005",
+    "verdict": "not_tuesday",
+    "pub_name": "The Limping Fox",
+    "why": "The pub's site says it runs a 'Fortnightly Pub Quiz' and that the quiz 'will now take place every other Wednesday at 7.30pm'. So it is not on Tuesdays and not weekly.",
+    "source_url": "https://www.thelimpingfox.co.uk",
+    "source_kind": "pub",
+    "address": "15 Rushett Road, Thames Ditton",
+    "postcode": "KT7 0UX"
+   },
+   {
+    "id": "osm-node-192399976",
+    "verdict": "not_tuesday",
+    "pub_name": "The Pineapple",
+    "why": "The pub's own site says 'Pub Quiz every Monday at 9pm'. Tuesdays only have happy-hour pricing.",
+    "source_url": "https://www.thepineapplepubnw5.com",
+    "source_kind": "pub",
+    "address": "51 Leverton Street, London",
+    "postcode": "NW5 2NX"
+   },
+   {
+    "id": "osm-way-195649318",
+    "verdict": "not_tuesday",
+    "pub_name": "The Old Ship",
+    "why": "The pub's own quiz page says 'Every Wednesday join hosts Question One in our popular pub quiz', with an 8.30pm kick-off. It is not a Tuesday quiz.",
+    "source_url": "https://www.oldship.net/pubquiz.php",
+    "source_kind": "pub",
+    "address": "17 Barnes Street, London",
+    "postcode": "E14 7NW",
+    "host": "Question One"
+   },
+   {
+    "id": "osm-way-406074332",
+    "verdict": "confirmed",
+    "pub_name": "The Windmill",
+    "quote": "Pop down Tuesday nights and have a go at our weekly quiz night, hosted by our wonderful quizmaster Olly! Between 8pm and 10pm",
+    "extra_quotes": [
+     "Every Tuesday"
+    ],
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "why": "Greene King's What's On page for this pub lists Quiz Night, Every Tuesday, 20:00 - 22:00, on consecutive Tuesdays from 29 Sep to 29 Dec 2026. The description says 'Between 8pm and 10pm'. The pub-quiz page's 'Tables are available from 5pm' is only a booking time.",
+    "source_url": "https://www.greeneking.co.uk/pubs/essex/windmill/whats-on",
+    "source_kind": "company",
+    "address": "Upminster Road, Upminster",
+    "postcode": "RM14 2RB",
+    "host": "quizmaster Olly"
+   },
+   {
+    "id": "osm-node-12023263602",
+    "verdict": "not_tuesday",
+    "pub_name": "The White Horse",
+    "why": "The pub's What's On page says 'Pub Quiz ... Every Monday at 8pm!', run by Inquizition, with 'Event on: Monday'. No Tuesday quiz is listed.",
+    "source_url": "https://www.whitehorsewembley.co.uk/whats-on",
+    "source_kind": "company",
+    "address": "4 Wembley Park Boulevard, Wembley, Middlesex",
+    "postcode": "HA9 0HP",
+    "host": "Inquizition"
+   },
+   {
+    "id": "osm-node-291671992",
+    "verdict": "no_quiz",
+    "pub_name": "The Cyclist",
+    "why": "The Cyclist's venue page and its event pages fetched with no text, and the pub-quiz feature page returned 404. The group-wide What's On listing has Tuesday quizzes at other Urban Pubs & Bars venues but none at The Cyclist.",
+    "source_url": "https://www.urbanpubsandbars.com/whats-on",
+    "source_kind": "company"
+   },
+   {
+    "id": "osm-way-70609598",
+    "verdict": "confirmed",
+    "pub_name": "St. John's Tavern",
+    "quote": "EVERY TUESDAY | 7.30PM",
+    "extra_quotes": [
+     "Pub Quiz at St. John's Tavern"
+    ],
+    "start": "19:30",
+    "freq_note": "Every Tuesday",
+    "why": "The pub's domain redirects to the Urban Pubs & Bars venue page for St. John's Tavern, which lists 'Pub Quiz at St. John's Tavern, EVERY TUESDAY | 7.30PM'. The dedicated quiz page says the same. The only 2023 date is the site's copyright footer, and the group listing includes current Sept 2026 events.",
+    "source_url": "http://www.stjohnstavern.com",
+    "source_kind": "company",
+    "address": "",
+    "postcode": "N19 5QU",
+    "host": ""
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-way-987866346",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:00"
+   },
+   {
+    "id": "osm-way-406074332",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "20:00"
+   },
+   {
+    "id": "osm-way-70609598",
+    "refuted": false,
+    "problems": [],
+    "start_seen": "19:30"
+   }
+  ]
+ },
+ {
+  "read": [
+   {
+    "id": "osm-node-1650746940",
+    "verdict": "not_tuesday",
+    "why": "No 39 is a wine bar in Weybridge. Its site only mentions a Wednesday quiz night ('Wednesday Night ~ Quiz Ni' in an Instagram snippet) and a December quiz night. It has no Tuesday quiz and gives no start time. The events page was empty.",
+    "pub_name": "No 39",
+    "source_url": "https://no-39.com",
+    "source_kind": "pub",
+    "address": "The Quadrant, 39 Church Street, Weybridge, Surrey",
+    "postcode": "KT13 8DG",
+    "quote": "This week at No.39\u2026 \u2022 Wednesday Night ~ Quiz Ni"
+   },
+   {
+    "id": "osm-way-297712178",
+    "verdict": "not_tuesday",
+    "why": "The pub's what's-on page lists the quiz every Thursday from 8pm, hosted by the Big Fat Quiz Company. Tuesday is Steak Night.",
+    "pub_name": "The Great Southern",
+    "source_url": "https://www.thegreatsouthernpub.co.uk/whats-on/",
+    "source_kind": "pub",
+    "host": "The Big Fat Quiz Company",
+    "quote": "JOIN US FOR EVERY THURSDAY FROM 8PM FOR A NIGHT OF FUN & GAMES"
+   },
+   {
+    "id": "osm-way-107827281",
+    "verdict": "no_start_time",
+    "why": "The only evidence is a 2018 quote from The London Craft Beer Guide, reproduced on the pub's About page. It says there is a pub quiz every Tuesday night but gives no start time. It is also an old third-party quote, not a current listing. The events and home pages were empty.",
+    "pub_name": "Rose & Crown Kentish Town",
+    "source_url": "https://www.roseandcrownkentishtown.com/about",
+    "source_kind": "pub",
+    "address": "71 \u2013 73 TORRIANO AVENUE, KENTISH TOWN, LONDON",
+    "postcode": "NW5 2SG",
+    "quote": "there's a devilishly difficult pub quiz every Tuesday night"
+   },
+   {
+    "id": "osm-node-314396579",
+    "verdict": "confirmed",
+    "why": "The pub's own events page lists 'Quiz Night' as a 'WEEKLY SOCIAL', with the next date Tue, 29 Sept @ 19:00 ('Starts in 3 days'). That makes it a weekly Tuesday quiz starting at 19:00. The pub is at 84 Wheelers Lane, Epsom.",
+    "pub_name": "The Jolly Coopers",
+    "source_url": "https://jollycoopers.co.uk/events",
+    "source_kind": "pub",
+    "address": "84 Wheelers Lane, Epsom",
+    "postcode": "KT18 7SD",
+    "start": "19:00",
+    "freq_note": "Every Tuesday (weekly social)",
+    "quote": "Tue, 29 Sept @ 19:00",
+    "extra_quotes": [
+     "WEEKLY SOCIAL"
+    ]
+   },
+   {
+    "id": "seed-the-sir-christopher-hatton-ec1n-7ra",
+    "verdict": "confirmed",
+    "why": "Question One, the quiz company, has its own listing for this venue: 'every Tuesday', starting 6:30pm, at 4 Leather Lane, EC1N 7RA. The page shows 2026 and nothing suggests the quiz has stopped. The Nicholson's pages were empty.",
+    "pub_name": "Sir Christopher Hatton",
+    "source_url": "https://questionone.com/venues/pub-quiz-sir-christopher-hatton-chancery-lane-tuesdays/",
+    "source_kind": "host",
+    "host": "Question One",
+    "address": "4 Leather Lane, London England EC1N 7RA, United Kingdom",
+    "postcode": "EC1N 7RA",
+    "start": "18:30",
+    "freq_note": "Every Tuesday",
+    "quote": "Join us every Tuesday at Sir Christopher Hatton for pub quiz night \u2013 starts 6:30pm!"
+   },
+   {
+    "id": "osm-way-830895982",
+    "verdict": "no_quiz",
+    "why": "The site only says in general terms that there are quiz nights. No listed event is a quiz, and the Tuesday 29 Sept event is UEFA Nations League football. The venue is also closed 5\u201315 October. It is in Dartford.",
+    "pub_name": "The Dartford Sports Bar",
+    "source_url": "https://www.dartfordsportsbar.co.uk",
+    "source_kind": "pub",
+    "address": "13 Spital Street, Dartford",
+    "postcode": "DA1 2DJ",
+    "quote": "More reasons to join us in the next 7 days... from LIVE SPORT to LATE NIGHT DJs to QUIZ NIGHTS and more"
+   },
+   {
+    "id": "osm-node-739464861",
+    "verdict": "confirmed",
+    "why": "Greene King's what's-on page for The Bell, East Molesey lists 'Weekly Quiz Night', 'Every Tuesday', 20:00 - 22:30. It also shows consecutive Tuesday dates from 29 Sep to 15 Dec. The pub-quiz page's 5pm is only when tables become available; the quiz itself starts at 20:00.",
+    "pub_name": "The Bell",
+    "source_url": "https://www.greeneking.co.uk/pubs/surrey/bell/whats-on",
+    "source_kind": "company",
+    "address": "4 Bell Road, East Molesey, Surrey",
+    "postcode": "KT8 0SS",
+    "start": "20:00",
+    "freq_note": "Every Tuesday",
+    "quote": "Tue 29 Sep / 20:00 - 22:30",
+    "extra_quotes": [
+     "Weekly Quiz Night",
+     "Every Tuesday"
+    ]
+   },
+   {
+    "id": "osm-way-900831933",
+    "verdict": "not_tuesday",
+    "why": "Greene King's pages for the George & Dragon, Yiewsley list the pub quiz every Monday at 21:00, not on Tuesday.",
+    "pub_name": "George & Dragon",
+    "source_url": "https://www.greeneking.co.uk/pubs/middlesex/george-and-dragon/whats-on",
+    "source_kind": "company",
+    "address": "176 High Street, Yiewsley, West Drayton, Middlesex",
+    "postcode": "UB7 7BE",
+    "quote": "Join us every Monday at 21:00h for an evening of trivia, laughs, and friendly competition."
+   },
+   {
+    "id": "osm-node-251802173",
+    "verdict": "not_tuesday",
+    "why": "The Pilot's what's-on page lists 'Quiz Night \u2013 Weekly Quiz' on 27 Sep '26 and 04 Oct '26, both Sundays. No Tuesday quiz and no start time are shown.",
+    "pub_name": "The Pilot, Chiswick",
+    "source_url": "https://www.pilot-chiswick.co.uk/whats-on",
+    "source_kind": "pub",
+    "address": "56 Wellesley Road, Chiswick, London",
+    "postcode": "W4 4BZ",
+    "quote": "Weekly Quiz."
+   },
+   {
+    "id": "seed-the-minories-ec3n-1jl",
+    "verdict": "no_quiz",
+    "why": "The Minories' own page (socialpubandkitchen.co.uk) was empty. The SpeedQuizzing London listing does not include The Minories. Nothing in the evidence shows a quiz at this pub.",
+    "pub_name": "The Minories",
+    "source_url": "https://www.socialpubandkitchen.co.uk/minories-london",
+    "source_kind": "pub",
+    "quote": ""
+   }
+  ],
+  "challenge": [
+   {
+    "id": "osm-node-314396579",
+    "refuted": false,
+    "start_seen": "19:00",
+    "problems": [
+     "Note only, not a refutation: the address on the page is 84 Wheelers Lane, Epsom, KT18 7SD, which is in Surrey, outside Greater London. The quote 'Tue, 29 Sept @ 19:00' (line 113) and 'WEEKLY SOCIAL' (line 108) are both in the https://jollycoopers.co.uk/events block, under 'Quiz Night'. Line 39 also says 'weekly quiz nights'. It is the pub's own site, and 29 Sept 2026 is a Tuesday."
+    ]
+   },
+   {
+    "id": "seed-the-sir-christopher-hatton-ec1n-7ra",
+    "refuted": false,
+    "start_seen": "18:30",
+    "problems": []
+   },
+   {
+    "id": "osm-node-739464861",
+    "refuted": false,
+    "start_seen": "20:00",
+    "problems": [
+     "Note only, not a refutation: the address on the page is 4 Bell Road, East Molesey, Surrey, KT8 0SS, outside Greater London. The candidate is named 'The Bell Inn' and Greene King calls the pub 'The Bell'. The whats-on page lists 'Weekly Quiz Night' / 'Every Tuesday' / 20:00 - 22:30, with consecutive Tuesday dates from 29 Sep to 15 Dec. The pub-quiz page's 'Tables are available from 5pm' is a table-booking time, not the quiz start time."
+    ]
+   }
+  ]
+ }
+]
