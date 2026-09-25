@@ -1,0 +1,10 @@
+{
+  "run": "r0-smoke",
+  "osm": true,
+  "postcodes": ["E8 2LN", "SE1 9DA", "N6 5XJ"],
+  "pages": [
+    {"id": "smoke-3compasses", "urls": ["https://www.3compasses.com/pub-quiz-hackney"]},
+    {"id": "smoke-southwark-tavern", "urls": ["https://www.southwarktavern.co.uk/"]},
+    {"id": "smoke-fullers", "urls": ["https://www.fullers.co.uk/pubs"]}
+  ]
+}

@@ -1,0 +1,89 @@
+name: Pub quiz map - fetch
+
+# Part of pub-quiz/, which is separate from the walks: nothing here reads or
+# writes the walks' content, data or build.
+#
+# The authoring sandbox cannot reach pub websites, postcodes.io or any map
+# host. A runner can. So a change to pub-quiz/fetch/request.json asks this job
+# to fetch what the request lists, and the results are committed back to the
+# branch under pub-quiz/data/ for the build to check against:
+#
+#   pages     every listed page rendered in Chromium, and its visible text
+#   postcodes each postcode's position, from postcodes.io
+#   osm       London's pubs and bars, and the vector basemap, from Overpass
+
+on:
+  push:
+    branches: ["claude/london-pub-quiz-map-avmctc"]
+    paths: ["pub-quiz/fetch/request.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pub-quiz-fetch
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Read the request
+        id: req
+        run: |
+          R=pub-quiz/fetch/request.json
+          echo "run=$(jq -r .run $R)" >> "$GITHUB_OUTPUT"
+          echo "pages=$(jq '.pages // [] | length' $R)" >> "$GITHUB_OUTPUT"
+          echo "postcodes=$(jq '.postcodes // [] | length' $R)" >> "$GITHUB_OUTPUT"
+          echo "osm=$(jq -r '.osm // false' $R)" >> "$GITHUB_OUTPUT"
+
+      - name: Look up postcodes
+        if: steps.req.outputs.postcodes != '0'
+        run: python3 pub-quiz/fetch/geocode.py
+
+      - name: Fetch OpenStreetMap layers
+        if: steps.req.outputs.osm == 'true'
+        run: |
+          pip install --quiet shapely osm2geojson
+          python3 pub-quiz/fetch/osm_london.py
+
+      - name: Fetch the pages
+        if: steps.req.outputs.pages != '0'
+        run: |
+          cd pub-quiz/fetch
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node fetch_pages.mjs
+
+      - name: Commit what came back
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pub-quiz/data
+          if git diff --cached --quiet; then
+            echo "nothing new"
+            exit 0
+          fi
+          git commit -m "Pub quiz fetch ${{ steps.req.outputs.run }}
+
+          Fetched on a runner because the authoring sandbox cannot reach pub
+          websites, postcodes.io or OpenStreetMap. Map data (c) OpenStreetMap
+          contributors, ODbL."
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:"${{ github.ref_name }}"; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            git pull --rebase origin "${{ github.ref_name }}"
+            sleep $((attempt * 3))
+          done
+          exit 1
