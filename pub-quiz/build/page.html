@@ -474,7 +474,7 @@ a { color: inherit; }
   // ---------- method note ----------
   document.getElementById('method').innerHTML =
     '<p><strong>How a pub gets on this map.</strong> Its own website, the pub company\'s page for it, or the quiz host\'s own venue list has to say there is a quiz every Tuesday and give the start time. The words are quoted on each pub. Listings sites and old articles were used to find pubs, never to confirm them.</p>' +
-    (M.unconfirmed ? '<p>' + M.unconfirmed + ' more pubs mention a Tuesday quiz on their own pages but are left off: the page gave no start time, did not say weekly, looked out of date, or the two readers disagreed.</p>' : '') +
+    (M.crawled ? '<p>The websites of ' + (Math.floor(M.crawled / 100) * 100).toLocaleString('en-GB') + '-odd London pubs were read for this, plus the quiz companies\' own lists. ' + M.read + ' pages mentioned a quiz near the word Tuesday. These ' + Q.length + ' are the ones whose page says weekly and gives a start time, where two separate readings agreed.' + (M.no_time ? ' ' + M.no_time + ' more say Tuesday but give no start time, so they are left off.' : '') + '</p>' : '') +
     '<p>Quizzes get cancelled and moved. Tap through to the pub before you go.</p>' +
     '<p>Map drawn from OpenStreetMap data. Positions come from the pub\'s entry in OpenStreetMap where it matched, otherwise its postcode.</p>';
 

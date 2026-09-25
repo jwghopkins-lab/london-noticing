@@ -71,8 +71,10 @@ def evidence_text(q):
     if pages is None:
         return None
     texts = []
-    # A listing page's venues are checked one by one as "<entry>~<n>".
-    for page in pages.get(q["candidate_id"].split("~")[0], []):
+    # A listing page's venues are checked one by one as "<entry>~<n>"; a pub
+    # site reached from a listing is an entry of its own, "<entry>~ext<n>".
+    cid = q["candidate_id"]
+    for page in pages.get(cid, pages.get(cid.split("~")[0], [])):
         if q["source_url"] in (page.get("url"), page.get("final_url")):
             texts.append(page.get("text") or "")
             texts.extend(f.get("text", "") for f in page.get("frames", []))
@@ -133,8 +135,13 @@ def main():
               for q in quizzes]
     status_p = DATA / "status.json"
     status = json.loads(status_p.read_text()) if status_p.exists() else {}
+    crawled = set()
+    for c in (DATA / "fetched").glob("*/crawl.json"):
+        crawled |= {e["id"] for e in json.loads(c.read_text())["pages"] if e["id"].startswith("osm-")}
     meta = {"checked": max(q["checked"] for q in quizzes),
-            "unconfirmed": status.get("unconfirmed_count", 0),
+            "crawled": len(crawled),
+            "read": status.get("read_count", 0),
+            "no_time": status.get("rejected_by_reason", {}).get("no_start_time", 0),
             "built": date.today().isoformat()}
     basemap = json.loads((DATA / "osm" / "basemap-slim.json").read_text())
 

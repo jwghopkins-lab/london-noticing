@@ -101,6 +101,7 @@ def main(pairs):
     for r in rejected:
         reasons[r["reason"]] = reasons.get(r["reason"], 0) + 1
     status = {"checked": date.today().isoformat(), "confirmed": len(unique), "rejected_by_reason": reasons,
+              "read_count": len(accepted) + len(rejected),
               # Pubs whose own page mentions a Tuesday quiz that was still left off.
               "unconfirmed_count": sum(v for k, v in reasons.items() if k in (
                   "not_weekly", "no_start_time", "ended_or_stale", "unclear", "refuted", "start_disagrees", "evidence_check")),

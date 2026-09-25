@@ -1,0 +1,1651 @@
+{
+ "checked": "2026-09-25",
+ "confirmed": 125,
+ "rejected_by_reason": {
+  "unclear": 31,
+  "not_tuesday": 118,
+  "no_quiz": 45,
+  "refuted": 6,
+  "not_weekly": 23,
+  "no_start_time": 28,
+  "not_this_pub": 13,
+  "ended_or_stale": 7,
+  "not_first_hand": 1
+ },
+ "read_count": 407,
+ "unconfirmed_count": 95,
+ "rejected": [
+  {
+   "candidate_id": "osm-way-447182149",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Freaks and Geeks' own homepage only has a 'PUB QUIZ SIGN UP HERE' link. The fetched text gives no quiz day, frequency or start time."
+  },
+  {
+   "candidate_id": "osm-node-12202023783",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Crown Blackheath's events page (Shepherd Neame) lists no regular quiz. Its Tuesday regular is Open Mic and Steak Night on the 1st and 3rd Tuesdays. The only quiz is a one-off 'Christmas themed Quiz' on Monday 14th December, with no time given."
+  },
+  {
+   "candidate_id": "seed-the-green-man-w1w-7es",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Green Man W1 events page only says in general terms that there is 'live music and quiz nights'. No quiz is listed, and no day or time is given. The other fetched pages were empty."
+  },
+  {
+   "candidate_id": "osm-way-70320037",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Alice House has two branches, and the evidence does not say which one this OSM way is. West Hampstead's what's-on page says the quiz is 'Tuesdays 7.30pm', which would qualify. Queen's Park's quiz is on 'Wednesdays 7.30pm', which would not. Neither page prints an address, so the branch cannot be identified. If the OSM way is the West Hampstead pub, this is confirmed at 19:30."
+  },
+  {
+   "candidate_id": "osm-way-1039879206",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The site is the White Horse in Chorleywood (WD3 5SD). It only mentions 'pub quizzes' in general terms, and its events calendar shows 'No upcoming events.' No quiz day or time is given."
+  },
+  {
+   "candidate_id": "osm-node-10043607156",
+   "run": "r1",
+   "reason": "refuted",
+   "why": "The CANDIDATE line names Old Mary's (OSM node/10043607156), but the quiz is at The Mitre. oldmarys.co.uk redirects to themitrehydepark.com, and the page shows Old Mary's is The Mitre's wine bar ('Live Jazz in Old Mary's ... in our wine bar'). Nothing says the quiz is held in Old Mary's, and the claim quietly renames the venue to 'The Mitre', so criterion (b), a quiz at the pub on the CANDIDATE line, is not clearly met.; Everything else checks out: the quote matches line 59 of the https://www.themitrehydepark.com/whats-on block exactly. The page is first-hand (The Mitre / Young's). The quiz is weekly on Tuesdays from 8pm, with dated listings on consecutive Tuesdays 1, 8, 15, 22 and 29 September 2026 at 08:00 PM. Nothing suggests it has stopped."
+  },
+  {
+   "candidate_id": "osm-node-4717389968",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "King & Co's own site says the quiz is on Mondays at 8pm ('Join us every Monday from 8 pm'). Its Tuesday event is Cask Club, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-428941713",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Bull's Head Chislehurst (Young's) runs a monthly quiz on the first Tuesday of the month, with quiz master George. It is not weekly."
+  },
+  {
+   "candidate_id": "osm-node-9891375140",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Only quiz on the pub's own events page is the Common Knowledge Pub Quiz listed on Wed 30 Sept; nothing mentions a Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-node-287749130",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The only quiz mention is 'Quiz Machine' in the pub features list. The what's-on and live-sport pages came back empty, so there is no evidence of a quiz night."
+  },
+  {
+   "candidate_id": "osm-way-972149539",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's weekly schedule puts QUIZ NIGHT under WED. Tuesday is a pizza offer."
+  },
+  {
+   "candidate_id": "osm-way-187581780",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's events page offers 'Quiz Night (Tuesday)' as a booking type, but gives no quiz start time. The time dropdown is a generic booking-slot list, not a start time."
+  },
+  {
+   "candidate_id": "osm-way-88866345",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site says the weekly quiz night is every Thursday."
+  },
+  {
+   "candidate_id": "osm-relation-20434096",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's what's-on page lists 'Pub Quiz with Pete' every Thursday, 7:00pm-8:30pm. There is no Tuesday quiz. The pub is also in Chertsey, Surrey."
+  },
+  {
+   "candidate_id": "osm-way-953962864",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Mully's Quiz is on Mondays at 20:00, per the Students' Union UCL bar page and its dated listings. Tuesdays are kept for society and private bookings."
+  },
+  {
+   "candidate_id": "osm-way-850126738",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own site says the quiz is on Wednesday nights at 8.30pm, not Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-593459444",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The events page only mentions 'live music and quiz nights' in generic blurb; no actual quiz listing, day or time for The Railway Blackheath."
+  },
+  {
+   "candidate_id": "osm-way-195200692",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own site says the quiz is on Monday evenings from 8pm."
+  },
+  {
+   "candidate_id": "osm-node-347412853",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Belushi's group What's On page lists a generic 'QUIZ NIGHT' across all its European bars with no venue, day or time; nothing ties a Tuesday quiz to the London Bridge bar."
+  },
+  {
+   "candidate_id": "osm-way-194212864",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Pub's site promotes a Classic Pub Quiz hosted by Ollie from Inquizition, but gives no day of the week or start time; the only dated quiz is the monthly daytime Baby Pub Quiz on third Thursdays."
+  },
+  {
+   "candidate_id": "osm-way-157322970",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Urban Pubs & Bars has a booking page titled 'Pub Quiz at Commercial Tavern' but it gives no day or time, and the group What's On list shows only karaoke for Commercial Tavern (no quiz entry)."
+  },
+  {
+   "candidate_id": "osm-way-1484038886",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Bell Inn's own site says its quiz is every other Wednesday, run by locals. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-203530059",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The What's On page lists a monthly Quiz Night with PJ Quiz on 25 Sep, 23 Oct and 13 Nov 2026, all Fridays. The only Tuesday events are a first-Tuesday Sip & Sew."
+  },
+  {
+   "candidate_id": "osm-way-816170887",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The weekly quiz (The Lexington Pop Quiz) is on Wednesdays. The only Tuesday quiz is the Bring Your Baby Quiz on the last Tuesday of the month, which is not weekly, and no start time is given."
+  },
+  {
+   "candidate_id": "osm-way-796462417",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The quiz is every Wednesday. Tuesday is open mic night."
+  },
+  {
+   "candidate_id": "seed-coin-laundry-ec1r-4qp",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The quiz runs every other Tuesday at 7pm (fortnightly), alternating with comedy night, so it is not weekly."
+  },
+  {
+   "candidate_id": "osm-way-42527973",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Betsey Book Quiz is described as monthly. The dated listings (18 Aug, 15 Sep, 20 Oct, 17 Nov 2026) are one Tuesday a month, with the quiz starting at 7.30pm."
+  },
+  {
+   "candidate_id": "osm-way-142241624",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Big WTF Quiz is listed on Tuesday 6 Oct, 20 Oct, 3 Nov and 17 Nov 2026, which is fortnightly, not every Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-23376430",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The What's On page repeatedly lists EVERY TUE / BIG PENNY'S BIG QUIZ / £3 PER PERSON, so it is weekly on Tuesdays, but no start time is given anywhere in the evidence."
+  },
+  {
+   "candidate_id": "osm-way-775813753",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Rose's quiz (on the Urban Pubs & Bars group pages) is every Sunday at 7pm. The Tuesday quizzes on the group's What's On page are at other pubs."
+  },
+  {
+   "candidate_id": "osm-node-479652522",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own what's-on page lists quiz night on Thursday; Tuesday is games night (poker/darts/dominoes, free pool) with no quiz."
+  },
+  {
+   "candidate_id": "osm-way-1080977183",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own events page: Quiz Night is the first Wednesday of every month; Tuesday is Blackheath Folk Club, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-10081585973",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Craft Union page for Cother Arms (Watford) only says 'Live music, DJs & Quiz Nights' with no day or time; events page is empty."
+  },
+  {
+   "candidate_id": "osm-node-344084670",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Candidate is Craft Beer Co. Covent Garden; group events page lists its weekly quiz on Wednesday (1 April 2026). The only Tuesday quiz is at Clerkenwell (a different pub) and dated September 2025."
+  },
+  {
+   "candidate_id": "osm-way-982457191",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "Pub's own what's-on page lists THE PUB QUIZ on consecutive upcoming Tuesdays (29 Sep to 24 Nov), but no start time is given for it."
+  },
+  {
+   "candidate_id": "osm-node-7398105829",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own site: quiz night is every Wednesday, and the taproom is closed on Tuesdays."
+  },
+  {
+   "candidate_id": "osm-node-257807923",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own site lists only a single Thursday quiz (Thursday 14th May from 8pm); no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-126610395",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Fuller's page for the pub: quiz night is every Wednesday at 7 PM, not Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-49314952",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own quiz page (its URL slug mentions Tuesday, but the title and text don't) lists quizzes only on Wednesdays and Fridays."
+  },
+  {
+   "candidate_id": "osm-node-11019827413",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub's own site lists QUIZ NIGHT EVERY SUNDAY AT 7PM; no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-138428151",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "What's On page only mentions 'live music and quiz nights' generically; no quiz listing, day or time given."
+  },
+  {
+   "candidate_id": "osm-way-1267662909",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Quiz is on Thursday ('Thursday is Double Bubble with Nunhead's best Quiz Night (8pm start)'); Tuesday is Date Night."
+  },
+  {
+   "candidate_id": "osm-way-1230545570",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Pub Quiz night is every Monday from 8pm; Tuesday is 2 for 1 pizzas."
+  },
+  {
+   "candidate_id": "osm-node-25523569",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Quizzes are the Monday Speed Quiz at 7.30pm and the Wednesday Quiz Night at 8pm; Tuesday has Taco Tuesday and Bingo."
+  },
+  {
+   "candidate_id": "osm-way-420411288",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "Pub's own site has a TUESDAY PUB QUIZ page saying 'Every Tuesday' and a 'Tuesday Quiz Booking' option, but no quiz start time is given anywhere."
+  },
+  {
+   "candidate_id": "osm-way-533228529",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Fuller's page for this pub lists Quiz Night every Monday from 7.30pm; the Tuesday events are drinks offers (Frozen Margaritas / Two for Tuesday)."
+  },
+  {
+   "candidate_id": "osm-node-12198799907",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own events page gives the weekly pub quiz as Wednesday at 7.30pm. It has no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-node-451152",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pub company's events page only mentions 'live music and quiz nights' in general. It lists no quiz with a day or time, and the other pages fetched are empty."
+  },
+  {
+   "candidate_id": "osm-way-224178092",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own What's On page lists the pub quiz every Wednesday (7:30pm to 10pm). Its Tuesday entry is a burger night, not a quiz."
+  },
+  {
+   "candidate_id": "osm-way-477667819",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Greene King page for this pub lists a Tuesday quiz on 29 Sep at 19:30, but the description says it runs once a month, not weekly."
+  },
+  {
+   "candidate_id": "osm-way-119476480",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The venue's own listings show the Lexington Pop Quiz every Monday at 20:00. Its Tuesday dates are all gigs."
+  },
+  {
+   "candidate_id": "osm-way-1061817830",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own home page mentions a 'Tuesday quiz night' but gives no start time. The pub's parties page contradicts it, listing 'Quiz Night EVERY THURSDAY'."
+  },
+  {
+   "candidate_id": "osm-node-415673841",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Greene King pages for this pub say the pub quiz is every Thursday, not Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-244772119",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The site redirects to the Urban Pubs & Bars page for The Black Horse, which fetched empty. The group What's On page lists Tuesday quizzes only at other venues (Crown & Castle, Birdcage, EDT, Singer Tavern and others). It lists no quiz at The Black Horse; its only Black Horse item is cocktail masterclasses."
+  },
+  {
+   "candidate_id": "osm-way-416068944",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Urban Pubs & Bars pages for The Gatehouse list its quiz as the Sunday Night Quiz, every Sunday at 7pm. They give no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-node-11687714203",
+   "run": "r1",
+   "reason": "ended_or_stale",
+   "why": "The only quiz evidence is under '-Past Events-' on the Mother Kelly's events page: 'Pub Quiz Every Tuesday @ Mother Kelly's Tottenham', dated Tuesday 28th January 2025, 7-9PM. Every event on the page is from 2024 or early 2025. It is also unclear which Mother Kelly's branch this OSM node is."
+  },
+  {
+   "candidate_id": "osm-node-505769332",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The only quiz is a one-off Charity Pub Quiz on Tuesday 8 September (6.30PM - 9.00PM). No weekly quiz is mentioned."
+  },
+  {
+   "candidate_id": "osm-way-447309968",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The pub's Star Pubs site lists 'Quiz Night' as an amenity but gives no day or time. The What's On page fetched empty, and the homepage also says 'Opening Soon!'."
+  },
+  {
+   "candidate_id": "osm-node-5121352970",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The only mention is a 'QUIZ NIGHTS' heading on the corporate events / private hire page, with no day, frequency or time. The What's On page fetched empty."
+  },
+  {
+   "candidate_id": "osm-way-204488347",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The page contradicts itself: one stray 'Every Tuesday…' line appears, but the Weekly Quiz blurb says 'No plans this Wednesday?' and the dated event listing (July 29th - December 30th 2026) says the quiz is every Wednesday at 7.30pm. The quiz is on Wednesday."
+  },
+  {
+   "candidate_id": "osm-node-2935383885",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "There is no regular quiz at Davy's at Plantation Place. 'Quiz Party' is only a booking type. The group events page lists a single Quiz Night at a different bar, Davy's at Holborn, on Wednesday 30 September."
+  },
+  {
+   "candidate_id": "osm-way-970789393",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The site fetched is the Grove Tavern at 27 Southbourne Grove, Bournemouth BH6 3QS, not a London pub. Its quiz is on Thursdays at 19:30, and the Tuesday event there is bingo."
+  },
+  {
+   "candidate_id": "osm-node-6583527630",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Ferndale's quiz is every Sunday at 7pm, according to the venue page, the quiz page and the group What's On listing. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-node-5041508418",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The crawled site is Mother Kelly's Vauxhall (SE1). The only Tuesday quiz on the events page is 'Pub Quiz Every Tuesday @ Mother Kelly's Tottenham', a different branch. It is also only listed under '-Past Events-' with a January 2025 date, so it looks stale too. No quiz is listed for Vauxhall."
+  },
+  {
+   "candidate_id": "osm-way-225442626",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pub's own What's On page only has generic boilerplate ('from live music and quiz nights to limited-edition menus'). No actual quiz, day or time is listed."
+  },
+  {
+   "candidate_id": "osm-relation-12704739",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own What's On page lists the Quiz Night as 'Every Thursday, From 7:30pm!'. The Tuesday event is Thai Tuesdays, a food offer."
+  },
+  {
+   "candidate_id": "osm-way-961791327",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own events page lists the PUB QUIZ as 'Every Thursday | 8pm'. The homepage blurb mentions 'a quiz every Tuesday' but gives no time, and it contradicts the specific events listing, which says Thursday. So there is no Tuesday quiz with a start time."
+  },
+  {
+   "candidate_id": "osm-way-531068519",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pub's own site only mentions quiz nights in generic newsletter sign-up text ('from live music and quiz nights to seasonal offers'). No actual quiz, day or time is given."
+  },
+  {
+   "candidate_id": "osm-node-2407449923",
+   "run": "r1",
+   "reason": "refuted",
+   "why": "The claim fails the quote rule. Neither the quote 'September 29th 2026, 08:00 PM' nor the extra quote 'Join us for our fun filled quiz in Pinner weekly.' contains Tuesday/Tue/Tues, and the whats-on page never uses that word, so no quote from that page can satisfy the machine check.; The only 'EVERY TUESDAY' is on a different page (https://www.caseisalteredpinner.co.uk/parties-events, line 88: 'Quiz Night' / 'EVERY TUESDAY'). That page gives no start time, so it cannot be combined with the whats-on quote under the same-page rule.; On substance the evidence is supportive: the whats-on page (Young's pub site) lists Quiz Night at 08:00 PM on Sep 1, 8, 15, 22 and 29, 2026, all Tuesdays, and says it is 'weekly'. It is refuted only because the quotes cannot pass the stated rules."
+  },
+  {
+   "candidate_id": "osm-way-1047662587",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site lists PUB QUIZ on 'Wed 30th Sep - 7:30 PM' and 'Wed 7th Oct - 7:30 PM'. It is a Wednesday quiz, not Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-99379732",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "exmoutharms.com redirects to the Urban Pubs & Bars group site. On the group's what's-on page, The Exmouth Arms is only listed for Thursday DJ Nights. The Tuesday quizzes on that page are at other group pubs (Crown & Castle, The Birdcage, Singer Tavern, East Dulwich Tavern and others), not the Exmouth Arms."
+  },
+  {
+   "candidate_id": "osm-node-12997756180",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own What's On page lists 'Quizzy Wednesdays' from 8pm. On Tuesdays it runs 'Pie Tuesdays', a food offer, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-12185302738",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The events page only has a generic line mentioning 'live music and quiz nights'. No quiz day, frequency or time is given. The homepage and group-bookings pages came back empty."
+  },
+  {
+   "candidate_id": "osm-way-372701658",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own events page lists 'Pembury Pub Quiz' every Monday at 8pm. The Tuesday event is Board Game Tuesdays, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-540414280",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own What's On page lists Quiz Night every Monday from 7.30pm. The Tuesday event is a chess club, not a quiz."
+  },
+  {
+   "candidate_id": "osm-way-645789878",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The weekly quiz here is on Thursdays at 20:00. The only Tuesday quiz is a themed quiz on the first Tuesday of each month, which is monthly, not weekly. The pub is also in Chafford Hundred, Grays, Essex (RM16 6PP), not London."
+  },
+  {
+   "candidate_id": "osm-way-157779556",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site lists 'DIDN'T THEY DO WELLY PUB QUIZ' every Wednesday at 7pm. The Tuesday event is The Original Busy Lady Bingo, not a quiz."
+  },
+  {
+   "candidate_id": "osm-way-110479652",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The Star Pubs site lists 'Quiz Night' as an amenity and has generic 'weekly quizzes' template text. It gives no day or start time, and the What's On page came back empty."
+  },
+  {
+   "candidate_id": "osm-node-663887781",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The only mention is the Star Pubs boilerplate 'From weekly quizzes & live music to seasonal events'. Quiz is not among the amenities, the What's On page is empty, and no day or time is given."
+  },
+  {
+   "candidate_id": "osm-way-378840185",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The pub's events page calls it a 'bi-weekly quiz night', with Tuesday dates two weeks apart (6 Oct and 20 Oct 2026). That makes it fortnightly, not weekly."
+  },
+  {
+   "candidate_id": "osm-relation-12811040",
+   "run": "r1",
+   "reason": "refuted",
+   "why": "The claimed start time is 20:00, but the quoted page says 'every Tuesday evening at 7.30pm' (19:30). No 8pm or 20:00 time appears anywhere in the evidence, so the stated start time is wrong. The quote itself, the venue, the weekly Tuesday schedule and the first-hand source all check out."
+  },
+  {
+   "candidate_id": "osm-way-194212867",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's weekly quiz is 'Every Sunday from 7pm' (Sunday Quiz of Legends). The only other quiz is a one-off Retro Football Quiz on Thursday 29 October. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-733876383",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own What's On page lists only a music quiz on the first Wednesday of each month at 8pm. The only Tuesday event is bingo on the last Tuesday of the month. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-651644530",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The What's On page mentions quiz nights only in generic boilerplate. The only event it lists is a Spritz offer, with no quiz day or time."
+  },
+  {
+   "candidate_id": "seed-the-harrow-ec4y-8jj",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The pub's own site says the quiz is held on the second Tuesday of every month from 7pm. It is monthly, not weekly."
+  },
+  {
+   "candidate_id": "osm-way-729179400",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Greene King pages for New Cross House mention only 'Christmas quizzes' and a generic 'including quiz nights' header. No actual quiz event is listed; the weekly listing shows darts only."
+  },
+  {
+   "candidate_id": "osm-node-520913454",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The homepage says only generically that there are 'quizzes'. The What's On page came back empty, so there is no day or time for any quiz."
+  },
+  {
+   "candidate_id": "osm-way-258498192",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Flaming Grill pages for the Jolly Fenman list the quiz every Sunday from 19:00. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "seed-brewdog-soho-w1f-8qg",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The Compleat Quiz listings shown are for other venues (Smugglers Tavern, The Birdcage, and others), and the hosts page names BrewDog Seven Dials but not Soho. BrewDog Soho does not appear, and its own BrewDog link redirected to an empty bar locator."
+  },
+  {
+   "candidate_id": "osm-node-249257137",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The Fuller's site for The Plough Inn shows 'Quiz Night / Event on: Tuesday' as a regular event, but no start time is given anywhere."
+  },
+  {
+   "candidate_id": "osm-way-941142501",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own What's On page lists 'Every Tuesday / The Pub Quiz' but gives no start time anywhere."
+  },
+  {
+   "candidate_id": "osm-way-431545353",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The events page only says generically 'from live music and quiz nights'. No Tuesday quiz, no schedule and no time are listed."
+  },
+  {
+   "candidate_id": "osm-way-531572661",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The group listings page (Dream Bags Jaguar Shoes, The Victoria, Hand of Glory) shows the Tuesday Pub Quiz at Hand of Glory, not The Victoria. The Victoria has no quiz listed, and only a single date is shown anyway."
+  },
+  {
+   "candidate_id": "osm-way-311753728",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The weekly quiz is listed on 27 Sep '26 and 04 Oct '26, both Sundays, so it is not on Tuesdays."
+  },
+  {
+   "candidate_id": "osm-node-306666717",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The quiz is every Sunday at 7pm, not on Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-12819770592",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Crown runs a Sunday quiz night. No Tuesday quiz is mentioned."
+  },
+  {
+   "candidate_id": "seed-the-craft-beer-co-clerkenwell-hatton-garden",
+   "run": "r1",
+   "reason": "ended_or_stale",
+   "why": "The Clerkenwell quiz page dates are from Oct-Nov 2019, and the latest Clerkenwell quiz on the group's events list is Tuesday 16 September 2025. Nothing is listed for 2026, and the old 'every Tuesday' URL now points to a Sunday quiz at The Clement Attlee."
+  },
+  {
+   "candidate_id": "osm-node-26108616",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "This is a Monthly Quiz on 15 Oct 2026, which is a Thursday. It is not weekly and not on Tuesdays."
+  },
+  {
+   "candidate_id": "osm-way-99878205",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The What's On page mentions 'quiz nights' only in general terms. There is no quiz listing, day or time; the only event shown is a Spritz offer."
+  },
+  {
+   "candidate_id": "osm-way-635746696",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's site says the quiz is every Monday from 8pm. The only Tuesday event is a jazz afternoon on the last Tuesday of the month."
+  },
+  {
+   "candidate_id": "osm-node-12633199535",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's What's On page lists a Quiz Night every Tuesday evening, but neither page in the evidence gives a start time."
+  },
+  {
+   "candidate_id": "osm-node-10657112281",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The weekly quiz with Elle Rudd is on Thursdays. Tuesday is only a 2-4-1 pizza and burger offer."
+  },
+  {
+   "candidate_id": "osm-node-851802181",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The only quiz listed is a single dated one on Monday 28th September 2026 at 19:30. The only Tuesday listings are football screenings. The pub is also in Cobham, Surrey."
+  },
+  {
+   "candidate_id": "seed-brewdog-seven-dials-wc2h-8hj",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Both BrewDog URLs redirect to an empty bar locator. The Compleat Quiz hosts page names BrewDog Seven Dials as one of Avan's venues, but the listing page (page 1 of 2) gives no day or time for it."
+  },
+  {
+   "candidate_id": "osm-node-12595899238",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Mondo's events page lists only a 'TAP HOUSE QUIZ NIGHT' running '22 APR - 31 JAN @ TAPROOM', with no day of the week and no start time. Its opening hours also show the taproom closed on Tuesdays."
+  },
+  {
+   "candidate_id": "osm-way-182697408",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The What's On page only says in general terms that there are 'live music and quiz nights'. No quiz is listed, and no day or time is given. The other pages came back empty."
+  },
+  {
+   "candidate_id": "osm-node-470349600",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The venue page for this pub returned a 404. The only quiz on the group's happenings page is a 'NEWCASTLE INDUSTRY QUIZ NIGHT' dated 13.10.2025, which is at another venue, in the past and not on a Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-397628362",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own quiz page says the quiz is every Wednesday, with a 19:30 start."
+  },
+  {
+   "candidate_id": "osm-node-295971752",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The Fire Station's own pages came back empty. On the Urban Pubs & Bars City What's On page, the Fire Station entries are only brunch, a launch party, a pre-theatre menu, Sunday roast and live sport. The Tuesday quizzes on that page are at Singer Tavern and Harrild & Sons, not The Fire Station."
+  },
+  {
+   "candidate_id": "osm-way-845506223",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site lists the quiz night on Thursdays at 8:30 PM. Tuesdays are an Irish/English trad music session."
+  },
+  {
+   "candidate_id": "osm-node-3731791377",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Door Hinge's own site says it runs 'a fortnightly quiz'. That is not weekly, and the site gives no day or start time."
+  },
+  {
+   "candidate_id": "osm-node-30592674",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Prince Albert's what's-on page only mentions 'live music and quiz nights' in general terms. No quiz listing, day or time is given, and nothing mentions Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-1311966735",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Island's own what's-on page says the 7th Heaven Quiz runs 'monthly on Tuesdays', not every Tuesday. No start time is given."
+  },
+  {
+   "candidate_id": "osm-way-257148829",
+   "run": "r1",
+   "reason": "ended_or_stale",
+   "why": "The Clerkenwell page is empty. The only Clerkenwell quiz on the group events page is a single listing for Tuesday 16 September 2025, a year old, while other 2026 listings are for other branches. There is no current weekly Tuesday quiz here."
+  },
+  {
+   "candidate_id": "osm-way-909926391",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The City Barge's events page lists its quiz on Thursdays: 'Every other THURSDAY', next on Thu 01 Oct, 19:00-21:00. It is not on Tuesdays and not weekly."
+  },
+  {
+   "candidate_id": "osm-way-328572823",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "Greene King's page for this pub says there is a quiz every Tuesday. The only time given is 'Tables are available from 5pm on the night of the quiz', which is when tables open, not when the quiz starts."
+  },
+  {
+   "candidate_id": "seed-the-craft-beer-co-clerkenwell-ec1n-7tr",
+   "run": "r1",
+   "reason": "ended_or_stale",
+   "why": "The Clerkenwell Quiz Nights event page is dated October to November 2019 (Tuesday 1 October 2019 19:00 to Tuesday 19 November 2019). The only later Clerkenwell quiz on the events list is a single listing for Tuesday 16 September 2025. Nothing current is listed. The 'every-tuesday' URL now points to a Sunday quiz at The Clement Attlee."
+  },
+  {
+   "candidate_id": "osm-way-207282617",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The White Hart's what's-on page lists 'The Quiz' on 30 Sep, 07 Oct, 21 Oct, 04 Nov, 18 Nov and 02 Dec 2026, which are all Wednesdays, roughly fortnightly. The Tuesday event is LOLipops comedy."
+  },
+  {
+   "candidate_id": "osm-way-157767122",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own events page lists 'PUB QUIZ / EVERY TUESDAY DOORS AT 6PM'. That is weekly on Tuesday, but it gives only a doors time, not a quiz start time."
+  },
+  {
+   "candidate_id": "seed-the-crown-tavern-ec1r-0eg",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The only mention of a quiz is Castle group boilerplate ('from live music and quiz nights to ...'). No quiz is listed on any day, and no day or time is given."
+  },
+  {
+   "candidate_id": "osm-node-679821063",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pages mention quizzes only in generic terms ('pub quizzes, live music', 'from live music and quiz nights'). No quiz listing gives a day or time."
+  },
+  {
+   "candidate_id": "osm-way-238385297",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own site says 'Pub Quiz / Every Tuesday', and the private hire page calls Tuesday 'our quiz night'. That confirms a weekly Tuesday quiz, but no start time appears anywhere."
+  },
+  {
+   "candidate_id": "osm-node-280606917",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub quiz is 'Every Monday from 8pm'. Tuesday is only Cask Club, a rotating cask beer night, not a quiz."
+  },
+  {
+   "candidate_id": "seed-the-griffin-ec2a-4rd",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pub's venue page came back empty. On the Urban Pubs & Bars group what's-on page, The Griffin's only listing is weekend Beer Flights. The Tuesday quizzes on that page are at other pubs in the group."
+  },
+  {
+   "candidate_id": "seed-the-exmouth-arms-ec1r-4ql",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pub's venue page came back empty. On the Urban Pubs & Bars group what's-on page, The Exmouth Arms' only listing is Thursday DJ Nights. The Tuesday quizzes there are at other pubs in the group (Crown & Castle, Birdcage and others)."
+  },
+  {
+   "candidate_id": "osm-node-9008497216",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "Cloudwater's own site lists only 'Sadler's Cat Pub Quiz | Every 2nd Tuesday of the Month', which is monthly. It is also at a Manchester venue (M1 2NP), not a London pub."
+  },
+  {
+   "candidate_id": "osm-way-676769826",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The pub's own Star Pubs site lists 'Quiz Night' only as an amenity, with no day or time. The What's On page came back with no text, so there is no evidence of Tuesday or a start time."
+  },
+  {
+   "candidate_id": "osm-way-318026136",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "BrewDog's page for its Upminster bar says 'QUIZ NIGHT: Every Tuesday' but gives no start time for the quiz. The only 8pm mentions are about under-18s rules."
+  },
+  {
+   "candidate_id": "osm-way-945088844",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own site mentions 'our busy Tuesday pub quiz' and a 'weekly pub quiz' but never gives a start time. The one dated quiz listing (June 2nd 26) also has no time."
+  },
+  {
+   "candidate_id": "osm-node-1933445586",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site says the quiz is 'every Wednesday from 8pm'. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-256331320",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Whippet Inn's pages on the Urban Pubs & Bars site say the weekly quiz is 'Every Sunday at 7:30pm'. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-71299826",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The White Horse Peckham's own What's On page lists a Pub Quiz under TUESDAYS (weekly schedule), but no start time is given for the quiz anywhere on the page."
+  },
+  {
+   "candidate_id": "osm-way-155363890",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Crown Tavern's events page only mentions 'quiz nights' generically in intro text; no actual quiz listing, day or time. The only event listed is an £8 Spritz offer."
+  },
+  {
+   "candidate_id": "osm-way-961153760",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Stonhouse's own quiz is held every Monday at 8pm. Tuesday quizzes mentioned are at sister pubs (The Princess Victoria, The Tommyfield), not this pub."
+  },
+  {
+   "candidate_id": "seed-the-george-vulture-n1-6bu",
+   "run": "r1",
+   "reason": "not_first_hand",
+   "why": "Only evidence is useyourlocal.com (a listings site), and the quiz event pages are marked Expired and dated 2016; the current useyourlocal pub page shows 'No events or offers to show'. Not first-hand and stale."
+  },
+  {
+   "candidate_id": "osm-way-1257626837",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Chequers (Walton on the Hill, Young's) booking widget says the Pub Quiz is 'Every other Tuesday | 7:30pm' - fortnightly, not weekly. What's On shows a single dated quiz on Tue 22 Sep."
+  },
+  {
+   "candidate_id": "osm-node-1275835684",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Mason's Arms Battersea's What's On page lists Quiz Night as 'Every Sunday Night', not Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-5832675296",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The crawled site is the Boxpark group site. Its quizzes are at Boxpark Shoreditch (Mon), Croydon (Mon), Camden (Wed), Wembley (Tue, but dates 29 Sep then 13 Oct look fortnightly) and Liverpool (Thu). None is identified as the venue 'Beatbox'."
+  },
+  {
+   "candidate_id": "osm-way-173544268",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Nicholson's page for The White Lion, Covent Garden, only has generic template text ('quiz nights') with no day, frequency or time. No Tuesday quiz is listed."
+  },
+  {
+   "candidate_id": "osm-way-469119219",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The crawled site is for The Marquis of Granby in Epsom (KT18 7RG). Its events page mentions quiz nights only in generic text and lists no actual quiz, only a Spritz offer."
+  },
+  {
+   "candidate_id": "osm-way-35428104",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The only quiz on the pub's what's-on page is a one-off themed 'EASTENDERS QUIZ' on Tue 29 Sep, 19:00-23:00. Nothing shows a regular weekly Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-623115300",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Flaming Grill's quiz page for The Whittington, Pinner, says the quiz is every Thursday, not Tuesday. It also gives no start time, only 'Tables are available from 5pm'."
+  },
+  {
+   "candidate_id": "osm-way-214245068",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own what's-on page lists 'Quiz Night' with 'Event on: Tuesday' as a regular event, but no start time appears on any crawled page."
+  },
+  {
+   "candidate_id": "osm-way-142371498",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "Urban Pubs & Bars' group what's-on page lists quizzes at several other venues. The only listing for The London Fields is a Monday and Tuesday pizza-and-pint deal. No quiz is shown for this pub."
+  },
+  {
+   "candidate_id": "osm-way-175629798",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own quiz page says the quiz is every Wednesday from 7.30pm. The dated listings (30 Sep, 7, 14 and 21 Oct 2026) all fall on Wednesdays."
+  },
+  {
+   "candidate_id": "osm-way-369373590",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The site (leatherbottle.pub) is for The Leather Bottle in Blackmore, Essex (CM4 0RL), not a London address. Its only quiz mention is one dated item in 'Upcoming Events' (Tuesday 29th September), with nothing saying it is weekly and no start time. The events pages were empty."
+  },
+  {
+   "candidate_id": "osm-way-171081629",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site says the quiz is every Sunday from 7.30pm. Tuesdays are only a 50% off food offer."
+  },
+  {
+   "candidate_id": "osm-node-1375172419",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "Butcombe's What's On page for The Brown Cow lists 'THE BROWN COW QUIZ – EVERY TUESDAY' plus Tuesday specials (27 Oct, 10 Nov, 15/22 Dec), but no start time is given anywhere in the evidence."
+  },
+  {
+   "candidate_id": "osm-way-723739293",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The homepage shows only one dated quiz ('Zoe & Sophie host Tues 29th September'). Nothing says it is weekly and no start time is given."
+  },
+  {
+   "candidate_id": "osm-node-12242503",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Greene King What's On page for the Railway Bell lists weekly Saturday Social, fortnightly Monday Poker Night and a tribute night. No quiz is listed."
+  },
+  {
+   "candidate_id": "osm-node-993017354",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Flaming Grill quiz page for the Five Bells says the quiz is every Thursday. It gives only a table-availability time (from 5pm), not a quiz start."
+  },
+  {
+   "candidate_id": "osm-node-752177862",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Strongroom's listings show Quiz Night on Mondays at 7:30pm (Mon 5 Oct, Mon 2 Nov). The one Tuesday event is a short film screening."
+  },
+  {
+   "candidate_id": "osm-node-441202439",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The What's On page says the quiz is being relaunched on 2 dates in October and then every Tuesday from 3 November, but gives no time for it. Other parts of the site contradict this: the homepage mentions a Wednesday quiz and the booking widget says 'Every Sunday from 7pm'. Neither gives a Tuesday start time."
+  },
+  {
+   "candidate_id": "osm-way-214247037",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site and calendar show the quiz every Thursday from 20:00. Tuesdays are monthly jazz nights (1st and 3rd Tuesday)."
+  },
+  {
+   "candidate_id": "osm-way-99928994",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Trinity's What's On page lists Quiz Night every Monday at 7:30pm."
+  },
+  {
+   "candidate_id": "osm-way-157026553",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Eagle's own events page mentions 'live music and quiz nights' only in a generic blurb. It lists no quiz event, day or time."
+  },
+  {
+   "candidate_id": "osm-way-159922613",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Pavilion End's own what's-on page lists only a one-off charity 'Sports Quiz Night' on 30 Sep 2026, which is a Wednesday. There is no weekly Tuesday quiz and no start time."
+  },
+  {
+   "candidate_id": "osm-way-804352652",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Plough, East Sheen lists its quiz nights on 29 Sep, 27 Oct, 24 Nov, 29 Dec, 26 Jan and 23 Feb. These are the last Tuesday of each month, so the quiz is monthly, not weekly. No start time is given either."
+  },
+  {
+   "candidate_id": "osm-way-129098674",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Urban Pubs & Bars' page for The Wheatsheaf, Tooting Bec, says the pub quiz is 'Every Sunday at 8pm'. Its only Tuesday events are monthly jazz and open mic nights, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-904362356",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Riverside's own site says its quiz is 'every Wednesday' starting at 7.30pm. The dated listings (2, 9, 16, 23 and 30 September 2026) are all Wednesdays."
+  },
+  {
+   "candidate_id": "osm-way-524800980",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Forester's own what's-on page says its weekly quiz, hosted by Sammie, is on Wednesday night. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-149060320",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The pub's What's On page only mentions 'live music and quiz nights' in general. No quiz is listed, and no day or time is given."
+  },
+  {
+   "candidate_id": "osm-way-139911657",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The only quiz on the pub's news page is a 'CHARITY QUIZ NIGHT' post dated 08/09/2026, which looks like a one-off event with no day or time. 'TUESDAY GAME NIGHTS' is a games night, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-3790320757",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Brook Green Hotel's What's On page (Smith's Cocktail Bar is part of this pub) lists its quiz as 'Every Wednesday', 7:00pm - 9:30pm. It is not on a Tuesday."
+  },
+  {
+   "candidate_id": "osm-way-444744679",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own homepage says there is a weekly Pub Quiz on Tuesday evenings but gives no start time."
+  },
+  {
+   "candidate_id": "osm-way-102403099",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The pub's own What's On page describes a weekly Tuesday Night Quiz but gives no start time anywhere."
+  },
+  {
+   "candidate_id": "osm-node-49311908",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Volunteer's events page only mentions 'live music and quiz nights' in general, lists no actual quiz event, and gives no day or time."
+  },
+  {
+   "candidate_id": "osm-way-395000517",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The Jaguar Shoes group events page lists one Pub Quiz at Hand of Glory on Tue 29 Sep at 8:00pm. The listing runs to 10 Oct but has no quiz on Tue 6 Oct, so the evidence shows only a single date. The quiz may well be weekly, but this page does not show it."
+  },
+  {
+   "candidate_id": "osm-way-291700402",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Greyhound's site only mentions 'weekly pub staples like ... pub quizzes' with no day or time, and its hours show it is closed on Tuesdays (TUE: CLOSED), so there can be no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-586607947",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The White Swan's pub quiz is every Wednesday. The Tuesday listing is 'Tuesday Tipples', a wine offer."
+  },
+  {
+   "candidate_id": "osm-node-13327212416",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Colts Pub Quiz is fortnightly on Wednesdays (7 and 21 Oct 2026, 19:30), so it is neither on Tuesday nor weekly."
+  },
+  {
+   "candidate_id": "osm-node-5382875197",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Greene King page for the Golden Lion, Romford, says the pub quiz is every Thursday. The only Tuesday item is a football fixture."
+  },
+  {
+   "candidate_id": "osm-way-503225516",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Fence's What's On page says its quiz night is every Monday."
+  },
+  {
+   "candidate_id": "osm-way-409316355",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The What's On page only mentions 'live music and quiz nights' in a general intro. No quiz is actually listed, and no day or time is given. The only listed event is a Spritz offer."
+  },
+  {
+   "candidate_id": "osm-node-14206898649",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The homepage mentions 'weekly quizzes & live music' but gives no day or time. The What's On page came back empty, so there is no evidence of a Tuesday quiz or a start time."
+  },
+  {
+   "candidate_id": "osm-node-27477157",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site lists its quiz as every Monday from 8pm (Pub Quiz with Petey), not Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-675808547",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "This is Davy's group events page. The only quiz listed is a one-off free Quiz Night at Davy's at Holborn on Wednesday 30 September from 6pm. There is no Tuesday quiz, and it is not clear which Davy's bar this candidate is."
+  },
+  {
+   "candidate_id": "osm-node-6119354792",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The Urban Pubs & Bars City What's On page lists Tuesday quizzes only at Harrild & Sons and the Singer Tavern, plus a Wednesday quiz at Old Street Tavern. The Gun's own listings are brunch, lunch and roasts, with no quiz. The Gun venue page came back empty."
+  },
+  {
+   "candidate_id": "osm-way-680363356",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The Hungry Horse page for this pub says the quiz runs every Tuesday, but the only time given is 'Tables are available from 5pm on the night of the quiz'. That is when tables open, not when the quiz starts."
+  },
+  {
+   "candidate_id": "osm-node-12633199507",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Fox's quiz is a Sunday Pub Quiz, every Sunday from 8pm, run by Inquizition. It is not on a Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-255012045",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Castle-run events page only says in general terms that there are 'live music and quiz nights'. It lists no actual quiz, day or time; the only event shown is a Spritz offer."
+  },
+  {
+   "candidate_id": "osm-way-1076851225",
+   "run": "r1",
+   "reason": "not_weekly",
+   "why": "The pub's own What's On listing says the pub quiz is on the first Tuesday of the month, so it is not weekly. No start time is given either."
+  },
+  {
+   "candidate_id": "osm-way-305492454",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Sebright Quiz Night is every Monday at 7:30pm (Mon 28 Sep, 5 Oct and 12 Oct are listed). On Tuesdays the pub runs a pool competition, not a quiz."
+  },
+  {
+   "candidate_id": "osm-way-311753727",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The only quiz is a monthly one on the first Wednesday of the month at 8pm. It is not on a Tuesday and not weekly."
+  },
+  {
+   "candidate_id": "osm-way-875868241",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Young's What's On page for this pub lists the weekly quiz as every Thursday, 7:00pm to 9:00pm. There is no Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-node-4232481693",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Knowles Pub Quiz is every Wednesday from 8pm, hosted by Inquizition. It is not on Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-10266440541",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "Greene King's page for this pub says the quiz is every Tuesday. The only time it gives is under 'Start time', and it only says tables are available from 5pm on quiz night, which is not the quiz's start time."
+  },
+  {
+   "candidate_id": "osm-way-361094607",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Fuller's What's On page for this pub lists the quiz as on Wednesday, with no Tuesday quiz and no time given."
+  },
+  {
+   "candidate_id": "osm-node-13518978862",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Bush Tavern's own what's-on page lists 'QUIZ MONDAYS' (7pm - 9pm, Every Monday). Tuesday is only a £4 pint offer."
+  },
+  {
+   "candidate_id": "osm-way-148878074",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The Prince Regent (W1U 5JN) what's-on page only mentions 'live music and quiz nights' in generic boilerplate. No quiz day or time is listed and no quiz event appears."
+  },
+  {
+   "candidate_id": "osm-node-364655175",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Wolfpack group homepage only has 'Quiz'/'Quiz Table' as DesignMyNight booking types for several venues. No quiz day or time is given, it is not clear which venue this candidate is, and the events page is empty."
+  },
+  {
+   "candidate_id": "osm-node-3793532459",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The candidate's page is Craft Beer Co. Hammersmith, which is empty. The group events page has no Hammersmith quiz. The only Tuesday quiz is a single past event, 'Quiz night in Clerkenwell' on Tuesday 16 September 2025, which is a different branch and stale. Other quizzes are Sunday or Wednesday at other branches."
+  },
+  {
+   "candidate_id": "osm-node-448921712",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Elephant Inn (Fuller's) what's-on page lists 'Quiz Night at the Elephant Inn' as 'Every Wednesday'. No Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-363039919",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "On its own, this would be confirmed. The pub's own what's-on page lists 'Best Pub Quiz in Town!' at 07:30 PM on consecutive Tuesdays (1, 8, 15, 22 and 29 Sept 2026), with 'Join us every Tuesday', and the homepage says 'Pub Quiz Tuesdays'. But the same page says 'We're closed for a lick of paint 7th Sep – 2nd Oct', with reopening on Saturday 3rd October. So the pub, and the quiz, is currently paused. It should resume on Tuesday 6 Oct but the page does not say so explicitly. Re-check after reopening."
+  },
+  {
+   "candidate_id": "osm-way-469910180",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The King's Head Earl's Court (Fuller's) what's-on page lists 'Quiz Night At The Kings Head', run by Paul from PJ Quiz Co, as 'Every Wednesday'. No Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-way-474422893",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Urban Pubs & Bars pages for the Duke of York, Haggerston list 'Pub Quiz at The Duke of York / EVERY MONDAY AT 19:30', and the quiz booking page says 'PUB QUIZ (MONDAYS)'. The Tuesday quizzes on the group what's-on page are at other pubs."
+  },
+  {
+   "candidate_id": "osm-node-1387549550",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The only quiz on the What's On page is the Douze Points Eurovision quiz, held on the second Thursday of each month at 7 PM. On Tuesdays the page only lists free pool."
+  },
+  {
+   "candidate_id": "osm-way-356687576",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The events page mentions 'live music and quiz nights' only in general terms. It lists no actual quiz, with no day or time. The only listed event is an £8 spritz offer."
+  },
+  {
+   "candidate_id": "osm-way-1060529595",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "On the Stonegate events page, THE PUB QUIZ is on Sundays at 20:00 (27 Sep, 4 Oct, 11 Oct). The Tuesday listings are Real Ale Tuesday and Bingo, not a quiz."
+  },
+  {
+   "candidate_id": "osm-way-1244732780",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The quiz night is on the last Thursday of the month, and Facebook posts call it a 'monthly quiz on Thursday'. The only Tuesday event is a lunchtime sing-a-long on the first Tuesday of the month. The pub is in Grays (RM17)."
+  },
+  {
+   "candidate_id": "osm-node-10092511647",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's quiz page says 'Every Thursday | 7pm', and the booking widget also shows 'Pub Quiz - Thursday'. No Tuesday quiz is listed."
+  },
+  {
+   "candidate_id": "osm-way-243679451",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The regular pub quiz is every Wednesday from 8pm, and the dated listings show quizzes on Wed 30 Sep, 7 Oct, 21 Oct and 28 Oct. Tuesdays have Crib Club and gigs, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-298220599",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The Lord Wargrave site redirects to the Urban Pubs & Bars group site, and its venue page came back empty. On the group What's On page, Lord Wargrave's only entry is Sunday Roasts. The Tuesday quizzes on that page are at other group pubs (Crown & Castle, The Birdcage, East Dulwich Tavern, Balham Bowls Club, Singer Tavern, St. John's Tavern, Clapton Hart, Harrild & Sons, The White Lion)."
+  },
+  {
+   "candidate_id": "osm-way-187242347",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The group's own page for this pub's quiz says 'EVERY SUNDAY AT 7:30PM'. The only Tuesday event is a knitting and crochet club on the 2nd Tuesday of the month."
+  },
+  {
+   "candidate_id": "osm-way-1002485821",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Nicholson's pages for The Swan, Hammersmith only mention 'quiz nights' in generic boilerplate. No quiz is listed, and no day or time is given."
+  },
+  {
+   "candidate_id": "osm-node-10266440633",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Gipsy Moth's what's-on page only mentions 'quiz nights' in generic boilerplate. The only listed item is a Spritz offer, and no quiz day or time is given."
+  },
+  {
+   "candidate_id": "osm-node-3790021587",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Vault (New Ash Green, Kent) holds its quiz on the 3rd Monday of the month at 8pm. That is monthly and not on a Tuesday. The first-Tuesday event is an open mic, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-13179269420",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Peckham Arches is closed on Tuesdays. Its only quiz is a one-off 'Quiz for Palestine' on Wednesday 14 October."
+  },
+  {
+   "candidate_id": "osm-way-90884291",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Greene King page for The Crown & Horseshoes, Enfield lists a weekly Sunday Night Quiz at 20:00. The only weekly Tuesday event is a Mother & Baby group at 15:00."
+  },
+  {
+   "candidate_id": "seed-the-slaughtered-lamb",
+   "run": "r1",
+   "reason": "refuted",
+   "why": "The quote and the extra quote are exact. The page is the pub group's (Urban Pubs & Bars) own page for The Slamb. It says weekly on Tuesdays at 7:30pm.; Point (e), whether the quiz is still running, cannot be confirmed. The group's own What's On page (https://www.urbanpubsandbars.com/whats-on), fetched the same day (2026-09-25), is current: it has a Fri 25 Sep event and 'from the 8th of Sept.' dates that match 2026. It lists two other Slaughtered Lamb events ('Live Music at The Slaughtered Lamb' and 'Laughs at Slamb', every Wednesday). It also lists about 18 quizzes at other group pubs, several of them on Tuesdays. It does not list the Slaughtered Lamb pub quiz. The evidence extractor keeps every passage that mentions a quiz, so the quiz would have shown up if the page listed it.; The quiz page was a seed URL ('followed from another page: False'). It was not reached from any link in the current listing, so it may be an orphaned page that was never taken down. The only year on it is '© 2023'. This absence is enough to doubt the listing is current."
+  },
+  {
+   "candidate_id": "osm-way-1333311979",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The George IV's weekly pub quiz is on Mondays (hosted by Lucky Cow Quiz Co.). Tuesday night is Dungeons & Dragons, and the Bring Your Baby quiz is on the first Thursday of the month."
+  },
+  {
+   "candidate_id": "osm-way-1240005017",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Garden Gate's own What's On page has only generic Castle boilerplate ('from live music and quiz nights to...'). It lists no actual quiz, day or time. The home and group-bookings pages are empty."
+  },
+  {
+   "candidate_id": "osm-node-14181043765",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Southwark Tavern's own events page has only generic Castle boilerplate mentioning 'quiz nights'. The only listed event is a Spritz offer. No quiz, day or time is given."
+  },
+  {
+   "candidate_id": "osm-way-579402933",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site mentions a weekly pub quiz, but its dated calendar shows it on Wednesday 30 September at 20:00 ('Wednesday pub quiz'). Tuesday 29 September lists only a football match."
+  },
+  {
+   "candidate_id": "osm-way-321450395",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The Brixton page has a 'QUIZ BOOKING' button but gives no quiz day or time. On the group events page the only Brixton quiz is a single 'Brixton Quiz Night' on Thursday 24 February 2022, which is old and not a Tuesday. The Tuesday quiz listed there (16 September 2025) is at Clerkenwell, a different pub."
+  },
+  {
+   "candidate_id": "osm-node-7523464145",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Windjammer's own What's On page lists 'Quiz Night' on 5 October, 2 November and 7 December 2026, each marked 'First Monday of the month'. That is a monthly Monday quiz, not a weekly Tuesday one."
+  },
+  {
+   "candidate_id": "osm-way-1182358157",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Sambrook's own site describes 'Quiz Up at the Brewery' as a weekly Sunday quiz at 7pm, relaunched on 13 September 2026. Tuesdays at the taproom are 2-for-1 pizza, not a quiz."
+  },
+  {
+   "candidate_id": "osm-way-589699814",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Old Ship's own venue pages are empty. On the Urban Pubs & Bars group What's On page, the only Old Ship entry is 'Sunday Lunch at the Old Ship'. The Tuesday quizzes listed there are at other pubs (Crown & Castle, The Birdcage, EDT, Balham Bowls Club, Singer Tavern, St. John's Tavern, Clapton Hart, Harrild & Sons, The White Lion)."
+  },
+  {
+   "candidate_id": "osm-node-666918951",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Chamberlain Hotel's own What's On page lists the Pub Quiz as 'Every Wednesday' (starting Wednesday 20th August). Tuesday is Board Games Night."
+  },
+  {
+   "candidate_id": "osm-way-258498191",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's events page lists the weekly quiz ('QUIZ WITH OUR SAMMY J') on Thursday 1st October 19:00. Tuesdays are Cask Ale Club, not a quiz."
+  },
+  {
+   "candidate_id": "osm-node-2261572101",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The pub's What's On page only says in general terms that there are 'quiz nights'. No day, time or schedule is given for any quiz."
+  },
+  {
+   "candidate_id": "osm-node-26040005",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's site says it runs a 'Fortnightly Pub Quiz' and that the quiz 'will now take place every other Wednesday at 7.30pm'. So it is not on Tuesdays and not weekly."
+  },
+  {
+   "candidate_id": "osm-node-192399976",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own site says 'Pub Quiz every Monday at 9pm'. Tuesdays only have happy-hour pricing."
+  },
+  {
+   "candidate_id": "osm-way-195649318",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's own quiz page says 'Every Wednesday join hosts Question One in our popular pub quiz', with an 8.30pm kick-off. It is not a Tuesday quiz."
+  },
+  {
+   "candidate_id": "osm-node-12023263602",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's What's On page says 'Pub Quiz ... Every Monday at 8pm!', run by Inquizition, with 'Event on: Monday'. No Tuesday quiz is listed."
+  },
+  {
+   "candidate_id": "osm-node-291671992",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Cyclist's venue page and its event pages fetched with no text, and the pub-quiz feature page returned 404. The group-wide What's On listing has Tuesday quizzes at other Urban Pubs & Bars venues but none at The Cyclist."
+  },
+  {
+   "candidate_id": "osm-node-1650746940",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "No 39 is a wine bar in Weybridge. Its site only mentions a Wednesday quiz night ('Wednesday Night ~ Quiz Ni' in an Instagram snippet) and a December quiz night. It has no Tuesday quiz and gives no start time. The events page was empty."
+  },
+  {
+   "candidate_id": "osm-way-297712178",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The pub's what's-on page lists the quiz every Thursday from 8pm, hosted by the Big Fat Quiz Company. Tuesday is Steak Night."
+  },
+  {
+   "candidate_id": "osm-way-107827281",
+   "run": "r1",
+   "reason": "no_start_time",
+   "why": "The only evidence is a 2018 quote from The London Craft Beer Guide, reproduced on the pub's About page. It says there is a pub quiz every Tuesday night but gives no start time. It is also an old third-party quote, not a current listing. The events and home pages were empty."
+  },
+  {
+   "candidate_id": "osm-way-830895982",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The site only says in general terms that there are quiz nights. No listed event is a quiz, and the Tuesday 29 Sept event is UEFA Nations League football. The venue is also closed 5–15 October. It is in Dartford."
+  },
+  {
+   "candidate_id": "osm-way-900831933",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "Greene King's pages for the George & Dragon, Yiewsley list the pub quiz every Monday at 21:00, not on Tuesday."
+  },
+  {
+   "candidate_id": "osm-node-251802173",
+   "run": "r1",
+   "reason": "not_tuesday",
+   "why": "The Pilot's what's-on page lists 'Quiz Night – Weekly Quiz' on 27 Sep '26 and 04 Oct '26, both Sundays. No Tuesday quiz and no start time are shown."
+  },
+  {
+   "candidate_id": "seed-the-minories-ec3n-1jl",
+   "run": "r1",
+   "reason": "no_quiz",
+   "why": "The Minories' own page (socialpubandkitchen.co.uk) was empty. The SpeedQuizzing London listing does not include The Minories. Nothing in the evidence shows a quiz at this pub."
+  },
+  {
+   "candidate_id": "hub-bigfatquiz~4",
+   "run": "r1",
+   "reason": "not_this_pub",
+   "why": "The entry is for Cape of Good Hope, Iffley Road, Oxford, OX4 1EA, which is outside London."
+  },
+  {
+   "candidate_id": "hub-bigfatquiz~7",
+   "run": "r1",
+   "reason": "ended_or_stale",
+   "why": "The Old Red Lion entry is marked 'Returning soon' and 'Returns 1 September 2026', which the rules count as ended_or_stale."
+  },
+  {
+   "candidate_id": "hub-compleatquiz~2",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Compleat Quiz's listing gives The Birdcage as Day: Tuesday, Time: 20:00, Host: Eddie. The page does not mark any entries as non-weekly (the file found none), so nothing shows that this regular slot is weekly."
+  },
+  {
+   "candidate_id": "hub-compleatquiz~3",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Compleat Quiz listing gives 'Day: Tuesday' and 'Time: 8pm' for The Crown and Castle, but the page shows no entries marked as non-weekly (no frequency marking at all), so weekly frequency cannot be established from the slot alone."
+  },
+  {
+   "candidate_id": "hub-questionone~3",
+   "run": "r1",
+   "reason": "refuted",
+   "why": "Question One normally puts the frequency in each entry's name: its other entries read 'Every Tuesday', 'Every Thursday', 'Fridays', 'Monthly' and so on. 'PUB QUIZ – The New Inn, Richmond' has no frequency, so per the listing rule it cannot be counted as weekly.; The entry gives no address or postcode. Question One also lists venues outside London (Poole, Cambridge, Milton Keynes, Windsor, Epsom), so the evidence does not show this Richmond is the London one."
+  },
+  {
+   "candidate_id": "hub-compleatquiz~1",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "Compleat Quiz listing gives Smugglers Tavern 'Day: Tuesday' and 'Time: 19:30' as a slot. The file shows no entries that the page marks as non-weekly, so there is nothing to show that an unmarked slot means weekly. Frequency can't be established."
+  },
+  {
+   "candidate_id": "hub-questionone~4",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "The entry is only 'Duke Of Wellington, Notting Hill' with 'Tuesday 19:00'. Unlike other Question One entries, it has neither the 'PUB QUIZ –' label nor a frequency (the site writes 'Every Tuesday' on weekly entries, e.g. Lamb, Chiswick), so it is unclear whether this is a quiz or whether it is weekly."
+  },
+  {
+   "candidate_id": "hub-urbanpubs-whatson~1",
+   "run": "r1",
+   "reason": "unclear",
+   "why": "This is Urban Pubs & Bars' what's-on index page for all its pubs. The candidate names no single pub, and the page lists weekly Tuesday quizzes at many pubs (Crown & Castle 8PM, The Birdcage 7:30PM, EDT 8:00PM, Balham Bowls Club 8PM, Singer Tavern 7PM, St. John's Tavern 7.30PM, Clapton Hart 8PM, Harrild & Sons from 6PM, White Lion 8PM). No one pub can be identified for this candidate; those pubs are covered by the individual what's-on candidates."
+  },
+  {
+   "candidate_id": "hub-compleatquiz-all~1",
+   "run": "r2",
+   "reason": "unclear",
+   "why": "Compleat Quiz's own listing gives Smugglers Tavern as 'Day: Tuesday / Time: 19:30' but never says how often. The file shows no entries on the page marked as non-weekly, so this slot cannot be read as every Tuesday."
+  },
+  {
+   "candidate_id": "deep-osm-way-30729269",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Alwyne Castle's events page only mentions quiz nights in a general intro. The only event listed is a Spritz offer, and no quiz day or time is given."
+  },
+  {
+   "candidate_id": "gk-www-greeneking-co-uk-pubs-greater-london-new-cross-house",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "Greene King's pages for the New Cross House mention quizzes only in generic text (Christmas quizzes, and 'including quiz nights' in the weekly section). The only weekly event shown is free darts, and no quiz event, day or time is listed."
+  },
+  {
+   "candidate_id": "cbc-craftbeerco-com-events-2016-11-17-the-12-stouts-of-christmas",
+   "run": "r2",
+   "reason": "ended_or_stale",
+   "why": "The candidate page (a 2016 event) is empty. On the Craft Beer Co. group events page, the only Tuesday quiz is a single past listing, 'Quiz night in Clerkenwell' on Tuesday 16 September 2025. The other quiz listings are on other days or other pubs, and none shows a current weekly Tuesday quiz."
+  },
+  {
+   "candidate_id": "cbc-www-thecraftbeerco-com-events-september-comedy-night-brixton",
+   "run": "r2",
+   "reason": "ended_or_stale",
+   "why": "The candidate is Craft Beer Co. Brixton. Its only quiz listing is 'Brixton Quiz Night' on Thursday 24 February 2022, which is old and not on a Tuesday. The Tuesday 'Quiz Nights' page (Oct–Nov 2019) is for the Clerkenwell branch."
+  },
+  {
+   "candidate_id": "gkp-www-greeneking-co-uk-pubs-middlesex-george-and-dragon",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "Greene King's page for the George & Dragon, Yiewsley, lists the pub quiz every Monday at 21:00 (dated Mondays run to January). It lists no Tuesday quiz."
+  },
+  {
+   "candidate_id": "hub-compleatquiz-all~3",
+   "run": "r2",
+   "reason": "unclear",
+   "why": "Compleat Quiz's own listing entry for The Crown and Castle, Dalston gives 'Day: Tuesday' / 'Time: 8pm' as a slot, but the page shows no entries marked as non-weekly (the other entry shown, The Mall, has only Day/Time too), so a regular weekly quiz cannot be established from this listing alone."
+  },
+  {
+   "candidate_id": "lst-triviane-23~ext1",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "King of Prussia's own events page only mentions 'quiz nights' generically in its blurb; there is no quiz listing, day or time."
+  },
+  {
+   "candidate_id": "host-comple-144",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "The Dickens Inn's own weekly schedule puts its pub quiz on Wednesday from 7.00pm; Tuesday is a 2-for-1 pizza night."
+  },
+  {
+   "candidate_id": "host-bigfat-128",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "The Portland Arms' own What's On page lists the Big Fat Pub Quiz EVERY MONDAY from 8pm. Tuesday is a 2-for-1 cocktail night."
+  },
+  {
+   "candidate_id": "lst-triviane-59~ext1",
+   "run": "r2",
+   "reason": "no_start_time",
+   "why": "The White Horse Peckham's own What's On page lists a Pub Quiz under TUESDAYS but gives no start time for it."
+  },
+  {
+   "candidate_id": "lst-triviane-46~ext1",
+   "run": "r2",
+   "reason": "unclear",
+   "why": "The Island Queen's own events page mentions quiz nights only in general terms. It gives no day, frequency or time for any quiz."
+  },
+  {
+   "candidate_id": "host-bigfat-135",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "The Thieves' own What's On page lists its weekly Big Fat Quiz every Wednesday at 20:00. Tuesdays have cocktail and food deals, and every-other-Tuesday open mics, but no quiz."
+  },
+  {
+   "candidate_id": "gkp-www-greeneking-co-uk-pubs-middlesex-crown-and-horseshoes",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "Greene King's What's On page for the Crown & Horseshoes lists its quiz every Sunday at 20:00. The only Tuesday weekly event is a Mother & Baby group."
+  },
+  {
+   "candidate_id": "lst-triviane-5~ext1",
+   "run": "r2",
+   "reason": "no_start_time",
+   "why": "Spice of Life's own events page lists PUB QUIZ every Tuesday, but gives only a doors time (6PM). It gives no quiz start time."
+  },
+  {
+   "candidate_id": "host-bigfat-136",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "The Great Southern's own what's-on page puts its quiz, hosted by Big Fat Quiz Company, on Thursdays from 8pm. Tuesday is steak night."
+  },
+  {
+   "candidate_id": "host-comple-140",
+   "run": "r2",
+   "reason": "no_start_time",
+   "why": "The Smugglers Tavern's own TUESDAY PUB QUIZ page says 'Every Tuesday' and the site mentions a weekly quiz, but no page in the file gives a start time."
+  },
+  {
+   "candidate_id": "hub-compleatquiz-all~2",
+   "run": "r2",
+   "reason": "unclear",
+   "why": "Compleat Quiz's own listing gives The Birdcage (80 Columbia Rd, E2 7QB) a slot of 'Day: Tuesday', 'Time: 20:00', 'Host: Eddie'. The page never states how often any entry runs, and the file shows no entries marked as non-weekly. So under the listing rule this slot cannot be counted as weekly."
+  },
+  {
+   "candidate_id": "lst-triviane-60~ext1",
+   "run": "r2",
+   "reason": "refuted",
+   "why": "Both quotes are exact and on the quiz.htm page (lines 50 and 52), but the only date on the page is 'Feb 10, 2014' (years mentioned: 2014) and the homepage returned no text. The site looks unmaintained since 2014, so nothing shows the Tuesday quiz is still running (point e).; The time is only approximate: 'usually starts about 8.30pm - though it can be a little later if the football is on'."
+  },
+  {
+   "candidate_id": "lst-triviane-54~ext1",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Southwark Tavern's own site only mentions 'live music and quiz nights' in a general line on the events page. There is no quiz event, no day and no time, and the homepage and group-bookings page have no text."
+  },
+  {
+   "candidate_id": "lst-triviane-30~ext1",
+   "run": "r2",
+   "reason": "no_start_time",
+   "why": "The pub's own what's-on page lists 'THE PUB QUIZ' on consecutive upcoming Tuesdays (29 Sep, 6/13/20/27 Oct, 3/10/17/24 Nov), so it runs weekly. But no start time is given for it: the only text is 'London's most outrageous pub quiz returns...'. The 7pm-10pm time belongs to a separate Black Pub Quiz on a Thursday."
+  },
+  {
+   "candidate_id": "cbc--9-17-short-film-night-every-thirdnbspwednesday-of-the-month",
+   "run": "r2",
+   "reason": "not_weekly",
+   "why": "The Craft Beer Co. events pages show no weekly Tuesday quiz. The only Tuesday quiz is a single dated event, 'Quiz night in Clerkenwell', on Tuesday 16 September 2025 at 19:00, which is one-off and now stale. The Clement Attlee quiz is on a Sunday (5 April 2026), and the Covent Garden weekly quiz is every Wednesday from 8pm. The 'every second Tuesday from 8PM' at The Clem is a short film night, not a quiz."
+  },
+  {
+   "candidate_id": "deep-osm-way-67449821",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Island Queen's events page only mentions 'quiz nights' in general. It lists no quiz, and gives no day or time for one."
+  },
+  {
+   "candidate_id": "lst-triviane-41~ext1",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Alwyne Castle's events page only mentions 'quiz nights' in its general blurb. It lists no quiz, and gives no day or time for one."
+  },
+  {
+   "candidate_id": "gk-ww-greeneking-co-uk-pubs-greater-london-kings-arms-greenwich",
+   "run": "r2",
+   "reason": "no_start_time",
+   "why": "Greene King's page for this pub confirms a pub quiz every Tuesday. But the only time it gives is 'Tables are available from 5pm', which is when tables open, not when the quiz starts."
+  },
+  {
+   "candidate_id": "host-bigfat-127",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "The Herne Tavern's quiz is every Monday from 8pm, not on Tuesday. The group's what's-on page lists Tuesday quizzes only at other pubs."
+  },
+  {
+   "candidate_id": "deep-osm-way-357564841",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Castle Portobello's own What's On page only mentions 'live music and quiz nights' in generic boilerplate. No actual quiz is listed, and there is no day or time."
+  },
+  {
+   "candidate_id": "lst-triviane-28~ext1",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Garden Gate's own What's On page only has the generic line 'from live music and quiz nights'. No quiz event, day or time is listed."
+  },
+  {
+   "candidate_id": "gk-www-greeneking-co-uk-pubs-greater-london-railway-bell",
+   "run": "r2",
+   "reason": "no_quiz",
+   "why": "The Greene King What's On page for The Railway Bell lists only Saturday Social, fortnightly Monday poker and a Tina Turner tribute. The only quiz mention is generic header text."
+  },
+  {
+   "candidate_id": "lst-triviane-39~ext1",
+   "run": "r2",
+   "reason": "no_start_time",
+   "why": "Effra Social's own site lists 'Pub Quiz' for 'Every Tuesday', hosted by Alfie Evers of Inquizition. No start time is given on the homepage, the quiz page or the What's On page."
+  },
+  {
+   "candidate_id": "host-comple-146",
+   "run": "r2",
+   "reason": "not_tuesday",
+   "why": "The Colonel Fawcett's own quiz page runs quizzes on Wednesdays (classic pub quiz) and Fridays (quiz show). There is no Tuesday quiz, even though the URL slug mentions Tuesday."
+  }
+ ]
+}
