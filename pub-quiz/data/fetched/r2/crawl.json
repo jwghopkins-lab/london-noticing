@@ -1,0 +1,3981 @@
+{
+"run": "r2",
+"pages": [
+{
+"id": "lst-triviane-1",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-depot"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-2",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/camden-road-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-3",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/duke-of-wellington-3"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-4",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/singer-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-5",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/spice-of-life"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-6",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-castle"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-7",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-crown-3"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-8",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-crown-2"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-9",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-hawk-s-nest"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-10",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-robin-hood"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-11",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-star-of-bethnal-green"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-12",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-woodbine"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-13",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/althorp"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-14",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/cock-bottle"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-15",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/coopers-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-16",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/dial-arch"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-17",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/duke-of-hammersmith"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-18",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/duke-on-the-green"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-19",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/flat-iron-square"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-20",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/green-man-2"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-21",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/hammersmith-ram"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-22",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/house-of-hammerton"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-23",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/king-of-prussia"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-24",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-admiral-hardy"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-25",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-builders-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-26",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-duke-of-sussex-se15"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-27",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-edinboro-castle"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-28",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-garden-gate"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-29",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-george-vulture"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-30",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-old-queens-head"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-31",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-peacock-angel"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-32",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-prince"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-33",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-princess-victoria"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-34",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-sail-loft-greenwich"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-35",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-ten-bells"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-36",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/three-compasses"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-37",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/boleyn-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-38",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/earl-of-derby"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-39",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/effra-social"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-40",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/fentiman-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-41",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-alwyne-castle"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-42",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-bohemia"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-43",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-crabtree"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-44",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-durell-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-45",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-grafton-arms-pub-rooms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-46",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-island-queen"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-47",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-jolly-gardeners"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-48",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-lamb"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-49",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-lord-napier-star"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-50",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-marquess-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-51",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-moby-dick-greenland-dock"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-52",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-pelton-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-53",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-railway-2"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-54",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-southwark-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-55",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-star-by-hackney-downs"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-56",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-three-compasses-dalston"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-57",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-tommyfield"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-58",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-woodman-pub"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-59",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/white-horse"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-triviane-60",
+"urls": [
+"https://trivianearme.net/london-england-gb/venues/the-charlotte-despard-pub"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-1",
+"urls": [
+"https://quizadvisor.com/venues/arab-boy-putney"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-2",
+"urls": [
+"https://quizadvisor.com/venues/beer-merchants-tap"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-3",
+"urls": [
+"https://quizadvisor.com/venues/black-lion-west-hampstead-every-sunday"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-4",
+"urls": [
+"https://quizadvisor.com/venues/bohemia-north-finchley"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-5",
+"urls": [
+"https://quizadvisor.com/venues/bollo-house-chiswick"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-6",
+"urls": [
+"https://quizadvisor.com/venues/boxpark-camden"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-7",
+"urls": [
+"https://quizadvisor.com/venues/boxpark-shoreditch"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-8",
+"urls": [
+"https://quizadvisor.com/venues/bull-islington"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-9",
+"urls": [
+"https://quizadvisor.com/venues/camden-road-arms-camden"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-10",
+"urls": [
+"https://quizadvisor.com/venues/castle-farringdon-75-644"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-11",
+"urls": [
+"https://quizadvisor.com/venues/castle-holland-park"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-12",
+"urls": [
+"https://quizadvisor.com/venues/champion-notting-hill"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-13",
+"urls": [
+"https://quizadvisor.com/venues/clock-house-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-14",
+"urls": [
+"https://quizadvisor.com/venues/coopers-arms"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-15",
+"urls": [
+"https://quizadvisor.com/venues/crabtree-fulham"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-16",
+"urls": [
+"https://quizadvisor.com/venues/crofton-park-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-17",
+"urls": [
+"https://quizadvisor.com/venues/crown-anchor-chiswick"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-18",
+"urls": [
+"https://quizadvisor.com/venues/dial-arch"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-19",
+"urls": [
+"https://quizadvisor.com/venues/dock-11"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-20",
+"urls": [
+"https://quizadvisor.com/venues/drapers-arms-ealing"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-21",
+"urls": [
+"https://quizadvisor.com/venues/duchy-arms-kennington"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-22",
+"urls": [
+"https://quizadvisor.com/venues/duke-of-hammersmith-hammersmith-london"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-23",
+"urls": [
+"https://quizadvisor.com/venues/duke-of-sussex-chiswick-every-sunday"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-24",
+"urls": [
+"https://quizadvisor.com/venues/duke-of-wellington-notting-hill"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-25",
+"urls": [
+"https://quizadvisor.com/venues/durell-arms-fulham"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-26",
+"urls": [
+"https://quizadvisor.com/venues/eagle-hoxton"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-27",
+"urls": [
+"https://quizadvisor.com/venues/east-hill-wandsworth"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-28",
+"urls": [
+"https://quizadvisor.com/venues/east-putney-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-29",
+"urls": [
+"https://quizadvisor.com/venues/edinboro-castle-camden"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-30",
+"urls": [
+"https://quizadvisor.com/venues/effra-social"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-31",
+"urls": [
+"https://quizadvisor.com/venues/elephant-barrel"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-32",
+"urls": [
+"https://quizadvisor.com/venues/eltham-gpo-eltham"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-33",
+"urls": [
+"https://quizadvisor.com/venues/fentiman-arms-vauxhall"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-34",
+"urls": [
+"https://quizadvisor.com/venues/fire-stables"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-35",
+"urls": [
+"https://quizadvisor.com/venues/flat-iron-square"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-36",
+"urls": [
+"https://quizadvisor.com/venues/fox-under-the-hill"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-37",
+"urls": [
+"https://quizadvisor.com/venues/garden-shed-wimbledon"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-38",
+"urls": [
+"https://quizadvisor.com/venues/grapes-limehouse"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-39",
+"urls": [
+"https://quizadvisor.com/venues/grove-house-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-40",
+"urls": [
+"https://quizadvisor.com/venues/hagen-hyde"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-41",
+"urls": [
+"https://quizadvisor.com/venues/hammerton-brewery-taproom-highbury"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-42",
+"urls": [
+"https://quizadvisor.com/venues/hare-and-billet-blackheath"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-43",
+"urls": [
+"https://quizadvisor.com/venues/hop-poles-hammersmith"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-44",
+"urls": [
+"https://quizadvisor.com/venues/hope-and-anchor-brixton"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-45",
+"urls": [
+"https://quizadvisor.com/venues/house-of-hammerton-islington"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-46",
+"urls": [
+"https://quizadvisor.com/venues/hoxton-cabin"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-47",
+"urls": [
+"https://quizadvisor.com/venues/huntsman-hounds-elephant-and-castle"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-48",
+"urls": [
+"https://quizadvisor.com/venues/island-queen-islington-85-238"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-49",
+"urls": [
+"https://quizadvisor.com/venues/islington-town-house"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-50",
+"urls": [
+"https://quizadvisor.com/venues/jobbers-rest-upminster"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-51",
+"urls": [
+"https://quizadvisor.com/venues/kings-arms-waterloo"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-52",
+"urls": [
+"https://quizadvisor.com/venues/knowles-of-norwood"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-53",
+"urls": [
+"https://quizadvisor.com/venues/lamb-chiswick"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-54",
+"urls": [
+"https://quizadvisor.com/venues/leman-street-tavern"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-55",
+"urls": [
+"https://quizadvisor.com/venues/lord-morpeth-bow"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-56",
+"urls": [
+"https://quizadvisor.com/venues/lord-napier-star-hackney-wick"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-57",
+"urls": [
+"https://quizadvisor.com/venues/lucky-voice-islington"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-quizadvi-58",
+"urls": [
+"https://quizadvisor.com/venues/lucky-voice-liverpool-street"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-1",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/1055/the-brewery-tap/"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-2",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=0&uni=38296535629f772c7e1d3398ae6cb3c6"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-3",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=1&uni=38296535629f772c7e1d3398ae6cb3c6"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-4",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=2&uni=38296535629f772c7e1d3398ae6cb3c6"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-5",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=3&uni=38296535629f772c7e1d3398ae6cb3c6"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-6",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=4&uni=38296535629f772c7e1d3398ae6cb3c6"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "lst-pubquizz-7",
+"urls": [
+"https://www.pubquizzers.com/pub-quiz/997/crown-tavern/?sq=1&sqq=3&sqa=5&uni=38296535629f772c7e1d3398ae6cb3c6"
+],
+"keep": "all",
+"follow": 0,
+"follow_external": true
+},
+{
+"id": "host-bigfat-125",
+"urls": [
+"https://www.marketplaceuk.com/locations/vauxhall"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-126",
+"urls": [
+"https://www.thelighthousebattersea.com/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-127",
+"urls": [
+"https://www.theherne.co.uk/make-a-reservation"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-128",
+"urls": [
+"https://www.portlandarmspub.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-129",
+"urls": [
+"https://starbyliverpoolstreet.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-130",
+"urls": [
+"https://theroyalstar.co.uk/reservation/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-131",
+"urls": [
+"https://www.bellevueclapham.com/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-132",
+"urls": [
+"https://www.thegreatnorthwood.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-133",
+"urls": [
+"https://www.princealbert.pub/bookings"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-134",
+"urls": [
+"https://www.phoenixclapham.com/book-a-table%20"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-135",
+"urls": [
+"https://www.thethieves.pub/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-136",
+"urls": [
+"https://www.thegreatsouthernpub.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-137",
+"urls": [
+"https://distortionbrewing.co.uk/contact-us"
+],
+"follow": 6
+},
+{
+"id": "host-bigfat-138",
+"urls": [
+"https://www.angeloakpeckham.com/bookings"
+],
+"follow": 6
+},
+{
+"id": "host-comple-139",
+"urls": [
+"https://themalltavern.com/"
+],
+"follow": 6
+},
+{
+"id": "host-comple-140",
+"urls": [
+"https://thesmugglerstavern.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-comple-141",
+"urls": [
+"https://drink.brewdog.com/uk/birdcage"
+],
+"follow": 6
+},
+{
+"id": "host-comple-142",
+"urls": [
+"https://www.urbanpubsandbars.com/venues/crown-castle"
+],
+"follow": 6
+},
+{
+"id": "host-comple-143",
+"urls": [
+"https://www.thehoratia.co.uk/visit"
+],
+"follow": 6
+},
+{
+"id": "host-comple-144",
+"urls": [
+"https://www.dickensinn.co.uk/contact-us/"
+],
+"follow": 6
+},
+{
+"id": "host-comple-145",
+"urls": [
+"https://theelmhurst.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-comple-146",
+"urls": [
+"https://thecolonelfawcett.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-comple-147",
+"urls": [
+"https://redink.co.uk/"
+],
+"follow": 6
+},
+{
+"id": "host-comple-148",
+"urls": [
+"https://wordpress.org/plugins/gdpr-cookie-compliance/"
+],
+"follow": 6
+},
+{
+"id": "hub-compleatquiz-all",
+"urls": [
+"https://compleatquiz.com/quiz-listing/"
+],
+"keep": "all",
+"follow": 6,
+"follow_re": "compleatquiz\\.com/(quiz-listing|venues?)/.+"
+},
+{
+"id": "deep-osm-way-345696147",
+"urls": [
+"http://kingsarmsfitzrovia.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-relation-15847513",
+"urls": [
+"http://oldenglishpub.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-107521318",
+"urls": [
+"http://thedukeofwellington.london"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-1027522305",
+"urls": [
+"http://www.blacklionplaistow.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-195029749",
+"urls": [
+"http://www.geronimo-inns.co.uk/thecrown"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-222915078",
+"urls": [
+"http://www.sizzlingpubs.co.uk/findapub/london/thecrownnortholt"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-128419853",
+"urls": [
+"http://www.thebuildersarmskensington.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-277909036",
+"urls": [
+"http://www.thecastlelondon.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-529912984",
+"urls": [
+"http://www.thecrownandanchor.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-31052744",
+"urls": [
+"http://www.thedrapersarms.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-304744886",
+"urls": [
+"http://www.thegreenmanhotelatwembley.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-10266440600",
+"urls": [
+"https://admiralhardygreenwich.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-663004043",
+"urls": [
+"https://beermerchantstap.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-172055438",
+"urls": [
+"https://blacklionkilburn.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-490745333",
+"urls": [
+"https://dowepping.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-298087465",
+"urls": [
+"https://effrasocial.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-144713460",
+"urls": [
+"https://elephantandbarrel.co.uk/fulham-home-page"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-86678068",
+"urls": [
+"https://grovehousetavern.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-310822362",
+"urls": [
+"https://hagenandhyde.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-305415324",
+"urls": [
+"https://hammertonbrewery.co.uk/site/about"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-348911273",
+"urls": [
+"https://samuelsmithsbrewery.co.uk/pubs"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-10582361575",
+"urls": [
+"https://thedukew1h.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-155341971",
+"urls": [
+"https://theeaglefarringdon.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-374461268",
+"urls": [
+"https://thejollygardeners.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-1068933456",
+"urls": [
+"https://thethreecompassesaldenham.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-1047462857",
+"urls": [
+"https://whitehorsebrentwood.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-899331123",
+"urls": [
+"https://www.brewery-tap.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-299106201",
+"urls": [
+"https://www.buildersarmscroydon.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-170337137",
+"urls": [
+"https://www.castle-harrow.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-159741243",
+"urls": [
+"https://www.castlehollandpark.co.uk/#"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-357564841",
+"urls": [
+"https://www.castleportobello.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-123092742",
+"urls": [
+"https://www.coopersarmskilburn.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-1522909770",
+"urls": [
+"https://www.crafted-social.co.uk/hop-poles-hammersmith"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-10018880685",
+"urls": [
+"https://www.craftunionpubs.com/brewery-tap-brentwood"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-1676757006",
+"urls": [
+"https://www.craftunionpubs.com/crown-pub-sutton"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-142306062",
+"urls": [
+"https://www.craftunionpubs.com/eaglet-pub-finsbury"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-937498584",
+"urls": [
+"https://www.craftunionpubs.com/white-horse-shepherds-bush"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-100856450",
+"urls": [
+"https://www.craftunionpubs.com/white-house-enfield"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-205143238",
+"urls": [
+"https://www.crownandanchorchiswick.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-331298014",
+"urls": [
+"https://www.crownislington.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-135669417",
+"urls": [
+"https://www.dialarch.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-858431027",
+"urls": [
+"https://www.duke.london"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-95806698",
+"urls": [
+"https://www.dukeofsussex.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-158919239",
+"urls": [
+"https://www.dukeofwellingtonbelgravia.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-855193705",
+"urls": [
+"https://www.emberinns.co.uk/nationalsearch/london/the-huntsman-and-hounds-upminster"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-56446211",
+"urls": [
+"https://www.emberinns.co.uk/nationalsearch/southeast/the-crown-shirley"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-25524219",
+"urls": [
+"https://www.emberinns.co.uk/nationalsearch/southeast/the-railway-hotel-west-wickham"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-108251970",
+"urls": [
+"https://www.greeneking-pubs.co.uk/pubs/greater-london/green-man"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-12920922056",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/crown"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-31293000",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/hope-and-anchor"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-239482111",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/railway-west-hampstead"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-993678884",
+"urls": [
+"https://www.greeneking.co.uk/pubs/kent/bull"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-1171226026",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/green-man"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-837636082",
+"urls": [
+"https://www.greenmanputney.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-479277796",
+"urls": [
+"https://www.hareandbillet.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-274268703",
+"urls": [
+"https://www.hopeandanchorbrixton.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-791132629",
+"urls": [
+"https://www.hoppolewandsworth.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-20973312",
+"urls": [
+"https://www.kingsarms-fulham.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-230373565",
+"urls": [
+"https://www.marquesscanonbury.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-466926232",
+"urls": [
+"https://www.nicholsonspubs.co.uk/restaurants/london/thecrownbrewerstreetlondon"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-383980821",
+"urls": [
+"https://www.nicholsonspubs.co.uk/restaurants/london/thegreenman"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-272299419",
+"urls": [
+"https://www.nicholsonspubs.co.uk/restaurants/london/thewhitehorsecarnabystreetlondon"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-889916461",
+"urls": [
+"https://www.peltonarms.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-3537180023",
+"urls": [
+"https://www.thealthorp.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-30729269",
+"urls": [
+"https://www.thealwynecastleislington.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-893965349",
+"urls": [
+"https://www.thebuildersarmschelsea.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-149385999",
+"urls": [
+"https://www.thebull-otford.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-154117129",
+"urls": [
+"https://www.thebullhighgate.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-288991925",
+"urls": [
+"https://www.thebullstreatham.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-1351858504",
+"urls": [
+"https://www.thebullwanstead.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-337127150",
+"urls": [
+"https://www.thecrownandanchornw1.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-372808122",
+"urls": [
+"https://www.thecrownhackney.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-8779283132",
+"urls": [
+"https://www.thedepotpub.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-251811996",
+"urls": [
+"https://www.thedukeofsussex.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-357280516",
+"urls": [
+"https://www.thedukeofwellingtonpub.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-775919714",
+"urls": [
+"https://www.theeagle.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-67449821",
+"urls": [
+"https://www.theislandqueenislington.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-1053467007",
+"urls": [
+"https://www.thejollygardenerssw15.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-112564610",
+"urls": [
+"https://www.thelamblondon.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-536399756",
+"urls": [
+"https://www.theprincen16.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-391389796",
+"urls": [
+"https://www.theprincen22.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-913129291",
+"urls": [
+"https://www.therailwaysw16.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-502991820",
+"urls": [
+"https://www.threecompassesfarringdon.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-257372061",
+"urls": [
+"https://www.vintageinn.co.uk/content/vintage-inn/en/restaurants/south-east/thegreenmanlongfield/restaurantsfood"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-689572058",
+"urls": [
+"https://www.whitehorsebeckenham.co.uk/#"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-291977904",
+"urls": [
+"https://www.whitehorsebrixton.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-223186830",
+"urls": [
+"https://www.whitehorseharrow.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-223059509",
+"urls": [
+"https://www.whitehorserichmond.co.uk"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-374780156",
+"urls": [
+"https://www.whitehorsesw6.com"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-way-436523538",
+"urls": [
+"https://www.youngs.co.uk/pub-detail.asp?PubID=283"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "deep-osm-node-309516454",
+"urls": [
+"https://www.youngs.co.uk/pub-detail.asp?PubID=293"
+],
+"follow": 12,
+"follow_re": "what.?s.?on|event|quiz|entertainment|weekly|calendar|diary|trivia|tuesday|happening|offers|live|week|visit|about"
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-adam-and-eve",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/adam-and-eve"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-albert",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/albert"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-allsop-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/allsop-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-anchor-bankside",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/anchor-bankside"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-assembly-house",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/assembly-house"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-bag-o-nails",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/bag-o-nails"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-bayswater-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/bayswater-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-blue-posts",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/blue-posts"
+],
+"follow": 5
+},
+{
+"id": "gk-w-greeneking-co-uk-pubs-greater-london-blue-posts-st-james-s",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/blue-posts-st-james-s"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-brewmaster",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/brewmaster"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-brockley-jack",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/brockley-jack"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-buff",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/buff"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-bunch-of-grapes",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/bunch-of-grapes"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-butchers-hook",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/butchers-hook"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-camden-head",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/camden-head"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-chelsea-potter",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/chelsea-potter"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-city-of-quebec",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/city-of-quebec"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-coach-and-horses",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/coach-and-horses"
+],
+"follow": 5
+},
+{
+"id": "gk-w-greeneking-co-uk-pubs-greater-london-coach-and-horses-soho",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/coach-and-horses-soho"
+],
+"follow": 5
+},
+{
+"id": "gk-eeneking-co-uk-pubs-greater-london-coach-house-at-the-george",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/coach-house-at-the-george"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-county-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/county-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-courtfield",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/courtfield"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-dickens-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/dickens-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-duke-of-york",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/duke-of-york"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-earls-court-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/earls-court-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-fitzrovia",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/fitzrovia"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-fountains-abbey",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/fountains-abbey"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-fox-under-the-hill",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/fox-under-the-hill"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-friend-at-hand",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/friend-at-hand"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-garrick-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/garrick-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-george",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/george"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-george-southwark",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/george-southwark"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-glass-blower",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/glass-blower"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-globe",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/globe"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-gloucester-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/gloucester-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-goat-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/goat-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-goat-tavern-mayfair",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/goat-tavern-mayfair"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-golden-fleece",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/golden-fleece"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-golden-lion",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/golden-lion"
+],
+"follow": 5
+},
+{
+"id": "gk--greeneking-co-uk-pubs-greater-london-golden-lion-st-james-s",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/golden-lion-st-james-s"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-grafton-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/grafton-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-greencoat-boy",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/greencoat-boy"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-greene-man",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/greene-man"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-greyhound",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/greyhound"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-hand-and-racquet",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/hand-and-racquet"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-hoop-and-toy",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/hoop-and-toy"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-imperial",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/imperial"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-junction",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/junction"
+],
+"follow": 5
+},
+{
+"id": "gk-ww-greeneking-co-uk-pubs-greater-london-kings-arms-greenwich",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/kings-arms-greenwich"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-kings-head",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/kings-head"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-kings-head-tooting",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/kings-head-tooting"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-lamb-and-flag",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/lamb-and-flag"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-leather-bottle",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/leather-bottle"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-leicester-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/leicester-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-lord-raglan",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/lord-raglan"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-lucas-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/lucas-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-maple-leaf",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/maple-leaf"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-marlborough-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/marlborough-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-masons-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/masons-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-monument",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/monument"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-museum-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/museum-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-new-cross-house",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/new-cross-house"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-new-explorer",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/new-explorer"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-north-london-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/north-london-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-old-fields",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/old-fields"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-old-star",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/old-star"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-old-swan",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/old-swan"
+],
+"follow": 5
+},
+{
+"id": "gk-ww-greeneking-co-uk-pubs-greater-london-packhorse-and-talbot",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/packhorse-and-talbot"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-pavilion",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/pavilion"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-paxtons-head",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/paxtons-head"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-phoenix",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/phoenix"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-pineapple",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/pineapple"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-plough",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/plough"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-plumbers-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/plumbers-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-prince-albert",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/prince-albert"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-prince-of-wales",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/prince-of-wales"
+],
+"follow": 5
+},
+{
+"id": "gk-eneking-co-uk-pubs-greater-london-prince-of-wales-kensington",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/prince-of-wales-kensington"
+],
+"follow": 5
+},
+{
+"id": "gk-eeneking-co-uk-pubs-greater-london-prince-of-wales-wimbledon",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/prince-of-wales-wimbledon"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-prospect-of-whitby",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/prospect-of-whitby"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-punch-and-judy",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/punch-and-judy"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-railway",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/railway"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-railway-bell",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/railway-bell"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-raynes-park-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/raynes-park-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-red-lion",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/red-lion"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-rising-sun",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/rising-sun"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-rose-and-crown",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/rose-and-crown"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-round-table",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/round-table"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-royal-george",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/royal-george"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-rutland-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/rutland-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-salisbury",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/salisbury"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-salt-quay",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/salt-quay"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-sawyers-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/sawyers-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-shakespeare",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/shakespeare"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-shakespeares-head",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/shakespeares-head"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-sherlock-holmes",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/sherlock-holmes"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-ship",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/ship"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-silver-cross",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/silver-cross"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-spread-eagle",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/spread-eagle"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-stanhope-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/stanhope-arms"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-swan",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/swan"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-tabard",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/tabard"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-tattersalls-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/tattersalls-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-three-crowns",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/three-crowns"
+],
+"follow": 5
+},
+{
+"id": "gk-ww-greeneking-co-uk-pubs-greater-london-three-jolly-butchers",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/three-jolly-butchers"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-three-tuns",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/three-tuns"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-travellers-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/travellers-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-two-brewers",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/two-brewers"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-two-chairmen",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/two-chairmen"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-victoria",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/victoria"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-yacht",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/yacht"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-ye-olde-cock-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/ye-olde-cock-tavern"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-ye-olde-london",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/ye-olde-london"
+],
+"follow": 5
+},
+{
+"id": "gk--greeneking-co-uk-pubs-greater-london-ye-olde-rose-and-crown",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/ye-olde-rose-and-crown"
+],
+"follow": 5
+},
+{
+"id": "gk-www-greeneking-co-uk-pubs-greater-london-zetland-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/greater-london/zetland-arms"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-ascott",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/ascott"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-barmy-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/barmy-arms"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-crown-and-horseshoes",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/crown-and-horseshoes"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-fig-tree",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/fig-tree"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-freeman-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/freeman-arms"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-george-and-dragon",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/george-and-dragon"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-london-apprentice",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/london-apprentice"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-middlesex-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/middlesex-arms"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-myllet-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/myllet-arms"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-queens-head",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/queens-head"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-royal-oak",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/royal-oak"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-st-margarets-tavern",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/st-margarets-tavern"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-teddington-arms",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/teddington-arms"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-three-magpies",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/three-magpies"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-three-tuns",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/three-tuns"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-tide-end-cottage",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/tide-end-cottage"
+],
+"follow": 5
+},
+{
+"id": "gkp-www-greeneking-co-uk-pubs-middlesex-winning-post",
+"urls": [
+"https://www.greeneking.co.uk/pubs/middlesex/winning-post"
+],
+"follow": 5
+},
+{
+"id": "cab-www-chefandbrewer-com-pubs-greater-london-bulls-head",
+"urls": [
+"https://www.chefandbrewer.com/pubs/greater-london/bulls-head"
+],
+"follow": 5
+},
+{
+"id": "cbc--events-2016-10-29-the-sirening-a-terrifying-25-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/10/29/the-sirening-a-terrifying-25-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-w-thecraftbeerco-com-events-2016-10-6-craft100-beer-festival",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/10/6/craft100-beer-festival"
+],
+"follow": 3
+},
+{
+"id": "cbc--2016-11-10-wiper-true-brighton-meet-the-brewer-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/11/10/wiper-true-brighton-meet-the-brewer-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-craftbeerco-com-events-2016-11-17-the-12-stouts-of-christmas",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/11/17/the-12-stouts-of-christmas"
+],
+"follow": 3
+},
+{
+"id": "cbc-om-events-2016-11-19-weird-beard-and-redemption-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/11/19/weird-beard-and-redemption-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-ts-2016-6-17-clerkenwells-5th-birthday-sour-beer-celebration",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/6/17/clerkenwells-5th-birthday-sour-beer-celebration"
+],
+"follow": 3
+},
+{
+"id": "cbc--2016-6-25-electric-bear-london-tap-takeover-meet-the-brewer",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/6/25/electric-bear-london-tap-takeover-meet-the-brewer"
+],
+"follow": 3
+},
+{
+"id": "cbc-016-6-27-electric-bear-brighton-tap-takeover-meet-the-brewer",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/6/27/electric-bear-brighton-tap-takeover-meet-the-brewer"
+],
+"follow": 3
+},
+{
+"id": "cbc-ents-2016-6-27-the-thornbridge-arms-a-week-long-pub-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/6/27/the-thornbridge-arms-a-week-long-pub-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-vents-2016-6-30-brixton-brewery-tap-takeover-meet-the-brewer",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/6/30/brixton-brewery-tap-takeover-meet-the-brewer"
+],
+"follow": 3
+},
+{
+"id": "cbc-beerco-com-events-2016-7-11-magic-rock-brewing-tap-residency",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/7/11/magic-rock-brewing-tap-residency"
+],
+"follow": 3
+},
+{
+"id": "cbc-7-28-the-craft-beer-co-st-mary-axe-exclusive-weekend-opening",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/7/28/the-craft-beer-co-st-mary-axe-exclusive-weekend-opening"
+],
+"follow": 3
+},
+{
+"id": "cbc-ftbeerco-com-events-2016-7-28-ugzxp64z44pmp9jv6kme1v68lxcfj5",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/7/28/ugzxp64z44pmp9jv6kme1v68lxcfj5"
+],
+"follow": 3
+},
+{
+"id": "cbc-7-30-alphabet-brewing-co-london-meet-the-brewer-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/7/30/alphabet-brewing-co-london-meet-the-brewer-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-nts-2016-8-8-the-tiny-rebel-tavern-a-week-long-pub-residency",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/8/8/the-tiny-rebel-tavern-a-week-long-pub-residency"
+],
+"follow": 3
+},
+{
+"id": "cbc-com-events-2016-9-15-beavertown-meet-the-brewer-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/9/15/beavertown-meet-the-brewer-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-brixton-by-brixton-a-four-day-celebration-of-the-best-of-sw9",
+"urls": [
+"http://www.thecraftbeerco.com/events/2016/9/29/brixton-by-brixton-a-four-day-celebration-of-the-best-of-sw9"
+],
+"follow": 3
+},
+{
+"id": "cbc-17-10-31-beer-tasting-with-authors-tim-webb-stephen-beaumont",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/10/31/beer-tasting-with-authors-tim-webb-stephen-beaumont"
+],
+"follow": 3
+},
+{
+"id": "cbc-nts-2017-2-23-electric-bear-at-the-craft-beer-co-st-mary-axe",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/2/23/electric-bear-at-the-craft-beer-co-st-mary-axe"
+],
+"follow": 3
+},
+{
+"id": "cbc-2017-2-25-two-chefs-brewing-at-the-craft-beer-co-clerkenwell",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/2/25/two-chefs-brewing-at-the-craft-beer-co-clerkenwell"
+],
+"follow": 3
+},
+{
+"id": "cbc--2017-3-22-sipsmith-tasting-at-the-craft-beer-co-st-mary-axe",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/3/22/sipsmith-tasting-at-the-craft-beer-co-st-mary-axe"
+],
+"follow": 3
+},
+{
+"id": "cbc-ts-2017-3-4-prancing-pony-at-the-craft-beer-co-covent-garden",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/3/4/prancing-pony-at-the-craft-beer-co-covent-garden"
+],
+"follow": 3
+},
+{
+"id": "cbc-7-4-22-cantillion-extravaganza-at-the-craft-beer-co-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/4/22/cantillion-extravaganza-at-the-craft-beer-co-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-m-events-2017-4-22-hopcraft-at-the-craft-beer-co-clerkenwell",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/4/22/hopcraft-at-the-craft-beer-co-clerkenwell"
+],
+"follow": 3
+},
+{
+"id": "cbc-ap-takeover-meet-the-brewer-at-the-craft-beer-co-clerkenwell",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/4/22/vibrant-forest-tap-takeover-meet-the-brewer-at-the-craft-beer-co-clerkenwell"
+],
+"follow": 3
+},
+{
+"id": "cbc--4-28-tiny-rebel-v-weird-beard-at-the-craft-beer-co-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/4/28/tiny-rebel-v-weird-beard-at-the-craft-beer-co-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-17-5-11-salopian-tap-takeover-at-the-craft-beer-co-islington",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/5/11/salopian-tap-takeover-at-the-craft-beer-co-islington"
+],
+"follow": 3
+},
+{
+"id": "cbc-017-5-6-fierce-tap-takeover-at-the-craft-beer-co-clerkenwell",
+"urls": [
+"http://www.thecraftbeerco.com/events/2017/5/6/fierce-tap-takeover-at-the-craft-beer-co-clerkenwell"
+],
+"follow": 3
+},
+{
+"id": "cbc-0-13-northern-monk-x-old-street-brewery-exclusive-ipa-launch",
+"urls": [
+"http://www.thecraftbeerco.com/events/2022/10/13/northern-monk-x-old-street-brewery-exclusive-ipa-launch"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-2025-10-2-comedy-night",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/10/2/comedy-night"
+],
+"follow": 3
+},
+{
+"id": "cbc-hecraftbeerco-com-events-2025-9-15-quiz-night-in-clerkenwell",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/15/quiz-night-in-clerkenwell"
+],
+"follow": 3
+},
+{
+"id": "cbc-w-thecraftbeerco-com-events-2025-9-15-showing-all-live-sport",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/15/showing-all-live-sport"
+],
+"follow": 3
+},
+{
+"id": "cbc-ww-thecraftbeerco-com-events-2025-9-15-singles-amp-serenades",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/15/singles-amp-serenades"
+],
+"follow": 3
+},
+{
+"id": "cbc-com-events-2025-9-15-weekly-open-mic-nights-in-covent-garden",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/15/weekly-open-mic-nights-in-covent-garden"
+],
+"follow": 3
+},
+{
+"id": "cbc-co-com-events-2025-9-16-quiz-night-every-tuesday-at-the-clem",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/16/quiz-night-every-tuesday-at-the-clem"
+],
+"follow": 3
+},
+{
+"id": "cbc--9-17-short-film-night-every-thirdnbspwednesday-of-the-month",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/17/short-film-night-every-thirdnbspwednesday-of-the-month"
+],
+"follow": 3
+},
+{
+"id": "cbc-tbeerco-com-events-2025-9-19-live-music-every-fri-amp-sunday",
+"urls": [
+"http://www.thecraftbeerco.com/events/2025/9/19/live-music-every-fri-amp-sunday"
+],
+"follow": 3
+},
+{
+"id": "cbc-erco-com-events-2026-4-1-fury-v-makhmudov-the-clement-attlee",
+"urls": [
+"http://www.thecraftbeerco.com/events/2026/4/1/fury-v-makhmudov-the-clement-attlee"
+],
+"follow": 3
+},
+{
+"id": "cbc-ts-2026-4-1-weekly-quiz-night-at-craft-beer-co-covent-garden",
+"urls": [
+"http://www.thecraftbeerco.com/events/2026/4/1/weekly-quiz-night-at-craft-beer-co-covent-garden"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-2nd-shift",
+"urls": [
+"http://www.thecraftbeerco.com/events/2nd-shift"
+],
+"follow": 3
+},
+{
+"id": "cbc-w-thecraftbeerco-com-events-71-brewing-food-and-beer-pairing",
+"urls": [
+"http://www.thecraftbeerco.com/events/71-brewing-food-and-beer-pairing"
+],
+"follow": 3
+},
+{
+"id": "cbc-w-thecraftbeerco-com-events-alesmith-speedway-stout-showcase",
+"urls": [
+"http://www.thecraftbeerco.com/events/alesmith-speedway-stout-showcase"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-amundsen-brewery-showcase",
+"urls": [
+"http://www.thecraftbeerco.com/events/amundsen-brewery-showcase"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-april-2019-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/april-2019-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-august-comedy-night-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/august-comedy-night-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-craftbeerco-com-events-bapbap-beer-and-french-cheese-pairing",
+"urls": [
+"http://www.thecraftbeerco.com/events/bapbap-beer-and-french-cheese-pairing"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-bomb-deconstructed",
+"urls": [
+"http://www.thecraftbeerco.com/events/bomb-deconstructed"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-brighton-halloween-2018",
+"urls": [
+"http://www.thecraftbeerco.com/events/brighton-halloween-2018"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-brighton-six-nations-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/brighton-six-nations-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-ww-thecraftbeerco-com-events-brip-pop-heist-brewery-dj-night",
+"urls": [
+"http://www.thecraftbeerco.com/events/brip-pop-heist-brewery-dj-night"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-brixton-halloween-2018",
+"urls": [
+"http://www.thecraftbeerco.com/events/brixton-halloween-2018"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-brixton-quiz-night-24-feb-2022",
+"urls": [
+"http://www.thecraftbeerco.com/events/brixton-quiz-night-24-feb-2022"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-burns-night-cg-2020",
+"urls": [
+"http://www.thecraftbeerco.com/events/burns-night-cg-2020"
+],
+"follow": 3
+},
+{
+"id": "cbc-ftbeerco-com-events-burnt-mill-brewery-tap-takeover-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/burnt-mill-brewery-tap-takeover-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-calm-at-craft",
+"urls": [
+"http://www.thecraftbeerco.com/events/calm-at-craft"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-caribbean-chocolate-cake",
+"urls": [
+"http://www.thecraftbeerco.com/events/caribbean-chocolate-cake"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-carols-at-the-craft",
+"urls": [
+"http://www.thecraftbeerco.com/events/carols-at-the-craft"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-cask-10th-birthday-weekend",
+"urls": [
+"http://www.thecraftbeerco.com/events/cask-10th-birthday-weekend"
+],
+"follow": 3
+},
+{
+"id": "cbc-hecraftbeerco-com-events-champion-league-final-2019-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/champion-league-final-2019-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-clerkenwell-six-nations-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/clerkenwell-six-nations-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-comedy-night-october-2017",
+"urls": [
+"http://www.thecraftbeerco.com/events/comedy-night-october-2017"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-comedy-nights-limehouse",
+"urls": [
+"http://www.thecraftbeerco.com/events/comedy-nights-limehouse"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-comic-con-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/comic-con-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-covent-garden-halloween-2018",
+"urls": [
+"http://www.thecraftbeerco.com/events/covent-garden-halloween-2018"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-covent-garden-party",
+"urls": [
+"http://www.thecraftbeerco.com/events/covent-garden-party"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-deya-showcase-islington",
+"urls": [
+"http://www.thecraftbeerco.com/events/deya-showcase-islington"
+],
+"follow": 3
+},
+{
+"id": "cbc-w-thecraftbeerco-com-events-dj-nights-august-2019-old-street",
+"urls": [
+"http://www.thecraftbeerco.com/events/dj-nights-august-2019-old-street"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-dj-nights-july-2019-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/dj-nights-july-2019-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-dj-nights-july-2019-old-street",
+"urls": [
+"http://www.thecraftbeerco.com/events/dj-nights-july-2019-old-street"
+],
+"follow": 3
+},
+{
+"id": "cbc-hecraftbeerco-com-events-dj-nights-september-2019-old-street",
+"urls": [
+"http://www.thecraftbeerco.com/events/dj-nights-september-2019-old-street"
+],
+"follow": 3
+},
+{
+"id": "cbc-w-thecraftbeerco-com-events-eurovision-finale-party-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/eurovision-finale-party-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-february-2019-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/february-2019-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-friday-dj-nights-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/friday-dj-nights-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-fury-vs-wilder-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/fury-vs-wilder-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-fury-vs-wilder-limehouse",
+"urls": [
+"http://www.thecraftbeerco.com/events/fury-vs-wilder-limehouse"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-fury-wilder-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/fury-wilder-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-gipsy-hill-summer-party",
+"urls": [
+"http://www.thecraftbeerco.com/events/gipsy-hill-summer-party"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-glammersmith-grooves",
+"urls": [
+"http://www.thecraftbeerco.com/events/glammersmith-grooves"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-halloween-quiz-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/halloween-quiz-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-islington-six-nations-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/islington-six-nations-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-january-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/january-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-jazz-jam-august-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/jazz-jam-august-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-june-2019-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/june-2019-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-kernel-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/kernel-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-kernel-tap-takeover-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/kernel-tap-takeover-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-lbbw-2023",
+"urls": [
+"http://www.thecraftbeerco.com/events/lbbw-2023"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-limehouse-comedy-2020",
+"urls": [
+"http://www.thecraftbeerco.com/events/limehouse-comedy-2020"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-limehouse-six-nations-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/limehouse-six-nations-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-limehouse-sunday-quiz-nights",
+"urls": [
+"http://www.thecraftbeerco.com/events/limehouse-sunday-quiz-nights"
+],
+"follow": 3
+},
+{
+"id": "cbc-thecraftbeerco-com-events-live-music-night-june-2019-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/live-music-night-june-2019-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-loch-lomond-cask-ale-spotlight",
+"urls": [
+"http://www.thecraftbeerco.com/events/loch-lomond-cask-ale-spotlight"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-march-2019-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/march-2019-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-may-2019-drag-bingo-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/may-2019-drag-bingo-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-mondo-three-chiefs-beer-launch",
+"urls": [
+"http://www.thecraftbeerco.com/events/mondo-three-chiefs-beer-launch"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-mothership-beer-launch",
+"urls": [
+"http://www.thecraftbeerco.com/events/mothership-beer-launch"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-night-of-the-evil-twin",
+"urls": [
+"http://www.thecraftbeerco.com/events/night-of-the-evil-twin"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-no-heroes-launch",
+"urls": [
+"http://www.thecraftbeerco.com/events/no-heroes-launch"
+],
+"follow": 3
+},
+{
+"id": "cbc-hecraftbeerco-com-events-northern-monk-tap-takeover-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/northern-monk-tap-takeover-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-november-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/november-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-november-comedy-brixton-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/november-comedy-brixton-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-nye-2019-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/nye-2019-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-nye-old-street-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/nye-old-street-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-october-comedy-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/october-comedy-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-odyssey-brew-co-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/odyssey-brew-co-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-oktoberfest-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/oktoberfest-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-ww-thecraftbeerco-com-events-old-street-brewery-launch-party",
+"urls": [
+"http://www.thecraftbeerco.com/events/old-street-brewery-launch-party"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-old-street-spring-party-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/old-street-spring-party-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-party-with-the-brewers",
+"urls": [
+"http://www.thecraftbeerco.com/events/party-with-the-brewers"
+],
+"follow": 3
+},
+{
+"id": "cbc-ecraftbeerco-com-events-pollys-brew-co-tap-takeover-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/pollys-brew-co-tap-takeover-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-pressure-drop-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/pressure-drop-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-quiz-nights-clerkenwell",
+"urls": [
+"http://www.thecraftbeerco.com/events/quiz-nights-clerkenwell"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-radius-project",
+"urls": [
+"http://www.thecraftbeerco.com/events/radius-project"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-rugby-world-cup-2019-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/rugby-world-cup-2019-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-hecraftbeerco-com-events-rugby-world-cup-2019-brighton-t69nt",
+"urls": [
+"http://www.thecraftbeerco.com/events/rugby-world-cup-2019-brighton-t69nt"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-ruiz-joshua-pt-2",
+"urls": [
+"http://www.thecraftbeerco.com/events/ruiz-joshua-pt-2"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-saturday-dj-nights-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/saturday-dj-nights-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-september-comedy-night-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/september-comedy-night-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-six-nations-2020-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/six-nations-2020-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-six-nations-2020-islington",
+"urls": [
+"http://www.thecraftbeerco.com/events/six-nations-2020-islington"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-six-nations-2020-limehouse",
+"urls": [
+"http://www.thecraftbeerco.com/events/six-nations-2020-limehouse"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-sour-tap-takeover-old-street",
+"urls": [
+"http://www.thecraftbeerco.com/events/sour-tap-takeover-old-street"
+],
+"follow": 3
+},
+{
+"id": "cbc-ww-thecraftbeerco-com-events-street-fighter-night-old-street",
+"urls": [
+"http://www.thecraftbeerco.com/events/street-fighter-night-old-street"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-sunday-roast-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/sunday-roast-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-sunday-sessions-march-2019",
+"urls": [
+"http://www.thecraftbeerco.com/events/sunday-sessions-march-2019"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-the-ashes-2019-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/the-ashes-2019-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-the-big-seven-islington",
+"urls": [
+"http://www.thecraftbeerco.com/events/the-big-seven-islington"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-the-bruery-showcase",
+"urls": [
+"http://www.thecraftbeerco.com/events/the-bruery-showcase"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-thornbridge-showcase-islington",
+"urls": [
+"http://www.thecraftbeerco.com/events/thornbridge-showcase-islington"
+],
+"follow": 3
+},
+{
+"id": "cbc-aftbeerco-com-events-tiny-rebel-8th-birthday-launch-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/tiny-rebel-8th-birthday-launch-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-rco-com-events-tiny-rebel-8th-birthday-launch-brighton-88h6a",
+"urls": [
+"http://www.thecraftbeerco.com/events/tiny-rebel-8th-birthday-launch-brighton-88h6a"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-tiny-rebel-showcase-islington",
+"urls": [
+"http://www.thecraftbeerco.com/events/tiny-rebel-showcase-islington"
+],
+"follow": 3
+},
+{
+"id": "cbc--thecraftbeerco-com-events-two-flints-brewery-exclusive-pour",
+"urls": [
+"http://www.thecraftbeerco.com/events/two-flints-brewery-exclusive-pour"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-undead-brixton",
+"urls": [
+"http://www.thecraftbeerco.com/events/undead-brixton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-united-states-of-beer",
+"urls": [
+"http://www.thecraftbeerco.com/events/united-states-of-beer"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-valentines-2020",
+"urls": [
+"http://www.thecraftbeerco.com/events/valentines-2020"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-wander-beyond-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/wander-beyond-tap-takeover"
+],
+"follow": 3
+},
+{
+"id": "cbc-ecraftbeerco-com-events-weird-beard-tap-takeover-st-mary-axe",
+"urls": [
+"http://www.thecraftbeerco.com/events/weird-beard-tap-takeover-st-mary-axe"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-wild-beer-co-showcase",
+"urls": [
+"http://www.thecraftbeerco.com/events/wild-beer-co-showcase"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-wimbledon-2019-limehouse",
+"urls": [
+"http://www.thecraftbeerco.com/events/wimbledon-2019-limehouse"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-winter-spring-comedy-e14",
+"urls": [
+"http://www.thecraftbeerco.com/events/winter-spring-comedy-e14"
+],
+"follow": 3
+},
+{
+"id": "cbc-ecraftbeerco-com-events-wiper-and-true-tap-takeover-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/wiper-and-true-tap-takeover-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-witchcraft-brighton-2017",
+"urls": [
+"http://www.thecraftbeerco.com/events/witchcraft-brighton-2017"
+],
+"follow": 3
+},
+{
+"id": "cbc-ww-thecraftbeerco-com-events-womens-world-cup-2019-limehouse",
+"urls": [
+"http://www.thecraftbeerco.com/events/womens-world-cup-2019-limehouse"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-world-cup-2018-brighton",
+"urls": [
+"http://www.thecraftbeerco.com/events/world-cup-2018-brighton"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-world-cup-2018-st-mary",
+"urls": [
+"http://www.thecraftbeerco.com/events/world-cup-2018-st-mary"
+],
+"follow": 3
+},
+{
+"id": "cbc-www-thecraftbeerco-com-events-wylam-brewery-tap-takeover",
+"urls": [
+"http://www.thecraftbeerco.com/events/wylam-brewery-tap-takeover"
+],
+"follow": 3
+}
+]
+}
