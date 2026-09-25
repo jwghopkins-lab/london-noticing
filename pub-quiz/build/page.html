@@ -1,5 +1,5 @@
 <title>London Tuesday Quizzes</title>
-<meta name="description" content="Pub quizzes in London on Tuesday nights, each one confirmed on the pub's own website.">
+<meta name="description" content="Weekly pub quizzes in London on Tuesday nights, each one read off the pub's or its quiz host's own website.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -247,7 +247,7 @@ a { color: inherit; }
   <aside class="side">
     <header class="masthead pad">
       <h1>London Tuesday Quizzes</h1>
-      <p><span id="total">0</span> pub quizzes, each confirmed on the pub's own website. <span class="next" id="next"></span></p>
+      <p><span id="total">0</span> weekly quizzes, each read off the pub's or its quiz host's own website. <span class="next" id="next"></span></p>
     </header>
     <section class="filters pad" aria-label="Filters">
       <div>
@@ -474,7 +474,7 @@ a { color: inherit; }
   // ---------- method note ----------
   document.getElementById('method').innerHTML =
     '<p><strong>How a pub gets on this map.</strong> Its own website, the pub company\'s page for it, or the quiz host\'s own venue list has to say there is a quiz every Tuesday and give the start time. The words are quoted on each pub. Listings sites and old articles were used to find pubs, never to confirm them.</p>' +
-    (M.unconfirmed ? '<p>' + M.unconfirmed + ' more Tuesday quizzes turned up on listings sites but could not be confirmed on a first-hand page, so they are left off.</p>' : '') +
+    (M.unconfirmed ? '<p>' + M.unconfirmed + ' more pubs mention a Tuesday quiz on their own pages but are left off: the page gave no start time, did not say weekly, looked out of date, or the two readers disagreed.</p>' : '') +
     '<p>Quizzes get cancelled and moved. Tap through to the pub before you go.</p>' +
     '<p>Map drawn from OpenStreetMap data. Positions come from the pub\'s entry in OpenStreetMap where it matched, otherwise its postcode.</p>';
 

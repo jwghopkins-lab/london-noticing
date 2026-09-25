@@ -101,7 +101,9 @@ def main(pairs):
     for r in rejected:
         reasons[r["reason"]] = reasons.get(r["reason"], 0) + 1
     status = {"checked": date.today().isoformat(), "confirmed": len(unique), "rejected_by_reason": reasons,
-              "unconfirmed_count": sum(v for k, v in reasons.items() if k not in ("no_quiz", "not_tuesday")),
+              # Pubs whose own page mentions a Tuesday quiz that was still left off.
+              "unconfirmed_count": sum(v for k, v in reasons.items() if k in (
+                  "not_weekly", "no_start_time", "ended_or_stale", "unclear", "refuted", "start_disagrees", "evidence_check")),
               "rejected": rejected}
     (ROOT / "data" / "status.json").write_text(json.dumps(status, indent=1, ensure_ascii=False))
     print(f"accepted {len(unique)} ({len(accepted) - len(unique)} duplicates dropped); rejected {json.dumps(reasons)}")
