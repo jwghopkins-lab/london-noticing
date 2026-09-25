@@ -4,13 +4,15 @@ name: Pub quiz map - fetch
 # writes the walks' content, data or build.
 #
 # The authoring sandbox cannot reach pub websites, postcodes.io or any map
-# host. A runner can. So a change to pub-quiz/fetch/request.json asks this job
-# to fetch what the request lists, and the results are committed back to the
-# branch under pub-quiz/data/ for the build to check against:
+# host. A runner can. So a change to pub-quiz/fetch/request.json asks this
+# workflow to fetch what the request lists, and the results are committed back
+# to the branch under pub-quiz/data/ for the build to check against:
 #
-#   pages     every listed page rendered in Chromium, and its visible text
+#   pages     every listed page rendered in Chromium, split across `shards`
+#             runners, keeping the text of any page that mentions a quiz
 #   postcodes each postcode's position, from postcodes.io
-#   osm       London's pubs and bars, and the vector basemap, from Overpass
+#   osm       the vector basemap, from Overpass
+#   crawl_osm_pubs  also crawl every London pub website listed in OpenStreetMap
 
 on:
   push:
@@ -25,7 +27,53 @@ concurrency:
   group: pub-quiz-fetch
 
 jobs:
-  fetch:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      run: ${{ steps.req.outputs.run }}
+      pages: ${{ steps.crawl.outputs.pages }}
+      shards: ${{ steps.req.outputs.shards }}
+      postcodes: ${{ steps.req.outputs.postcodes }}
+      osm: ${{ steps.req.outputs.osm }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - id: req
+        run: |
+          R=pub-quiz/fetch/request.json
+          echo "run=$(jq -r .run $R)" >> "$GITHUB_OUTPUT"
+          echo "shards=$(jq -c '[range(0; (.shards // 1))]' $R)" >> "$GITHUB_OUTPUT"
+          echo "postcodes=$(jq '.postcodes // [] | length' $R)" >> "$GITHUB_OUTPUT"
+          echo "osm=$(jq -r '.osm // false' $R)" >> "$GITHUB_OUTPUT"
+          echo "crawl_osm=$(jq -r '.crawl_osm_pubs // false' $R)" >> "$GITHUB_OUTPUT"
+
+      # The pubs' own websites are the crawl list, so the pub list comes first.
+      - name: Fetch London's pubs from OpenStreetMap
+        if: steps.req.outputs.crawl_osm == 'true' || steps.req.outputs.osm == 'true'
+        run: cd pub-quiz/fetch && python3 osm_pubs.py
+
+      - id: crawl
+        name: Build the crawl list
+        run: |
+          python3 pub-quiz/fetch/make_crawl.py
+          echo "pages=$(jq '.pages | length' pub-quiz/fetch/crawl.json)" >> "$GITHUB_OUTPUT"
+          RUN=$(jq -r .run pub-quiz/fetch/request.json)
+          mkdir -p stage/fetch stage/data/fetched/$RUN
+          cp pub-quiz/fetch/crawl.json stage/fetch/
+          cp pub-quiz/fetch/crawl.json stage/data/fetched/$RUN/crawl.json
+          if [ -f pub-quiz/data/osm/pubs.json ]; then mkdir -p stage/data/osm && cp pub-quiz/data/osm/pubs.json stage/data/osm/; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plan
+          path: stage
+          retention-days: 3
+
+  maps:
+    needs: plan
+    if: needs.plan.outputs.osm == 'true' || needs.plan.outputs.postcodes != '0'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -33,37 +81,74 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Look up postcodes
+        if: needs.plan.outputs.postcodes != '0'
+        run: python3 pub-quiz/fetch/geocode.py
+      - name: Fetch the basemap from OpenStreetMap
+        if: needs.plan.outputs.osm == 'true'
+        run: |
+          pip install --quiet shapely osm2geojson
+          cd pub-quiz/fetch && python3 osm_basemap.py
+      - name: Stage
+        if: always()
+        run: |
+          mkdir -p stage/data/osm stage/data/fetched/${{ needs.plan.outputs.run }}
+          [ -f pub-quiz/data/osm/basemap.json ] && cp pub-quiz/data/osm/basemap.json stage/data/osm/ || true
+          [ -f pub-quiz/data/fetched/${{ needs.plan.outputs.run }}/postcodes.json ] && cp pub-quiz/data/fetched/${{ needs.plan.outputs.run }}/postcodes.json stage/data/fetched/${{ needs.plan.outputs.run }}/ || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: maps
+          path: stage
+          retention-days: 3
+
+  pages:
+    needs: plan
+    if: needs.plan.outputs.pages != '0'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: ${{ fromJson(needs.plan.outputs.shards) }}
+    steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-
-      - name: Read the request
-        id: req
-        run: |
-          R=pub-quiz/fetch/request.json
-          echo "run=$(jq -r .run $R)" >> "$GITHUB_OUTPUT"
-          echo "pages=$(jq '.pages // [] | length' $R)" >> "$GITHUB_OUTPUT"
-          echo "postcodes=$(jq '.postcodes // [] | length' $R)" >> "$GITHUB_OUTPUT"
-          echo "osm=$(jq -r '.osm // false' $R)" >> "$GITHUB_OUTPUT"
-
-      - name: Look up postcodes
-        if: steps.req.outputs.postcodes != '0'
-        run: python3 pub-quiz/fetch/geocode.py
-
-      - name: Fetch OpenStreetMap layers
-        if: steps.req.outputs.osm == 'true'
-        run: |
-          pip install --quiet shapely osm2geojson
-          python3 pub-quiz/fetch/osm_london.py
-
+      - uses: actions/download-artifact@v4
+        with:
+          name: plan
+          path: pub-quiz
       - name: Fetch the pages
-        if: steps.req.outputs.pages != '0'
+        env:
+          SHARD: ${{ matrix.shard }}
+          SHARDS: ${{ strategy.job-total }}
         run: |
           cd pub-quiz/fetch
           npm install --no-save --no-package-lock playwright@1.56.1
           npx playwright install --with-deps chromium
           node fetch_pages.mjs
+      - name: Stage
+        run: |
+          mkdir -p stage/data/fetched/${{ needs.plan.outputs.run }}
+          cp pub-quiz/data/fetched/${{ needs.plan.outputs.run }}/pages-${{ matrix.shard }}.json.gz stage/data/fetched/${{ needs.plan.outputs.run }}/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pages-${{ matrix.shard }}
+          path: stage
+          retention-days: 3
 
+  commit:
+    needs: [plan, maps, pages]
+    if: always() && !cancelled() && needs.plan.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: pub-quiz
+          merge-multiple: true
       - name: Commit what came back
         run: |
           git config user.name "github-actions[bot]"
@@ -73,7 +158,7 @@ jobs:
             echo "nothing new"
             exit 0
           fi
-          git commit -m "Pub quiz fetch ${{ steps.req.outputs.run }}
+          git commit -m "Pub quiz fetch ${{ needs.plan.outputs.run }}
 
           Fetched on a runner because the authoring sandbox cannot reach pub
           websites, postcodes.io or OpenStreetMap. Map data (c) OpenStreetMap

@@ -1,10 +1,516 @@
 {
-  "run": "r0-smoke",
-  "osm": true,
-  "postcodes": ["E8 2LN", "SE1 9DA", "N6 5XJ"],
-  "pages": [
-    {"id": "smoke-3compasses", "urls": ["https://www.3compasses.com/pub-quiz-hackney"]},
-    {"id": "smoke-southwark-tavern", "urls": ["https://www.southwarktavern.co.uk/"]},
-    {"id": "smoke-fullers", "urls": ["https://www.fullers.co.uk/pubs"]}
-  ]
+ "run": "r1",
+ "shards": 12,
+ "osm": false,
+ "crawl_osm_pubs": true,
+ "postcodes": [
+  "E1 7EZ",
+  "EC1A 7JQ",
+  "EC1M 6DB",
+  "EC1N 7RA",
+  "EC1N 7TR",
+  "EC1R 0EG",
+  "EC1R 4QL",
+  "EC1R 4QP",
+  "EC1V 0DX",
+  "EC1V 2PN",
+  "EC1Y 1AG",
+  "EC2A 3BX",
+  "EC2A 4RD",
+  "EC3N 1DD",
+  "EC3N 1JL",
+  "EC3N 3AJ",
+  "EC3R 8DJ",
+  "EC4M 7JU",
+  "EC4Y 1DE",
+  "EC4Y 8JJ",
+  "N1 6BU",
+  "NW1 6HE",
+  "SW1P 2AA",
+  "W1F 8QG",
+  "W1H 5HT",
+  "W1T 2ED",
+  "W1W 7ES",
+  "WC1N 3ES",
+  "WC1X 8PN",
+  "WC1X 8SF",
+  "WC2H 8HJ",
+  "WC2N 6HH"
+ ],
+ "pages": [
+  {
+   "id": "hub-pubquizzers",
+   "urls": [
+    "https://www.pubquizzers.com/pub-quiz/997/crown-tavern/"
+   ],
+   "keep": "all",
+   "follow": 80,
+   "follow_re": "/pub-quiz/\\d+/"
+  },
+  {
+   "id": "hub-urbanpubs-whatson",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on"
+   ],
+   "keep": "all",
+   "follow": 80,
+   "follow_re": "whats-on/.*(quiz|trivia)"
+  },
+  {
+   "id": "hub-bigfatquiz",
+   "urls": [
+    "https://thebigfatquiz.com/pubs/"
+   ],
+   "keep": "all",
+   "follow": 150,
+   "follow_re": "thebigfatquiz\\.com/(pubs|venues?)/.+"
+  },
+  {
+   "id": "hub-questionone-uk",
+   "urls": [
+    "https://questionone.co/uk/venues/castle-farringdon"
+   ],
+   "keep": "all",
+   "follow": 120,
+   "follow_re": "/venues/"
+  },
+  {
+   "id": "hub-questionone",
+   "urls": [
+    "https://questionone.com/"
+   ],
+   "keep": "all",
+   "follow": 200,
+   "follow_re": "/venues/"
+  },
+  {
+   "id": "hub-compleatquiz",
+   "urls": [
+    "https://compleatquiz.com/quiz-listing/"
+   ],
+   "keep": "all",
+   "follow": 0
+  },
+  {
+   "id": "hub-speedquizzing-london",
+   "urls": [
+    "https://www.speedquizzing.com/pub-quiz/london/"
+   ],
+   "keep": "all",
+   "follow": 0
+  },
+  {
+   "id": "hub-quizadvisor-london",
+   "urls": [
+    "https://quizadvisor.com/cities/london"
+   ],
+   "keep": "all",
+   "follow": 150,
+   "follow_re": "/venues/"
+  },
+  {
+   "id": "hub-secretldn",
+   "urls": [
+    "https://secretldn.com/best-pub-quizzes-london/"
+   ],
+   "keep": "all",
+   "follow": 0
+  },
+  {
+   "id": "hub-designmynight-quiz",
+   "urls": [
+    "https://www.designmynight.com/london/whats-on/quiz-nights-in-london"
+   ],
+   "keep": "all",
+   "follow": 0
+  },
+  {
+   "id": "hub-020-tuesdays",
+   "urls": [
+    "https://www.020.co.uk/p/pub-quiz/tuesdays/london.shtml"
+   ],
+   "keep": "all",
+   "follow": 0
+  },
+  {
+   "id": "hub-trivianearme-tuesday",
+   "urls": [
+    "https://trivianearme.net/london-england-gb/tuesday"
+   ],
+   "keep": "all",
+   "follow": 100,
+   "follow_re": "/london-england-gb/venues/"
+  },
+  {
+   "id": "hub-londonquizlist-tuesday",
+   "urls": [
+    "https://londonquizlist.wordpress.com/tuesday/"
+   ],
+   "keep": "all",
+   "follow": 0
+  },
+  {
+   "id": "seed-the-crown-tavern-ec1r-0eg",
+   "urls": [
+    "https://www.thecrowntavernec1.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Crown Tavern"
+  },
+  {
+   "id": "seed-the-slaughtered-lamb-ec1v-0dx",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/slaughtered-lamb-pub-quiz",
+    "https://www.urbanpubsandbars.com/venues/slaughtered-lamb"
+   ],
+   "follow": 4,
+   "name": "The Slaughtered Lamb"
+  },
+  {
+   "id": "seed-the-craft-beer-co-clerkenwell-ec1n-7tr",
+   "urls": [
+    "http://www.thecraftbeerco.com/events/quiz-nights-clerkenwell",
+    "http://www.thecraftbeerco.com/events",
+    "https://www.thecraftbeerco.com/clerkenwell"
+   ],
+   "follow": 4,
+   "name": "The Craft Beer Co. Clerkenwell"
+  },
+  {
+   "id": "seed-the-castle-ec1m-6db",
+   "urls": [
+    "https://www.thecastlefarringdon.co.uk/events",
+    "https://questionone.co/uk/venues/castle-farringdon",
+    "https://www.thecastlefarringdon.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Castle"
+  },
+  {
+   "id": "seed-the-sir-christopher-hatton-ec1n-7ra",
+   "urls": [
+    "https://questionone.com/venues/pub-quiz-sir-christopher-hatton-chancery-lane-tuesdays/",
+    "https://www.nicholsonspubs.co.uk/restaurants/london/thesirchristopherhattonhattongardenlondon"
+   ],
+   "follow": 4,
+   "name": "The Sir Christopher Hatton"
+  },
+  {
+   "id": "seed-the-old-ivy-house",
+   "urls": [
+    "https://oldivyhouse.co.uk/whats-on/quiz",
+    "https://oldivyhouse.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Old Ivy House"
+  },
+  {
+   "id": "seed-coin-laundry-ec1r-4qp",
+   "urls": [
+    "https://coinlaundry.co.uk/whats-on/quiznight",
+    "https://coinlaundry.co.uk/"
+   ],
+   "follow": 4,
+   "name": "Coin Laundry"
+  },
+  {
+   "id": "seed-the-exmouth-arms-ec1r-4ql",
+   "urls": [
+    "https://www.urbanpubsandbars.com/venues/exmouth-arms",
+    "https://www.urbanpubsandbars.com/whats-on"
+   ],
+   "follow": 4,
+   "name": "The Exmouth Arms"
+  },
+  {
+   "id": "seed-the-royal-star-ec1v-2pn",
+   "urls": [
+    "https://theroyalstar.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Royal Star"
+  },
+  {
+   "id": "seed-the-george-vulture-n1-6bu",
+   "urls": [
+    "https://www.useyourlocal.com/pubs/george-and-vulture-london-n1-6375/offers-events/quiz-night-32033/",
+    "https://www.useyourlocal.com/pubs/george-and-vulture-london-n1-6375/offers-events/quiz-night-32048/"
+   ],
+   "follow": 4,
+   "name": "The George & Vulture"
+  },
+  {
+   "id": "seed-singer-tavern-ec1y-1ag",
+   "urls": [
+    "https://www.urbanpubsandbars.com/city-by-urban/whats-on/singer-quiz",
+    "https://www.urbanpubsandbars.com/city-by-urban/venues/singer-tavern"
+   ],
+   "follow": 4,
+   "name": "Singer Tavern"
+  },
+  {
+   "id": "seed-the-griffin-ec2a-4rd",
+   "urls": [
+    "https://www.the-griffin.com/",
+    "https://www.urbanpubsandbars.com/venues/the-griffin"
+   ],
+   "follow": 4,
+   "name": "The Griffin"
+  },
+  {
+   "id": "seed-munich-cricket-club-tower-hill-ec3n-3aj",
+   "urls": [
+    "https://munichcricketclub.co.uk/events/quiz-night/",
+    "https://munichcricketclub.co.uk/locations/tower-hill/"
+   ],
+   "follow": 4,
+   "name": "Munich Cricket Club Tower Hill"
+  },
+  {
+   "id": "seed-the-minories-ec3n-1jl",
+   "urls": [
+    "https://www.speedquizzing.com/pub-quiz/london/",
+    "https://www.socialpubandkitchen.co.uk/minories-london"
+   ],
+   "follow": 4,
+   "name": "The Minories"
+  },
+  {
+   "id": "seed-punch-tavern-ec4y-1de",
+   "urls": [
+    "https://www.punchtavern.com/whats-on/the-punch-quiz",
+    "https://www.urbanpubsandbars.com/whats-on/the-punch-quiz"
+   ],
+   "follow": 4,
+   "name": "Punch Tavern"
+  },
+  {
+   "id": "seed-the-harrow-ec4y-8jj",
+   "urls": [
+    "https://www.harrowlondon.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Harrow"
+  },
+  {
+   "id": "seed-paternoster-tavern-ec4m-7ju",
+   "urls": [
+    "https://paternostertavern.co.uk/"
+   ],
+   "follow": 4,
+   "name": "Paternoster Tavern"
+  },
+  {
+   "id": "seed-star-by-liverpool-street-e1-7ez",
+   "urls": [
+    "https://starbyliverpoolstreet.co.uk/whats-on/all-events/",
+    "https://starbyliverpoolstreet.co.uk/events/pub-quiz-2029-06-05/"
+   ],
+   "follow": 4,
+   "name": "Star by Liverpool Street"
+  },
+  {
+   "id": "seed-retro-bar-wc2n-6hh",
+   "urls": [
+    "https://www.retrobarlondon.co.uk/london"
+   ],
+   "follow": 4,
+   "name": "Retro Bar"
+  },
+  {
+   "id": "seed-the-queen-s-head-wc1x-8sf",
+   "urls": [
+    "https://www.thequeensheadholborn.com/whats-on",
+    "https://questionone.com/venues/pub-quiz-tuesdays-7pm-at-the-queens-head-holborn/"
+   ],
+   "follow": 4,
+   "name": "The Queen's Head"
+  },
+  {
+   "id": "seed-the-barley-mow",
+   "urls": [
+    "https://thebarleymowmarylebone.com/our-famous-quiz"
+   ],
+   "follow": 4,
+   "name": "The Barley Mow"
+  },
+  {
+   "id": "seed-brewdog-soho-w1f-8qg",
+   "urls": [
+    "https://compleatquiz.com/quiz-listing/",
+    "https://drink.brewdog.com/uk/brewdog-soho?booking_type_id=60df33799cc7d426714b9439"
+   ],
+   "follow": 4,
+   "name": "BrewDog Soho"
+  },
+  {
+   "id": "seed-brewdog-seven-dials-wc2h-8hj",
+   "urls": [
+    "https://brewdog.com/pages/bars/seven-dials",
+    "https://compleatquiz.com/quiz-listing/",
+    "https://drink.brewdog.com/uk/brewdog-seven-dials"
+   ],
+   "follow": 4,
+   "name": "BrewDog Seven Dials"
+  },
+  {
+   "id": "seed-the-green-man-w1w-7es",
+   "urls": [
+    "https://www.thegreenmanw1.co.uk/events",
+    "https://www.thegreenmanw1.co.uk/faq",
+    "https://www.thegreenmanw1.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Green Man"
+  },
+  {
+   "id": "seed-rising-sun-w1t-2ed",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/greater-london/rising-sun/pub-quiz",
+    "https://www.greeneking.co.uk/pubs/greater-london/rising-sun/whats-on",
+    "https://www.greeneking.co.uk/pubs/greater-london/rising-sun"
+   ],
+   "follow": 4,
+   "name": "Rising Sun"
+  },
+  {
+   "id": "seed-coach-horses",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/greater-london/coach-and-horses/pub-quiz",
+    "https://www.coachandhorsesmayfair.co.uk/"
+   ],
+   "follow": 4,
+   "name": "Coach & Horses"
+  },
+  {
+   "id": "seed-the-rugby-tavern-wc1n-3es",
+   "urls": [
+    "https://rugbytavern.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Rugby Tavern"
+  },
+  {
+   "id": "seed-the-loose-box-sw1p-2aa",
+   "urls": [
+    "https://www.theloosebox.co.uk/"
+   ],
+   "follow": 4,
+   "name": "The Loose Box"
+  },
+  {
+   "id": "seed-sir-john-balcombe-nw1-6he",
+   "urls": [
+    "https://www.pubsmiths.co.uk/sir-john-balcombe-marylebone/event",
+    "https://www.pubsmiths.co.uk/sir-john-balcombe-marylebone"
+   ],
+   "follow": 4,
+   "name": "Sir John Balcombe"
+  },
+  {
+   "id": "seed-the-craft-beer-co-clerkenwell-hatton-garden",
+   "urls": [
+    "http://www.thecraftbeerco.com/events/quiz-nights-clerkenwell",
+    "http://www.thecraftbeerco.com/events"
+   ],
+   "follow": 4,
+   "name": "The Craft Beer Co. (Clerkenwell / Hatton Garden)"
+  },
+  {
+   "id": "seed-the-princess-victoria",
+   "urls": [
+    "https://princessvictoria.co.uk/tuesday-pub-quiz/"
+   ],
+   "follow": 4,
+   "name": "The Princess Victoria"
+  },
+  {
+   "id": "seed-the-victoria",
+   "urls": [
+    "https://www.victoriapaddington.co.uk/whats-on/quiz-night"
+   ],
+   "follow": 4,
+   "name": "The Victoria"
+  },
+  {
+   "id": "seed-bertie-s-bar-at-the-prince-of-wales",
+   "urls": [
+    "https://www.greeneking.co.uk/pubs/greater-london/prince-of-wales-wimbledon/berties-bar"
+   ],
+   "follow": 4,
+   "name": "Bertie's Bar at the Prince of Wales"
+  },
+  {
+   "id": "seed-star-of-bethnal-green",
+   "urls": [
+    "https://starofbethnalgreen.co.uk/events/drag-pub-quiz-with-margaraine-2025-06-10/"
+   ],
+   "follow": 4,
+   "name": "Star of Bethnal Green"
+  },
+  {
+   "id": "seed-flat-iron-square",
+   "urls": [
+    "https://flatironsquare.co.uk/event/speed-quizzing/"
+   ],
+   "follow": 4,
+   "name": "Flat Iron Square"
+  },
+  {
+   "id": "seed-east-dulwich-tavern-the-edt",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-tuesdays-at-the-edt"
+   ],
+   "follow": 4,
+   "name": "East Dulwich Tavern (The EDT)"
+  },
+  {
+   "id": "seed-the-slaughtered-lamb",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/slaughtered-lamb-pub-quiz"
+   ],
+   "follow": 4,
+   "name": "The Slaughtered Lamb"
+  },
+  {
+   "id": "seed-the-sun-of-camberwell",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-tuesdays-at-the-sun"
+   ],
+   "follow": 4,
+   "name": "The Sun of Camberwell"
+  },
+  {
+   "id": "seed-the-crown-castle",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-the-crown-castle"
+   ],
+   "follow": 4,
+   "name": "The Crown & Castle"
+  },
+  {
+   "id": "seed-singer-tavern",
+   "urls": [
+    "https://www.urbanpubsandbars.com/city-by-urban/whats-on/singer-quiz"
+   ],
+   "follow": 4,
+   "name": "Singer Tavern"
+  },
+  {
+   "id": "seed-st-john-s-tavern",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/pub-quiz-at-st-johns-tavern"
+   ],
+   "follow": 4,
+   "name": "St. John's Tavern"
+  },
+  {
+   "id": "seed-punch-tavern",
+   "urls": [
+    "https://www.urbanpubsandbars.com/whats-on/the-punch-quiz"
+   ],
+   "follow": 4,
+   "name": "Punch Tavern"
+  }
+ ]
 }
