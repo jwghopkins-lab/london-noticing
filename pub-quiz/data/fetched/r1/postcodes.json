@@ -1,0 +1,226 @@
+{
+ "E1 7EZ": {
+  "postcode": "E1 7EZ",
+  "lat": 51.516552,
+  "lon": -0.076488,
+  "district": "Tower Hamlets",
+  "ward": "Spitalfields & Banglatown"
+ },
+ "EC1A 7JQ": {
+  "postcode": "EC1A 7JQ",
+  "lat": 51.519126,
+  "lon": -0.099745,
+  "district": "City of London",
+  "ward": "Farringdon Within"
+ },
+ "EC1M 6DB": {
+  "postcode": "EC1M 6DB",
+  "lat": 51.520251,
+  "lon": -0.104224,
+  "district": "Islington",
+  "ward": "Clerkenwell"
+ },
+ "EC1N 7RA": {
+  "postcode": "EC1N 7RA",
+  "lat": 51.518355,
+  "lon": -0.108814,
+  "district": "Camden",
+  "ward": "Holborn & Covent Garden"
+ },
+ "EC1N 7TR": {
+  "postcode": "EC1N 7TR",
+  "lat": 51.521139,
+  "lon": -0.109679,
+  "district": "Camden",
+  "ward": "Holborn & Covent Garden"
+ },
+ "EC1R 0EG": {
+  "postcode": "EC1R 0EG",
+  "lat": 51.523252,
+  "lon": -0.105181,
+  "district": "Islington",
+  "ward": "Clerkenwell"
+ },
+ "EC1R 4QL": {
+  "postcode": "EC1R 4QL",
+  "lat": 51.526092,
+  "lon": -0.108969,
+  "district": "Islington",
+  "ward": "Clerkenwell"
+ },
+ "EC1R 4QP": {
+  "postcode": "EC1R 4QP",
+  "lat": 51.526265,
+  "lon": -0.107996,
+  "district": "Islington",
+  "ward": "Clerkenwell"
+ },
+ "EC1V 0DX": {
+  "postcode": "EC1V 0DX",
+  "lat": 51.523272,
+  "lon": -0.101417,
+  "district": "Islington",
+  "ward": "Bunhill"
+ },
+ "EC1V 2PN": {
+  "postcode": "EC1V 2PN",
+  "lat": 51.528242,
+  "lon": -0.092358,
+  "district": "Islington",
+  "ward": "St Peter's & Canalside"
+ },
+ "EC1Y 1AG": {
+  "postcode": "EC1Y 1AG",
+  "lat": 51.522775,
+  "lon": -0.086893,
+  "district": "Islington",
+  "ward": "Bunhill"
+ },
+ "EC2A 3BX": {
+  "postcode": "EC2A 3BX",
+  "lat": 51.526216,
+  "lon": -0.080636,
+  "district": "Hackney",
+  "ward": "Hoxton East & Shoreditch"
+ },
+ "EC2A 4RD": {
+  "postcode": "EC2A 4RD",
+  "lat": 51.524853,
+  "lon": -0.082005,
+  "district": "Hackney",
+  "ward": "Hoxton East & Shoreditch"
+ },
+ "EC3N 1DD": {
+  "postcode": "EC3N 1DD",
+  "lat": 51.512325,
+  "lon": -0.07534,
+  "district": "City of London",
+  "ward": "Tower"
+ },
+ "EC3N 1JL": {
+  "postcode": "EC3N 1JL",
+  "lat": 51.510291,
+  "lon": -0.074662,
+  "district": "City of London",
+  "ward": "Tower"
+ },
+ "EC3N 3AJ": {
+  "postcode": "EC3N 3AJ",
+  "lat": 51.511679,
+  "lon": -0.077644,
+  "district": "City of London",
+  "ward": "Aldgate"
+ },
+ "EC3R 8DJ": {
+  "postcode": "EC3R 8DJ",
+  "lat": 51.51033,
+  "lon": -0.084734,
+  "district": "City of London",
+  "ward": "Bridge"
+ },
+ "EC4M 7JU": {
+  "postcode": "EC4M 7JU",
+  "lat": 51.513882,
+  "lon": -0.102456,
+  "district": "City of London",
+  "ward": "Farringdon Within"
+ },
+ "EC4Y 1DE": {
+  "postcode": "EC4Y 1DE",
+  "lat": 51.514074,
+  "lon": -0.104841,
+  "district": "City of London",
+  "ward": "Castle Baynard"
+ },
+ "EC4Y 8JJ": {
+  "postcode": "EC4Y 8JJ",
+  "lat": 51.512899,
+  "lon": -0.106749,
+  "district": "City of London",
+  "ward": "Castle Baynard"
+ },
+ "N1 6BU": {
+  "postcode": "N1 6BU",
+  "lat": 51.528877,
+  "lon": -0.083883,
+  "district": "Hackney",
+  "ward": "Hoxton West"
+ },
+ "NW1 6HE": {
+  "postcode": "NW1 6HE",
+  "lat": 51.523523,
+  "lon": -0.161822,
+  "district": "Westminster",
+  "ward": "Regent's Park"
+ },
+ "SW1P 2AA": {
+  "postcode": "SW1P 2AA",
+  "lat": 51.494764,
+  "lon": -0.130508,
+  "district": "Westminster",
+  "ward": "Vincent Square"
+ },
+ "W1F 8QG": {
+  "postcode": "W1F 8QG",
+  "lat": 51.515076,
+  "lon": -0.137113,
+  "district": "Westminster",
+  "ward": "West End"
+ },
+ "W1H 5HT": {
+  "postcode": "W1H 5HT",
+  "lat": 51.517508,
+  "lon": -0.164183,
+  "district": "Westminster",
+  "ward": "Marylebone"
+ },
+ "W1T 2ED": {
+  "postcode": "W1T 2ED",
+  "lat": 51.519197,
+  "lon": -0.133312,
+  "district": "Camden",
+  "ward": "Bloomsbury"
+ },
+ "W1W 7ES": {
+  "postcode": "W1W 7ES",
+  "lat": 51.518998,
+  "lon": -0.139418,
+  "district": "Westminster",
+  "ward": "West End"
+ },
+ "WC1N 3ES": {
+  "postcode": "WC1N 3ES",
+  "lat": 51.521666,
+  "lon": -0.117254,
+  "district": "Camden",
+  "ward": "Holborn & Covent Garden"
+ },
+ "WC1X 8PN": {
+  "postcode": "WC1X 8PN",
+  "lat": 51.521521,
+  "lon": -0.113858,
+  "district": "Camden",
+  "ward": "Holborn & Covent Garden"
+ },
+ "WC1X 8SF": {
+  "postcode": "WC1X 8SF",
+  "lat": 51.520795,
+  "lon": -0.1168,
+  "district": "Camden",
+  "ward": "Holborn & Covent Garden"
+ },
+ "WC2H 8HJ": {
+  "postcode": "WC2H 8HJ",
+  "lat": 51.513395,
+  "lon": -0.128693,
+  "district": "Camden",
+  "ward": "Holborn & Covent Garden"
+ },
+ "WC2N 6HH": {
+  "postcode": "WC2N 6HH",
+  "lat": 51.509132,
+  "lon": -0.123579,
+  "district": "Westminster",
+  "ward": "St James's"
+ }
+}

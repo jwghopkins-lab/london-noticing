@@ -7619,7 +7619,6 @@
 "lat": 51.56481,
 "lon": -0.13297,
 "amenity": "pub",
-"disused:amenity": "pub",
 "name": "The Mother Redcap"
 },
 {
@@ -27792,7 +27791,6 @@
 "addr:postcode": "W1W 5EA",
 "addr:street": "Devonshire Street",
 "amenity": "pub",
-"disused:amenity": "pub",
 "name": "The Lucky Saint",
 "website": "https://luckysaint.co/pages/the-lucky-saint-pub-london-w1"
 },
@@ -29248,7 +29246,6 @@
 "addr:housenumber": "38",
 "addr:street": "Charterhouse Street",
 "amenity": "bar",
-"disused:amenity": "bar",
 "name": "Smithfield Tap",
 "old_name": "Charterhouse;Beer Hawk"
 },
@@ -34407,7 +34404,6 @@
 "addr:city": "Southall",
 "addr:postcode": "UB1 1NG",
 "amenity": "pub",
-"disused:amenity": "pub",
 "name": "Hambrough Tavern"
 },
 {
@@ -35477,7 +35473,6 @@
 "addr:postcode": "N8 8JP",
 "addr:street": "Park Road",
 "amenity": "pub",
-"disused:amenity": "pub",
 "name": "The Good Reader",
 "old_name": "Princess Alexandra",
 "website": "https://thegoodreader.co.uk/"
@@ -39990,7 +39985,6 @@
 "addr:street": "Putney High Street",
 "amenity": "bar",
 "brand": "Simmons Bars",
-"disused:amenity": "bar",
 "name": "Simmons Bars",
 "website": "https://www.simmonsbar.co.uk/venues/putney/"
 },
@@ -40314,7 +40308,6 @@
 "addr:postcode": "N16 0UL",
 "addr:street": "Stoke Newington Church Street",
 "amenity": "pub",
-"disused:amenity": "pub",
 "name": "The Mary Wollstencroft"
 },
 {
@@ -43322,7 +43315,6 @@
 "addr:postcode": "TW9 2PQ",
 "addr:street": "Kew Road",
 "amenity": "bar",
-"disused:amenity": "fast_food",
 "name": "Treviso Vinoteca"
 },
 {
@@ -47045,7 +47037,6 @@
 "addr:postcode": "E20 1FS",
 "addr:street": "Victory Parade",
 "amenity": "bar",
-"disused:amenity": "cafe",
 "name": "Bado"
 },
 {
@@ -49577,7 +49568,6 @@
 "addr:street": "Farringdon Street",
 "amenity": "pub",
 "brand": "Shepherd Neame",
-"disused:amenity": "pub",
 "name": "Hoop and Grapes",
 "operator": "shepherd neame",
 "website": "https://www.hoopandgrapes.co.uk/"
@@ -50751,7 +50741,6 @@
 "addr:postcode": "UB9 5AE",
 "addr:street": "Cheapside Lane",
 "amenity": "pub",
-"disused:amenity": "pub",
 "name": "The King",
 "website": "http://www.thekingdenham.co.uk"
 },
