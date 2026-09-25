@@ -1,0 +1,1191 @@
+{
+ "BR1 1HE": {
+  "postcode": "BR1 1HE",
+  "lat": 51.405539,
+  "lon": 0.014351,
+  "district": "Bromley",
+  "ward": "Bromley Town"
+ },
+ "BR2 0EY": {
+  "postcode": "BR2 0EY",
+  "lat": 51.40493,
+  "lon": 0.004202,
+  "district": "Bromley",
+  "ward": "Shortlands & Park Langley"
+ },
+ "BR2 8AP": {
+  "postcode": "BR2 8AP",
+  "lat": 51.390257,
+  "lon": 0.045187,
+  "district": "Bromley",
+  "ward": "Bickley & Sundridge"
+ },
+ "BR5 1LA": {
+  "postcode": "BR5 1LA",
+  "lat": 51.390084,
+  "lon": 0.07394,
+  "district": "Bromley",
+  "ward": "Petts Wood & Knoll"
+ },
+ "BR6 9NL": {
+  "postcode": "BR6 9NL",
+  "lat": 51.358797,
+  "lon": 0.086677,
+  "district": "Bromley",
+  "ward": "Farnborough & Crofton"
+ },
+ "BR7 6NR": {
+  "postcode": "BR7 6NR",
+  "lat": 51.411588,
+  "lon": 0.075373,
+  "district": "Bromley",
+  "ward": "Chislehurst"
+ },
+ "CM14 4RX": {
+  "postcode": "CM14 4RX",
+  "lat": 51.619736,
+  "lon": 0.298883,
+  "district": "Brentwood",
+  "ward": "Brentwood South"
+ },
+ "CM16 7ES": {
+  "postcode": "CM16 7ES",
+  "lat": 51.671871,
+  "lon": 0.099978,
+  "district": "Epping Forest",
+  "ward": "Theydon Bois with Passingford"
+ },
+ "CM4 0RL": {
+  "postcode": "CM4 0RL",
+  "lat": 51.69302,
+  "lon": 0.318584,
+  "district": "Brentwood",
+  "ward": "Blackmore & Doddinghurst"
+ },
+ "CM5 9DH": {
+  "postcode": "CM5 9DH",
+  "lat": 51.696563,
+  "lon": 0.24544,
+  "district": "Epping Forest",
+  "ward": "Ongar"
+ },
+ "CR0 1LD": {
+  "postcode": "CR0 1LD",
+  "lat": 51.374851,
+  "lon": -0.094532,
+  "district": "Croydon",
+  "ward": "Fairfield"
+ },
+ "CR0 1RG": {
+  "postcode": "CR0 1RG",
+  "lat": 51.372888,
+  "lon": -0.101568,
+  "district": "Croydon",
+  "ward": "Fairfield"
+ },
+ "CR0 6TP": {
+  "postcode": "CR0 6TP",
+  "lat": 51.379348,
+  "lon": -0.08683,
+  "district": "Croydon",
+  "ward": "Addiscombe West"
+ },
+ "CR2 8LB": {
+  "postcode": "CR2 8LB",
+  "lat": 51.34365,
+  "lon": -0.061896,
+  "district": "Croydon",
+  "ward": "Selsdon Vale & Forestdale"
+ },
+ "CR3 5UA": {
+  "postcode": "CR3 5UA",
+  "lat": 51.286657,
+  "lon": -0.088976,
+  "district": "Tandridge",
+  "ward": "Portley & Queens Park"
+ },
+ "CR3 5XL": {
+  "postcode": "CR3 5XL",
+  "lat": 51.29056,
+  "lon": -0.102797,
+  "district": "Tandridge",
+  "ward": "Westway"
+ },
+ "CR3 6QA": {
+  "postcode": "CR3 6QA",
+  "lat": 51.282246,
+  "lon": -0.076656,
+  "district": "Tandridge",
+  "ward": "Harestone"
+ },
+ "CR4 4HA": {
+  "postcode": "CR4 4HA",
+  "lat": 51.402971,
+  "lon": -0.161541,
+  "district": "Merton",
+  "ward": "Cricket Green"
+ },
+ "CR5 3NA": {
+  "postcode": "CR5 3NA",
+  "lat": 51.310658,
+  "lon": -0.170068,
+  "district": "Reigate and Banstead",
+  "ward": "Chipstead, Kingswood & Woodmansterne"
+ },
+ "CR5 3QW": {
+  "postcode": "CR5 3QW",
+  "lat": 51.299958,
+  "lon": -0.168413,
+  "district": "Reigate and Banstead",
+  "ward": "Chipstead, Kingswood & Woodmansterne"
+ },
+ "CR5 3TE": {
+  "postcode": "CR5 3TE",
+  "lat": 51.309661,
+  "lon": -0.171255,
+  "district": "Reigate and Banstead",
+  "ward": "Chipstead, Kingswood & Woodmansterne"
+ },
+ "DA1 1LP": {
+  "postcode": "DA1 1LP",
+  "lat": 51.443466,
+  "lon": 0.222627,
+  "district": "Dartford",
+  "ward": "Brent"
+ },
+ "DA1 2DJ": {
+  "postcode": "DA1 2DJ",
+  "lat": 51.444626,
+  "lon": 0.216437,
+  "district": "Dartford",
+  "ward": "Town"
+ },
+ "DA1 4BH": {
+  "postcode": "DA1 4BH",
+  "lat": 51.451745,
+  "lon": 0.177285,
+  "district": "Bexley",
+  "ward": "Crayford"
+ },
+ "DA15 8PR": {
+  "postcode": "DA15 8PR",
+  "lat": 51.451202,
+  "lon": 0.100588,
+  "district": "Bexley",
+  "ward": "Blackfen & Lamorbey"
+ },
+ "DA15 8SW": {
+  "postcode": "DA15 8SW",
+  "lat": 51.451514,
+  "lon": 0.092182,
+  "district": "Bexley",
+  "ward": "Blackfen & Lamorbey"
+ },
+ "DA16 1TR": {
+  "postcode": "DA16 1TR",
+  "lat": 51.46202,
+  "lon": 0.112617,
+  "district": "Bexley",
+  "ward": "Falconwood & Welling"
+ },
+ "DA16 3RW": {
+  "postcode": "DA16 3RW",
+  "lat": 51.466308,
+  "lon": 0.085603,
+  "district": "Bexley",
+  "ward": "East Wickham"
+ },
+ "DA3 8JB": {
+  "postcode": "DA3 8JB",
+  "lat": 51.366065,
+  "lon": 0.30476,
+  "district": "Sevenoaks",
+  "ward": "Ash and New Ash Green"
+ },
+ "DA5 1AJ": {
+  "postcode": "DA5 1AJ",
+  "lat": 51.441563,
+  "lon": 0.150093,
+  "district": "Bexley",
+  "ward": "St Mary's & St James"
+ },
+ "DA7 4EQ": {
+  "postcode": "DA7 4EQ",
+  "lat": 51.462202,
+  "lon": 0.131859,
+  "district": "Bexley",
+  "ward": "Crook Log"
+ },
+ "DA7 5AE": {
+  "postcode": "DA7 5AE",
+  "lat": 51.46597,
+  "lon": 0.145655,
+  "district": "Bexley",
+  "ward": "Bexleyheath"
+ },
+ "DA9 9DA": {
+  "postcode": "DA9 9DA",
+  "lat": 51.446172,
+  "lon": 0.263515,
+  "district": "Dartford",
+  "ward": "Stone Castle"
+ },
+ "E14 7JD": {
+  "postcode": "E14 7JD",
+  "lat": 51.512626,
+  "lon": -0.040291,
+  "district": "Tower Hamlets",
+  "ward": "Shadwell"
+ },
+ "E1W 1UH": {
+  "postcode": "E1W 1UH",
+  "lat": 51.506441,
+  "lon": -0.070242,
+  "district": "Tower Hamlets",
+  "ward": "St Katharine's & Wapping"
+ },
+ "EN2 6PZ": {
+  "postcode": "EN2 6PZ",
+  "lat": 51.656047,
+  "lon": -0.087054,
+  "district": "Enfield",
+  "ward": "Town"
+ },
+ "EN2 9DJ": {
+  "postcode": "EN2 9DJ",
+  "lat": 51.683463,
+  "lon": -0.102492,
+  "district": "Enfield",
+  "ward": "Whitewebbs"
+ },
+ "EN4 8RN": {
+  "postcode": "EN4 8RN",
+  "lat": 51.649889,
+  "lon": -0.171285,
+  "district": "Barnet",
+  "ward": "East Barnet"
+ },
+ "EN5 5SJ": {
+  "postcode": "EN5 5SJ",
+  "lat": 51.653029,
+  "lon": -0.19932,
+  "district": "Barnet",
+  "ward": "High Barnet"
+ },
+ "EN6 2JD": {
+  "postcode": "EN6 2JD",
+  "lat": 51.696404,
+  "lon": -0.194301,
+  "district": "Hertsmere",
+  "ward": "Potters Bar Furzefield"
+ },
+ "HA1 1JP": {
+  "postcode": "HA1 1JP",
+  "lat": 51.581647,
+  "lon": -0.337676,
+  "district": "Harrow",
+  "ward": "Greenhill"
+ },
+ "HA1 2AA": {
+  "postcode": "HA1 2AA",
+  "lat": 51.580691,
+  "lon": -0.33429,
+  "district": "Harrow",
+  "ward": "Greenhill"
+ },
+ "HA1 2DH": {
+  "postcode": "HA1 2DH",
+  "lat": 51.57965,
+  "lon": -0.332539,
+  "district": "Harrow",
+  "ward": "Greenhill"
+ },
+ "HA3 6AA": {
+  "postcode": "HA3 6AA",
+  "lat": 51.604761,
+  "lon": -0.327792,
+  "district": "Harrow",
+  "ward": "Harrow Weald"
+ },
+ "HA4 0HG": {
+  "postcode": "HA4 0HG",
+  "lat": 51.557642,
+  "lon": -0.396833,
+  "district": "Hillingdon",
+  "ward": "South Ruislip"
+ },
+ "HA5 1RJ": {
+  "postcode": "HA5 1RJ",
+  "lat": 51.578554,
+  "lon": -0.399806,
+  "district": "Hillingdon",
+  "ward": "Eastcote"
+ },
+ "HA5 2EQ": {
+  "postcode": "HA5 2EQ",
+  "lat": 51.589548,
+  "lon": -0.404746,
+  "district": "Hillingdon",
+  "ward": "Eastcote"
+ },
+ "HA5 3EN": {
+  "postcode": "HA5 3EN",
+  "lat": 51.596636,
+  "lon": -0.384544,
+  "district": "Harrow",
+  "ward": "Pinner"
+ },
+ "HA5 5JS": {
+  "postcode": "HA5 5JS",
+  "lat": 51.585604,
+  "lon": -0.3801,
+  "district": "Harrow",
+  "ward": "Pinner South"
+ },
+ "HA9 0HP": {
+  "postcode": "HA9 0HP",
+  "lat": 51.557531,
+  "lon": -0.281544,
+  "district": "Brent",
+  "ward": "Wembley Park"
+ },
+ "HA9 0JT": {
+  "postcode": "HA9 0JT",
+  "lat": 51.560518,
+  "lon": -0.280393,
+  "district": "Brent",
+  "ward": "Wembley Park"
+ },
+ "IG10 4BE": {
+  "postcode": "IG10 4BE",
+  "lat": 51.645817,
+  "lon": 0.053228,
+  "district": "Epping Forest",
+  "ward": "Loughton Forest"
+ },
+ "IG11 0NX": {
+  "postcode": "IG11 0NX",
+  "lat": 51.528576,
+  "lon": 0.103168,
+  "district": "Barking and Dagenham",
+  "ward": "Thames View"
+ },
+ "IG2 6SX": {
+  "postcode": "IG2 6SX",
+  "lat": 51.578332,
+  "lon": 0.070853,
+  "district": "Redbridge",
+  "ward": "Barkingside"
+ },
+ "IG5 0NY": {
+  "postcode": "IG5 0NY",
+  "lat": 51.591742,
+  "lon": 0.0641,
+  "district": "Redbridge",
+  "ward": "Fullwell"
+ },
+ "IG6 2NG": {
+  "postcode": "IG6 2NG",
+  "lat": 51.601291,
+  "lon": 0.084071,
+  "district": "Redbridge",
+  "ward": "Fairlop"
+ },
+ "IG8 0UG": {
+  "postcode": "IG8 0UG",
+  "lat": 51.609761,
+  "lon": 0.020823,
+  "district": "Redbridge",
+  "ward": "Monkhams"
+ },
+ "IG9 6HY": {
+  "postcode": "IG9 6HY",
+  "lat": 51.618643,
+  "lon": 0.045905,
+  "district": "Epping Forest",
+  "ward": "Buckhurst Hill East & Whitebridge"
+ },
+ "KT1 1BQ": {
+  "postcode": "KT1 1BQ",
+  "lat": 51.409108,
+  "lon": -0.305507,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Town"
+ },
+ "KT1 1HH": {
+  "postcode": "KT1 1HH",
+  "lat": 51.407851,
+  "lon": -0.308199,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Town"
+ },
+ "KT1 1HL": {
+  "postcode": "KT1 1HL",
+  "lat": 51.408168,
+  "lon": -0.307727,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Town"
+ },
+ "KT1 1JT": {
+  "postcode": "KT1 1JT",
+  "lat": 51.409071,
+  "lon": -0.306716,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Town"
+ },
+ "KT1 1PY": {
+  "postcode": "KT1 1PY",
+  "lat": 51.410294,
+  "lon": -0.307994,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Town"
+ },
+ "KT1 2PY": {
+  "postcode": "KT1 2PY",
+  "lat": 51.409262,
+  "lon": -0.297549,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Town"
+ },
+ "KT10 8LA": {
+  "postcode": "KT10 8LA",
+  "lat": 51.364832,
+  "lon": -0.378937,
+  "district": "Elmbridge",
+  "ward": "Esher"
+ },
+ "KT10 9FQ": {
+  "postcode": "KT10 9FQ",
+  "lat": 51.368611,
+  "lon": -0.3655,
+  "district": "Elmbridge",
+  "ward": "Esher"
+ },
+ "KT10 9RQ": {
+  "postcode": "KT10 9RQ",
+  "lat": 51.369708,
+  "lon": -0.364829,
+  "district": "Elmbridge",
+  "ward": "Esher"
+ },
+ "KT11 3DX": {
+  "postcode": "KT11 3DX",
+  "lat": 51.327155,
+  "lon": -0.409201,
+  "district": "Elmbridge",
+  "ward": "Cobham and Downside"
+ },
+ "KT11 3LT": {
+  "postcode": "KT11 3LT",
+  "lat": 51.322087,
+  "lon": -0.412132,
+  "district": "Elmbridge",
+  "ward": "Cobham and Downside"
+ },
+ "KT12 2PF": {
+  "postcode": "KT12 2PF",
+  "lat": 51.390012,
+  "lon": -0.4218,
+  "district": "Elmbridge",
+  "ward": "Walton Central"
+ },
+ "KT12 5LS": {
+  "postcode": "KT12 5LS",
+  "lat": 51.366332,
+  "lon": -0.402344,
+  "district": "Elmbridge",
+  "ward": "Hersham Village"
+ },
+ "KT12 5QJ": {
+  "postcode": "KT12 5QJ",
+  "lat": 51.370775,
+  "lon": -0.401068,
+  "district": "Elmbridge",
+  "ward": "Hersham Village"
+ },
+ "KT13 8DG": {
+  "postcode": "KT13 8DG",
+  "lat": 51.371195,
+  "lon": -0.462057,
+  "district": "Elmbridge",
+  "ward": "Weybridge Riverside"
+ },
+ "KT13 8TX": {
+  "postcode": "KT13 8TX",
+  "lat": 51.362488,
+  "lon": -0.459102,
+  "district": "Elmbridge",
+  "ward": "Weybridge Riverside"
+ },
+ "KT15 3NT": {
+  "postcode": "KT15 3NT",
+  "lat": 51.348355,
+  "lon": -0.501621,
+  "district": "Runnymede",
+  "ward": "New Haw"
+ },
+ "KT16 8AP": {
+  "postcode": "KT16 8AP",
+  "lat": 51.391835,
+  "lon": -0.501798,
+  "district": "Runnymede",
+  "ward": "Chertsey St Ann's"
+ },
+ "KT16 9EJ": {
+  "postcode": "KT16 9EJ",
+  "lat": 51.394793,
+  "lon": -0.515156,
+  "district": "Runnymede",
+  "ward": "Chertsey St Ann's"
+ },
+ "KT17 2JA": {
+  "postcode": "KT17 2JA",
+  "lat": 51.363435,
+  "lon": -0.247519,
+  "district": "Epsom and Ewell",
+  "ward": "Stoneleigh"
+ },
+ "KT18 5NY": {
+  "postcode": "KT18 5NY",
+  "lat": 51.311818,
+  "lon": -0.241622,
+  "district": "Reigate and Banstead",
+  "ward": "Tattenham Corner & Preston"
+ },
+ "KT18 7RG": {
+  "postcode": "KT18 7RG",
+  "lat": 51.3332,
+  "lon": -0.271009,
+  "district": "Epsom and Ewell",
+  "ward": "Town"
+ },
+ "KT18 7SD": {
+  "postcode": "KT18 7SD",
+  "lat": 51.330792,
+  "lon": -0.281535,
+  "district": "Epsom and Ewell",
+  "ward": "Stamford"
+ },
+ "KT19 8AG": {
+  "postcode": "KT19 8AG",
+  "lat": 51.334192,
+  "lon": -0.266306,
+  "district": "Epsom and Ewell",
+  "ward": "Town"
+ },
+ "KT2 6HT": {
+  "postcode": "KT2 6HT",
+  "lat": 51.416826,
+  "lon": -0.29455,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Gate"
+ },
+ "KT2 6QP": {
+  "postcode": "KT2 6QP",
+  "lat": 51.413248,
+  "lon": -0.287809,
+  "district": "Kingston upon Thames",
+  "ward": "Coombe Hill"
+ },
+ "KT2 7PX": {
+  "postcode": "KT2 7PX",
+  "lat": 51.417069,
+  "lon": -0.282848,
+  "district": "Kingston upon Thames",
+  "ward": "Kingston Gate"
+ },
+ "KT20 6EB": {
+  "postcode": "KT20 6EB",
+  "lat": 51.295391,
+  "lon": -0.214395,
+  "district": "Reigate and Banstead",
+  "ward": "Chipstead, Kingswood & Woodmansterne"
+ },
+ "KT20 7SF": {
+  "postcode": "KT20 7SF",
+  "lat": 51.280968,
+  "lon": -0.249096,
+  "district": "Reigate and Banstead",
+  "ward": "Lower Kingswood, Tadworth & Walton"
+ },
+ "KT22 0JE": {
+  "postcode": "KT22 0JE",
+  "lat": 51.330606,
+  "lon": -0.355626,
+  "district": "Elmbridge",
+  "ward": "Oxshott and Stoke D'Abernon"
+ },
+ "KT3 6JF": {
+  "postcode": "KT3 6JF",
+  "lat": 51.394887,
+  "lon": -0.238211,
+  "district": "Merton",
+  "ward": "West Barnes"
+ },
+ "KT6 4NQ": {
+  "postcode": "KT6 4NQ",
+  "lat": 51.391845,
+  "lon": -0.30702,
+  "district": "Kingston upon Thames",
+  "ward": "St Mark's & Seething Wells"
+ },
+ "KT6 4TW": {
+  "postcode": "KT6 4TW",
+  "lat": 51.398951,
+  "lon": -0.301554,
+  "district": "Kingston upon Thames",
+  "ward": "St Mark's & Seething Wells"
+ },
+ "KT6 6AL": {
+  "postcode": "KT6 6AL",
+  "lat": 51.389505,
+  "lon": -0.297549,
+  "district": "Kingston upon Thames",
+  "ward": "Surbiton Hill"
+ },
+ "KT7 0QQ": {
+  "postcode": "KT7 0QQ",
+  "lat": 51.393452,
+  "lon": -0.333151,
+  "district": "Elmbridge",
+  "ward": "Thames Ditton"
+ },
+ "KT7 0UX": {
+  "postcode": "KT7 0UX",
+  "lat": 51.385949,
+  "lon": -0.324096,
+  "district": "Elmbridge",
+  "ward": "Long Ditton"
+ },
+ "KT8 0SS": {
+  "postcode": "KT8 0SS",
+  "lat": 51.397761,
+  "lon": -0.354256,
+  "district": "Elmbridge",
+  "ward": "Molesey East"
+ },
+ "N4 1TD": {
+  "postcode": "N4 1TD",
+  "lat": 51.576639,
+  "lon": -0.088428,
+  "district": "Haringey",
+  "ward": "Hermitage & Gardens"
+ },
+ "RM1 1HR": {
+  "postcode": "RM1 1HR",
+  "lat": 51.578134,
+  "lon": 0.179165,
+  "district": "Havering",
+  "ward": "St Edward's"
+ },
+ "RM1 1PL": {
+  "postcode": "RM1 1PL",
+  "lat": 51.574508,
+  "lon": 0.184086,
+  "district": "Havering",
+  "ward": "St Alban's"
+ },
+ "RM11 1SU": {
+  "postcode": "RM11 1SU",
+  "lat": 51.567741,
+  "lon": 0.220254,
+  "district": "Havering",
+  "ward": "St Andrew's"
+ },
+ "RM12 4TW": {
+  "postcode": "RM12 4TW",
+  "lat": 51.565558,
+  "lon": 0.188578,
+  "district": "Havering",
+  "ward": "Hylands & Harrow Lodge"
+ },
+ "RM12 5NU": {
+  "postcode": "RM12 5NU",
+  "lat": 51.540613,
+  "lon": 0.202899,
+  "district": "Havering",
+  "ward": "Elm Park"
+ },
+ "RM13 8SS": {
+  "postcode": "RM13 8SS",
+  "lat": 51.522961,
+  "lon": 0.191769,
+  "district": "Havering",
+  "ward": "Beam Park"
+ },
+ "RM14 2RB": {
+  "postcode": "RM14 2RB",
+  "lat": 51.558432,
+  "lon": 0.238312,
+  "district": "Havering",
+  "ward": "St Andrew's"
+ },
+ "RM14 2TD": {
+  "postcode": "RM14 2TD",
+  "lat": 51.558504,
+  "lon": 0.250535,
+  "district": "Havering",
+  "ward": "Upminster"
+ },
+ "RM14 2UD": {
+  "postcode": "RM14 2UD",
+  "lat": 51.556827,
+  "lon": 0.249789,
+  "terminated": true
+ },
+ "RM14 3LT": {
+  "postcode": "RM14 3LT",
+  "lat": 51.557756,
+  "lon": 0.272976,
+  "district": "Havering",
+  "ward": "Upminster"
+ },
+ "RM16 6PP": {
+  "postcode": "RM16 6PP",
+  "lat": 51.492638,
+  "lon": 0.306068,
+  "district": "Thurrock",
+  "ward": "Chafford Hundred East"
+ },
+ "RM17 6EX": {
+  "postcode": "RM17 6EX",
+  "lat": 51.476045,
+  "lon": 0.340573,
+  "district": "Thurrock",
+  "ward": "Little Thurrock Rectory"
+ },
+ "RM2 5HA": {
+  "postcode": "RM2 5HA",
+  "lat": 51.586587,
+  "lon": 0.20089,
+  "district": "Havering",
+  "ward": "Squirrels Heath"
+ },
+ "RM3 7LL": {
+  "postcode": "RM3 7LL",
+  "lat": 51.616086,
+  "lon": 0.217456,
+  "district": "Havering",
+  "ward": "Gooshays"
+ },
+ "RM5 3SP": {
+  "postcode": "RM5 3SP",
+  "lat": 51.600601,
+  "lon": 0.176587,
+  "district": "Havering",
+  "ward": "Havering-atte-Bower"
+ },
+ "SE1 1NX": {
+  "postcode": "SE1 1NX",
+  "lat": 51.504396,
+  "lon": -0.089767,
+  "district": "Southwark",
+  "ward": "London Bridge & West Bermondsey"
+ },
+ "SM1 3AS": {
+  "postcode": "SM1 3AS",
+  "lat": 51.369614,
+  "lon": -0.181526,
+  "district": "Sutton",
+  "ward": "Sutton Central"
+ },
+ "SM3 8RL": {
+  "postcode": "SM3 8RL",
+  "lat": 51.357587,
+  "lon": -0.215741,
+  "district": "Sutton",
+  "ward": "Cheam"
+ },
+ "SM4 4SS": {
+  "postcode": "SM4 4SS",
+  "lat": 51.390855,
+  "lon": -0.220758,
+  "district": "Merton",
+  "ward": "Lower Morden"
+ },
+ "SM4 5HP": {
+  "postcode": "SM4 5HP",
+  "lat": 51.400678,
+  "lon": -0.195677,
+  "district": "Merton",
+  "ward": "Merton Park"
+ },
+ "SM5 3PT": {
+  "postcode": "SM5 3PT",
+  "lat": 51.362569,
+  "lon": -0.169164,
+  "district": "Sutton",
+  "ward": "Carshalton Central"
+ },
+ "SM7 2NZ": {
+  "postcode": "SM7 2NZ",
+  "lat": 51.323615,
+  "lon": -0.197138,
+  "district": "Reigate and Banstead",
+  "ward": "Banstead Village"
+ },
+ "TN13 2RZ": {
+  "postcode": "TN13 2RZ",
+  "lat": 51.285626,
+  "lon": 0.148424,
+  "district": "Sevenoaks",
+  "ward": "Brasted, Chevening and Sundridge"
+ },
+ "TN14 5PG": {
+  "postcode": "TN14 5PG",
+  "lat": 51.312837,
+  "lon": 0.187865,
+  "district": "Sevenoaks",
+  "ward": "Otford and Shoreham"
+ },
+ "TN15 7HT": {
+  "postcode": "TN15 7HT",
+  "lat": 51.366302,
+  "lon": 0.292689,
+  "district": "Sevenoaks",
+  "ward": "Ash and New Ash Green"
+ },
+ "TW1 1LF": {
+  "postcode": "TW1 1LF",
+  "lat": 51.456074,
+  "lon": -0.322969,
+  "district": "Richmond upon Thames",
+  "ward": "St Margarets & North Twickenham"
+ },
+ "TW1 1NJ": {
+  "postcode": "TW1 1NJ",
+  "lat": 51.46032,
+  "lon": -0.323043,
+  "district": "Richmond upon Thames",
+  "ward": "St Margarets & North Twickenham"
+ },
+ "TW1 2LJ": {
+  "postcode": "TW1 2LJ",
+  "lat": 51.454165,
+  "lon": -0.317785,
+  "district": "Richmond upon Thames",
+  "ward": "St Margarets & North Twickenham"
+ },
+ "TW1 3DN": {
+  "postcode": "TW1 3DN",
+  "lat": 51.447156,
+  "lon": -0.321223,
+  "district": "Richmond upon Thames",
+  "ward": "Twickenham Riverside"
+ },
+ "TW1 3DU": {
+  "postcode": "TW1 3DU",
+  "lat": 51.446506,
+  "lon": -0.326111,
+  "district": "Richmond upon Thames",
+  "ward": "Twickenham Riverside"
+ },
+ "TW1 3SN": {
+  "postcode": "TW1 3SN",
+  "lat": 51.446409,
+  "lon": -0.328748,
+  "district": "Richmond upon Thames",
+  "ward": "Twickenham Riverside"
+ },
+ "TW1 3SZ": {
+  "postcode": "TW1 3SZ",
+  "lat": 51.448199,
+  "lon": -0.329431,
+  "district": "Richmond upon Thames",
+  "ward": "Twickenham Riverside"
+ },
+ "TW10 6RN": {
+  "postcode": "TW10 6RN",
+  "lat": 51.452239,
+  "lon": -0.298353,
+  "district": "Richmond upon Thames",
+  "ward": "Ham, Petersham & Richmond Riverside"
+ },
+ "TW11 8EW": {
+  "postcode": "TW11 8EW",
+  "lat": 51.427,
+  "lon": -0.332895,
+  "district": "Richmond upon Thames",
+  "ward": "Teddington"
+ },
+ "TW11 9DN": {
+  "postcode": "TW11 9DN",
+  "lat": 51.418128,
+  "lon": -0.318692,
+  "district": "Richmond upon Thames",
+  "ward": "Hampton Wick & South Teddington"
+ },
+ "TW11 9NN": {
+  "postcode": "TW11 9NN",
+  "lat": 51.429422,
+  "lon": -0.323701,
+  "district": "Richmond upon Thames",
+  "ward": "Teddington"
+ },
+ "TW11 9NR": {
+  "postcode": "TW11 9NR",
+  "lat": 51.428861,
+  "lon": -0.322211,
+  "district": "Richmond upon Thames",
+  "ward": "Teddington"
+ },
+ "TW15 2EB": {
+  "postcode": "TW15 2EB",
+  "lat": 51.432295,
+  "lon": -0.456308,
+  "district": "Spelthorne",
+  "ward": "Ashford East"
+ },
+ "TW16 6AF": {
+  "postcode": "TW16 6AF",
+  "lat": 51.40597,
+  "lon": -0.406844,
+  "district": "Spelthorne",
+  "ward": "Sunbury East"
+ },
+ "TW18 4UW": {
+  "postcode": "TW18 4UW",
+  "lat": 51.435295,
+  "lon": -0.514404,
+  "district": "Spelthorne",
+  "ward": "Staines"
+ },
+ "TW19 6AQ": {
+  "postcode": "TW19 6AQ",
+  "lat": 51.461811,
+  "lon": -0.50148,
+  "district": "Spelthorne",
+  "ward": "Stanwell North"
+ },
+ "TW2 5NJ": {
+  "postcode": "TW2 5NJ",
+  "lat": 51.436935,
+  "lon": -0.350604,
+  "district": "Richmond upon Thames",
+  "ward": "West Twickenham"
+ },
+ "TW2 7BB": {
+  "postcode": "TW2 7BB",
+  "lat": 51.45279,
+  "lon": -0.360295,
+  "district": "Richmond upon Thames",
+  "ward": "Whitton"
+ },
+ "TW5 0RH": {
+  "postcode": "TW5 0RH",
+  "lat": 51.486312,
+  "lon": -0.373122,
+  "district": "Hounslow",
+  "ward": "Heston East"
+ },
+ "TW7 5AQ": {
+  "postcode": "TW7 5AQ",
+  "lat": 51.475491,
+  "lon": -0.332596,
+  "district": "Hounslow",
+  "ward": "Syon & Brentford Lock"
+ },
+ "TW7 6BG": {
+  "postcode": "TW7 6BG",
+  "lat": 51.470962,
+  "lon": -0.321444,
+  "district": "Hounslow",
+  "ward": "Isleworth"
+ },
+ "TW7 6EP": {
+  "postcode": "TW7 6EP",
+  "lat": 51.467229,
+  "lon": -0.339059,
+  "district": "Hounslow",
+  "ward": "Hounslow South"
+ },
+ "TW8 0EW": {
+  "postcode": "TW8 0EW",
+  "lat": 51.48911,
+  "lon": -0.287936,
+  "district": "Hounslow",
+  "ward": "Brentford East"
+ },
+ "TW8 0NP": {
+  "postcode": "TW8 0NP",
+  "lat": 51.487219,
+  "lon": -0.303203,
+  "district": "Hounslow",
+  "ward": "Brentford West"
+ },
+ "TW9 1JL": {
+  "postcode": "TW9 1JL",
+  "lat": 51.460506,
+  "lon": -0.304121,
+  "district": "Richmond upon Thames",
+  "ward": "South Richmond"
+ },
+ "TW9 1ND": {
+  "postcode": "TW9 1ND",
+  "lat": 51.459963,
+  "lon": -0.306991,
+  "district": "Richmond upon Thames",
+  "ward": "South Richmond"
+ },
+ "TW9 1YJ": {
+  "postcode": "TW9 1YJ",
+  "lat": 51.462028,
+  "lon": -0.294995,
+  "district": "Richmond upon Thames",
+  "ward": "South Richmond"
+ },
+ "TW9 2NQ": {
+  "postcode": "TW9 2NQ",
+  "lat": 51.464131,
+  "lon": -0.301698,
+  "district": "Richmond upon Thames",
+  "ward": "South Richmond"
+ },
+ "TW9 2RG": {
+  "postcode": "TW9 2RG",
+  "lat": 51.463294,
+  "lon": -0.302895,
+  "district": "Richmond upon Thames",
+  "ward": "South Richmond"
+ },
+ "TW9 3AA": {
+  "postcode": "TW9 3AA",
+  "lat": 51.483661,
+  "lon": -0.289148,
+  "district": "Richmond upon Thames",
+  "ward": "Kew"
+ },
+ "TW9 3PZ": {
+  "postcode": "TW9 3PZ",
+  "lat": 51.476982,
+  "lon": -0.285639,
+  "district": "Richmond upon Thames",
+  "ward": "Kew"
+ },
+ "UB6 8TE": {
+  "postcode": "UB6 8TE",
+  "lat": 51.533007,
+  "lon": -0.323113,
+  "district": "Ealing",
+  "ward": "Perivale"
+ },
+ "UB7 7BE": {
+  "postcode": "UB7 7BE",
+  "lat": 51.514668,
+  "lon": -0.473659,
+  "district": "Hillingdon",
+  "ward": "Yiewsley"
+ },
+ "UB8 1AB": {
+  "postcode": "UB8 1AB",
+  "lat": 51.545404,
+  "lon": -0.480577,
+  "district": "Hillingdon",
+  "ward": "Uxbridge"
+ },
+ "UB8 1JN": {
+  "postcode": "UB8 1JN",
+  "lat": 51.545402,
+  "lon": -0.478342,
+  "district": "Hillingdon",
+  "ward": "Uxbridge"
+ },
+ "UB9 5BE": {
+  "postcode": "UB9 5BE",
+  "lat": 51.572693,
+  "lon": -0.498614,
+  "district": "Buckinghamshire",
+  "ward": "Gerrards Cross & Denham"
+ },
+ "W11 1LU": {
+  "postcode": "W11 1LU",
+  "lat": 51.516314,
+  "lon": -0.205525,
+  "district": "Kensington and Chelsea",
+  "ward": "Colville"
+ },
+ "W1K 1QN": {
+  "postcode": "W1K 1QN",
+  "lat": 51.504112,
+  "lon": -0.148929,
+  "district": "Westminster",
+  "ward": "West End"
+ },
+ "W2 4QH": {
+  "postcode": "W2 4QH",
+  "lat": 51.512112,
+  "lon": -0.187877,
+  "district": "Westminster",
+  "ward": "Lancaster Gate"
+ },
+ "W8 4RU": {
+  "postcode": "W8 4RU",
+  "lat": 51.508111,
+  "lon": -0.193743,
+  "district": "Kensington and Chelsea",
+  "ward": "Campden"
+ },
+ "WD17 2PY": {
+  "postcode": "WD17 2PY",
+  "lat": 51.659903,
+  "lon": -0.395422,
+  "district": "Watford",
+  "ward": "Central"
+ },
+ "WD24 4AT": {
+  "postcode": "WD24 4AT",
+  "lat": 51.670315,
+  "lon": -0.396659,
+  "district": "Watford",
+  "ward": "Callowland"
+ },
+ "WD24 7TQ": {
+  "postcode": "WD24 7TQ",
+  "lat": 51.673703,
+  "lon": -0.385389,
+  "district": "Watford",
+  "ward": "Tudor"
+ },
+ "WD3 1AB": {
+  "postcode": "WD3 1AB",
+  "lat": 51.639258,
+  "lon": -0.472485,
+  "district": "Three Rivers",
+  "ward": "Rickmansworth Town"
+ },
+ "WD3 1DJ": {
+  "postcode": "WD3 1DJ",
+  "lat": 51.637427,
+  "lon": -0.468573,
+  "district": "Three Rivers",
+  "ward": "Rickmansworth Town"
+ },
+ "WD3 3DX": {
+  "postcode": "WD3 3DX",
+  "lat": 51.646971,
+  "lon": -0.444099,
+  "district": "Three Rivers",
+  "ward": "Dickinsons"
+ },
+ "WD3 3HN": {
+  "postcode": "WD3 3HN",
+  "lat": 51.648232,
+  "lon": -0.455922,
+  "district": "Three Rivers",
+  "ward": "Dickinsons"
+ },
+ "WD3 5SD": {
+  "postcode": "WD3 5SD",
+  "lat": 51.656932,
+  "lon": -0.500053,
+  "district": "Three Rivers",
+  "ward": "Chorleywood North & Sarratt"
+ },
+ "WD3 6HH": {
+  "postcode": "WD3 6HH",
+  "lat": 51.677505,
+  "lon": -0.496409,
+  "district": "Three Rivers",
+  "ward": "Chorleywood North & Sarratt"
+ }
+}
