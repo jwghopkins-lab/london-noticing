@@ -1,7 +1,8 @@
 # London Tuesday Quizzes
 
 A map of weekly pub quizzes in London on Tuesday nights, with a start-time
-filter. Each pin opens the page on the pub's (or its quiz host's) own website
+filter. Published at https://claude.ai/artifact/PziAtUSjuAAQe74ptfWSQN (private
+until shared from the page's Share menu). Each pin opens the page on the pub's (or its quiz host's) own website
 that states the quiz, with the words it says quoted.
 
 This folder is separate from the walks. Nothing in it reads or writes the
@@ -89,6 +90,7 @@ Run it again with a new run name, so every quiz is re-read from its page today:
 4. `python3 verify/accept.py r<N> <verdicts> ...` (only the new run's verdicts,
    so nothing is carried forward unread), `python3 verify/locate.py`,
    `python3 build/build.py`.
-5. Republish `dist/london-tuesday-quizzes.html` to the same artifact URL.
+5. Republish `dist/london-tuesday-quizzes.html` to the same artifact URL,
+   https://claude.ai/artifact/PziAtUSjuAAQe74ptfWSQN, passing it as `url`.
 
 Map data © OpenStreetMap contributors, ODbL.
