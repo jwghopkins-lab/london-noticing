@@ -81,7 +81,7 @@ def evidence_text(q):
 
 def check(q):
     errs = []
-    for f in ("id", "name", "area", "address", "start", "lat", "lon", "website", "source_url",
+    for f in ("id", "name", "area", "start", "lat", "lon", "website", "source_url",
               "source_kind", "quote", "checked", "evidence_run", "candidate_id"):
         if q.get(f) in (None, ""):
             errs.append(f"missing {f}")
