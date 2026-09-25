@@ -82,6 +82,16 @@ def district(pc):
     return m.group(1) if m else None
 
 
+def inside(lat, lon, rings):
+    """Even-odd point in polygon over all rings ([lat, lon] pairs), so holes work."""
+    hit = False
+    for ring in rings:
+        for (y1, x1), (y2, x2) in zip(ring, ring[1:] + ring[:1]):
+            if (y1 > lat) != (y2 > lat) and lon < x1 + (lat - y1) * (x2 - x1) / (y2 - y1):
+                hit = not hit
+    return hit
+
+
 def main():
     quizzes = json.loads((DATA / "quizzes.json").read_text())
     pubs = json.loads((DATA / "osm" / "pubs.json").read_text())
@@ -104,6 +114,10 @@ def main():
             return False
         return domain_use[qd] <= 1 or bool(qp and qp == pp)
 
+    lp = DATA / "osm" / "london.json"
+    london = json.loads(lp.read_text())["rings"] if lp.exists() else None
+    if not london:
+        print("warning: no Greater London boundary yet (data/osm/london.json); nothing is filtered by it")
     placed, keep = Counter(), []
     for q in quizzes:
         qn = norm(q["name"])
@@ -162,11 +176,23 @@ def main():
             placed["none"] += 1
             print(f"left off {q['id']}: no postcode position, and no OSM pub it can only be")
             continue
+        if london and not inside(q["lat"], q["lon"], london):
+            placed["outside"] += 1
+            print(f"left off {q['id']}: {q['name']} is outside Greater London")
+            continue
         keep.append(q)
 
     def key(q):
         return q.get("osm") or (round(q["lat"], 4), round(q["lon"], 4))
 
+    # One building can carry two names (Bertie's Bar is in the Prince of Wales),
+    # so pins within 40 m with the same start time are one quiz.
+    for i, q in enumerate(keep):
+        for r in keep[:i]:
+            if q["start"] == r["start"] and metres((q["lat"], q["lon"]), (r["lat"], r["lon"])) <= 40:
+                q["osm"] = r.get("osm") or q.get("osm")
+                q["lat"], q["lon"] = r["lat"], r["lon"]
+                break
     groups = {}
     for q in keep:
         groups.setdefault(key(q), []).append(q)

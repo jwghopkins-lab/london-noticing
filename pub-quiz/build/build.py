@@ -128,7 +128,7 @@ def main():
         sys.exit(f"{failed} of {len(quizzes)} quizzes failed the evidence check; nothing built")
 
     public = [{k: q[k] for k in ("id", "name", "area", "address", "postcode", "start", "lat", "lon",
-                                 "website", "source_url", "source_kind", "quote", "checked", "host",
+                                 "website", "source_url", "source_kind", "quote", "extra_quotes", "checked", "host",
                                  "freq_note", "location_source") if q.get(k) not in (None, "")}
               for q in quizzes]
     status_p = DATA / "status.json"

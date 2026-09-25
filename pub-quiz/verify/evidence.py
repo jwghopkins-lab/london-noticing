@@ -44,8 +44,14 @@ def main(run, out_dir):
     summary = {}
     for cid, plist in pages.items():
         e = crawl.get(cid, {})
-        parts = [f"CANDIDATE {cid}: crawled as the website of "
-                 f"{e.get('name') or 'an unnamed entry'}" + (f" (OpenStreetMap {', '.join(e['osm'])})" if e.get("osm") else "")]
+        if "~ext" in cid:
+            # A pub site reached from a listings site's venue page: that page names the pub.
+            parent = (pages.get(cid.split("~")[0]) or [{}])[0]
+            parts = [f"CANDIDATE {cid}: a website linked from the listings-site page titled "
+                     f"\"{parent.get('title', '')}\". The listing is only a lead: the pub must be identified, and the quiz confirmed, from this website itself. If it is a quiz company's site, it counts only for a venue it names clearly."]
+        else:
+            parts = [f"CANDIDATE {cid}: crawled as the website of "
+                     f"{e.get('name') or 'the pub named on the page'}" + (f" (OpenStreetMap {', '.join(e['osm'])})" if e.get("osm") else "")]
         quiz_hits = 0
         for p in plist:
             text = p.get("text") or ""

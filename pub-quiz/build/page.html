@@ -357,7 +357,7 @@ a { color: inherit; }
       '<div class="pop-time"><span class="sw" style="background:' + colorFor(q.m) + '"></span>' + fmt(q.m) + '</div>' +
       '<h3>' + esc(q.name) + '</h3>' +
       '<p class="addr">' + esc(q.address || ('Near ' + q.area + (q.postcode ? ', ' + q.postcode : ''))) + '</p>' +
-      '<blockquote>“' + esc(q.quote) + '”<cite>' + esc(kind) + (q.freq_note ? ' · ' + esc(q.freq_note) : '') + '</cite></blockquote>' +
+      '<blockquote>' + [q.quote].concat(q.extra_quotes || []).map(s => '“' + esc(s.replace(/\s*\n\s*/g, ' / ')) + '”').join(' … ') + '<cite>' + esc(kind) + '</cite></blockquote>' +
       '<a class="go" href="' + esc(q.source_url) + '" target="_blank" rel="noopener">Check it on the website ↗</a>' +
       '<div class="row">' + (q.website && q.website !== q.source_url ? '<a href="' + esc(q.website) + '" target="_blank" rel="noopener">Pub homepage ↗</a>' : '') +
       '<a href="' + gmaps(q) + '" target="_blank" rel="noopener">Directions ↗</a></div>' +

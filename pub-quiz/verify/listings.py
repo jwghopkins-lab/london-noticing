@@ -32,6 +32,8 @@ FIRST_HAND = {
                        re.compile(r"(?=^(?:Fortnightly · )?(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) · )", re.M)),
     "hub-compleatquiz": ("Compleat Quiz's own list of the pubs where it runs quizzes",
                          re.compile(r"\nvenue\n")),
+    "hub-compleatquiz-all": ("Compleat Quiz's own list of the pubs where it runs quizzes",
+                             re.compile(r"\nvenue\n")),
     "hub-questionone": ("Question One's own venue pages and venue list (Question One runs the quizzes)",
                         re.compile(r"(?=^(?:PUB QUIZ – )?[^\n]+\n(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday) \d\d:\d\d$)", re.M)),
     "hub-urbanpubs-whatson": ("Urban Pubs & Bars' own what's-on pages for its pubs", None),

@@ -36,6 +36,7 @@ jobs:
       shards: ${{ steps.req.outputs.shards }}
       postcodes: ${{ steps.req.outputs.postcodes }}
       osm: ${{ steps.req.outputs.osm }}
+      boundary: ${{ steps.req.outputs.boundary }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -48,6 +49,7 @@ jobs:
           echo "shards=$(jq -c '[range(0; (.shards // 1))]' $R)" >> "$GITHUB_OUTPUT"
           echo "postcodes=$(jq '.postcodes // [] | length' $R)" >> "$GITHUB_OUTPUT"
           echo "osm=$(jq -r '.osm // false' $R)" >> "$GITHUB_OUTPUT"
+          echo "boundary=$(jq -r '.boundary // false' $R)" >> "$GITHUB_OUTPUT"
           echo "crawl_osm=$(jq -r '.crawl_osm_pubs // false' $R)" >> "$GITHUB_OUTPUT"
 
       # The pubs' own websites are the crawl list, so the pub list comes first.
@@ -73,7 +75,7 @@ jobs:
 
   maps:
     needs: plan
-    if: needs.plan.outputs.osm == 'true' || needs.plan.outputs.postcodes != '0'
+    if: needs.plan.outputs.osm == 'true' || needs.plan.outputs.boundary == 'true' || needs.plan.outputs.postcodes != '0'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -89,11 +91,17 @@ jobs:
         run: |
           pip install --quiet shapely osm2geojson
           cd pub-quiz/fetch && python3 osm_basemap.py
+      - name: Fetch the Greater London boundary
+        if: needs.plan.outputs.boundary == 'true'
+        run: |
+          pip install --quiet shapely osm2geojson
+          cd pub-quiz/fetch && python3 osm_boundary.py
       - name: Stage
         if: always()
         run: |
           mkdir -p stage/data/osm stage/data/fetched/${{ needs.plan.outputs.run }}
           [ -f pub-quiz/data/osm/basemap.json ] && cp pub-quiz/data/osm/basemap.json stage/data/osm/ || true
+          [ -f pub-quiz/data/osm/london.json ] && cp pub-quiz/data/osm/london.json stage/data/osm/ || true
           [ -f pub-quiz/data/fetched/${{ needs.plan.outputs.run }}/postcodes.json ] && cp pub-quiz/data/fetched/${{ needs.plan.outputs.run }}/postcodes.json stage/data/fetched/${{ needs.plan.outputs.run }}/ || true
       - uses: actions/upload-artifact@v4
         if: always()
