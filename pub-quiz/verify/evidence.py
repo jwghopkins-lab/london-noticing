@@ -37,11 +37,15 @@ def main(run, out_dir):
     pages = {}
     for p in sorted((ROOT / "data" / "fetched" / run).glob("pages*.json.gz")):
         pages.update(json.loads(gzip.decompress(p.read_bytes())))
+    crawl_p = ROOT / "data" / "fetched" / run / "crawl.json"
+    crawl = {e["id"]: e for e in json.loads(crawl_p.read_text())["pages"]} if crawl_p.exists() else {}
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     summary = {}
     for cid, plist in pages.items():
-        parts = []
+        e = crawl.get(cid, {})
+        parts = [f"CANDIDATE {cid}: crawled as the website of "
+                 f"{e.get('name') or 'an unnamed entry'}" + (f" (OpenStreetMap {', '.join(e['osm'])})" if e.get("osm") else "")]
         quiz_hits = 0
         for p in plist:
             text = p.get("text") or ""

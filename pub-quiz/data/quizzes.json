@@ -1,0 +1,21 @@
+[
+ {
+  "id": "three-compasses-dalston",
+  "name": "The Three Compasses",
+  "area": "Shacklewell",
+  "address": "99 Dalston Lane, London E8 1NH",
+  "postcode": "E8 1NH",
+  "start": "20:00",
+  "website": "https://www.3compasses.com/",
+  "source_url": "https://www.3compasses.com/pub-quiz-hackney",
+  "source_kind": "pub",
+  "quote": "JOIN US FOR THE BEST PUB QUIZ IN HACKNEY EVERY TUESDAY 8PM",
+  "checked": "2026-09-25",
+  "evidence_run": "r0-smoke",
+  "candidate_id": "smoke-3compasses",
+  "lat": 51.54831,
+  "lon": -0.06864,
+  "location_source": "osm",
+  "osm": "way/863500628"
+ }
+]

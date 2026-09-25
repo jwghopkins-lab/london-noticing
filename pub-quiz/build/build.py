@@ -135,7 +135,7 @@ def main():
     meta = {"checked": max(q["checked"] for q in quizzes),
             "unconfirmed": status.get("unconfirmed_count", 0),
             "built": date.today().isoformat()}
-    basemap = json.loads((DATA / "osm" / "basemap.json").read_text())
+    basemap = json.loads((DATA / "osm" / "basemap-slim.json").read_text())
 
     def js(o):
         return json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")

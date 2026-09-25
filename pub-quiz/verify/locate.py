@@ -59,14 +59,42 @@ def postcodes():
     return out
 
 
+def area_namer():
+    """The nearest neighbourhood name on the basemap, for the list's second line."""
+    base = json.loads((DATA / "osm" / "basemap.json").read_text())
+    places = [p for p in base.get("places", []) if p["p"] in ("suburb", "neighbourhood", "quarter", "town")]
+
+    def name(lat, lon):
+        best = min(places, key=lambda p: metres((lat, lon), (p["lat"], p["lon"])) * (0.8 if p["p"] == "suburb" else 1))
+        return best["n"]
+    return name
+
+
 def main():
     quizzes = json.loads((DATA / "quizzes.json").read_text())
     pubs = json.loads((DATA / "osm" / "pubs.json").read_text())
+    by_osm = {p["osm"]: p for p in pubs}
     pcs = postcodes()
+    area = area_namer()
     placed = {"osm": 0, "postcode": 0, "none": 0}
+    keep = []
     for q in quizzes:
         pc = pcs.get((q.get("postcode") or "").replace(" ", "").upper())
         centre = (pc["lat"], pc["lon"]) if pc else None
+        # A quiz found by crawling a pub's own website belongs to that pub's OSM point,
+        # unless the address on its page is somewhere else entirely.
+        own = next((by_osm[o] for o in q.get("osm_ids", []) if o in by_osm), None)
+        if own:
+            d = metres(centre, (own["lat"], own["lon"])) if centre else None
+            if d is not None and d > 600:
+                print(f"drop {q['id']}: its page's postcode is {d:.0f} m from the pub it was crawled for")
+                continue
+            q.update(lat=own["lat"], lon=own["lon"], location_source="osm", osm=own["osm"], area=area(own["lat"], own["lon"]))
+            if d is not None:
+                q["osm_to_postcode_m"] = round(d)
+            placed["osm"] += 1
+            keep.append(q)
+            continue
         qd = domain(q.get("website", ""))
         qn = norm(q["name"])
         best = None
@@ -88,20 +116,20 @@ def main():
                 best = (score, p, d)
         if best:
             _, p, d = best
-            q.update(lat=p["lat"], lon=p["lon"], location_source="osm", osm=p["osm"])
+            q.update(lat=p["lat"], lon=p["lon"], location_source="osm", osm=p["osm"], area=area(p["lat"], p["lon"]))
             if d is not None:
                 q["osm_to_postcode_m"] = round(d)
             placed["osm"] += 1
+            keep.append(q)
         elif centre:
-            q.update(lat=round(centre[0], 5), lon=round(centre[1], 5), location_source="postcode")
+            q.update(lat=round(centre[0], 5), lon=round(centre[1], 5), location_source="postcode", area=area(*centre))
             q.pop("osm", None)
             placed["postcode"] += 1
+            keep.append(q)
         else:
-            for k in ("lat", "lon", "location_source", "osm"):
-                q.pop(k, None)
             placed["none"] += 1
-            print(f"cannot place {q['id']}: no usable postcode and no OSM match")
-    (DATA / "quizzes.json").write_text(json.dumps(quizzes, indent=1, ensure_ascii=False))
+            print(f"cannot place {q['id']}: no usable postcode and no OSM match; left off")
+    (DATA / "quizzes.json").write_text(json.dumps(keep, indent=1, ensure_ascii=False))
     print(f"placed from OSM {placed['osm']}, from postcode {placed['postcode']}, not placed {placed['none']}")
 
 
